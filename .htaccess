@@ -1,0 +1,6 @@
+<IfModule mod_rewrite.c>
+# In case the server doesn't choose to use /public/ for serving (etc public hosts)
+    RewriteEngine on
+
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
