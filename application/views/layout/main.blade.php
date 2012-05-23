@@ -36,17 +36,13 @@
 						<ul class="nav">
 							@if (Auth::check())
 							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">t2t2 <b class="caret"></b></a>
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->username }} <b class="caret"></b></a>
 								<ul class="dropdown-menu">
-									<li><a href="#">My Profile</a></li>
-									<li><a href="#">My Account</a></li>
-									<li><a href="#">Log out</a></li>
+									<li>{{ HTML::link_to_action('account@logout', "Logout") }}</li>
 								</ul>
 							</li>
 							@else
-							<li>
-								{{ HTML::link_to_action('account@login', "Login") }}
-							</li>
+							<li>{{ HTML::link_to_action('account@login', "Login") }}</li>
 							@endif
 						</ul>
 					</div>

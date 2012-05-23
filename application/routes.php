@@ -32,12 +32,13 @@
 |		});
 |
 */
+Route::controller('account');
 
 Route::get('/', function()
 {
 	return View::make('layout.main');
 });
-Route::controller('account');
+Route::get("login", "account@login");
 
 /*
 |--------------------------------------------------------------------------

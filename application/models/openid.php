@@ -2,7 +2,9 @@
 class Openid extends Eloquent {
 	public static $table = "openid";
 	
+	public static $timestamps = false;
+	
 	public function user() {
-		$this->belongs_to("User");
+		return $this->belongs_to("User");
 	}
 }
