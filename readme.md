@@ -24,8 +24,8 @@ Setup:
 3. Make config files to `application/config/local/` based on `application/config/`
     1. application.php - Overwrite url
     2. database.php - Database settings
-4. `php artisan migrate:install`
-5. `php artisan migrate`
+4. `php artisan migrate:install --env=local`
+5. `php artisan migrate --env=local`
 6. Make account, use the database to turn it into admin
 7. ???
 8. Profit!
