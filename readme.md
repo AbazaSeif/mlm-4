@@ -7,15 +7,18 @@ Setup:
 
 1. Clone to whereever you like working from
 2. Set up a vhost entry in apache (unless files are in root of webserver)
-    For example:
+    For example in the apache/conf/extra/httpd-vhosts.conf file:
     ```
+	NameVirtualHost *:80 ## UNCOMMENT THIS LINE
+	
     <VirtualHost *:80>
-    	ServerAdmin postmaster@mlm.dev
-    	DocumentRoot "C:/xampp/htdocs/mlm"
-    	ServerName mlm.dev
-    	ServerAlias www.mlm.dev
-    	ErrorLog "logs/mlm.dev-error.log"
-    	CustomLog "logs/mlm.dev-access.log" combined
+		DocumentRoot "C:/xampp/htdocs"
+		ServerName localhost
+	</VirtualHost>
+	
+	<VirtualHost *:80>
+		DocumentRoot "C:/xampp/htdocs/mlm"
+		ServerName mlm.dev
 	</VirtualHost>
     ```
 3. Make config files to `application/config/local/` based on `application/config/`
