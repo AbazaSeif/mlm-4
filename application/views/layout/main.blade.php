@@ -38,9 +38,9 @@
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">t2t2 <b class="caret"></b></a>
 								<ul class="dropdown-menu">
-									<li><a href="/mlm/user/t2t2">My Profile</a></li>
-									<li><a href="/mlm/account">My Account</a></li>
-									<li><a href="/mlm/logout">Log out</a></li>
+									<li><a href="#">My Profile</a></li>
+									<li><a href="#">My Account</a></li>
+									<li><a href="#">Log out</a></li>
 								</ul>
 							</li>
 							@else
