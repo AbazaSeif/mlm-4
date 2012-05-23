@@ -37,6 +37,7 @@ Route::get('/', function()
 {
 	return View::make('layout.main');
 });
+Route::controller('account');
 
 /*
 |--------------------------------------------------------------------------
