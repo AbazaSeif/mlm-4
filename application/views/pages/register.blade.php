@@ -8,7 +8,7 @@
 		{{ Form::text("username", Input::old('username')) }}
 		{{ Form::label("mc_username", "Minecraft Username") }}
 		{{ Form::text("mc_username", Input::old('mc_username')) }}
-		{{ Form::submit("Register!") }}
+		{{ Form::submit("Register!", array('class' => 'btn-primary')) }}
 		{{ Form::close() }}
 	</div>
 @endsection
