@@ -100,11 +100,11 @@
 	<div class="wrapper">
 		<div class="error-spacer"></div>
 		<div role="main" class="main">
-			<?php $messages = array('We need a map.', 'I think we\'re lost.', 'We took a wrong turn.'); ?>
+			<?php $messages = array('Stonghold not found', 'There is no wool here', 'An Enderman stole this page'); ?>
 
 			<h1><?php echo $messages[mt_rand(0, 2)]; ?></h1>
 
-			<h2>Server Error: 404 (Not Found)</h2>
+			<h2>ERROR 404</h2>
 
 			<hr>
 

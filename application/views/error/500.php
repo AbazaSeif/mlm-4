@@ -104,7 +104,7 @@
 
 			<h1><?php echo $messages[mt_rand(0, 2)]; ?></h1>
 
-			<h2>Server Error: 500 (Internal Server Error)</h2>
+			<h2>500 (Internal Server Error)</h2>
 
 			<hr>
 
