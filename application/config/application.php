@@ -154,7 +154,7 @@ return array(
 		'Event'      => 'Laravel\\Event',
 		'File'       => 'Laravel\\File',
 		'Filter'     => 'Laravel\\Routing\\Filter',
-		'Form'       => 'Laravel\\Form',
+		'Form'       => 'Bootsparks\\Form',
 		'Hash'       => 'Laravel\\Hash',
 		'HTML'       => 'Laravel\\HTML',
 		'Input'      => 'Laravel\\Input',
