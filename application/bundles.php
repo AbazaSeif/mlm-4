@@ -33,4 +33,9 @@
 |
 */
 
-return array();
+return array(
+	'basset' => array(
+		'handles' => 'assets',
+		'auto' => true
+	)
+);
