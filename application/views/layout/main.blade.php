@@ -62,7 +62,7 @@
 		</div>
 
 		<div class="container">
-
+			{{ Messages::get_html() }}
 			@yield('content')
 
 			<hr>
