@@ -27,8 +27,7 @@ class Account_Controller extends Base_Controller {
 			} else {
 				if($openid->validate()) {
 					$identity = $openid->identity;
-//					if(Auth::attempt(array("identity" => $identity))) {
-					if(false) {
+					if(Auth::attempt(array("identity" => $identity))) {
 						Messages::add("success", "Welcome back ".Auth::user()->username."!");
 						return Redirect::home();
 					} else {
