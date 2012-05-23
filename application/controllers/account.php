@@ -5,7 +5,7 @@ class Account_Controller extends Base_Controller {
 	public $restful = true;
 
 	public function get_login() {
-		return View::make('pages.login');
+		return View::make('pages.login', array('title' => 'Login'));
 	}
 	public function post_login() {
 		$openid = new LightOpenID(Config::get('openid.host'));
@@ -31,9 +31,8 @@ class Account_Controller extends Base_Controller {
 						Messages::add("success", "Welcome back ".Auth::user()->username."!");
 						return Redirect::home();
 					} else {
-						Messages::add("success", $identity);
-						// Store identity in session, redirect to registration form
-						return Redirect::home();
+						Session::put("openid-identity", $identity);
+						return Redirect::to_action("account@register");
 					}
 				} else {
 					Messages::add('error', 'A creeper got stuck in the system, login failed');
@@ -43,5 +42,8 @@ class Account_Controller extends Base_Controller {
 		} else {
 			return Redirect::home();
 		}
+	}
+	public function get_register() {
+		return View::make('pages.register');
 	}
 }
