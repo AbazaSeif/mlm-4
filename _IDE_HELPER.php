@@ -24,6 +24,7 @@ class Lang extends Laravel\Lang {}
 class Log extends Laravel\Log {}
 class Memcached extends Laravel\Memcached {}
 class Paginator extends Laravel\Paginator {}
+class Profiler extends Laravel\Profiling\Profiler {}
 class URL extends Laravel\URL {}
 class Redirect extends Laravel\Redirect {}
 class Redis extends Laravel\Redis {}
