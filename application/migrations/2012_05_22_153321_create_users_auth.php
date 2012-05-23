@@ -19,7 +19,7 @@ class Create_Users_Auth {
 
 		Schema::create('openid', function($table) {
 			$table->increments('id');
-			$table->string('identity');
+			$table->text('identity'); // Avoiding overflow problems
 			$table->integer('user_id');
 			$table->foreign('user_id')->references('id')->on('users');
 		});
