@@ -171,3 +171,10 @@ if ( ! Request::cli() and Config::get('session.driver') !== '')
 {
 	Session::load();
 }
+
+/*
+ * Openid auth driver
+ */
+Auth::extend('openid', function() {
+	return new OpenIDDriver();
+});
