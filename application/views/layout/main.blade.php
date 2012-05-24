@@ -14,8 +14,6 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<meta name="viewport" content="width=device-width">
-
 	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("assets/style.css") }}">
 
 	<script src="{{ URL::to_asset("js/libs/modernizr-2.5.3-respond-1.1.0.min.js") }}"></script>
