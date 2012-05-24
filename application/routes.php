@@ -39,6 +39,9 @@ Route::get('/', function()
 	return View::make('layout.main');
 });
 Route::get("login", "account@login");
+Route::get("admin", array('before' => 'admin', function() {
+	return View::make("admin.home");
+}));
 
 /*
 |--------------------------------------------------------------------------
@@ -114,6 +117,6 @@ Route::filter('auth', function()
 });
 Route::filter('admin', function() {
 	if (Auth::guest() or !Auth::user()->admin) {
-		return Respose::error('404');
+		return Response::error('404');
 	}
 });
