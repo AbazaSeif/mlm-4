@@ -112,3 +112,8 @@ Route::filter('auth', function()
 {
 	if (Auth::guest()) return Redirect::to('login');
 });
+Route::filter('admin', function() {
+	if (Auth::guest() or !Auth::user()->admin) {
+		return Respose::error('404');
+	}
+});
