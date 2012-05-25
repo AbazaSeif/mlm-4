@@ -1,0 +1,194 @@
+﻿@import url(http://fonts.googleapis.com/css?family=Oswald:400,700,300);
+
+*
+{
+	margin:0;
+	padding:0;
+}
+
+::selection
+{
+	background:#0FF;
+}
+
+::-moz-selection
+{
+	background:#0FF;
+}
+
+.clear
+{
+	clear:both;
+}
+
+body
+{
+	background:#0e3a9d url(images/bg.jpg) no-repeat fixed top center;
+	color:#FFF;
+	font-family:Oswald, Helvetica, Arial;
+	font-weight:400;
+}
+
+header
+{
+	width:100%;
+}
+
+header #logobg
+{
+	background:transparent url(http://localhost/mlmlocal/images/branding.png) repeat-x center center;
+	box-shadow:0 0 35px #000;
+	height:42px;
+	margin-top:50px;
+	width:100%;
+}
+
+header .logoholder
+{
+	clear:both;
+	display:block;
+	height:20px;
+	margin:0 auto;
+	width:990px;
+}
+
+header .logo
+{
+	float:left;
+	position:absolute;
+	top:1px;
+	width:480px;
+}
+
+header .logo h1
+{
+	float:right;
+	font-family:Oswald, Helvetica, Arial;
+	font-size:26px;
+	font-weight:700;
+	margin-top:49px;
+	text-shadow:0 3px 2px #000;
+}
+
+header #logs
+{
+	float:right;
+	height:20px;
+	margin:-34px auto 0;
+	text-align:right;
+}
+
+header #logs a
+{
+	color:#FFF;
+	font-family:Oswald, Helvetica, Arial;
+	font-weight:700;
+	text-decoration:none;
+	text-shadow:0 1px 3px #000;
+}
+
+#menu
+{
+	background:transparent url(images/menu.png) repeat-x center center;
+	box-shadow:0 0 35px #000;
+	font-size:21px;
+	height:35px;
+	margin:15px auto;
+	width:990px;
+}
+
+#menu ul
+{
+	display:block;
+	margin:0 80px;
+	padding:2px;
+}
+
+#menu li
+{
+	border-left:1px solid #000;
+	float:left;
+	list-style:none;
+	padding:0 25px;
+}
+
+#menu li:first-child
+{
+	border:none;
+}
+
+#menu li a
+{
+	clear:both;
+	color:#FFF;
+	display:block;
+	font-family:Oswald, Helvetica, Arial;
+	font-size:20px;
+	font-weight:700;
+	text-decoration:none;
+	text-shadow:0 1px 3px #000;
+	text-transform:uppercase;
+}
+
+#wrapper
+{
+	margin:0 auto;
+	width:990px;
+}
+
+#home
+{
+	height:300px;
+	margin:0 auto 54px;
+}
+
+#home .slide
+{
+	background:#102A67;
+	box-shadow:0 0 35px #000;
+	float:left;
+	height:300px;
+	width:600px;
+}
+
+#home .featured
+{
+	background:#102A67;
+	box-shadow:0 0 35px #000;
+	float:right;
+	height:300px;
+	width:372px;
+}
+
+#home .ticker
+{
+	background:#102A67;
+	box-shadow:0 0 35px #000;
+	display:inline-block;
+	height:30px;
+	margin:13px 0;
+	width:100%;
+}
+
+#content
+{
+	background:#102A67;
+	box-shadow:0 0 35px #000;
+	padding:25px;
+}
+
+footer
+{
+	background:#102A67;
+	box-shadow:0 0 35px #000;
+	margin:12px auto;
+	width:990px;
+}
+
+footer .column
+{
+	float:left;
+	margin:0 20px 0 0;
+	padding:30px;
+	width:250px;
+}
