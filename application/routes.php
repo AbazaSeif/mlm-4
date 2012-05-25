@@ -33,9 +33,9 @@
 |
 */
 Route::controller('account');
+Route::controller(array('admin.user'));
 
-Route::get('/', function()
-{
+Route::get('/', function() {
 	return View::make('layout.main');
 });
 Route::get("login", "account@login");
