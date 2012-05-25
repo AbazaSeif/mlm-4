@@ -2,7 +2,7 @@
 
 
 @section('content')
-	<div>
+	<div class="content">
 		{{ Form::open("account/login") }}
 		{{ Form::label("openid_identifier", "OpenID login") }}
 		{{ Form::text("openid_identifier", "https://www.google.com/accounts/o8/id") }}

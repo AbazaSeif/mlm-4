@@ -2,7 +2,7 @@
 
 
 @section('content')
-	<div>
+	<div class="content">
 		{{ Form::open("account/register") }}
 		@if (isset($errors))
 		@foreach ($errors->all('<p>:message</p>') as $error)
