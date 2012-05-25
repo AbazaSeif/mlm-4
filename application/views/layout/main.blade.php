@@ -50,7 +50,7 @@
 <div class="logoholder">
 <div class="logo">
 <h1>MAJOR LEAGUE MINING</h1>
-<a href="#" title="MLM"><img src="images/logo.png" /></a>
+<a href="#" title="MLM"><img src="{{ URL::to_asset("images/logo.png") }}" /></a>
 </div>
 <div id="logs">
 @if (Auth::check())
