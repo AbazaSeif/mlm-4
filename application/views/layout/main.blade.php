@@ -17,6 +17,30 @@
 	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/style.css") }}" />
 	<script src="{{ URL::to_asset("js/libs/modernizr-2.5.3-respond-1.1.0.min.js") }}"></script>
 
+	<script src="{{ URL::to_asset("js/libs/coin-slider.min.js") }}"></script>
+<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/coin-slider-styles.css") }}" />
+	
+	<script type="text/javascript">
+	$(document).ready(function() {
+	$('.slider').coinslider({ 
+		
+	width: 600, // width of slider panel
+    height: 300, // height of slider panel
+    spw: 8, // squares per width
+    sph: 8, // squares per height
+    delay: 7000, // delay between images in ms
+    sDelay: 30, // delay beetwen squares in ms
+    opacity: 0.7, // opacity of title and navigation
+    titleSpeed: 500, // speed of title appereance in ms
+    effect: 'straigth', // random, swirl, rain, straight
+    navigation: true, // prev next and buttons
+    links : true, // show images as links
+    hoverPause: true // pause on hover
+		
+	});
+	});
+</script>
+	
 </head>
 <body>
 <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/?locale=en">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
