@@ -14,61 +14,71 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("assets/style.css") }}">
-
+	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/style.css") }}" />
 	<script src="{{ URL::to_asset("js/libs/modernizr-2.5.3-respond-1.1.0.min.js") }}"></script>
+
 </head>
 <body>
-<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/?locale=en">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 
-		<div class="navbar navbar-fixed-top">
-			<div class="navbar-inner">
-				<div class="container">
-					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</a>
-					<a class="brand" href="#">Project name</a>
-					<div class="pull-right">
-						<ul class="nav">
-							@if (Auth::check())
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->username }} <b class="caret"></b></a>
-								<ul class="dropdown-menu">
-									<li>{{ HTML::link_to_action('account@logout', "Logout") }}</li>
-								</ul>
-							</li>
-							@else
-							<li>{{ HTML::link_to_action('account@login', "Login") }}</li>
-							@endif
-						</ul>
-					</div>
-					<div class="nav-collapse">
-						<ul class="nav">
-							<li class="active"><a href="#">Home</a></li>
-							<li><a href="#about">About</a></li>
-							<li><a href="#contact">Contact</a></li>
-						</ul>
-					</div><!--/.nav-collapse -->
-				</div>
-			</div>
-		</div>
+<header name="global header">
+<div id="logobg"><br style="clear:both" /></div>
+<div class="logoholder">
+<div class="logo">
+<h1>MAJOR LEAGUE MINING</h1>
+<a href="#" title="MLM"><img src="images/logo.png" /></a>
+</div>
+<div id="logs">
+@if (Auth::check())
+ {{ Auth::user()->username }} &bull; {{ HTML::link_to_action('account@logout', "Logout") }} 
+@else
+{{ HTML::link_to_action('account@login', "Login") }} &bull; {{ HTML::link_to_action('account@register', "Create Account") }} 
+@endif
+</div>
+</div>
 
-		<div class="container">
-			{{ Messages::get_html() }}
-			@yield('content')
+<nav id="menu">
+<ul>
+<li><a href="#">Home</a></li> 
+<li><a href="#">News</a></li> 
+<li><a href="#">Tournaments</a></li>
+<li><a href="#">Maps</a></li>
+<li><a href="#">Teams</a></li> 
+<li><a href="#">Rankings</a></li> 
+<li><a href="#">FAQ</a></li> 
+</ul>
+</nav>
+</header>
 
-			<hr>
-
-			<footer>
-				<p>&copy; Company 2012</p>
-			</footer>
-
-		</div> <!-- /container -->
+<div id="wrapper">
+ {{ Messages::get_html() }}	
+@include('home.index')
+  
+		<div class="content">
+		&nbsp;
+		</div> 
+		
+		
+	</div>	
+		
+<footer>
+<div class="column">
+<h3>Heading</h3>
+All sorts of awesome footer goodness
+</div>
+<div class="column">
+<h3>Heading</h3>
+All sorts of awesome footer goodness
+</div>
+<div class="column">
+<h3>Heading</h3>
+All sorts of awesome footer goodness
+</div>
+<div class="clear"></div>
+</footer>		
+		
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="{{ URL::to_asset("js/libs/jquery-1.7.2.min.js") }}"><\/script>')</script>
-<script src="{{ URL::to_asset("assets/script.js") }}"></script>
+
 <!--<script>
 	var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
 	(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];

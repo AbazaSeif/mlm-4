@@ -1,57 +1,53 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>Laravel: A Framework For Web Artisans</title>
-	<meta name="viewport" content="width=device-width">
-	{{ HTML::style('laravel/css/style.css') }}
-</head>
-<body>
-	<div class="wrapper">
-		<header>
-			<h1>Laravel</h1>
-			<h2>A Framework For Web Artisans</h2>
+﻿<script src="{{ URL::to_asset("js/libs/coin-slider.min.js") }}"></script>
+<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/coin-slider-styles.css") }}" />
+	
+	<script type="text/javascript">
+	$(document).ready(function() {
+	$('.slider').coinslider({ 
+		
+	width: 600, // width of slider panel
+    height: 300, // height of slider panel
+    spw: 8, // squares per width
+    sph: 8, // squares per height
+    delay: 7000, // delay between images in ms
+    sDelay: 30, // delay beetwen squares in ms
+    opacity: 0.7, // opacity of title and navigation
+    titleSpeed: 500, // speed of title appereance in ms
+    effect: 'straigth', // random, swirl, rain, straight
+    navigation: true, // prev next and buttons
+    links : true, // show images as links
+    hoverPause: true // pause on hover
+		
+	});
+	});
+</script>
 
-			<p class="intro-text" style="margin-top: 45px;">
-			</p>
-		</header>
-		<div role="main" class="main">
-			<div class="home">
-				<h2>Learn the terrain.</h3>
+<div id="home">
+<div class="slider">
 
-				<p>
-					You've landed yourself on our default home page. The route that
-					is generating this page lives at:
-				</p>
+	<a href="img01_url" target="_blank">
+		<img src='http://www.crazybutable.com/sites/default/files/styles/weblog/public/project_documentation_images/forrest-2538.jpg' >
+		<span>
+			Description for img01
+		</span>
+	</a>
+	......
+	......
+	<a href="imgN_url">
+		<img src='http://www.filminamerica.com/Movies/ForrestGump/gump02.jpg' >
+		<span>
+			Description for imgN
+		</span>
+	</a>
+</div>
 
-				<pre>{{ path('app') }}routes.php</pre>
 
-				<p>And the view sitting before you can be found at:</p>
+<div class="featured">
+<br style="clear:both" />
+</div>
 
-				<pre>{{ path('app') }}views/home/index.php</pre>
+<div class="ticker">
+<br style="clear:both" />
+</div>
 
-				<h2>Grow in knowledge.</h2>
-
-				<p>
-					Leaning to use Laravel is amazingly simple thanks to
-					its {{ HTML::link('docs', 'wonderful documentation') }}.
-				</p>
-
-				<h2>Create something beautiful.</h2>
-
-				<p>
-					Now that you're up and running, it's time to start creating!
-					Here are some links to help you get started:
-				</p>
-
-				<ul class="out-links">
-					<li><a href="http://laravel.com">Official Website</a></li>
-					<li><a href="http://forums.laravel.com">Laravel Forums</a></li>
-					<li><a href="http://github.com/laravel/laravel">GitHub Repository</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-</body>
-</html>
+</div>
