@@ -50,7 +50,7 @@
 <div class="logoholder">
 <div class="logo">
 <h1>MAJOR LEAGUE MINING</h1>
-<a href="#" title="MLM"><img src="{{ URL::to_asset("images/logo.png") }}" /></a>
+<a href="{{ URL::to("/") }}" title="MLM"><img src="{{ URL::to_asset("images/logo.png") }}" /></a>
 </div>
 <div id="logs">
 @if (Auth::check())
@@ -63,7 +63,7 @@
 
 <nav id="menu">
 <ul>
-<li><a href="#">Home</a></li> 
+<li><a href="{{ URL::to("/") }}">Home</a></li> 
 <li><a href="#">News</a></li> 
 <li><a href="#">Tournaments</a></li>
 <li><a href="#">Maps</a></li>
