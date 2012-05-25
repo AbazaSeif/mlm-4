@@ -175,7 +175,7 @@ header #logs a
 	width:100%;
 }
 
-#content
+#content, .content
 {
 	background:#102A67;
 	box-shadow:0 0 35px #000;
