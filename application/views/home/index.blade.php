@@ -1,5 +1,6 @@
-﻿
+@layout('layout.main')
 
+@section('content')
 <div id="home">
 <div class="slider">
 
@@ -29,3 +30,4 @@
 </div>
 
 </div>
+@endsection

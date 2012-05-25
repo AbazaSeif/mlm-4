@@ -36,7 +36,7 @@ Route::controller('account');
 Route::controller(array('admin.user'));
 
 Route::get('/', function() {
-	return View::make('layout.main');
+	return View::make('home.index');
 });
 Route::get("login", "account@login");
 Route::get("admin", array('before' => 'admin', function() {
