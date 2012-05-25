@@ -56,7 +56,7 @@
 @if (Auth::check())
  {{ Auth::user()->username }} &bull; {{ HTML::link_to_action('account@logout', "Logout") }} 
 @else
-{{ HTML::link_to_action('account@login', "Login") }} &bull; {{ HTML::link_to_action('account@register', "Create Account") }} 
+{{ HTML::link_to_action('account@login', "Login") }} &bull; {{ HTML::link_to_action('account@login', "Create Account") }} 
 @endif
 </div>
 </div>
@@ -75,12 +75,9 @@
 </header>
 
 <div id="wrapper">
- {{ Messages::get_html() }}	
-@include('home.index')
+	{{ Messages::get_html() }}	
   
-		<div class="content">
-		&nbsp;
-		</div> 
+	@yield('content')
 		
 		
 	</div>	
