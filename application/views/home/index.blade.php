@@ -22,11 +22,11 @@
 
 
 <div class="featured">
-<br style="clear:both" />
+	<br style="clear:both" />
 </div>
 
 <div class="ticker">
-<br style="clear:both" />
+	<br style="clear:both" />
 </div>
 
 </div>
