@@ -14,6 +14,6 @@ $('#slider').orbit({
      bullets: false,			 // true or false to activate the bullet navigation
      bulletThumbs: false,		 // thumbnails for the bullets
      bulletThumbLocation: '',		 // location from this file where thumbs will be
-     afterSlideChange: function(){} 	 // empty function 
+     //afterSlideChange: function(){} 	 // empty function 
 });
 });
