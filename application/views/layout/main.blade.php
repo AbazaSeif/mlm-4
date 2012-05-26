@@ -26,11 +26,13 @@
 		<div class="logoholder">
 			<div class="logo">
 				<h1>MAJOR LEAGUE MINING</h1>
-				<a href="{{ URL::to("/") }}" title="MLM"><img src="{{ URL::to_asset("images/static/logo.png") }}" /></a>
+				<a href="{{ URL::to("/") }}" title="Major League Mining"><img src="{{ URL::to_asset("images/static/logo.png") }}" /></a>
 			</div>
 			<div id="logs">
 				@if (Auth::check())
-				 {{ Auth::user()->username }} &bull; {{ HTML::link_to_action('account@logout', "Logout") }} 
+				<a href="{{ URL::to("user/".Auth::user()->username) }}">{{ Auth::user()->username }}</a> &bull; {{ HTML::link_to_action('account@logout', "Logout") }} 
+				@elseif (Auth::user()->admin)
+				{{ HTML::link_to_action('admin@home', "Admin Panel") }} &bull; <a href="{{ URL::to("user/".Auth::user()->username) }}">{{ Auth::user()->username }}</a> &bull; {{ HTML::link_to_action('account@logout', "Logout") }} 
 				@else
 				{{ HTML::link_to_action('account@login', "Login") }} &bull; {{ HTML::link_to_action('account@login', "Create Account") }} 
 				@endif
