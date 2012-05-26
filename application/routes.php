@@ -68,6 +68,10 @@ Event::listen('500', function()
 	return Response::error('500');
 });
 
+Event::listen('admin', function($module, $action, $target, $text) {
+	Log::info(print_r(array($module, $action, $target, $text), true));
+});
+
 /*
 |--------------------------------------------------------------------------
 | Route Filters
