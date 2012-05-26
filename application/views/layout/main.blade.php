@@ -1,4 +1,5 @@
 <!doctype html>
+<!--[if IE]><style type="text/css"> .timer { display: none !important; } div.caption { background:transparent; filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000,endColorstr=#99000000);zoom: 1; }</style><![endif]-->
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
@@ -64,11 +65,12 @@
 			<h3>Heading</h3>
 			All sorts of awesome footer goodness
 		</div>
-		<div class="clear"></div>
+		<br class="clear" />
 	</footer>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="{{ URL::to_asset("js/libs/jquery-1.7.2.min.js") }}"><\/script>')</script>
-	<script src="{{ URL::to_asset("js/libs/jquery.orbit-1.2.3.min.js") }}"></script>
+	<script src="{{ URL::to_asset("js/plugins.js") }}"></script>
 	<script src="{{ URL::to_asset("js/script.js") }}"></script>
+</script>
 </body>
 </html>
