@@ -1,5 +1,11 @@
-﻿@import url(http://fonts.googleapis.com/css?family=Oswald:400,700,300);
+﻿/* --------------------------------------------------------------
+                          MAJOR LEAGUE MINING
+-----------------------------------------------------------------*/
+
+@import url(http://fonts.googleapis.com/css?family=Oswald:400,700,300);
 @import url(slideshow.css);
+
+/* General Styles */
 
 *
 {
@@ -21,6 +27,38 @@
 {
 	clear:both;
 }
+
+h1, h2, h3 {
+}
+
+h1 {
+	font-size: 2em;
+}
+
+h2 {
+	font-size: 2.4em;
+}
+
+h3 {
+}
+
+p, ul, ol {
+	margin-top: 0;
+	line-height: 180%;
+}
+
+ul, ol {
+}
+
+a {
+	text-decoration: none;
+	color: #0082B4;
+}
+
+a:hover {
+}
+
+/*-- Start specific styles --*/
 
 body
 {
@@ -102,15 +140,19 @@ header #logs a
 {
 	display:block;
 	margin:0 80px;
-	padding:2px;
 }
 
 #menu li
 {
-	border-left:1px solid #000;
+	border-left: 1px solid lightgray;
 	float:left;
 	list-style:none;
-	padding:0 25px;
+	padding: 0 25px;
+	height: 35px;
+}
+
+#menu li:hover {
+background: lightGrey;
 }
 
 #menu li:first-child
@@ -154,15 +196,17 @@ header #logs a
 	width:372px;
 }
 
-#home .ticker
+#home #ticker
 {
 	background:#102A67;
 	box-shadow:0 0 35px #000;
 	display:inline-block;
 	height:30px;
 	margin:13px 0;
+	position: relative;
 	width:100%;
 }
+
 
 #content, .content
 {
