@@ -1,4 +1,5 @@
 ﻿@import url(http://fonts.googleapis.com/css?family=Oswald:400,700,300);
+@import url(slideshow.css);
 
 *
 {
@@ -23,7 +24,7 @@
 
 body
 {
-	background:#0e3a9d url(../images/bg.jpg) no-repeat fixed top center;
+	background:#0e3a9d url(../images/static/bg.jpg) no-repeat fixed top center;
 	color:#FFF;
 	font-family:Oswald, Helvetica, Arial;
 	font-weight:400;
@@ -36,7 +37,7 @@ header
 
 header #logobg
 {
-	background:transparent url(../images/branding.png) repeat-x center center;
+	background:transparent url(../images/static/branding.png) repeat-x center center;
 	box-shadow:0 0 35px #000;
 	height:42px;
 	margin-top:50px;
@@ -89,7 +90,7 @@ header #logs a
 
 #menu
 {
-	background:transparent url(../images/menu.png) repeat-x center center;
+	background:transparent url(../images/static/menu.png) repeat-x center center;
 	box-shadow:0 0 35px #000;
 	font-size:21px;
 	height:35px;
@@ -142,19 +143,7 @@ header #logs a
 	margin:0 auto 54px;
 }
 
-#home .slider
-{
-	background:#102A67;
-	box-shadow:0 0 35px #000;
-	float:left;
-	height:300px;
-	width:600px;
-}
-
-/*----------------------------------------*/
-
-
-/*----------------------------------------*/
+/*--- Style for frontpage slideshow (#slider) @ slideshow.css ---*/
 
 #home .featured
 {
