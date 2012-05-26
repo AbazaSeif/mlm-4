@@ -16,6 +16,7 @@
 				<td>{{ $user->id }}</td>
 				<td>{{ $user->username }}</td>
 				<td>{{ $user->mc_username }}</td>
+				<td>{{ HTML::link_to_action('admin.user@edit', "Edit", array($user->id)) }}</td>
 			</tr>
 		@endforeach
 	</table>
