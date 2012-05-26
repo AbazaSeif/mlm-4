@@ -25,7 +25,7 @@
 		<div class="logoholder">
 			<div class="logo">
 				<h1>MAJOR LEAGUE MINING</h1>
-				<a href="{{ URL::to("/") }}" title="MLM"><img src="{{ URL::to_asset("images/logo.png") }}" /></a>
+				<a href="{{ URL::to("/") }}" title="MLM"><img src="{{ URL::to_asset("images/static/logo.png") }}" /></a>
 			</div>
 			<div id="logs">
 				@if (Auth::check())
@@ -49,7 +49,7 @@
 	</header>
 	<div id="wrapper">
 		{{ Messages::get_html() }}	
-		@yield('content')	
+		@yield('content')
 	</div>	
 	<footer>
 		<div class="column">
@@ -68,5 +68,7 @@
 	</footer>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="{{ URL::to_asset("js/libs/jquery-1.7.2.min.js") }}"><\/script>')</script>
+	<script src="{{ URL::to_asset("js/libs/jquery.orbit-1.2.3.min.js") }}"></script>
+	<script src="{{ URL::to_asset("js/script.js") }}"></script>
 </body>
 </html>
