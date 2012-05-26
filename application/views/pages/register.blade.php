@@ -5,9 +5,9 @@
 	<div class="content">
 		{{ Form::open("account/register") }}
 		@if (isset($errors))
-		@foreach ($errors->all('<p>:message</p>') as $error)
-			{{ $error }}
-		@endforeach
+			@foreach ($errors->all('<p>:message</p>') as $error)
+				{{ $error }}
+			@endforeach
 		@endif
 		{{ Form::label("username", "Username") }}
 		{{ Form::text("username", Input::old('username')) }}
