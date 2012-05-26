@@ -148,7 +148,6 @@ header #logs a
 	border-left: 1px solid lightgray;
 	float:left;
 	list-style:none;
-	padding: 0 25px;
 	height: 35px;
 }
 
@@ -171,7 +170,8 @@ background: lightGrey;
 	font-weight:700;
 	text-decoration:none;
 	text-shadow:0 1px 3px #000;
-	text-transform:uppercase;
+	text-transform: uppercase;
+	padding: 0 25px;
 }
 
 #wrapper
