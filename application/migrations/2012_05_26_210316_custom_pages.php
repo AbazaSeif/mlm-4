@@ -11,9 +11,9 @@ class Custom_Pages {
 	{
 		Schema::create("pages", function($table) {
 			$table->increments("id");
-			$table->string("page_title", 50)->unique();
+			$table->string("title", 50)->unique();
 			$table->string("url_slug", 20)->unique();
-			$table->text("page_data");
+			$table->text("data");
 			$table->timestamps();
 		});			
 	}
