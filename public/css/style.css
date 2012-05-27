@@ -245,6 +245,11 @@ footer .column p
 
 /* -- Misc styles -- */
 
+.center {
+width: 500px;
+margin:0 auto;
+}
+
 #errorbox {
 min-height: 350px;
 width: 650px;
