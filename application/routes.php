@@ -69,7 +69,9 @@ Event::listen('500', function()
 });
 
 Event::listen('admin', function($module, $action, $target, $text) {
-	Log::info(print_r(array($module, $action, $target, $text), true));
+	if(is_array($text)) $text = json_encode($text);
+	$data = array("user_id" => Auth::user()->id, "module" => $module, "action" => $action, "target" => $target, "text" => $text);
+	Adminlog::create($data);
 });
 
 /*
