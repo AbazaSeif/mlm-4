@@ -39,7 +39,7 @@ class Admin_User_Controller extends Admin_Controller {
 			$user->username = Input::get("username");
 			$user->mc_username = Input::get("mc_username");
 			$user->admin = Input::get("admin");
-			$changed = $user->get_dirty();
+			$changed = array_keys($user->get_dirty());
 			if($user->save()) {
 				Event::fire("admin", array("user", "edit", $user->id, $changed));
 				Messages::add("success", "User updated!");
