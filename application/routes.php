@@ -44,6 +44,19 @@ Route::get("admin", array('before' => 'admin', function() {
 	return View::make("admin.home");
 }));
 
+
+//If Routes are checked in the order they appear in this file, this one needs to remain last.
+//If all are parsed every time a URL is entered, need to find a quicker way to do this so we don't need a SQL pull for every page load
+Route::get("(:any)", function($slug) {
+	$custom_page = DB::first("select * from pages where url_slug = ?", array($slug)); //dunno if $slug needs some escape-work done to prevent SQL injection or if that's all automatic
+	if($custom_page) {
+			return View::make("pages.custom", array("custom_page" => $custom_page, "title" => $custom_page->title));
+	}
+	else{
+		return Response::error('404');
+	}
+});
+
 /*
 |--------------------------------------------------------------------------
 | Application 404 & 500 Error Handlers
