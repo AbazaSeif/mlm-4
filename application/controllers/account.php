@@ -99,7 +99,7 @@ class Account_Controller extends Base_Controller {
 	public function get_logout() {
 		// TODO: Do real logging out in a post method
 		Auth::logout();
-		Messages::add("success", "Good bye!");
+		Messages::add("success", "You have logged out. Good Bye.");
 		return Redirect::home();
 	}
 }

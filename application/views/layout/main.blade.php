@@ -31,8 +31,6 @@
 			<div id="logs">
 				@if (Auth::check())
 				<a href="{{ URL::to("user/".Auth::user()->username) }}">{{ Auth::user()->username }}</a> &bull; {{ HTML::link_to_action('account@logout', "Logout") }} 
-				@elseif (Auth::user()->admin)
-				{{ HTML::link_to_action('admin@home', "Admin Panel") }} &bull; <a href="{{ URL::to("user/".Auth::user()->username) }}">{{ Auth::user()->username }}</a> &bull; {{ HTML::link_to_action('account@logout', "Logout") }} 
 				@else
 				{{ HTML::link_to_action('account@login', "Login") }} &bull; {{ HTML::link_to_action('account@login', "Create Account") }} 
 				@endif
@@ -41,12 +39,12 @@
 		<nav id="menu">
 			<ul>
 				<li><a href="{{ URL::to("/") }}">Home</a></li> 
-				<li><a href="#">News</a></li> 
-				<li><a href="#">Tournaments</a></li>
-				<li><a href="#">Maps</a></li>
-				<li><a href="#">Teams</a></li> 
-				<li><a href="#">Rankings</a></li> 
-				<li><a href="#">FAQ</a></li> 
+				<li>{{ HTML::link('news', 'News'); }}</li> 
+				<li>{{ HTML::link('tournaments', 'Tournaments'); }}</li>
+				<li>{{ HTML::link('maps', 'Maps'); }}</li>
+				<li>{{ HTML::link('teams', 'Teams'); }}</li> 
+				<li>{{ HTML::link('rankings', 'Rankings'); }}</li> 
+				<li>{{ HTML::link('faq', 'FAQ'); }}</li> 
 			</ul>
 		</nav>
 	</header>
@@ -57,15 +55,15 @@
 	<footer>
 		<div class="column">
 			<h3>Heading</h3>
-			All sorts of awesome footer goodness
+			<p>All sorts of awesome footer goodness</p>
 		</div>
 		<div class="column">
 			<h3>Heading</h3>
-			All sorts of awesome footer goodness
+			<p>All sorts of awesome footer goodness</p>
 		</div>
 		<div class="column">
 			<h3>Heading</h3>
-			All sorts of awesome footer goodness
+			<p>All sorts of awesome footer goodness</p>
 		</div>
 		<br class="clear" />
 	</footer>
