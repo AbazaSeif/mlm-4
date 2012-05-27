@@ -1,6 +1,7 @@
-@layout('layout.main')
+@layout('admin.home')
 
 @section('content')
+@parent
 <div class="content">
 	<table>
 		<thead>

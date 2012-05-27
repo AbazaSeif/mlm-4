@@ -6,7 +6,14 @@
 @import url(http://fonts.googleapis.com/css?family=Oswald:400,700,300);
 @import url(slideshow.css);
 
-/* General Styles */
+
+body
+{
+	background:#0e3a9d url(../images/static/bg.jpg) no-repeat fixed top center;
+	color:#FFF;
+	font-family:Oswald, Helvetica, Arial;
+	font-weight:400;
+}
 
 *
 {
@@ -59,16 +66,28 @@ a {
 a:hover {
 }
 
-/*-- Start specific styles --*/
+table {
+		overflow:hidden;
+		border:1px solid #d3d3d3;
+		background:#fefefe;
+		width: 100%;
+		margin: 0 auto;
+	}
+	
+	th, td {padding:18px 28px 18px; text-align:center; }
+	
+	th {padding-top:22px; text-shadow: 1px 1px 1px black; background:#e8eaeb;}
+	
+	td {border-top:1px solid #e0e0e0; border-right:1px solid #e0e0e0;color:black;}
+	
+	tr.odd-row td {background:#f6f6f6;}
+	
+	td.first, th.first {text-align:left}
+	
+	td.last {border-right:none;}
 
-body
-{
-	background:#0e3a9d url(../images/static/bg.jpg) no-repeat fixed top center;
-	color:#FFF;
-	font-family:Oswald, Helvetica, Arial;
-	font-weight:400;
-}
-
+/* Start */	
+	
 header
 {
 	width:100%;
