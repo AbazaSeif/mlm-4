@@ -95,9 +95,10 @@ header .logoholder
 header .logo
 {
 	float:left;
-	position:absolute;
+	position: relative;
 	top:1px;
-	width:480px;
+	width: 480px;
+	margin-top: -92px;
 }
 
 header .logo h1
@@ -129,7 +130,15 @@ header #logs a
 
 #menu
 {
-	background:transparent url(../images/static/menu.png) repeat-x center center;
+
+background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(202,202,202,0.85) 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(202,202,202,0.85)));
+background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(202,202,202,0.85) 100%);
+background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(202,202,202,0.85) 100%);
+background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(202,202,202,0.85) 100%);
+background: linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(202,202,202,0.85) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#d9cacaca',GradientType=0 );
+	
 	box-shadow:0 0 35px #000;
 	font-size:21px;
 	height:35px;
@@ -243,12 +252,88 @@ footer .column p
 	font-size: 14px;
 }
 
-/* -- Misc styles -- */
+/* -- User styles -- */
 
-.center {
-width: 500px;
-margin:0 auto;
+.login {
+width: 300px;
+margin: 0 auto;
+padding: 38px 0px;
+text-align: center;
 }
+
+.login label {
+font-weight: 700;
+font-size: 25px;
+margin-bottom: 20px;
+text-shadow: 0 1px 3px black;
+}
+
+.login input {
+width: 240px;
+}
+
+/*-- Administration panel --*/
+
+#adminmenu
+{
+	background: #102A65;
+	box-shadow:0 0 35px #000;
+	font-size: 14px;
+	height: 25px;
+	margin:0px auto;
+	width:990px;
+	
+	-webkit-border-top-left-radius: 10px;
+-webkit-border-top-right-radius: 10px;
+-moz-border-radius-topleft: 10px;
+-moz-border-radius-topright: 10px;
+border-top-left-radius: 10px;
+border-top-right-radius: 10px;
+}
+
+#adminmenu ul
+{
+	display:block;
+}
+
+#adminmenu li
+{
+	border-left: 1px solid lightgray;
+	float:left;
+	list-style:none;
+}
+
+#adminmenu li:hover {
+background: #3690F0;
+}
+
+#adminmenu li:first-child
+{
+	border:none;
+}
+
+#adminmenu li:first-child:hover
+{
+-webkit-border-top-left-radius: 10px;
+-moz-border-radius-topleft: 10px;
+border-top-left-radius: 10px;
+}
+
+#adminmenu li a
+{
+	clear:both;
+	color:#FFF;
+	display:block;
+	font-family:Oswald, Helvetica, Arial;
+	font-size: 15px;
+	font-weight: 500;
+	text-decoration:none;
+	text-shadow:0 1px 3px #000;
+	text-transform: uppercase;
+	padding: 0 18px;
+}
+
+/* -- Misc styles -- */
 
 #errorbox {
 min-height: 350px;

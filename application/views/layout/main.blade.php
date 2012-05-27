@@ -29,11 +29,13 @@
 				<a href="{{ URL::to("/") }}" title="Major League Mining"><img src="{{ URL::to_asset("images/static/logo.png") }}" /></a>
 			</div>
 			<div id="logs">
-				@if (Auth::check())
+			@if (Auth::user() && Auth::user()->admin)
+				{{ HTML::link('admin', 'Admin panel'); }} &bull; <a href="{{ URL::to("user/".Auth::user()->username) }}">{{ Auth::user()->username }}</a> &bull; {{ HTML::link_to_action('account@logout', "Logout") }} 
+			@elseif (Auth::check())
 				<a href="{{ URL::to("user/".Auth::user()->username) }}">{{ Auth::user()->username }}</a> &bull; {{ HTML::link_to_action('account@logout', "Logout") }} 
-				@else
+			@else
 				{{ HTML::link_to_action('account@login', "Login") }} &bull; {{ HTML::link_to_action('account@login', "Create Account") }} 
-				@endif
+			@endif
 			</div>
 		</div>
 		<nav id="menu">
