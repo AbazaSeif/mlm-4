@@ -17,3 +17,5 @@ $('#slider').orbit({
      //afterSlideChange: function(){} 	 // empty function 
 });
 });
+
+$(function() { $("form.openid:eq(0)").openid(); });
