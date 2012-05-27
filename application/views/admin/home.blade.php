@@ -5,6 +5,7 @@
 	{{ HTML::link("admin", "Admin") }}
 	<ul>
 		<li>{{ HTML::link("admin/user", "Admin - User") }}</li>
+		<li>{{ HTML::link("admin/pages", "Admin - Pages") }}</li>
 	</ul>
 </div>
 @endsection
