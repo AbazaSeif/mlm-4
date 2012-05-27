@@ -34,6 +34,7 @@
 */
 Route::controller('account');
 Route::controller(array('admin.user'));
+Route::controller(array('admin.pages'));
 
 Route::get('/', function() {
 	return View::make('home.index');
