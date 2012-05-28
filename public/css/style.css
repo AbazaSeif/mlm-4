@@ -273,41 +273,39 @@ footer .column p
 
 /* -- User styles -- */
 
-.login {
+#login {
 width: 300px;
 margin: 0 auto;
 padding: 38px 0px;
 text-align: center;
 }
 
-.login label {
+#login label {
 font-weight: 700;
 font-size: 25px;
 margin-bottom: 20px;
 text-shadow: 0 1px 3px black;
 }
 
-.login input {
+#login input {
 width: 240px;
 }
 
-form.openid ul { text-align:center; list-style-type:none; display:inline;}
-form.openid ul li {float:left; padding:4px}
-form.openid ul li span {padding:0 1em 0 3px}
-form.openid fieldset {clear:both; padding:1em 0}
-form.openid div+fieldset {display:none}
-form.openid label {display:block; font-weight:bold; font-size:larger; margin-bottom:.5em}
+#login p {
+font-size: 14px;
+}
 
+#login .openid ul { text-align:center; list-style-type:none; display:inline;}
+#login .openid ul li {float:left; padding:4px}
+#login .openid ul li span {padding:0 1em 0 3px;color: black;}
+#login .openid fieldset {clear:both; padding:1em 0}
+#login .openid div+fieldset {display:none}
+#login .openid label {display:block; font-weight:bold; font-size:larger; margin-bottom:.5em}
 
-form.openid ul li.highlight { -moz-border-radius:4px; -webkit-border-radius:4px; background-color: #FD6}
-form.openid fieldset div {font-family:arial;-moz-border-radius:4px; -webkit-border-radius:4px;  background: #DCDCDC url(../images/login/fadegrey.png); padding:10px;display:inline-block}
+#login .openid ul li.highlight { -moz-border-radius:4px; -webkit-border-radius:4px; background-color: #FD6}
+#login .openid fieldset div {font-family:arial;-moz-border-radius:4px; -webkit-border-radius:4px;  background: #DCDCDC url(../images/login/fadegrey.png); padding:10px;display:inline-block}
 
-
-.openid_logo{color:#F7931E;padding:6px 0px 8px 28px; background: url(../images/login/openidico.png) no-repeat}
-
-#openid_login{float:left; font-size:larger; width:30%; margin:2em 1em; text-align:center}
-#openid_login div{margin-top:0.5em}
-#openid_login div+span{font-size:smaller}
+#login .openid_logo{color:#F7931E;padding:6px 0px 8px 28px; background: url(../images/login/openidico.png) no-repeat}
 
 /*-- Administration panel --*/
 
@@ -316,58 +314,18 @@ form.openid fieldset div {font-family:arial;-moz-border-radius:4px; -webkit-bord
 	background: #102A65;
 	box-shadow:0 0 35px #000;
 	font-size: 14px;
-	height: 25px;
-	margin:0px auto;
+	margin:0;
+	border: none;
 	width:990px;
-	
-	-webkit-border-top-left-radius: 10px;
--webkit-border-top-right-radius: 10px;
--moz-border-radius-topleft: 10px;
--moz-border-radius-topright: 10px;
-border-top-left-radius: 10px;
-border-top-right-radius: 10px;
-}
-
-#adminmenu ul
-{
-	display:block;
-}
-
-#adminmenu li
-{
-	border-left: 1px solid lightgray;
-	float:left;
-	list-style:none;
-}
-
-#adminmenu li:hover {
-background: #3690F0;
-}
-
-#adminmenu li:first-child
-{
-	border:none;
-}
-
-#adminmenu li:first-child:hover
-{
--webkit-border-top-left-radius: 10px;
--moz-border-radius-topleft: 10px;
-border-top-left-radius: 10px;
-}
-
-#adminmenu li a
-{
-	clear:both;
-	color:#FFF;
-	display:block;
 	font-family:Oswald, Helvetica, Arial;
-	font-size: 15px;
-	font-weight: 500;
-	text-decoration:none;
 	text-shadow:0 1px 3px #000;
-	text-transform: uppercase;
-	padding: 0 18px;
+	font-weight: 500;
+	font-size: 15px;
+	text-decoration:none;
+}
+
+#adminmenu a{ 
+	color:white;
 }
 
 /* -- Misc styles -- */

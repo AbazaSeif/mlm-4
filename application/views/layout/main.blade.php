@@ -22,7 +22,7 @@
 <body>
 	<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/?locale=en">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 	<header name="global header">
-		<div id="logobg"><br style="clear:both" /></div>
+		<div id="logobg"><br class="clear" /></div>
 		<div class="logoholder">
 			<div class="logo">
 				<h1>MAJOR LEAGUE MINING</h1>
@@ -34,7 +34,7 @@
 			@elseif (Auth::check())
 				<a href="{{ URL::to("user/".Auth::user()->username) }}">{{ Auth::user()->username }}</a> &bull; {{ HTML::link_to_action('account@logout', "Logout") }} 
 			@else
-				{{ HTML::link_to_action('account@login', "Login") }} &bull; {{ HTML::link_to_action('account@login', "Create Account") }} 
+				{{ HTML::link_to_action('account@login', "Login &bull; Create account") }}
 			@endif
 			</div>
 		</div>
