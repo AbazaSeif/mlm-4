@@ -1,9 +1,8 @@
-@layout('admin.home')
+@layout('layout.admin')
 
 @section('content')
-@parent
 <div class="content">
-	{{ Form::open() }}
+	{{ Form::open("" , 'POST', array('class' => 'form-horizontal')) }} 
 		{{ Form::token() }}
 		@if (isset($errors))
 			@foreach ($errors->all('<p>:message</p>') as $error)

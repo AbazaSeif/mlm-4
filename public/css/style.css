@@ -1,4 +1,4 @@
-﻿/* --------------------------------------------------------------
+/* --------------------------------------------------------------
                           MAJOR LEAGUE MINING
 -----------------------------------------------------------------*/
 
@@ -64,6 +64,7 @@ a {
 
 a:hover {
 }
+
 
 table {
 		overflow:hidden;
@@ -179,7 +180,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 }
 
 #menu li:hover {
-background: lightGrey;
+background: rgb(185, 185, 185);
 }
 
 #menu li:first-child
@@ -321,6 +322,7 @@ font-size: 14px;
 	font-weight: 500;
 	font-size: 15px;
 	text-decoration:none;
+	margin-top: 20px;
 }
 
 #adminmenu a{ 
