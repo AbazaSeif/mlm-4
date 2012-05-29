@@ -1,5 +1,5 @@
 /* --------------------------------------------------------------
-                          MAJOR LEAGUE MINING
+                     MAJOR LEAGUE MINING
 -----------------------------------------------------------------*/
 
 @import url(http://fonts.googleapis.com/css?family=Oswald:400,700,300);
@@ -12,10 +12,6 @@ body
 	color:#FFF;
 	font-family:Oswald, Helvetica, Arial;
 	font-weight:400;
-}
-
-*
-{
 	margin:0;
 	padding:0;
 }
@@ -35,7 +31,16 @@ body
 	clear:both;
 }
 
+.left {
+float:left;
+}
+
+.right {
+float:right;
+}
+
 h1, h2, h3 {
+margin: 0;
 }
 
 h1 {
@@ -49,12 +54,18 @@ h2 {
 h3 {
 }
 
+hr {
+margin: 0;
+}
+
 p, ul, ol {
-	margin-top: 0;
+	margin: 0;
 	line-height: 180%;
 }
 
 ul, ol {
+    margin: 0;
+    padding: 0;
 }
 
 a {
@@ -168,7 +179,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 #menu ul
 {
 	display:block;
-	margin:0 80px;
+	margin: 0 54px;
 }
 
 #menu li
