@@ -1,6 +1,7 @@
 @layout('layout.admin')
 
 @section('content')
+@parent
 <div class="content">
 	{{ Form::open("" , 'POST', array('class' => 'form-horizontal')) }} 
 		{{ Form::token() }}
