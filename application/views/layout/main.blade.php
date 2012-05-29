@@ -25,8 +25,10 @@
 		<div id="logobg"><br class="clear" /></div>
 		<div class="logoholder">
 			<div class="logo">
+				<a href="{{ URL::to("/") }}" title="Major League Mining">
 				<h1>MAJOR LEAGUE MINING</h1>
-				<a href="{{ URL::to("/") }}" title="Major League Mining"><img src="{{ URL::to_asset("images/static/logo.png") }}" /></a>
+				<img src="{{ URL::to_asset("images/static/logo.png") }}" />
+				</a>
 			</div>
 			<div id="logs">
 			@if (Auth::user() && Auth::user()->admin)

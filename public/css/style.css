@@ -149,13 +149,14 @@ header #logs
 	text-align:right;
 }
 
-header #logs a
+header #logs a, header .logo a
 {
 	color:#FFF;
 	font-family:Oswald, Helvetica, Arial;
 	font-weight:700;
 	text-decoration:none;
 	text-shadow:0 1px 3px #000;
+	color:white;
 }
 
 #menu
@@ -179,7 +180,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 #menu ul
 {
 	display:block;
-	margin: 0 54px;
+	margin: 0 auto;
+	width: 782px;
+	height: 100%;
 }
 
 #menu li
