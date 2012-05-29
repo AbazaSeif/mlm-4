@@ -9,7 +9,7 @@ class Admin_User_Controller extends Admin_Controller {
 
 	public function get_index() {
 		$users = DB::table("users")->get(array("id", "username", "mc_username"));
-		return View::make('admin.users.list', array("users" => $users));
+		return View::make('admin.users.list', array("users" => $users, "title" => "Users | Admin"));
 	}
 	public function get_edit($id) {
 		$user = DB::table("users")->find($id); // Don't need full ORM for this
@@ -17,7 +17,7 @@ class Admin_User_Controller extends Admin_Controller {
 			Messages::add("error", "User not found");
 			return Redirect::to_action("Admin.User");
 		}
-		return View::make('admin.users.form', array("userdata" => $user));
+		return View::make('admin.users.form', array("userdata" => $user, "title" => "Edit user {$user->username} | Users | Admin"));
 	}
 	public function post_edit($id) {
 		$user = User::find($id);

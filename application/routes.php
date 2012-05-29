@@ -32,9 +32,8 @@
 |		});
 |
 */
-Route::controller('account');
-Route::controller(array('admin.user'));
-Route::controller(array('admin.pages'));
+Route::controller(array('account', "imgmgr"));
+Route::controller(array('admin.user', 'admin.pages'));
 
 Route::get('/', function() {
 	return View::make('home.index');
