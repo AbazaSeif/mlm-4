@@ -17,7 +17,7 @@
 		{{ Form::text("mc_username", Input::old("mc_username", $userdata->mc_username)) }}<br />
 		{{ Form::label("admin", "Admin") }}
 		{{ Form::checkbox("admin", 1, Input::old("admin", $userdata->admin)) }}<br />
-		{{ Form::submit("Submit", array("class" => "btn-primary")) }}
+		{{ Form::submit("Save changes", array("class" => "btn btn-primary")) }}
 	{{ Form::close() }}
 </div>
 @endsection
