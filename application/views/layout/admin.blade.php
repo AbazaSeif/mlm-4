@@ -1,7 +1,7 @@
 @layout('layout.main')
 
 @section('content')
-	<nav id="adminmenu">
+	<nav id="pagemenu">
 		<ul class="nav nav-tabs">
 			<li>{{ HTML::link('admin', 'Admin Home'); }}</li>
 			<li>{{ HTML::link("admin/user", "Users") }}</li> 

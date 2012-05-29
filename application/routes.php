@@ -39,10 +39,14 @@ Route::get('/', function() {
 	return View::make('home.index');
 });
 Route::get("login", "account@login");
+
+Route::get("user", function() {
+	return View::make("user.home", array('username' => 'username'));
+});
+
 Route::get("admin", array('before' => 'admin', function() {
 	return View::make("admin.home");
 }));
-
 
 //Routes are checked in the order in which they are listed here
 //Since this one is a tad demanding, make sure it ALWAYS remains at the bottom

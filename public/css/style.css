@@ -322,9 +322,9 @@ font-size: 14px;
 
 #login .openid_logo{color:#F7931E;padding:6px 0px 8px 28px; background: url(../images/login/openidico.png) no-repeat}
 
-/*-- Administration panel --*/
+/*-- Menu for pages --*/
 
-#adminmenu
+#pagemenu
 {
 	background: #102A65;
 	box-shadow:0 0 35px #000;
@@ -340,7 +340,7 @@ font-size: 14px;
 	margin-top: 20px;
 }
 
-#adminmenu a{ 
+#pagemenu a{ 
 	color:white;
 }
 
