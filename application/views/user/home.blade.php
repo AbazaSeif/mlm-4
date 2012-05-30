@@ -8,7 +8,7 @@
 			<a href="http://minecraft.net/profile" class="thumbnail" target="_blank" title="Change your skin...">
             <img src="http://minotar.net/helm/random/60.png" alt="" />
 			</a>
-		<h2>The Username</h2>
+		<h2>{{$user->username}}</h2>
 		<p>Description, Tagline?</p>
 		</div>
 	</div>

@@ -40,8 +40,19 @@ Route::get('/', function() {
 });
 Route::get("login", "account@login");
 
-Route::get("user", function() {
-	return View::make("user.home", array('username' => 'username'));
+Route::get("user/(:any?)", function($username = null) {
+	$userobj = false;
+	if($username) {
+		$userobj = User::where_username($username)->first();
+	}
+	if(!$userobj) {
+		if(Auth::check()) {
+			$userobj = Auth::user();
+		} else {
+			$userobj = User::first();
+		}
+	}
+	return View::make("user.home", array('user' => $userobj));
 });
 
 Route::get("admin", array('before' => 'admin', function() {
