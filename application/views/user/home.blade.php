@@ -1,4 +1,4 @@
-﻿@layout('layout.user')
+@layout('layout.user')
 
 @section('content')
 @parent

@@ -1,4 +1,4 @@
-﻿@layout('layout.main')
+@layout('layout.main')
 
 @section('content')
 	<nav id="pagemenu">
