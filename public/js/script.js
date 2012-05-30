@@ -1,4 +1,4 @@
-﻿ $(window).load(function() {
+﻿$(window).load(function() {
 $('#slider').orbit({
      animation: 'horizontal-slide',             // fade, horizontal-slide, vertical-slide, horizontal-push
      animationSpeed: 800,                // how fast animtions are
@@ -18,6 +18,13 @@ $('#slider').orbit({
 });
 });
 
+$(document).ready(function() {
 $(function() { $("form.openid:eq(0)").openid(); });
+});
 
-$('#imguploader').modal('toggle')
+
+$(document).ready(function() {
+$('#imguploader').modal({
+  show: false
+  )}
+});

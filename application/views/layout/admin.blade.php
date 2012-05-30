@@ -11,16 +11,15 @@
 	</nav>
 @endsection
 
-<div id="imguploader" class="modal fade in hide" style="display: block; ">
-            <div class="modal-header">
-              <button class="close" data-dismiss="modal">×</button>
+<div id="imguploader" class="modal hide fade" style="display: block; ">
+        <div class="modal-header">
+              <button class="close" data-dismiss="modal"><i class="icon-remove icon-black"></i></button>
               <h3>Upload Images...</h3>
-            </div>
-            <div class="modal-body">
-			<iframe src="/imgmgr" align="middle" frameborder="0" height="50%" width="100%">Your browser sucks</iframe>
-            </div>
-            <div class="modal-footer">
-              <a href="#" class="btn" data-dismiss="modal">Close</a>
-              <a href="#" class="btn btn-primary">Save changes</a>
-            </div>
-          </div>
+        </div>
+        <div class="modal-body">
+			<iframe src="/imgmgr" align="middle" frameborder="0" height="40%" width="100%">Your browser sucks</iframe>
+        </div>
+        <div class="modal-footer">
+              <a href="#" class="btn btn-primary" data-dismiss="modal">Close</a>
+        </div>
+</div>

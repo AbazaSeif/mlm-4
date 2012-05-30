@@ -26,6 +26,6 @@
 	{{ Form::file("uploaded") }}
 	{{ Form::label("title", "Title") }}
 	{{ Form::text("title") }}
-	{{ Form::submit("Upload", array('class' => 'btn-primary')) }}
+	{{ Form::submit("Upload", array('class' => 'btn btn-primary')) }}
 	{{ Form::close() }}
 @endif
