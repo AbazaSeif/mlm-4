@@ -260,12 +260,13 @@ background: rgb(185, 185, 185);
 #profile #heading .well {
 padding: 5px;
 height: 70px;
+box-shadow: 0 0 4px black;
 }
 
 #profile #heading .well a {
 width: 60px;
 float: left;
-box-shadow: 0 0 4px black;
+box-shadow: 0 0 3px black;
 }
 
 #profile #heading .well h2 {

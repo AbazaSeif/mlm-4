@@ -5,11 +5,11 @@
 <div class="content" id="profile">
 	<div id="heading">
 		<div class="well">
-			<a href="#" class="thumbnail" title="Change your skin">
-            <img src="http://minotar.net/helm/{{ Auth::user()->username }}/60.png" alt="" />
+			<a href="http://minecraft.net/profile" class="thumbnail" target="_blank" title="Change your skin...">
+            <img src="http://minotar.net/helm/random/60.png" alt="" />
 			</a>
-		<h2>{{ Auth::user()->username }}</h2>
-		<p>Team butCuba / He designed this site, biatch</p>
+		<h2>The Username</h2>
+		<p>Description, Tagline?</p>
 		</div>
 	</div>
 <div class="container">
