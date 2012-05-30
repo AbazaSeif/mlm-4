@@ -3,7 +3,7 @@
 @section('content')
 @parent
 <div class="content">
-{{ Form::open("" , 'POST', array('class' => 'form-horizontal')) }} 
+{{ Form::open(null , 'POST', array('class' => 'form-horizontal')) }} 
 	<fieldset>
 		{{ Form::token() }}
 		@if (isset($errors))
