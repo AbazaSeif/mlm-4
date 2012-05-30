@@ -16,6 +16,12 @@
 		<div class="row">
 			<div class="span4">
 				<h3>Sidebar</h3>
+				<ul>
+				<li><h2>Team</h2></li>
+				<li><h2>Rank</h2></li>
+				<li><h2>Posts</h2></li>
+				<li><h2>Comments</h2></li>
+				</ul>
 			</div>
 			<div class="span8">
 				<h3>Content</h3>

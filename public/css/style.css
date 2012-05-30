@@ -285,6 +285,43 @@ font-weight: 600;
 text-shadow: 0px 1px 3px black;  color: white;
 }
 
+#profile .span4 { /* Sidebar */
+background: white;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+
+
+box-shadow: 0 0 4px black;
+}
+
+#profile .span4 li {
+padding: 25px;
+background: blue;
+width: 100px;
+height: 100px;
+display: block;
+list-style:none;
+float:left;
+}
+
+#profile .span4 h2 {
+font-size: 17px;
+text-align: center;
+margin-top: 70px;
+}
+
+#profile .span4 h3 {
+padding: 10px;
+color: black;
+}
+
+#profile .span8 { /* Content */
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+}
+
 footer
 {
 	background:#102A67;
