@@ -2,12 +2,26 @@
 
 @section('content')
 @parent
-<div id="content">
-	<div class="well" style="padding:5px">
-		<a href="#" class="thumbnail" style="width: 60px;" title="That's you!">
-            <img src="http://placehold.it/60x60" alt="" />
-		</a>
-		<h2>THIS IS A TEST</h2>
+<div class="content" id="profile">
+	<div id="heading">
+		<div class="well">
+			<a href="#" class="thumbnail" title="Change your skin">
+            <img src="http://minotar.net/helm/{{ Auth::user()->username }}/60.png" alt="" />
+			</a>
+		<h2>{{ Auth::user()->username }}</h2>
+		<p>Team butCuba / He designed this site, biatch</p>
+		</div>
 	</div>
+<div class="container">
+  <div class="row">
+    <div class="span4">
+      <h3>Sidebar</h3>
+    </div>
+    <div class="span8">
+      <h3>Content</h3>
+    </div>
+  </div>
+</div>
+
 </div>
 @endsection

@@ -250,12 +250,38 @@ background: rgb(185, 185, 185);
 	width:100%;
 }
 
-
 #content, .content
 {
 	background:#102A67;
 	box-shadow:0 0 35px #000;
 	padding:25px;
+}
+
+#profile #heading .well {
+padding: 5px;
+height: 70px;
+}
+
+#profile #heading .well a {
+width: 60px;
+float: left;
+box-shadow: 0 0 4px black;
+}
+
+#profile #heading .well h2 {
+margin: 7px;
+text-shadow: 0px 0px 4px black;
+color: white;
+float:left;
+}
+
+#profile #heading .well p {
+padding: 0;
+float: left;
+margin-top: 32px;
+font-size: 15px;
+color: black;
+font-weight: 700;
 }
 
 footer
@@ -328,16 +354,14 @@ font-size: 14px;
 {
 	background: #102A65;
 	box-shadow:0 0 35px #000;
-	font-size: 14px;
 	margin:0;
 	border: none;
 	width:990px;
-	font-family:Oswald, Helvetica, Arial;
 	text-shadow:0 1px 3px #000;
 	font-weight: 500;
 	font-size: 15px;
 	text-decoration:none;
-	margin-top: 20px;
+	margin-top: 25px;
 }
 
 #pagemenu a{ 
