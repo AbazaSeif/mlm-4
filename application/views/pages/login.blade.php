@@ -8,13 +8,12 @@
   <ul class="providers"> 
   <li class="openid" title="OpenID"><img src="{{ URL::to_asset("images/login/openid.png") }}" alt="icon" /> 
   <span><strong>http://{your-openid-url}</strong></span></li> 
-	<li class="direct" title="Google"> 
+  <li class="direct" title="Google"> 
 		<img src="{{ URL::to_asset("images/login/google.png") }}" alt="icon" /><span>https://www.google.com/accounts/o8/id</span></li>
-	<li class="direct" title="Yahoo"> 
-		<img src="{{ URL::to_asset("images/login/yahoo.png") }}" alt="icon" /><span>http://yahoo.com/</span></li>
-	<li class="direct" title="STEAM"> 
-		<img src="{{ URL::to_asset("images/login/steam.png") }}" alt="icon" /><span>http://steamcommunity.com/openid</span></li> 		
-    <!--<li class="username" title="STEAM ID"><img src="{{ URL::to_asset("images/login/steam.png") }}" alt="icon" /><span>http://steamcommunity.com/openid/id/<strong>username</strong></span></li>  -->
+    <li class="direct" title="Yahoo"> 
+		<img src="{{ URL::to_asset("images/login/yahoo.png") }}" alt="icon" /><span>http://yahoo.com/</span></li>   
+    <li class="direct" title="STEAM ID"> 
+		<img src="{{ URL::to_asset("images/login/steam.png") }}" alt="icon" /><span>http://steamcommunity.com/openid</span></li> 	
 </div>		
   <fieldset> 
   <label for="openid_username">Enter your <span>Provider user name</span></label> 

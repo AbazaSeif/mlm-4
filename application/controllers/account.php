@@ -5,12 +5,17 @@ class Account_Controller extends Base_Controller {
 	public function __construct() {
 		parent::__construct();
 		
-		$this->filter("before", "auth")->only("logout");
+		$this->filter("before", "auth")->except(array("login", "callback", "register"));
 		// Asking for user to access logout? Irony is strong here.
+		$this->filter("before", "csrf")->on("post")->only("del_openid");
 	}
 	
 	public $restful = true;
 	
+	public function get_index() {
+		$openids = Auth::user()->openid;
+		return View::make("pages.account", array("title" => "Account", "openids" => $openids));
+	}
 	/* Public methods -- Login */
 	public function get_login() {
 		if(Auth::check()) {
@@ -19,9 +24,6 @@ class Account_Controller extends Base_Controller {
 		return View::make('pages.login', array('title' => 'Login'));
 	}
 	public function post_login() {
-		if(Auth::check()) {
-			return Redirect::home();
-		}
 		$openid = new LightOpenID(Config::get('openid.host'));
 		try {
 			$openid->identity = Input::get('openid_identifier');
@@ -29,7 +31,11 @@ class Account_Controller extends Base_Controller {
 			return Redirect::to($openid->authUrl());
 		} catch(Exception $e) {
 			Messages::add('error', $e->getMessage());
-			return Redirect::to_action("account@login");
+			if(Auth::check()) {
+				return Redirect::to_action("account");
+			} else {
+				return Redirect::to_action("account@login");
+			}
 		}
 	}
 	public function get_callback() {
@@ -41,12 +47,23 @@ class Account_Controller extends Base_Controller {
 			} else {
 				if($openid->validate()) {
 					$identity = $openid->identity;
-					if(Auth::attempt(array("identity" => $identity))) {
-						Messages::add("success", "Welcome back ".Auth::user()->username."!");
-						return Redirect::home();
+					if(Auth::guest()) {
+						if(Auth::attempt(array("identity" => $identity))) {
+							Messages::add("success", "Welcome back ".Auth::user()->username."!");
+							return Redirect::home();
+						} else {
+							Session::put("openid-identity", $identity);
+							return Redirect::to_action("account@register");
+						}
 					} else {
-						Session::put("openid-identity", $identity);
-						return Redirect::to_action("account@register");
+						if(Openid::where_identity($identity)->count() == 0) {
+							Auth::user()->openid()->insert(array("identity" => $identity));
+							Messages::add("success", "This login has been added");
+							return Redirect::to_action("account");
+						} else {
+							Messages::add("error", "This login is already being used");
+							return Redirect::to_action("account");
+						}
 					}
 				} else {
 					Messages::add('error', 'A creeper got stuck in the system, login failed');
@@ -101,5 +118,22 @@ class Account_Controller extends Base_Controller {
 		Auth::logout();
 		Messages::add("success", "You have logged out. Good Bye.");
 		return Redirect::home();
+	}
+	/* Account - remove openid */
+	public function post_del_openid() {
+		if(!($oid = Input::get("oid"))) {
+			return Redirect::to_action("account");
+		}
+		if(Auth::user()->openid()->count() <= 1) {
+			Messages::add("error", "You can't delete the only way to login");
+			return Redirect::to_action("account");
+		}
+		$openid = Openid::find($oid);
+		if(!$openid || $openid->user_id != Auth::user()->id) {
+			return Redirect::to_action("account");
+		}
+		$openid->delete();
+		Messages::add("success", "Openid method deleted!");
+		return Redirect::to_action("account");
 	}
 }
