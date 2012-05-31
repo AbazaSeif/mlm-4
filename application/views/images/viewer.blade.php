@@ -1,6 +1,11 @@
 {{-- Meant to be as a popup, so style accordingly --}}
+<html>
+<head>
+<title>Image Uploader & Gallery</title>
+<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/style.css") }}" />
+</head>
+<body id="imgallery">
 {{ Messages::get_html() }}
-
 <ul class="unstyled">
 	@foreach ($images->results as $image)
 		<li>
@@ -29,3 +34,5 @@
 	{{ Form::submit("Upload", array('class' => 'btn btn-primary')) }}
 	{{ Form::close() }}
 @endif
+</body>
+</html>

@@ -930,7 +930,7 @@ select:focus:required:invalid:focus {
 }
 .help-block,
 .help-inline {
-  color: #555555;
+  color: #BBB;
 }
 .help-block {
   display: block;

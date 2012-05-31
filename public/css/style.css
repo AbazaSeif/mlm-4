@@ -421,3 +421,12 @@ padding: 30px;
 background: #102A67;
 box-shadow: 0 0 35px black;
 }
+
+#imgallery {
+background: white;
+color: black;
+}
+
+#imgallery .alert {
+margin: 12px;
+}
