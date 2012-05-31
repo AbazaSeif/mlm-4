@@ -10,7 +10,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	@if (isset($title)) 
-	<title>{{$title}} | MLM</title>
+	<title>{{$title}} &raquo; MLM</title>
 	@else 
 	<title>Major League Mining</title>
 	@endif

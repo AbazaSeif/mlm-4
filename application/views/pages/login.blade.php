@@ -11,7 +11,9 @@
   <li class="direct" title="Google"> 
 		<img src="{{ URL::to_asset("images/login/google.png") }}" alt="icon" /><span>https://www.google.com/accounts/o8/id</span></li>
     <li class="direct" title="Yahoo"> 
-		<img src="{{ URL::to_asset("images/login/yahoo.png") }}" alt="icon" /><span>http://yahoo.com/</span></li>   
+		<img src="{{ URL::to_asset("images/login/yahoo.png") }}" alt="icon" /><span>http://yahoo.com/</span></li>
+	<li class="username" title="AOL screen name"> 
+		<img src="{{ URL::to_asset("images/login/aol.png") }}" alt="icon" /><span>http://openid.aol.com/<strong>username</strong></span></li> 
     <li class="direct" title="STEAM ID"> 
 		<img src="{{ URL::to_asset("images/login/steam.png") }}" alt="icon" /><span>http://steamcommunity.com/openid</span></li> 	
 </div>		

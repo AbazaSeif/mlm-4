@@ -352,7 +352,7 @@ footer .column p
 /* -- User styles -- */
 
 #login {
-width: 300px;
+width: 336px;
 margin: 0 auto;
 padding: 38px 0px;
 text-align: center;
@@ -374,7 +374,7 @@ font-size: 14px;
 }
 
 #login .openid .prov {width: 100%;display: block;height: 25px;}
-#login .openid ul { text-align:center; list-style-type:none; display:inline; width: 272px; height: 25px; display: block; margin: 0 auto;}
+#login .openid ul { text-align:center; list-style-type:none; display:inline; width: 340px; height: 25px; display: block; margin: 0 auto;}
 #login .openid ul li {float:left; padding:4px}
 #login .openid ul li span {padding:0 1em 0 3px;color: black;}
 #login .openid fieldset {clear:both; padding:1em 0}
