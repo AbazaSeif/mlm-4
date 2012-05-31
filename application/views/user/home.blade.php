@@ -9,13 +9,13 @@
             	<img src="http://minotar.net/helm/{{$user->mc_username}}/60.png" alt="" />
 			</a>
 			<h2>{{$user->username}}</h2>
-			<p>Description, Tagline?</p>
+			<p>Minecrafter</p>
 		</div>
 	</div>
 	<div class="container">
 		<div class="row">
 			<div class="span4">
-				<h3>Sidebar</h3>
+				<h3>Information</h3>
 				<ul>
 				<li><h2>Team</h2></li>
 				<li><h2>Rank</h2></li>
@@ -24,7 +24,7 @@
 				</ul>
 			</div>
 			<div class="span8">
-				<h3>Content</h3>
+				<h3>Recent updates</h3>
 			</div>
 		</div>
 	</div>

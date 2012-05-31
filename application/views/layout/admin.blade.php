@@ -19,7 +19,7 @@
               <h3>Upload Images...</h3>
         </div>
         <div class="modal-body">
-			<iframe src="/imgmgr" align="middle" frameborder="0" height="40%" width="100%">Your browser sucks</iframe>
+			<iframe src="/imgmgr" align="middle" frameborder="0" height="40%" width="100%">If you can't see this, then your browser sucks. Hard.</iframe>
         </div>
         <div class="modal-footer">
               <a href="#" class="btn btn-primary" data-dismiss="modal">Close</a>
