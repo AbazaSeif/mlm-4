@@ -6,6 +6,7 @@
 			<li>{{ HTML::link('admin', 'Admin Home'); }}</li>
 			<li>{{ HTML::link("admin/user", "Users") }}</li> 
 			<li>{{ HTML::link("admin/pages", "Pages") }}</li>
+			<li>{{ HTML::link("admin/news", "News") }}</li>
 			<li><a data-toggle="modal" href="#imguploader" >Upload images</a></li>
 		</ul>
 	</nav>

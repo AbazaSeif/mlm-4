@@ -33,7 +33,7 @@
 |
 */
 Route::controller(array('account', "imgmgr"));
-Route::controller(array('admin.user', 'admin.pages'));
+Route::controller(array('admin.user', 'admin.pages', 'admin.news'));
 
 Route::get('/', function() {
 	return View::make('home.index');
@@ -96,10 +96,30 @@ Event::listen('500', function()
 	return Response::error('500');
 });
 
-Event::listen('admin', function($module, $action, $target, $text) {
+Event::listen('admin', function($module, $action, $target = null, $text = "") {
 	if(is_array($text)) $text = json_encode($text);
 	$data = array("user_id" => Auth::user()->id, "module" => $module, "action" => $action, "target" => $target, "text" => $text);
 	Adminlog::create($data);
+});
+
+Event::listen("eloquent.saving", function($model) {
+	// Make a slug based on title
+	if(in_array(get_class($model), array("News")) && !$model->slug) {
+		// Try to find an un-used slug
+		$i = 0;
+		$slug;
+		while(true) {
+			$slug = Str::limit(Str::slug($model->title), 200-(strlen($i)+1), "");
+			if($i > 0) {
+				$slug .= "-".$i;
+			}
+			if(!DB::table($model->table())->where_slug($slug)->first()) {
+				break;
+			}
+			$i++;
+		}
+		$model->slug = $slug;
+	}
 });
 
 /*

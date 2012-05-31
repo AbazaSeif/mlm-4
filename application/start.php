@@ -62,6 +62,7 @@ Autoloader::map(array(
 	'Base_Controller' => path('app').'controllers/base.php',
 	'Admin_Controller' => path('app').'controllers/admin.php',
 	'HTMLPurifier' => path('app').'libraries/HTMLPurifier.standalone.php',
+	'HTMLPurifier_Config' => path('app').'libraries/HTMLPurifier.standalone.php',
 ));
 
 /*
@@ -179,4 +180,12 @@ if ( ! Request::cli() and Config::get('session.driver') !== '')
  */
 Auth::extend('openid', function() {
 	return new OpenIDDriver();
+});
+
+IoC::singleton("HTMLPurifier", function() {
+	$config = HTMLPurifier_Config::createDefault();
+	// Defaults
+	$config->set('HTML.SafeIframe', true);
+	$config->set('URI.SafeIframeRegexp', '%^http://(www.youtube(-nocookie)?.com/embed/|player.vimeo.com/video/)%');
+	return new HTMLPurifier($config);
 });
