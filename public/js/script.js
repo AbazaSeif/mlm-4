@@ -26,5 +26,5 @@ $(function() { $("form.openid:eq(0)").openid(); });
 $(document).ready(function() {
 $('#imguploader').modal({
   show: false
-  )}
+});
 });
