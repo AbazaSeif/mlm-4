@@ -12,7 +12,8 @@
 	</nav>
 @endsection
 
-<div id="imguploader" class="modal hide fade" style="display: block; ">
+@section('postfooter')
+	<div id="imguploader" class="modal hide fade" style="display: block; ">
         <div class="modal-header">
               <button class="close" data-dismiss="modal"><i class="icon-remove icon-black"></i></button>
               <h3>Upload Images...</h3>
@@ -23,4 +24,5 @@
         <div class="modal-footer">
               <a href="#" class="btn btn-primary" data-dismiss="modal">Close</a>
         </div>
-</div>
+	</div>
+@endsection
