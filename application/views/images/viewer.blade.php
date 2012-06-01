@@ -1,4 +1,3 @@
-{{-- Meant to be as a popup, so style accordingly --}}
 <html>
 <head>
 <title>Image Uploader & Gallery</title>
@@ -6,18 +5,37 @@
 </head>
 <body id="imgallery">
 {{ Messages::get_html() }}
-<ul class="unstyled">
-	@foreach ($images->results as $image)
-		<li>
-			{{ HTML::image($image->file_small) }}
-			{{ e($image->filename) }}
-			{{ HTML::link($image->file_small, "S") }}
-			{{ HTML::link($image->file_medium, "M") }}
-			{{ HTML::link($image->file_large, "L") }}
-			{{ HTML::link($image->file_original, "O") }}
-		</li>
-	@endforeach
+<table>
+	<thead>
+		<tr>
+			<th>Image</th>
+			<th>Filename</th>
+			<th>Sizes</th>
+		</tr>
+	</thead>
+		@foreach ($images->results as $image)
+			<tr>
+			<td>{{ HTML::image($image->file_small) }}</td>
+			<td>{{ e($image->filename) }}</td>
+			<td>
+<ul class="nav nav-pills">
+<li class="dropdown">
+    <a class="imgsizes btn btn-primary" data-toggle="dropdown" data-target="#" href="#">
+      Sizes
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>{{ HTML::link($image->file_small, "Small") }}</li>
+	  <li>{{ HTML::link($image->file_medium, "Medium") }}</li>
+	  <li>{{ HTML::link($image->file_large, "Large") }}</li>
+	  <li>{{ HTML::link($image->file_original, "Original") }}</li>
+    </ul>
+</li>
 </ul>
+			</td>
+			</tr>
+		@endforeach
+	</table>
 {{ $images->links() }}
 
 @if(Auth::user()->admin)
@@ -34,5 +52,9 @@
 	{{ Form::submit("Upload", array('class' => 'btn btn-primary')) }}
 	{{ Form::close() }}
 @endif
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="{{ URL::to_asset("js/plugins.js") }}"></script>
+<script src="{{ URL::to_asset("js/script.js") }}"></script>
 </body>
 </html>

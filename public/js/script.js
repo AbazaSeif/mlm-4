@@ -22,6 +22,7 @@ $(document).ready(function() {
 $(function() { $("form.openid:eq(0)").openid(); });
 });
 
+$('.imgsizes').dropdown()
 
 $(document).ready(function() {
 $('#imgallery').modal({
