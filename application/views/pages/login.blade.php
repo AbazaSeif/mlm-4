@@ -32,7 +32,7 @@
 				</fieldset> 
 			{{ Form::close() }}
 			<p>We use openID for a safe, faster, and easier way to log into our website.
-					If you don't have an openID with any of the provided services, you may create one with any of the providers <a href="http://openid.net/get-an-openid/" title="Will open in new tab" target="_blank">on this list.</a>
+					If you don't have an openID with any of the provided services, you may create one with any of the providers<br/><a href="http://openid.net/get-an-openid/" title="Will open in new tab" target="_blank">on this list</a>.
 			</p>
 		</div>
 	</div>
