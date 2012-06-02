@@ -21,7 +21,7 @@ class Account_Controller extends Base_Controller {
 		if(Auth::check()) {
 			return Redirect::home();
 		}
-		return View::make('pages.login', array('title' => 'Login'));
+		return View::make('pages.login', array('title' => 'Login', "javascript" => array("login")));
 	}
 	public function post_login() {
 		$openid = new LightOpenID(Config::get('openid.host'));

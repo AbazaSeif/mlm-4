@@ -19,7 +19,15 @@
 	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/style.css") }}" />
 	<script src="{{ URL::to_asset("js/libs/modernizr-2.5.3-respond-1.1.0.min.js") }}"></script>
 </head>
+@if(isset($javascript))
+@if(count($javascript) > 1)
+<body data-controller="{{ $javascript[0] }}" data-action="{{ $javascript[1] }}">
+@else
+<body data-controller="{{ $javascript[0] }}">
+@endif
+@else
 <body>
+@endif
 	<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/?locale=en">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 	<header name="global header">
 		<div id="logobg"><br class="clear" /></div>

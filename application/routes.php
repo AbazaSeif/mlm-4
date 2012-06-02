@@ -36,7 +36,7 @@ Route::controller(array('account', "imgmgr"));
 Route::controller(array('admin.user', 'admin.pages', 'admin.news'));
 
 Route::get('/', function() {
-	return View::make('home.index');
+	return View::make('home.index', array("javascript" => array("home")));
 });
 Route::get("login", "account@login");
 
@@ -56,7 +56,7 @@ Route::get("user/(:any?)", function($username = null) {
 });
 
 Route::get("admin", array('before' => 'admin', function() {
-	return View::make("admin.home");
+	return View::make("admin.home", array("title" => "Admin"));
 }));
 
 //Routes are checked in the order in which they are listed here
