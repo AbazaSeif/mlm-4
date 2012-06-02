@@ -17,7 +17,7 @@
 	overflow: hidden; }
 #slider>img,  
 #slider>div,
-#slider>a { display: none; }
+#slider>a { display: none; width: 600px; height: 300px; }
 
 
 /* CONTAINER
