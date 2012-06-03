@@ -189,3 +189,7 @@ IoC::singleton("HTMLPurifier", function() {
 	$config->set('URI.SafeIframeRegexp', '%^http://(www.youtube(-nocookie)?.com/embed/|player.vimeo.com/video/)%');
 	return new HTMLPurifier($config);
 });
+
+Form::macro('imageselect', function($name, $value = null, $attributes = array()) {
+	return Form::text($name, $value, $attributes).' <a href="#" onClick="MLM.images.open(); return false;">[Select image]</a>';
+});

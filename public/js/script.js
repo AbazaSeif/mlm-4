@@ -27,9 +27,79 @@
 	},
 	admin: {
 		init: function () {
-			$('#imgallery').modal({
-				show: false
-			});
+			/* Admin pages */
+		}
+	},
+	images: {
+		open: function() {
+			if($("#imagemanager").length == 0) {
+				$("<div id=\"imagemanager\" class=\"modal fade hide\">\
+					<div class=\"modal-header\">\
+						<button class=\"close\" data-dismiss=\"modal\"><i class=\"icon-remove icon-black\"></i></button>\
+						<h3>Images</h3>\
+					</div>\
+					<div class=\"modal-body\"></div>\
+					<div class=\"modal-footer\"><a href=\"#\" class=\"btn\" data-dismiss=\"modal\">Close</a></div>\
+				</div>").appendTo(document.body)
+				$("#imagemanager").modal({show: false})
+			}
+			MLM.images.load()
+			$("#imagemanager").modal("show")
+		},
+		load: function() {
+			$("#imagemanager .modal-body").html("<img src=\""+ASSET_URL+"images/slider/loading.gif\">").load(BASE_URL+'/imgmgr', function() {
+				// Ajax hooks for file uploading
+				if($("#imageupload").length > 0) {
+					$('#upload-file').change(function(e){
+						$('#upload-filename').val($(this).val());
+					});
+					$('#imageupload').ajaxForm({
+						dataType: 'json',
+						beforeSubmit: function(array) {
+							$('#fileupload-form .error').text()
+							valid = true;
+							if($('#upload-filename').val() == '') {
+								$('#fileupload-form .error').text("Please choose a file to upload")
+								return false;
+							}
+							$.each(array, function(index, values) {
+								if(!values.value) {
+									valid = false
+									if(values.name == "filename") {
+										$('#fileupload-form .error').text("Please enter a filename")
+									}
+								}
+							});
+							return valid;
+						},
+						beforeSend: function() {
+							$('#fileupload-form').hide()
+							$('#uploading-bar').show()
+							var percentVal = '0%';
+							$('#uploading-bar .bar').width(percentVal)
+						},
+						uploadProgress: function(event, position, total, percentComplete) {
+							var percentVal = percentComplete + '%';
+							$('#uploading-bar .bar').width(percentVal)
+						},
+						success: function(response) {
+							if(response.error) {
+								$('#fileupload-form .error').html(response.error)
+								$('#uploading-bar').hide()
+								$('#fileupload-form').show()
+							} else {
+								$("<li><div class=\"thumbnail\"></div></li>").appendTo("#uploaded-img").find(".thumbnail").data("image", response.file)
+										.append("<a href=\"#\" class=\"img_sel\" data-size=\"Original\"><img src=\""+response.file.file_small+"\" /></a>")
+										.find(".img_sel");
+								$('#fileupload-form .error').text()
+								$('#uploaded').val("")
+								$('#uploading-bar').hide()
+								$('#fileupload-form').show()
+							}
+						}
+					});
+}
+			})
 		}
 	},
 	login: {
@@ -40,24 +110,24 @@
 }
 
 UTIL = {
-    exec: function (controller, action) {
-        var ns = MLM,
-            action = (action === undefined) ? "init" : action;
+	exec: function (controller, action) {
+		var ns = MLM,
+			action = (action === undefined) ? "init" : action;
 
-        if (controller !== "" && ns[controller] && typeof ns[controller][action] == "function") {
-            ns[controller][action]();
-        }
-    },
+		if (controller !== "" && ns[controller] && typeof ns[controller][action] == "function") {
+			ns[controller][action]();
+		}
+	},
 
-    init: function () {
-        var body = document.body,
-            controller = body.getAttribute("data-controller"),
-            action = body.getAttribute("data-action");
+	init: function () {
+		var body = document.body,
+			controller = body.getAttribute("data-controller"),
+			action = body.getAttribute("data-action");
 
-        UTIL.exec("common");
-        UTIL.exec(controller);
-        UTIL.exec(controller, action);
-    }
+		UTIL.exec("common");
+		UTIL.exec(controller);
+		UTIL.exec(controller, action);
+	}
 };
 
 $(document).ready(UTIL.init);

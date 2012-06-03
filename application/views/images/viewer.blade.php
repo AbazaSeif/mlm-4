@@ -1,41 +1,24 @@
-<html>
-<head>
-<title>Image Uploader & Gallery</title>
-<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/style.css") }}" />
-</head>
-<body id="imgallery">
 {{ Messages::get_html() }}
-<table>
-	<thead>
-		<tr>
-			<th>Image</th>
-			<th>Filename</th>
-			<th>Sizes</th>
-		</tr>
-	</thead>
+<div class="row-fluid">
+	<div class="span2">
+		<ul class="nav nav-list">
+			<li><a href="#" onClick="MLM.images.load()">Uploaded</a></li>
+		</ul>
+	</div>
+	<div class="span10">
+		<ul class="image-list thumbnails">
 		@foreach ($images->results as $image)
-			<tr>
-			<td>{{ HTML::image($image->file_small) }}</td>
-			<td>{{ e($image->filename) }}</td>
-			<td>
-<ul class="nav nav-pills">
-<li class="dropdown">
-    <a class="imgsizes btn btn-primary" data-toggle="dropdown" data-target="#" href="#">
-      Sizes
-      <b class="caret"></b>
-    </a>
-    <ul class="dropdown-menu">
-      <li>{{ HTML::link($image->file_small, "Small") }}</li>
-	  <li>{{ HTML::link($image->file_medium, "Medium") }}</li>
-	  <li>{{ HTML::link($image->file_large, "Large") }}</li>
-	  <li>{{ HTML::link($image->file_original, "Original") }}</li>
-    </ul>
-</li>
-</ul>
-			</td>
-			</tr>
+			<li class="span2"><a href="#" class="thumbnail">{{ HTML::image($image->file_small) }}</a>
+				{{-- HTML::link($image->file_small, "Small") --}}
+				{{-- HTML::link($image->file_medium, "Medium") --}}
+				{{-- HTML::link($image->file_large, "Large") --}}
+				{{-- HTML::link($image->file_original, "Original") --}}
+		</li>
 		@endforeach
-	</table>
+		</ul>
+	</div>
+</div>
+
 {{ $images->links() }}
 
 @if(Auth::user()->admin)
@@ -44,17 +27,18 @@
 			{{ $error }}
 		@endforeach
 	@endif
-	{{ Form::open_for_files("imgmgr/upload") }}
-	{{ Form::label("uploaded", "Image") }}
-	{{ Form::file("uploaded") }}
-	{{ Form::label("title", "Title") }}
-	{{ Form::text("title") }}
-	{{ Form::submit("Upload", array('class' => 'btn btn-primary')) }}
+	{{ Form::open_for_files("imgmgr/upload", "POST", array("id" => "imageupload", "class" => FORM::TYPE_INLINE )) }}
+	<div id="fileupload-form">
+		{{ Form::label("upload-file", "Image") }}
+		{{ Form::file("uploaded", array("id" => "upload-file")) }}
+		{{ Form::label("upload-filename", "Title") }}
+		{{ Form::text("title", null, array("id" => "upload-filename")) }}
+		{{ Form::submit("Upload", array('class' => 'btn btn-primary')) }}
+		<div class="error"></div>
+	</div>
+	<div id="uploading-bar" class="progress" style="display: none;">
+		<div class="bar"></div>
+	</div>
 	{{ Form::close() }}
+	<div class="uploads"><ul id="uploaded-img" class="thumbnails"></ul></div>
 @endif
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script src="{{ URL::to_asset("js/plugins.js") }}"></script>
-<script src="{{ URL::to_asset("js/script.js") }}"></script>
-</body>
-</html>

@@ -22,10 +22,9 @@ class Imgmgr_Controller extends Base_Controller {
 		$validation = Validator::make($input, array("uploaded" => "image|max:1000"));
 		if($validation->passes()) {
 			$image = Image::create(array("file" => $input["uploaded"], "filename" => "title", "type" => "upload"));
-			Messages::add("success", "Image uploaded!");
-			return Redirect::to_action("imgmgr");
+			return json_encode(array("file" => $image->to_array()));
 		} else {
-			return Redirect::to_action("imgmgr")->with_input()->with_errors($validation);
+			return json_encode(array("error" => $validation->errors->all()));
 		}
 	}
 }

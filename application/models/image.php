@@ -55,4 +55,12 @@ class Image extends Eloquent {
 	public function get_file_small() {
 		return "images/uploads/s/".$this->file;
 	}
+	public function to_array() {
+		$array = parent::to_array();
+		$array["file_small"] = $this->file_small;
+		$array["file_medium"] = $this->file_medium;
+		$array["file_large"] = $this->file_large;
+		$array["file_original"] = $this->file_original;
+		return $array;
+	}
 }

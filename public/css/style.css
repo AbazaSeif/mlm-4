@@ -431,15 +431,26 @@ font-weight: 700;
 font-family: Arial,sans-serif;
 }
 
-#imgallery {
-background: white;
-color: black;
+.modal {
+	color: #333;
+	width: 700px;
+	margin-left: -350px;
 }
 
-#imgallery label {
-color: black;
+#imagemanager {
+	width: 770px;
+	margin-left: -385px;
 }
-
-#imgallery .alert {
-margin: 12px;
+#imagemanager label {
+	color: #333;
+}
+#imagemanager .thumbnail {
+	height: 100px;
+}
+.row-fluid .image-list {
+	margin-left: -2.12766%;
+}
+.row-fluid .image-list li {
+	margin-left: 1.77% !important;
+	margin-bottom: 10px;
 }
