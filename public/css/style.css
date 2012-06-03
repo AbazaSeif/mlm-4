@@ -6,451 +6,494 @@
 @import url(bootstrap.css);
 @import url(slideshow.css);
 
-body
-{
-	background:#0e3a9d url(../images/static/bg.jpg) no-repeat fixed top center;
-	color:#FFF;
-	font-family:Oswald, Helvetica Neue, Arial;
-	font-weight:400;
-	margin:0;
-	padding:0;
+body {
+   background: #0e3a9d url(../images/static/bg.jpg) no-repeat fixed top center;
+   color: #FFF;
+   font-family: Oswald, Helvetica Neue, Arial !important;
+   font-weight: 400;
+   margin: 0;
+   padding: 0;
 }
 
-::selection
-{
-	background:#0FF;
+::selection {
+   background: #0FF
 }
 
-::-moz-selection
-{
-	background:#0FF;
+::-moz-selection {
+   background: #0FF
 }
 
-.clear
-{
-	clear:both;
+.clear {
+   clear: both
 }
 
 .left {
-float:left;
+   float: left
 }
 
 .right {
-float:right;
+   float: right
 }
 
 h1, h2, h3 {
-margin: 0;
+   margin: 0
 }
 
 h1 {
-	font-size: 2em;
+   font-size: 2em
 }
 
 h2 {
-	font-size: 2.4em;
+   font-size: 2.4em
 }
 
 h3 {
+
 }
 
 hr {
-margin: 0;
+   margin: 0
 }
 
 p, ul, ol {
-	margin: 0;
-	line-height: 180%;
+   margin: 0;
+   line-height: 180%;
 }
 
 ul, ol {
-    margin: 0;
-    padding: 0;
+   margin: 0;
+   padding: 0;
 }
 
 a {
-	text-decoration: none;
-	color: #0082B4;
+   text-decoration: none;
+   color: #0082B4;
 }
 
 a:hover {
-}
 
+}
 
 table {
-		overflow:hidden;
-		border:1px solid #d3d3d3;
-		background:#fefefe;
-		width: 100%;
-		margin: 0 auto;
-	}
-	
-	th, td {padding:18px 28px 18px; text-align:center; }
-	
-	th {padding-top:22px; text-shadow: 1px 1px 1px black; background:#e8eaeb;}
-	
-	td {border-top:1px solid #e0e0e0; border-right:1px solid #e0e0e0;color:black;}
-	
-	tr.odd-row td {background:#f6f6f6;}
-	
-	td.first, th.first {text-align:left}
-	
-	td.last {border-right:none;}
-
-/* Start */	
-	
-header
-{
-	width:100%;
+   overflow: hidden;
+   border: 1px solid #d3d3d3;
+   background: #fefefe;
+   width: 100%;
+   margin: 0 auto;
 }
 
-header #logobg
-{
-	background:transparent url(../images/static/branding.png) repeat-x center center;
-	box-shadow:0 0 35px #000;
-	height:42px;
-	margin-top:50px;
-	width:100%;
+th, td {
+   padding: 18px 28px 18px;
+   text-align: center;
 }
 
-header .logoholder
-{
-	clear:both;
-	display:block;
-	height:20px;
-	margin:0 auto;
-	width:990px;
+th {
+   padding-top: 22px;
+   text-shadow: 1px 1px 1px black;
+   background: #e8eaeb;
 }
 
-header .logo
-{
-	float:left;
-	position: relative;
-	top:1px;
-	width: 480px;
-	margin-top: -96px;
+td {
+   border-top: 1px solid #e0e0e0;
+   border-right: 1px solid #e0e0e0;
+   color: black;
 }
 
-header .logo h1
-{
-	float:right;
-	font-family:Oswald, Helvetica, Arial;
-	font-size:26px;
-	font-weight:700;
-	margin-top: 39px;
-	text-shadow:0 3px 2px #000;
+tr.odd-row td {
+   background: #f6f6f6
 }
 
-header #logs
-{
-	float:right;
-	height:20px;
-	margin: -42px auto 0;
-	text-align:right;
+td.first, th.first {
+   text-align: left
 }
 
-header #logs a, header .logo a
-{
-	color:#FFF;
-	font-family:Oswald, Helvetica, Arial;
-	font-weight:700;
-	text-decoration:none;
-	text-shadow:0 1px 3px #000;
-	color:white;
+td.last {
+   border-right: none
 }
 
-#menu
-{
+/* Start */
 
-background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(202,202,202,0.85) 100%);
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(202,202,202,0.85)));
-background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(202,202,202,0.85) 100%);
-background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(202,202,202,0.85) 100%);
-background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(202,202,202,0.85) 100%);
-background: linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(202,202,202,0.85) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#d9cacaca',GradientType=0 );
-	
-	box-shadow:0 0 35px #000;
-	
-
-font-size: 14px;
-	height:35px;
-	margin:15px auto;
-	width:990px;
+header {
+   width: 100%
 }
 
-#menu ul
-{
-	display:block;
-	margin: 0 auto;
-	width: 782px;
-	height: 100%;
+header #logobg {
+   background: transparent url(../images/static/branding.png) repeat-x center center;
+   box-shadow: 0 0 35px #000;
+   height: 42px;
+   margin-top: 50px !important;
+   width: 100%;
 }
 
-#menu li
-{
-	border-left: 1px solid lightgray;
-	float:left;
-	list-style:none;
-	height: 35px;
+header .logoholder {
+   clear: both;
+   display: block;
+   height: 20px;
+   margin: 0 auto;
+   width: 990px;
+}
+
+header .logo {
+   float: left;
+   position: relative;
+   top: 1px;
+   width: 480px;
+   margin-top: -96px;
+}
+
+header .logo h1 {
+   float: right;
+   font-family: Oswald, Helvetica, Arial;
+   font-size: 26px;
+   font-weight: 700;
+   margin-top: 39px;
+   text-shadow: 0 3px 2px #000;
+}
+
+header #logs {
+   float: right;
+   height: 20px;
+   margin: -42px auto 0;
+   text-align: right;
+}
+
+header #logs a, header .logo a {
+   color: #FFF;
+   font-weight: 700;
+   text-decoration: none;
+   text-shadow: 0 1px 3px #000;
+   color: white;
+}
+
+#menu {
+   background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(202,202,202,0.85) 100%);
+   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(202,202,202,0.85)));
+   background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(202,202,202,0.85) 100%);
+   background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(202,202,202,0.85) 100%);
+   background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(202,202,202,0.85) 100%);
+   background: linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(202,202,202,0.85) 100%);
+   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#d9cacaca',GradientType=0 );
+   box-shadow: 0 0 35px #000;
+   font-size: 14px;
+   height: 35px;
+   margin: 15px auto;
+   width: 990px;
+}
+
+#menu ul {
+   display: block;
+   margin: 0 auto;
+   width: 782px;
+   height: 100%;
+}
+
+#menu li {
+   border-left: 1px solid lightgray;
+   float: left;
+   list-style: none;
+   height: 35px;
 }
 
 #menu li:hover {
-background: rgb(185, 185, 185);
+   background: rgb(185, 185, 185)
 }
 
-#menu li:first-child
-{
-	border:none;
+#menu li:first-child {
+   border: none
 }
 
-#menu li a
-{
-	color:#FFF;
-	display:block;
-	font-size:20px;
-	font-weight:700;
-	text-shadow:0 1px 3px #000;
-	text-transform: uppercase;
-	padding: 0 25px;
-	height: 100%;
+#menu li a {
+   color: #FFF;
+   display: block;
+   font-size: 20px;
+   font-weight: 700;
+   text-shadow: 0 1px 3px #000;
+   text-transform: uppercase;
+   padding: 0 25px;
+   height: 100%;
 }
 
-#wrapper
-{
-	margin:0 auto;
-	width:990px;
+#wrapper {
+   margin: 0 auto;
+   width: 990px;
 }
 
-#home
-{
-	height:300px;
-	margin:0 auto 54px;
+#home {
+   height: 300px;
+   margin: 0 auto 54px;
 }
 
 /*--- Style for frontpage slideshow (#slider) @ slideshow.css ---*/
 
-#home .featured
-{
-	background:#102A67;
-	box-shadow:0 0 35px #000;
-	float:right;
-	height:300px;
-	width:372px;
+#home .featured {
+   background: #102A67;
+   box-shadow: 0 0 35px #000;
+   float: right;
+   height: 300px;
+   width: 372px;
 }
 
-#home #ticker
-{
-	background:#102A67;
-	box-shadow:0 0 35px #000;
-	display:inline-block;
-	height:30px;
-	margin:13px 0;
-	position: relative;
-	width:100%;
+#home #ticker {
+   background: #102A67;
+   box-shadow: 0 0 35px #000;
+   display: inline-block;
+   height: 30px;
+   margin: 13px 0;
+   position: relative;
+   width: 100%;
 }
 
-#content, .content
-{
-	background:#102A67;
-	box-shadow:0 0 35px #000;
-	padding:25px;
+#content, .content {
+   background: #102A67;
+   box-shadow: 0 0 35px #000;
+   padding: 25px;
 }
 
 #profile #heading .well {
-padding: 5px;
-height: 70px;
-box-shadow: 0 0 4px black;
+   padding: 5px;
+   height: 70px;
+   box-shadow: 0 0 4px black;
 }
 
 #profile #heading .well a {
-width: 60px;
-float: left;
-box-shadow: 0 0 3px black;
+   width: 60px;
+   float: left;
+   box-shadow: 0 0 3px black;
 }
 
 #profile #heading .well h2 {
-margin: 7px 15px;
-text-shadow: 0px 1px 3px black;
-color: white;
-float:left;
+   margin: 7px 15px;
+   text-shadow: 0px 1px 3px black;
+   color: white;
+   float: left;
+   font-weight: 400;
 }
 
 #profile #heading .well p {
-padding: 0;
-float: right;
-margin: 20px;
-font-size: 18px;
-font-weight: 600;
-text-shadow: 0px 1px 3px black;  color: white;
+   padding: 0;
+   float: right;
+   margin: 20px;
+   font-size: 18px;
+   text-shadow: 0px 1px 3px black;
+   color: white;
 }
 
-#profile .span4 { /* Sidebar */
-background: white;
--webkit-border-radius: 4px;
--moz-border-radius: 4px;
-border-radius: 4px;
-
-
-box-shadow: 0 0 4px black;
+#profile .span4 {
+   /* Sidebar */
+   background: white;
+   -webkit-border-radius: 4px;
+   -moz-border-radius: 4px;
+   border-radius: 4px;
+   box-shadow: 0 0 4px black;
 }
 
 #profile .span4 li {
-padding: 25px;
-background: blue;
-width: 100px;
-height: 100px;
-display: block;
-list-style:none;
-float:left;
+   padding: 25px;
+   background: blue;
+   width: 100px;
+   height: 100px;
+   display: block;
+   list-style: none;
+   float: left;
 }
 
 #profile .span4 h2 {
-font-size: 17px;
-text-align: center;
-margin-top: 70px;
+   font-size: 17px;
+   text-align: center;
+   margin-top: 70px;
 }
 
 #profile .span4 h3 {
-padding: 10px;
-color: black;
+   padding: 10px;
+   color: black;
 }
 
-#profile .span8 { /* Content */
--webkit-border-radius: 4px;
--moz-border-radius: 4px;
-border-radius: 4px;
+#profile .span8 {
+   /* Content */
+   -webkit-border-radius: 4px;
+   -moz-border-radius: 4px;
+   border-radius: 4px;
 }
 
-footer
-{
-	background:#102A67;
-	box-shadow:0 0 35px #000;
-	margin:12px auto;
-	width:990px;
+footer {
+   background: #102A67;
+   box-shadow: 0 0 35px #000;
+   margin: 12px auto;
+   width: 990px;
 }
 
-footer .column
-{
-	float:left;
-	margin:0 20px 0 0;
-	padding:30px;
-	width:250px;
+footer .column {
+   float: left;
+   margin: 0 20px 0 0;
+   padding: 30px;
+   width: 250px;
 }
 
-footer .column h3
-{
-	font-size: 15px;
-	font-weight:700;
+footer .column h3 {
+   font-size: 15px;
+   font-weight: 700;
 }
 
-footer .column p
-{
-	font-size: 14px;
+footer .column p {
+   font-size: 14px
 }
 
 /* -- User styles -- */
 
 #login {
-width: 336px;
-margin: 0 auto;
-padding: 38px 0px;
-text-align: center;
+   width: 336px;
+   margin: 0 auto;
+   padding: 38px 0px;
+   text-align: center;
 }
 
 #login label {
-font-weight: 700;
-font-size: 25px;
-margin-bottom: 20px;
-text-shadow: 0 1px 3px black;
+   font-weight: 700;
+   font-size: 25px;
+   margin-bottom: 20px;
+   text-shadow: 0 1px 3px black;
 }
 
 #login input {
-width: 240px;
+   width: 240px
 }
 
 #login p {
-font-size: 14px;
+   font-size: 14px
 }
 
-#login .openid .prov {width: 100%;display: block;height: 25px;}
-#login .openid ul { text-align:center; list-style-type:none; display:inline; width: 340px; height: 25px; display: block; margin: 0 auto;}
-#login .openid ul li {float:left; padding:4px}
-#login .openid ul li span {padding:0 1em 0 3px;color: black;}
-#login .openid fieldset {clear:both; padding:1em 0}
-#login .openid div+fieldset {display:none}
-#login .openid label {display:block; font-weight:bold; font-size:larger; margin-bottom:.5em}
+#login .openid .prov {
+   width: 100%;
+   display: block;
+   height: 25px;
+}
 
-#login .openid ul li.highlight { -moz-border-radius:4px; -webkit-border-radius:4px; background-color: #FD6}
-#login .openid fieldset div {font-family:arial;-moz-border-radius:4px; -webkit-border-radius:4px;  background: #DCDCDC url(../images/login/fadegrey.png); padding:10px;display:inline-block;color:black;}
+#login .openid ul {
+   text-align: center;
+   list-style-type: none;
+   display: inline;
+   width: 340px;
+   height: 25px;
+   display: block;
+   margin: 0 auto;
+}
 
-#login .openid_logo{color:#F7931E;padding:6px 0px 8px 28px; background: url(../images/login/openidico.png) no-repeat}
+#login .openid ul li {
+   float: left;
+   padding: 4px;
+}
+
+#login .openid ul li span {
+   padding: 0 1em 0 3px;
+   color: black;
+}
+
+#login .openid fieldset {
+   clear: both;
+   padding: 1em 0;
+}
+
+#login .openid div+fieldset {
+   display: none
+}
+
+#login .openid label {
+   display: block;
+   font-weight: bold;
+   font-size: larger;
+   margin-bottom: .5em;
+}
+
+#login .openid ul li.highlight {
+   -moz-border-radius: 4px;
+   -webkit-border-radius: 4px;
+   background-color: #FD6;
+}
+
+#login .openid fieldset div {
+   font-family: arial;
+   -moz-border-radius: 4px;
+   -webkit-border-radius: 4px;
+   background: #DCDCDC url(../images/login/fadegrey.png);
+   padding: 10px;
+   display: inline-block;
+   color: black;
+}
+
+#login .openid_logo {
+   color: #F7931E;
+   padding: 6px 0px 8px 28px;
+   background: url(../images/login/openidico.png) no-repeat;
+}
 
 /*-- Menu for pages --*/
 
-#pagemenu
-{
-	background: #102A65;
-	box-shadow:0 0 35px #000;
-	margin:0;
-	border: none;
-	width:990px;
-	text-shadow:0 1px 3px #000;
-	font-weight: 500;
-	font-size: 15px;
-	text-decoration:none;
-	margin-top: 25px;
+#pagemenu {
+   background: #102A65;
+   box-shadow: 0 0 35px #000;
+   margin: 0;
+   border: none;
+   width: 990px;
+   text-shadow: 0 1px 3px #000;
+   font-weight: 500;
+   font-size: 15px;
+   text-decoration: none;
+   margin-top: 25px;
 }
 
-#pagemenu a{ 
-	color:white;
+#pagemenu a {
+   color: white
 }
 
 .nav {
-margin-bottom:0px;
+   margin-bottom: 0px
 }
 
 /* -- Misc styles -- */
 
 #errorbox {
-min-height: 350px;
-width: 650px;
-margin: 28px auto;
-text-align: center;
-padding: 30px;
-background: #102A67;
-box-shadow: 0 0 35px black;
+   min-height: 350px;
+   width: 650px;
+   margin: 28px auto;
+   text-align: center;
+   padding: 30px;
+   background: #102A67;
+   box-shadow: 0 0 35px black;
 }
 
 .chromeframe {
-text-align: center;
-height: 31px;
-font-size: 16px;
-background: #1DD8F1;
-font-weight: 700;
-font-family: Arial,sans-serif;
+   text-align: center;
+   height: 31px;
+   font-size: 16px;
+   background: #1DD8F1;
+   font-weight: 700;
+   font-family: Arial,sans-serif;
 }
 
 .modal {
-	color: #333;
-	width: 700px;
-	margin-left: -350px;
+   color: #333;
+   width: 700px;
+   margin-left: -350px;
 }
 
 #imagemanager {
-	width: 770px;
-	margin-left: -385px;
+   width: 770px;
+   margin-left: -385px;
 }
+
 #imagemanager label {
-	color: #333;
+   color: #333
 }
+
 #imagemanager .thumbnail {
-	height: 100px;
+   height: 100px
 }
+
 .row-fluid .image-list {
-	margin-left: -2.12766%;
+   margin-left: -2.12766%
 }
+
 .row-fluid .image-list li {
-	margin-left: 1.77% !important;
-	margin-bottom: 10px;
+   margin-left: 1.77% !important;
+   margin-bottom: 10px;
 }
