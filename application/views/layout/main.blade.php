@@ -15,7 +15,9 @@
 	<title>Major League Mining</title>
 	@endif
 	<meta name="description" content="">
-	<meta name="author" content="">
+	<link type="text/plain" rel="author" href="{{ URL::to_asset("humans.txt") }}" />
+	<link type="text/plain" rel="hackers" href="{{ URL::to_asset("hackers.txt") }}" />
+	
 	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/style.css") }}" />
 	<script src="{{ URL::to_asset("js/libs/modernizr-2.5.3-respond-1.1.0.min.js") }}"></script>
 	<script type="text/javascript">
