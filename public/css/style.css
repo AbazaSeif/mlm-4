@@ -138,7 +138,7 @@ header .logo {
    position: relative;
    top: 1px;
    width: 480px;
-   margin-top: -96px;
+   margin-top: -55px;
 }
 
 header .logo h1 {
@@ -153,7 +153,7 @@ header .logo h1 {
 header #logs {
    float: right;
    height: 20px;
-   margin: -42px auto 0;
+   margin: 0px auto;
    text-align: right;
 }
 
@@ -176,7 +176,7 @@ header #logs a, header .logo a {
    box-shadow: 0 0 35px #000;
    font-size: 14px;
    height: 35px;
-   margin: 15px auto;
+   margin: 33px auto 15px;
    width: 990px;
 }
 

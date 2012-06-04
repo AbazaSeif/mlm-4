@@ -36,7 +36,7 @@
 @endif
 	<!--[if lt IE 7]><p class="chromeframe">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/?locale=en">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 	<header name="global header">
-		<div id="logobg"><br class="clear" /></div>
+		<div id="logobg">
 		<div class="logoholder">
 			<div class="logo">
 				<a href="{{ URL::to("/") }}" title="Major League Mining">
@@ -54,6 +54,7 @@
 			@endif
 			</div>
 		</div>
+	</div>	
 		<nav id="menu">
 			<ul>
 				<li><a href="{{ URL::to("/") }}">Home</a></li> 
