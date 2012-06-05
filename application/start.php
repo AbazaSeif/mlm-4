@@ -190,6 +190,6 @@ IoC::singleton("HTMLPurifier", function() {
 	return new HTMLPurifier($config);
 });
 
-Form::macro('imageselect', function($name, $value = null, $attributes = array()) {
-	return Form::text($name, $value, $attributes).' <a href="#" onClick="MLM.images.open(); return false;">[Select image]</a>';
+Form::macro('imageselect', function($name, $value = null, $previewimage = null, $attributes = array()) {
+	return Form::hidden($name, $value, $attributes).'<img src="'.$previewimage.'" /> <a href="#" onClick="MLM.images.open({mode: &quot;id&quot;, field: $(this).prevAll(&quot;input&quot;), preview: $(this).prevAll(&quot;img&quot;) }); return false;">[Select image]</a>';
 });

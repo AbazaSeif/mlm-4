@@ -8,7 +8,7 @@
 	<div class="span10">
 		<ul class="image-list thumbnails">
 		@foreach ($images->results as $image)
-			<li class="span2"><a href="#" class="thumbnail">{{ HTML::image($image->file_small) }}</a>
+			<li class="span2"><a href="#" class="thumbnail" data-image="{{ e(json_encode($image->to_array())) }}" onClick="{{e("MLM.images.select($(this).data(\"image\"))")}}; return false;">{{ HTML::image($image->file_small) }}</a>
 				{{-- HTML::link($image->file_small, "Small") --}}
 				{{-- HTML::link($image->file_medium, "Medium") --}}
 				{{-- HTML::link($image->file_large, "Large") --}}

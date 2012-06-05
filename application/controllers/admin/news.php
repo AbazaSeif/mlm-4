@@ -12,7 +12,15 @@ class Admin_News_Controller extends Admin_Controller {
 		return View::make("admin.news.list", array("news" => $news, "title" => "News | Admin"));
 	}
 	public function get_new() {
-		return View::make("admin.news.newform", array("title" => "New | News | Admin"));
+		if(Input::old("image")) {
+			$oldimage = Image::find(Input::old("image"));
+			if($oldimage) {
+				$oldimage = URL::to_asset($oldimage->file_small);
+			}
+		} else {
+			$oldimage = null;
+		}
+		return View::make("admin.news.newform", array("title" => "New | News | Admin", "oldimage" => $oldimage));
 	}
 	public function post_new() {
 		$validation_rules = array(

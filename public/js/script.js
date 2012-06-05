@@ -31,7 +31,8 @@
 		}
 	},
 	images: {
-		open: function() {
+		options: {},
+		open: function(options) {
 			if($("#imagemanager").length == 0) {
 				$("<div id=\"imagemanager\" class=\"modal fade hide\">\
 					<div class=\"modal-header\">\
@@ -42,6 +43,11 @@
 					<div class=\"modal-footer\"><a href=\"#\" class=\"btn\" data-dismiss=\"modal\">Close</a></div>\
 				</div>").appendTo(document.body)
 				$("#imagemanager").modal({show: false})
+			}
+			if(options) {
+				MLM.images.options = options
+			} else {
+				MLM.images.options = false
 			}
 			MLM.images.load()
 			$("#imagemanager").modal("show")
@@ -90,7 +96,7 @@
 							} else {
 								$("<li><div class=\"thumbnail\"></div></li>").appendTo("#uploaded-img").find(".thumbnail").data("image", response.file)
 										.append("<a href=\"#\" class=\"img_sel\" data-size=\"Original\"><img src=\""+response.file.file_small+"\" /></a>")
-										.find(".img_sel");
+										.find(".img_sel").data("image", response.file).click(function() { MLM.images.select($(this).data("image")) });
 								$('#fileupload-form .error').text()
 								$('#uploaded').val("")
 								$('#uploading-bar').hide()
@@ -98,8 +104,16 @@
 							}
 						}
 					});
-}
-			})
+				}
+			});
+		},
+		select: function(item) {
+			if(MLM.images.options.mode == "id") {
+				$(MLM.images.options.field).val(item.id)
+				$(MLM.images.options.preview).attr("src", ASSET_URL+item.file_small)
+				$("#imagemanager").modal("hide")
+			}
+			return false;
 		}
 	},
 	login: {
