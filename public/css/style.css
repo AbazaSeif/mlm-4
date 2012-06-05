@@ -128,7 +128,7 @@ header #logobg {
 header .logoholder {
    clear: both;
    display: block;
-   height: 20px;
+   height: 100%;
    margin: 0 auto;
    width: 990px;
 }
@@ -136,7 +136,6 @@ header .logoholder {
 header .logo {
    float: left;
    position: relative;
-   top: 1px;
    width: 480px;
    margin-top: -55px;
 }
@@ -150,14 +149,22 @@ header .logo h1 {
    text-shadow: 0 3px 2px #000;
 }
 
-header #logs {
-   float: right;
-   height: 20px;
-   margin: 0px auto;
-   text-align: right;
+header .logo a {
+   color: #FFF;
+   font-weight: 700;
+   text-decoration: none;
+   text-shadow: 0 1px 3px #000;
+   color: white;
+   display: block;
 }
 
-header #logs a, header .logo a {
+header #logs {
+   float: right;
+   height: 100%;
+   margin: 0px auto;
+}
+
+header #logs a {
    color: #FFF;
    font-weight: 700;
    text-decoration: none;
@@ -176,15 +183,16 @@ header #logs a, header .logo a {
    box-shadow: 0 0 35px #000;
    font-size: 14px;
    height: 35px;
-   margin: 33px auto 15px;
+   margin: 35px auto 0px;
    width: 990px;
+   display: block;
 }
 
 #menu ul {
    display: block;
    margin: 0 auto;
-   width: 782px;
-   height: 100%;
+   width: 800px;
+   clear: both;
 }
 
 #menu li {
@@ -262,11 +270,11 @@ header #logs a, header .logo a {
 }
 
 #profile #heading .well h2 {
-   margin: 7px 15px;
+   margin: -16px 15px;
    text-shadow: 0px 1px 3px black;
    color: white;
    float: left;
-   font-weight: 400;
+   font-weight: 700;
 }
 
 #profile #heading .well p {
