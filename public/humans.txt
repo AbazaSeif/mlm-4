@@ -1,6 +1,6 @@
 /* TEAM */
 	
-	Lead Programmer: [Dont know if put your actual name]
+	Lead Programmer:
 	Nickname: t2t2
 	Site: The Internet
 	Twitter: @t2t2
@@ -28,4 +28,4 @@
 	Language: English
 	Standards: HTML5, CSS3
 	Components: Jquery, Twitter Bootstrap, Modernizr
-	Software: XAMPP, Notepad++, Photoshop, GitHub
+	Software: XAMPP, Notepad++, Sublime Text 2, Komodo Edit 7, Photoshop, GitHub
