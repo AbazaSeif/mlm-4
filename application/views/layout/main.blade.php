@@ -40,8 +40,8 @@
 		<div class="logoholder">
 			<div class="logo">
 				<a href="{{ URL::to("/") }}" title="Major League Mining">
-				<h1>MAJOR LEAGUE MINING</h1>
-				<img src="{{ URL::to_asset("images/static/logo.png") }}" />
+					<img src="{{ URL::to_asset("images/static/logo.png") }}" />
+					<h1>MAJOR LEAGUE MINING</h1>
 				</a>
 			</div>
 			<div id="logs">
