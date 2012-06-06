@@ -2,6 +2,7 @@
 			MAJOR LEAGUE MINING 2012
 -----------------------------------------------------------------*/
 
+@import url(reset.css);
 @import url(http://fonts.googleapis.com/css?family=Oswald:400,700,300);
 @import url(bootstrap.css);
 @import url(slideshow.css);
@@ -37,6 +38,8 @@ body {
 
 h1, h2, h3 {
    margin: 0
+;
+   line-height: 1;
 }
 
 h1 {
@@ -146,7 +149,8 @@ header .logo h1 {
    font-size: 26px;
    font-weight: 700;
    margin-top: 39px;
-   text-shadow: 0 3px 2px #000;
+   text-shadow: 0 3px 2px black;
+   line-height: 2;
 }
 
 header .logo a {
