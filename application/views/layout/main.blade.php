@@ -35,7 +35,7 @@
 <body>
 @endif
 	<!--[if lt IE 7]><p class="chromeframe">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/?locale=en">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
-	<header name="global header">
+	<header>
 		<div id="logobg">
 		<div class="logoholder">
 			<div class="logo">

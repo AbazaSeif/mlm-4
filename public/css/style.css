@@ -172,11 +172,11 @@ header #logs {
 }
 
 header #logs a {
-	color: #FFF;
 	font-weight: 700;
 	text-decoration: none;
 	text-shadow: 0 1px 3px #000;
 	color: white;
+	font-weight: 400;
 }
 
 #menu {
@@ -219,9 +219,9 @@ header #logs a {
 
 #menu li a {
 	color: #FFF;
-	display: block;
+	display: inline-block;
 	font-size: 20px;
-	font-weight: 700;
+	font-weight: 400;
 	text-shadow: 0 1px 3px #000;
 	text-transform: uppercase;
 	padding: 5px 25px;
