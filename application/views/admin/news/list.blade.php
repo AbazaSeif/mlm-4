@@ -22,9 +22,9 @@
 					<a class="btn btn-primary" href="#" data-toggle="dropdown"><i class="icon-user icon-white"></i> Actions</a>
 					<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
 						<ul class="dropdown-menu">
-						<li><a href="{{ URL::to_action("admin.news@edit/".$item->id) }}"><i class="icon-pencil"></i> Edit</a></li>
-						<li><a href="{{ URL::to_action("admin.news@unpublish/".$item->id) }}"><i class="icon-exclamation-sign"></i> Unpublish</a></li>
-						<li><a href="{{ URL::to_action("admin.news@delete/".$item->id) }}"><i class="icon-trash"></i> Delete</a></li>
+						<li><a href="{{ URL::to_action("admin.news@edit", array($item->id)) }}"><i class="icon-pencil"></i> Edit</a></li>
+						<li><a href="{{ URL::to_action("admin.news@unpublish", array($item->id)) }}"><i class="icon-exclamation-sign"></i> Unpublish</a></li>
+						<li><a href="{{ URL::to_action("admin.news@delete", array($item->id)) }}"><i class="icon-trash"></i> Delete</a></li>
 						</ul>
 				</div>
 				</td>
