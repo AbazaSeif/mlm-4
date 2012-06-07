@@ -15,6 +15,9 @@ class News_Controller extends Base_Controller {
 		if($slug != $newsitem->slug) { // Being nice
 			return Redirect::to_action("news@view", array($id, $newsitem->slug));
 		}
+		if(!$newsitem->published && (Auth::guest() || !Auth::user()->admin)) {
+			return Response::error("404"); // Not yet published
+		}
 		return View::make("news.view", array("title" => e($newsitem->title)." | News", "article" => $newsitem));
 	}
 }

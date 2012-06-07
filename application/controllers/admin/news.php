@@ -83,6 +83,10 @@ class Admin_News_Controller extends Admin_Controller {
 			"image" => "required|exists:images,id",
 			"news_content" => "required"
 		);
+		// Angry checkbox man!
+		if(!Input::get("published")) {
+			Input::merge(array("published" => 0));
+		}
 		$input = Input::all();
 		$validation = Validator::make($input, $validation_rules);
 		if($validation->passes()) {
@@ -90,6 +94,7 @@ class Admin_News_Controller extends Admin_Controller {
 			$newsitem->summary = $input["summary"];
 			$newsitem->image_id = $input["image"];
 			$newsitem->content = IoC::resolve('HTMLPurifier')->purify($input["news_content"]);
+			$newsitem->published = $input["published"];
 			$changed = array_keys($newsitem->get_dirty());
 			if($newsitem->save()) {
 				Event::fire("admin", array("news", "edit", $newsitem->id, $changed));
