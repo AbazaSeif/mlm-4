@@ -14,9 +14,18 @@
 	@else 
 	<title>Major League Mining</title>
 	@endif
-	<meta name="description" content="">
+	<meta name="robots" content="all">
+	<meta name="description" content="The official site for the Major League Mining">
+	<meta name="keywords" content="minecraft, race for wool, wool, competitive minecraft, tournaments, official site, rmct, reddit">
+	<meta name="copyright" content="Major League Mining 2012">
 	<link type="text/plain" rel="author" href="{{ URL::to_asset("humans.txt") }}" />
 	<link type="text/plain" rel="hackers" href="{{ URL::to_asset("hackers.txt") }}" />
+	
+	<link rel="shortcut icon" href="{{ URL::to_asset("images/static/favicon.ico") }}" />
+	<link rel="apple-touch-icon" href="{{ URL::to_asset("images/static/apple-touch-icon-iphone.png") }}" /> 
+	<link rel="apple-touch-icon" sizes="72x72" href="{{ URL::to_asset("images/static/apple-touch-icon-ipad.png") }}" /> 
+	<link rel="apple-touch-icon" sizes="114x114" href="{{ URL::to_asset("images/static/apple-touch-icon-iphone4.png") }}" />
+	<link rel="apple-touch-icon" sizes="144x144" href="{{ URL::to_asset("images/static/apple-touch-icon-ipad3.png") }}" />
 	
 	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/style.css") }}" />
 	<script src="{{ URL::to_asset("js/libs/modernizr-2.5.3-respond-1.1.0.min.js") }}"></script>
@@ -36,9 +45,9 @@
 @endif
 	<!--[if lt IE 7]><p class="chromeframe">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/?locale=en">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 	<header>
-		<div id="logobg">
-		<div class="logoholder">
-			<div class="logo">
+		<div id="bg">
+		<div class="holder">
+			<div id="logo">
 				<a href="{{ URL::to("/") }}" title="Major League Mining">
 					<img src="{{ URL::to_asset("images/static/logo.png") }}" />
 					<h1>MAJOR LEAGUE MINING</h1>
