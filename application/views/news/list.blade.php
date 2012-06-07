@@ -6,7 +6,7 @@
 	@foreach($newslist->results as $article)
 		<h3>{{ HTML::link_to_action("news@view", $article->title, array($article->id, $article->slug)) }}</h3>
 		{{ HTML::image($article->image->file_small, "Image") }}
-		{{ $article->summary }}
+		{{ nl2br(e($article->summary)) }}
 	@endforeach
 	{{ $newslist->links() }}
 </div>
