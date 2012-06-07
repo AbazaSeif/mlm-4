@@ -389,6 +389,7 @@ background: none;
 }
 
 #login .openid ul li.highlight {
+	border-radius: 4px;
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
 	background-color: #FD6;
@@ -396,6 +397,7 @@ background: none;
 
 #login .openid fieldset div {
 	font-family: arial;
+	border-radius: 4px;
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
 	background: #DCDCDC url(../images/login/fadegrey.png);
