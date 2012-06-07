@@ -20,11 +20,11 @@
 				<td>{{ $user->mc_username }}</td>
 				<td>
 				<div class="btn-group">
-					<a class="btn btn-danger" href="#" data-toggle="dropdown"><i class="icon-user icon-white"></i> User</a>
+					<a class="btn btn-danger" href="#" data-toggle="dropdown"><i class="icon-user icon-white"></i> Actions</a>
 					<a class="btn btn-danger dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
 						<ul class="dropdown-menu">
 						<li><a href="{{ URL::to_action("admin.user@edit/".$user->id) }}"><i class="icon-pencil"></i> Edit</a></li>
-						<li><a href="{{ URL::to_action("admin.user@unpublish/".$user->id) }}"><i class="icon-exclamation-sign"></i> Ban</a></li>
+						<li><a href="{{ URL::to_action("admin.user@ban/".$user->id) }}"><i class="icon-exclamation-sign"></i> Ban</a></li>
 						<li><a href="{{ URL::to_action("admin.user@delete/".$user->id) }}"><i class="icon-trash"></i> Delete</a></li>
 						</ul>
 				</div>
