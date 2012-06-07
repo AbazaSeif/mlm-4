@@ -32,7 +32,7 @@
 |		});
 |
 */
-Route::controller(array('account', "imgmgr"));
+Route::controller(array('account', "imgmgr", "news"));
 Route::controller(array('admin.user', 'admin.pages', 'admin.news'));
 
 Route::get('/', function() {
