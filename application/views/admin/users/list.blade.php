@@ -25,8 +25,7 @@
 						<ul class="dropdown-menu">
 						<li><a href="{{ URL::to_action("admin.user@edit/".$user->id) }}"><i class="icon-pencil"></i> Edit</a></li>
 						<li><a href="{{ URL::to_action("admin.user@ban/".$user->id) }}"><i class="icon-exclamation-sign"></i> Ban</a></li>
-						<li><a href="{{ URL::to_action("admin.user@delete/".$user->id) }}"><i class="icon-trash"></i> Delete</a></li>
-						</ul>
+					</ul>
 				</div>
 				</td>
 			</tr>
