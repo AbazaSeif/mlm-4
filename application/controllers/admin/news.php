@@ -4,7 +4,7 @@ class Admin_News_Controller extends Admin_Controller {
 	
 	public function __construct() {
 		parent::__construct();
-		$this->filter("before", "csrf")->on("post")->only(array("new", "edit"));
+		$this->filter("before", "csrf")->on("post")->only(array("new", "edit", "delete"));
 	}
 	
 	public function get_index() {
@@ -102,5 +102,25 @@ class Admin_News_Controller extends Admin_Controller {
 		} else {
 			return Redirect::to_action("admin.news@edit", array($id))->with_input()->with_errors($validation);
 		}
+	}
+
+	public function get_delete($id) {
+		$newsitem = News::find($id);
+		if(!$newsitem) {
+			Messages::add("error", "News item not found");
+			return Redirect::to_action("admin.news");
+		}
+		return View::make("admin.news.delete", array("title" => "Delete ".e($newsitem->title)." | News | Admin", "newsitem" => $newsitem));
+	}
+	public function post_delete($id) {
+		$newsitem = News::find($id);
+		if(!$newsitem) {
+			Messages::add("error", "News item not found");
+			return Redirect::to_action("admin.news");
+		}
+		$newsitem->delete();
+		Event::fire("admin", array("news", "delete", $newsitem->id));
+		Messages::add("success", "News item deleted!");
+		return Redirect::to_action("admin.news");
 	}
 }
