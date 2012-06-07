@@ -3,7 +3,7 @@
 @section('content')
 @parent
 <div class="content">
-	<table>
+	<table class="table table-striped table-bordered table-condensed">
 		<thead>
 			<tr>
 				<th>ID</th>
@@ -12,6 +12,7 @@
 				<th>Link</th>
 			</tr>
 		</thead>
+		<tbody>
 		@foreach ($pages as $page)
 			<tr>
 				<td>{{ $page->id }}</td>
@@ -20,6 +21,7 @@
 				<td><a href="{{ URL::to($page->url_slug) }}">View</a></td>
 			</tr>
 		@endforeach
+		</tbody>
 	</table>
 </div>
 @endsection

@@ -3,23 +3,35 @@
 @section('content')
 @parent
 <div class="content">
-	<table>
+	<table class="table table-striped table-bordered table-condensed">
 		<thead>
 			<tr>
 				<th>ID</th>
 				<th>Username</th>
 				<th>Minecraft username</th>
-				<th>Actions</th>
+				<th>&nbsp;</th>
 			</tr>
 		</thead>
+		<tbody>
 		@foreach ($users as $user)
 			<tr>
 				<td>{{ $user->id }}</td>
 				<td>{{ $user->username }}</td>
 				<td>{{ $user->mc_username }}</td>
-				<td>{{ HTML::link_to_action('admin.user@edit',"Edit", array($user->id)); }}</td>
+				<td>
+				<div class="btn-group">
+					<a class="btn btn-danger" href="#" data-toggle="dropdown"><i class="icon-user icon-white"></i> User</a>
+					<a class="btn btn-danger dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+						<ul class="dropdown-menu">
+						<li><a href="{{ URL::to_action("admin.user@edit/".$user->id) }}"><i class="icon-pencil"></i> Edit</a></li>
+						<li><a href="{{ URL::to_action("admin.user@unpublish/".$user->id) }}"><i class="icon-exclamation-sign"></i> Ban</a></li>
+						<li><a href="{{ URL::to_action("admin.user@delete/".$user->id) }}"><i class="icon-trash"></i> Delete</a></li>
+						</ul>
+				</div>
+				</td>
 			</tr>
 		@endforeach
+		</tbody>
 	</table>
 </div>
 @endsection

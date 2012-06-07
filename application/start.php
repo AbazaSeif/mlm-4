@@ -191,5 +191,5 @@ IoC::singleton("HTMLPurifier", function() {
 });
 
 Form::macro('imageselect', function($name, $value = null, $previewimage = null, $attributes = array()) {
-	return Form::hidden($name, $value, $attributes).'<img src="'.$previewimage.'" /> <a href="#" onClick="MLM.images.open({mode: &quot;id&quot;, field: $(this).prevAll(&quot;input&quot;), preview: $(this).prevAll(&quot;img&quot;) }); return false;">[Select image]</a>';
+	return Form::hidden($name, $value, $attributes).'<img src="'.$previewimage.'" /> <a href="#" class="btn" onClick="MLM.images.open({mode: &quot;id&quot;, field: $(this).prevAll(&quot;input&quot;), preview: $(this).prevAll(&quot;img&quot;) }); return false;"><i class="icon-picture"></i> Select image</a>';
 });
