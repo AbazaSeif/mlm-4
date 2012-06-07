@@ -24,12 +24,15 @@
 	<br class="clear" />
 </div>
 
-<div id="ticker"> <!--
-		<p>And that is to have sharks with frickin' laser beams attached to their heads! </p>
-		<p>Now evidently, my cycloptic colleague informs me that that can't be done. </p>
-		<p>Can you remind me what I pay you people for? </p>
-		<p>Honestly, throw me a bone here. What do we have? </p>
-	<p>You know, I have one simple request.</p> -->
+<div id="ticker">
+	<div class="clear shadow"></div>
+	<marquee behavior="scroll" scrollamount="2.5" direction="left">
+		<span><a target="_blank" href="http://www.kotaku.com/kanye-zone">...a perversely addictive thing. <i>&#151; Kotaku.com</i></a></span>
+		<span><a target="_blank" href="http://www.metro.us/newyork/entertainment/article/1122080--welcome-to-kanye-zone-the-dumbest-game-you-will-spend-20-minutes-playingheboombox.com/2012/03/12/kanye-west-game-kanye-zone/">Playing incessently all the while is the excerpt of... "Paris" <i>&#151; Metro</i></a></span>
+		<span><a target="_blank" href="http://www.2dopeboyz.com/2012/03/10/play-the-kanye-blame-game-kanye-zone">As if you needed yet another reason to spend countless hours on the internet. A simple, silly, yet dizzingly captivating game in which your goal is to prevent 'Ye from getting into his zone. <i>&#151; 2dopeboyz.com</i></a></span>
+		<span><a target="_blank" href="http://thestreetstalk.com/archives/12866">It's most fun when you're stoned. <i>&#151; TheStreetTalk</i></a></span>
+	</marquee>
+<noscript>This feature requires JavaScript</noscript>
 </div>
 
 </div>

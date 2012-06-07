@@ -23,6 +23,12 @@
 				bulletThumbLocation: '',		 // location from this file where thumbs will be
 				//afterSlideChange: function(){} 	 // empty function 
 			});
+		$('#ticker marquee').marquee('pointer')
+			.mouseover(function () {
+				$(this).trigger('stop');
+				}).mouseout(function () {
+				$(this).trigger('start');
+			});
 		}
 	},
 	admin: {
