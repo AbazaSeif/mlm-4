@@ -151,3 +151,5 @@ UTIL = {
 };
 
 $(document).ready(UTIL.init);
+
+$("#news_content").cleditor()[0].focus();

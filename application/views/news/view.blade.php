@@ -1,7 +1,7 @@
 @layout("layout.main")
 
 @section("content")
-<div class="content">
+<div class="content" id="news">
 	@if(!$article->published)
 		<div class="alert">
 			<h4 class="alert-heading">Not yet published!</h4>

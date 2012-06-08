@@ -1,520 +1,711 @@
 /* --------------------------------------------------------------
-			MAJOR LEAGUE MINING 2012
+            MAJOR LEAGUE MINING 2012
 -----------------------------------------------------------------*/
 
 @import url(http://fonts.googleapis.com/css?family=Oswald:400,700,300);
+
 @import url(bootstrap.css);
+
 @import url(slideshow.css);
 
 body {
-	background: #0e3a9d url(../images/static/bg.jpg) no-repeat fixed top center;
-	color: #FFF;
-	font-family: "Oswald","HelveticaNeue","Helvetica Neue",Helvetica,Arial,Verdana,sans-serif !important;
-	font-weight: 400;
-	margin: 0;
-	padding: 0;
+   background: #0e3a9d url(../images/static/bg.jpg) no-repeat fixed top center;
+   color: #FFF;
+   font-family: "Oswald","HelveticaNeue","Helvetica Neue",Helvetica,Arial,Verdana,sans-serif !important;
+   font-weight: 400;
+   margin: 0;
+   padding: 0;
 }
 
 ::selection {
-	background: #0FF
+   background: #0FF
 }
 
 ::-moz-selection {
-	background: #0FF
+   background: #0FF
 }
 
 .clear {
-	clear: both
+   clear: both
 }
 
 .left {
-	float: left
+   float: left
 }
 
 .right {
-	float: right
-}
-
-h1, h2, h3 {
-	margin: 0
-;
-   line-height: 1;
-}
-
-h1 {
-	font-size: 2em
-}
-
-h2 {
-	font-size: 2.4em
-}
-
-h3 {
-
-}
-
-hr {
-	margin: 0
-}
-
-p, ul, ol {
-	margin: 0;
-	line-height: 180%;
-}
-
-ul, ol {
-	margin: 0;
-	padding: 0;
+   float: right
 }
 
 a {
-	text-decoration: none;
-	color: #0082B4;
+   text-decoration: none;
+   color: #0082B4;
 }
 
 a:hover {
 
 }
 
-/* Start */
+abbr, acronym { cursor: help; border-bottom: 1px dotted #888; }
+
+blockquote{
+	background: url(../images/static/blockquote-l.png) no-repeat left top;
+	padding: 10px 15px;
+	margin: 0 3em 1em;
+	font-size: 1em;
+	text-indent: 2em;
+}
+blockquote > div {
+	background: url(../images/static/blockquote-r.png) no-repeat right bottom;
+	padding-bottom: 0.1em;
+}
+
+dl	{
+	margin:0 1.5em;
+}
+dt {
+	font-weight: bold;
+}
+dd {
+	margin: 0 0 1em 1.5em;
+}
+
+h1, h2, h3 {
+   margin: 0;
+   line-height: 1;
+}
+
+/* Headers */
+h1, h2, h3, h4, h5, h6 {
+	margin: 0.5em 0;
+	padding: 0;
+	line-height: 1;
+}
+h1, h2 {
+	font-weight: normal;
+}
+h3, h4, h5, h6 {
+	font-weight: bold;
+}
+h1 {
+	font-size: 200%;
+}
+h2 {
+	font-size: 183%;
+}
+h3 {
+	font-size: 166%;
+}
+h4 {
+	font-size: 150%;
+	font-weight: bold;
+}
+h5 {
+	font-size: 133%;
+	font-weight: bold;
+}
+h6 {
+	font-size: 116%;
+	font-weight: bold;
+}
+
+hr {
+   margin:0;
+}
+
+p {
+	
+   text-align: left;
+   margin: 0;
+}
+
+small {
+	font-size: 0.68em;
+}
+
+sup, sub {
+	height: 0;
+	line-height: 1;
+	vertical-align: baseline;
+	position: relative;
+	font-size: 0.7em;
+}
+sup {
+	bottom: 1ex;
+}
+sub {
+	top: .5ex;
+}
+
+ul, ol {
+   margin: 0;
+   padding:0;
+   line-height: 180%;
+}
+
+/* Header */
 
 header {
-	width: 100%
+   width: 100%
 }
 
 header #bg {
-	background: transparent url(../images/static/branding.png) repeat-x center center;
-	box-shadow: 0 0 35px #000;
-	height: 42px;
-	margin-top: 50px !important;
-	width: 100%;
+   background: transparent url(../images/static/branding.png) repeat-x center center;
+   box-shadow: 0 0 35px #000;
+   height: 42px;
+   margin-top: 50px !important;
+   width: 100%;
 }
 
 header .holder {
-	clear: both;
-	display: block;
-	height: 100%;
-	margin: 0 auto;
-	width: 990px;
+   clear: both;
+   display: block;
+   height: 100%;
+   margin: 0 auto;
+   width: 990px;
 }
 
+/* Logo */
+
 header #logo {
-	float: left;
-	position: relative;
-	width: 480px;
+   float: left;
+   position: relative;
+   width: 480px;
 }
 
 header #logo img {
-	margin-top: -50px;
-	margin-bottom: -40px;
-	width: 236px;
-	height: 122px;
+   margin-top: -50px;
+   margin-bottom: -40px;
+   width: 236px;
+   height: 122px;
 }
 
 header #logo h1 {
-	font-family: Oswald, Helvetica, Arial;
-	font-size: 26px;
-	font-weight: 700;
-	text-shadow: 0 3px 2px #000;
-	display: inline;
+   font-family: Oswald, Helvetica, Arial;
+   font-size: 26px;
+   font-weight: 700;
+   text-shadow: 0 3px 2px #000;
+   display: inline;
 }
 
 header #logo a {
-	color: #FFF;
-	font-weight: 700;
-	text-decoration: none;
-	text-shadow: 0 1px 3px #000;
-	color: white;
-	display: block;
+   color: #FFF;
+   font-weight: 700;
+   text-decoration: none;
+   text-shadow: 0 1px 3px #000;
+   color: white;
+   display: block;
 }
 
 header #logs {
-	float: right;
-	margin: 0px auto;
-	padding: 9px 0;
+   float: right;
+   margin: 0px auto;
+   padding: 9px 0;
 }
 
 header #logs a {
-	font-weight: 700;
-	text-decoration: none;
-	text-shadow: 0 1px 3px #000;
-	color: white;
-	font-weight: 400;
+   font-weight: 700;
+   text-decoration: none;
+   text-shadow: 0 1px 3px #000;
+   color: white;
+   font-weight: 400;
 }
 
+/* Menu */
+
 #menu {
-	background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(202,202,202,0.85) 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(202,202,202,0.85)));
-	background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(202,202,202,0.85) 100%);
-	background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(202,202,202,0.85) 100%);
-	background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(202,202,202,0.85) 100%);
-	background: linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(202,202,202,0.85) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#d9cacaca',GradientType=0 );
-	box-shadow: 0 0 35px #000;
-	font-size: 14px;
-	height: 35px;
-	margin: 35px auto 13px;
-	width: 990px;
-	display: block;
+   background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(202,202,202,0.85) 100%);
+   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(202,202,202,0.85)));
+   background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(202,202,202,0.85) 100%);
+   background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(202,202,202,0.85) 100%);
+   background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(202,202,202,0.85) 100%);
+   background: linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(202,202,202,0.85) 100%);
+   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#d9cacaca',GradientType=0 );
+   box-shadow: 0 0 35px #000;
+   font-size: 14px;
+   height: 35px;
+   margin: 35px auto 13px;
+   width: 990px;
+   display: block;
 }
 
 #menu ul {
-	display: block;
-	margin: 0 auto;
-	width: 800px;
-	clear: both;
+   display: block;
+   margin: 0 auto;
+   width: 800px;
+   clear: both;
 }
 
 #menu li {
-	border-left: 1px solid lightgray;
-	float: left;
-	list-style: none;
-	height: 35px;
+   border-left: 1px solid lightgray;
+   float: left;
+   list-style: none;
+   height: 35px;
 }
 
 #menu li:hover {
-	background: rgb(185, 185, 185)
+   background: rgb(185, 185, 185)
 }
 
 #menu li:first-child {
-	border: none
+   border: none
 }
 
 #menu li a {
-	color: #FFF;
-	display: inline-block;
-	font-size: 20px;
-	font-weight: 400;
-	text-shadow: 0 1px 3px #000;
-	text-transform: uppercase;
-	padding: 5px 25px;
+   color: #FFF;
+   display: inline-block;
+   font-size: 20px;
+   font-weight: 400;
+   text-shadow: 0 1px 3px #000;
+   text-transform: uppercase;
+   padding: 5px 25px;
 }
+
+/* Global content and wrapping */
 
 #wrapper {
-	margin: 0 auto;
-	width: 990px;
+   margin: 0 auto;
+   width: 990px;
 }
-
 
 #content, .content {
-	background: #102A67;
-	box-shadow: 0 0 35px #000;
-	padding: 25px;
-	font-family: "HelveticaNeue","Helvetica Neue",Helvetica,Arial,Verdana,sans-serif;
+   background: #102A67;
+   box-shadow: 0 0 35px #000;
+   padding: 25px;
+   font-family: "HelveticaNeue","Helvetica Neue",Helvetica,Arial,Verdana,sans-serif;
 }
+
+/* Front page */
 
 #home {
-	height: 300px;
-	margin: 0 auto 54px;
+   height: 300px;
+   margin: 0 auto 54px;
 }
 
-/*--- Style for frontpage slideshow (#slider) @ slideshow.css ---*/
+/* Featured Content --- slideshow.css */
 
 #home .featured {
-	background: #102A67;
-	box-shadow: 0 0 35px #000;
-	float: right;
-	height: 300px;
-	width: 372px;
+   background: #102A67;
+   box-shadow: 0 0 35px #000;
+   float: right;
+   height: 300px;
+   width: 372px;
 }
 
+/* Ticker */
+
 #home #ticker {
-	background: #102A67;
-	box-shadow: 0 0 35px #000;
-	display: inline-block;
-	height: 30px;
-	margin: 13px 0;
-	position: relative;
-	width: 100%;
+   background: #102A67;
+   box-shadow: 0 0 35px #000;
+   display: inline-block;
+   height: 30px;
+   margin: 13px 0;
+   position: relative;
+   width: 100%;
 }
 
 #ticker .shadow {
-position: absolute;
-width: 100%;
-height: 30px;
-padding: 0;
-box-shadow: inset -20px 0px 20px #102A67, inset 20px 0px 20px #102A67;
+   position: absolute;
+   width: 100%;
+   height: 30px;
+   padding: 0;
+   box-shadow: inset -20px 0px 20px #102A67, inset 20px 0px 20px #102A67;
 }
 
 #ticker marquee, #ticker div {
-float: left;
-margin: 0;
-padding: 6px 0;
-line-height: 1;
+   float: left;
+   margin: 0;
+   padding: 6px 0;
+   line-height: 1;
 }
 
-#ticker span{
-margin-right:75px;
+#ticker span {
+   margin-right: 75px
 }
 
-#ticker a{
-color:white;
+#ticker a {
+   color: white
 }
+
+/* Profile page */
 
 #profile #heading .well {
-	padding: 5px;
-	height: 70px;
-	box-shadow: 0 0 4px black;
+   padding: 5px;
+   height: 70px;
+   box-shadow: 0 0 4px black;
 }
 
 #profile #heading .well a {
-	width: 60px;
-	float: left;
-	box-shadow: 0 0 3px black;
+   width: 60px;
+   float: left;
+   box-shadow: 0 0 3px black;
 }
 
 #profile #heading .well h2 {
-	margin: 12px 10px;
-	text-shadow: 0px 1px 3px black;
-	color: white;
-	float: left;
-	font-size: 42px;
+   margin: 12px 10px;
+   text-shadow: 0px 1px 3px black;
+   color: white;
+   float: left;
+   font-size: 42px;
 }
 
 #profile #heading .well p {
-	padding: 0;
-	float: right;
-	margin: 20px;
-	font-size: 18px;
-	text-shadow: 0px 1px 3px black;
-	color: white;
+   padding: 0;
+   float: right;
+   margin: 20px;
+   font-size: 18px;
+   text-shadow: 0px 1px 3px black;
+   color: white;
 }
 
 #profile .span4 {
-	/* Sidebar */
-	background: white;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
-	box-shadow: 0 0 4px black;
+   /* Sidebar */
+   background: white;
+   -webkit-border-radius: 4px;
+   -moz-border-radius: 4px;
+   border-radius: 4px;
+   box-shadow: 0 0 4px black;
 }
 
 #profile .span4 li {
-	padding: 25px;
-	background: blue;
-	width: 100px;
-	height: 100px;
-	display: block;
-	list-style: none;
-	float: left;
+   padding: 25px;
+   background: blue;
+   width: 100px;
+   height: 100px;
+   display: block;
+   list-style: none;
+   float: left;
 }
 
 #profile .span4 h2 {
-	font-size: 17px;
-	text-align: center;
-	margin-top: 70px;
+   font-size: 17px;
+   text-align: center;
+   margin-top: 70px;
 }
 
 #profile .span4 h3 {
-	padding: 10px;
-	color: black;
+   padding: 10px;
+   color: black;
 }
 
 #profile .span8 {
-	/* Content */
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
+   /* Content */
+   -webkit-border-radius: 4px;
+   -moz-border-radius: 4px;
+   border-radius: 4px;
 }
 
+/* Footer */
+
 footer {
-	background: #102A67;
-	box-shadow: 0 0 35px #000;
-	margin: 12px auto;
-	width: 990px;
+   background: #102A67;
+   box-shadow: 0 0 35px #000;
+   margin: 12px auto;
+   width: 990px;
 }
 
 footer .column {
-	float: left;
-	margin: 0 20px 0 0;
-	padding: 30px;
-	width: 250px;
+   float: left;
+   margin: 0 20px 0 0;
+   padding: 30px;
+   width: 250px;
 }
 
 footer .column h3 {
-	font-size: 15px;
-	font-weight: 700;
+   font-size: 15px;
+   font-weight: 700;
 }
 
 footer .column p {
-	font-size: 14px
+   font-size: 14px
+;
+   margin: 0;
 }
 
-/* -- User styles -- */
+/* Login Screen */
 
 #login {
-	width: 336px;
-	margin: 0 auto;
-	padding: 38px 0px;
-	text-align: center;
-	font-family: "Oswald", sans-serif;
+   width: 336px;
+   margin: 0 auto;
+   padding: 38px 0px;
+   text-align: center;
+   font-family: "Oswald", sans-serif;
 }
 
-#login form{
-background: none;
+#login form {
+   background: none
 }
 
 #login label {
-	font-weight: 700;
-	font-size: 25px;
-	margin-bottom: 20px;
-	text-shadow: 0 1px 3px black;
+   font-weight: 700;
+   font-size: 25px;
+   margin-bottom: 20px;
+   text-shadow: 0 1px 3px black;
 }
 
 #login input {
-	width: 240px
+   width: 240px
 }
 
 #login p {
-	font-size: 14px
+   font-size: 14px
 }
 
 #login .openid .prov {
-	width: 100%;
-	display: block;
-	height: 25px;
+   width: 100%;
+   display: block;
+   height: 25px;
 }
 
 #login .openid ul {
-	text-align: center;
-	list-style-type: none;
-	display: inline;
-	width: 340px;
-	height: 25px;
-	display: block;
-	margin: 0 auto;
+   text-align: center;
+   list-style-type: none;
+   display: inline;
+   width: 340px;
+   height: 25px;
+   display: block;
+   margin: 0 auto;
 }
 
 #login .openid ul li {
-	float: left;
-	padding: 4px;
+   float: left;
+   padding: 4px;
 }
 
 #login .openid ul li span {
-	padding: 0 1em 0 3px;
-	color: black;
+   padding: 0 1em 0 3px;
+   color: black;
 }
 
 #login .openid fieldset {
-	clear: both;
-	padding: 1em 0;
+   clear: both;
+   padding: 1em 0;
 }
 
 #login .openid div+fieldset {
-	display: none
+   display: none
 }
 
 #login .openid label {
-	display: block;
-	font-weight: bold;
-	font-size: larger;
-	margin-bottom: .5em;
+   display: block;
+   font-weight: bold;
+   font-size: larger;
+   margin-bottom: .5em;
 }
 
 #login .openid ul li.highlight {
-	border-radius: 4px;
-	-moz-border-radius: 4px;
-	-webkit-border-radius: 4px;
-	background-color: #FD6;
+   border-radius: 4px;
+   -moz-border-radius: 4px;
+   -webkit-border-radius: 4px;
+   background-color: #FD6;
 }
 
 #login .openid fieldset div {
-	font-family: arial;
-	border-radius: 4px;
-	-moz-border-radius: 4px;
-	-webkit-border-radius: 4px;
-	background: #DCDCDC url(../images/login/fadegrey.png);
-	padding: 10px;
-	display: inline-block;
-	color: black;
+   font-family: arial;
+   border-radius: 4px;
+   -moz-border-radius: 4px;
+   -webkit-border-radius: 4px;
+   background: #DCDCDC url(../images/login/fadegrey.png);
+   padding: 10px;
+   display: inline-block;
+   color: black;
 }
 
 #login .openid_logo {
-	color: #F7931E;
-	padding: 6px 0px 8px 28px;
-	background: url(../images/login/openidico.png) no-repeat;
+   color: #F7931E;
+   padding: 6px 0px 8px 28px;
+   background: url(../images/login/openidico.png) no-repeat;
 }
 
-/*-- Menu for pages --*/
+/* Menu for pages */
 
 #pagemenu {
-	background: #102A65;
-	box-shadow: 0 0 35px #000;
-	margin: 0;
-	border: none;
-	width: 990px;
-	text-shadow: 0 1px 3px #000;
-	font-weight: 500;
-	font-size: 15px;
-	text-decoration: none;
-	margin-top: 25px;
+   background: #102A65;
+   box-shadow: 0 0 35px #000;
+   margin: 0;
+   border: none;
+   width: 990px;
+   text-shadow: 0 1px 3px #000;
+   font-weight: 500;
+   font-size: 15px;
+   text-decoration: none;
+   margin-top: 10px;
 }
 
 #pagemenu a {
-	color: white
+   color: white
 }
 
 .nav {
-	margin-bottom: 0px
+   margin-bottom: 0px
 }
 
 /* -- Misc styles -- */
 
+/* Error stlyes */
 #errorbox {
-	min-height: 350px;
-	width: 650px;
-	margin: 28px auto;
-	text-align: center;
-	padding: 30px;
-	background: #102A67;
-	box-shadow: 0 0 35px black;
+   min-height: 350px;
+   width: 650px;
+   margin: 28px auto;
+   text-align: center;
+   padding: 30px;
+   background: #102A67;
+   box-shadow: 0 0 35px black;
 }
 
-#errorbox h1{
-font-weight: 400;
+#errorbox h1 {
+   font-weight: 400;
+   font-size: 2em;
 }
 
 #errorbox form {
-background: none;
+   background: none
 }
 
 #errorbox input {
-margin-bottom: 0;
+   margin-bottom: 0
 }
+
+/* Old versions of IE */
 
 .chromeframe {
-	text-align: center;
-	height: 31px;
-	font-size: 16px;
-	background: #1DD8F1;
-	font-weight: 700;
-	font-family: Arial,sans-serif;
+   text-align: center;
+   height: 31px;
+   font-size: 16px;
+   background: #1DD8F1;
+   font-weight: 700;
+   font-family: Arial,sans-serif;
 }
 
+/* Image Manager */
+
 .modal {
-	color: #333;
-	width: 700px;
-	margin-left: -350px;
+   color: #333;
+   width: 700px;
+   margin-left: -350px;
 }
 
 #imagemanager {
-	width: 770px;
-	margin-left: -385px;
+   width: 770px;
+   margin-left: -385px;
 }
 
 #imagemanager label {
-	color: #333
+   color: #333
 }
 
 #imagemanager .thumbnail {
-	height: 100px
+   height: 100px
 }
 
 .row-fluid .image-list {
-	margin-left: -2.12766%
+   margin-left: -2.12766%
 }
 
 .row-fluid .image-list li {
-	margin-left: 1.77% !important;
-	margin-bottom: 10px;
+   margin-left: 1.77% !important;
+   margin-bottom: 10px;
+}
+
+/* Article editor */
+
+.cleditorMain {
+   border: 1px solid #999;
+   padding: 0 1px 1px;
+   background-color: white;
+}
+
+.cleditorMain iframe {
+   border: none;
+   margin: 0;
+   padding: 0;
+}
+
+.cleditorMain textarea {
+   border: none;
+   nowhitespace: afterproperty;
+   margin: 0;
+   padding: 0;
+   overflow-y: scroll;
+   font: 10pt Arial,Verdana;
+   resize: none;
+   outline: none /* webkit grip focus */;
+}
+
+.cleditorToolbar {
+   background: url('../images/admin/editor/toolbar.gif') repeat
+}
+
+.cleditorGroup {
+   float: left;
+   height: 26px;
+}
+
+.cleditorButton {
+   float: left;
+   width: 24px;
+   height: 24px;
+   margin: 1px 0 1px 0;
+   background: url('../images/admin/editor/buttons.gif');
+}
+
+.cleditorDisabled {
+   opacity: 0.3;
+   filter: alpha(opacity=30);
+}
+
+.cleditorDivider {
+   float: left;
+   width: 1px;
+   height: 23px;
+   margin: 1px 0 1px 0;
+   background: #CCC;
+}
+
+.cleditorPopup {
+   border: solid 1px #999;
+   background-color: white;
+   position: absolute;
+   font: 10pt Arial,Verdana;
+   cursor: default;
+   z-index: 10000;
+}
+
+.cleditorList div {
+   padding: 2px 4px 2px 4px
+}
+
+.cleditorList p, .cleditorList h1, .cleditorList h2, .cleditorList h3, .cleditorList h4, .cleditorList h5, .cleditorList h6, .cleditorList font {
+   padding: 0;
+   margin: 0;
+   background-color: Transparent;
+}
+
+.cleditorColor {
+   width: 150px;
+   padding: 1px 0 0 1px;
+}
+
+.cleditorColor div {
+   float: left;
+   width: 14px;
+   height: 14px;
+   margin: 0 1px 1px 0;
+}
+
+.cleditorPrompt {
+   background-color: #F6F7F9;
+   padding: 4px;
+   font-size: 8.5pt;
+}
+
+.cleditorPrompt input, .cleditorPrompt textarea {
+   font: 8.5pt Arial,Verdana
+}
+
+.cleditorMsg {
+   background-color: #FDFCEE;
+   width: 150px;
+   padding: 4px;
+   font-size: 8.5pt;
 }
