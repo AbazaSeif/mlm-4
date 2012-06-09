@@ -13,7 +13,7 @@
 		</div>
 		
 		<!-- Captions  -->
-		<span class="orbit-caption" id="caption1"><h3>Title</h3><p>Description</p></span>
+		<span class="orbit-caption" id="caption1">Caption 1</span>
 		<span class="orbit-caption" id="caption2">Caption 2</span>
 		<span class="orbit-caption" id="caption3">Caption 3</span>
 		<span class="orbit-caption" id="caption4">Caption 4</span>

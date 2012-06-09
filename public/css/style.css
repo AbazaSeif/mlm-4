@@ -114,8 +114,6 @@ hr {
 }
 
 p {
-	
-   text-align: left;
    margin: 0;
 }
 
@@ -139,7 +137,6 @@ sub {
 
 ul, ol {
    margin: 0;
-   padding:0;
    line-height: 180%;
 }
 
@@ -327,6 +324,277 @@ header #logs a {
    color: white
 }
 
+/* Footer */
+
+footer {
+   background: #102A67;
+   box-shadow: 0 0 35px #000;
+   margin: 12px auto;
+   width: 990px;
+}
+
+footer .column {
+   float: left;
+   margin: 0 20px 0 0;
+   padding: 30px;
+   width: 250px;
+}
+
+footer .column h3 {
+   font-size: 15px;
+   font-weight: 700;
+}
+
+footer .column p {
+   font-size: 14px;
+   margin: 0;
+}
+
+/* News page */
+
+#news {
+color:white;
+}
+
+#news #articles{
+float:left;
+width:600px;
+}
+
+#news .post {
+	margin-bottom: 15px;
+	border-bottom: 1px dashed #D8D8D8;
+}
+
+#news .post .title {
+	margin-bottom: 10px;
+	padding: 12px 0 0 0px;
+	font-size: 32px;
+}
+
+#news .post .title a {
+	border: none;
+	color: white;
+	font-family: "Oswald";
+	text-shadow: 0px 1px 1px black;
+}
+
+#news .post .meta {
+	margin-bottom: 30px;
+	padding: 5px 0px 15px 0px;
+	text-align: left;
+	font-weight: normal;
+}
+
+#news .post .meta .date {
+	float: left;
+}
+
+#news .post .meta .posted {
+	float: right;
+}
+
+.#news .post .meta a {
+}
+
+#news .post .entry {
+	padding: 0px 0px 20px 0px;
+	padding-bottom: 20px;
+	text-align: justify;
+}
+
+#news .links {
+	height: 30px;
+	padding: 30px 0px 0px 0px;
+	font-size: 14px;
+	font-weight: normal;
+	color: #1C1C1C;
+}
+
+/* Sidebar */
+
+#news #sidebar {
+	float: right;
+	width: 300px;
+	margin: 0px;
+	padding: 30px 0px 0px 0px;
+}
+
+#news #sidebar ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#news #sidebar li {
+	margin: 0;
+	padding: 0;
+}
+
+#news #sidebar li ul {
+	margin: 0px 0px;
+	padding-bottom: 50px;
+}
+
+#news #sidebar li li {
+	border-bottom: 1px dashed #D8D8D8;
+	margin: 0px 0px;
+	padding: 5px 0px;
+	border-left: none;
+}
+
+#news #sidebar li li a {
+	color: #ffffff;
+}
+
+#news #sidebar li li span {
+	display: block;
+	padding: 0;
+	font-size: 11px;
+	font-style: italic;
+}
+
+#news #sidebar h2 {
+	padding-bottom: 20px;
+	font-size: 1.8em;
+}
+
+#news #sidebar p {
+	margin: 0px 0px 40px 0px;
+	padding: 0px;
+	text-align: justify;
+}
+
+#news #sidebar a {
+	border: none;
+}
+
+#news #sidebar a:hover {
+	text-decoration: underline;
+}
+
+/* Login Screen */
+
+#login {
+   width: 336px;
+	margin: 0 auto;
+	padding: 40px 0;
+	text-align: center;
+	font-family: "Oswald","Helvetica Neue Condensed Bold",Helvetica,Arial,Verdana,sans-serif;
+}
+
+#login form {
+   background: none
+}
+
+#login label {
+   font-weight: 700;
+   font-size: 25px;
+   margin-bottom: 20px;
+   text-shadow: 0 1px 3px black;
+}
+
+#login input {
+   width: 240px
+}
+
+#login p {
+   font-size: 14px
+}
+
+#login .openid .prov {
+   width: 100%;
+   display: block;
+   height: 25px;
+}
+
+#login .openid ul {
+   text-align: center;
+   list-style-type: none;
+   display: inline;
+   width: 340px;
+   height: 25px;
+   display: block;
+   margin: 0 auto;
+   padding: 0;
+}
+
+#login .openid ul li {
+   float: left;
+   padding: 4px;
+}
+
+#login .openid ul li span {
+   padding: 0 1em 0 3px;
+   color: black;
+}
+
+#login .openid fieldset {
+   clear: both;
+   padding: 1em 0;
+}
+
+#login .openid div+fieldset {
+   display: none
+}
+
+#login .openid label {
+   display: block;
+   font-weight: bold;
+   font-size: larger;
+}
+
+#login .openid ul li.highlight {
+   border-radius: 4px;
+   -moz-border-radius: 4px;
+   -webkit-border-radius: 4px;
+   background-color: #FD6;
+}
+
+#login .openid fieldset div {
+   font-family: arial;
+   border-radius: 4px;
+   -moz-border-radius: 4px;
+   -webkit-border-radius: 4px;
+   background: #DCDCDC url(../images/login/fadegrey.png);
+   padding: 10px;
+   display: inline-block;
+   color: black;
+}
+
+#login .openid_logo {
+   color: #F7931E;
+padding: 0 0 0 28px;
+background: url(../images/login/openidico.png) no-repeat left;
+}
+
+/* Menu for pages */
+
+#pagemenu {
+   background: #102A65;
+   box-shadow: 0 0 35px #000;
+   margin: 0;
+   border: none;
+   width: 990px;
+   text-shadow: 0 1px 3px #000;
+   font-weight: 500;
+   font-size: 15px;
+   text-decoration: none;
+   margin-top: 10px;
+}
+
+#pagemenu ul {
+   padding:0;
+}
+
+#pagemenu a {
+   color: white
+}
+
+.nav {
+   margin-bottom: 0px
+}
+
 /* Profile page */
 
 #profile #heading .well {
@@ -393,151 +661,6 @@ header #logs a {
    -webkit-border-radius: 4px;
    -moz-border-radius: 4px;
    border-radius: 4px;
-}
-
-/* Footer */
-
-footer {
-   background: #102A67;
-   box-shadow: 0 0 35px #000;
-   margin: 12px auto;
-   width: 990px;
-}
-
-footer .column {
-   float: left;
-   margin: 0 20px 0 0;
-   padding: 30px;
-   width: 250px;
-}
-
-footer .column h3 {
-   font-size: 15px;
-   font-weight: 700;
-}
-
-footer .column p {
-   font-size: 14px
-;
-   margin: 0;
-}
-
-/* Login Screen */
-
-#login {
-   width: 336px;
-   margin: 0 auto;
-   padding: 38px 0px;
-   text-align: center;
-   font-family: "Oswald", sans-serif;
-}
-
-#login form {
-   background: none
-}
-
-#login label {
-   font-weight: 700;
-   font-size: 25px;
-   margin-bottom: 20px;
-   text-shadow: 0 1px 3px black;
-}
-
-#login input {
-   width: 240px
-}
-
-#login p {
-   font-size: 14px
-}
-
-#login .openid .prov {
-   width: 100%;
-   display: block;
-   height: 25px;
-}
-
-#login .openid ul {
-   text-align: center;
-   list-style-type: none;
-   display: inline;
-   width: 340px;
-   height: 25px;
-   display: block;
-   margin: 0 auto;
-}
-
-#login .openid ul li {
-   float: left;
-   padding: 4px;
-}
-
-#login .openid ul li span {
-   padding: 0 1em 0 3px;
-   color: black;
-}
-
-#login .openid fieldset {
-   clear: both;
-   padding: 1em 0;
-}
-
-#login .openid div+fieldset {
-   display: none
-}
-
-#login .openid label {
-   display: block;
-   font-weight: bold;
-   font-size: larger;
-   margin-bottom: .5em;
-}
-
-#login .openid ul li.highlight {
-   border-radius: 4px;
-   -moz-border-radius: 4px;
-   -webkit-border-radius: 4px;
-   background-color: #FD6;
-}
-
-#login .openid fieldset div {
-   font-family: arial;
-   border-radius: 4px;
-   -moz-border-radius: 4px;
-   -webkit-border-radius: 4px;
-   background: #DCDCDC url(../images/login/fadegrey.png);
-   padding: 10px;
-   display: inline-block;
-   color: black;
-}
-
-#login .openid_logo {
-   color: #F7931E;
-   padding: 6px 0px 8px 28px;
-   background: url(../images/login/openidico.png) no-repeat;
-}
-
-/* Menu for pages */
-
-#pagemenu {
-   background: #102A65;
-   box-shadow: 0 0 35px #000;
-   margin: 0;
-   border: none;
-   width: 990px;
-   text-shadow: 0 1px 3px #000;
-   font-weight: 500;
-   font-size: 15px;
-   text-decoration: none;
-   margin-top: 10px;
-}
-
-#pagemenu a {
-   color: white
-}
-
-.nav {
-   margin-bottom: 0px
 }
 
 /* -- Misc styles -- */
@@ -679,6 +802,7 @@ footer .column p {
    padding: 0;
    margin: 0;
    background-color: Transparent;
+   color:black;
 }
 
 .cleditorColor {
