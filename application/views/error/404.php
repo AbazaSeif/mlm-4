@@ -12,13 +12,13 @@
 	        <br>
 			<hr>
 			<br>
-			<?php $messages = array('Stronghold not found', 'There is no wool here', 'An Enderman stole this page'); ?>
+			<?php $messages = array('Stronghold not found', 'There is no wool here', 'An Enderman stole this page','Chunk not found','Page blew up'); ?>
 			<h1>404: <?php echo $messages[mt_rand(0, 2)]; ?></h1>
 			<br>
 			<hr>
 			<br>
 			<p>
-				This page probably moved or has been dumped into The Void.
+				This page probably moved, has been dumped into The Void or has never existed.
 				<br> 
 				You can try a search below or go to back to our <?php echo HTML::link('/', 'home page'); ?>.
 			</p>
