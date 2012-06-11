@@ -12,6 +12,7 @@ class Account_Controller extends Base_Controller {
 	
 	public $restful = true;
 	
+	/* Account management */
 	public function get_index() {
 		$openids = Auth::user()->openid;
 		return View::make("pages.account", array("title" => "Account", "openids" => $openids));
@@ -23,21 +24,23 @@ class Account_Controller extends Base_Controller {
 		}
 		return View::make('pages.login', array('title' => 'Login', "javascript" => array("login")));
 	}
+	/* Do openid login */
 	public function post_login() {
 		$openid = new LightOpenID(Config::get('openid.host'));
 		try {
 			$openid->identity = Input::get('openid_identifier');
 			$openid->returnUrl = URL::to_action("account@callback");
 			return Redirect::to($openid->authUrl());
-		} catch(Exception $e) {
+		} catch(Exception $e) { // Failed to connect to openid endpoint?
 			Messages::add('error', $e->getMessage());
-			if(Auth::check()) {
+			if(Auth::check()) { // If logged in, redirect to account (probably wanted to add a openid method to account)
 				return Redirect::to_action("account");
 			} else {
 				return Redirect::to_action("account@login");
 			}
 		}
 	}
+	/* Openid callback */
 	public function get_callback() {
 		$openid = new LightOpenID(Config::get('openid.host'));
 		if($openid->mode) {
@@ -45,17 +48,17 @@ class Account_Controller extends Base_Controller {
 				Messages::add('error', 'Login cancelled');
 				return Redirect::home();
 			} else {
-				if($openid->validate()) {
+				if($openid->validate()) { // Validate that proper openid loop was done (no rouge openid endpoints)
 					$identity = $openid->identity;
-					if(Auth::guest()) {
+					if(Auth::guest()) { // Guest either logs in, or registers
 						if(Auth::attempt(array("identity" => $identity))) {
 							Messages::add("success", "Welcome back ".Auth::user()->username."!");
 							return Redirect::home();
 						} else {
-							Session::put("openid-identity", $identity);
+							Session::put("openid-identity", $identity); /* Used when registration is completed */
 							return Redirect::to_action("account@register");
 						}
-					} else {
+					} else { // Already logged in, check if openid identity isn't in use
 						if(Openid::where_identity($identity)->count() == 0) {
 							Auth::user()->openid()->insert(array("identity" => $identity));
 							Messages::add("success", "This login has been added");
@@ -74,16 +77,18 @@ class Account_Controller extends Base_Controller {
 			return Redirect::home();
 		}
 	}
+	/* Registration form */
 	public function get_register() {
 		if(Auth::check()) {
 			return Redirect::home();
 		}
-		if(!Session::has("openid-identity")) {
+		if(!Session::has("openid-identity")) { // Make sure user has come here after trying to authendicate
 			Messages::add("warning", "Session timeout!");
 			return Redirect::to_action("account@login");
 		}
 		return View::make('pages.register');
 	}
+	/* Actual registration */
 	public function post_register() {
 		if(Auth::check()) {
 			return Redirect::home();
@@ -124,16 +129,17 @@ class Account_Controller extends Base_Controller {
 		if(!($oid = Input::get("oid"))) {
 			return Redirect::to_action("account");
 		}
-		if(Auth::user()->openid()->count() <= 1) {
+		if(Auth::user()->openid()->count() <= 1) { // count() should never < 1
 			Messages::add("error", "You can't delete the only way to login");
 			return Redirect::to_action("account");
 		}
 		$openid = Openid::find($oid);
 		if(!$openid || $openid->user_id != Auth::user()->id) {
-			return Redirect::to_action("account");
+			return Redirect::to_action("account"); // Openid not in use or is not owned by current user
 		}
 		$openid->delete();
 		Messages::add("success", "Openid method deleted!");
 		return Redirect::to_action("account");
 	}
+	
 }

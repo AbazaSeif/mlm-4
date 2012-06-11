@@ -6,11 +6,14 @@ class Admin_User_Controller extends Admin_Controller {
 		parent::__construct();
 		$this->filter("before", "csrf")->on("post")->only("edit");
 	}
-
+	
+	// Listing users
 	public function get_index() {
 		$users = DB::table("users")->get(array("id", "username", "mc_username"));
 		return View::make('admin.users.list', array("users" => $users, "title" => "Users | Admin"));
 	}
+
+	// Edit form
 	public function get_edit($id) {
 		$user = DB::table("users")->find($id); // Don't need full ORM for this
 		if(!$user) {
@@ -19,6 +22,8 @@ class Admin_User_Controller extends Admin_Controller {
 		}
 		return View::make('admin.users.form', array("userdata" => $user, "title" => "Edit user {$user->username} | Users | Admin"));
 	}
+
+	// Editing
 	public function post_edit($id) {
 		$user = User::find($id);
 		if(!$user) {
@@ -29,7 +34,7 @@ class Admin_User_Controller extends Admin_Controller {
 		if(!Input::get("admin")) {
 			Input::merge(array("admin" => 0));
 		}
-		$validation_rules = array(
+		$validation_rules = array( // Make sure it fits requirements and username and minecraft username are unique (except for current one)
 			'username'  => "required|min:2|max:16|match:/^[a-z0-9_]*$/i|unique:users,username,{$user->id}",
 			'mc_username' => "required|min:2|max:16|match:/^[a-z0-9_]*$/i|unique:users,mc_username,{$user->id}"
 		);

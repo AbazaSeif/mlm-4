@@ -6,17 +6,18 @@ class Imgmgr_Controller extends Base_Controller {
 		parent::__construct();
 		$this->filter("before", "auth");
 	}
-	
+	// Get image manager
 	public function get_index() {
 		$images = Image::paginate(50);
 		return View::make("images.viewer", array("images" => $images));
 	}
+	// Handle image uploads
 	public function post_upload() {
 		if(!Auth::user()->admin) {
 			return Response::error('404');
 		}
 		$input = Input::all();
-		if(strlen($input["title"]) == 0) {
+		if(strlen($input["title"]) == 0) { // Just use the filename
 			$input["title"] = $input["uploaded"]["name"];
 		}
 		$validation = Validator::make($input, array("uploaded" => "image|max:1000"));

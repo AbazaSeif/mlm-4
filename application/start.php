@@ -182,6 +182,9 @@ Auth::extend('openid', function() {
 	return new OpenIDDriver();
 });
 
+/*
+ * HTMLPurifier - for clearing html input of xss attacks
+ */
 IoC::singleton("HTMLPurifier", function() {
 	$config = HTMLPurifier_Config::createDefault();
 	// Defaults
@@ -189,7 +192,9 @@ IoC::singleton("HTMLPurifier", function() {
 	$config->set('URI.SafeIframeRegexp', '%^http://(www.youtube(-nocookie)?.com/embed/|player.vimeo.com/video/)%');
 	return new HTMLPurifier($config);
 });
-
+/*
+ * Image select form element
+ */
 Form::macro('imageselect', function($name, $value = null, $previewimage = null, $attributes = array()) {
 	return Form::hidden($name, $value, $attributes).'<img src="'.$previewimage.'" /> <a href="#" class="btn" onClick="MLM.images.open({mode: &quot;id&quot;, field: $(this).prevAll(&quot;input&quot;), preview: $(this).prevAll(&quot;img&quot;) }); return false;"><i class="icon-picture"></i> Select image</a>';
 });

@@ -6,13 +6,14 @@ class Admin_News_Controller extends Admin_Controller {
 		parent::__construct();
 		$this->filter("before", "csrf")->on("post")->only(array("new", "edit", "delete"));
 	}
-	
+	// Listing news
 	public function get_index() {
 		$news = DB::table("news")->order_by("id", "desc")->get(array("id", "title", "slug"));
 		return View::make("admin.news.list", array("news" => $news, "title" => "News | Admin"));
 	}
+	// New form
 	public function get_new() {
-		if(Input::old("image")) {
+		if(Input::old("image")) { // If a image was selected, find the preview for it
 			$oldimage = Image::find(Input::old("image"));
 			if($oldimage) {
 				$oldimage = URL::to_asset($oldimage->file_small);
@@ -20,6 +21,7 @@ class Admin_News_Controller extends Admin_Controller {
 		} else {
 			$oldimage = null;
 		}
+
 		return View::make("admin.news.newform", array("title" => "New | News | Admin", "oldimage" => $oldimage));
 	}
 	public function post_new() {
@@ -36,6 +38,7 @@ class Admin_News_Controller extends Admin_Controller {
 		$input = Input::all();
 		$validation = Validator::make($input, $validation_rules);
 		if($validation->passes()) {
+			// Yay, add the news item
 			$newsitem = new News();
 			$newsitem->title = $input["title"];
 			$newsitem->summary = $input["summary"];
@@ -55,13 +58,14 @@ class Admin_News_Controller extends Admin_Controller {
 			return Redirect::to_action("admin.news@new")->with_input()->with_errors($validation);
 		}
 	}
+	// Edit form
 	public function get_edit($id) {
 		$newsitem = News::find($id);
 		if(!$newsitem) {
 			Messages::add("error", "News item not found");
 			return Redirect::to_action("admin.news");
 		}
-		if(Input::old("image")) {
+		if(Input::old("image")) { // Find a preview image, either one for last input or the current one
 			$previewimage = Image::find(Input::old("image"));
 			if($previewimage) {
 				$previewimage = URL::to_asset($previewimage->file_small);
@@ -71,6 +75,7 @@ class Admin_News_Controller extends Admin_Controller {
 		}
 		return View::make("admin.news.form", array("newsitem" => $newsitem, "previewimage" => $previewimage, "title" => "Edit ".e($newsitem->title)." | News | Admin"));
 	}
+	// Saving edits
 	public function post_edit($id) {
 		$newsitem = News::find($id);
 		if(!$newsitem) {
@@ -108,7 +113,7 @@ class Admin_News_Controller extends Admin_Controller {
 			return Redirect::to_action("admin.news@edit", array($id))->with_input()->with_errors($validation);
 		}
 	}
-
+	// Delete form. DO NOT EVER DO ACTUAL DELETEION IN A GET METHOD
 	public function get_delete($id) {
 		$newsitem = News::find($id);
 		if(!$newsitem) {
@@ -117,6 +122,7 @@ class Admin_News_Controller extends Admin_Controller {
 		}
 		return View::make("admin.news.delete", array("title" => "Delete ".e($newsitem->title)." | News | Admin", "newsitem" => $newsitem));
 	}
+	// Deletion
 	public function post_delete($id) {
 		$newsitem = News::find($id);
 		if(!$newsitem) {

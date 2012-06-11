@@ -3,6 +3,14 @@
 class Image extends Eloquent {
 	public static $timestamps = false;
 	
+	/*
+	 * Method to easily create new Image elements
+	 *
+	 * Arguemnts array must have:
+	 * file - the uploaded file (from Input::file("name")) DOES NOT HANDLE MULTIPLE FILES
+	 * filename - filename to be saved in database
+	 * type - type, eg. upload for manually uploaded files
+	 */
 	public static function create($arguments) {
 		$handle = new upload($arguments["file"]);
 		if($handle->uploaded) {
@@ -42,7 +50,9 @@ class Image extends Eloquent {
 			return null;
 		}
 	}
-	
+	/*
+	 * Following are also accessible as $image->file_{size}, eg $image->file_original
+	 */
 	public function get_file_original() {
 		return "images/uploads/o/".$this->file;
 	}
@@ -55,6 +65,7 @@ class Image extends Eloquent {
 	public function get_file_small() {
 		return "images/uploads/s/".$this->file;
 	}
+	
 	public function to_array() {
 		$array = parent::to_array();
 		$array["file_small"] = $this->file_small;

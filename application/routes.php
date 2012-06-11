@@ -32,19 +32,26 @@
 |		});
 |
 */
+
+// Public routes
 Route::controller(array('account', "imgmgr", "news"));
+// Admin routes (no real need to seperate, just to keep nice)
 Route::controller(array('admin.user', 'admin.pages', 'admin.news'));
 
+// Home
 Route::get('/', function() {
 	return View::make('home.index', array("javascript" => array("home")));
 });
+// Reroute /login to account/login
 Route::get("login", "account@login");
 
+// User pages
 Route::get("user/(:any?)", function($username = null) {
 	$userobj = false;
-	if($username) {
+	if($username) { // If username is set
 		$userobj = User::where_username($username)->first();
 	}
+	// Following is for testing ease only
 	if(!$userobj) {
 		if(Auth::check()) {
 			$userobj = Auth::user();
@@ -52,9 +59,11 @@ Route::get("user/(:any?)", function($username = null) {
 			$userobj = User::first();
 		}
 	}
+
 	return View::make("user.home", array('user' => $userobj));
 });
 
+// Admin home
 Route::get("admin", array('before' => 'admin', function() {
 	return View::make("admin.home", array("title" => "Admin"));
 }));
@@ -63,7 +72,6 @@ Route::get("admin", array('before' => 'admin', function() {
 //Since this one is a tad demanding, make sure it ALWAYS remains at the bottom
 Route::get("(:any)", function($slug) {
 	$custom_page = DB::table("pages")->where("url_slug", "=", $slug)->first();
-	$custom_page = DB::first("select * from pages where url_slug = ?", array($slug)); //dunno if $slug needs some escape-work done to prevent SQL injection or if that's all automatic
 	if($custom_page) {
 			return View::make("pages.custom", array("custom_page" => $custom_page, "title" => $custom_page->title));
 	}
