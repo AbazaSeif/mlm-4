@@ -62,6 +62,7 @@ Route::get("admin", array('before' => 'admin', function() {
 //Routes are checked in the order in which they are listed here
 //Since this one is a tad demanding, make sure it ALWAYS remains at the bottom
 Route::get("(:any)", function($slug) {
+	$custom_page = DB::table("pages")->where("url_slug", "=", $slug)->first();
 	$custom_page = DB::first("select * from pages where url_slug = ?", array($slug)); //dunno if $slug needs some escape-work done to prevent SQL injection or if that's all automatic
 	if($custom_page) {
 			return View::make("pages.custom", array("custom_page" => $custom_page, "title" => $custom_page->title));
