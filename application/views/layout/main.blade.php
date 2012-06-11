@@ -44,7 +44,7 @@
 <body>
 @endif
 	<!--[if lt IE 7]><p class="chromeframe">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/?locale=en">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
-	<header>
+	<header id="global-header">
 		<div id="bg">
 		<div class="holder">
 			<div id="logo">
@@ -80,7 +80,7 @@
 		{{ Messages::get_html() }}	
 		@yield('content')
 	</div>	
-	<footer>
+	<footer id="global-footer">
 		<div class="column">
 			<h3>Heading</h3>
 			<p>All sorts of awesome footer goodness</p>
@@ -93,7 +93,7 @@
 			<h3>Heading</h3>
 			<p>All sorts of awesome footer goodness</p>
 		</div>
-		<br class="clear" />
+		<br class="clearfix" />
 	</footer>
 	@yield("postfooter")
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>

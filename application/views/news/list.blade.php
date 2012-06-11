@@ -1,7 +1,7 @@
 @layout("layout.main")
 
 @section('content')
-<div id="pageheader"><br class="clear"></div>
+<header id="pageheader"><br class="clearfix"></header>
 <div class="content" id="news">
 <div id="articles">
 	@foreach($newslist->results as $article)
@@ -79,6 +79,6 @@
 						</li>
 					</ul>
 </aside>
-<br class="clear">
+<br class="clearfix">
 </div>
 @endsection

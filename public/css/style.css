@@ -25,7 +25,7 @@ body {
    background: #0FF
 }
 
-.clear {
+.clearfix {
    clear: both
 }
 
@@ -43,7 +43,7 @@ a {
 }
 
 a:hover {
-
+	
 }
 
 abbr, acronym { cursor: help; border-bottom: 1px dotted #888; }
@@ -134,13 +134,13 @@ ul, ol {
    line-height: 180%;
 }
 
-/* Header */
+/* Global Header */
 
-header {
+#global-header {
    width: 100%
 }
 
-header #bg {
+#global-header #bg {
    background: transparent url(../images/static/branding.png) repeat-x center center;
    box-shadow: 0 0 35px #000;
    height: 42px;
@@ -148,7 +148,7 @@ header #bg {
    width: 100%;
 }
 
-header .holder {
+#global-header .holder {
    clear: both;
    display: block;
    height: 100%;
@@ -158,20 +158,20 @@ header .holder {
 
 /* Logo */
 
-header #logo {
+#global-header #logo {
    float: left;
    position: relative;
    width: 480px;
 }
 
-header #logo img {
+#global-header #logo img {
    margin-top: -50px;
    margin-bottom: -40px;
    width: 236px;
    height: 122px;
 }
 
-header #logo h1 {
+#global-header #logo h1 {
    font-family: Oswald, Helvetica, Arial;
    font-size: 26px;
    font-weight: 700;
@@ -179,7 +179,7 @@ header #logo h1 {
    display: inline;
 }
 
-header #logo a {
+#global-header #logo a {
    color: #FFF;
    font-weight: 700;
    text-decoration: none;
@@ -188,13 +188,13 @@ header #logo a {
    display: block;
 }
 
-header #logs {
+#global-header #logs {
    float: right;
    margin: 0px auto;
    padding: 9px 0;
 }
 
-header #logs a {
+#global-header #logs a {
    font-weight: 700;
    text-decoration: none;
    text-shadow: 0 1px 3px #000;
@@ -202,7 +202,7 @@ header #logs a {
    font-weight: 400;
 }
 
-/* Menu */
+/* Global Menu */
 
 #menu {
    background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(202,202,202,0.85) 100%);
@@ -232,6 +232,11 @@ header #logs a {
    float: left;
    list-style: none;
    height: 35px;
+   -moz-transition: box-shadow .3s ease-in-out;
+	-ms-transition: box-shadow .3s ease-in-out;
+	-o-transition: box-shadow .3s ease-in-out;
+	-webkit-transition: box-shadow .3s ease-in-out;
+	transition: box-shadow .3s ease-in-out;
 }
 
 #menu li:hover {
@@ -296,7 +301,7 @@ header #logs a {
    width: 100%;
 }
 
-#ticker .shadow {
+#home #ticker .shadow {
    position: absolute;
    width: 100%;
    height: 30px;
@@ -304,38 +309,38 @@ header #logs a {
    box-shadow: inset -20px 0px 20px #102A67, inset 20px 0px 20px #102A67;
 }
 
-#ticker marquee, #ticker div {
+#home #ticker marquee, #ticker div {
    float: left;
    margin: 0;
    padding: 6px 0;
    line-height: 1;
 }
 
-#ticker span {
+#home #ticker span {
    margin-right: 75px
 }
 
-#ticker a {
+#home #ticker a {
    color: white
 }
 
-/* Footer */
+/* Global Footer */
 
-footer {
+#global-footer {
    background: #102A67;
    box-shadow: 0 0 35px #000;
    margin: 12px auto;
    width: 990px;
 }
 
-footer .column {
+#global-footer .column {
    float: left;
    margin: 0 20px 0 0;
    padding: 30px;
    width: 250px;
 }
 
-footer .column h3 {
+#global-footer .column h3 {
    font-size: 15px;
    font-weight: 700;
 }

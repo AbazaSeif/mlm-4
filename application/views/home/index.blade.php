@@ -21,7 +21,7 @@
 		<span class="orbit-caption" id="caption6">Caption 6</span>	
 
 <div class="featured">
-	<br class="clear" />
+	<br class="clearfix" />
 </div>
 
 <div id="ticker">
