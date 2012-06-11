@@ -162,7 +162,7 @@ return array(
 		'Lang'       => 'Laravel\\Lang',
 		'Log'        => 'Laravel\\Log',
 		'Memcached'  => 'Laravel\\Memcached',
-		'Paginator'  => 'Laravel\\Paginator',
+//		'Paginator'  => 'Laravel\\Paginator', // uses libraries/paginator.php
 		'Profiler'   => 'Laravel\\Profiling\\Profiler',
 		'URL'        => 'Laravel\\URL',
 		'Redirect'   => 'Laravel\\Redirect',

@@ -65,7 +65,7 @@ class Paginator {
 	 *
 	 * @var string
 	 */
-	protected $dots = '<a class="dots">...</a>';
+	protected $dots = '<span class="dots">...</span>';
 
 	/**
 	 * Create a new Paginator instance.
@@ -300,7 +300,7 @@ class Paginator {
 		// the "first" element should be a span instead of a link.
 		if ($disabled($this->page, $this->last))
 		{
-			return HTML::link('' ,"{$text}", array('class' => "{$class} disabled"));
+			return HTML::span($text, array('class' => "{$class} disabled"));
 		}
 		else
 		{
@@ -349,7 +349,7 @@ class Paginator {
 		{
 			if ($this->page == $page)
 			{
-				$pages[] = HTML::link('',"{$page}", array('class' => 'active'));
+				$pages[] = HTML::span($page, array('class' => 'current'));
 			}
 			else
 			{

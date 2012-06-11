@@ -17,13 +17,12 @@
 </div>
 </article>
 @endforeach
-<div class="pagination">
-  <ul>
-    <li>{{ $newslist->previous() }}</li>
-          {{ $newslist->slider() }}
-    <li>{{ $newslist->next() }}</li>
-  </ul>
-</div>
+{{ $newslist->links() }}
+<?php
+// For Leon's lazyness
+$fakepaginator = Paginator::make($newslist->results, 200, 10);
+echo $fakepaginator->links();
+?>
 </div>
 
 <aside id="sidebar">
