@@ -1,6 +1,7 @@
 @layout("layout.main")
 
 @section('content')
+<header id="pageheader"><br class="clearfix"></header>
 <div class="content" id="news">
 <div id="articles">
 	@foreach($newslist->results as $article)
@@ -12,11 +13,17 @@
 <div class="entry">
 		{{ HTML::image($article->image->file_large, "Image") }}
 		{{ nl2br(e($article->summary)) }}
-		<p class="links"><a href="#">Read More</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">Comments</a></p>
+		<p class="links"><a href="#">Read More</a>   |   <a href="#">Comments</a></p>
 </div>
 </article>
 @endforeach
-{{ $newslist->links() }}
+<div class="pagination">
+  <ul>
+    <li>{{ $newslist->previous() }}</li>
+          {{ $newslist->slider() }}
+    <li>{{ $newslist->next() }}</li>
+  </ul>
+</div>
 </div>
 
 <aside id="sidebar">
@@ -72,6 +79,6 @@
 						</li>
 					</ul>
 </aside>
-<br class="clear	">
+<br class="clearfix">
 </div>
 @endsection
