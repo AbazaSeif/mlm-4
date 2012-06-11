@@ -70,12 +70,6 @@ dd {
 	margin: 0 0 1em 1.5em;
 }
 
-h1, h2, h3 {
-   margin: 0;
-   line-height: 1;
-}
-
-/* Headers */
 h1, h2, h3, h4, h5, h6 {
 	margin: 0.5em 0;
 	padding: 0;
@@ -241,7 +235,8 @@ header #logs a {
 }
 
 #menu li:hover {
-   background: rgb(185, 185, 185)
+   background: #B9B9B9;
+   box-shadow: inset 0 0 10px black;
 }
 
 #menu li:first-child {
@@ -568,7 +563,14 @@ padding: 0 0 0 28px;
 background: url(../images/login/openidico.png) no-repeat left;
 }
 
-/* Menu for pages */
+/* General styles for pages */
+
+#pageheader {
+background: #102A67;
+box-shadow: inset 0 0 30px black,0 0px 30px black;
+margin: 20px 0px;
+height: 100px;
+}
 
 #pagemenu {
    background: #102A65;
