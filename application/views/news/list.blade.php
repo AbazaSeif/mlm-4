@@ -1,8 +1,8 @@
 @layout("layout.main")
 
 @section('content')
-<header id="pageheader"><br class="clearfix"></header>
-<div class="content" id="news">
+<header id="pageheader" class="clearfix"></header>
+<div id="content" class="clearfix news">
 <div id="articles">
 	@foreach($newslist->results as $article)
 <article class="post">
@@ -17,10 +17,9 @@
 </div>
 </article>
 @endforeach
-{{ $newslist->links() }}
 <?php
 // For Leon's lazyness
-$fakepaginator = Paginator::make($newslist->results, 200, 10);
+$fakepaginator = Paginator::make($newslist->results, 100, 10);
 echo $fakepaginator->links();
 ?>
 </div>
@@ -78,6 +77,5 @@ echo $fakepaginator->links();
 						</li>
 					</ul>
 </aside>
-<br class="clearfix">
 </div>
 @endsection

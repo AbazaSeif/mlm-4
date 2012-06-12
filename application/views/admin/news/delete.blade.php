@@ -2,7 +2,7 @@
 
 @section("content")
 @parent
-<div class="content">
+<div id="content">
 	{{ Form::open() }}
 	{{ Form::token() }}
 	<p>Are you sure you want to delete <strong>{{ e($newsitem->title) }}</strong>?</p>

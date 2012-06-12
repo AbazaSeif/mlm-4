@@ -1,7 +1,7 @@
 @layout("layout.main")
 
 @section('content')
-	<div class="content">
+	<div id="content">
 		<h2>OpenID login methods</h2>
 		<h3>Current methods</h3>
 		<ul>

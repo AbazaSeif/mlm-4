@@ -2,7 +2,7 @@
 
 @section('content')
 @parent
-<div class="content" id="profile">
+<div id="content" class="profile">
 	<div id="heading">
 		<div class="well">
 			<a href="http://minecraft.net/profile" class="thumbnail" target="_blank" title="Change your skin...">

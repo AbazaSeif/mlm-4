@@ -2,7 +2,7 @@
 
 @section('content')
 @parent
-<div class="content">
+<div id="content">
 {{ Form::open(null , 'POST', array('class' => 'form-horizontal')) }} 
 	<fieldset>
 		{{ Form::token() }}

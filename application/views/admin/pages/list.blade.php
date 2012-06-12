@@ -2,7 +2,7 @@
 
 @section('content')
 @parent
-<div class="content">
+<div id="content">
 	<table class="table table-striped table-bordered table-condensed">
 		<thead>
 			<tr>

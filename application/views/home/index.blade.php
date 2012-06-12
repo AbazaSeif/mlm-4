@@ -20,9 +20,7 @@
 		<span class="orbit-caption" id="caption5">Caption 5</span>
 		<span class="orbit-caption" id="caption6">Caption 6</span>	
 
-<div class="featured">
-	<br class="clearfix" />
-</div>
+<div class="featured"></div>
 
 <div id="ticker">
 	<div class="clear shadow"></div>

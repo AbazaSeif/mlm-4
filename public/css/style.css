@@ -3,9 +3,7 @@
 -----------------------------------------------------------------*/
 
 @import url(http://fonts.googleapis.com/css?family=Oswald:400,700,300);
-
 @import url(bootstrap.css);
-
 @import url(slideshow.css);
 
 body {
@@ -352,58 +350,58 @@ footer .column p {
 
 /* News page */
 
-#news {
+.news {
 color:white;
 }
 
-#news #articles{
+.news #articles{
 float:left;
 width:600px;
 }
 
-#news .post {
+.news .post {
 	margin-bottom: 15px;
 	border-bottom: 1px dashed #D8D8D8;
 }
 
-#news .post .title {
+.news .post .title {
 	margin-bottom: 10px;
 	padding: 12px 0 0 0px;
 	font-size: 32px;
 }
 
-#news .post .title a {
+.news .post .title a {
 	border: none;
 	color: white;
 	font-family: "Oswald";
 	text-shadow: 0px 1px 1px black;
 }
 
-#news .post .meta {
+.news .post .meta {
 	margin-bottom: 30px;
 	padding: 5px 0px 15px 0px;
 	text-align: left;
 	font-weight: normal;
 }
 
-#news .post .meta .date {
+.news .post .meta .date {
 	float: left;
 }
 
-#news .post .meta .posted {
+.news .post .meta .posted {
 	float: right;
 }
 
-.#news .post .meta a {
+..news .post .meta a {
 }
 
-#news .post .entry {
+.news .post .entry {
 	padding: 0px 0px 20px 0px;
 	padding-bottom: 20px;
 	text-align: justify;
 }
 
-#news .links {
+.news .links {
 	height: 30px;
 	padding: 30px 0px 0px 0px;
 	font-size: 14px;
@@ -413,63 +411,63 @@ width:600px;
 
 /* Sidebar */
 
-#news #sidebar {
+.news #sidebar {
 	float: right;
 	width: 300px;
 	margin: 0px;
 	padding: 30px 0px 0px 0px;
 }
 
-#news #sidebar ul {
+.news #sidebar ul {
 	margin: 0;
 	padding: 0;
 	list-style: none;
 }
 
-#news #sidebar li {
+.news #sidebar li {
 	margin: 0;
 	padding: 0;
 }
 
-#news #sidebar li ul {
+.news #sidebar li ul {
 	margin: 0px 0px;
 	padding-bottom: 50px;
 }
 
-#news #sidebar li li {
+.news #sidebar li li {
 	border-bottom: 1px dashed #D8D8D8;
 	margin: 0px 0px;
 	padding: 5px 0px;
 	border-left: none;
 }
 
-#news #sidebar li li a {
+.news #sidebar li li a {
 	color: #ffffff;
 }
 
-#news #sidebar li li span {
+.news #sidebar li li span {
 	display: block;
 	padding: 0;
 	font-size: 11px;
 	font-style: italic;
 }
 
-#news #sidebar h2 {
+.news #sidebar h2 {
 	padding-bottom: 20px;
 	font-size: 1.8em;
 }
 
-#news #sidebar p {
+.news #sidebar p {
 	margin: 0px 0px 40px 0px;
 	padding: 0px;
 	text-align: justify;
 }
 
-#news #sidebar a {
+.news #sidebar a {
 	border: none;
 }
 
-#news #sidebar a:hover {
+.news #sidebar a:hover {
 	text-decoration: underline;
 }
 
@@ -604,19 +602,19 @@ height: 100px;
 
 /* Profile page */
 
-#profile #heading .well {
+.profile #heading .well {
    padding: 5px;
    height: 70px;
    box-shadow: 0 0 4px black;
 }
 
-#profile #heading .well a {
+.profile #heading .well a {
    width: 60px;
    float: left;
    box-shadow: 0 0 3px black;
 }
 
-#profile #heading .well h2 {
+.profile #heading .well h2 {
    margin: 12px 10px;
    text-shadow: 0px 1px 3px black;
    color: white;
@@ -624,7 +622,7 @@ height: 100px;
    font-size: 42px;
 }
 
-#profile #heading .well p {
+.profile #heading .well p {
    padding: 0;
    float: right;
    margin: 20px;
@@ -633,7 +631,7 @@ height: 100px;
    color: white;
 }
 
-#profile .span4 {
+.profile .span4 {
    /* Sidebar */
    background: white;
    -webkit-border-radius: 4px;
@@ -642,7 +640,7 @@ height: 100px;
    box-shadow: 0 0 4px black;
 }
 
-#profile .span4 li {
+.profile .span4 li {
    padding: 25px;
    background: blue;
    width: 100px;
@@ -652,18 +650,18 @@ height: 100px;
    float: left;
 }
 
-#profile .span4 h2 {
+.profile .span4 h2 {
    font-size: 17px;
    text-align: center;
    margin-top: 70px;
 }
 
-#profile .span4 h3 {
+.profile .span4 h3 {
    padding: 10px;
    color: black;
 }
 
-#profile .span8 {
+.profile .span8 {
    /* Content */
    -webkit-border-radius: 4px;
    -moz-border-radius: 4px;
