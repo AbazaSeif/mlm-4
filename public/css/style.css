@@ -263,7 +263,7 @@ ul, ol {
    width: 990px;
 }
 
-#content, .content {
+#content {
    background: #102A67;
    box-shadow: 0 0 35px #000;
    padding: 25px;
@@ -352,7 +352,14 @@ footer .column p {
 
 .news {
 color:white;
+background: black;
 }
+
+.news h2 {
+
+}
+
+/* News front page */
 
 .news #articles{
 float:left;
@@ -373,7 +380,7 @@ width:600px;
 .news .post .title a {
 	border: none;
 	color: white;
-	font-family: "Oswald";
+	font-family: "Helvetica Neue Condensed Bold";
 	text-shadow: 0px 1px 1px black;
 }
 
@@ -408,6 +415,25 @@ width:600px;
 	font-weight: normal;
 	color: #1C1C1C;
 }
+
+/* News single pages 
+
+.single{
+padding:0;
+}
+
+.single h1{
+padding: 22px;
+font-family:"Helvetica Neue Condensed Bold";
+text-shadow: 0px 1px 1px black;
+margin: 0;
+}
+
+.single img{
+box-shadow:inset 0px 0px 20px black;
+}
+
+*/
 
 /* Sidebar */
 
@@ -631,6 +657,10 @@ height: 100px;
    color: white;
 }
 
+.profile ul {
+padding:0;
+}
+
 .profile .span4 {
    /* Sidebar */
    background: white;
@@ -641,7 +671,6 @@ height: 100px;
 }
 
 .profile .span4 li {
-   padding: 25px;
    background: blue;
    width: 100px;
    height: 100px;
@@ -654,6 +683,7 @@ height: 100px;
    font-size: 17px;
    text-align: center;
    margin-top: 70px;
+   z-index: 1000;
 }
 
 .profile .span4 h3 {

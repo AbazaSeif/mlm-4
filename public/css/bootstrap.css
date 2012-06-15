@@ -2774,8 +2774,8 @@ a.thumbnail:hover {
 }
 .alert .close {
   position: relative;
-  top: -12px;
-  right: -25px;
+  top: -2px;
+  right: -21px;
   line-height: 18px;
 }
 .alert-success {

@@ -152,4 +152,4 @@ UTIL = {
 
 $(document).ready(UTIL.init);
 
-$("#news_content").cleditor()[0].focus();
+$("#news_content").cleditor()[0].focus(); //wont work if put inside admin
