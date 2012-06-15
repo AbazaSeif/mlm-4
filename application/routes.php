@@ -53,14 +53,17 @@ Route::get("user/(:any?)", function($username = null) {
 	}
 	// Following is for testing ease only
 	if(!$userobj) {
-		if(Auth::check()) {
-			$userobj = Auth::user();
+		if(!$username and Auth::check()) {
+			return Redirect::to("user/".Auth::user()->username);
 		} else {
-			$userobj = User::first();
+			return Response::error("404");
 		}
 	}
-
-	return View::make("user.home", array('user' => $userobj));
+	if(Auth::user()->id == $userobj->id) {
+		return View::make("user.home", array("layout" => "layout.user", "user" => $userobj));
+	} else {
+		return View::make("user.home", array("layout" => "layout.main", "user" => $userobj));
+	}
 });
 
 // Admin home
