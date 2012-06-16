@@ -34,6 +34,9 @@
 	admin: {
 		init: function () {
 			/* Admin pages */
+		},
+		edit: function() {
+			$("textarea[data-wysiwyg]").cleditor()
 		}
 	},
 	images: {
@@ -152,4 +155,3 @@ UTIL = {
 
 $(document).ready(UTIL.init);
 
-$("#news_content").cleditor()[0].focus(); //wont work if put inside admin

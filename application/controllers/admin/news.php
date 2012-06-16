@@ -22,7 +22,7 @@ class Admin_News_Controller extends Admin_Controller {
 			$oldimage = null;
 		}
 
-		return View::make("admin.news.newform", array("title" => "New | News | Admin", "oldimage" => $oldimage));
+		return View::make("admin.news.newform", array("title" => "New | News | Admin", "javascript" => array("admin", "edit"), "oldimage" => $oldimage));
 	}
 	public function post_new() {
 		$validation_rules = array(
@@ -73,7 +73,7 @@ class Admin_News_Controller extends Admin_Controller {
 		} else {
 			$previewimage = URL::to_asset($newsitem->image->file_small);
 		}
-		return View::make("admin.news.form", array("newsitem" => $newsitem, "previewimage" => $previewimage, "title" => "Edit ".e($newsitem->title)." | News | Admin"));
+		return View::make("admin.news.form", array("title" => "Edit ".e($newsitem->title)." | News | Admin", "javascript" => array("admin", "edit"), "newsitem" => $newsitem, "previewimage" => $previewimage));
 	}
 	// Saving edits
 	public function post_edit($id) {
