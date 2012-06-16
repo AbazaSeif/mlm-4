@@ -22,7 +22,7 @@ class News_Published {
 	public function down()
 	{
 		Schema::table("news", function($table) {
-			$table->drop_collumn("published");
+			$table->drop_column("published");
 		});
 	}
 
