@@ -2,7 +2,6 @@
 
 @section("content")
 @parent
-
 <div id="content">
 {{ Form::open(null, 'POST', array('class' => 'form-horizontal')) }} 
 	<fieldset>
