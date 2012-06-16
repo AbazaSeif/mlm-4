@@ -32,5 +32,14 @@
 				</fieldset>
 			{{ Form::close() }}
 		</div>
+		<h2>Profile</h2>
+		{{ Form::open("account/profile", "POST", array('class' => 'form-horizontal')) }}
+			{{ Form::field("text", "country", "Country", array(Input::old("country", Auth::user()->profile->country), array('class' => 'input-large')), array('error' => $errors->first('country'))) }}
+			{{ Form::field("text", "reddit", "Reddit", array(Input::old("reddit", Auth::user()->profile->reddit), array('class' => 'input-large')), array('error' => $errors->first('reddit'))) }}
+			{{ Form::field("text", "twitter", "Twitter", array(Input::old("twitter", Auth::user()->profile->twitter), array('class' => 'input-large')), array('error' => $errors->first('twitter'))) }}
+			{{ Form::field("text", "youtube", "YouTube", array(Input::old("youtube", Auth::user()->profile->youtube), array('class' => 'input-large')), array('error' => $errors->first('youtube'))) }}
+			{{ Form::field("text", "webzone", "Homepage", array(Input::old("webzone", Auth::user()->profile->webzone), array('class' => 'input-large')), array('error' => $errors->first('webzone'))) }}
+			{{ Form::actions(Form::submit("Update", array("class" => "btn-primary"))) }}
+		{{ Form::close() }}
 	</div>
 @endsection
