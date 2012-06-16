@@ -146,8 +146,10 @@ class Account_Controller extends Base_Controller {
 	}
 	/* Account - Profile */
 	public function post_profile() {
+		$countries = require path("app")."countries.php";
+		$countries = array_keys($countries);
 		$validation_rules = array( /* All fields are optional */
-			"country" => '',
+			"country" => 'in:'.implode(",", $countries),
 			"reddit" => 'match:"/^[\w-]{3,20}$/i"', // validation parameters are parsed as csv
 			"twitter" => 'match:"/^[\w]{1,15}$/i"',
 			"youtube" => 'match:"/^[\w]{3,20}$/i"',
