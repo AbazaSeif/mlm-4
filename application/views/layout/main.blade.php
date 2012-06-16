@@ -55,7 +55,7 @@
 			</div>
 			<div id="logs">
 			@if (Auth::user() && Auth::user()->admin)
-			{{ HTML::link_to_action('account@logout', "Logout") }} &bull; {{ HTML::link('admin', 'Admin panel'); }} &bull; <a href="{{ URL::to("user/".Auth::user()->username) }}">My Profile <img src="http://minotar.net/helm/{{ Auth::user()->username }}/18.png" alt="avatar"></a> 
+			{{ HTML::link_to_action('account@logout', "Logout") }} &bull; {{ HTML::link('admin', 'Admin panel'); }} &bull; <a href="{{ URL::to("user/".Auth::user()->username) }}">My Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/18.png" alt="avatar"></a> 
 			@elseif (Auth::check())
 				<a href="{{ URL::to("user/".Auth::user()->username) }}">{{ Auth::user()->username }}</a> &bull; {{ HTML::link_to_action('account@logout', "Logout") }} 
 			@else
