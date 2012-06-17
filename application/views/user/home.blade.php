@@ -21,29 +21,28 @@
 					</ul>
 				</div>
 			</div>
-
 	<div class="info clearfix">
 		<ul>
 		<li>
 			<label>Reddit</label>
-			<strong><a href="http://reddit.com/user/{{$user->profile->reddit}}" target="_blank">{{$user->profile->reddit}}</a></strong>
+			<p><a href="http://reddit.com/user/{{$user->profile->reddit}}" target="_blank">{{$user->profile->reddit}}</a></p>
 		</li>
 		<li>
 			<label>Twitter</label>
-			<strong><a href="http://twitter.com/{{$user->profile->twitter}}" target="_blank">{{$user->profile->twitter}}</a></strong>
+			<p><a href="http://twitter.com/{{$user->profile->twitter}}" target="_blank">{{$user->profile->twitter}}</a></p>
 		</li>
 		<li>
 			<label>YouTube</label>
-			<strong><a href="http://youtube.com/user/{{$user->profile->youtube}}" target="_blank">{{$user->profile->youtube}}</a></strong>
+			<p><a href="http://youtube.com/user/{{$user->profile->youtube}}" target="_blank">{{$user->profile->youtube}}</a></p>
 		</li>
 		<li>
 			<label>Member since</label>
-			<strong>{{ date("F j Y", strtotime($user->created_at)) }}</strong>
+			<p>{{ date("F j Y", strtotime($user->created_at)) }}</p>
 		</li>
 		<li class="sep"><h4>Separator</h4></li>
 		<li>
 			<label>Name</label>
-			<strong>Content</strong>
+			<p>Content</p>
 		</li>
 		</ul>
 	</div>

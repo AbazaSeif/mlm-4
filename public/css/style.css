@@ -837,15 +837,26 @@ margin: 10px 0px;
   display: inline-block;
   width: 170px;
   color: white;
-  vertical-align: top;
-  font-size: 15px;
+  font-family: "Oswald","HelveticaNeue","Helvetica Neue",Helvetica,Arial,Verdana,sans-serif;
+  font-size: 18px;
+  text-shadow: 0 1px 3px black
 }
 
-.profile .info li strong {
-  display: inline-block;
-  width: 400px;
-  vertical-align: middle;
-  font-size: 14px;
+.profile .info p {
+display: inline-block;
+margin-bottom: 0;
+}
+
+.profile .info a {
+display: inline-block;
+width: 400px;
+vertical-align: middle;
+color: white;
+font-weight: bold;
+font-family: Helvetica;
+}
+.profile .info a:hover {
+text-decoration: underline;
 }
 
 .profile .sidecontent {
