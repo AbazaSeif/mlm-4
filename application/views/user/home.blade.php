@@ -12,7 +12,7 @@
 					<h1>{{$user->username}}</h1>
 					<?php $countries = require path("app")."countries.php"; ?>
 					<h3><i class="flag flag-{{$user->profile->country}}"></i>{{$countries[$user->profile->country]}}</h3>
-					<h4><a href="{{$user->webzone}}">{{$user->profile->webzone}}</a></h4>
+					<h4>{{ HTML::link($user->profile->webzone, $user->profile->webzone) }}</h4>
 					<div class="user-rank developer" title="MLM Developer"></div>
 					<ul class="numbers clearfix">
 						<li>Comments<strong>888</strong></li>
@@ -38,7 +38,7 @@
 		</li>
 		<li>
 			<label>Member since</label>
-			<strong>{{ HTML::entities(date("F j Y", strtotime($user->created_at))) }}</strong>
+			<strong>{{ date("F j Y", strtotime($user->created_at)) }}</strong>
 		</li>
 		<li class="sep"><h4>Separator</h4></li>
 		<li>
