@@ -10,8 +10,9 @@
 				</div>
 				<div class="data">
 					<h1>{{$user->username}}</h1>
-					<h3><i class="flag flag-us"></i>{{$user->country}}</h3>
-					<h4><a href="{{$user->webzone}}">{{$user->webzone}}</a></h4>
+					<?php $countries = require path("app")."countries.php"; ?>
+					<h3><i class="flag flag-{{$user->profile->country}}"></i>{{$countries[$user->profile->country]}}</h3>
+					<h4><a href="{{$user->webzone}}">{{$user->profile->webzone}}</a></h4>
 					<div class="user-rank developer" title="MLM Developer"></div>
 					<ul class="numbers clearfix">
 						<li>Comments<strong>888</strong></li>
@@ -25,15 +26,15 @@
 		<ul>
 		<li>
 			<label>Reddit</label>
-			<strong>{{$user->reddit}}</strong>
+			<strong><a href="http://reddit.com/user/{{$user->profile->reddit}}" target="_blank">{{$user->profile->reddit}}</a></strong>
 		</li>
 		<li>
 			<label>Twitter</label>
-			<strong>{{$user->twitter}}</strong>
+			<strong><a href="http://twitter.com/{{$user->profile->twitter}}" target="_blank">{{$user->profile->twitter}}</a></strong>
 		</li>
 		<li>
 			<label>YouTube</label>
-			<strong>{{$user->youtube}}</strong>
+			<strong><a href="http://youtube.com/user/{{$user->profile->youtube}}" target="_blank">{{$user->profile->youtube}}</a></strong>
 		</li>
 		<li>
 			<label>Member since</label>
