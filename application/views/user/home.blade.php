@@ -10,8 +10,8 @@
 				</div>
 				<div class="data">
 					<h1>{{$user->username}}</h1>
-					<h3><i class="flag flag-us"></i>United States</h3>
-					<h4><a href="{{$user->webzone}}">http://example.com</a></h4>
+					<h3><i class="flag flag-us"></i>{{$user->country}}</h3>
+					<h4><a href="{{$user->webzone}}">{{$user->webzone}}</a></h4>
 					<div class="user-rank developer" title="MLM Developer"></div>
 					<ul class="numbers clearfix">
 						<li>Comments<strong>888</strong></li>
@@ -21,18 +21,19 @@
 				</div>
 			</div>
 
-	<div class="big-info clearfix">
-		<div class="title clearfix">
-			<h2>TL;DR info for {{$user->username}}</h2>
-		</div>
+	<div class="info clearfix">
 		<ul>
 		<li>
-			<label>Instant Messaging</label>
-			<strong>Skype</strong>
+			<label>Reddit</label>
+			<strong>{{$user->reddit}}</strong>
 		</li>
 		<li>
-			<label>Website</label>
-			<strong><a href="http://utopicme.com" rel="nofollow">http://utopicme.com</a></strong>
+			<label>Twitter</label>
+			<strong>{{$user->twitter}}</strong>
+		</li>
+		<li>
+			<label>YouTube</label>
+			<strong>{{$user->youtube}}</strong>
 		</li>
 		<li>
 			<label>Member since</label>

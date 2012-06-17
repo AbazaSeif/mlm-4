@@ -3,6 +3,9 @@
 @section("content")
 @parent
 <div id="content">
+	<div class="titlebar clearfix">
+		<h2>News Articles</h2>
+	</div>
 	<a href="{{ URL::to_action("admin.news@new") }}" class="btn" style="margin-bottom:15px"><i class="icon-plus"></i> New Article</a>
 	<table class="table table-striped table-bordered table-condensed">
 		<thead>

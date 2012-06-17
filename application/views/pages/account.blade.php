@@ -5,17 +5,21 @@ $countries = require path("app")."countries.php";
 
 @section('content')
 @parent
-	<div id="content">
-		<h2>OpenID login methods</h2>
-		<h3>Current methods</h3>
-		<ul>
+	<div id="content" class="account-settings">
+	<div class="titlebar clearfix">
+		<h2>Edit Account &amp; Settings</h2>
+	</div>
+	<div class="titlebar clearfix">
+		<h3>Linked OpenID Accounts</h3>
+	</div>
+		<ul class="openids">
 			@if(count($openids) > 1)
 				@foreach($openids as $openid)
 					<li>
 						{{ Form::open("account/del_openid", "POST", array("class" => "form-inline")) }}
 						{{ Form::token() }}
 						{{ HTML::image($openid->favicon, "favicon") }} {{ e($openid->identity) }}
-						<button class="btn btn-danger btn-mini" action="submit"><i class="icon-white icon-remove"></i> Delete</button>
+						<button class="btn btn-danger btn-mini right" action="submit"><i class="icon-white icon-remove"></i> Delete</button>
 						{{ Form::hidden("oid", $openid->id) }}
 						{{ Form::close() }}
 					</li>
@@ -24,18 +28,19 @@ $countries = require path("app")."countries.php";
 				<li>{{HTML::image($openids[0]->favicon, "favicon")}} {{ $openids[0]->identity }}</li>
 			@endif
 		</ul>
-		<h3>Add new method</h3>
-	    <div id="login">
-			{{ Form::open("account/login" , 'POST', array('class' => 'openid')) }} 	
-				<fieldset>
-					<label for="openid_identifier">Add a new <a class="openid_logo" href="http://openid.net">OpenID</a></label> 
+		<div class="titlebar clearfix">
+		<h4>Link another OpenID to your account</h4>
+		</div>
+			{{ Form::open("account/login" , 'POST', array('class' => 'globalid')) }} 	
+				<fieldset> 
 					<div>{{ Form::text("openid_identifier") }} 
 					{{ Form::submit("Add", array("class" => "btn btn-primary")) }}
 					</div>
 				</fieldset>
 			{{ Form::close() }}
-		</div>
-		<h2>Profile</h2>
+		<div class="titlebar clearfix">
+		<h3>Profile Information</h3>
+	</div>
 		{{ Form::open("account/profile", "POST", array('class' => 'form-horizontal')) }}
 			{{ Form::field("select", "country", "Country", array($countries, Input::old("country", Auth::user()->profile->country), array('class' => 'input-large')), array('error' => $errors->first('country'))) }}
 			{{ Form::field("text", "reddit", "Reddit", array(Input::old("reddit", Auth::user()->profile->reddit), array('class' => 'input-large')), array('error' => $errors->first('reddit'))) }}

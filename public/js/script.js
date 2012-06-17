@@ -6,7 +6,7 @@
 	},
 	home: {
 		init: function () {
-			$('#slider').orbit({
+		$('#slider').orbit({
 				animation: 'horizontal-push',             // fade, horizontal-slide, vertical-slide, horizontal-push
 				animationSpeed: 800,                // how fast animtions are
 				timer: true, 			 // true or false to have the timer
@@ -22,12 +22,6 @@
 				bulletThumbs: false,		 // thumbnails for the bullets
 				bulletThumbLocation: '',		 // location from this file where thumbs will be
 				//afterSlideChange: function(){} 	 // empty function 
-			});
-		$('#ticker marquee').marquee('pointer')
-			.mouseover(function () {
-				$(this).trigger('stop');
-				}).mouseout(function () {
-				$(this).trigger('start');
 			});
 		}
 	},
@@ -127,7 +121,7 @@
 	},
 	login: {
 		init: function () {
-			$(".openid").openid();
+			$(".openid,.globalid").openid();
 		}
 	}
 }

@@ -3,6 +3,9 @@
 @section('content')
 @parent
 <div id="content">
+	<div class="titlebar clearfix">
+		<h2>Users List</h2>
+	</div>
 	<table class="table table-striped table-bordered table-condensed">
 		<thead>
 			<tr>

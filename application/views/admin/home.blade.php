@@ -3,6 +3,8 @@
 @section('content')
 @parent
 <div id="content">
-<h1>THIS IS A TEST</h1>
+	<div class="titlebar clearfix">
+		<h2>THIS IS A TEST</h2>
+	</div>
 </div>
 @endsection

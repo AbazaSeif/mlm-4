@@ -269,15 +269,33 @@ margin-left:3px;
 #content {
    background: #102A67;
    box-shadow: 0 0 35px #000;
-   padding: 25px;
+   padding: 10px 25px;
    font-family: "HelveticaNeue","Helvetica Neue",Helvetica,Arial,Verdana,sans-serif;
 }
+
+#content .titlebar {
+margin-bottom:10px;
+border-bottom: 1px dotted grey;
+}
+
+#content .titlebar h2, #content .titlebar h3,#content .titlebar h4  {
+line-height: 1;
+margin: 10px 0;
+font-weight: normal;
+text-shadow: 0 1px 3px  black;
+color: white;
+text-transform: uppercase;
+font-family: "Oswald","HelveticaNeue","Helvetica Neue",Helvetica,Arial,Verdana,sans-serif;
+} 
+
+#content .titlebar h2 {font-size: 24px}
+#content .titlebar h3{font-size: 18px}
+#content .titlebar h4{font-size: 14px}
 
 /* Front page */
 
 #home {
    height: 300px;
-   margin: 0 auto 54px;
 }
 
 /* Featured Content --- slideshow.css */
@@ -529,6 +547,10 @@ box-shadow:inset 0px 0px 20px black;
    font-size: 14px
 }
 
+form.globalid {
+padding:10px
+}
+
 #login .openid .prov {
    width: 100%;
    display: block;
@@ -689,6 +711,7 @@ height: 100px;
   float: left;
   overflow: hidden;
   margin-right: 20px;
+  margin-top: 10px;
 }
 
 .profile #right {
@@ -696,6 +719,7 @@ height: 100px;
   width: 327px;
   float: right;
   overflow: hidden;
+  margin-top: 10px;
 }
 
 .profile #vcard {
@@ -787,25 +811,29 @@ height: 100px;
   font-weight: bold;
 }
 
-.big-info li {
+.profile div.info {
+margin: 10px 0px;
+}
+
+.profile .info li {
   padding: 10px;
   border-bottom: 1px dotted #CCC;
   font-size: 12px;
   list-style: none;
 }
 
-.big-info li h4 {
+.profile .info li h4 {
   margin: 0px;
   color: #474747;
   line-height: 1.6em;
   text-shadow: 0px 1px 1px   white;
 }
 
-.big-info li.sep {
+.profile .info li.sep {
   background: #F7F7F7
 }
 
-.big-info li label {
+.profile .info li label {
   display: inline-block;
   width: 170px;
   color: white;
@@ -813,7 +841,7 @@ height: 100px;
   font-size: 15px;
 }
 
-.big-info li strong {
+.profile .info li strong {
   display: inline-block;
   width: 400px;
   vertical-align: middle;
@@ -844,6 +872,21 @@ height: 100px;
   border-top: 0px;
   padding: 15px;
   background: #f9f9f9;
+}
+
+/* Account settings page */
+
+.account-settings {
+}
+
+.account-settings ul {
+margin: 0;
+padding: 0;
+list-style:none;
+}
+
+.account-settings .openids form {
+padding: 10px;
 }
 
 /* -- Misc styles -- */
