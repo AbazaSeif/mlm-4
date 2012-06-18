@@ -1,7 +1,5 @@
 @layout("layout.user")
-<?php
-$countries = require path("app")."countries.php";
-?>
+<?php $countries = require path("app")."countries.php" ?>
 
 @section('content')
 @parent
@@ -43,8 +41,8 @@ $countries = require path("app")."countries.php";
 	</div>
 		{{ Form::open("account/profile", "POST", array('class' => 'form-horizontal')) }}
 			{{ Form::token() }}
-			{{ Form::field("text", "username", "MLM Username", array(Input::old("username", Auth::user()->username), array('class' => 'input-large uneditable-input', 'disabled' => 'disabled')),array('help' => 'You may not change this')) }}
-			{{ Form::field("text", "mc_username", "Minecraft Username", array(Input::old("mc_username", Auth::user()->mc_username), array('class' => 'input-large')), array('help' => 'Case sensitive','error' => $errors->first('mc_username'))) }}
+			{{ Form::field("text", "username", "MLM Username", array(Input::old("username", Auth::user()->username), array('class' => 'input-large uneditable-input', 'disabled' => 'disabled')),array('help' => 'You cannot change this')) }}
+			{{ Form::field("text", "mc_username", "Minecraft Username", array(Input::old("mc_username", Auth::user()->mc_username), array('class' => 'input-large')), array('help' => 'CaSe SeNsItIvE','error' => $errors->first('mc_username'))) }}
 			{{ Form::field("select", "country", "Country", array($countries, Input::old("country", Auth::user()->profile->country), array('class' => 'input-large')), array('error' => $errors->first('country'))) }}
 			{{ Form::field("text", "reddit", "Reddit Username", array(Input::old("reddit", Auth::user()->profile->reddit), array('class' => 'input-large')), array('error' => $errors->first('reddit'))) }}
 			{{ Form::field("text", "twitter", "Twitter Username", array(Input::old("twitter", Auth::user()->profile->twitter), array('class' => 'input-large')), array('error' => $errors->first('twitter'))) }}
