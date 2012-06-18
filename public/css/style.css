@@ -4,7 +4,6 @@
 
 @import url(http://fonts.googleapis.com/css?family=Oswald:400,700,300);
 @import url(bootstrap.css);
-@import url(slideshow.css);
 
 body {
    background: #0e3a9d url(../images/static/bg.jpg) no-repeat fixed top center;
@@ -128,7 +127,8 @@ ul, ol {
    line-height: 180%;
 }
 
-/* Global Header */
+/* Global Header
+   ================================================== */
 
 #global-header {
    width: 100%
@@ -150,7 +150,8 @@ ul, ol {
    width: 990px;
 }
 
-/* Logo */
+/* Logo 
+   ================================================== */
 
 #global-header #logo {
    float: left;
@@ -203,7 +204,8 @@ vertical-align: bottom;
 margin-left:3px;
 }
 
-/* Global Menu */
+/* Global Menu 
+   ================================================== */
 
 #menu {
    background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(202,202,202,0.85) 100%);
@@ -259,7 +261,8 @@ margin-left:3px;
    padding: 5px 25px;
 }
 
-/* Global content and wrapping */
+/* Global content and wrapping 
+   ================================================== */
 
 #wrapper {
    margin: 0 auto;
@@ -292,13 +295,15 @@ font-family: "Oswald","HelveticaNeue","Helvetica Neue",Helvetica,Arial,Verdana,s
 #content .titlebar h3{font-size: 18px}
 #content .titlebar h4{font-size: 14px}
 
-/* Front page */
+/* Front page 
+   ================================================== */
 
 #home {
    height: 300px;
 }
 
-/* Featured Content --- slideshow.css */
+/* Featured Content Slideshow 
+   ================================================== */
 
 #home .featured {
    background: #102A67;
@@ -308,7 +313,163 @@ font-family: "Oswald","HelveticaNeue","Helvetica Neue",Helvetica,Arial,Verdana,s
    width: 372px;
 }
 
-/* Ticker */
+#slider {
+	box-shadow:0 0 35px #000;
+	float:left;
+	height:300px;
+	width:600px;
+	background:#102A67 url('../images/slider/loading.gif') no-repeat center center;
+	overflow: hidden; }
+#slider>img,  
+#slider>div,
+#slider>a { display: none; width: 600px; height: 300px; }
+
+/* Container
+   ================================================== */
+
+div.orbit-wrapper {
+    width: 1px;
+    height: 1px;
+	float:left;
+    position: relative; }
+
+div.orbit {
+    width: 1px;
+    height: 1px;
+    position: relative;
+    overflow: hidden }
+
+div.orbit>img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none; }
+
+div.orbit>a {
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    line-height: 0; 
+    display: none; }
+
+.orbit>div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+
+/* Timer
+   ================================================== */
+
+div.timer {
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    opacity: .6;
+    cursor: pointer;
+    z-index: 1001; }
+
+span.rotator {
+    display: block;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    left: -20px;
+    background: url(../images/slider/rotator-black.png) no-repeat;
+    z-index: 3; }
+
+span.mask {
+    display: block;
+    width: 20px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    overflow: hidden; }
+
+span.rotator.move {
+    left: 0 }
+
+span.mask.move {
+    width: 40px;
+    left: 0;
+    background: url(../images/slider/timer-black.png) repeat 0 0; }
+
+span.pause {
+    display: block;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url(../images/slider/pause-black.png) no-repeat;
+    z-index: 4;
+    opacity: 0; }
+
+span.pause.active {
+    background: url(../images/slider/pause-black.png) no-repeat 0 -40px }
+
+div.timer:hover span.pause,
+span.pause.active {
+    opacity: 1 }
+
+
+/* Captions
+   ================================================== */
+
+.orbit-caption {
+    display: none;
+    font-family: "HelveticaNeue", "Helvetica-Neue", Helvetica, Arial, sans-serif; }
+
+.orbit-wrapper .orbit-caption {
+    background: #000;
+    background: rgba(0,0,0,.6);
+    z-index: 1000;
+    color: #fff;
+	text-align: center;
+	padding: 7px 0;
+    font-size: 16px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 100%; 
+    height: 40px;
+}
+
+
+/* Directional Navigation
+   ================================================== */
+
+div.slider-nav {
+    display: block }
+
+div.slider-nav span {
+    width: 78px;
+    height: 100px;
+    text-indent: -9999px;
+    position: absolute;
+    z-index: 1000;
+    top: 50%;
+    margin-top: -50px;
+    cursor: pointer; }
+
+div.slider-nav span.right {
+    background: url(../images/slider/right-arrow.png);
+    right: 0; }
+
+div.slider-nav span.left {
+    background: url(../images/slider/left-arrow.png);
+    left: 0; }
+
+/* Ticker 
+   ================================================== */
 
 #home #ticker {
    background: #102A67;
@@ -343,7 +504,8 @@ font-family: "Oswald","HelveticaNeue","Helvetica Neue",Helvetica,Arial,Verdana,s
    color: white
 }
 
-/* Global Footer */
+/* Global Footer
+   ================================================== */
 
 #global-footer {
    background: #102A67;
@@ -369,7 +531,8 @@ footer .column p {
    margin: 0;
 }
 
-/* News page */
+/* News page 
+   ================================================== */
 
 .news {
 color:white;
@@ -380,7 +543,8 @@ background: black;
 
 }
 
-/* News front page */
+/* News front page 
+   ================================================== */
 
 .news #articles{
 float:left;
@@ -456,7 +620,8 @@ box-shadow:inset 0px 0px 20px black;
 
 */
 
-/* Sidebar */
+/* Sidebar 
+   ================================================== */
 
 .news #sidebar {
 	float: right;
@@ -518,7 +683,8 @@ box-shadow:inset 0px 0px 20px black;
 	text-decoration: underline;
 }
 
-/* Login Screen */
+/* Login Screen 
+   ================================================== */
 
 #login {
    width: 336px;
@@ -617,7 +783,8 @@ padding: 0 0 0 28px;
 background: url(../images/login/openidico.png) no-repeat left;
 }
 
-/* General styles for pages */
+/* General styles for pages 
+   ================================================== */
 
 #pageheader {
 background: #102A67;
@@ -651,7 +818,8 @@ height: 100px;
    margin-bottom: 0px
 }
 
-/* Profile page */
+/* Profile page 
+   ================================================== */
 .profile {
   font-size: 62.5%;
   line-height: 10%;
@@ -692,7 +860,6 @@ height: 100px;
 }
 
 .profile h3 {
-  color: #698216;
   font-weight: normal;
   font-size: 1.3em;
   line-height: 1.6em;
@@ -709,7 +876,6 @@ height: 100px;
 .profile #left {
   display: block;
   float: left;
-  overflow: hidden;
   margin-right: 20px;
   margin-top: 10px;
 }
@@ -730,6 +896,7 @@ height: 100px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
   padding: 12px;
+  box-shadow: 0 8px 6px -6px black;
 }
 
 .profile #vcard .pic {
@@ -812,7 +979,7 @@ height: 100px;
 }
 
 .profile div.info {
-margin: 10px 0px;
+margin: 20px 0px;
 }
 
 .profile .info li {
@@ -852,8 +1019,6 @@ display: inline-block;
 width: 400px;
 vertical-align: middle;
 color: white;
-font-weight: bold;
-font-family: Helvetica;
 }
 .profile .info a:hover {
 text-decoration: underline;
@@ -861,31 +1026,40 @@ text-decoration: underline;
 
 .profile .sidecontent {
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .profile .sidecontent .head {
-  background: #589fc6;
-  border: 1px solid #3e82a7;
+  background: #E6E6E6;
+  border: 1px solid #D3D3D3;
   padding-left: 8px;
+  border-radius: 5px 5px 0px 0px;
 }
 
 .profile .sidecontent .head h1 {
-  color: #fafcfd;
+  color: #666666;
   font-weight: bold;
   font-size: 1.4em;
+  text-shadow: 0px 1px 1px   white;
 }
 
 .profile .sidecontent .widget {
-  margin-bottom: 30px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  border-top: 0px;
-  padding: 15px;
-  background: #f9f9f9;
+padding: 15px;
+background: #F9F9F9;
+box-shadow: 0 8px 6px -6px black;
+min-height: 117px;
+border-radius: 0px 0px 5px 5px;
+border: 1px solid #CCC;
+border-top: 0px;
 }
 
-/* Account settings page */
+.profile .sidecontent .widget img{
+border: 8px white solid;
+outline: 1px grey solid;
+}
+
+/* Account settings page 
+   ================================================== */
 
 .account-settings {
 }
@@ -900,9 +1074,11 @@ list-style:none;
 padding: 10px;
 }
 
-/* -- Misc styles -- */
+/* -- Misc styles -- 
+   ================================================== */
 
-/* Error stlyes */
+/* Error stlyes 
+   ================================================== */
 #errorbox {
    min-height: 350px;
    width: 650px;
@@ -926,7 +1102,8 @@ padding: 10px;
    margin-bottom: 0
 }
 
-/* Old versions of IE */
+/* Old versions of IE 
+   ================================================== */
 
 .chromeframe {
 	text-align: center;
@@ -938,7 +1115,8 @@ padding: 10px;
 	padding-top: 6px;
 }
 
-/* Image Manager */
+/* Image Manager 
+   ================================================== */
 
 .modal {
    color: #333;
@@ -968,7 +1146,8 @@ padding: 10px;
    margin-bottom: 10px;
 }
 
-/* Article editor */
+/* Article editor 
+   ================================================== */
 
 .cleditorMain {
    border: 1px solid #999;
@@ -1072,7 +1251,8 @@ padding: 10px;
    font-size: 8.5pt;
 }
 
-/* Sprite galore! */
+/* Sprite galore! 
+   ================================================== */
 
 .user-rank { 
 	position: absolute;
@@ -1087,7 +1267,8 @@ padding: 10px;
 .user-rank.developer {background-position: 0px -32px;}
 .user-rank.moderator {background-position: 0px -48px;}
 
-/* World Flags */
+/* World Flags 
+   ================================================== */
 
 .flag {
 	width: 16px;
