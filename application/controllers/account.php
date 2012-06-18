@@ -146,9 +146,11 @@ class Account_Controller extends Base_Controller {
 	}
 	/* Account - Profile */
 	public function post_profile() {
+		$user = Auth::user();
 		$countries = require path("app")."countries.php";
 		$countries = array_keys($countries);
 		$validation_rules = array( /* All fields are optional */
+			'mc_username' => "required|min:2|max:16|match:/^[a-z0-9_]*$/i|unique:users,mc_username,{$user->id}",
 			"country" => 'in:'.implode(",", $countries),
 			"reddit" => 'match:"/^[\w-]{3,20}$/i"', // validation parameters are parsed as csv
 			"twitter" => 'match:"/^[\w]{1,15}$/i"',
@@ -158,7 +160,9 @@ class Account_Controller extends Base_Controller {
 
 		$validation = Validator::make(Input::all(), $validation_rules, array("match" => ":attribute isn't a correct username"));
 		if($validation->passes()) {
-			$profile = Auth::user()->profile;
+			$user->mc_username = Input::get("mc_username");
+			$user->save();
+			$profile = $user->profile;
 			$profile->country = Input::get("country");
 			$profile->reddit = Input::get("reddit");
 			$profile->twitter = Input::get("twitter");
