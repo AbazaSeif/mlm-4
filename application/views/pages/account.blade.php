@@ -42,6 +42,7 @@ $countries = require path("app")."countries.php";
 		<h3>Profile Information</h3>
 	</div>
 		{{ Form::open("account/profile", "POST", array('class' => 'form-horizontal')) }}
+			{{ Form::token() }}
 			{{ Form::field("text", "username", "MLM Username", array(Input::old("username", Auth::user()->username), array('class' => 'input-large uneditable-input', 'disabled' => 'disabled')),array('help' => 'You may not change this')) }}
 			{{ Form::field("text", "mc_username", "Minecraft Username", array(Input::old("mc_username", Auth::user()->mc_username), array('class' => 'input-large')), array('help' => 'Case sensitive','error' => $errors->first('mc_username'))) }}
 			{{ Form::field("select", "country", "Country", array($countries, Input::old("country", Auth::user()->profile->country), array('class' => 'input-large')), array('error' => $errors->first('country'))) }}

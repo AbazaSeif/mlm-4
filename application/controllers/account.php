@@ -7,7 +7,7 @@ class Account_Controller extends Base_Controller {
 		
 		$this->filter("before", "auth")->except(array("login", "callback", "register"));
 		// Asking for user to access logout? Irony is strong here.
-		$this->filter("before", "csrf")->on("post")->only("del_openid");
+		$this->filter("before", "csrf")->on("post")->only(array("del_openid", "profile"));
 	}
 	
 	public $restful = true;
