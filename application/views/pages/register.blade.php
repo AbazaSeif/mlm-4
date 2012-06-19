@@ -15,6 +15,7 @@
 		@endif
 		{{ Form::field("text", "username", "MLM Username", array(Input::old("username"), array('class' => 'input-large')),array('help' => 'You wont be able to change this later, choose wisely')) }}
 		{{ Form::field("text", "mc_username", "Minecraft Username", array(Input::old("mc_username"), array('class' => 'input-large')), array('help' => 'CaSe SeNsItIvE','error' => $errors->first('mc_username'))) }}
+		<h4>Profile <small>All fields are optional</small></h4>
 		{{ Form::field("select", "country", "Country", array($countries, Input::old("country"), array('class' => 'input')), array('error' => $errors->first('country'))) }}
 		{{ Form::field("text", "reddit", "Reddit Username", array(Input::old("reddit"), array('class' => 'input-large')), array('error' => $errors->first('reddit'))) }}
 		{{ Form::field("text", "twitter", "Twitter Username", array(Input::old("twitter"), array('class' => 'input-large')), array('error' => $errors->first('twitter'))) }}

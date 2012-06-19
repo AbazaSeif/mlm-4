@@ -97,9 +97,16 @@ class Account_Controller extends Base_Controller {
 			Messages::add("warning", "Session timeout!");
 			return Redirect::to_action("account@login");
 		}
+		$countries = require path("app")."countries.php";
+		$countries = array_keys($countries);
 		$validation_rules = array(
 			'username'  => 'required|min:2|max:16|match:/^[a-z0-9_]*$/i|unique:users',
-			'mc_username' => 'required|min:2|max:16|match:/^[a-z0-9_]*$/i|unique:users'
+			'mc_username' => 'required|min:2|max:16|match:/^[a-z0-9_]*$/i|unique:users',
+			"country" => 'in:'.implode(",", $countries),
+			"reddit" => 'match:"/^[\w-]{3,20}$/i"', // validation parameters are parsed as csv
+			"twitter" => 'match:"/^[\w]{1,15}$/i"',
+			"youtube" => 'match:"/^[\w]{3,20}$/i"',
+			"webzone" => "url"
 		);
 		$validation = Validator::make(Input::all(), $validation_rules);
 		if($validation->passes()) {
@@ -110,6 +117,12 @@ class Account_Controller extends Base_Controller {
 			$user->openid()->insert($openid);
 			
 			$profile = new Profile();
+			$profile->country = Input::get("country");
+			$profile->reddit = Input::get("reddit");
+			$profile->twitter = Input::get("twitter");
+			$profile->youtube = Input::get("youtube");
+			$profile->webzone = Input::get("webzone");
+
 			$user->profile()->insert($profile);
 
 			Auth::login($user->id);
