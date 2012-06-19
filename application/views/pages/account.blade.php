@@ -23,7 +23,7 @@
 					</li>
 				@endforeach
 			@else
-				<li>{{HTML::image($openids[0]->favicon, "favicon")}} {{ $openids[0]->identity }}</li>
+				<form>{{HTML::image($openids[0]->favicon, "favicon")}} {{ $openids[0]->identity }}</form>
 			@endif
 		</ul>
 		<div class="titlebar clearfix">
@@ -43,7 +43,7 @@
 			{{ Form::token() }}
 			{{ Form::field("text", "username", "MLM Username", array(Input::old("username", Auth::user()->username), array('class' => 'input-large uneditable-input', 'disabled' => 'disabled')),array('help' => 'You cannot change this')) }}
 			{{ Form::field("text", "mc_username", "Minecraft Username", array(Input::old("mc_username", Auth::user()->mc_username), array('class' => 'input-large')), array('help' => 'CaSe SeNsItIvE','error' => $errors->first('mc_username'))) }}
-			{{ Form::field("select", "country", "Country", array($countries, Input::old("country", Auth::user()->profile->country), array('class' => 'input-large')), array('error' => $errors->first('country'))) }}
+			{{ Form::field("select", "country", "Country", array($countries, Input::old("country", Auth::user()->profile->country), array('class' => 'input')), array('error' => $errors->first('country'))) }}
 			{{ Form::field("text", "reddit", "Reddit Username", array(Input::old("reddit", Auth::user()->profile->reddit), array('class' => 'input-large')), array('error' => $errors->first('reddit'))) }}
 			{{ Form::field("text", "twitter", "Twitter Username", array(Input::old("twitter", Auth::user()->profile->twitter), array('class' => 'input-large')), array('error' => $errors->first('twitter'))) }}
 			{{ Form::field("text", "youtube", "YouTube Username", array(Input::old("youtube", Auth::user()->profile->youtube), array('class' => 'input-large')), array('error' => $errors->first('youtube'))) }}
