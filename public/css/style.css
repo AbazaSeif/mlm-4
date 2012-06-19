@@ -32,6 +32,10 @@ body {
    float: right
 }
 
+.center {
+	text-align: center;
+}
+
 a {
    text-decoration: none;
    color: #0082B4;
@@ -283,7 +287,7 @@ margin-bottom:10px;
 border-bottom: 1px dotted grey;
 }
 
-#content .titlebar h2, #content .titlebar h3,#content .titlebar h4  {
+#content .titlebar h1,#content .titlebar h2, #content .titlebar h3,#content .titlebar h4  {
 line-height: 1;
 margin: 10px 0;
 font-weight: normal;
@@ -292,7 +296,7 @@ color: white;
 text-transform: uppercase;
 font-family: "Oswald","HelveticaNeue","Helvetica Neue",Helvetica,Arial,Verdana,sans-serif;
 } 
-
+#content .titlebar h1 {font-size: 32px}
 #content .titlebar h2 {font-size: 24px}
 #content .titlebar h3{font-size: 18px}
 #content .titlebar h4{font-size: 14px}
@@ -779,6 +783,16 @@ box-shadow:inset 0px 0px 20px black;
    color: #F7931E;
 padding: 0 0 0 28px;
 background: url(../images/login/openidico.png) no-repeat left;
+}
+
+/* Disclaimer on Registration page */
+
+.disclaimer { 
+display: inline;
+color: #414141;
+font-size: 13px;
+margin-left: 10px;
+vertical-align: middle;
 }
 
 /* General styles for pages 
