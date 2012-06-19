@@ -437,6 +437,7 @@ table {
   text-align: left;
   border-top: 1px solid #DDD;
   vertical-align: middle;
+  background-color: white;
 }
 .table th {
   font-weight: bold;
