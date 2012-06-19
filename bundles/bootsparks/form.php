@@ -174,7 +174,7 @@ class Form extends \Laravel\Form {
 	public static function submit($value, $attributes = array())
 	{
 		$attributes['type'] = 'submit';
-		if($attributes['class']) {
+		if(isset($attributes['class'])) {
 			$attributes['class'] .= ' btn';
 		} else {
 			$attributes['class'] = 'btn';
