@@ -10,6 +10,7 @@ body {
    color: #FFF;
    font-family: "Oswald","HelveticaNeue","Helvetica Neue",Helvetica,Arial,Verdana,sans-serif !important;
    font-weight: 400;
+   text-rendering: auto;
    margin: 0;
    padding: 0;
 }
@@ -713,10 +714,6 @@ box-shadow:inset 0px 0px 20px black;
    font-size: 14px
 }
 
-form.globalid {
-padding:10px
-}
-
 #login .openid .prov {
    width: 100%;
    display: block;
@@ -1077,8 +1074,20 @@ padding: 10px;
 /* -- Misc styles -- 
    ================================================== */
 
+ /* Form beautifier
+   ================================================== */  
+   
+form.globalid {
+padding:10px
+}
+
+form.globalid p {
+margin-bottom: 10px;
+}   
+   
 /* Error stlyes 
    ================================================== */
+  
 #errorbox {
    min-height: 350px;
    width: 650px;

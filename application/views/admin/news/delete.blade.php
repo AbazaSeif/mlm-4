@@ -3,7 +3,10 @@
 @section("content")
 @parent
 <div id="content">
-	{{ Form::open() }}
+<div class="titlebar clearfix">
+	<h2>Delete article</h2>
+</div>
+	{{ Form::open(null, 'POST', array('class' => 'globalid')) }}
 	{{ Form::token() }}
 	<p>Are you sure you want to delete <strong>{{ e($newsitem->title) }}</strong>?</p>
 	{{ Form::submit("Delete", array("class" => "btn btn-danger")) }}

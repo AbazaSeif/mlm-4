@@ -3,6 +3,9 @@
 @section("content")
 @parent
 <div id="content">
+<div class="titlebar clearfix">
+	<h2>Editing article <b>{{$newsitem->title}}</b></h2>
+</div>
 {{ Form::open(null, 'POST', array('class' => 'form-horizontal')) }} 
 	<fieldset>
 		{{ Form::token() }}
