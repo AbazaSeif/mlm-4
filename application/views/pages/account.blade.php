@@ -29,7 +29,7 @@
 		<div class="titlebar clearfix">
 		<h4>Link another OpenID to your account</h4>
 		</div>
-			{{ Form::open("account/login" , 'POST', array('class' => 'globalid')) }} 	
+			{{ Form::open("account/login" , 'POST', array('class' => 'xpadding')) }} 	
 				<fieldset> 
 					<div>{{ Form::text("openid_identifier") }} 
 					{{ Form::submit("Add", array("class" => "btn btn-primary")) }}

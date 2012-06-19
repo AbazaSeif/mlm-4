@@ -1116,17 +1116,24 @@ l	ist-style:none;
 	padding: 10px;
 }
 
-/* -- Misc styles -- 
+/* Misc styles
    ================================================== */
 
- /* Form beautifier
-   ================================================== */    
-
-form.globalid {
+ /* Form beautifiers/Fixes
+   ================================================== */   
+   
+/* Used in Admin user edit */
+form.nobg{ 
+	background: none;
+	padding-top: 0;
+}
+   
+/* Used globally */  
+form.xpadding { 
 	padding:10px
 }
 
-form.globalid p {
+form.xpadding p {
 	margin-bottom: 10px;
 }    
 
