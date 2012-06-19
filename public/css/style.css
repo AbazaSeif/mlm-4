@@ -10,9 +10,10 @@ body {
    color: #FFF;
    font-family: "Oswald","HelveticaNeue","Helvetica Neue",Helvetica,Arial,Verdana,sans-serif !important;
    font-weight: 400;
-   text-rendering: auto;
    margin: 0;
    padding: 0;
+   -webkit-font-smoothing: antialiased;
+   text-rendering: optimizelegibility;
 }
 
 ::selection {

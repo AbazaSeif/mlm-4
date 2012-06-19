@@ -1329,7 +1329,8 @@ legend + .control-group {
 }
 .form-horizontal .help-block {
   display: inline;
-  margin:9px 0px 10px 10px
+  margin: 11px 0px 10px 10px;
+  vertical-align: middle;
 }
 .form-horizontal .form-actions {
   padding-left: 160px;

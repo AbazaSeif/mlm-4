@@ -1,8 +1,8 @@
 <?php
 return array(
-	"" => "Unknown or Invalid Region",
 	"US" => "United States",
 	"GB" => "United Kingdom",
+	"" => "----------------",
 	"AF" => "Afghanistan",
 	"AX" => "Aland Islands",
 	"AL" => "Albania",
@@ -264,6 +264,7 @@ return array(
 	"WF" => "Wallis and Futuna",
 	"EH" => "Western Sahara",
 	"YE" => "Yemen",
+	"zanzibar" => "Zanzibar",
 	"ZM" => "Zambia",
 	"ZW" => "Zimbabwe"
 );
