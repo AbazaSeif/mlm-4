@@ -15,7 +15,7 @@ class Admin_User_Controller extends Admin_Controller {
 
 	// Edit form
 	public function get_edit($id) {
-		$user = DB::table("users")->find($id); // Don't need full ORM for this
+		$user = User::find($id); // Don't need full ORM for this
 		if(!$user) {
 			Messages::add("error", "User not found");
 			return Redirect::to_action("Admin.User");
