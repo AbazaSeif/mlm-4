@@ -44,8 +44,8 @@
 <body>
 @endif
 	<!--[if lt IE 7]><p class="chromeframe">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/?locale=en">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
-	<header id="global-header">
-		<div id="bg">
+<header id="global-header">
+	<div id="bg">
 		<div class="holder">
 			<div id="logo">
 				<a href="{{ URL::to("/") }}" title="Major League Mining">
@@ -57,9 +57,9 @@
 			@if (Auth::user() && Auth::user()->admin)
 			{{ HTML::link_to_action('account@logout', "Logout") }} &bull; {{ HTML::link('admin', 'Admin panel'); }} &bull; <a href="{{ URL::to("user/".Auth::user()->username) }}">My Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/18.png" alt="avatar"></a> 
 			@elseif (Auth::check())
-				{{ HTML::link_to_action('account@logout', "Logout") }} &bull; {{ HTML::link('account', 'My Account'); }} &bull; <a href="{{ URL::to("user/".Auth::user()->username) }}">My Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/18.png" alt="avatar"></a>
+			{{ HTML::link_to_action('account@logout', "Logout") }} &bull; {{ HTML::link('account', 'Edit Account'); }} &bull; <a href="{{ URL::to("user/".Auth::user()->username) }}">My Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/18.png" alt="avatar"></a>
 			@else
-				{{ HTML::link_to_action('account@login', "Login &bull; Create account") }}
+			{{ HTML::link_to_action('account@login', "Login &bull; Create account") }}
 			@endif
 			</div>
 		</div>
@@ -75,7 +75,7 @@
 				<li>{{ HTML::link('faq', 'FAQ'); }}</li> 
 			</ul>
 		</nav>
-	</header>
+</header>
 	<div id="wrapper">
 		{{ Messages::get_html() }}	
 		@yield('content')
