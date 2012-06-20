@@ -12,7 +12,11 @@
 				<div class="data">
 					<h1>{{$user->username}}</h1>
 					<h3><i class="flag flag-{{$user->profile->country}}"></i>{{$countries[$user->profile->country]}}</h3>
+					@if ($user->profile->webzone)
 					<h4>{{ HTML::link($user->profile->webzone, $user->profile->webzone, array("target" => "_blank","rel" => "nofollow")) }}</h4>
+					@else
+					<div class="clearfix" style="height:35px"></div>
+					@endif
 					<div class="user-rank developer" title="MLM Developer"></div>
 					<ul class="numbers clearfix">
 						<li>Comments<strong>888</strong></li>
