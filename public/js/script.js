@@ -2,6 +2,7 @@
 	common: {
 		init: function () {
 			// On all pages
+			$("textarea[data-wysiwyg]").cleditor()
 		}
 	},
 	home: {
@@ -30,7 +31,7 @@
 			/* Admin pages */
 		},
 		edit: function() {
-			$("textarea[data-wysiwyg]").cleditor()
+			
 		}
 	},
 	images: {

@@ -8,4 +8,7 @@ class User extends Eloquent {
 	public function profile() {
 		return $this->has_one("profile");
 	}
+	public function maps() {
+		return $this->has_many_and_belongs_to("Map");
+	}
 }
