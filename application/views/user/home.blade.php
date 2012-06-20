@@ -23,27 +23,33 @@
 			</div>
 	<div class="info clearfix">
 		<ul>
+		@if ($user->profile->reddit)
 		<li>
-			<label>Reddit</label>
-			<p><a href="http://reddit.com/user/{{$user->profile->reddit}}" target="_blank" rel="nofollow">{{$user->profile->reddit}}</a></p>
+		<label>Reddit</label>
+		<p><a href="http://reddit.com/user/{{$user->profile->reddit}}" target="_blank" rel="nofollow">{{$user->profile->reddit}}</a></p>
 		</li>
+		@endif
+		@if ($user->profile->twitter)
 		<li>
-			<label>Twitter</label>
-			<p><a href="http://twitter.com/{{$user->profile->twitter}}" target="_blank" rel="nofollow">{{$user->profile->twitter}}</a></p>
+		<label>Twitter</label>
+		<p><a href="http://twitter.com/{{$user->profile->twitter}}" target="_blank" rel="nofollow">{{$user->profile->twitter}}</a></p>
 		</li>
+		@endif
+		@if ($user->profile->youtube)
 		<li>
-			<label>YouTube</label>
-			<p><a href="http://youtube.com/user/{{$user->profile->youtube}}" target="_blank" rel="nofollow">{{$user->profile->youtube}}</a></p>
+		<label>YouTube</label>
+		<p><a href="http://youtube.com/user/{{$user->profile->youtube}}" target="_blank" rel="nofollow">{{$user->profile->youtube}}</a></p>
 		</li>
+		@endif
 		<li>
-			<label>Member since</label>
-			<p>{{ date("F j, Y", strtotime($user->created_at)) }}</p>
+		<label>Member since</label>
+		<p>{{ date("F j, Y", strtotime($user->created_at)) }}</p>
 		</li>
 		<? /*
 		<li class="sep"><h4>Separator</h4></li>
 		<li>
-			<label>Name</label>
-			<p>Content</p>
+		<label>Name</label>
+		<p>Content</p>
 		</li>
 		</ul>*/ ?>
 	</div>
