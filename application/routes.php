@@ -48,17 +48,19 @@ Route::get("login", "account@login");
 // User pages
 Route::get("user/(:any?)", function($username = null) {
 	$userobj = false;
-	if($username) { // If username is set
-		$userobj = User::where_username($username)->first();
-	}
-	// Following is for testing ease only
-	if(!$userobj) {
-		if(!$username and Auth::check()) {
-			return Redirect::to("user/".Auth::user()->username);
-		} else {
+	if(!$username) { // If username isn't set
+		if(Auth::check()) {
+			return Redirect::to("user".Auth::user()->username);
+		}  else {
 			return Response::error("404");
 		}
 	}
+	
+	$userobj = User::where_username($username)->first();
+	if(!$userobj) {
+		return Response::error("404");
+	}
+
 	if(Auth::check() && Auth::user()->id == $userobj->id) {
 		return View::make("user.home", array("ownpage" => true, "user" => $userobj));
 	} else {
