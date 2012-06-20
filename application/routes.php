@@ -118,12 +118,12 @@ Event::listen('admin', function($module, $action, $target = null, $text = "") {
 
 Event::listen("eloquent.saving", function($model) {
 	// Make a slug based on slugfield
-	if($model::$slugfield && !$model->slug) {
+	if($model->slugfield && !$model->slug) {
 		// Try to find an un-used slug
 		$i = 0;
 		$slug;
 		while(true) {
-			$slug = Str::limit(Str::slug($model->{$model::$slugfield}), 200-(strlen($i)+1), "");
+			$slug = Str::limit(Str::slug($model->{$model->slugfield}), 200-(strlen($i)+1), "");
 			if($i > 0) {
 				$slug .= "-".$i;
 			}
