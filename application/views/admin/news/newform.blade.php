@@ -10,7 +10,7 @@
 	<fieldset>
 		{{ Form::token() }}
 
-		{{ Form::field("text", "title", "Title", array(Input::old("title"), array('class' => 'input-xxlarge')), array('error' => $errors->first('title'))) }}
+		{{ Form::field("text", "title", "Title", array(Input::old("title"), array('class' => 'input-xxlarge','autocomplete' => 'off')), array('error' => $errors->first('title'))) }}
 		{{ Form::field("textarea", "summary", "Summary", array(Input::old("summary"), array("rows" => "4", 'class' => 'input-xxlarge')), array("error" => $errors->first("summary"))) }}
 		{{ Form::field("imageselect", "image", "Header Image", array(Input::old("image"), $oldimage), array("error" => $errors->first("image"))) }}
 		{{ Form::field("wysiwyg", "news_content", "Content", array(Input::old("news_content"), array("rows" => "15", 'class' => 'input-xxlarge')), array("error" => $errors->first("news_content"))) }}		

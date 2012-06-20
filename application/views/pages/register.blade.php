@@ -16,8 +16,8 @@
 <div class="titlebar clearfix">
 	<h2>Usernames<small> (required)</small></h2>
 </div>
-		{{ Form::field("text", "username", "MLM Username", array(Input::old("username"), array('class' => 'input-large')),array('help' => 'You wont be able to change this later, choose wisely')) }}
-		{{ Form::field("text", "mc_username", "Minecraft Username", array(Input::old("mc_username"), array('class' => 'input-large')), array('help' => 'CaSe SeNsItIvE','error' => $errors->first('mc_username'))) }}
+		{{ Form::field("text", "username", "MLM Username", array(Input::old("username"), array('class' => 'input-large', 'autocomplete' => 'off')),array('help' => 'You wont be able to change this later, choose wisely')) }}
+		{{ Form::field("text", "mc_username", "Minecraft Username", array(Input::old("mc_username"), array('class' => 'input-large', 'autocomplete' => 'off')), array('help' => 'CaSe SeNsItIvE','error' => $errors->first('mc_username'))) }}
 <div class="titlebar clearfix">
 	<h2>Profile <small>(All fields below are optional)</small></h2>
 </div>
