@@ -1,8 +1,8 @@
-@layout("layout.user")
+@layout("layout.main")
 <?php $countries = require path("app")."countries.php" ?>
 
 @section('content')
-@parent
+@include("user.menu")
 	<div id="content" class="account-settings">
 	<div class="titlebar clearfix">
 		<h2>Edit Account &amp; Settings</h2>

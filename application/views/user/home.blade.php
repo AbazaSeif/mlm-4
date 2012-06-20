@@ -1,8 +1,10 @@
-@layout($layout)
+@layout("layout.main")
 <?php $countries = require path("app")."countries.php"; ?>
 
 @section('content')
-@parent
+@if($ownpage)
+	@include("user.menu")
+@endif
 <div id="content" class="profile clearfix">
 	<div id="left">
 			<div id="vcard" class="clearfix">

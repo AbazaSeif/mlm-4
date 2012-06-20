@@ -60,9 +60,9 @@ Route::get("user/(:any?)", function($username = null) {
 		}
 	}
 	if(Auth::user()->id == $userobj->id) {
-		return View::make("user.home", array("layout" => "layout.user", "user" => $userobj));
+		return View::make("user.home", array("ownpage" => true, "user" => $userobj));
 	} else {
-		return View::make("user.home", array("layout" => "layout.main", "user" => $userobj));
+		return View::make("user.home", array("ownpage" => false, "user" => $userobj));
 	}
 });
 
