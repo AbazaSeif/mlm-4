@@ -50,7 +50,7 @@ Route::get("user/(:any?)", function($username = null) {
 	$userobj = false;
 	if(!$username) { // If username isn't set
 		if(Auth::check()) {
-			return Redirect::to("user".Auth::user()->username);
+			return Redirect::to("user/".Auth::user()->username);
 		}  else {
 			return Response::error("404");
 		}
