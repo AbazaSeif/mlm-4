@@ -59,7 +59,7 @@ Route::get("user/(:any?)", function($username = null) {
 			return Response::error("404");
 		}
 	}
-	if(Auth::user()->id == $userobj->id) {
+	if(Auth::check() && Auth::user()->id == $userobj->id) {
 		return View::make("user.home", array("ownpage" => true, "user" => $userobj));
 	} else {
 		return View::make("user.home", array("ownpage" => false, "user" => $userobj));
