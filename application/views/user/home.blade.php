@@ -12,7 +12,7 @@
 				@if($ownpage)
 					<a href="http://minecraft.net/profile" target="_blank" title="Change your skin..."><img src="http://minotar.net/helm/{{$user->mc_username}}/150.png" alt="avatar" /></a>
 				@else
-					<a href="#"><img src="http://minotar.net/helm/{{$user->mc_username}}/150.png" alt="avatar" /></a>
+					<a href="#" style="cursor:default"><img src="http://minotar.net/helm/{{$user->mc_username}}/150.png" alt="avatar" /></a>
 				@endif
 				</div>
 				<div class="data">
