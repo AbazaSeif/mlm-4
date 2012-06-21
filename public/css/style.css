@@ -12,6 +12,7 @@ body {
     font-weight: 400;
     margin: 0;
     padding: 0;
+	height:100%;
 }
 
 ::selection {
@@ -162,7 +163,6 @@ ul, ol {
 #global-header #logo {
     float: left;
     position: relative;
-    width: 480px;
 }
 
 #global-header #logo img {
@@ -311,8 +311,14 @@ font-family: "Oswald","HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-seri
    ================================================== */
 
 #home {
-    height: 300px;
+	min-height: 300px;
 }
+
+#home .homecontent {
+	margin: 15px auto 0;
+	display: inline-block;
+}
+
 
 /* Featured Content Slideshow 
    ================================================== */
@@ -530,11 +536,20 @@ div.slider-nav span.left {
 
 #global-footer {
     background: #102A67;
-    -moz-box-shadow: 0 0 35px #000;
-    -webkit-box-shadow: 0 0 35px #000;
-    box-shadow: 0 0 35px #000;
-    margin: 12px auto;
-    width: 990px
+    -moz-box-shadow: inset 0px 4px 10px black;
+    -webkit-box-shadow: inset 0px 4px 10px black;
+    box-shadow: inset 0px 4px 10px black;
+    margin: 15px auto 0;
+    min-height: 150px;  
+    position: relative;
+}
+
+#global-footer .holder {
+    clear: both;
+    display: block;
+    height: 100%;
+    margin: 0 auto;
+    width: 990px;
 }
 
 #global-footer .column {
@@ -607,7 +622,7 @@ background: black;
 	float: right;
 }
 
-..news .post .meta a {
+.news .post .meta a {
 }
 
 .news .post .entry {
@@ -1060,12 +1075,12 @@ color: white;
 text-decoration: underline;
 }
 
-.profile .sidecontent {
+.profile .team {
     display: block;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
-.profile .sidecontent .head {
+.profile .team header {
     background: #E6E6E6;
     border: 1px solid #D3D3D3;
     padding-left: 8px;
@@ -1074,14 +1089,14 @@ text-decoration: underline;
     border-radius: 5px 5px 0 0
 }
 
-.profile .sidecontent .head h1 {
+.profile .team header h1 {
     color: #666666;
     font-weight: bold;
     font-size: 1.4em;
     text-shadow: 0px 1px 1px white;
 }
 
-.profile .sidecontent .widget {
+.profile .team .widget {
     padding: 15px;
     background: #F9F9F9;
     -moz-box-shadow: 0 8px 6px -6px black;
@@ -1095,9 +1110,54 @@ text-decoration: underline;
     border-top: 0
 }
 
-.profile .sidecontent .widget img{
+.profile .team img{
 	border: 8px white solid;
 	outline: 1px solid #ccc;
+	float: left;
+}
+
+.profile .team p{
+	color: black;
+	font: 15px "Oswald";
+	margin: 0px 0px 11px 0px;
+	text-transform: uppercase;
+	word-wrap: break-word;
+}
+
+.profile .teaminfo{
+	float: right;
+	width: 170px;
+}
+
+.profile .teaminfo ul.winlose {
+    list-style: none;
+    width: 167px;
+    padding-top: 11px;
+    margin-top: 0;
+    border-top: 1px solid #BBB;
+    color: #676767;
+}
+
+.profile ul.winlose li {
+	width: 70px;
+	float: left;
+	display: block;
+    padding-left: 8px;
+    height: 50px;
+    border-right: 1px dotted #bbb;
+    text-transform: uppercase;
+}
+
+.profile ul.winlose li:last-child {
+	border:none;
+}
+
+.profile ul.winlose li strong {
+    color: #434343;
+    display: block;
+    font-size: 3.4em;
+    line-height: 1.1em;
+    font-weight: bold;
 }
 
 /* Account settings page 
@@ -1327,8 +1387,8 @@ form.xpadding p {
 }
 .user-rank.admin {background-position: 0px 0px;}
 .user-rank.contributor {background-position: 0px -16px;}
-.user-rank.developer {background-position: 0px -32px;}
-.user-rank.moderator {background-position: 0px -48px;}
+.user-rank.dev {background-position: 0px -32px;}
+.user-rank.mod {background-position: 0px -48px;}
 
 /* World Flags 
    ================================================== */
