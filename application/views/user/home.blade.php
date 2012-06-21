@@ -45,7 +45,7 @@
 			</div>
 	<div class="info clearfix">
 		<ul>
-		<li class="sep"><h4>Other info</h4></li>
+		<li class="sep"><h4>{{$user->username}}'s Info</h4></li>
 		@if ($user->profile->reddit)
 		<li>
 		<label>Reddit</label>
@@ -69,7 +69,7 @@
 		<p>{{ date("F j, Y", strtotime($user->created_at)) }}</p>
 		</li>
 		<li>
-		<label>Last update</label>
+		<label>Last updated</label>
 		<p>{{ date("F j, Y", strtotime($user->updated_at)) }}</p>
 		</li>
 		<? /*
