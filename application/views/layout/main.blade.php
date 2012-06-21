@@ -81,18 +81,20 @@
 		@yield('content')
 	</div>	
 	<footer id="global-footer" class="clearfix">
-		<div class="column">
+	<div class="holder">
+		<section class="column">
 			<h3>Heading</h3>
 			<p>All sorts of awesome footer goodness</p>
-		</div>
-		<div class="column">
+		</section>
+		<section class="column">
 			<h3>Heading</h3>
 			<p>All sorts of awesome footer goodness</p>
-		</div>
-		<div class="column">
+		</section>
+		<section class="column">
 			<h3>Heading</h3>
 			<p>All sorts of awesome footer goodness</p>
-		</div>
+		</section>
+	</div>	
 	</footer>
 	@yield("postfooter")
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>

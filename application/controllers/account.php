@@ -64,7 +64,7 @@ class Account_Controller extends Base_Controller {
 							Messages::add("success", "This login has been added");
 							return Redirect::to_action("account");
 						} else {
-							Messages::add("error", "This login is already being used");
+							Messages::add("error", "This login is already being used by another account");
 							return Redirect::to_action("account");
 						}
 					}
@@ -137,7 +137,7 @@ class Account_Controller extends Base_Controller {
 	public function get_logout() {
 		// TODO: Do real logging out in a post method
 		Auth::logout();
-		Messages::add("success", "You have logged out. Good Bye.");
+		Messages::add("success", "You have logged out. See you soon!");
 		return Redirect::home();
 	}
 	/* Account - remove openid */
@@ -146,7 +146,7 @@ class Account_Controller extends Base_Controller {
 			return Redirect::to_action("account");
 		}
 		if(Auth::user()->openid()->count() <= 1) { // count() should never < 1
-			Messages::add("error", "You can't delete the only way to login");
+			Messages::add("error", "You can't delete your only way to login!");
 			return Redirect::to_action("account");
 		}
 		$openid = Openid::find($oid);
