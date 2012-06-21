@@ -21,7 +21,7 @@
 
 <div class="featured"></div>
 
-<!--
+<? /*
 <div id="ticker">
 	<div class="clear shadow"></div>
 		<span><a target="_blank" href="http://www.kotaku.com/kanye-zone">...a perversely addictive thing. <i>&#151; Kotaku.com</i></a></span>
@@ -29,6 +29,16 @@
 		<span><a target="_blank" href="http://www.2dopeboyz.com/2012/03/10/play-the-kanye-blame-game-kanye-zone">As if you needed yet another reason to spend countless hours on the internet. A simple, silly, yet dizzingly captivating game in which your goal is to prevent 'Ye from getting into his zone. <i>&#151; 2dopeboyz.com</i></a></span>
 		<span><a target="_blank" href="http://thestreetstalk.com/archives/12866">It's most fun when you're stoned. <i>&#151; TheStreetTalk</i></a></span>
 </div>
--->
+*/ ?>
+
+<div id="content" class="homecontent clearfix">
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+</div>
+
 </div>
 @endsection
