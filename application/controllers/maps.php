@@ -11,7 +11,8 @@ class Maps_Controller extends Base_Controller {
 	}
 
 	public function get_index() {
-		return View::make("maps.home");
+		$maps = Map::order_by("created_at", "desc")->paginate(10);
+		return View::make("maps.home", array("title" => "Maps", "maps" => $maps));
 	}
 	public function get_new() {
 		return View::make("maps.new", array("javascript" => array("maps", "edit")));
@@ -39,7 +40,18 @@ class Maps_Controller extends Base_Controller {
 		}
 	}
 	public function get_view($id, $slug = null) {
-		return View::make("layout.main"); // To-do
+		$map = Map::find($id); // Don't really have to care about the slug
+		if(!$map) {
+			return Response::error('404');
+		}
+		if($slug != $map->slug) { // Being nice
+			return Redirect::to_action("maps@view", array($id, $map->slug));
+		}
+		if(!$map->published && (Auth::guest() /* || map owner */ || !Auth::user()->admin)) {
+			return Response::error("404"); // Not yet published
+		}
+		$authors = $map->users()->where("confirmed", "=", 1)->with("confirmed")->get();
+		return View::make("maps.view", array("title" => e($map->title)." | News", "map" => $map, "authors" => $authors));
 	}
 
 }
