@@ -24,18 +24,17 @@
 					<div class="clearfix" style="height:35px"></div>
 					@endif
 					<div class="user-rank admin" title="MLM Admin"></div>
-					<? /* Rank badges needs to be configured and set correct permissons.
-					@if ($user->profile->rank => 0)
+					{{-- User ranks --}}
+					@if ($user->rank == 4)
 					<div class="user-rank admin" title="MLM Admin"></div> All of the access
-					@if ($user->profile->rank => 1)
+					@elseif ($user->rank == 3)
 					<div class="user-rank dev" title="MLM Developer"></div> All of the access
-					@if ($user->profile->rank => 2)
+					@elseif ($user->rank == 2)
 					<div class="user-rank contributor" title="MLM Contributor"></div> (or In-game Referee) Only has access to admin/news , all access to tournaments
-					@if ($user->profile->rank => 3)
+					@elseif ($user->rank == 1)
 					<div class="user-rank mod" title="MLM Moderator"></div> only has access to admin/users,permisson to edit/delete map submissions, ban users, edit/delete user comments
-					@else (user->profile->rank => 99) normies have no access to admin page :( Poor normies.
 					@endif
-					*/ ?>
+
 					<ul class="numbers clearfix">
 						<li>Comments<strong>888</strong></li>
 						<li>Posts<strong>888</strong></li>

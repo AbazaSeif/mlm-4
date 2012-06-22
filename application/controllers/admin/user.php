@@ -39,6 +39,7 @@ class Admin_User_Controller extends Admin_Controller {
 		$validation_rules = array( // Make sure it fits requirements and username and minecraft username are unique (except for current one)
 			'username'  => "required|min:2|max:16|match:/^[a-z0-9_]*$/i|unique:users,username,{$user->id}",
 			'mc_username' => "required|min:2|max:16|match:/^[a-z0-9_]*$/i|unique:users,mc_username,{$user->id}",
+			"rank" => "numeric|between:0,4",
 			"country" => 'in:'.implode(",", $countries),
 			"reddit" => 'match:"/^[\w-]{3,20}$/i"', // validation parameters are parsed as csv
 			"twitter" => 'match:"/^[\w]{1,15}$/i"',
@@ -51,6 +52,7 @@ class Admin_User_Controller extends Admin_Controller {
 			$user->username = Input::get("username");
 			$user->mc_username = Input::get("mc_username");
 			$user->admin = Input::get("admin");
+			$user->rank = Input::get("rank");
 			$profile = $user->profile;
 			$profile->country = Input::get("country");
 			$profile->reddit = Input::get("reddit");
