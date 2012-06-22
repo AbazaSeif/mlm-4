@@ -8,7 +8,7 @@ class Admin_News_Controller extends Admin_Controller {
 	}
 	// Listing news
 	public function get_index() {
-		$news = DB::table("news")->order_by("id", "desc")->get(array("id", "title", "slug"));
+		$news = DB::table("news")->order_by("id", "desc")->get(array("id", "title", "slug", "created_at", "published"));
 		return View::make("admin.news.list", array("news" => $news, "title" => "News | Admin"));
 	}
 	// New form
