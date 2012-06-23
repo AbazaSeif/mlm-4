@@ -32,12 +32,18 @@
 */ ?>
 
 <div id="content" class="homecontent clearfix">
-<section>
-</section>
-<section>
-</section>
-<section>
-</section>
+	<section>
+	<h3>News</h3>
+	trololol
+	</section>
+	<section>
+	<h3>Maps</h3>
+	trololol
+	</section>
+	<section>
+	<h3>Tournaments</h3>
+	trololol
+	</section>
 </div>
 
 </div>

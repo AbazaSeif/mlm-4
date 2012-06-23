@@ -16,33 +16,25 @@ body {
 }
 
 ::selection {
-    background: #0FF
+   background: #AA6814;
+	text-shadow: 0 1px 0px black;
 }
 
 ::-moz-selection {
-    background: #0FF
+    background: #AA6814;
+	text-shadow: 0 1px 0px black;
 }
 
-.left {
-    float: left
-}
-
-.right {
-    float: right
-}
-
-.center {
-	text-align: center;
-}
+.left {float: left}
+.right {float: right}
+.center {text-align: center;}
 
 a {
     text-decoration: none;
     color: #0082B4;
 }
 
-a:hover {
-	
-}
+a:hover {}
 
 abbr, acronym { cursor: help; border-bottom: 1px dotted #888; }
 
@@ -307,18 +299,12 @@ font-family: "Oswald","HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-seri
 #content .titlebar h3{font-size: 18px}
 #content .titlebar h4{font-size: 14px}
 
-/* Front page 
+/* Home page 
    ================================================== */
 
 #home {
 	min-height: 300px;
 }
-
-#home .homecontent {
-	margin: 15px auto 0;
-	display: inline-block;
-}
-
 
 /* Featured Content Slideshow 
    ================================================== */
@@ -443,7 +429,6 @@ div.timer:hover span.pause,
 span.pause.active {
     opacity: 1 }
 
-
 /* Captions
    ================================================== */
 
@@ -529,6 +514,20 @@ div.slider-nav span.left {
 
 #home #ticker a {
     color: white
+}
+
+/*  Feeds
+   ================================================== */
+
+#home .homecontent {
+	margin: 15px auto 0;
+	display: inline-block;
+	width:940px;
+}
+
+#home .homecontent section {
+	display: inline-block;
+	width: 310px;
 }
 
 /* Global Footer
