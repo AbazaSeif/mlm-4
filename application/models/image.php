@@ -54,16 +54,16 @@ class Image extends Eloquent {
 	 * Following are also accessible as $image->file_{size}, eg $image->file_original
 	 */
 	public function get_file_original() {
-		return "images/uploads/o/".$this->file;
+		return "/images/uploads/o/".$this->file;
 	}
 	public function get_file_large() {
-		return "images/uploads/l/".$this->file;
+		return "/images/uploads/l/".$this->file;
 	}
 	public function get_file_medium() {
-		return "images/uploads/m/".$this->file;
+		return "/images/uploads/m/".$this->file;
 	}
 	public function get_file_small() {
-		return "images/uploads/s/".$this->file;
+		return "/images/uploads/s/".$this->file;
 	}
 	
 	public function to_array() {

@@ -23,10 +23,11 @@
 				You can try a search below or go to back to our <?php echo HTML::link('/', 'home page'); ?>.
 			</p>
             <br>
-		<?php echo Form::open("search"); ?>
-		<?php echo Form::text("search_term", ""); ?>
-		<?php echo Form::submit("Search", array('class' => 'btn-primary')); ?>
-		<?php echo Form::close(); ?>
+		<form method="get" action="#" class="nobg">
+				<div class="input-append">
+                <input class="sbar" size="16" type="text"><button class="btn btn-primary" type="button"><i class="icon-search icon-white"></i></button>
+              </div>
+		</form>
 	</div>
 </body>
 </html>

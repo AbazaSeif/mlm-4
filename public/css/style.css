@@ -1,5 +1,5 @@
 /* --------------------------------------------------------------
-              MAJOR LEAGUE MINING 2012
+		    MAJOR LEAGUE MINING 2012
 -----------------------------------------------------------------*/
 
 @import url(http://fonts.googleapis.com/css?family=Oswald:400,700,300);
@@ -276,7 +276,7 @@ ul, ol {
     -moz-box-shadow: 0 0 35px #000;
     -webkit-box-shadow: 0 0 35px #000;
     box-shadow: 0 0 35px #000;
-    padding: 10px 25px;
+    padding: 15px 25px;
     font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif
 }
 
@@ -576,28 +576,112 @@ color:white;
 background: black;
 }
 
-.news h2 {
-
+.news .pagination {
+clear: both;
 }
 
 /* News front page 
    ================================================== */
 
-.news #articles{
+.news .articles{
 	float:left;
-	width:600px;
+	width: 660px;
 }
 
-.news .post {
+.post  {
+	margin-bottom: 30px;
+	border-bottom: 1px dotted #ddd;
+	padding-bottom: 29px;
+	width: 100%;
+ 
+	float: left;
+}
+
+.post-image  {
+	display: block;
+	width: 100%;
 	margin-bottom: 15px;
-	border-bottom: 1px dashed #D8D8D8;
+ 
+	box-shadow: 0px 0px 10px black;
 }
 
-.news .post .title {
-	margin-bottom: 10px;
-	padding: 12px 0 0 0px;
-	font-size: 32px;
+.post-image img  {
+	width: 100%;
+ 
+	display: block;
+	border: 4px solid white;
+	outline: 1px #666 solid;
 }
+
+
+.date,  .comments-nr  {
+	float: left;
+	width: 75px;
+	text-align: center;
+	font-size: 14px;
+	color: #666;
+	padding: 10px 5px;
+	background: #E6E6E6;
+	border: 4px solid #f4f4f4;
+	margin-bottom: 10px;
+ 
+	outline: 1px solid lightgrey;
+	-moz-box-shadow: 0 8px 6px -6px black;  
+	-webkit-box-shadow: 0 8px 6px -6px   black;  box-shadow: 0 8px 6px -6px   black;
+}
+
+.date  {
+ }
+
+.comments-nr a  {
+	color: #666;
+	display: block;
+}
+
+.date .bold, .comments-nr .bold  {
+	font-size: 25px;
+	line-height: 40px;
+	margin-bottom: 0px;
+	text-align: center;
+	display: block;
+	color: #474747;
+	transition:  color 0.1s linear;
+	-moz-transition:  color 0.1s linear;
+	-webkit-transition:  color 0.1s linear;
+	-o-transition:  color 0.1s linear;
+ }
+
+.comments-nr a:hover, .comments-nr a:hover .bold  {
+	color: #d16f4e;
+ }
+
+
+.post-info  {
+	float: left;
+	width: 94px;
+	margin-right: 15px;
+	font-size: 11px;
+	font-family: "Oswald";
+ 
+}
+
+.post-info p  {
+	text-align: right;
+	margin-bottom: 0px;
+	line-height: 20px;
+ 
+	font-size: 12px;
+}
+
+.post-info p span  {
+	color: #bbb;
+	padding-right: 3px;
+	font-style: italic;
+ }
+
+.post-info p a  {
+	color: #f4f4f4;
+ }
 
 .news .post .title a {
 	border: none;
@@ -605,66 +689,52 @@ background: black;
 	font-family: "Oswald",Helvetica, Arial, sans-serif;
 	text-shadow: 0px 1px 1px black;
 }
-
-.news .post .meta {
-	margin-bottom: 30px;
-	padding: 5px 0px 15px 0px;
-	text-align: left;
-	font-weight: normal;
-}
-
-.news .post .meta .date {
+ 
+.post-entry  {
 	float: left;
+	width: 550px;
+ }
+
+.post-entry h1  {
+	line-height: 34px;
+	margin: 0px 0px 10px;
+ 
 }
+ 
+.post-entry p  {
+	margin-bottom: 0px;
+ }
 
-.news .post .meta .posted {
-	float: right;
-}
+.post-meta  {
+	font-size: 12px;
+	line-height: 20px;
+	font-style: italic;
+	color: #b0b0b0;
+	display: block;
+	margin-bottom: 8px;
+	margin-top: -15px;
+ }
 
-.news .post .meta a {
-}
+.post-meta a, .post-meta strong  {
+	color: #999;
+ }
 
-.news .post .entry {
-	padding: 0px 0px 20px 0px;
-	padding-bottom: 20px;
-	text-align: justify;
-}
-
-.news .links {
-	height: 30px;
-	padding: 30px 0px 0px 0px;
-	font-size: 14px;
-	font-weight: normal;
-	color: #1C1C1C;
-}
-
-/* News single pages 
-
-.single{
-padding:0;
-}
-
-.single h1{
-padding: 22px;
-font-family:"Helvetica Neue Condensed Bold";
-text-shadow: 0px 1px 1px black;
-margin: 0;
-}
-
-.single img{
-box-shadow:inset 0px 0px 20px black;
-}
-
-*/
-
+.more-link  {
+	display: block;
+	margin-top: 20px;
+ }
+ 
 /* Sidebar 
    ================================================== */
 
 .news #sidebar {
 	float: right;
-	width: 300px;
+	width: 250px;
 	margin: 0px;
-	padding: 30px 0px 0px 0px;
+}
+
+.news #sidebar .sbar{
+	width: 205px;
 }
 
 .news #sidebar ul {
@@ -684,7 +754,7 @@ box-shadow:inset 0px 0px 20px black;
 }
 
 .news #sidebar li li {
-	border-bottom: 1px dashed #D8D8D8;
+	border-bottom: 1px dotted #D8D8D8;
 	margin: 0px 0px;
 	padding: 5px 0px;
 	border-left: none;
@@ -701,9 +771,20 @@ box-shadow:inset 0px 0px 20px black;
 	font-style: italic;
 }
 
-.news #sidebar h2 {
-	padding-bottom: 20px;
-	font-size: 1.8em;
+.news #sidebar header {
+    background: #E6E6E6;
+    border: 1px solid lightGrey;
+    padding-left: 8px;
+    margin-bottom: 10px;
+    outline: 4px solid #F4F4F4;
+}
+
+.news #sidebar header h1 {
+    color: #474747;
+    font-weight: bold;
+	
+    font-size: 1.5em;
+    text-shadow: 0px 1px 1px white;
 }
 
 .news #sidebar p {
@@ -939,9 +1020,6 @@ box-shadow:inset 0px 0px 20px black;
     display: block;
     background-color: #f9f9f9;
     border: 1px solid #ccc;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
     padding: 12px;
     -moz-box-shadow: 0 8px 6px -6px black;
     -webkit-box-shadow: 0 8px 6px -6px black;
@@ -1083,9 +1161,6 @@ text-decoration: underline;
     background: #E6E6E6;
     border: 1px solid #D3D3D3;
     padding-left: 8px;
-    -moz-border-radius: 5px 5px 0 0;
-    -webkit-border-radius: 5px 5px 0 0;
-    border-radius: 5px 5px 0 0
 }
 
 .profile .team header h1 {
@@ -1096,15 +1171,12 @@ text-decoration: underline;
 }
 
 .profile .team .widget {
-    padding: 15px;
+    padding: 15px 10px;
     background: #F9F9F9;
     -moz-box-shadow: 0 8px 6px -6px black;
     -webkit-box-shadow: 0 8px 6px -6px black;
     box-shadow: 0 8px 6px -6px black;
     min-height: 117px;
-    -moz-border-radius: 0 0 5px 5px;
-    -webkit-border-radius: 0 0 5px 5px;
-    border-radius: 0 0 5px 5px;
     border: 1px solid #CCC;
     border-top: 0
 }
@@ -1124,7 +1196,7 @@ text-decoration: underline;
 
 .profile .teaminfo{
 	float: right;
-	width: 170px;
+	width: 175px;
 }
 
 .profile .teaminfo ul.winlose {
@@ -1255,7 +1327,7 @@ form.xpadding p {
 }
 
 #imagemanager .thumbnail {
-    height: 100px
+
 }
 
 .row-fluid .image-list {
