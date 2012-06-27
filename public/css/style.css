@@ -128,7 +128,8 @@ ul, ol {
    ================================================== */
 
 #global-header {
-    width: 100%
+    width: 100%;
+    min-width: 990px;
 }
 
 #global-header #bg {
@@ -541,6 +542,7 @@ div.slider-nav span.left {
     margin: 15px auto 0;
     min-height: 150px;  
     position: relative;
+    min-width: 990px;
 }
 
 #global-footer .holder {
