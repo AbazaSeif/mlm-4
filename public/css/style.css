@@ -685,23 +685,18 @@ clear: both;
 	color: #f4f4f4;
  }
 
-.news .post .title a {
+.news .post h1.title, .news .post .title a {
 	border: none;
 	color: white;
 	font-family: "Oswald",Helvetica, Arial, sans-serif;
 	text-shadow: 0px 1px 1px black;
+	margin: 0px 0px 15px;
 }
  
 .post-entry  {
 	float: left;
 	width: 550px;
  }
-
-.post-entry h1  {
-	line-height: 34px;
-	margin: 0px 0px 10px;
- 
-}
  
 .post-entry p  {
 	margin-bottom: 0px;
@@ -746,13 +741,13 @@ clear: both;
 }
 
 .news #sidebar li {
-	margin: 0;
+	margin: 0px 0px 20px 0px;
 	padding: 0;
 }
 
 .news #sidebar li ul {
-	margin: 0px 0px;
-	padding-bottom: 50px;
+	margin: 0;
+	padding: 0;
 }
 
 .news #sidebar li li {
@@ -790,8 +785,8 @@ clear: both;
 }
 
 .news #sidebar p {
-	margin: 0px 0px 40px 0px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
 	text-align: justify;
 }
 
