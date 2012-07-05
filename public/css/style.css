@@ -12,17 +12,16 @@ body {
     font-weight: 400;
     margin: 0;
     padding: 0;
-	height:100%;
 }
 
 ::selection {
    background: #AA6814;
-	text-shadow: 0 1px 0px black;
+	text-shadow: 0 1px 0px #000000;
 }
 
 ::-moz-selection {
     background: #AA6814;
-	text-shadow: 0 1px 0px black;
+	text-shadow: 0 1px 0px #000000;
 }
 
 .left {float: left}
@@ -178,7 +177,7 @@ ul, ol {
     font-weight: 700;
     text-decoration: none;
     text-shadow: 0 1px 3px #000;
-    color: white;
+    color: #ffffff;
     display: block;
 }
 
@@ -192,15 +191,15 @@ ul, ol {
     font-weight: 700;
     text-decoration: none;
     text-shadow: 0 1px 3px #000;
-    color: white;
+    color: #ffffff;
     font-weight: 400;
 }
 
 #global-header #logs img {
-    border: 2px white solid;
-    -moz-box-shadow: 0 1px 3px black;
-    -webkit-box-shadow: 0 1px 3px black;
-    box-shadow: 0 1px 3px black;
+    border: 2px #ffffff solid;
+    -moz-box-shadow: 0 1px 3px #000000;
+    -webkit-box-shadow: 0 1px 3px #000000;
+    box-shadow: 0 1px 3px #000000;
     vertical-align: bottom;
     margin-left: 3px
 }
@@ -245,9 +244,9 @@ ul, ol {
 
 #menu li:hover {
     background: #B9B9B9;
-    -moz-box-shadow: inset 0 0 10px black;
-    -webkit-box-shadow: inset 0 0 10px black;
-    box-shadow: inset 0 0 10px black
+    -moz-box-shadow: inset 0 0 10px #000000;
+    -webkit-box-shadow: inset 0 0 10px #000000;
+    box-shadow: inset 0 0 10px #000000
 }
 
 #menu li:first-child {
@@ -290,8 +289,8 @@ border-bottom: 1px dotted grey;
 line-height: 1;
 margin: 10px 0;
 font-weight: normal;
-text-shadow: 0 1px 3px    black;
-color: white;
+text-shadow: 0 1px 3px    #000000;
+color: #ffffff;
 text-transform: uppercase;
 font-family: "Oswald","HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
 } 
@@ -391,7 +390,7 @@ span.rotator {
     position: absolute;
     top: 0;
     left: -20px;
-    background: url(../images/slider/rotator-black.png) no-repeat;
+    background: url(../images/slider/rotator-#000000.png) no-repeat;
     z-index: 3; }
 
 span.mask {
@@ -410,7 +409,7 @@ span.rotator.move {
 span.mask.move {
     width: 40px;
     left: 0;
-    background: url(../images/slider/timer-black.png) repeat 0 0; }
+    background: url(../images/slider/timer-#000000.png) repeat 0 0; }
 
 span.pause {
     display: block;
@@ -419,12 +418,12 @@ span.pause {
     position: absolute;
     top: 0;
     left: 0;
-    background: url(../images/slider/pause-black.png) no-repeat;
+    background: url(../images/slider/pause-#000000.png) no-repeat;
     z-index: 4;
     opacity: 0; }
 
 span.pause.active {
-    background: url(../images/slider/pause-black.png) no-repeat 0 -40px }
+    background: url(../images/slider/pause-#000000.png) no-repeat 0 -40px }
 
 div.timer:hover span.pause,
 span.pause.active {
@@ -514,7 +513,7 @@ div.slider-nav span.left {
 }
 
 #home #ticker a {
-    color: white
+    color: #ffffff
 }
 
 /*  Feeds
@@ -536,13 +535,15 @@ div.slider-nav span.left {
 
 #global-footer {
     background: #102A67;
-    -moz-box-shadow: inset 0px 4px 10px black;
-    -webkit-box-shadow: inset 0px 4px 10px black;
-    box-shadow: inset 0px 4px 10px black;
-    margin: 15px auto 0;
-    min-height: 150px;  
-    position: relative;
+    -moz-box-shadow: inset 0px 4px 10px #000000;
+    -webkit-box-shadow: inset 0px 4px 10px #000000;
+    box-shadow: inset 0px 4px 10px #000000;
+    margin: 15px auto 0;  
+    position: static;
     min-width: 990px;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 #global-footer .holder {
@@ -574,8 +575,8 @@ footer .column p {
    ================================================== */
 
 .news {
-color:white;
-background: black;
+color:#ffffff;
+background: #000000;
 }
 
 .news .pagination {
@@ -604,14 +605,14 @@ clear: both;
 	width: 100%;
 	margin-bottom: 15px;
  
-	box-shadow: 0px 0px 10px black;
+	box-shadow: 0px 0px 10px #000000;
 }
 
 .post-image img  {
 	width: 100%;
  
 	display: block;
-	border: 4px solid white;
+	border: 4px solid #ffffff;
 	outline: 1px #666 solid;
 }
 
@@ -628,8 +629,8 @@ clear: both;
 	margin-bottom: 10px;
  
 	outline: 1px solid lightgrey;
-	-moz-box-shadow: 0 8px 6px -6px black;  
-	-webkit-box-shadow: 0 8px 6px -6px   black;  box-shadow: 0 8px 6px -6px   black;
+	-moz-box-shadow: 0 8px 6px -6px #000000;  
+	-webkit-box-shadow: 0 8px 6px -6px   #000000;  box-shadow: 0 8px 6px -6px   #000000;
 }
 
 .date  {
@@ -687,9 +688,9 @@ clear: both;
 
 .news .post h1.title, .news .post .title a {
 	border: none;
-	color: white;
+	color: #ffffff;
 	font-family: "Oswald",Helvetica, Arial, sans-serif;
-	text-shadow: 0px 1px 1px black;
+	text-shadow: 0px 1px 1px #000000;
 	margin: 0px 0px 15px;
 }
  
@@ -785,7 +786,7 @@ width:660px;
     font-weight: bold;
 	
     font-size: 1.5em;
-    text-shadow: 0px 1px 1px white;
+    text-shadow: 0px 1px 1px #ffffff;
     margin: 0.5em 0;
 }
 
@@ -822,7 +823,7 @@ width:660px;
     font-weight: 700;
     font-size: 25px;
     margin-bottom: 20px;
-    text-shadow: 0 1px 3px black;
+    text-shadow: 0 1px 3px #000000;
 }
 
 #login input {
@@ -857,7 +858,7 @@ width:660px;
 
 #login .openid ul li span {
     padding: 0 1em 0 3px;
-    color: black;
+    color: #000000;
 }
 
 #login .openid fieldset {
@@ -890,7 +891,7 @@ width:660px;
     background: #DCDCDC url(../images/login/fadegrey.png);
     padding: 10px;
     display: inline-block;
-    color: black;
+    color: #000000;
 }
 
 #login .openid_logo {
@@ -914,9 +915,9 @@ width:660px;
 
 #pageheader {
     background: #102A67;
-    -moz-box-shadow: inset 0 0 30px black, 0 0 30px black;
-    -webkit-box-shadow: inset 0 0 30px black, 0 0 30px black;
-    box-shadow: inset 0 0 30px black, 0 0 30px black;
+    -moz-box-shadow: inset 0 0 30px #000000, 0 0 30px #000000;
+    -webkit-box-shadow: inset 0 0 30px #000000, 0 0 30px #000000;
+    box-shadow: inset 0 0 30px #000000, 0 0 30px #000000;
     margin: 20px 0;
     height: 100px
 }
@@ -941,7 +942,7 @@ width:660px;
 }
 
 #pagemenu a {
-    color: white
+    color: #ffffff
 }
 
 .nav {
@@ -969,13 +970,13 @@ width:660px;
     font-size: 1.2em;
     line-height: 1.4em;
     font-family: Arial, sans-serif;
-    color: white;
+    color: #ffffff;
     margin-bottom: 15px;
 }
 
 .profile h1 {
     font-family: Helvetica, Arial, Verdana, sans-serif;
-    color: white;
+    color: #ffffff;
     font-weight: bold;
     font-size: 1.7em;
     line-height: 2.0em;
@@ -1023,9 +1024,9 @@ width:660px;
     background-color: #f9f9f9;
     border: 1px solid #ccc;
     padding: 12px;
-    -moz-box-shadow: 0 8px 6px -6px black;
-    -webkit-box-shadow: 0 8px 6px -6px black;
-    box-shadow: 0 8px 6px -6px black
+    -moz-box-shadow: 0 8px 6px -6px #000000;
+    -webkit-box-shadow: 0 8px 6px -6px #000000;
+    box-shadow: 0 8px 6px -6px #000000
 }
 
 .profile #vcard .pic {
@@ -1057,7 +1058,7 @@ width:660px;
 .profile #vcard .data h1 {
     color: #474747;
     line-height: 1.6em;
-    text-shadow: 0px 1px 1px white;
+    text-shadow: 0px 1px 1px #ffffff;
     margin: 0;
     padding: 0;
     font-size: 28px;
@@ -1122,7 +1123,7 @@ margin: 20px 0px;
     margin: 0px;
     color: #474747;
     line-height: 1.6em;
-    text-shadow: 0px 1px 1px white;
+    text-shadow: 0px 1px 1px #ffffff;
 }
 
 .profile .info li.sep {
@@ -1132,10 +1133,10 @@ margin: 20px 0px;
 .profile .info li label {
     display: inline-block;
     width: 170px;
-    color: white;
+    color: #ffffff;
     font-family: "Oswald","HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 18px;
-    text-shadow: 0 1px 3px black
+    text-shadow: 0 1px 3px #000000
 }
 
 .profile .info p {
@@ -1147,7 +1148,7 @@ margin-bottom: 0;
 display: inline-block;
 width: 399px;
 vertical-align: middle;
-color: white;
+color: #ffffff;
 }
 
 .profile .info a:hover {
@@ -1169,29 +1170,29 @@ text-decoration: underline;
     color: #666666;
     font-weight: bold;
     font-size: 1.4em;
-    text-shadow: 0px 1px 1px white;
+    text-shadow: 0px 1px 1px #ffffff;
     margin: 0.5em 0;
 }
 
 .profile .team .widget {
     padding: 15px 10px;
     background: #F9F9F9;
-    -moz-box-shadow: 0 8px 6px -6px black;
-    -webkit-box-shadow: 0 8px 6px -6px black;
-    box-shadow: 0 8px 6px -6px black;
+    -moz-box-shadow: 0 8px 6px -6px #000000;
+    -webkit-box-shadow: 0 8px 6px -6px #000000;
+    box-shadow: 0 8px 6px -6px #000000;
     min-height: 117px;
     border: 1px solid #CCC;
     border-top: 0
 }
 
 .profile .team img{
-	border: 8px white solid;
+	border: 8px #ffffff solid;
 	outline: 1px solid #ccc;
 	float: left;
 }
 
 .profile .team p{
-	color: black;
+	color: #000000;
 	font: 15px "Oswald";
 	text-transform: uppercase;
 	word-wrap: break-word;
@@ -1280,9 +1281,9 @@ form.xpadding p {
     text-align: center;
     padding: 30px;
     background: #102A67;
-    -moz-box-shadow: 0 0 35px black;
-    -webkit-box-shadow: 0 0 35px black;
-    box-shadow: 0 0 35px black
+    -moz-box-shadow: 0 0 35px #000000;
+    -webkit-box-shadow: 0 0 35px #000000;
+    box-shadow: 0 0 35px #000000
 }
 
 #errorbox h1 {
@@ -1348,7 +1349,7 @@ form.xpadding p {
 .cleditorMain {
     border: 1px solid #999;
     padding: 0 1px 1px;
-    background-color: white;
+    background-color: #ffffff;
 }
 
 .cleditorMain iframe {
@@ -1359,7 +1360,7 @@ form.xpadding p {
 
 .cleditorMain textarea {
     border: none;
-    nowhitespace: afterproperty;
+    no#ffffffspace: afterproperty;
     margin: 0;
     padding: 0;
     overflow-y: scroll;
@@ -1400,7 +1401,7 @@ form.xpadding p {
 
 .cleditorPopup {
     border: solid 1px #999;
-    background-color: white;
+    background-color: #ffffff;
     position: absolute;
     font: 10pt Arial;
     cursor: default;
@@ -1415,7 +1416,7 @@ form.xpadding p {
     padding: 0;
     margin: 0;
     background-color: Transparent;
-   color:black;
+   color:#000000;
 }
 
 .cleditorColor {
@@ -1451,17 +1452,19 @@ form.xpadding p {
    ================================================== */
 
 .user-rank { 
-	position: absolute;
-	right: 5px;
-	top: 5px;
+	
+ 	position: absolute;
+ 	right: 8px;
+	top: 8px;
+	box-shadow: 0px 1px 1px #ffffff;
 	width: 16px;
 	height: 16px;
 	background: url(../images/static/urank.png) no-repeat;
 }
 .user-rank.admin {background-position: 0px 0px;}
-.user-rank.contributor {background-position: 0px -16px;}
-.user-rank.dev {background-position: 0px -32px;}
-.user-rank.mod {background-position: 0px -48px;}
+.user-rank.dev {background-position: 0px -16px;}
+.user-rank.mod {background-position: 0px -32px;}
+.user-rank.editor {background-position: 0px -48px;}
 
 /* World Flags 
    ================================================== */
