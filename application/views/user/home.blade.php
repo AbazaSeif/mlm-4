@@ -23,14 +23,13 @@
 					@else
 					<div class="clearfix" style="height:35px"></div>
 					@endif
-					<div class="user-rank admin" title="MLM Admin"></div>
 					{{-- User ranks --}}
 					@if ($user->rank == 4)
 					<div class="user-rank admin" title="MLM Admin"></div>
 					@elseif ($user->rank == 3)
 					<div class="user-rank dev" title="MLM Developer"></div>
 					@elseif ($user->rank == 2)
-					<div class="user-rank contributor" title="MLM Contributor"></div>
+					<div class="user-rank editor" title="MLM Editor"></div>
 					@elseif ($user->rank == 1)
 					<div class="user-rank mod" title="MLM Moderator"></div>
 					@endif
