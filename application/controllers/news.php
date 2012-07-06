@@ -17,7 +17,7 @@ class News_Controller extends Base_Controller {
 	}
 	// Viewing an article
 	public function get_view($id, $slug = null) {
-		$newsitem = News::find($id); // Don't really have to care about the slug
+		$newsitem = News::with(array("user", "comments", "comments.user"))->find($id); // Don't really have to care about the slug
 		if(!$newsitem) {
 			return Response::error('404');
 		}
