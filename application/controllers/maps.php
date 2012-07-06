@@ -6,8 +6,8 @@ class Maps_Controller extends Base_Controller {
 	public function __construct() {
 		parent::__construct();
 
-		$this->filter("before", "auth")->only(array("new"));
-		$this->filter("before", "csrf")->on("post")->only(array("new"));
+		$this->filter("before", "auth")->only(array("new", "edit"));
+		$this->filter("before", "csrf")->on("post")->only(array("new", "edit"));
 	}
 
 	public function get_index() {
@@ -53,5 +53,8 @@ class Maps_Controller extends Base_Controller {
 		$authors = $map->users()->where("confirmed", "=", 1)->with("confirmed")->get();
 		return View::make("maps.view", array("title" => e($map->title)." | News", "map" => $map, "authors" => $authors));
 	}
+	/* Editing map */
+	public function get_edit($id) {
 
+	}
 }

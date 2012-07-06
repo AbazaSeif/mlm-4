@@ -14,7 +14,7 @@
 	<div class="post-content">
 	<div class="post-info">
 		<span class="date"><p class="bold">{{ HTML::entities(date("M j", strtotime($article->created_at))) }}</p>{{ HTML::entities(date("Y", strtotime($article->created_at))) }}<br>{{ HTML::entities(date("g:ia T", strtotime($article->created_at))) }}</span>
-		<span class="comments-nr"><a href="#"><p class="bold">888</p> comments</a></span>
+		<span class="comments-nr"><a href="#"><p class="bold">{{ $article->comment_count }}</p> {{ Str::plural('comment', $article->comment_count) }}</a></span>
 		<p><span>By</span> <a href="/user/{{ $article->user->username }}" title="{{ $article->user->username }}'s Profile" rel="author">{{ $article->user->username }}</a></p>
 		<p><span>In</span> <a href="/news/category/" title="View all posts in CATEGORY" rel="category tag">CATEGORY</a></p>
 	</div>
