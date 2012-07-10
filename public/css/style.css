@@ -281,18 +281,18 @@ ul, ol {
 }
 
 #content .titlebar {
-margin-bottom:10px;
-border-bottom: 1px dotted grey;
+	margin-bottom:10px;
+	border-bottom: 1px dotted #ffffff;
 }
 
 #content .titlebar h1,#content .titlebar h2, #content .titlebar h3,#content .titlebar h4    {
-line-height: 1;
-margin: 10px 0;
-font-weight: normal;
-text-shadow: 0 1px 3px    #000000;
-color: #ffffff;
-text-transform: uppercase;
-font-family: "Oswald","HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
+	line-height: 1;
+	margin: 10px 0;
+	font-weight: normal;
+	text-shadow: 0 1px 3px #000000;
+	color: #ffffff;
+	text-transform: uppercase;
+	font-family: "Oswald","HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
 } 
 #content .titlebar h1 {font-size: 32px}
 #content .titlebar h2 {font-size: 24px}
@@ -390,7 +390,7 @@ span.rotator {
     position: absolute;
     top: 0;
     left: -20px;
-    background: url(../images/slider/rotator-#000000.png) no-repeat;
+    background: url(../images/slider/rotator-black.png) no-repeat;
     z-index: 3; }
 
 span.mask {
@@ -409,7 +409,7 @@ span.rotator.move {
 span.mask.move {
     width: 40px;
     left: 0;
-    background: url(../images/slider/timer-#000000.png) repeat 0 0; }
+    background: url(../images/slider/timer-black.png) repeat 0 0; }
 
 span.pause {
     display: block;
@@ -418,12 +418,12 @@ span.pause {
     position: absolute;
     top: 0;
     left: 0;
-    background: url(../images/slider/pause-#000000.png) no-repeat;
+    background: url(../images/slider/pause-black.png) no-repeat;
     z-index: 4;
     opacity: 0; }
 
 span.pause.active {
-    background: url(../images/slider/pause-#000000.png) no-repeat 0 -40px }
+    background: url(../images/slider/pause-black.png) no-repeat 0 -40px }
 
 div.timer:hover span.pause,
 span.pause.active {
@@ -604,20 +604,18 @@ clear: both;
 	display: block;
 	width: 100%;
 	margin-bottom: 15px;
- 
-	box-shadow: 0px 0px 10px #000000;
+	outline: 1px solid lightGrey;  -moz-box-shadow: 0 8px 6px -6px #000000;  -webkit-box-shadow: 0 8px 6px -6px black;  
+	box-shadow: 0 8px 6px -6px black;
+	border: 4px solid #ffffff;
 }
 
 .post-image img  {
 	width: 100%;
  
 	display: block;
-	border: 4px solid #ffffff;
-	outline: 1px #666 solid;
 }
 
-
-.date,  .comments-nr  {
+.post .date, .post .comments-nr  {
 	float: left;
 	width: 75px;
 	text-align: center;
@@ -633,15 +631,15 @@ clear: both;
 	-webkit-box-shadow: 0 8px 6px -6px   #000000;  box-shadow: 0 8px 6px -6px   #000000;
 }
 
-.date  {
+.post .date  {
  }
 
-.comments-nr a  {
+.post .comments-nr a  {
 	color: #666;
 	display: block;
 }
 
-.date .bold, .comments-nr .bold  {
+.post .date .bold, .post .comments-nr .bold  {
 	font-size: 25px;
 	line-height: 40px;
 	margin-bottom: 0px;
@@ -1448,11 +1446,43 @@ form.xpadding p {
     font-size: 8.5pt;
 }
 
+/* Global comment style
+   ================================================== */
+
+#comments {
+	display: block;
+	padding: 0;
+	margin: 30px 0;
+}
+	
+#commentlist {
+	width: 660px;
+	padding: 0;
+	margin: 0;
+}
+
+#commentlist li{
+	list-style:none;
+}
+
+#commentlist .comment{
+	border-bottom: 1px white dotted;
+	margin: 15px 0px;
+	padding: 10px;
+}
+
+#comments .avatar {
+	border: 4px white solid;
+	-moz-box-shadow: 0 1px 3px #000000;
+	-webkit-box-shadow: 0 1px 3px black;
+	box-shadow: 0 1px 3px black;
+	margin-right: 8px;
+}
+
 /* Sprite galore! 
    ================================================== */
 
-.user-rank { 
-	
+.user-rank {
  	position: absolute;
  	right: 8px;
 	top: 8px;
