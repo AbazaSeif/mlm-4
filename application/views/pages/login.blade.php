@@ -1,7 +1,9 @@
 @layout('layout.main')
 
 @section('content')
-	<div id="content">
+	<style>header,footer{display:none}#content{background:none;box-shadow:none;}</style>
+	<div id="content" class="center">
+	<a href="/"><img src="{{ URL::to_asset("images/static/logo.png") }}" /></a>
 		<div id="login">
 			{{ Form::open("account/login" , 'POST', array('class' => 'openid')) }} 
 				<div class="prov">
@@ -25,16 +27,15 @@
 					</div>
 				</fieldset> 
 				<fieldset>
-					<label for="openid_identifier">Enter your <a class="openid_logo" href="http://openid.net">OpenID</a></label> 
+					<label for="openid_identifier">Enter your <a class="openid_logo" href="http://openid.net" rel="nofollow">OpenID</a></label> 
 					<div>{{ Form::text("openid_identifier") }} 
 						{{ Form::submit("Login", array("class" => "btn btn-primary")) }}
 					</div>
 				</fieldset> 
 			{{ Form::close() }}
 			<p>We use openID for a safe, faster, and easier way to log into our website.
-					If you don't have an openID with any of the provided services, you may create one with any of the providers<br/><a href="http://openid.net/get-an-openid/" title="Will open in new tab" target="_blank">on this list</a>.
+					If you don't have an openID with any of the provided services, you may create one with any of the providers <br><a href="http://openid.net/get-an-openid/" title="Will open in new tab" target="_blank" rel="nofollow">on this list</a>.
 			</p>
 		</div>
 	</div>
 @endsection
-

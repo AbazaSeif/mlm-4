@@ -604,7 +604,9 @@ clear: both;
 	display: block;
 	width: 100%;
 	margin-bottom: 15px;
-	outline: 1px solid lightGrey;  -moz-box-shadow: 0 8px 6px -6px #000000;  -webkit-box-shadow: 0 8px 6px -6px black;  
+	outline: 1px solid lightGrey;  
+	-moz-box-shadow: 0 8px 6px -6px #000000;  
+	-webkit-box-shadow: 0 8px 6px -6px black;  
 	box-shadow: 0 8px 6px -6px black;
 	border: 4px solid #ffffff;
 }
@@ -806,15 +808,17 @@ width:660px;
    ================================================== */
 
 #login {
-    width: 336px;
-	margin: 0 auto;
-	padding: 40px 0;
+    width: 540px;
+    height: 540px;
+    background: transparent url(../images/static/login.png) no-repeat center top;
+	margin: -15px auto 0;
 	text-align: center;
 	font-family: "Oswald","Helvetica Neue Condensed Bold",Helvetica,Arial,sans-serif;
 }
 
 #login form {
-    background: none
+    background: none;
+	padding: 202px 0 0;
 }
 
 #login label {
@@ -829,7 +833,9 @@ width:660px;
 }
 
 #login p {
-    font-size: 14px
+    font-size: 14px;
+	padding: 10px;
+	margin-top: 180px;
 }
 
 #login .openid .prov {
