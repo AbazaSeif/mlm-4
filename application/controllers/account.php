@@ -33,6 +33,7 @@ class Account_Controller extends Base_Controller {
 	public function post_login() {
 		$openid = new LightOpenID(Config::get('openid.host'));
 		try {
+			Session::put("login_remember", Input::get("remember"));
 			$openid->identity = Input::get('openid_identifier');
 			$openid->returnUrl = URL::to_action("account@callback");
 			return Redirect::to($openid->authUrl());
@@ -56,7 +57,8 @@ class Account_Controller extends Base_Controller {
 				if($openid->validate()) { // Validate that proper openid loop was done (no rouge openid endpoints)
 					$identity = $openid->identity;
 					if(Auth::guest()) { // Guest either logs in, or registers
-						if(Auth::attempt(array("identity" => $identity))) {
+						if(Auth::attempt(array("identity" => $identity, "remember" => Session::get("login_remember") ))) {
+							Session::forget("login_remember");
 							Messages::add("success", "Welcome back ".Auth::user()->username."!");
 							if($redir = Session::get("login_redirect")) {
 								Session::forget("login_redirect");

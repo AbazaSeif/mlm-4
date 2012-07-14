@@ -31,7 +31,8 @@
 					<div>{{ Form::text("openid_identifier") }} 
 						{{ Form::submit("Login", array("class" => "btn btn-primary")) }}
 					</div>
-				</fieldset> 
+				</fieldset>
+				{{ Form::checkbox("remember", true, false, array("id" => "remember")) }} {{ Form::label("remember", "Remember me forever (which is a long time)") }}
 			{{ Form::close() }}
 			<p>We use openID for a safe, faster, and easier way to log into our website.
 					If you don't have an openID with any of the provided services, you may create one with any of the providers <br><a href="http://openid.net/get-an-openid/" title="Will open in new tab" target="_blank" rel="nofollow">on this list</a>.
