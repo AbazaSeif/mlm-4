@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div id="errorbox">
-	<a href="/"><img src="<?php echo URL::to_asset("images/static/logo.png") ?>" /></a>
+	<a href="/" title="Major League Mining"><img src="<?php echo URL::to_asset("images/static/logo.png") ?>" /></a>
 	        <br>
 			<hr>
 			<br>
