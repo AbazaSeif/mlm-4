@@ -22,6 +22,11 @@ class Account_Controller extends Base_Controller {
 		if(Auth::check()) {
 			return Redirect::home();
 		}
+		if($to_url = strstr(Request::server('http_referer'), URL::base())) {
+			if(!strstr($to_url, URL::to("login")) || !strstr($to_url, URL::to_action("account@login"))) {
+				Session::put("login_redirect", $to_url);	
+			}
+		}
 		return View::make('pages.login', array('title' => 'Login', "javascript" => array("login")));
 	}
 	/* Do openid login */
@@ -53,7 +58,12 @@ class Account_Controller extends Base_Controller {
 					if(Auth::guest()) { // Guest either logs in, or registers
 						if(Auth::attempt(array("identity" => $identity))) {
 							Messages::add("success", "Welcome back ".Auth::user()->username."!");
-							return Redirect::home();
+							if($redir = Session::get("login_redirect")) {
+								Session::forget("login_redirect");
+								return Redirect::to($redir);
+							} else {
+								return Redirect::home();
+							}
 						} else {
 							Session::put("openid-identity", $identity); /* Used when registration is completed */
 							return Redirect::to_action("account@register");
