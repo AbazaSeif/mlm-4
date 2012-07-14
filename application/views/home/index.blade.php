@@ -21,7 +21,7 @@
 
 <div class="featured"></div>
 
-<? /*
+<?php /*
 <div id="ticker">
 	<div class="clear shadow"></div>
 		<span><a target="_blank" href="http://www.kotaku.com/kanye-zone">...a perversely addictive thing. <i>&#151; Kotaku.com</i></a></span>
