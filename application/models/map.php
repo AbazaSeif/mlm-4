@@ -17,9 +17,10 @@ class Map extends Eloquent {
 	 * (MAKE SURE TO USE ===)
 	 */
 	public function is_owner($user) {
-		$is_owner = $this->users()->where_user_id($user->get_key())->with("confirmed")->first();
+		// Doing a fluent query as it's cheaper than eloquent relation
+		$is_owner = DB::table("map_user")->where_map_id($this->get_key())->where_user_id($user->get_key())->first();
 		if($is_owner) {
-			return (int) $is_owner->pivot->confirmed;
+			return (int) $is_owner->confirmed;
 		} else {
 			return false;
 		}
