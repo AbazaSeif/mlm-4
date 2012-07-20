@@ -66,8 +66,8 @@ class Maps_Controller extends Base_Controller {
 			return Response::error('404');
 		}
 		$is_owner = $map->is_owner(Auth::user()); // User is confirmed to be logged in
-		if(!$map->published && !$is_owner) {
-			return Response::error("404"); // Not yet published
+		if(!$is_owner) {
+			return Response::error("404"); // Not owner
 		}
 		
 		return View::make("maps.edit", array(
@@ -81,8 +81,8 @@ class Maps_Controller extends Base_Controller {
 			return Response::error('404');
 		}
 		$is_owner = $map->is_owner(Auth::user());  // User is confirmed to be logged in
-		if(!$map->published && !$is_owner) {
-			return Response::error("404"); // Not yet published
+		if(!$is_owner) {
+			return Response::error("404"); // Not owner
 		}
 
 		$validation_rules = array(
