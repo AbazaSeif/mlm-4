@@ -2,7 +2,8 @@
 	common: {
 		init: function () {
 			// On all pages
-			$("textarea[data-wysiwyg]").cleditor()
+			$("textarea[data-wysiwyg]").cleditor();
+			$("#sortable").tablesorter(); 
 		}
 	},
 	home: {

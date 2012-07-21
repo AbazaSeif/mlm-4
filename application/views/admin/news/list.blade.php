@@ -7,7 +7,7 @@
 		<h2>News Articles</h2>
 	</div>
 	<a href="{{ URL::to_action("admin.news@new") }}" class="btn" style="margin-bottom:15px"><i class="icon-plus"></i> New Article</a>
-	<table class="table table-striped table-bordered table-condensed">
+	<table id="sortable" class="table table-striped table-bordered table-condensed">
 		<thead>
 			<tr>
 				<th>ID</th>
@@ -20,7 +20,7 @@
 		<tbody>
 			<tr>
 				<td>{{ $item->id }}</td>
-				<td>{{ HTML::link_to_action("news@view", $item->title, array($item->id, $item->slug)) }}</td>
+				<td>{{ HTML::link_to_action("news@view", $item->title, array($item->id, $item->slug), array("target" => "_blank")) }}</td>
 				<td>{{ date("F j, Y h:i e", strtotime($item->created_at)) }}</td>
 				<td>
 				<div class="btn-group">

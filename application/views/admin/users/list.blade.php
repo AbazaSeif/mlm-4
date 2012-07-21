@@ -1,12 +1,12 @@
-@layout('layout.admin')
+@layout("layout.admin")
 
-@section('content')
+@section("content")
 @parent
 <div id="content">
 	<div class="titlebar clearfix">
 		<h2>Users List</h2>
 	</div>
-	<table class="table table-striped table-bordered table-condensed">
+	<table id="sortable" class="table table-striped table-bordered table-condensed">
 		<thead>
 			<tr>
 				<th>ID</th>
@@ -20,7 +20,7 @@
 		@foreach ($users as $user)
 			<tr>
 				<td>{{ $user->id }}</td>
-				<td><a href="/user/{{ $user->username }}" title="{{ $user->username }}'s profile">{{ $user->username }}</a></td>
+				<td><a href="/user/{{ $user->username }}" title="{{ $user->username }}'s profile" target="_blank">{{ $user->username }}</a></td>
 				<td>{{ $user->mc_username }}</td>
 				<td>{{ date("F j, Y g:ia", strtotime($user->created_at)) }}</td>
 				<td>
