@@ -58,7 +58,7 @@
 		{{ Form::submit("Comment", array("class" => "btn-primary")) }}
 		{{ Form::close() }}
 	@else
-	You must be logged in to leave a comment.
+	You must be <a href="/login">logged in</a> to leave a comment.
 	@endif
 </div>
 </div>

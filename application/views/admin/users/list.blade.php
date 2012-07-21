@@ -12,6 +12,7 @@
 				<th>ID</th>
 				<th>Username</th>
 				<th>Minecraft username</th>
+				<th>Member since</th>
 				<th>&nbsp;</th>
 			</tr>
 		</thead>
@@ -19,8 +20,9 @@
 		@foreach ($users as $user)
 			<tr>
 				<td>{{ $user->id }}</td>
-				<td>{{ $user->username }}</td>
+				<td><a href="/user/{{ $user->username }}" title="{{ $user->username }}'s profile">{{ $user->username }}</a></td>
 				<td>{{ $user->mc_username }}</td>
+				<td>{{ date("F j, Y g:ia", strtotime($user->created_at)) }}</td>
 				<td>
 				<div class="btn-group">
 					<a class="btn btn-primary" href="#" data-toggle="dropdown"><i class="icon-user icon-white"></i> Actions</a>

@@ -1,7 +1,7 @@
 @layout('layout.main')
 
 @section('content')
-	<style>header,footer{display:none}#content{background:none;box-shadow:none;}</style>
+	<style>body{background-attachment:scroll;}header,footer{display:none}#content{background:none;box-shadow:none;}</style>
 	<div id="content" class="center">
 	<a href="/"><img src="{{ URL::to_asset("images/static/logo.png") }}" /></a>
 		<div id="login">
@@ -34,8 +34,8 @@
 				</fieldset>
 				{{ Form::checkbox("remember", true, false, array("id" => "remember")) }} {{ Form::label("remember", "Remember me forever (which is a long time)") }}
 			{{ Form::close() }}
-			<p>We use openID for a safe, faster, and easier way to log into our website.
-					If you don't have an openID with any of the provided services, you may create one with any of the providers <br><a href="http://openid.net/get-an-openid/" title="Will open in new tab" target="_blank" rel="nofollow">on this list</a>.
+			<p>We use openID for a safe, faster, and easier way to log into our website.<br>
+			If you would like to create an OpenID account, please click <a href="http://openid.net/get-an-openid/" title="Will open in new tab" target="_blank" rel="nofollow">this link</a>.
 			</p>
 		</div>
 	</div>

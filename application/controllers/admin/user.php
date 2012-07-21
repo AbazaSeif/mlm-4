@@ -9,7 +9,7 @@ class Admin_User_Controller extends Admin_Controller {
 	
 	// Listing users
 	public function get_index() {
-		$users = DB::table("users")->get(array("id", "username", "mc_username"));
+		$users = DB::table("users")->get(array("id", "username", "mc_username", "created_at"));
 		return View::make('admin.users.list', array("users" => $users, "title" => "Users | Admin"));
 	}
 
