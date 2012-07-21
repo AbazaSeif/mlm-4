@@ -1,4 +1,4 @@
-﻿MLM = {
+MLM = {
 	common: {
 		init: function () {
 			// On all pages
@@ -57,8 +57,11 @@
 			MLM.images.load()
 			$("#imagemanager").modal("show")
 		},
-		load: function() {
-			$("#imagemanager .modal-body").html("<img src=\""+ASSET_URL+"images/slider/loading.gif\">").load(BASE_URL+'/imgmgr', function() {
+		load: function(url, request) {
+			if(!url) {
+				url = BASE_URL+'/imgmgr'
+			}
+			$("#imagemanager .modal-body").html("<img src=\""+ASSET_URL+"images/slider/loading.gif\">").load(url, request, function() {
 				// Ajax hooks for file uploading
 				if($("#imageupload").length > 0) {
 					$('#upload-file').change(function(e){
@@ -110,7 +113,15 @@
 						}
 					});
 				}
+
+				// Catch all imgmgr links
+				$("a[href^='"+BASE_URL+"/imgmgr']").click(MLM.images.linkcatcher);
+
 			});
+		},
+		linkcatcher: function(event) {
+			MLM.images.load(event.target.href);
+			return false;
 		},
 		select: function(item) {
 			if(MLM.images.options.mode == "id") {

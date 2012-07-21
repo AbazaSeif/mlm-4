@@ -8,8 +8,36 @@ class Imgmgr_Controller extends Base_Controller {
 	}
 	// Get image manager
 	public function get_index() {
-		$images = Image::paginate(50);
-		return View::make("images.viewer", array("images" => $images));
+		return $this->get_list();
+	}
+	public function post_index() {
+		return $this->get_list();
+	}
+	public function get_list($type = "maps", $itemid = null) {
+		if($type == "uploads") {
+			if(!Auth::user()->admin) {
+				return Response::error('404');
+			}
+			$images = Image::where_type("upload")->paginate(50);
+			return View::make("images.viewer", array("images" => $images, "uploads" => true));
+		} elseif($type == "maps") {
+			if(!is_null($itemid)) {
+				$map = Map::find($itemid);
+				if(!$map) {
+					return Response::error('404');
+				}
+				$images = $map->images()->paginate(50);
+				return View::make("images.viewer", array("images" => $images, "uploads" => false));
+			} else {
+				$maps = Map::paginate(50);
+				return View::make("images.search", array("type"=> "maps", "results" => $maps, "resultid" => "id", "resulttext" => "title"));
+			}
+		} else {
+			return Response::error('404');
+		}
+	}
+	public function post_list($type = "maps", $itemid = null) {
+		return $this->get_list($type, $itemid);
 	}
 	// Handle image uploads
 	public function post_upload() {

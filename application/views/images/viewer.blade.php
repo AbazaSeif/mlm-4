@@ -1,27 +1,27 @@
 {{ Messages::get_html() }}
 <div class="row-fluid">
 	<div class="span2">
-		<ul class="nav nav-list">
-			<li><a href="#" onClick="MLM.images.load()">Uploaded</a></li>
-		</ul>
+		@include("images.menu")
 	</div>
 	<div class="span10">
 		<ul class="image-list thumbnails">
-		@foreach ($images->results as $image)
+		@forelse ($images->results as $image)
 			<li class="span2"><a href="#" class="thumbnail" data-image="{{ e(json_encode($image->to_array())) }}" onClick="{{e("MLM.images.select($(this).data(\"image\"))")}}; return false;">{{ HTML::image($image->file_small) }}</a>
 				{{-- HTML::link($image->file_small, "Small") --}}
 				{{-- HTML::link($image->file_medium, "Medium") --}}
 				{{-- HTML::link($image->file_large, "Large") --}}
 				{{-- HTML::link($image->file_original, "Original") --}}
-		</li>
-		@endforeach
+			</li>
+		@empty
+			<li>None found :'(</li>
+		@endforelse
 		</ul>
 	</div>
 </div>
 
 {{ $images->links() }}
 
-@if(Auth::user()->admin)
+@if($uploads && Auth::user()->admin)
 	@if (isset($errors))
 		@foreach ($errors->all('<p>:message</p>') as $error)
 			{{ $error }}
