@@ -123,7 +123,9 @@
 	},
 	login: {
 		init: function () {
-			$(".openid,.globalid").openid();
+			$(".openid-form, .globalid").openid().on("submit", function() {
+				$(this).after('<div class="progress progress-inverse progress-striped active"><div class="bar" style="width: 100%;"></div></div>')
+			});
 		}
 	}
 }
