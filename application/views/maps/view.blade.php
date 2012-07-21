@@ -4,7 +4,7 @@
 @if($is_owner)
 {{ HTML::link_to_action("maps@edit", "Edit", array($map->id)) }}
 @endif
-<div id="content">
+<div id="content" class="maps">
 	@unless($map->published)
 	<div class="alert">
 		<h4 class="alert-heading">This map is not yet viewable by everyone</h4>

@@ -1,16 +1,10 @@
 /* TEAM */
 	
-	Lead Programmer:
+	Programmer:
 	Nickname: t2t2
 	Site: The Internet
 	Twitter: @t2t2
 	Location: Estonia
-
-	Programmer: [Dont know if put your actual name]
-	Nickname: coolperson
-	Site: ????
-	Twitter: ????
-	Location: Florida
 
 	Designer: Leon Taveras
 	Nickname: LeonimuZ
