@@ -10,6 +10,9 @@ class Map extends Eloquent {
 	public function links() {
 		return $this->has_many("Map_Link");
 	}
+	public function images() {
+		return $this->has_many_and_belongs_to("Image", "map_images");
+	}
 
 	/*
 	 * Checks if a user is the owner of the map

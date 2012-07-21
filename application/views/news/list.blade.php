@@ -26,11 +26,6 @@
 	</div>
 </div>
 @endforeach
-<?php
-// For Leon's lazyness
-$fakepaginator = Paginator::make($newslist->results, 100, 10);
-echo $fakepaginator->links();
-?>
 </div>
 @include("news.sidebar")
 </div>

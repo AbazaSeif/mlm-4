@@ -36,5 +36,25 @@
 			@endforelse
 		</tbody>
 	</table>
+	<h2>Images</h2>
+	<ul class="thumbnails">
+		@forelse($map->images as $image)
+			<li class="span2">
+				<a href="{{ e($image->file_original) }}" class="thumbnail">{{ HTML::image($image->file_small) }}</a>
+				{{ HTML::link_to_action("maps@delete_image", "Delete", array($map->id, $image->id)) }}
+			</li>
+		@empty
+			<li>
+				No images found!
+			</li>
+		@endforelse
+	</ul>
+	<h3>Upload new</h3>
+	{{ Form::open_for_files("maps/upload_image/".$map->id) }}
+		{{ Form::token() }}
+		{{ Form::field("file", "uploaded", "Image", array(array('class' => 'input-large')), array('error' => $errors->first('uploaded'))) }}
+		{{ Form::field("text", "name", "Name", array(Input::old("name"), array('class' => 'input-large')), array('error' => $errors->first('name'))) }}
+		{{ Form::submit("Upload", array("class" => "btn-primary")) }}
+	{{ Form::close() }}
 </div>
 @endsection
