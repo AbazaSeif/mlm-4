@@ -70,7 +70,7 @@
 		<label>Last updated</label>
 		<p>{{ date("F j, Y", strtotime($user->updated_at)) }}</p>
 		</li>
-		<? /*
+		<?php /*
 		<li class="sep"><h4>Separator</h4></li>
 		<li>
 		<label>Name</label>
