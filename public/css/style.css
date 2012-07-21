@@ -16,12 +16,12 @@ body {
 
 ::selection {
    background: #AA6814;
-	text-shadow: 0 1px 0px #000000;
+	text-shadow: 0 1px 0px #000;
 }
 
 ::-moz-selection {
     background: #AA6814;
-	text-shadow: 0 1px 0px #000000;
+	text-shadow: 0 1px 0px #000;
 }
 
 .left {float: left}
@@ -137,7 +137,7 @@ ul, ol {
     -webkit-box-shadow: 0 0 35px #000;
     box-shadow: 0 0 35px #000;
     height: 42px;
-    margin-top: 50px !important;
+    margin-top: 50px;
     width: 100%
 }
 
@@ -177,7 +177,7 @@ ul, ol {
     font-weight: 700;
     text-decoration: none;
     text-shadow: 0 1px 3px #000;
-    color: #ffffff;
+    color: #fff;
     display: block;
 }
 
@@ -191,15 +191,15 @@ ul, ol {
     font-weight: 700;
     text-decoration: none;
     text-shadow: 0 1px 3px #000;
-    color: #ffffff;
+    color: #fff;
     font-weight: 400;
 }
 
 #global-header #logs img {
-    border: 2px #ffffff solid;
-    -moz-box-shadow: 0 1px 3px #000000;
-    -webkit-box-shadow: 0 1px 3px #000000;
-    box-shadow: 0 1px 3px #000000;
+    border: 2px #fff solid;
+    -moz-box-shadow: 0 1px 3px #000;
+    -webkit-box-shadow: 0 1px 3px #000;
+    box-shadow: 0 1px 3px #000;
     vertical-align: bottom;
     margin-left: 3px
 }
@@ -214,7 +214,7 @@ ul, ol {
     background: -o-linear-gradient(top,    rgba(255,255,255,1) 0%,rgba(202,202,202,0.85) 100%);
     background: -ms-linear-gradient(top,    rgba(255,255,255,1) 0%,rgba(202,202,202,0.85) 100%);
     background: linear-gradient(top,    rgba(255,255,255,1) 0%,rgba(202,202,202,0.85) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#d9cacaca',GradientType=0 );
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fff', endColorstr='#d9cacaca',GradientType=0 );
     box-shadow: 0 0 35px #000;
     font-size: 14px;
     height: 35px;
@@ -224,10 +224,10 @@ ul, ol {
 }
 
 #menu ul {
-    display: block;
     margin: 0 auto;
-    width: 800px;
-    clear: both;
+    width: 790px;
+    height: 35px;
+    padding: 0;
 }
 
 #menu li {
@@ -244,9 +244,9 @@ ul, ol {
 
 #menu li:hover {
     background: #B9B9B9;
-    -moz-box-shadow: inset 0 0 10px #000000;
-    -webkit-box-shadow: inset 0 0 10px #000000;
-    box-shadow: inset 0 0 10px #000000
+    -moz-box-shadow: inset 0 0 10px #000;
+    -webkit-box-shadow: inset 0 0 10px #000;
+    box-shadow: inset 0 0 10px #000
 }
 
 #menu li:first-child {
@@ -282,15 +282,15 @@ ul, ol {
 
 #content .titlebar {
 	margin-bottom:10px;
-	border-bottom: 1px dotted #ffffff;
+	border-bottom: 1px dotted #fff;
 }
 
 #content .titlebar h1,#content .titlebar h2, #content .titlebar h3,#content .titlebar h4    {
 	line-height: 1;
 	margin: 10px 0;
 	font-weight: normal;
-	text-shadow: 0 1px 3px #000000;
-	color: #ffffff;
+	text-shadow: 0 1px 3px #000;
+	color: #fff;
 	text-transform: uppercase;
 	font-family: "Oswald","HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
 } 
@@ -513,7 +513,7 @@ div.slider-nav span.left {
 }
 
 #home #ticker a {
-    color: #ffffff
+    color: #fff
 }
 
 /*  Feeds
@@ -535,9 +535,9 @@ div.slider-nav span.left {
 
 #global-footer {
     background: #102A67;
-    -moz-box-shadow: inset 0px 4px 10px #000000;
-    -webkit-box-shadow: inset 0px 4px 10px #000000;
-    box-shadow: inset 0px 4px 10px #000000;
+    -moz-box-shadow: inset 0px 4px 10px #000;
+    -webkit-box-shadow: inset 0px 4px 10px #000;
+    box-shadow: inset 0px 4px 10px #000;
     margin: 15px auto 0;  
     position: static;
     min-width: 990px;
@@ -575,8 +575,8 @@ footer .column p {
    ================================================== */
 
 .news {
-color:#ffffff;
-background: #000000;
+color:#fff;
+background: #000;
 }
 
 .news .pagination {
@@ -605,10 +605,10 @@ clear: both;
 	width: 100%;
 	margin-bottom: 15px;
 	outline: 1px solid lightGrey;  
-	-moz-box-shadow: 0 8px 6px -6px #000000;  
+	-moz-box-shadow: 0 8px 6px -6px #000;  
 	-webkit-box-shadow: 0 8px 6px -6px black;  
 	box-shadow: 0 8px 6px -6px black;
-	border: 4px solid #ffffff;
+	border: 4px solid #fff;
 }
 
 .post-image img  {
@@ -629,8 +629,8 @@ clear: both;
 	margin-bottom: 10px;
  
 	outline: 1px solid lightgrey;
-	-moz-box-shadow: 0 8px 6px -6px #000000;  
-	-webkit-box-shadow: 0 8px 6px -6px   #000000;  box-shadow: 0 8px 6px -6px   #000000;
+	-moz-box-shadow: 0 8px 6px -6px #000;  
+	-webkit-box-shadow: 0 8px 6px -6px   #000;  box-shadow: 0 8px 6px -6px   #000;
 }
 
 .post .date  {
@@ -688,9 +688,9 @@ clear: both;
 
 .news .post h1.title, .news .post .title a {
 	border: none;
-	color: #ffffff;
+	color: #fff;
 	font-family: "Oswald",Helvetica, Arial, sans-serif;
-	text-shadow: 0px 1px 1px #000000;
+	text-shadow: 0px 1px 1px #000;
 	margin: 0px 0px 15px;
 }
  
@@ -763,7 +763,7 @@ width:660px;
 }
 
 .news #sidebar li li a {
-	color: #ffffff;
+	color: #fff;
 }
 
 .news #sidebar li li span {
@@ -786,7 +786,7 @@ width:660px;
     font-weight: bold;
 	
     font-size: 1.5em;
-    text-shadow: 0px 1px 1px #ffffff;
+    text-shadow: 0px 1px 1px #fff;
     margin: 0.5em 0;
 }
 
@@ -825,7 +825,7 @@ width:660px;
     font-weight: 700;
     font-size: 25px;
     margin-bottom: 20px;
-    text-shadow: 0 1px 3px #000000;
+    text-shadow: 0 1px 3px #000;
 }
 
 #login input {
@@ -862,7 +862,7 @@ width:660px;
 
 #login .openid-form ul li span {
     padding: 0 1em 0 3px;
-    color: #000000;
+    color: #000;
 }
 
 #login .openid-form fieldset {
@@ -895,7 +895,7 @@ width:660px;
     background: #DCDCDC url(../images/login/fadegrey.png);
     padding: 10px;
     display: inline-block;
-    color: #000000;
+    color: #000;
 }
 
 #login .openid_logo {
@@ -919,9 +919,9 @@ width:660px;
 
 #pageheader {
     background: #102A67;
-    -moz-box-shadow: inset 0 0 30px #000000, 0 0 30px #000000;
-    -webkit-box-shadow: inset 0 0 30px #000000, 0 0 30px #000000;
-    box-shadow: inset 0 0 30px #000000, 0 0 30px #000000;
+    -moz-box-shadow: inset 0 0 30px #000, 0 0 30px #000;
+    -webkit-box-shadow: inset 0 0 30px #000, 0 0 30px #000;
+    box-shadow: inset 0 0 30px #000, 0 0 30px #000;
     margin: 20px 0;
     height: 100px
 }
@@ -946,7 +946,14 @@ width:660px;
 }
 
 #pagemenu a {
-    color: #ffffff
+    color: #fff
+}
+
+#pagemenu .dropdown-menu a {
+    color: #000;
+    padding: 7px 15px;
+    text-shadow: none;
+    border-top: 1px solid #F4F4F4;
 }
 
 .nav {
@@ -955,6 +962,7 @@ width:660px;
 
 /* Profile page 
    ================================================== */
+
 .profile {
     font-size: 62.5%;
     line-height: 10%;
@@ -974,13 +982,13 @@ width:660px;
     font-size: 1.2em;
     line-height: 1.4em;
     font-family: Arial, sans-serif;
-    color: #ffffff;
+    color: #fff;
     margin-bottom: 15px;
 }
 
 .profile h1 {
     font-family: Helvetica, Arial, Verdana, sans-serif;
-    color: #ffffff;
+    color: #fff;
     font-weight: bold;
     font-size: 1.7em;
     line-height: 2.0em;
@@ -1028,9 +1036,9 @@ width:660px;
     background-color: #f9f9f9;
     border: 1px solid #ccc;
     padding: 12px;
-    -moz-box-shadow: 0 8px 6px -6px #000000;
-    -webkit-box-shadow: 0 8px 6px -6px #000000;
-    box-shadow: 0 8px 6px -6px #000000
+    -moz-box-shadow: 0 8px 6px -6px #000;
+    -webkit-box-shadow: 0 8px 6px -6px #000;
+    box-shadow: 0 8px 6px -6px #000
 }
 
 .profile #vcard .pic {
@@ -1062,7 +1070,7 @@ width:660px;
 .profile #vcard .data h1 {
     color: #474747;
     line-height: 1.6em;
-    text-shadow: 0px 1px 1px #ffffff;
+    text-shadow: 0px 1px 1px #fff;
     margin: 0;
     padding: 0;
     font-size: 28px;
@@ -1127,7 +1135,7 @@ margin: 20px 0px;
     margin: 0px;
     color: #474747;
     line-height: 1.6em;
-    text-shadow: 0px 1px 1px #ffffff;
+    text-shadow: 0px 1px 1px #fff;
 }
 
 .profile .info li.sep {
@@ -1137,10 +1145,10 @@ margin: 20px 0px;
 .profile .info li label {
     display: inline-block;
     width: 170px;
-    color: #ffffff;
+    color: #fff;
     font-family: "Oswald","HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 18px;
-    text-shadow: 0 1px 3px #000000
+    text-shadow: 0 1px 3px #000
 }
 
 .profile .info p {
@@ -1152,7 +1160,7 @@ margin-bottom: 0;
 display: inline-block;
 width: 399px;
 vertical-align: middle;
-color: #ffffff;
+color: #fff;
 }
 
 .profile .info a:hover {
@@ -1174,29 +1182,29 @@ text-decoration: underline;
     color: #666666;
     font-weight: bold;
     font-size: 1.4em;
-    text-shadow: 0px 1px 1px #ffffff;
+    text-shadow: 0px 1px 1px #fff;
     margin: 0.5em 0;
 }
 
 .profile .team .widget {
     padding: 15px 10px;
     background: #F9F9F9;
-    -moz-box-shadow: 0 8px 6px -6px #000000;
-    -webkit-box-shadow: 0 8px 6px -6px #000000;
-    box-shadow: 0 8px 6px -6px #000000;
+    -moz-box-shadow: 0 8px 6px -6px #000;
+    -webkit-box-shadow: 0 8px 6px -6px #000;
+    box-shadow: 0 8px 6px -6px #000;
     min-height: 117px;
     border: 1px solid #CCC;
     border-top: 0
 }
 
 .profile .team img{
-	border: 8px #ffffff solid;
+	border: 8px #fff solid;
 	outline: 1px solid #ccc;
 	float: left;
 }
 
 .profile .team p{
-	color: #000000;
+	color: #000;
 	font: 15px "Oswald";
 	text-transform: uppercase;
 	word-wrap: break-word;
@@ -1285,9 +1293,9 @@ form.xpadding p {
     text-align: center;
     padding: 30px;
     background: #102A67;
-    -moz-box-shadow: 0 0 35px #000000;
-    -webkit-box-shadow: 0 0 35px #000000;
-    box-shadow: 0 0 35px #000000
+    -moz-box-shadow: 0 0 35px #000;
+    -webkit-box-shadow: 0 0 35px #000;
+    box-shadow: 0 0 35px #000
 }
 
 #errorbox h1 {
@@ -1353,7 +1361,7 @@ form.xpadding p {
 .cleditorMain {
     border: 1px solid #999;
     padding: 0 1px 1px;
-    background-color: #ffffff;
+    background-color: #fff;
 }
 
 .cleditorMain iframe {
@@ -1364,7 +1372,7 @@ form.xpadding p {
 
 .cleditorMain textarea {
     border: none;
-    no#ffffffspace: afterproperty;
+    no#fffspace: afterproperty;
     margin: 0;
     padding: 0;
     overflow-y: scroll;
@@ -1405,7 +1413,7 @@ form.xpadding p {
 
 .cleditorPopup {
     border: solid 1px #999;
-    background-color: #ffffff;
+    background-color: #fff;
     position: absolute;
     font: 10pt Arial;
     cursor: default;
@@ -1420,7 +1428,7 @@ form.xpadding p {
     padding: 0;
     margin: 0;
     background-color: Transparent;
-   color:#000000;
+   color:#000;
 }
 
 .cleditorColor {
@@ -1479,7 +1487,7 @@ form.xpadding p {
 
 #comments .avatar {
 	border: 4px white solid;
-	-moz-box-shadow: 0 1px 3px #000000;
+	-moz-box-shadow: 0 1px 3px #000;
 	-webkit-box-shadow: 0 1px 3px black;
 	box-shadow: 0 1px 3px black;
 	margin-right: 8px;
@@ -1492,7 +1500,7 @@ form.xpadding p {
  	position: absolute;
  	right: 8px;
 	top: 8px;
-	box-shadow: 0px 1px 1px #ffffff;
+	box-shadow: 0px 1px 1px #fff;
 	width: 16px;
 	height: 16px;
 	background: url(../images/static/urank.png) no-repeat;
