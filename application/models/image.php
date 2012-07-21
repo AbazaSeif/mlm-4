@@ -3,6 +3,12 @@
 class Image extends Eloquent {
 	public static $timestamps = false;
 	
+	/* Relationships */
+	public function maps() {
+		$this->has_many_and_belongs_to("Map", "map_images");
+	}
+
+
 	/*
 	 * Method to easily create new Image elements
 	 *

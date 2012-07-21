@@ -6,8 +6,8 @@ class Maps_Controller extends Base_Controller {
 	public function __construct() {
 		parent::__construct();
 
-		$this->filter("before", "auth")->only(array("new", "edit", "edit_meta", "edit_link", "delete_link"));
-		$this->filter("before", "csrf")->on("post")->only(array("new", "edit_meta", "edit_link", "delete_link"));
+		$this->filter("before", "auth")->only(array("new", "edit", "edit_meta", "edit_link", "delete_link", "upload_image", "delete_image"));
+		$this->filter("before", "csrf")->on("post")->only(array("new", "edit_meta", "edit_link", "delete_link", "upload_image", "delete_image"));
 	}
 
 	public function get_index() {
@@ -200,6 +200,71 @@ class Maps_Controller extends Base_Controller {
 			Messages::add("success", "Link deleted!");
 		} else {
 			Messages::add("error", "Failed to delete link!");
+		}
+		return Redirect::to_action("maps@edit", array($id));
+	}
+	/* Uploading images */
+	public function post_upload_image($id) {
+		$map = Map::find($id);
+		if(!$map) {
+			return Response::error('404');
+		}
+		if(!$map->is_owner(Auth::user())) { // User is confirmed to be logged in
+			return Response::error("404"); // Not yet published
+		}
+		
+		$input = Input::all();
+		if(strlen($input["name"]) == 0) { // Just use the filename
+			$input["name"] = $input["uploaded"]["name"];
+		}
+		$validation_rules = array(
+			"uploaded" => "required|image|max:1000",
+			"name" => "required|max:200"
+		);
+		$validation = Validator::make($input, $validation_rules);
+		if($validation->passes()) {
+			$image = Image::create(array("file" => $input["uploaded"], "filename" => $input["name"], "type" => "map"));
+			$map->images()->attach($image->id);
+			Messages::add("success", "Image added!");
+			return Redirect::to_action("maps@edit", array($id));
+		} else {
+			Messages::add("error", "Error while uploading the image.");
+			return Redirect::to_action("maps@edit", array($id))->with_errors($validation);
+		}
+	}
+	/* Deleting images */
+	public function get_delete_image($id, $imageid) {
+		$map = Map::find($id);
+		if(!$map) {
+			return Response::error('404');
+		}
+		if(!$map->is_owner(Auth::user())) { // User is confirmed to be logged in
+			return Response::error("404"); // Not yet published
+		}
+		$image = $map->images()->where_image_id($imageid)->first();
+		if(!$image) {
+			return Response::error("404"); // Not map's image
+		}
+
+		return View::make("maps.delete_image", array("title" => "Delete image | ".e($map->title)." | Maps", "map" => $map, "image" => $image));
+	}
+	public function post_delete_image($id, $imageid) {
+		$map = Map::find($id);
+		if(!$map) {
+			return Response::error('404');
+		}
+		if(!$map->is_owner(Auth::user())) { // User is confirmed to be logged in
+			return Response::error("404"); // Not yet published
+		}
+		$image = $map->images()->where_image_id($imageid)->first();
+		if(!$image) {
+			return Response::error("404"); // Not map's image
+		}
+
+		if($map->images()->detach($image->id)) {
+			Messages::add("success", "Image removed!");
+		} else {
+			Messages::add("error", "Failed to remove image!");
 		}
 		return Redirect::to_action("maps@edit", array($id));
 	}
