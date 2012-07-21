@@ -5,7 +5,7 @@
 	<div id="content" class="center">
 	<a href="/"><img src="{{ URL::to_asset("images/static/logo.png") }}" /></a>
 		<div id="login">
-			{{ Form::open("account/login" , 'POST', array('class' => 'openid')) }} 
+			{{ Form::open("account/login" , 'POST', array('class' => 'openid-form')) }} 
 				<div class="prov">
 					<ul class="providers"> 
 						<li class="openid" title="OpenID"><img src="{{ URL::to_asset("images/login/openid.png") }}" alt="icon" /> 

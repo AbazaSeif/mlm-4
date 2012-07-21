@@ -838,13 +838,13 @@ width:660px;
 	margin-top: 180px;
 }
 
-#login .openid .prov {
+#login .openid-form .prov {
     width: 100%;
     display: block;
     height: 25px;
 }
 
-#login .openid ul {
+#login .openid-form ul {
     text-align: center;
     list-style-type: none;
     display: inline;
@@ -855,39 +855,39 @@ width:660px;
     padding: 0;
 }
 
-#login .openid ul li {
+#login .openid-form ul li {
     float: left;
     padding: 4px;
 }
 
-#login .openid ul li span {
+#login .openid-form ul li span {
     padding: 0 1em 0 3px;
     color: #000;
 }
 
-#login .openid fieldset {
+#login .openid-form fieldset {
     clear: both;
     padding: 1em 0;
 }
 
-#login .openid div+fieldset {
+#login .openid-form div+fieldset {
     display: none
 }
 
-#login .openid label {
+#login .openid-form label {
     display: block;
     font-weight: bold;
     font-size: larger;
 }
 
-#login .openid ul li.highlight {
+#login .openid-form ul li.highlight {
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
     border-radius: 4px;
     background-color: #FD6
 }
 
-#login .openid fieldset div {
+#login .openid-form fieldset div {
     font-family: arial;
     border-radius: 4px;
     -moz-border-radius: 4px;

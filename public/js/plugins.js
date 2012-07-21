@@ -15,7 +15,92 @@ window.log = function f(){ log.history = log.history || []; log.history.push(arg
 
 //Open ID login
 // http://jvance.com/pages/jQueryOpenIdPlugin.xhtml
-$.fn.openid=function(){var a=$(this);var b=a.find("input[name=openid_username]");var c=a.find("input[name=openid_identifier]");var d=a.find("div:has(input[name=openid_username])>span:eq(0)");var e=a.find("div:has(input[name=openid_username])>span:eq(1)");var f=a.find("fieldset:has(input[name=openid_username])");var g=a.find("fieldset:has(input[name=openid_identifier])");var h=function(){if(b.val().length<1){b.focus();return false}c.val(d.text()+b.val()+e.text());return true};var i=function(){if(c.val().length<1){c.focus();return false}return true};var j=function(){var b=$(this);b.parent().find("li").removeClass("highlight");b.addClass("highlight");f.fadeOut();g.fadeOut();a.unbind("submit").submit(function(){c.val(a.find("li.highlight span").text())});a.submit();return false};var k=function(){var b=$(this);b.parent().find("li").removeClass("highlight");b.addClass("highlight");f.hide();g.show();c.focus();a.unbind("submit").submit(i);return false};var l=function(){var b=$(this);b.parent().find("li").removeClass("highlight");b.addClass("highlight");g.hide();f.show();a.find("label[for=openid_username] span").text(b.attr("title"));d.text(b.find("span").text().split("username")[0]);e.text("").text(b.find("span").text().split("username")[1]);c.focus();a.unbind("submit").submit(h);return false};a.find("li.direct").click(j);a.find("li.openid").click(k);a.find("li.username").click(l);c.keypress(function(a){if(a.which&&a.which==13||a.keyCode&&a.keyCode==13){return i()}});b.keypress(function(a){if(a.which&&a.which==13||a.keyCode&&a.keyCode==13){return h()}});a.find("li span").hide();a.find("li").css("line-height",0).css("cursor","pointer");a.find("li:eq(0)").click();return this};
+//jQuery OpenID Plugin 1.1
+//Copyright 2009 Jarrett Vance http://jvance.com/pages/jQueryOpenIdPlugin.xhtml
+$.fn.openid = function() {
+  var $this = $(this);
+  var $usr = $this.find('input[name=openid_username]');
+  var $id = $this.find('input[name=openid_identifier]');
+  var $front = $this.find('div:has(input[name=openid_username])>span:eq(0)');
+  var $end = $this.find('div:has(input[name=openid_username])>span:eq(1)');
+  var $usrfs = $this.find('fieldset:has(input[name=openid_username])');
+  var $idfs = $this.find('fieldset:has(input[name=openid_identifier])');
+
+  var submitusr = function() {
+    if ($usr.val().length < 1) {
+      $usr.focus();
+      return false;
+    }
+    $id.val($front.text() + $usr.val() + $end.text());
+    return true;
+  };
+
+  var submitid = function() {
+    if ($id.val().length < 1) {
+      $id.focus();
+      return false;
+    }
+    return true;
+
+  };
+  var direct = function() {
+    var $li = $(this);
+    $li.parent().find('li').removeClass('highlight');
+    $li.addClass('highlight');
+    $usrfs.fadeOut();
+    $idfs.fadeOut();
+
+    $this.unbind('submit.openid').on("submit.openid", function() {
+      $id.val($this.find("li.highlight span").text());
+    });
+    $this.submit();
+    return false;
+  };
+
+  var openid = function() {
+    var $li = $(this);
+    $li.parent().find('li').removeClass('highlight');
+    $li.addClass('highlight');
+    $usrfs.hide();
+    $idfs.show();
+    $id.focus();
+    $this.unbind('submit.openid').on("submit.openid", submitid);
+    return false;
+  };
+
+  var username = function() {
+    var $li = $(this);
+    $li.parent().find('li').removeClass('highlight');
+    $li.addClass('highlight');
+    $idfs.hide();
+    $usrfs.show();
+    $this.find('label[for=openid_username] span').text($li.attr("title"));
+    $front.text($li.find("span").text().split("username")[0]);
+    $end.text("").text($li.find("span").text().split("username")[1]);
+    $id.focus();
+    $this.unbind('submit.openid').on("submit.openid", submitusr);
+    return false;
+  };
+
+  $this.find('li.direct').click(direct);
+  $this.find('li.openid').click(openid);
+  $this.find('li.username').click(username);
+  $id.keypress(function(e) {
+    if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+      return submitid();
+    }
+  });
+  $usr.keypress(function(e) {
+    if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+      return submitusr();
+    }
+  });
+  $this.find('li span').hide();
+  $this.find('li').css('line-height', 0).css('cursor', 'pointer');
+  $this.find('li:eq(0)').click();
+  return this;
+};
+
 
 // jQuery Form Plugin
 // http://jquery.malsup.com/form/
