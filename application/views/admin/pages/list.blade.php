@@ -4,9 +4,9 @@
 @parent
 <div id="content">
 	<div class="titlebar clearfix">
-		<h2>Extra Pages</h2>
+		<h2>Pages</h2>
 	</div>
-	<table class="table table-striped table-bordered table-condensed">
+	<table id="sortable" class="table table-condensed">
 		<thead>
 			<tr>
 				<th>ID</th>

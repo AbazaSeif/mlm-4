@@ -18,7 +18,7 @@
 						<li class="direct" title="Login with your Steam ID"><img src="{{ URL::to_asset("images/login/steam.png") }}" alt="icon" />
 							<span>http://steamcommunity.com/openid</span></li> 	
 					</ul>
-			<fieldset class="info">
+			<fieldset class="info input-append">
 				<label for="openid_identifier" class="openid">Enter your <a class="openid-logo" href="http://openid.net" rel="nofollow">OpenID</a></label> 
 					<input type="text" name="openid_identifier" class="id">
 					{{ Form::submit("Login", array("class" => "btn btn-primary")) }}
