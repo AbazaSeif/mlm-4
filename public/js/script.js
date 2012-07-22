@@ -135,7 +135,7 @@ MLM = {
 	login: {
 		init: function () {
 			$(".openid-form, .globalid").openid().on("submit", function() {
-				$(this).after('<div class="progress progress-inverse progress-striped active"><div class="bar" style="width: 100%;"></div></div>')
+				$(this).after('<div class="progress progress-inverse progress-striped active" style="width:310px;margin:0 auto;"><div class="bar" style="width: 100%;"></div></div>')
 			});
 		}
 	}

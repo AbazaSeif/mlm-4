@@ -821,30 +821,9 @@ width:660px;
 	padding: 202px 0 0;
 }
 
-#login label {
-    font-weight: 700;
-    font-size: 25px;
-    margin-bottom: 20px;
-    text-shadow: 0 1px 3px #000;
-}
+/* OpenID providers */
 
-#login input {
-    width: 240px
-}
-
-#login p {
-    font-size: 14px;
-	padding: 10px;
-	margin-top: 180px;
-}
-
-#login .openid-form .prov {
-    width: 100%;
-    display: block;
-    height: 25px;
-}
-
-#login .openid-form ul {
+#login form ul {
     text-align: center;
     list-style-type: none;
     display: inline;
@@ -855,53 +834,68 @@ width:660px;
     padding: 0;
 }
 
-#login .openid-form ul li {
+#login form ul li {
     float: left;
     padding: 4px;
 }
 
-#login .openid-form ul li span {
+#login form ul li span {
     padding: 0 1em 0 3px;
     color: #000;
 }
 
-#login .openid-form fieldset {
-    clear: both;
-    padding: 1em 0;
-}
+/* OpenID input */
 
-#login .openid-form div+fieldset {
-    display: none
-}
-
-#login .openid-form label {
-    display: block;
-    font-weight: bold;
-    font-size: larger;
-}
-
-#login .openid-form ul li.highlight {
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 4px;
-    border-radius: 4px;
-    background-color: #FD6
-}
-
-#login .openid-form fieldset div {
-    font-family: arial;
-    border-radius: 4px;
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 4px;
-    background: #DCDCDC url(../images/login/fadegrey.png);
-    padding: 10px;
-    display: inline-block;
+#login label.openid {
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 20px;
+    text-shadow: 0 1px 1px #000;
     color: #000;
 }
 
-#login .openid_logo {
+#login .openid-logo {
     color: #F7931E;
-	padding: 0 0 0 28px;
-	background: url(../images/login/openidico.png) no-repeat left;
+    padding: 0 0 0 28px;
+    background: url(../images/login/openidico.png) no-repeat left;
+}
+
+#login .openid-form fieldset.info {
+    clear: both;
+    padding: 16px 0 0;
+}
+
+#login .openid-form input.id {
+    width: 240px
+}
+
+/* Keep me Logged in/Remember User */
+
+#login .openid-form fieldset.rememberme {
+    clear: both;
+    padding: 8px 0 0;
+    margin-left: -20px;
+    text-shadow: 0 1px 1px black;
+}
+
+#login #remember {
+    margin-top: 0px;
+}
+
+#login .openid-form label.forget {
+    font-size: 16px;
+    display: inline-block;
+    color: black;
+    margin: 0;
+    padding: 0;
+}
+
+/* Why we use OpenID on Login page */
+
+.WhyOpenID {
+    font-size: 14px;
+    padding: 10px;
+    margin-top: 180px;
 }
 
 /* Disclaimer on Registration page */
