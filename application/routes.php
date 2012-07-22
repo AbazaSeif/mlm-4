@@ -73,6 +73,14 @@ Route::get("admin", array('before' => 'admin', function() {
 	return View::make("admin.home", array("title" => "Admin"));
 }));
 
+// Admin - Migrating from the website
+Route::get("admin/database/migrate", array("before" => "admin", function() {
+	$database = new Laravel\CLI\Tasks\Migrate\Database;
+	$resolver = new Laravel\CLI\Tasks\Migrate\Resolver($database);
+	$migrator = new Laravel\CLI\Tasks\Migrate\Migrator($resolver, $database);
+	$migrator->run();
+}));
+
 //Routes are checked in the order in which they are listed here
 //Since this one is a tad demanding, make sure it ALWAYS remains at the bottom
 Route::get("(:any)", function($slug) {
