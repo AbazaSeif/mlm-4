@@ -25,7 +25,7 @@
 		{{ Form::field("text", "reddit", "Reddit Username", array(Input::old("reddit"), array('class' => 'input-large')), array('error' => $errors->first('reddit'))) }}
 		{{ Form::field("text", "twitter", "Twitter Username", array(Input::old("twitter"), array('class' => 'input-large')), array('error' => $errors->first('twitter'))) }}
 		{{ Form::field("text", "youtube", "YouTube Username", array(Input::old("youtube"), array('class' => 'input-large')), array('error' => $errors->first('youtube'))) }}
-		{{ Form::field("text", "webzone", "Homepage", array(Input::old("webzone"), array('class' => 'input-large')), array('error' => $errors->first('webzone'))) }}
+		{{ Form::field("text", "webzone", "Homepage", array(Input::old("webzone"), array('class' => 'input-large')), array('help' => 'Please include http://', 'error' => $errors->first('webzone'))) }}
 		<div class="form-actions">
 		<button class="btn btn-primary btn-large" type="submit">Create account!</button>
 		<p class="disclaimer">By creating an account in Major League Mining, you agree to the <a href="/tos" target="_blank">Terms of Service</a></p>

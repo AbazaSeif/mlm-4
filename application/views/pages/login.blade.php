@@ -6,18 +6,24 @@
 	<a href="/"><img src="{{ URL::to_asset("images/static/logo.png") }}" /></a>
 		<div id="login">
 			{{ Form::open("account/login" , 'POST', array('class' => 'openid-form')) }} 
-					<ul class="providers"> 
-						<li class="openid" title="OpenID"><img src="{{ URL::to_asset("images/login/openid.png") }}" alt="icon" /> 
-							<span><strong>http://{your-openid-url}</strong></span></li> 
-						<li class="direct" title="Login with Google"><img src="{{ URL::to_asset("images/login/google.png") }}" alt="icon" />
-							<span>https://www.google.com/accounts/o8/id</span></li>
-						<li class="direct" title="Login with Yahoo"><img src="{{ URL::to_asset("images/login/yahoo.png") }}" alt="icon" />
-							<span>http://yahoo.com/</span></li>
-						<li class="direct" title="Login with your AOL screen name"><img src="{{ URL::to_asset("images/login/aol.png") }}" alt="icon" />
-							<span>http://openid.aol.com/</span></li> 
-						<li class="direct" title="Login with your Steam ID"><img src="{{ URL::to_asset("images/login/steam.png") }}" alt="icon" />
-							<span>http://steamcommunity.com/openid</span></li> 	
-					</ul>
+				<ul class="providers">
+					<li class="openid" style="padding:0;"></li>
+					<li class="direct" title="Login with Google"><img src="{{ URL::to_asset("images/login/google.png") }}" alt="icon" />
+						<span>https://www.google.com/accounts/o8/id</span>
+					</li>
+					<li class="direct" title="Login with your Steam ID"><img src="{{ URL::to_asset("images/login/steam.png") }}" alt="icon" />
+						<span>http://steamcommunity.com/openid</span>
+					</li>
+					<li class="direct" title="Login with Wordpress&#13;Note: You must be logged in to Wordpress.com before using this method"><img src="{{ URL::to_asset("images/login/wordpress.png") }}" alt="icon" />
+						<span><strong>http://wordpress.com</strong></span>
+					</li> 
+					<li class="direct" title="Login with Yahoo"><img src="{{ URL::to_asset("images/login/yahoo.png") }}" alt="icon" />
+							<span>http://yahoo.com/</span>
+					</li>
+					<li class="direct" title="Login with your AOL screen name"><img src="{{ URL::to_asset("images/login/aol.png") }}" alt="icon" />
+						<span>http://openid.aol.com/</span>
+					</li>
+				</ul>
 			<fieldset class="info input-append">
 				<label for="openid_identifier" class="openid">Enter your <a class="openid-logo" href="http://openid.net" rel="nofollow">OpenID</a></label> 
 					<input type="text" name="openid_identifier" class="id">
