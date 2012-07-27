@@ -87,17 +87,27 @@ class Maps_Controller extends Base_Controller {
 		$validation_rules = array(
 			"title"       => "required|between:3,128",
 			"summary"     => "required|max:255",
-			"description" => "required"
+			"description" => "required",
+
+			"maptype" => 'in:'.implode(",", array_keys(Config::get("maps.types"))),
+			"version" => "max:64",
+			"teamcount" => "integer",
+			"teamsize" => "integer"
 		);
 		$validation = Validator::make(Input::all(), $validation_rules);
 		if($validation->passes()) {
-			$map->title = Input::get("title");
-			$map->summary = Input::get("summary");
+			$map->title       = Input::get("title");
+			$map->summary     = Input::get("summary");
 			$map->description = IoC::resolve('HTMLPurifier')->purify(Input::get("description"));
+			$map->maptype     = Input::get("maptype");
+			$map->version     = Input::get("version");
+			$map->teamcount   = Input::get("teamcount");
+			$map->teamsize    = Input::get("teamsize");
 			$map->save();
 			Messages::add("success", "Map updated!");
 			return Redirect::to_action("maps@edit", array($map->id));
 		} else {
+			Messages::add("error", "Hold on cowboy, something just ain't right!");
 			return Redirect::to_action("maps@edit", array($map->id))->with_input()->with_errors($validation);
 		}		
 	}

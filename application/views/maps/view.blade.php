@@ -1,5 +1,9 @@
 @layout("layout.main")
 
+<?php
+$maptypes = Config::get("maps.types");
+?>
+
 @section("content")
 @if($is_owner)
 {{ HTML::link_to_action("maps@edit", "Edit", array($map->id)) }}
@@ -13,6 +17,18 @@
 	<h2>{{ e($map->title) }}</h2>
 	<p>{{ e($map->summary) }}</p>
 	{{ $map->description }}
+	@if($map->version)
+	Version: {{ e($map->version) }}<br />
+	@endif
+	@if($map->maptype)
+	Map type: {{ array_get($maptypes, $map->maptype) }}<br />
+	@endif
+	@if($map->teamcount)
+	Team count: {{ $map->teamcount }}<br />
+	@endif
+	@if($map->teamsize)
+	Team size: {{ $map->teamsize }}<br />
+	@endif
 	<h3>Authors</h3>
 	<ul>
 	@foreach($authors as $author)
