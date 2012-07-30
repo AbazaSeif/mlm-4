@@ -6,8 +6,8 @@ class Maps_Controller extends Base_Controller {
 	public function __construct() {
 		parent::__construct();
 
-		$this->filter("before", "auth")->only(array("new", "edit", "edit_meta", "edit_link", "delete_link", "upload_image", "delete_image"));
-		$this->filter("before", "csrf")->on("post")->only(array("new", "edit_meta", "edit_link", "delete_link", "upload_image", "delete_image"));
+		$this->filter("before", "auth")->only(array("new", "edit", "rate", "edit_meta", "edit_link", "delete_link", "upload_image", "delete_image"));
+		$this->filter("before", "csrf")->on("post")->only(array("new", "rate", "edit_meta", "edit_link", "delete_link", "upload_image", "delete_image"));
 	}
 
 	public function get_index() {
@@ -48,17 +48,54 @@ class Maps_Controller extends Base_Controller {
 			return Redirect::to_action("maps@view", array($id, $map->slug));
 		}
 		$is_owner = false;
+		$rating = 0;
 		if(Auth::check()) {
 			$is_owner = $map->is_owner(Auth::user());
+			if($ratingObj = $map->ratings()->where_user_id(Auth::user()->id)->first()) {
+				$rating = $ratingObj->rating;
+			}
 		}
 		if(!$map->published && (Auth::guest() || $is_owner === false && !Auth::user()->admin)) {
 			return Response::error("404"); // Not yet published
 		}
 		$authors = $map->users()->where("confirmed", "=", 1)->with("confirmed")->get();
 		return View::make("maps.view", array(
-			"title" => e($map->title)." | Maps", "map" => $map, "authors" => $authors, "is_owner" => $is_owner
+			"title" => e($map->title)." | Maps", "map" => $map, "authors" => $authors, "is_owner" => $is_owner, "rating" => $rating
 		));
 	}
+	public function post_rate($id) {
+		$map = Map::find($id);
+		if(!$map) {
+			return Response::error('404');
+		}
+		$is_owner = $map->is_owner(Auth::user()); // User is confirmed to be logged in
+		if($is_owner) {
+			return Redirect::to_action("maps@view", array($map->id, $map->slug)); // Can't rate own map
+		}
+
+		$validation_rules = array("rating" => 'required|numeric|between:1,5');
+		$validation = Validator::make(Input::all(), $validation_rules);
+		if($validation->passes()) { 	// Skip to redirection if doesn't pass
+
+			$ratingObj = $map->ratings()->where_user_id(Auth::user()->id)->first();
+		
+			if($ratingObj) { // Change vote
+				$ratingObj->rating = Input::get("rating");
+				$ratingObj->save();
+				Messages::add("success", "Your rating has been updated");
+			} else { // New vote
+				$ratingObj = new Map_Rating();
+				$ratingObj->user_id = Auth::user()->id;
+				$ratingObj->rating = Input::get("rating");
+				$map->ratings()->insert($ratingObj);
+				Messages::add("success", "Your rating has been added");
+			}
+			$map->update_avg_rating();
+		}
+		return Redirect::to_action("maps@view", array($map->id, $map->slug));
+	}
+
+
 	/* Editing map */
 	public function get_edit($id) {
 		$map = Map::find($id);

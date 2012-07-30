@@ -54,5 +54,17 @@ $maptypes = Config::get("maps.types");
 			</li>
 		@endforelse
 	</ul>
+	Rating: {{ $map->avg_rating }}/5
+	@if(Auth::check() && !$is_owner)
+	{{ Form::open("maps/rate/".$map->id) }}
+		<label>{{ Form::radio("rating", 1, $rating == 1) }} 1</label>
+		<label>{{ Form::radio("rating", 2, $rating == 2) }} 2</label>
+		<label>{{ Form::radio("rating", 3, $rating == 3) }} 3</label>
+		<label>{{ Form::radio("rating", 4, $rating == 4) }} 4</label>
+		<label>{{ Form::radio("rating", 5, $rating == 5) }} 5</label>
+		{{ Form::submit("Rate") }}
+		{{ Form::token() }}
+	{{ Form::close() }}
+	@endunless
 </div>
 @endsection

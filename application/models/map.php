@@ -10,6 +10,9 @@ class Map extends Eloquent {
 	public function links() {
 		return $this->has_many("Map_Link");
 	}
+	public function ratings() {
+		return $this->has_many("Map_Rating");
+	}
 	public function images() {
 		return $this->has_many_and_belongs_to("Image", "map_images");
 	}
@@ -30,5 +33,14 @@ class Map extends Eloquent {
 		} else {
 			return false;
 		}
+	}
+	/*
+	 * Updates average rating
+	 */
+	public function update_avg_rating() {
+		$this->set_attribute("avg_rating", $this->ratings()->avg("rating"));
+		self::$timestamps = false; // Don't update modified time;
+		$this->save();
+		self::$timestamps = false;
 	}
 }
