@@ -2,7 +2,7 @@
 
 class Map_Link extends Eloquent {
 	/* Relationships */
-	public function maps() {
+	public function map() {
 		return $this->belongs_to("Map");
 	}
 
