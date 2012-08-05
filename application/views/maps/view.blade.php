@@ -1,19 +1,19 @@
 @layout("layout.main")
-
-<?php
-$maptypes = Config::get("maps.types");
-?>
+<?php $maptypes = Config::get("maps.types") ?>
 
 @section("content")
+@if($map->published == 0)
+	<div class="alert">
+		<p>This map is awaiting moderation and is not yet viewable by everyone.</p>
+	</div>
+@endif
 @if($is_owner)
 {{ HTML::link_to_action("maps@edit", "Edit", array($map->id)) }}
 @endif
 <div id="content" class="maps">
-	@unless($map->published)
-	<div class="alert">
-		<h4 class="alert-heading">This map is not yet viewable by everyone</h4>
-	</div>
-	@endunless
+<div class="titlebar clearfix">
+	<h1>Map Details for {{ e($map->title) }} by {{ HTML::link("user/{$author->username}", $author->username) }}</h1>
+</div>
 	<h2>{{ e($map->title) }}</h2>
 	<p>{{ e($map->summary) }}</p>
 	{{ $map->description }}

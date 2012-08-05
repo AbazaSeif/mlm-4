@@ -15,7 +15,7 @@
 	<title>Major League Mining</title>
 	@endif
 	<meta name="robots" content="all">
-	<meta name="description" content="The official site for the Major League Mining">
+	<meta name="description" content="Competitive Minecraft | Major League Mining">
 	<meta name="keywords" content="minecraft, race for wool, wool, competitive minecraft, tournaments, official site, rmct, reddit">
 	<meta name="copyright" content="Major League Mining 2012">
 	<link type="text/plain" rel="author" href="{{ URL::to_asset("humans.txt") }}" />
@@ -55,7 +55,7 @@
 			</div>
 			<div id="logs">
 			@if (Auth::user() && Auth::user()->admin)
-			{{ HTML::link_to_action('account@logout', "Logout") }} &bull; {{ HTML::link('admin', 'Admin panel'); }} &bull; <a href="{{ URL::to("user/".Auth::user()->username) }}">My Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/18.png" alt="avatar"></a> 
+			{{ HTML::link_to_action('account@logout', "Logout") }} &bull; {{ HTML::link('admin', 'Admin panel'); }} &bull; <a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/18.png" alt="avatar"></a> 
 			@elseif (Auth::check())
 			{{ HTML::link_to_action('account@logout', "Logout") }} &bull; {{ HTML::link('account', 'Edit Account'); }} &bull; <a href="{{ URL::to("user/".Auth::user()->username) }}">My Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/18.png" alt="avatar"></a>
 			@else
