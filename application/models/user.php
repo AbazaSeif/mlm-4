@@ -11,4 +11,7 @@ class User extends Eloquent {
 	public function maps() {
 		return $this->has_many_and_belongs_to("Map");
 	}
+	public function messages() {
+		return $this->has_many_and_belongs_to("Message_Thread", "message_users");
+	}
 }
