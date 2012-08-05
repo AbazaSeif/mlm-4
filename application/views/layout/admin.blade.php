@@ -3,7 +3,7 @@
 @section("content")
 	<nav id="pagemenu">
 		<ul class="nav nav-tabs">
-			<li>{{ HTML::link("admin", "Admin Home"); }}</li>
+			<li>{{ HTML::link("admin", "Admin Home") }}</li>
 			<li>{{ HTML::link("admin/news", "News") }}</li>
 			<li>{{ HTML::link("admin/tournaments", "Tournaments") }}</li>
 			<li>{{ HTML::link("admin/maps", "Maps") }}</li>

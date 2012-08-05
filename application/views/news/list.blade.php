@@ -1,6 +1,7 @@
 @layout("layout.main")
 
 @section('content')
+@include("news.menu")
 <div id="content" class="news clearfix">
 <div class="titlebar clearfix">
 	<h1>The News</h1>

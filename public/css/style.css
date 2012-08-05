@@ -8,7 +8,7 @@
 body {
     background: #0e3a9d url(../images/static/bg.jpg) no-repeat fixed top center;
     color: #FFF;
-    font-family: "Oswald","HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif !important;
+    font-family: "Oswald","HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 400;
     margin: 0;
     padding: 0;
@@ -16,12 +16,12 @@ body {
 
 ::selection {
    background: #AA6814;
-	text-shadow: 0 1px 0px #000;
+    text-shadow: 0 1px 0px #000;
 }
 
 ::-moz-selection {
     background: #AA6814;
-	text-shadow: 0 1px 0px #000;
+    text-shadow: 0 1px 0px #000;
 }
 
 .left {float: left}
@@ -38,58 +38,58 @@ a:hover {}
 abbr, acronym { cursor: help; border-bottom: 1px dotted #888; }
 
 blockquote{
-	background: url(../images/static/blockquote-l.png) no-repeat left top;
-	padding: 10px 15px;
-	margin: 0 3em 1em;
-	font-size: 1em;
-	text-indent: 2em;
+    background: url(../images/static/blockquote-l.png) no-repeat left top;
+    padding: 10px 15px;
+    margin: 0 3em 1em;
+    font-size: 1em;
+    text-indent: 2em;
 }
 blockquote > div {
-	background: url(../images/static/blockquote-r.png) no-repeat right bottom;
-	padding-bottom: 0.1em;
+    background: url(../images/static/blockquote-r.png) no-repeat right bottom;
+    padding-bottom: 0.1em;
 }
 
-dl	{
-	margin:0 1.5em;
+dl  {
+    margin:0 1.5em;
 }
 dt {
-	font-weight: bold;
+    font-weight: bold;
 }
 dd {
-	margin: 0 0 1em 1.5em;
+    margin: 0 0 1em 1.5em;
 }
 
 h1, h2, h3, h4, h5, h6 {
-	margin: 0;
-	padding: 0;
-	line-height: 1;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
 }
 h1, h2 {
-	font-weight: normal;
+    font-weight: normal;
 }
 h3, h4, h5, h6 {
-	font-weight: bold;
+    font-weight: bold;
 }
 h1 {
-	font-size: 200%;
+    font-size: 200%;
 }
 h2 {
-	font-size: 183%;
+    font-size: 183%;
 }
 h3 {
-	font-size: 166%;
+    font-size: 166%;
 }
 h4 {
-	font-size: 150%;
-	font-weight: bold;
+    font-size: 150%;
+    font-weight: bold;
 }
 h5 {
-	font-size: 133%;
-	font-weight: bold;
+    font-size: 133%;
+    font-weight: bold;
 }
 h6 {
-	font-size: 116%;
-	font-weight: bold;
+    font-size: 116%;
+    font-weight: bold;
 }
 
 hr {
@@ -101,21 +101,21 @@ p {
 }
 
 small {
-	font-size: 0.68em;
+    font-size: 0.68em;
 }
 
 sup, sub {
-	height: 0;
-	line-height: 1;
-	vertical-align: baseline;
-	position: relative;
-	font-size: 0.7em;
+    height: 0;
+    line-height: 1;
+    vertical-align: baseline;
+    position: relative;
+    font-size: 0.7em;
 }
 sup {
-	bottom: 1ex;
+    bottom: 1ex;
 }
 sub {
-	top: .5ex;
+    top: .5ex;
 }
 
 ul, ol {
@@ -236,10 +236,10 @@ ul, ol {
     list-style: none;
     height: 35px;
     -moz-transition: box-shadow .3s ease-in-out;
-	-ms-transition: box-shadow .3s ease-in-out;
-	-o-transition: box-shadow .3s ease-in-out;
-	-webkit-transition: box-shadow .3s ease-in-out;
-	transition: box-shadow .3s ease-in-out;
+    -ms-transition: box-shadow .3s ease-in-out;
+    -o-transition: box-shadow .3s ease-in-out;
+    -webkit-transition: box-shadow .3s ease-in-out;
+    transition: box-shadow .3s ease-in-out;
 }
 
 #menu li:hover {
@@ -281,18 +281,18 @@ ul, ol {
 }
 
 #content .titlebar {
-	margin-bottom:10px;
-	border-bottom: 1px dotted #fff;
+    margin-bottom:10px;
+    border-bottom: 1px dotted #fff;
 }
 
 #content .titlebar h1,#content .titlebar h2, #content .titlebar h3,#content .titlebar h4    {
-	line-height: 1;
-	margin: 10px 0;
-	font-weight: normal;
-	text-shadow: 0 1px 3px #000;
-	color: #fff;
-	text-transform: uppercase;
-	font-family: "Oswald","HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 1;
+    margin: 10px 0;
+    font-weight: normal;
+    text-shadow: 0 1px 3px #000;
+    color: #fff;
+    text-transform: uppercase;
+    font-family: "Oswald","HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
 } 
 #content .titlebar h1 {font-size: 32px}
 #content .titlebar h2 {font-size: 24px}
@@ -303,7 +303,7 @@ ul, ol {
    ================================================== */
 
 #home {
-	min-height: 300px;
+    min-height: 300px;
 }
 
 /* Featured Content Slideshow 
@@ -339,7 +339,7 @@ ul, ol {
 div.orbit-wrapper {
     width: 1px;
     height: 1px;
-	float:left;
+    float:left;
     position: relative; }
 
 div.orbit {
@@ -441,8 +441,8 @@ span.pause.active {
     background: rgba(0,0,0,.6);
     z-index: 1000;
     color: #fff;
-	text-align: center;
-	padding: 7px 0;
+    text-align: center;
+    padding: 7px 0;
     font-size: 16px;
     position: absolute;
     right: 0;
@@ -520,14 +520,14 @@ div.slider-nav span.left {
    ================================================== */
 
 #home .homecontent {
-	margin: 15px auto 0;
-	display: inline-block;
-	width:940px;
+    margin: 15px auto 0;
+    display: inline-block;
+    width:940px;
 }
 
 #home .homecontent section {
-	display: inline-block;
-	width: 310px;
+    display: inline-block;
+    width: 310px;
 }
 
 /* Global Footer
@@ -587,139 +587,139 @@ clear: both;
    ================================================== */
 
 .news .articles{
-	float:left;
-	width: 660px;
+    float:left;
+    width: 660px;
 }
 
 .post  {
-	margin-bottom: 30px;
-	border-bottom: 1px dotted #ddd;
-	padding-bottom: 29px;
-	width: 100%;
+    margin-bottom: 30px;
+    border-bottom: 1px dotted #ddd;
+    padding-bottom: 29px;
+    width: 100%;
  
-	float: left;
+    float: left;
 }
 
 .post-image  {
-	display: block;
-	width: 100%;
-	margin-bottom: 15px;
-	outline: 1px solid lightGrey;  
-	-moz-box-shadow: 0 8px 6px -6px #000;  
-	-webkit-box-shadow: 0 8px 6px -6px black;  
-	box-shadow: 0 8px 6px -6px black;
-	border: 4px solid #fff;
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    outline: 1px solid lightGrey;  
+    -moz-box-shadow: 0 8px 6px -6px #000;  
+    -webkit-box-shadow: 0 8px 6px -6px black;  
+    box-shadow: 0 8px 6px -6px black;
+    border: 4px solid #fff;
 }
 
 .post-image img  {
-	width: 100%;
+    width: 100%;
  
-	display: block;
+    display: block;
 }
 
 .post .date, .post .comments-nr  {
-	float: left;
-	width: 75px;
-	text-align: center;
-	font-size: 14px;
-	color: #666;
-	padding: 10px 5px;
-	background: #E6E6E6;
-	border: 4px solid #f4f4f4;
-	margin-bottom: 10px;
+    float: left;
+    width: 75px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    padding: 10px 5px;
+    background: #E6E6E6;
+    border: 4px solid #f4f4f4;
+    margin-bottom: 10px;
  
-	outline: 1px solid lightgrey;
-	-moz-box-shadow: 0 8px 6px -6px #000;  
-	-webkit-box-shadow: 0 8px 6px -6px   #000;  box-shadow: 0 8px 6px -6px   #000;
+    outline: 1px solid lightgrey;
+    -moz-box-shadow: 0 8px 6px -6px #000;  
+    -webkit-box-shadow: 0 8px 6px -6px   #000;  box-shadow: 0 8px 6px -6px   #000;
 }
 
 .post .date  {
  }
 
 .post .comments-nr a  {
-	color: #666;
-	display: block;
+    color: #666;
+    display: block;
 }
 
 .post .date .bold, .post .comments-nr .bold  {
-	font-size: 25px;
-	line-height: 40px;
-	margin-bottom: 0px;
-	text-align: center;
-	display: block;
-	color: #474747;
-	transition:  color 0.1s linear;
-	-moz-transition:  color 0.1s linear;
-	-webkit-transition:  color 0.1s linear;
-	-o-transition:  color 0.1s linear;
+    font-size: 25px;
+    line-height: 40px;
+    margin-bottom: 0px;
+    text-align: center;
+    display: block;
+    color: #474747;
+    transition:  color 0.1s linear;
+    -moz-transition:  color 0.1s linear;
+    -webkit-transition:  color 0.1s linear;
+    -o-transition:  color 0.1s linear;
  }
 
 .comments-nr a:hover, .comments-nr a:hover .bold  {
-	color: #d16f4e;
+    color: #d16f4e;
  }
 
 
 .post-info  {
-	float: left;
-	width: 94px;
-	margin-right: 15px;
-	font-size: 11px;
-	font-family: "Oswald";
+    float: left;
+    width: 94px;
+    margin-right: 15px;
+    font-size: 11px;
+    font-family: "Oswald";
  
 }
 
 .post-info p  {
-	text-align: right;
-	margin-bottom: 0px;
-	line-height: 20px;
+    text-align: right;
+    margin-bottom: 0px;
+    line-height: 20px;
  
-	font-size: 12px;
+    font-size: 12px;
 }
 
 .post-info p span  {
-	color: #bbb;
-	padding-right: 3px;
-	font-style: italic;
+    color: #bbb;
+    padding-right: 3px;
+    font-style: italic;
  }
 
 .post-info p a  {
-	color: #f4f4f4;
+    color: #f4f4f4;
  }
 
 .news .post h1.title, .news .post .title a {
-	border: none;
-	color: #fff;
-	font-family: "Oswald",Helvetica, Arial, sans-serif;
-	text-shadow: 0px 1px 1px #000;
-	margin: 0px 0px 15px;
+    border: none;
+    color: #fff;
+    font-family: "Oswald",Helvetica, Arial, sans-serif;
+    text-shadow: 0px 1px 1px #000;
+    margin: 0px 0px 15px;
 }
  
 .post-entry  {
-	float: left;
-	width: 550px;
+    float: left;
+    width: 550px;
  }
  
 .post-entry p  {
-	margin-bottom: 0px;
+    margin-bottom: 0px;
  }
 
 .post-meta  {
-	font-size: 12px;
-	line-height: 20px;
-	font-style: italic;
-	color: #b0b0b0;
-	display: block;
-	margin-bottom: 8px;
-	margin-top: -15px;
+    font-size: 12px;
+    line-height: 20px;
+    font-style: italic;
+    color: #b0b0b0;
+    display: block;
+    margin-bottom: 8px;
+    margin-top: -15px;
  }
 
 .post-meta a, .post-meta strong  {
-	color: #999;
+    color: #999;
  }
 
 .more-link  {
-	display: block;
-	margin-top: 20px;
+    display: block;
+    margin-top: 20px;
  }
  
 .post.single {
@@ -730,47 +730,47 @@ width:660px;
    ================================================== */
 
 .news #sidebar {
-	float: right;
-	width: 250px;
-	margin: 0px;
+    float: right;
+    width: 250px;
+    margin: 0px;
 }
 
 .news #sidebar .sbar{
-	width: 205px;
+    width: 205px;
 }
 
 .news #sidebar ul {
-	margin: 0;
-	padding: 0;
-	list-style: none;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 .news #sidebar li {
-	margin: 0px 0px 20px 0px;
-	padding: 0;
+    margin: 0px 0px 20px 0px;
+    padding: 0;
 }
 
 .news #sidebar li ul {
-	margin: 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 .news #sidebar li li {
-	border-bottom: 1px dotted #D8D8D8;
-	margin: 0px 0px;
-	padding: 5px 0px;
-	border-left: none;
+    border-bottom: 1px dotted #D8D8D8;
+    margin: 0px 0px;
+    padding: 5px 0px;
+    border-left: none;
 }
 
 .news #sidebar li li a {
-	color: #fff;
+    color: #fff;
 }
 
 .news #sidebar li li span {
-	display: block;
-	padding: 0;
-	font-size: 11px;
-	font-style: italic;
+    display: block;
+    padding: 0;
+    font-size: 11px;
+    font-style: italic;
 }
 
 .news #sidebar header {
@@ -784,24 +784,44 @@ width:660px;
 .news #sidebar header h1 {
     color: #474747;
     font-weight: bold;
-	
+    
     font-size: 1.5em;
     text-shadow: 0px 1px 1px #fff;
     margin: 0.5em 0;
 }
 
 .news #sidebar p {
-	margin: 0;
-	padding: 0;
-	text-align: justify;
+    margin: 0;
+    padding: 0;
+    text-align: justify;
 }
 
 .news #sidebar a {
-	border: none;
+    border: none;
 }
 
 .news #sidebar a:hover {
-	text-decoration: underline;
+    text-decoration: underline;
+}
+
+/* Maps
+   ================================================== */
+
+.maps {
+}
+
+.maps ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.maps ul li {
+    display:inline-block;
+    margin: 5px 6px;
+    height:230px;
+    width: 220px;
+    background: white;
 }
 
 /* Login & Registration
@@ -811,14 +831,14 @@ width:660px;
     width: 540px;
     height: 540px;
     background: transparent url(../images/static/login.png) no-repeat center top;
-	margin: -15px auto 0;
-	text-align: center;
-	font-family: "Oswald","Helvetica Neue Condensed Bold",Helvetica,Arial,sans-serif;
+    margin: -15px auto 0;
+    text-align: center;
+    font-family: "Oswald","Helvetica Neue Condensed Bold",Helvetica,Arial,sans-serif;
 }
 
 #login form {
     background: none;
-	padding: 202px 0 0;
+    padding: 202px 0 0;
 }
 
 /* OpenID providers */
@@ -901,45 +921,37 @@ width:660px;
 /* Disclaimer on Registration page */
 
 .disclaimer { 
-	display: inline;
-	color: #414141;
-	font-size: 13px;
-	margin-left: 10px;
-	vertical-align: middle;
+    display: inline;
+    color: #414141;
+    font-size: 13px;
+    margin-left: 10px;
+    vertical-align: middle;
 }
 
 /* General styles for pages 
    ================================================== */
 
-#pageheader {
-    background: #102A67;
-    -moz-box-shadow: inset 0 0 30px #000, 0 0 30px #000;
-    -webkit-box-shadow: inset 0 0 30px #000, 0 0 30px #000;
-    box-shadow: inset 0 0 30px #000, 0 0 30px #000;
-    margin: 20px 0;
-    height: 100px
-}
-
 #pagemenu {
     background: #102A65;
     -moz-box-shadow: 0 0 35px #000;
     -webkit-box-shadow: 0 0 35px #000;
-    box-shadow: 0 0 35px #000;
-    margin: 0;
-    border: none;
-    width: 990px;
+    box-shadow: 0 0 35px black;
+    margin: 0 0 15px;
+    height: 40px;
     text-shadow: 0 1px 3px #000;
-    font-weight: 500;
     font-size: 15px;
-    text-decoration: none;
-    margin-top: 10px
+    position: relative;
 }
 
 #pagemenu ul {
     padding:0;
 }
 
-#pagemenu a {
+#pagemenu ul li {
+    border-right: 1px solid #103C65;
+}
+
+#pagemenu ul li a {
     color: #fff
 }
 
@@ -950,8 +962,31 @@ width:660px;
     border-top: 1px solid #F4F4F4;
 }
 
-.nav {
-    margin-bottom: 0px
+#pagemenu .nav {
+    margin-bottom: 0px;
+    border:none;
+}
+
+/* Substyles */
+
+#pagemenu .nav-tabs a {
+    font-size: 16px;
+    text-transform: uppercase;
+    padding: 10px;
+    margin-right: 0;
+    min-width: 60px;
+    text-align: center;
+    text-shadow: 0 1px 3px black;
+}
+
+#pagemenu .nav-tabs li a:hover {
+    border-color:#D3D3D3;
+    background-color:#E6E6E6;
+}
+
+#pagemenu li.rside{
+    float: right;
+    border: none;
 }
 
 /* Profile page 
@@ -1093,9 +1128,9 @@ width:660px;
 }
 
 .profile #vcard .data ul.numbers li {
-	width: 95px;
-	float: left;
-	display: block;
+    width: 95px;
+    float: left;
+    display: block;
     padding-left: 8px;
     height: 50px;
     border-right: 1px dotted #bbb;
@@ -1192,21 +1227,21 @@ text-decoration: underline;
 }
 
 .profile .team img{
-	border: 8px #fff solid;
-	outline: 1px solid #ccc;
-	float: left;
+    border: 8px #fff solid;
+    outline: 1px solid #ccc;
+    float: left;
 }
 
 .profile .team p{
-	color: #000;
-	font: 15px "Oswald";
-	text-transform: uppercase;
-	word-wrap: break-word;
+    color: #000;
+    font: 15px "Oswald";
+    text-transform: uppercase;
+    word-wrap: break-word;
 }
 
 .profile .teaminfo{
-	float: right;
-	width: 175px;
+    float: right;
+    width: 175px;
 }
 
 .profile .teaminfo ul.winlose {
@@ -1219,9 +1254,9 @@ text-decoration: underline;
 }
 
 .profile ul.winlose li {
-	width: 70px;
-	float: left;
-	display: block;
+    width: 70px;
+    float: left;
+    display: block;
     padding-left: 8px;
     height: 50px;
     border-right: 1px dotted #bbb;
@@ -1229,7 +1264,7 @@ text-decoration: underline;
 }
 
 .profile ul.winlose li:last-child {
-	border:none;
+    border:none;
 }
 
 .profile ul.winlose li strong {
@@ -1247,13 +1282,13 @@ text-decoration: underline;
 }
 
 .account-settings ul {
-	margin: 0;
-	padding: 0;
-	list-style:none;
+    margin: 0;
+    padding: 0;
+    list-style:none;
 }
 
 .account-settings .openids form {
-	padding: 10px;
+    padding: 10px;
 }
 
 /* Misc styles
@@ -1264,17 +1299,17 @@ text-decoration: underline;
    
 /* Used in Admin user edit */
 form.nobg{ 
-	background: none;
-	padding-top: 0;
+    background: none;
+    padding-top: 0;
 }
    
 /* Used globally */  
 form.xpadding { 
-	padding:10px
+    padding:10px
 }
 
 form.xpadding p {
-	margin-bottom: 10px;
+    margin-bottom: 10px;
 }    
 
 /* Error stlyes 
@@ -1309,13 +1344,13 @@ form.xpadding p {
    ================================================== */
 
 .chromeframe {
-	text-align: center;
-	height: 30px;
-	font-size: 18px;
-	background: #1DD8F1;
-	font-weight: 700;
-	font-family: Arial,sans-serif;
-	padding-top: 6px;
+    text-align: center;
+    height: 30px;
+    font-size: 18px;
+    background: #1DD8F1;
+    font-weight: 700;
+    font-family: Arial,sans-serif;
+    padding-top: 6px;
 }
 
 /* Image Manager 
@@ -1458,46 +1493,46 @@ form.xpadding p {
    ================================================== */
 
 #comments {
-	display: block;
-	padding: 0;
-	margin: 30px 0;
+    display: block;
+    padding: 0;
+    margin: 30px 0;
 }
-	
+    
 #commentlist {
-	width: 660px;
-	padding: 0;
-	margin: 0;
+    width: 660px;
+    padding: 0;
+    margin: 0;
 }
 
 #commentlist li{
-	list-style:none;
+    list-style:none;
 }
 
 #commentlist .comment{
-	border-bottom: 1px white dotted;
-	margin: 15px 0px;
-	padding: 10px;
+    border-bottom: 1px white dotted;
+    margin: 15px 0px;
+    padding: 10px;
 }
 
 #comments .avatar {
-	border: 4px white solid;
-	-moz-box-shadow: 0 1px 3px #000;
-	-webkit-box-shadow: 0 1px 3px black;
-	box-shadow: 0 1px 3px black;
-	margin-right: 8px;
+    border: 4px white solid;
+    -moz-box-shadow: 0 1px 3px #000;
+    -webkit-box-shadow: 0 1px 3px black;
+    box-shadow: 0 1px 3px black;
+    margin-right: 8px;
 }
 
 /* Sprite galore! 
    ================================================== */
 
 .user-rank {
- 	position: absolute;
- 	right: 8px;
-	top: 8px;
-	box-shadow: 0px 1px 1px #fff;
-	width: 16px;
-	height: 16px;
-	background: url(../images/static/urank.png) no-repeat;
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    box-shadow: 0px 1px 1px #fff;
+    width: 16px;
+    height: 16px;
+    background: url(../images/static/urank.png) no-repeat;
 }
 .user-rank.admin {background-position: 0px 0px;}
 .user-rank.dev {background-position: 0px -16px;}
@@ -1508,12 +1543,12 @@ form.xpadding p {
    ================================================== */
 
 .flag {
-	width: 16px;
-	height: 11px;
-	display: inline-block;
-	vertical-align: -1px;
-	margin-right:3px;
-	background:url(../images/static/flags.png) no-repeat
+    width: 16px;
+    height: 11px;
+    display: inline-block;
+    vertical-align: -1px;
+    margin-right:3px;
+    background:url(../images/static/flags.png) no-repeat
 }
 
 .flag.flag-AD {background-position: -16px 0}

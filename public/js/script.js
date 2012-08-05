@@ -3,7 +3,7 @@ MLM = {
 		init: function () {
 			// On all pages
 			$("textarea[data-wysiwyg]").cleditor();
-			$("#sortable").tablesorter(); 
+			$("#sortable").tablesorter();
 		}
 	},
 	home: {

@@ -2461,8 +2461,8 @@ input[type="submit"].btn.btn-mini {
 }
 .nav-tabs .dropdown-toggle .caret,
 .nav-pills .dropdown-toggle .caret {
-  border-top-color: #0088cc;
-  border-bottom-color: #0088cc;
+  border-top-color: #fff;
+  border-bottom-color: #fff;
   margin-top: 6px;
 }
 .nav-tabs .dropdown-toggle:hover .caret,
@@ -3409,8 +3409,8 @@ a.thumbnail:hover {
   border-right: 4px solid transparent;
   border-left: 4px solid transparent;
   content: "";
-  opacity: 0.3;
-  filter: alpha(opacity=30);
+  opacity: 0.6;
+  filter: alpha(opacity=60);
 }
 .dropdown .caret {
   margin-top: 8px;
