@@ -3,7 +3,7 @@ class Message_Thread extends Eloquent {
 
 	/* Relationships */
 	public function starter() {
-		return $this->belongs_to("User");
+		return $this->belongs_to("User", "user_id");
 	}
 	public function users() {
 		return $this->has_many_and_belongs_to("User", "message_users");

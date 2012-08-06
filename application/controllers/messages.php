@@ -6,11 +6,12 @@ class Messages_Controller extends Base_Controller {
 		parent::__construct();
 
 		$this->filter("before", "auth"); // Require logged in user
+		$this->filter("before", "csrf")->on("post")->only(array("new", "reply"));
 	}
 
 	public function get_index() {
-
-		return View::make("messages.list", array("title" => "Messages"));
+		$threads = Auth::user()->messages;
+		return View::make("messages.list", array("title" => "Messages", "threads" => $threads));
 	}
 	public function get_new() {
 
@@ -20,7 +21,7 @@ class Messages_Controller extends Base_Controller {
 		$validation_rules = array(
 			"title" => "required|min:4|max:255",
 			"users" => "required",
-			"message" => "required|min:4"
+			"message" => "required"
 		);
 		$validation = Validator::make(Input::all(), $validation_rules);
 		$validation->passes(); // Generates the messages object
@@ -64,8 +65,10 @@ class Messages_Controller extends Base_Controller {
 			$message->user_id = Auth::user()->id;
 			$message->message = Input::get("message");
 			$messageThread->messages()->insert($message);
+			Messages::add("success", "Message sent!");
 			return Redirect::to_action("messages@view", array($messageThread->id));
 		} else {
+			Messages::add("error", "Errors occured when trying to send the message");
 			return Redirect::to_action("messages@new")->with_input()->with_errors($validation);
 		}
 	}
@@ -76,5 +79,28 @@ class Messages_Controller extends Base_Controller {
 			return Response::error('404');
 		}
 		return View::make("messages.view", array("title" => e($thread->title)." | Messages", "thread" => $thread));
+	}
+	/* Replying to thread */
+	public function post_reply($threadid) {
+		$thread = Auth::user()->messages()->where_message_thread_id($threadid)->first(); // Makes sure it's readable by the user
+		if(!$thread) {
+			return Response::error('404');
+		}
+		$validation_rules = array(
+			"message" => "required"
+		);
+		$validation = Validator::make(Input::all(), $validation_rules);
+		if($validation->passes()) {
+			$message = new Message_Message();
+			$message->user_id = Auth::user()->id;
+			$message->message = Input::get("message");
+			$thread->messages()->insert($message);
+
+			Messages::add("success", "Reply sent!");
+			return Redirect::to_action("messages@view", array($threadid));
+		} else {
+			Messages::add("error", "Message not sent!");
+			return Redirect::to_action("messages@view", array($threadid))->with_input()->with_errors($validation);
+		}
 	}
 }
