@@ -12,8 +12,8 @@
 	        <br>
 			<hr>
 			<br>
-			<?php $messages = array('Stronghold not found', 'There is no wool here', 'An Enderman stole this page','Chunk not found','Page blew up'); ?>
-			<h1>404: <?php echo $messages[mt_rand(0, 2)]; ?></h1>
+			<?php $messages = array('Stronghold not found', 'There is no wool here', 'An Enderman stole this page', 'Chunk not found', 'Page blew up', "PC CHUNK LETTER"); ?>
+			<h1>404: <?php echo array_rand(array_flip($messages)); ?></h1>
 			<br>
 			<hr>
 			<br>
