@@ -2,6 +2,7 @@
 <?php $maptypes = Config::get("maps.types") ?>
 
 @section("content")
+@include("maps.menu")
 @if($map->published == 0)
 	<div class="alert">
 		<p>This map is awaiting moderation and is not yet viewable by everyone.</p>

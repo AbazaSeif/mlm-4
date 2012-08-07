@@ -1,10 +1,16 @@
 @layout("layout.main")
 
 @section("content")
+@include("maps.menu")
 {{ HTML::link_to_action("maps@view", "View", array($map->id, $map->slug)) }}
 <div id="content">
-	<h2>Edit meta</h2>
-	{{ Form::open("maps/edit_meta/".$map->id, "POST", array("class" => "form-horizontal")) }}
+<div class="titlebar clearfix">
+	<h2>Editing map {{ e($map->title) }}</h2>
+</div>
+<div class="titlebar clearfix">
+	<h3>Map meta</h3>
+</div>
+	{{ Form::open("maps/edit_meta/".$map->id, "POST", array("class" => "form-horizontal nobg")) }}
 		{{ Form::token() }}
 		{{ Form::field("text", "title", "Title", array(Input::old("title", $map->title), array('class' => 'input-large')), array('error' => $errors->first('title'))) }}
 		{{ Form::field("textarea", "summary", "Summary", array(Input::old("summary", $map->summary), array('class' => 'input-xxlarge')), array("help" => "Short description about your map. (255 characters max)", 'error' => $errors->first('summary'))) }}
@@ -15,7 +21,9 @@
 		{{ Form::field("text", "teamsize", "Recomended team size", array(Input::old("teamsize", $map->teamsize)), array("error" => $errors->first("teamsize"))) }}
 		{{ Form::actions(Form::submit("Submit", array("class" => "btn-primary"))) }}
 	{{ Form::close() }}
-	<h2>Downloads</h2>
+<div class="titlebar clearfix">
+	<h3>Download Links</h3>
+</div>
 	<table class="table">
 		<thead>
 			<tr>
@@ -40,7 +48,9 @@
 			@endforelse
 		</tbody>
 	</table>
-	<h2>Images</h2>
+<div class="titlebar clearfix">
+	<h3>Images</h3>
+</div>
 	<ul class="thumbnails">
 		@forelse($map->images as $image)
 			<li class="span2">

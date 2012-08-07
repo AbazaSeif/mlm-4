@@ -9,13 +9,15 @@
         	<b class="caret"></b>
       		</a>
     		<ul class="dropdown-menu">
-      		<li>{{ HTML::link("admin/news/comments", "Capture The Wool") }}</li>
-      		<li>{{ HTML::link("admin/maps/comments", "Race For The Wool") }}</li>
-      		<li>{{ HTML::link("admin/maps/comments", "Destroy the core") }}</li>
+      		<li>{{ HTML::link("?ctq", "Capture The Wool") }}</li>
+      		<li>{{ HTML::link("?rtw", "Race For The Wool") }}</li>
+      		<li>{{ HTML::link("?dtc", "Destroy the core") }}</li>
     		</ul>
   		</li>
+  		<li><a href="#" id="toggleviews">Change view</a></li>
 		@if (Auth::check())
-		<li class="rside">{{ HTML::link("account", "Your maps") }}</li>
+		<li {{ URI::is('maps/new') ? 'class="rside active"' : 'class="rside"' }}>{{ HTML::link("maps/new", "New Map") }}</li>
+		<li {{ URI::is('user/maps') ? 'class="rside active"' : 'class="rside"' }}><a href="{{ URL::to("user/".Auth::user()->username) }}">Your Maps</a></li>
 		@endif
 	</ul>
 </nav>
