@@ -1,6 +1,7 @@
 @layout("layout.main")
 
 @section("content")
+@include("user.menu")
 <div id="content">
 	<h3>{{ e($thread->title) }}</h3>
 	<h4>In this thread:</h4>

@@ -1,6 +1,7 @@
 @layout("layout.main")
 
 @section("content")
+@include("user.menu")
 <div id="content">
 	{{ HTML::link_to_action("messages@new", "Send message") }}
 	<ul>

@@ -1,6 +1,7 @@
 @layout("layout.main")
 
 @section("content")
+@include("user.menu")
 <div id="content">
 	{{ Form::open("messages/new") }}
 		{{ Form::token() }}
