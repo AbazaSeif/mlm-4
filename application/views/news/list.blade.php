@@ -3,10 +3,10 @@
 @section('content')
 @include("news.menu")
 <div id="content" class="news clearfix">
-<div class="titlebar clearfix">
-	<h1>The News</h1>
-</div>
 <div class="articles clearfix">
+<div class="titlebar clearfix">
+	<h2>Latest News</h2>
+</div>
 	@foreach($newslist->results as $article)
 	<div class="post"> 
 		<section class="post-image"> 

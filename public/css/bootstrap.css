@@ -2395,8 +2395,8 @@ input[type="submit"].btn.btn-mini {
 .nav-tabs > .active > a,
 .nav-tabs > .active > a:hover {
   color: #555555;
-  background-color: #ffffff;
-  border: 1px solid #ddd;
+  background-color: #E6E6E6;
+  border: 1px solid #d3d3d3;
   border-bottom-color: transparent;
   cursor: default;
 }

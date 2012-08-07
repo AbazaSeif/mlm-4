@@ -5,7 +5,7 @@
 @include("user.menu")
 	<div id="content" class="account-settings">
 	<div class="titlebar clearfix">
-		<h2>Edit Account &amp; Settings</h2>
+		<h2>Edit Account &amp; Profile</h2>
 	</div>
 	<div class="titlebar clearfix">
 		<h3>Linked OpenID Accounts</h3>
