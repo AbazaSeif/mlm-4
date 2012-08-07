@@ -4,7 +4,6 @@ MLM = {
 			// On all pages
 			$("textarea[data-wysiwyg]").cleditor();
 			$("#sortable").tablesorter();
-		});
 		}
 	},
 	home: {
