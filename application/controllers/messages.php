@@ -78,6 +78,13 @@ class Messages_Controller extends Base_Controller {
 		if(!$thread) {
 			return Response::error('404');
 		}
+		if($thread->pivot->unread) {
+			// Since pivot table handing is bad in laravel, doing it manually.
+			// It's same as following:
+			// $thread->pivot->unread = false;
+			// $thread->pivot->save();
+			DB::table("message_users")->where_message_thread_id($thread->id)->where_user_id(Auth::user()->id)->update(array("unread" => 0));
+		}
 		return View::make("messages.view", array("title" => e($thread->title)." | Messages", "thread" => $thread));
 	}
 	/* Replying to thread */
