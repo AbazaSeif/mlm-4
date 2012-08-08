@@ -9,9 +9,12 @@
         	<b class="caret"></b>
       		</a>
     		<ul class="dropdown-menu">
-      		<li>{{ HTML::link("?ctq", "Capture The Wool") }}</li>
-      		<li>{{ HTML::link("?rtw", "Race For The Wool") }}</li>
-      		<li>{{ HTML::link("?dtc", "Destroy the core") }}</li>
+    		<li>{{ HTML::link("maps/?rtw", "Race For Wool") }}</li>
+      		<li>{{ HTML::link("maps/?ctq", "Capture the Wool") }}</li>
+      		<li>{{ HTML::link("maps/?dtc", "Destroy the Core") }}</li>
+      		<li>{{ HTML::link("maps/?att", "Attack/Defence") }}</li>
+      		<li>{{ HTML::link("maps/?bed", "Bed Wars") }}</li>
+      		<li>{{ HTML::link("maps/?oth", "Other") }}</li>
     		</ul>
   		</li>
 		@if (Auth::check())
