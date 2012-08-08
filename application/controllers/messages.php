@@ -29,8 +29,8 @@ class Messages_Controller extends Base_Controller {
 		// Check that all recipants exist and doesn't include the user
 		$userlist = explode(",", Input::get("users"));
 		$userlist = array_map(function($user) { // <3 PHP 5.3
-			$user = trim($user); // Remove whitespace
-			if($user == Auth::user()->username || strlen($user) == 0) { // No messaging yourself
+			$user = strtolower(trim($user)); // Remove whitespace
+			if($user == strtolower(Auth::user()->username) || strlen($user) == 0) { // No messaging yourself
 				return;
 			} else {
 				return $user;
@@ -42,7 +42,7 @@ class Messages_Controller extends Base_Controller {
 		if(count($userlist) > 0) {
 			$userobjs = User::where_in("username", $userlist)->get();
 			$foundusers = array_map(function($userobj) {
-				return $userobj->username;
+				return strtolower($userobj->username);
 			}, $userobjs);
 			
 			$notfound = array_diff($userlist, $foundusers);
@@ -127,11 +127,11 @@ class Messages_Controller extends Base_Controller {
 		// Check that all recipants exist and doesn't include current users
 		$current_users = array();
 		foreach ($thread->users as $user) {
-			$current_users[] = $user->username;
+			$current_users[] = strtolower($user->username);
 		}
 		$userlist = explode(",", Input::get("users"));
 		$userlist = array_map(function($user) use($current_users) { // <3 PHP 5.3
-			$user = trim($user); // Remove whitespace
+			$user = strtolower(trim($user)); // Remove whitespace
 			if(in_array($user, $current_users) || strlen($user) == 0) { // No messaging yourself
 				return;
 			} else {
@@ -144,7 +144,7 @@ class Messages_Controller extends Base_Controller {
 		if(count($userlist) > 0) {
 			$userobjs = User::where_in("username", $userlist)->get();
 			$foundusers = array_map(function($userobj) {
-				return $userobj->username;
+				return strtolower($userobj->username);
 			}, $userobjs);
 			
 			$notfound = array_diff($userlist, $foundusers);
