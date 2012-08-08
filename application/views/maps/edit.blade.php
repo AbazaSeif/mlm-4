@@ -56,6 +56,10 @@
 			<li class="span2">
 				<a href="{{ e($image->file_original) }}" class="thumbnail">{{ HTML::image($image->file_small) }}</a>
 				{{ HTML::link_to_action("maps@delete_image", "Delete", array($map->id, $image->id)) }}
+				{{ Form::open("maps/default_image/{$map->id}/{$image->id}") }}
+					{{ Form::token() }}
+					{{ Form::submit("Set Default", array("class" => "btn-success btn-mini")) }}
+				{{ Form::close() }}
 			</li>
 		@empty
 			<li>

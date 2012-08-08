@@ -23,8 +23,8 @@
 			<img src="http://placehold.it/284x160&text=Map+image" alt="map image"/>
 		</div>
 		<div class="mv-details">
-			<h4>Map title blah</h4>
-			<p>Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor </p>
+			<h4>{{ HTML::link_to_action("maps@view", $map->title, array($map->id, $map->slug)) }}</h4>
+			<p>{{ $map->summary }}</p>
 		</div>
 		<div class="mv-meta">
 		</div>

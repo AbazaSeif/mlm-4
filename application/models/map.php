@@ -16,6 +16,9 @@ class Map extends Eloquent {
 	public function images() {
 		return $this->has_many_and_belongs_to("Image", "map_images");
 	}
+	public function image() {
+		return $this->belongs_to("Image");
+	}
 
 	/*
 	 * Checks if a user is the owner of the map

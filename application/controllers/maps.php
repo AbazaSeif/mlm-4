@@ -279,6 +279,26 @@ class Maps_Controller extends Base_Controller {
 			return Redirect::to_action("maps@edit", array($id))->with_errors($validation);
 		}
 	}
+	/* Default image */
+	public function post_default_image($id, $imageid) {
+		$map = Map::find($id);
+		if(!$map) {
+			return Response::error('404');
+		}
+		if(!$map->is_owner(Auth::user())) { // User is confirmed to be logged in
+			return Response::error("404"); // Not yet published
+		}
+		$image = $map->images()->where_image_id($imageid)->first();
+		if(!$image) {
+			return Response::error("404"); // Not map's image
+		}
+
+		$map->image_id = $image->id;
+		$map->save();
+		
+		Messages::add("success", "Default image set");
+		return Redirect::to_action("maps@edit", array($id));
+	}
 	/* Deleting images */
 	public function get_delete_image($id, $imageid) {
 		$map = Map::find($id);
@@ -309,6 +329,10 @@ class Maps_Controller extends Base_Controller {
 		}
 
 		if($map->images()->detach($image->id)) {
+			if($map->image_id == $image->id) {
+				$map->image_id = null;
+				$map->save();
+			}
 			Messages::add("success", "Image removed!");
 		} else {
 			Messages::add("error", "Failed to remove image!");
