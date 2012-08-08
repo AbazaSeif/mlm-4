@@ -6,11 +6,11 @@ class Messages_Controller extends Base_Controller {
 		parent::__construct();
 
 		$this->filter("before", "auth"); // Require logged in user
-		$this->filter("before", "csrf")->on("post")->only(array("new", "reply"));
+		$this->filter("before", "csrf")->on("post")->only(array("new", "add", "reply"));
 	}
 
 	public function get_index() {
-		$threads = Auth::user()->messages;
+		$threads = Auth::user()->messages()->with("unread")->get();
 		return View::make("messages.list", array("title" => "Messages", "threads" => $threads));
 	}
 	public function get_new() {
@@ -101,6 +101,68 @@ class Messages_Controller extends Base_Controller {
 		} else {
 			Messages::add("error", "Message not sent!");
 			return Redirect::to_action("messages@view", array($threadid))->with_input()->with_errors($validation);
+		}
+	}
+	/* Adding more people to thread */
+	public function post_add($threadid) {
+		$thread = Auth::user()->messages()->where_message_thread_id($threadid)->first(); // Makes sure it's readable by the user
+		if(!$thread) {
+			return Response::error('404');
+		}
+
+		$validation_rules = array(
+			"users" => "required"
+		);
+		$validation = Validator::make(Input::all(), $validation_rules);
+		$validation->passes(); // Generates the messages object
+
+		// Check that all recipants exist and doesn't include current users
+		$current_users = array();
+		foreach ($thread->users as $user) {
+			$current_users[] = $user->username;
+		}
+		$userlist = explode(",", Input::get("users"));
+		$userlist = array_map(function($user) use($current_users) { // <3 PHP 5.3
+			$user = trim($user); // Remove whitespace
+			if(in_array($user, $current_users) || strlen($user) == 0) { // No messaging yourself
+				return;
+			} else {
+				return $user;
+			}
+		}, $userlist);
+		// Remove empty entries
+		$userlist = array_filter($userlist);
+		// Find who actually exists
+		if(count($userlist) > 0) {
+			$userobjs = User::where_in("username", $userlist)->get();
+			$foundusers = array_map(function($userobj) {
+				return $userobj->username;
+			}, $userobjs);
+			
+			$notfound = array_diff($userlist, $foundusers);
+			if(count($notfound) > 0) {
+				$validation->errors->add("users", "The following users couldn't found: ".e(implode(", ", $notfound)));
+			}
+		} else {
+			$validation->errors->add("users", "No valid users to send to found (Possible that everyone listed is already in this thread)");
+		}
+		if(count($validation->errors->messages) == 0) { // Equals $validation->passes(), only now also has properly checked users
+			/* Attach users & write a nice message */
+			$newusertxt = "Added people to this thread:\n\n";
+			foreach($userobjs as $userobj) {
+				$thread->users()->attach($userobj->id, array("unread" => 1));
+				$newusertxt .= "* [![Avatar](http://minotar.net/helm/{$userobj->mc_username}/18.png) {$userobj->username}](http://mlm.dev/user/{$userobj->username})\n";
+			}
+			/* Attach message */
+
+			$message = new Message_Message();
+			$message->message = $newusertxt;
+			$thread->messages()->insert($message);
+			Messages::add("success", "Users added!");
+			return Redirect::to_action("messages@view", array($thread->id));
+		} else {
+			Messages::add("error", "Problems occued when adding users");
+			return Redirect::to_action("messages@view", array($thread->id))->with_input()->with_errors($validation);
 		}
 	}
 }

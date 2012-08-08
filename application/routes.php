@@ -144,6 +144,14 @@ Event::listen("eloquent.saving", function($model) {
 	}
 });
 
+// Update message thread's updated_at to include last 
+Event::listen("eloquent.created: Message_Message", function($model) {
+	// For some reason $model->thread doesn't work, so don't bother trying to do that
+	$thread = Message_Thread::find($model->message_thread_id);
+	$thread->updated_at = "test"; // Need to mark model as dirty
+	$thread->save();
+});
+
 /*
 |--------------------------------------------------------------------------
 | Route Filters

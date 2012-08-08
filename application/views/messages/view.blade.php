@@ -10,9 +10,21 @@
 			<li><a href="{{ URL::to("user/{$user->username}") }}"><img src="http://minotar.net/helm/{{ $user->mc_username }}/18.png" alt="avatar"> {{$user->username}}</a></li>
 		@endforeach
 	</ul>
+	<h5>Add:</h5>
+	{{ Form::open("messages/add/{$thread->id}") }}
+		{{ Form::token() }}
+		{{ Form::field("text", "users", "Usernames", array(Input::old("users"), array('class' => 'input-large')), array('error' => $errors->first('users'), "help" => "Seperate multiple usernames with a comma")) }}
+		{{ Form::submit("Add people") }}
+	{{ Form::close() }}
 	@foreach($thread->messages as $message)
-	<small><a href="{{ URL::to("user/{$message->user->username}") }}"><img src="http://minotar.net/helm/{{ $message->user->mc_username }}/12.png" alt="avatar"> {{$message->user->username}}</a> @ {{ $message->created_at }}</small>
-	{{ $message->message }}
+		<div class="message">
+			@if($message->user_id)
+			<small><a href="{{ URL::to("user/{$message->user->username}") }}"><img src="http://minotar.net/helm/{{ $message->user->mc_username }}/12.png" alt="avatar"> {{$message->user->username}}</a> @ {{ $message->created_at }}</small>
+			@else
+			<small>System @ {{ $message->created_at }}</small>
+			@endif
+			{{ $message->message }}
+		</div>
 	@endforeach
 	<h4>Reply</h4>
 	{{ Form::open("messages/reply/{$thread->id}") }}
