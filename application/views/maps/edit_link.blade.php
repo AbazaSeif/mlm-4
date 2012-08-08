@@ -7,10 +7,10 @@
 <div id="content">
 	@if($link->exists)
 		<h2>Edit link</h3>
-		{{ Form::open("maps/edit_link/".$map->id."/".$link->id, array("class" => "nobg")) }}
+		{{ Form::open("maps/edit_link/".$map->id."/".$link->id, "POST", array("class" => "nobg")) }}
 	@else
 		<h3>New link</h3>
-		{{ Form::open("maps/edit_link/".$map->id, array("class" => "nobg")) }}
+		{{ Form::open("maps/edit_link/".$map->id, "POST", array("class" => "nobg")) }}
 	@endif
 		{{ Form::token() }}
 		{{ Form::field("text", "url", "URL", array(Input::old("url", $link->url), array('class' => 'input-large')), array('error' => $errors->first('url'))) }}

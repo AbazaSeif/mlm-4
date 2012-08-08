@@ -13,7 +13,7 @@
 @endif
 <div id="content" class="maps">
 <div class="titlebar clearfix">
-	<h1>Map Details for {{ e($map->title) }} by {{ HTML::link("user/{$author->username}", $author->username) }}</h1>
+	<h1>Map Details for {{ e($map->title) }}</h1>
 </div>
 	<h2>{{ e($map->title) }}</h2>
 	<p>{{ e($map->summary) }}</p>
