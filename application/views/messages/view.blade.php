@@ -16,7 +16,7 @@
 		{{ Form::field("text", "users", "Usernames", array(Input::old("users"), array('class' => 'input-large')), array('error' => $errors->first('users'), "help" => "Seperate multiple usernames with a comma")) }}
 		{{ Form::submit("Add people") }}
 	{{ Form::close() }}
-	@foreach($thread->messages as $message)
+	@foreach($messages as $message)
 		<div class="message">
 			@if($message->user_id)
 			<small><a href="{{ URL::to("user/{$message->user->username}") }}"><img src="http://minotar.net/helm/{{ $message->user->mc_username }}/12.png" alt="avatar"> {{$message->user->username}}</a> @ {{ $message->created_at }}</small>

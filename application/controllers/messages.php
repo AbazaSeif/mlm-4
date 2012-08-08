@@ -74,7 +74,7 @@ class Messages_Controller extends Base_Controller {
 	}
 	/* Viewing thread */
 	public function get_view($threadid) {
-		$thread = Auth::user()->messages()->where_message_thread_id($threadid)->first(); // Makes sure it's readable by the user
+		$thread = Auth::user()->messages()->where_message_thread_id($threadid)->with("unread")->first(); // Makes sure it's readable by the user
 		if(!$thread) {
 			return Response::error('404');
 		}
@@ -85,7 +85,8 @@ class Messages_Controller extends Base_Controller {
 			// $thread->pivot->save();
 			DB::table("message_users")->where_message_thread_id($thread->id)->where_user_id(Auth::user()->id)->update(array("unread" => 0));
 		}
-		return View::make("messages.view", array("title" => e($thread->title)." | Messages", "thread" => $thread));
+		$messages = Message_Message::with("user")->where_message_thread_id($thread->id)->get();
+		return View::make("messages.view", array("title" => e($thread->title)." | Messages", "thread" => $thread, "messages" => $messages));
 	}
 	/* Replying to thread */
 	public function post_reply($threadid) {
