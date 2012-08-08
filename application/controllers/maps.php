@@ -6,8 +6,8 @@ class Maps_Controller extends Base_Controller {
 	public function __construct() {
 		parent::__construct();
 
-		$this->filter("before", "auth")->only(array("new", "edit", "rate", "edit_meta", "edit_link", "delete_link", "upload_image", "delete_image"));
-		$this->filter("before", "csrf")->on("post")->only(array("new", "rate", "edit_meta", "edit_link", "delete_link", "upload_image", "delete_image"));
+		$this->filter("before", "auth")->only(array("new", "edit", "rate", "edit_meta", "edit_link", "delete_link", "upload_image", "default_image", "delete_image"));
+		$this->filter("before", "csrf")->on("post")->only(array("new", "rate", "edit_meta", "edit_link", "delete_link", "upload_image", "default_image", "delete_image"));
 	}
 
 	public function get_index() {
