@@ -809,93 +809,6 @@ width:660px;
 .maps {
 }
 
-/* Grid view */
-
-.maps ul.grid {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
-
-.maps ul.grid li {
-    display: inline-block;
-    margin: 5px 6px;
-    min-height: 230px;
-    width: 200px;
-    padding: 10px;
-    background: #E6E6E6;
-    border: 1px solid lightGrey;
-    padding-left: 8px;
-    margin-bottom: 10px;
-    outline: 4px solid #F4F4F4;
-}
-
-.maps .grid .map-image img {
-    outline: 2px solid #F4F4F4;
-}
-
-.maps .grid .map-details {
-    color:#000;
-    line-height: 1;
-}
-
-.maps .grid .map-details h4{
-    line-height: 1;
-    margin-bottom: 10px;
-    color: #474747;
-    font-size: 23px;
-    text-shadow: 0px 1px 1px white;
-}
-
-.maps .grid .map-meta {}
-
-/* Details view */
-
-.maps ul.details {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
-
-.maps ul.details li {
-    display: inline-block;
-    margin: 5px 6px;
-    padding: 10px;
-    background: #E6E6E6;
-    border: 1px solid lightGrey;
-    padding-left: 8px;
-    margin-bottom: 10px;
-    outline: 4px solid #F4F4F4;
-    width: 908px;
-}
-
-.maps .details .map-image {
-    float: left;
-    width: 90px;
-    margin: 0;
-    padding: 0;
-}
-
-.maps .details .map-image img {
-    outline: 2px solid #F4F4F4;
-}
-
-.maps .details .map-details {
-    color:#000;
-    line-height: 1;
-    margin-left: 105px;
-}
-
-.maps .details .map-details h4{
-    line-height: 1;
-    margin-bottom: 10px;
-    color: #474747;
-    font-size: 17px;
-    text-shadow: 0px 1px 1px white;
-}
-
-.maps .details .map-meta {}
-
 /* Login & Registration
    ================================================== */
 
@@ -1591,6 +1504,93 @@ form.xpadding p {
     box-shadow: 0 1px 3px black;
     margin-right: 8px;
 }
+
+/* Multiviwer 3000
+   ================================================== */
+
+#multiview {
+    padding: 0;
+    margin: 0;
+}
+
+#multiview-controler {
+
+}
+
+
+#multiview ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+#multiview ul li {
+    display: inline-block;
+    padding: 10px;
+    margin: 5px 5px 10px;
+    background: #E6E6E6;
+    border: 1px solid #D3D3D3;
+    outline: 4px solid #F4F4F4;
+}
+
+/* Grid view */
+
+#multiview ul.grid li {
+    min-height: 230px;
+    width: 200px;
+}
+
+#multiview .grid .mv-image img {
+    outline: 2px solid #F4F4F4;
+}
+
+#multiview .grid .mv-details {
+    color:#000;
+    line-height: 1;
+}
+
+#multiview .grid .mv-details h4{
+    line-height: 1;
+    margin-bottom: 10px;
+    color: #474747;
+    font-size: 23px;
+    text-shadow: 0px 1px 1px white;
+}
+
+#multiview .grid .mv-meta {}
+
+/* Details view */
+
+#multiview ul.details li {
+    width: 908px;
+}
+
+#multiview .details .mv-image {
+    float: left;
+    width: 90px;
+    margin: 0;
+    padding: 0;
+}
+
+#multiview .details .mv-image img {
+    outline: 2px solid #F4F4F4;
+}
+
+#multiview .details .mv-details {
+    color:#000;
+    line-height: 1;
+    margin-left: 105px;
+}
+
+#multiview .details .mv-details h4{
+    line-height: 1;
+    margin-bottom: 10px;
+    color: #474747;
+    font-size: 17px;
+    text-shadow: 0px 1px 1px white;
+}
+
+#multiview .details .mv-meta {}
 
 /* Sprite galore! 
    ================================================== */

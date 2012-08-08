@@ -14,7 +14,6 @@
       		<li>{{ HTML::link("?dtc", "Destroy the core") }}</li>
     		</ul>
   		</li>
-  		<li><a href="#" id="toggleviews">Change view</a></li>
 		@if (Auth::check())
 		<li {{ URI::is('maps/new') ? 'class="rside active"' : 'class="rside"' }}>{{ HTML::link("maps/new", "New Map") }}</li>
 		<li {{ URI::is('user/maps') ? 'class="rside active"' : 'class="rside"' }}><a href="{{ URL::to("user/".Auth::user()->username) }}">Your Maps</a></li>
