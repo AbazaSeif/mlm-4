@@ -6,7 +6,7 @@
 @import url(bootstrap.css);
 
 body {
-    background: #7298c1 url(../images/static/bg.jpg) no-repeat fixed top center;
+    background: #000 url(../images/static/bg.jpg) repeat top;
     color: #FFF;
     font-family: "Oswald","HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 400;

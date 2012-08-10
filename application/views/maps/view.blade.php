@@ -2,12 +2,12 @@
 <?php $maptypes = Config::get("maps.types") ?>
 
 @section("content")
-@include("maps.menu")
 @if($map->published == 0)
 	<div class="alert">
 		<p>This map is awaiting moderation and is not yet viewable by everyone.</p>
 	</div>
 @endif
+@include("maps.menu")
 @if($is_owner)
 {{ HTML::link_to_action("maps@edit", "Edit", array($map->id)) }}
 @endif
