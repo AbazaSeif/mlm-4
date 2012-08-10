@@ -1686,15 +1686,15 @@ input[type="submit"].btn.btn-mini {
 }
 [class^="icon-"],
 [class*=" icon-"] {
-	display: inline-block;
-	width: 14px;
-	height: 14px;
-	line-height: 14px;
-	margin-top: 1px;
-	vertical-align: text-top;
-	background-image: url("../images/static/glyphicons-halflings.png");
-	background-position: 14px 14px;
-	background-repeat: no-repeat;
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  line-height: 14px;
+  margin-top: 1px;
+  vertical-align: text-top;
+  background-image: url("../images/static/glyphicons-halflings.png");
+  background-position: 14px 14px;
+  background-repeat: no-repeat;
 }
 [class^="icon-"]:last-child,
 [class*=" icon-"]:last-child {
@@ -3346,7 +3346,7 @@ a.thumbnail:hover {
   top: 50%;
 }
 .modal-header {
-  padding: 9px 15px;
+  padding: 10px 15px 20px;
   border-bottom: 1px solid #eee;
 }
 .modal-header .close {
