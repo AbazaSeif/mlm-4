@@ -2,10 +2,9 @@
 
 @section("content")
 @include("maps.menu")
-{{ HTML::link_to_action("maps@view", "View", array($map->id, $map->slug)) }}
 <div id="content">
 <div class="titlebar clearfix">
-	<h2>Editing map {{ e($map->title) }}</h2>
+	<h2>Editing map <b>{{ e($map->title) }}</b></h2>
 </div>
 <div class="titlebar clearfix">
 	<h3>Map meta</h3>
@@ -19,7 +18,7 @@
 		{{ Form::field("text", "version", "Version", array(Input::old("version", $map->version)), array("error" => $errors->first("error"))) }}
 		{{ Form::field("text", "teamcount", "Team count", array(Input::old("teamcount", $map->teamcount)), array("error" => $errors->first("error"))) }}
 		{{ Form::field("text", "teamsize", "Recomended team size", array(Input::old("teamsize", $map->teamsize)), array("error" => $errors->first("teamsize"))) }}
-		{{ Form::actions(Form::submit("Submit", array("class" => "btn-primary"))) }}
+		{{ Form::actions(array(Form::submit("Save", array("class" => "btn-primary")), " ", HTML::link_to_action("maps@view", "Back", array($map->id), array("class" => "btn")))) }}
 	{{ Form::close() }}
 <div class="titlebar clearfix">
 	<h3>Download Links</h3>
@@ -71,7 +70,9 @@
 			</li>
 		@endforelse
 	</ul>
-	<h3>Upload new</h3>
+<div class="titlebar clearfix">
+	<h4>Upload new image</h4>
+</div>
 	{{ Form::open_for_files("maps/upload_image/".$map->id) }}
 		{{ Form::token() }}
 		{{ Form::field("file", "uploaded", "Image", array(array('class' => 'input-large')), array('error' => $errors->first('uploaded'))) }}
