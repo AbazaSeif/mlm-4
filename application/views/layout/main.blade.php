@@ -97,7 +97,7 @@
 	</div>	
 	</footer>
 	@yield("postfooter")
-	<script src="{{ URL::to_asset("js/libs/jquery-1.7.2.min.js") }}"></script>
+	<script src="{{ URL::to_asset("js/libs/jquery-1.8.0.min.js") }}"></script>
 	<script src="{{ URL::to_asset("js/libs/raphael-min.js") }}"></script>
 	<script src="{{ URL::to_asset("js/plugins.js") }}"></script>
 	<script src="{{ URL::to_asset("js/script.js") }}"></script>
