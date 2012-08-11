@@ -8,11 +8,15 @@ MLM = {
 	},
 	home: {
 		init: function () {
-		$('#iview').iView({
-					pauseTime: 7000,
-					directionNav: false,
-					controlNav: true,
-					tooltipY: -15
+		$('#featured').iView({
+				fx: 'block-drop-random',
+				blockCols: 6,
+				blockRows: 3,
+				timer: '360bar',
+				pauseTime: 7000,
+				directionNav: false,
+				controlNav: true,
+				tooltipY: -15,
 				});
 		}
 	},

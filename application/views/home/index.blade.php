@@ -3,22 +3,23 @@
 @section('content')
 <div id="home" class="clearfix">
 
-<div id="iview">
-			<div data-iview:image="{{ URL::to_asset("images/slides/1.jpg") }}" data-iview:transition="slice-top-fade,slice-right-fade">
-				<div class="iview-caption caption1" data-x="80" data-y="200">iView<sup>&trade;</sup></div>
+<div id="featured">
+			<div data-iview:image="{{ URL::to_asset("images/slides/1.jpg") }}">
+				<div class="iview-caption caption1" data-x="80" data-y="170">iView<sup>&trade;</sup></div>
 				<div class="iview-caption" data-x="60" data-y="255" data-transition="wipeRight">The world's most awesome jQuery Image & Content Slider</div>
 				<div class="iview-caption" data-x="234" data-y="300" data-transition="wipeLeft"><i>Presented by <b>Hemn Chawroka</b></i></div>
 			</div>
 
-			<div data-iview:image="{{ URL::to_asset("images/slides/2.jpg") }}" data-iview:transition="zigzag-drop-top,zigzag-drop-bottom" data-iview:pausetime="3000">
+			<div data-iview:image="{{ URL::to_asset("images/slides/2.jpg") }}">
 				<div class="iview-caption caption5" data-x="40" data-y="260" data-transition="wipeDown">Captions can be positioned and resized freely</div>
 				<div class="iview-caption caption6" data-x="280" data-y="330" data-transition="wipeUp"><a href="#">Example URL-link</a></div>
 			</div>
 
-			<div data-iview:image="{{ URL::to_asset("images/slides/3.jpg") }}" data-iview:transition="zigzag-drop-top,zigzag-drop-bottom" data-iview:pausetime="3000">
-				<div class="iview-caption caption5" data-x="40" data-y="260" data-transition="wipeDown">Captions can be positioned and resized freely</div>
-				<div class="iview-caption caption6" data-x="280" data-y="330" data-transition="wipeUp"><a href="#">Example URL-link</a></div>
+			<div data-iview:image="{{ URL::to_asset("images/slides/3.jpg") }}">
+				<div class="iview-caption caption2" data-x="430" data-y="320" data-transition="wipeRight">Video</div>
+				<div class="iview-caption caption3" data-x="580" data-y="325" data-transition="wipeLeft">Support</div>
 			</div>
+
 
 			<div data-iview:image="{{ URL::to_asset("images/slides/4.jpg") }}">
 				<div class="iview-caption caption4" data-x="50" data-y="80" data-width="312" data-transition="fade">Some of iView's Options:</div>

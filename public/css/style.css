@@ -308,22 +308,11 @@ ul, ol {
 /* Featured Content Slideshow
    ================================================== */
 
-#home .featured {
-    -moz-box-shadow: 0 0 35px #000;
-    -webkit-box-shadow: 0 0 35px #000;
-    box-shadow: 0 0 35px #000;
-    float: left;
-    height: 300px;
-    width: 990px;
-    background: #102A67;
-    position: relative;
-}
-
-#iview {
+#home #featured {
     display: block;
     width: 990px;
     height: 400px;
-    background: #102A67;
+    background: #000;
     overflow:hidden;
     position: relative;
     -moz-box-shadow: 0 0 35px #000;
@@ -331,17 +320,16 @@ ul, ol {
     box-shadow: 0 0 35px #000;
 }
 
-#iview .iviewSlider {
+#home #featured .iviewSlider {
     display: block;
     width: 990px;
     height: 400px;
-    overflow: hidden;
 }
 
 .iview-controlNav {
     position: absolute;
     bottom: 30px;
-    left: 347px;
+    left: 387px;
     height: 44px;
 }
 
@@ -694,8 +682,16 @@ ul, ol {
 
 #home .homecontent section {
     display: inline-block;
-    width: 310px;
+    width: 290px;
+    border-left: 1px dotted white;
+    padding-left: 15px;
 }
+
+#home .homecontent h3 {
+    margin-bottom: 10px;
+    font-family: "Oswald", HelveticaNeue, Arial, sans-serif
+}
+
 
 /* Global Footer
    ================================================== */
@@ -1069,6 +1065,7 @@ width:660px;
     font-size: 14px;
     padding: 10px;
     margin-top: 180px;
+    text-shadow: 0px 1px 3px #000;
 }
 
 /* Disclaimer on Registration page */
