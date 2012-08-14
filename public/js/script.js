@@ -16,6 +16,11 @@ MLM = {
 				});
 		}
 	},
+	maps: {
+		list: function() {
+			UTIL.exec("multiview");
+		}
+	},
 	admin: {
 		init: function () {
 			/* Admin pages */
@@ -125,6 +130,18 @@ MLM = {
 		init: function () {
 			$(".openid-form, .globalid").openid().on("submit", function() {
 				$(this).after('<div class="progress progress-inverse progress-striped active" style="width:310px;margin:0 auto;"><div class="bar" style="width: 100%;"></div></div>')
+			});
+		}
+	},
+	multiview: {
+		init: function() {
+			$("#multivew-controler [data-multiview]").click(function() {
+				var newView = $(this).data("multiview")
+				if($("#multiview>ul").hasClass(newView)) {
+					return true;
+				}
+				$("#multiview>ul").removeClass().addClass(newView)
+				$.cookie("multiview", newView, {expires: 365})
 			});
 		}
 	}

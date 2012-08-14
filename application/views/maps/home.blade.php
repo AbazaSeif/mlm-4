@@ -3,20 +3,15 @@
 @section("content")
 @include("maps.menu")
 <div id="content" class="maps">
-	<div id="multivew-controler" style="display:none">
-		<ul>
-			<li>View</li>
-				<li>Grid</li>
-				<li>details</li>
-				<li>table</li>
-			<li>Sort by</li>
-				<li>Name</li>
-				<li>Players</li>
-				<li>Rank</li>
+	<div>
+		<ul id="multivew-controler">
+			<li data-multiview="grid">Grid</li>
+			<li data-multiview="details">details</li>
+			<li data-multiview="table">table</li>
 		</ul>
 	</div>
 <div id="multiview">
-<ul class="grid">
+<ul class="{{ Cookie::get('multiview', 'grid') }}">
 @foreach ($maps->results as $map)
 	<li>
 		<div class="mv-image">

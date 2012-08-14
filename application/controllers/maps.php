@@ -12,7 +12,7 @@ class Maps_Controller extends Base_Controller {
 
 	public function get_index() {
 		$maps = Map::order_by("created_at", "desc")->paginate(10);
-		return View::make("maps.home", array("title" => "Maps", "maps" => $maps));
+		return View::make("maps.home", array("title" => "Maps", "javascript" => array("maps", "list"), "maps" => $maps));
 	}
 	public function get_new() {
 		return View::make("maps.new", array("javascript" => array("maps", "edit")));
