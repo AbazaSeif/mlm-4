@@ -5,8 +5,8 @@
 
 <div id="featured">
 			<div data-iview:image="{{ URL::to_asset("images/slides/1.jpg") }}">
-				<div class="iview-caption caption1" data-x="80" data-y="170">iView<sup>&trade;</sup></div>
-				<div class="iview-caption" data-x="60" data-y="255" data-transition="wipeRight">The world's most awesome jQuery Image & Content Slider</div>
+				<div class="iview-caption caption1" data-x="60" data-y="140">Welcome To Major League Mining!</div>
+				<div class="iview-caption" data-x="60" data-y="255" data-transition="wipeRight">The world's most awesome jQuery Image and Content Slider</div>
 				<div class="iview-caption" data-x="234" data-y="300" data-transition="wipeLeft"><i>Presented by <b>Hemn Chawroka</b></i></div>
 			</div>
 
