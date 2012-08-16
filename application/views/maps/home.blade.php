@@ -4,10 +4,10 @@
 @include("maps.menu")
 <div id="content" class="maps">
 	<div>
-		<ul id="multivew-controler">
+		<ul id="multiview-controler">
 			<li data-multiview="grid">Grid</li>
-			<li data-multiview="details">details</li>
-			<li data-multiview="table">table</li>
+			<li data-multiview="list">List</li>
+			<li data-multiview="table">Table</li>
 		</ul>
 	</div>
 <div id="multiview">

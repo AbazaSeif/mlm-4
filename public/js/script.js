@@ -139,7 +139,7 @@ MLM = {
 	},
 	multiview: {
 		init: function() {
-			$("#multivew-controler [data-multiview]").click(function() {
+			$("#multiview-controler [data-multiview]").click(function() {
 				var newView = $(this).data("multiview")
 				if($("#multiview>ul").hasClass(newView)) {
 					return true;
