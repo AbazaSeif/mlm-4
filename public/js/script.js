@@ -57,9 +57,9 @@ MLM = {
 		},
 		load: function(url, request) {
 			if(!url) {
-				url = BASE_URL+'/imgmgr'
+				url = BASE_URL+'imgmgr'
 			}
-			$("#imagemanager .modal-body").html("<img src=\""+ASSET_URL+"images/slider/loading.gif\">").load(url, request, function() {
+			$("#imagemanager .modal-body").html("<img src=\""+ASSET_URL+"images/static/ajax-loader.gif\">").load(url, request, function() {
 				// Ajax hooks for file uploading
 				if($("#imageupload").length > 0) {
 					$('#upload-file').change(function(e){
@@ -113,7 +113,7 @@ MLM = {
 				}
 
 				// Catch all imgmgr links
-				$("a[href^='"+BASE_URL+"/imgmgr']").click(MLM.images.linkcatcher);
+				$("a[href^='"+BASE_URL+"imgmgr']").click(MLM.images.linkcatcher);
 
 			});
 		},

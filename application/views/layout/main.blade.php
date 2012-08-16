@@ -30,7 +30,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/style.css") }}" />
 	<script src="{{ URL::to_asset("js/libs/modernizr-2.5.3-respond-1.1.0.min.js") }}"></script>
 	<script type="text/javascript">
-		var BASE_URL = "{{ URL::base() }}";
+		var BASE_URL = "{{ URL::to() }}";
 		var ASSET_URL = "{{ URL::to_asset(null) }}";
 	</script>
 </head>
