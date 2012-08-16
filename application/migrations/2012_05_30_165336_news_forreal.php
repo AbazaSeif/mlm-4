@@ -14,9 +14,9 @@ class News_Forreal {
 			$table->increments("id");
 			$table->string("title");
 			$table->string("slug")->unique();
-			$table->integer("user_id")->nullable();
+			$table->integer("user_id")->nullable()->unsigned();
 			$table->text("summary");
-			$table->integer("image_id")->nullable();
+			$table->integer("image_id")->nullable()->unsigned();
 			$table->text("content");
 			$table->timestamps();
 
@@ -38,7 +38,7 @@ class News_Forreal {
 			$table->string("title");
 			$table->text("source");
 			$table->text("html");
-			$table->integer("user_id")->nullable();
+			$table->integer("user_id")->nullable()->unsigned();
 			$table->timestamps();
 
 			$table->foreign("user_id")->references("id")->on("users")->on_delete("set null")->on_update("cascade");

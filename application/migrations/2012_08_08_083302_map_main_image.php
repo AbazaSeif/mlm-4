@@ -10,7 +10,7 @@ class Map_Main_Image {
 	public function up()
 	{
 		Schema::table("maps", function($table) {
-			$table->integer("image_id")->nullable();
+			$table->integer("image_id")->nullable()->unsigned();
 
 			$table->foreign("image_id")->references("id")->on("images")->on_update("cascade")->on_delete("set null");
 		});

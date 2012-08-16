@@ -11,7 +11,7 @@ class Adminlog {
 	{
 		Schema::create("adminlog", function($table) {
 			$table->increments("id");
-			$table->integer("user_id")->nullable();
+			$table->integer("user_id")->nullable()->unsigned();
 			$table->string("module");
 			$table->string("action");
 			$table->integer("target")->nullable();

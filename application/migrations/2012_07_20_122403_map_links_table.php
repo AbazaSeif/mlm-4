@@ -11,7 +11,7 @@ class Map_Links_Table {
 	{
 		Schema::create("map_links", function($table) {
 			$table->increments("id");
-			$table->integer("map_id");
+			$table->integer("map_id")->unsigned();
 			$table->text("url");
 			$table->string("type", 4);
 			$table->boolean("direct")->nullable();

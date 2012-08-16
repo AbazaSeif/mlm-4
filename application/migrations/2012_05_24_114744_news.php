@@ -14,7 +14,7 @@ class News {
 			$table->string("title");
 			$table->text("source");
 			$table->text("html");
-			$table->integer("user_id")->nullable();
+			$table->integer("user_id")->nullable()->unsigned();
 			$table->timestamps();
 
 			$table->foreign("user_id")->references("id")->on("users")->on_delete("set null")->on_update("cascade");

@@ -11,8 +11,8 @@ class News_Comments_Table {
 	{
 		Schema::create("news_comments", function($table) {
 			$table->increments("id");
-			$table->integer("news_id");
-			$table->integer("user_id");
+			$table->integer("news_id")->unsigned();
+			$table->integer("user_id")->unsigned();
 			$table->text("source");
 			$table->text("html");
 			$table->timestamps();

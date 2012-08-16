@@ -10,7 +10,7 @@ class Profile_Table {
 	public function up()
 	{
 		Schema::create("profiles", function($table) {
-			$table->integer("user_id")->primary(); // one-to-one with user
+			$table->integer("user_id")->primary()->unsigned(); // one-to-one with user
 			$table->string("country");
 			$table->string("reddit");
 			$table->string("twitter");

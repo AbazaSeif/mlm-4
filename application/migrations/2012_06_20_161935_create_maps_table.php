@@ -22,8 +22,8 @@ class Create_Maps_Table {
 		Schema::create("map_user", function($table) {
 			$table->increments("id");
 			// Many-to-many relationship, additional field confirmed
-			$table->integer("map_id");
-			$table->integer("user_id");
+			$table->integer("map_id")->unsigned();
+			$table->integer("user_id")->unsigned();
 			$table->boolean("confirmed")->nullable();
 			$table->timestamps();
 

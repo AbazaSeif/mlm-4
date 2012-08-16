@@ -11,8 +11,8 @@ class Map_Ratings_Tableeeee {
 	{
 		Schema::create("map_ratings", function($table) {
 			$table->increments("id");
-			$table->integer("map_id");
-			$table->integer("user_id");
+			$table->integer("map_id")->unsigned();
+			$table->integer("user_id")->unsigned();
 			$table->integer("rating");
 			$table->timestamps();
 

@@ -11,8 +11,8 @@ class Map_Image_Table {
 	{
 		Schema::create("map_images", function($table) {
 			$table->increments("id");
-			$table->integer("map_id");
-			$table->integer("image_id");
+			$table->integer("map_id")->unsigned();
+			$table->integer("image_id")->unsigned();
 			$table->timestamps();
 
 			$table->foreign("map_id")->references("id")->on("maps")->on_delete("cascade")->on_update("cascade");
