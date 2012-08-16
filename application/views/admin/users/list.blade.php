@@ -20,7 +20,7 @@
 		@foreach ($users as $user)
 			<tr>
 				<td>{{ $user->id }}</td>
-				<td><a href="/user/{{ $user->username }}" title="{{ $user->username }}'s profile" target="_blank">{{ $user->username }}</a></td>
+				<td>{{ HTML::link("user/{$user->username}", $user->username, array("title" => "{$user->username}'s profile", "target" => "_blank")) }}</td>
 				<td>{{ $user->mc_username }}</td>
 				<td>{{ date("F j, Y g:ia", strtotime($user->created_at)) }}</td>
 				<td>
