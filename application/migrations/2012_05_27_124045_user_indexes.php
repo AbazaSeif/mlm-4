@@ -23,8 +23,8 @@ class User_Indexes {
 	public function down()
 	{
 		Schema::table("users", function($table) {
-			$table->drop_unique("users_username_primary");
-			$table->drop_unique("users_mc_username_primary");
+			$table->drop_unique("users_username_unique");
+			$table->drop_unique("users_mc_username_unique");
 		});
 	}
 

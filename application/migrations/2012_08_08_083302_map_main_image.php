@@ -24,6 +24,7 @@ class Map_Main_Image {
 	public function down()
 	{
 		Schema::table("maps", function($table) {
+			$table->drop_foreign("maps_image_id_foreign");
 			$table->drop_column("image_id");
 		});
 	}

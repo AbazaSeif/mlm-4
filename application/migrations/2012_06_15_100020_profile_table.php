@@ -34,7 +34,7 @@ class Profile_Table {
 	 */
 	public function down()
 	{
-		Schema::drop("profile");
+		Schema::drop("profiles");
 	}
 
 }
