@@ -117,7 +117,9 @@ class Messages_Controller extends Base_Controller {
 		if(!$thread) {
 			return Response::error('404');
 		}
-
+		if(!$thread->user_id) { // If thread was started by the system
+			return Response::error('404');
+		}
 		$validation_rules = array(
 			"users" => "required"
 		);

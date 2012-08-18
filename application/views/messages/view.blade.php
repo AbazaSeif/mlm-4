@@ -26,11 +26,14 @@
 			{{ $message->message }}
 		</div>
 	@endforeach
+	{{-- Only if the thread wasn't started by the system --}}
+	@if($thread->userid)
 	<h4>Reply</h4>
 	{{ Form::open("messages/reply/{$thread->id}") }}
 		{{ Form::token() }}
 		{{ Form::field("textarea", "message", "Message", array(Input::old("message"), array('class' => 'input-xxlarge')), array('error' => $errors->first('message'), "help" => "Markdown supported")) }}
 		{{ Form::actions(Form::submit("Reply", array("class" => "btn-primary")))}}
 	{{ Form::close() }}
+	@endif
 </div>
 @endsection
