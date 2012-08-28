@@ -1133,24 +1133,6 @@ width:660px;
     background-color:#E6E6E6;
 }
 
-#pagemenu li.activated a {
-    color: #5a5a78;
-}
-
-#pagemenu li.activated a:hover, .active {
-    background-color: #102A67;
-    border-color: #102A67;
-}
-
-#pagemenu li.drop-activated a {
-    color: #5a5a5a;
-}
-
-#pagemenu li.drop-activated a:hover, .active {
-    background-color: transparent;
-    border-color: #E6E6E6;
-}
-
 #pagemenu li.rside{
     float: right;
 }
