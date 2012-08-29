@@ -10,6 +10,15 @@
 @include("maps.menu")
 @if($is_owner)
 {{ HTML::link_to_action("maps@edit", "Edit", array($map->id)) }}
+&nbsp&nbsp
+@endif
+@if(Auth::check() && Auth::user()->admin)
+{{ $map->featured ? HTML::link_to_action("maps@admin", "UnFeature Map", array("feature", $map->id)) : HTML::link_to_action("maps@admin", "Feature Map", array("feature", $map->id)) }}
+&nbsp&nbsp
+@endif
+@if(Auth::check() && Auth::user()->admin)
+{{ $map->official ? HTML::link_to_action("maps@admin", "Make Un-Official", array("official", $map->id)) : HTML::link_to_action("maps@admin", "Make Official", array("official", $map->id))}}
+&nbsp&nbsp
 @endif
 <div id="content" class="maps">
 <div class="titlebar clearfix">
