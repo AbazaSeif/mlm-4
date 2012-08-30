@@ -1,5 +1,6 @@
 /* --------------------------------------------------------------
             MAJOR LEAGUE MINING 2012
+             Credits on /humans.txt
 -----------------------------------------------------------------*/
 
 @import url(http://fonts.googleapis.com/css?family=Oswald:400,700,300);
@@ -15,11 +16,13 @@ body {
 }
 
 ::selection {
+    color: #fff;
    background: #AA6814;
     text-shadow: 0 1px 0px #000;
 }
 
 ::-moz-selection {
+    color: #fff;
     background: #AA6814;
     text-shadow: 0 1px 0px #000;
 }
@@ -28,100 +31,59 @@ body {
 .right {float: right}
 .center {text-align: center;}
 
-a {
-    text-decoration: none;
-    color: #0082B4;
-}
+a { text-decoration: none; color: #0082B4; }
 
-a:hover {}
+a:visited { color: #551a8b; }
 
-abbr, acronym { cursor: help; border-bottom: 1px dotted #888; }
+a:hover { color: #06e; }
 
-blockquote{
-    background: url(../images/static/blockquote-l.png) no-repeat left top;
-    padding: 10px 15px;
-    margin: 0 3em 1em;
-    font-size: 1em;
-    text-indent: 2em;
-}
-blockquote > div {
-    background: url(../images/static/blockquote-r.png) no-repeat right bottom;
-    padding-bottom: 0.1em;
-}
+a:focus { outline: thin dotted; }
 
-dl  {
-    margin:0 1.5em;
-}
-dt {
-    font-weight: bold;
-}
-dd {
-    margin: 0 0 1em 1.5em;
-}
+a:hover, a:active { outline: 0; }
 
-h1, h2, h3, h4, h5, h6 {
-    margin: 0;
-    padding: 0;
-    line-height: 1;
-}
-h1, h2 {
-    font-weight: normal;
-}
-h3, h4, h5, h6 {
-    font-weight: bold;
-}
-h1 {
-    font-size: 200%;
-}
-h2 {
-    font-size: 183%;
-}
-h3 {
-    font-size: 166%;
-}
-h4 {
-    font-size: 150%;
-    font-weight: bold;
-}
-h5 {
-    font-size: 133%;
-    font-weight: bold;
-}
-h6 {
-    font-size: 116%;
-    font-weight: bold;
-}
+abbr[title] { border-bottom: 1px dotted; }
 
-hr {
-    margin:0;
-}
+b, strong { font-weight: bold; }
 
-p {
-    margin: 0;
-}
+blockquote { margin: 1em 40px; }
 
-small {
-    font-size: 0.68em;
-}
+dfn { font-style: italic; }
 
-sup, sub {
-    height: 0;
-    line-height: 1;
-    vertical-align: baseline;
-    position: relative;
-    font-size: 0.7em;
-}
-sup {
-    bottom: 1ex;
-}
-sub {
-    top: .5ex;
-}
+h1,h2,h3,h4,h5,h6{line-height:1;margin:0;padding:0;}
+h1,h2{font-weight:normal;}
+h3,h4,h5,h6{font-weight:bold;}
+h1{font-size:200%;}
+h2{font-size:183%;}
+h3{font-size:166%;}
+h4{font-size:150%;font-weight:bold;}
+h5{font-size:133%;font-weight:bold;}
+h6{font-size:116%;font-weight:bold;}
 
-ul, ol {
-    margin: 0;
-    line-height: 180%;
-}
+hr { display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0; }
+
+ins { background: #ff9; color: #000; text-decoration: none; }
+
+mark { background: #ff0; color: #000; font-style: italic; font-weight: bold; }
+
+pre, code, kbd, samp { font-family: monospace, serif; _font-family: 'courier new', monospace; font-size: 1em; }
+
+pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; }
+
+q { quotes: none; }
+q:before, q:after { content: ""; content: none; }
+
+small { font-size: 85%; }
+
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+
+ul, ol { margin: 1em 0; padding: 0 0 0 40px; }
+dd { margin: 0 0 0 40px }
+dl { margin:0 1.5em; }
+dt { font-weight: bold }
+nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0; }
+
 
 /* Global Header
    ================================================== */
@@ -168,15 +130,13 @@ ul, ol {
     font-family: "Oswald", Helvetica, Arial;
     font-size: 26px;
     font-weight: 700;
-    text-shadow: 0 3px 2px #000;
     display: inline;
 }
 
 #global-header #logo a {
-    color: #FFF;
     font-weight: 700;
     text-decoration: none;
-    text-shadow: 0 1px 3px #000;
+    text-shadow: 0 3px 1px black;
     color: #fff;
     display: block;
 }
@@ -579,6 +539,7 @@ ul, ol {
 }
 .iview-controlNav .iview-items ul {
     list-style: none;
+    margin: 0;
     padding: 0;
 }
 .iview-controlNav .iview-items ul li {
@@ -1658,37 +1619,146 @@ form.xpadding p {
 /* Global comment style
    ================================================== */
 
-#comments {
-    display: block;
-    padding: 0;
-    margin: 30px 0;
-}
-    
-#commentlist {
-    width: 660px;
-    padding: 0;
-    margin: 0;
+ol.commentlist {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
-#commentlist li{
-    list-style:none;
+ol.commentlist li {
+  margin: 0 0 20px;
+  border-bottom: 1px dotted #fff;
+  padding: 0 0 20px;
 }
 
-#commentlist .comment{
-    border-bottom: 1px white dotted;
-    margin: 15px 0px;
-    padding: 10px;
+.comment_text {
+  padding: 0px 10px 10px;
+  display: inline-block;
+  width: 575px;
 }
 
-#comments .avatar {
-    border: 4px white solid;
-    -moz-box-shadow: 0 1px 3px #000;
-    -webkit-box-shadow: 0 1px 3px black;
-    box-shadow: 0 1px 3px black;
-    margin-right: 8px;
+h3.comment_title {
+  margin-top: 10px;
 }
 
-/* Multiviwer 3000
+h2.comment-form-header {
+  padding: 5px 0 0;
+}
+
+.comment-stream {
+  margin: 10px 0 30px 0;
+}
+
+.comment_text {
+}
+
+.avatar-cell {
+  width: 65px;
+  float: left;
+}
+
+.avatar-cell-logged-out {
+  margin-top: 29px !important;
+}
+
+.avatar-cell img {
+  width: 50px;
+  height: 50px;  
+  padding: 3px;  background: white;  border: 1px solid #CCC;
+  -moz-box-shadow: 0 1px 3px #000;  -webkit-box-shadow: 0 1px 3px black;  box-shadow: 0 1px 3px black;    
+}
+
+.comment table td.meta-cell {
+  padding: 0 0 5px 5px;
+  vertical-align: top;
+}
+
+#commentform {
+  margin: 10px 0 0 0;
+  font-size: 13px;
+}
+
+#commentform .avatar-cell {
+  float: left;
+  margin: 21px 14px 0 0;
+}
+
+#commentform textarea {
+  width: 553px;
+  height: 60px;
+  font: normal 13px helvetica, arial, sans-serif;
+  padding: 10px;
+  background: #fafafa;
+  border: 1px solid #cccccc;
+  -webkit-box-shadow: 0 1px 2px rgba(144, 144, 144, 0.1) inset;
+  -moz-box-shadow: 0 1px 2px rgba(144, 144, 144, 0.1) inset;
+  box-shadow: 0 1px 2px rgba(144, 144, 144, 0.1) inset;
+  -moz-border-radius: 3px 3px 0 0;
+  -webkit-border-radius: 3px 3px 0 0;
+  -khtml-border-radius: 3px 3px 0 0;
+  border-radius: 3px 3px 0 0;
+}
+
+#commentform textarea: focus {
+  border: solid 1px #666666;
+  background: #fefefe !important;
+}
+
+#commentform textarea.disabled {
+  color: #999999;
+  height: 40px;
+}
+
+#commentform .comment_box {
+  margin: 5px 0 2px;
+}
+
+#commentform .submit_bar {
+  margin: 0 3px 3px 72px;
+  border: 1px solid #cccccc;
+  -moz-border-radius: 0 0 4px 4px;
+  -webkit-border-radius: 0 0 4px 4px;
+  -khtml-border-radius: 0 0 4px 4px;
+  border-radius: 0 0 4px 4px;
+}
+
+input#submit_btn, input#submit {
+  float: right;
+  margin: 5px;
+  padding: 0 15px;
+  height: 30px;
+  color: #999999;
+  font: normal 12px/24px arial, sans-serif;
+  text-shadow: 0 1px 0 #ffffff;
+  cursor: pointer;
+  background-image: linear-gradient(top, #F4F4F4 13%, #F9F9F9 79%);
+  background-image: -o-linear-gradient(top, #F4F4F4 13%, #F9F9F9 79%);
+  background-image: -moz-linear-gradient(top, #F4F4F4 13%, #F9F9F9 79%);
+  background-image: -webkit-linear-gradient(top, #F4F4F4 13%, #F9F9F9 79%);
+  background-image: -ms-linear-gradient(top, #F4F4F4 13%, #F9F9F9 79%);
+  background-image: -webkit-gradient( linear, left top, left bottom, color-stop(0.13, #F4F4F4), color-stop(0.79, #F9F9F9) );
+  border: 1px solid #a9a9a9;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -khtml-border-radius: 4px;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px #dedede;
+}
+
+input#submit_btn: hover, input#submit: hover {
+  color: #333333;
+  border: 1px solid #666666;
+}
+
+a.profile_link {
+  font-size: 11px;
+}
+
+#commentform .mini {
+  font-size: 10px;
+}
+
+/* Multiviwer 3000 (Patent pending...not)
    ================================================== */
 
 #multiview {
@@ -2065,3 +2135,63 @@ form.xpadding p {
 .flag.flag-zanzibar {background-position: -112px -165px}
 .flag.flag-ZM {background-position: -128px -165px}
 .flag.flag-ZW {background-position: -144px -165px}
+
+/* ==================================================
+    Everything below this comment is for responsive
+    styling.
+   ================================================== */
+
+/* For image replacement */
+.ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; *line-height: 0; }
+.ir br { display: none; }
+
+/* Hide from both screenreaders and browsers: h5bp.com/u */
+.hidden { display: none !important; visibility: hidden; }
+
+/* Hide only visually, but have it available for screenreaders: h5bp.com/v */
+.visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+
+/* Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: h5bp.com/p */
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
+
+/* Hide visually and from screenreaders, but maintain layout */
+.invisible { visibility: hidden; }
+
+/* Media Queries
+   ================================================== */
+
+/* Print */
+@media print {
+  * { background: transparent !important; color: black !important; box-shadow:none !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; } /* Black prints faster: h5bp.com/s */
+  a, a:visited { text-decoration: underline; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  abbr[title]:after { content: " (" attr(title) ")"; }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }  /* Don't show links for images, or javascript/internal links */
+  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+  thead { display: table-header-group; } /* h5bp.com/t */
+  tr, img { page-break-inside: avoid; }
+  img { max-width: 100% !important; }
+  @page { margin: 0.5cm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3 { page-break-after: avoid; }
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+
+}
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+
+}
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+
+}
+ 
+/* Large desktop */
+@media (min-width: 1200px) {
+
+}

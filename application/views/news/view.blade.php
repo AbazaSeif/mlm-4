@@ -1,13 +1,13 @@
 @layout("layout.main")
 
 @section("content")
-<div id="content" class="news clearfix">
 @if(!$article->published)
 		<div class="alert">
 			<h4 class="alert-heading">Not yet published!</h4>
 			<p>While you as an admin can view this, other users can't</p>
 		</div>
-	@endif
+@endif
+<div id="content" class="news clearfix">
 <div class="post single"> 
 		<section class="post-image"> 
 		{{ HTML::image($article->image->file_large, "Image") }}
@@ -27,29 +27,29 @@
 
 <div id="comments">
 	@if( $article->comment_count == 0)
-	<h2>No Comments</h2>
+	<div class="titlebar clearfix"><h2>No Comments</h2></div>
 	@else
-	<div class="titlebar clearfix">
-	<h2><b>{{ $article->comment_count }}</b> Comments</h2>
-	</div>
-	@endif					
-<ul id="commentlist">
+	<div class="titlebar clearfix"><h2><b>{{ $article->comment_count }}</b> Comments</h2></div>
+	@endif
+
+<ol class="commentlist">
 	@foreach($article->comments as $comment)
-	<li>
-		<div class="comment">					
-			<div id="comment{{$comment->id}}">
-				<img class="avatar" src="http://minotar.net/helm/{{$comment->user->mc_username}}/50.png" alt="{{ $comment->user->username }}'s skin" title="{{ $comment->user->username }}'s skin">
-				<a href="{{ URL::to_action("news@view", array($article->id, $article->slug)) }}#comment{{$comment->id}}">{{ date("M j,Y g:ia", strtotime($comment->created_at)) }}</a>
-				<a href="/user/{{ $comment->user->username }}" title="{{$comment->user->username}}'s Profile">{{ $comment->user->username }}</a> says:
+	<li class="clearfix">
+		<div id="comment{{$comment->id}}">
+			<div class="comment-author vcard avatar-cell"> 
+			<img class="avatar" src="http://minotar.net/helm/{{$comment->user->mc_username}}/64.png" alt="{{ $comment->user->username }}'s skin" title="{{ $comment->user->username }}'s skin">
 			</div>
-		<div class="message">
-			<p>{{ $comment->html }}</p>
-		</div>
+			<div class="comment-meta commentmetadata comment_text clearfix">
+				<div style="float: right;" class="comment_date"><a href="{{ URL::to_action("news@view", array($article->id, $article->slug)) }}#comment{{$comment->id}}">{{ date("M j,Y g:ia", strtotime($comment->created_at)) }}</a></div>
+				<div class="comment_author"><a href="/user/{{ $comment->user->username }}" title="{{$comment->user->username}}'s Profile">{{ $comment->user->username }}</a></div>
+				<div class="comment-body"><p>{{ $comment->html }}</p></div>
+			</div>
 		</div>
 	</li>
 	@endforeach
-</ul>
-<div id="respond">
+</ol>
+
+	<div id="respond">
 	@if(Auth::check())
 		<h4>Leave a comment</h4>
 		{{ Form::open("news/comment/".$article->id) }}
@@ -60,7 +60,7 @@
 	@else
 	You must be <a href="/login">logged in</a> to leave a comment.
 	@endif
-</div>
+	</div>
 </div>
 </div>
 @include("news.sidebar")	
