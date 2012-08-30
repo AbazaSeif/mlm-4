@@ -12,6 +12,7 @@
 			<li {{ URI::is('admin/user') ? 'class="active"' : '' }}>{{ HTML::link("admin/user", "Users") }}</li> 
 			<li {{ URI::is('admin/comments*') ? 'class="active"' : '' }}>{{ HTML::link("admin/comments", "Comments") }}</li>
 			<li><a onClick="MLM.images.open(); return false;" href="#" >Images</a></li>
+			<li {{ URI::is('admin/faq') ? 'class="active"' : '' }}>{{ HTML::link("admin/faq", "FAQ") }}</li>
 		</ul>
 	</nav>
 @endsection

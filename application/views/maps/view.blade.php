@@ -13,11 +13,11 @@
 &nbsp&nbsp
 @endif
 @if(Auth::check() && Auth::user()->admin)
-{{ $map->featured ? HTML::link_to_action("maps@admin", "UnFeature Map", array("feature", $map->id)) : HTML::link_to_action("maps@admin", "Feature Map", array("feature", $map->id)) }}
+{{ $map->featured ? HTML::link_to_action("admin@maps", "UnFeature Map", array("unfeature", $map->id)) : HTML::link_to_action("admin@maps", "Feature Map", array("feature", $map->id)) }}
 &nbsp&nbsp
 @endif
 @if(Auth::check() && Auth::user()->admin)
-{{ $map->official ? HTML::link_to_action("maps@admin", "Make Un-Official", array("official", $map->id)) : HTML::link_to_action("maps@admin", "Make Official", array("official", $map->id))}}
+{{ $map->official ? HTML::link_to_action("admin@maps", "Make Un-Official", array("unofficial", $map->id)) : HTML::link_to_action("admin@maps", "Make Official", array("official", $map->id))}}
 &nbsp&nbsp
 @endif
 <div id="content" class="maps">
