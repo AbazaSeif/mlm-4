@@ -29,6 +29,12 @@
 					<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
 						<ul class="dropdown-menu">
 						<li><a href="{{ URL::to_action("admin.user@edit/".$user->id) }}"><i class="icon-pencil"></i> Edit</a></li>
+						@if($user->admin == 0)
+						<li><a href="{{ URL::to_action("admin.user@admin/".$user->id) }}"><i class="icon-user"></i> Admin</a></li>
+						@elseif($user->admin == 1)
+						<li><a href="{{ URL::to_action("admin.user@unadmin/".$user->id) }}"><i class="icon-remove"></i> UnAdmin</a></li>
+						@else
+						@endif
 						<li><a href="{{ URL::to_action("admin.user@ban/".$user->id) }}"><i class="icon-exclamation-sign"></i> Ban</a></li>
 					</ul>
 				</div>

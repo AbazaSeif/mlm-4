@@ -9,7 +9,7 @@ class Admin_User_Controller extends Admin_Controller {
 	
 	// Listing users
 	public function get_index() {
-		$users = DB::table("users")->get(array("id", "username", "mc_username", "created_at"));
+		$users = DB::table("users")->get(array("id", "username", "mc_username", "created_at", "admin"));
 		return View::make('admin.users.list', array("users" => $users, "title" => "Users | Admin"));
 	}
 
@@ -70,6 +70,40 @@ class Admin_User_Controller extends Admin_Controller {
 			}
 		} else {
 			return Redirect::to_action('admin.user@edit', array($id))->with_input()->with_errors($validation);
+		}
+	}
+
+	//Admin
+	public function get_admin($id) {
+		$user = User::find($id);
+		if(!$user) {
+			Messages::add("error", "User not found");
+			return Redirect::to_action("admin.user");
+		}
+		$user->admin = 1;
+		if($user->save()) {
+			Event::fire("admin", array("user", "admin", $user->id));
+			Messages::add("success", "User made administrator!");
+			return Redirect::to_action("admin.user");
+		} else {
+			Messages::add("error", "Failed to save");
+			return Redirect::to_action("admin.user");
+		}
+	}
+	public function get_unadmin($id) {
+		$user = User::find($id);
+		if(!$user) {
+			Messages::add("error", "User not found");
+			return Redirect::to_action("admin.user");
+		}
+		$user->admin = 0;
+		if($user->save()) {
+			Event::fire("admin", array("user", "unadmin", $user->id));
+			Messages::add("success", "User un-administratored!");
+			return Redirect::to_action("admin.user");
+		} else {
+			Messages::add("error", "Failed to save");
+			return Redirect::to_action("admin.user");
 		}
 	}
 }
