@@ -2,6 +2,9 @@ MLM = {
 	common: {
 		init: function () {
 			// On all pages
+			$("#shownav").click(function () {
+			$("#menu").slideToggle("slow").show();
+			});
 			$("textarea[data-wysiwyg]").cleditor();
 			$("#sortable").tablesorter();
 		}

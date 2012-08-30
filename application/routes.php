@@ -108,6 +108,11 @@ Route::get("(:any)", function($slug) {
 |
 */
 
+Event::listen('403', function()
+{
+	return Response::error('403');
+});
+
 Event::listen('404', function()
 {
 	return Response::error('404');
@@ -203,6 +208,6 @@ Route::filter('auth', function()
 });
 Route::filter('admin', function() {
 	if (Auth::guest() or !Auth::user()->admin) {
-		return Response::error('404');
+		return Response::error('403');
 	}
 });

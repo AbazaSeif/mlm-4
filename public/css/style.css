@@ -1,7 +1,7 @@
-/* --------------------------------------------------------------
+/* ----------------------------------------------
             MAJOR LEAGUE MINING 2012
              Credits on /humans.txt
------------------------------------------------------------------*/
+-------------------------------------------------*/
 
 @import url(http://fonts.googleapis.com/css?family=Oswald:400,700,300);
 @import url(bootstrap.css);
@@ -33,7 +33,7 @@ body {
 
 a { text-decoration: none; color: #0082B4; }
 
-a:visited { color: #551a8b; }
+a:visited { }
 
 a:hover { color: #06e; }
 
@@ -64,6 +64,8 @@ hr { display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin:
 ins { background: #ff9; color: #000; text-decoration: none; }
 
 mark { background: #ff0; color: #000; font-style: italic; font-weight: bold; }
+
+p { margin: 0 }
 
 pre, code, kbd, samp { font-family: monospace, serif; _font-family: 'courier new', monospace; font-size: 1em; }
 
@@ -104,8 +106,6 @@ nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0
 }
 
 #global-header .holder {
-    clear: both;
-    display: block;
     height: 100%;
     margin: 0 auto;
     width: 990px;
@@ -116,7 +116,6 @@ nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0
 
 #global-header #logo {
     float: left;
-    position: relative;
 }
 
 #global-header #logo img {
@@ -141,13 +140,13 @@ nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0
     display: block;
 }
 
-#global-header #logs {
+#global-header #loginout {
     float: right;
-    margin: 0px auto;
-    padding: 9px 0;
+    margin: 7px 0 0;
+    padding: 0;
 }
 
-#global-header #logs a {
+#global-header #loginout a {
     font-weight: 700;
     text-decoration: none;
     text-shadow: 0 1px 3px #000;
@@ -155,7 +154,7 @@ nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0
     font-weight: 400;
 }
 
-#global-header #logs img {
+#global-header #loginout img {
     border: 2px #fff solid;
     -moz-box-shadow: 0 1px 3px #000;
     -webkit-box-shadow: 0 1px 3px #000;
@@ -168,7 +167,7 @@ nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0
    ================================================== */
 
 #menu {
-    background: #cacaca;
+    background: #E7E7E7;
     background: -moz-linear-gradient(top,    rgba(255,255,255,1) 0%, rgba(202,202,202,0.85) 100%);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(202,202,202,0.85)));
     background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(202,202,202,0.85) 100%);
@@ -178,19 +177,15 @@ nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0
     box-shadow: 0 0 35px #000;
     margin: 35px auto 13px;
     width: 990px;
-    display: block;
 }
 
 #menu ul {
-    padding: 0;
     text-align: center;
 }
 
 #menu li {
     border-left: 1px solid #D3D3D3;
     list-style: none;
-    height: 35px;
-    margin-left: -3px;
     -moz-transition: box-shadow .3s ease-in-out;
     -ms-transition: box-shadow .3s ease-in-out;
     -o-transition: box-shadow .3s ease-in-out;
@@ -229,7 +224,7 @@ nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0
 }
 
 #content {
-    background: #102A67;
+    background: #19295A;
     -moz-box-shadow: 0 0 35px #000;
     -webkit-box-shadow: 0 0 35px #000;
     box-shadow: 0 0 35px #000;
@@ -658,16 +653,12 @@ nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0
    ================================================== */
 
 #global-footer {
-    background: #102A67;
-    -moz-box-shadow: inset 0px 4px 10px #000;
-    -webkit-box-shadow: inset 0px 4px 10px #000;
-    box-shadow: inset 0px 4px 10px #000;
+    background: #19295A;
+    -moz-box-shadow: 0px 4px 10px #000;
+    -webkit-box-shadow: 0px 4px 10px black;
+    box-shadow: 0px 4px 10px black;
     margin: 15px auto 0;  
-    position: static;
-    min-width: 990px;
     bottom: 0;
-    left: 0;
-    right: 0;
 }
 
 #global-footer .holder {
@@ -726,7 +717,6 @@ clear: both;
 
 .post-image  {
     display: block;
-    width: 100%;
     margin-bottom: 15px;
     outline: 1px solid lightGrey;  
     -moz-box-shadow: 0 8px 6px -6px #000;  
@@ -1043,13 +1033,11 @@ width:660px;
    ================================================== */
 
 #pagemenu {
-    background: #102A65;
+    background: #19295A;
     -moz-box-shadow: 0 0 35px #000;
     -webkit-box-shadow: 0 0 35px #000;
     box-shadow: 0 0 35px black;
     margin: 0 0 15px;
-    height: 40px;
-    text-shadow: 0 1px 3px #000;
     font-size: 15px;
     position: relative;
 }
@@ -1059,7 +1047,8 @@ width:660px;
 }
 
 #pagemenu ul li {
-    border-right: 1px solid #103C65;
+    border-right: 1px solid #163858;
+    margin: 0;
 }
 
 #pagemenu ul li a {
@@ -1074,20 +1063,20 @@ width:660px;
 }
 
 #pagemenu .nav {
-    margin-bottom: 0px;
+    margin: 0;
     border:none;
 }
 
 /* Substyles */
 
 #pagemenu .nav-tabs a {
+    text-shadow: 0 1px 3px black;
     font-size: 16px;
     text-transform: uppercase;
     padding: 10px;
     margin-right: 0;
     min-width: 60px;
     text-align: center;
-    text-shadow: 0 1px 3px black;
 }
 
 #pagemenu .nav-tabs li a:hover, #pagemenu .active {
@@ -1299,6 +1288,7 @@ margin: 20px 0px;
 }
 
 .profile .info li label {
+    margin-bottom: 0;
     display: inline-block;
     width: 170px;
     color: #fff;
@@ -1309,7 +1299,7 @@ margin: 20px 0px;
 
 .profile .info p {
 display: inline-block;
-margin-bottom: 0;
+margin: 0;
 }
 
 .profile .info a {
@@ -1360,6 +1350,7 @@ text-decoration: underline;
 }
 
 .profile .team p{
+    margin: 0;
     color: #000;
     font: 15px "Oswald";
     text-transform: uppercase;
@@ -1374,8 +1365,8 @@ text-decoration: underline;
 .profile .teaminfo ul.winlose {
     list-style: none;
     width: 167px;
-    padding-top: 11px;
-    margin-top: 0;
+    padding-top: 10px;
+    margin-top: 10px;
     border-top: 1px solid #BBB;
     color: #676767;
 }
@@ -1448,7 +1439,7 @@ form.xpadding p {
     margin: 28px auto;
     text-align: center;
     padding: 30px;
-    background: #102A67;
+    background: rgba(25, 41, 90, 0.7);
     -moz-box-shadow: 0 0 35px #000;
     -webkit-box-shadow: 0 0 35px #000;
     box-shadow: 0 0 35px #000
@@ -1457,6 +1448,7 @@ form.xpadding p {
 #errorbox h1 {
     font-weight: 400;
     font-size: 2em;
+    text-shadow: 0px 1px 3px #000;
 }
 
 #errorbox form {
@@ -2184,13 +2176,135 @@ a.profile_link {
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
 
+/* Global Header
+   ================================================== */
+
+    #global-header { min-width: 0 }
+
+    #global-header:after { display: table; content: ""; margin-bottom: 15px }
+
+    #global-header #bg { margin: 0 }
+
+    #global-header .holder {
+        width: auto;
+    }
+
+/* Logo 
+   ================================================== */
+
+    #global-header #logo {
+        height: 100%;
+    }
+
+    #global-header #logo img {
+        margin-bottom: -11px;
+        height: auto;
+        width: 80px;
+    }
+
+    #global-header #logo h1 {
+        display: inline;
+        font-size: 18px;
+    }
+
+    #global-header #logo a {
+        text-shadow: 0 2px 1px black;
+    }
+
+    #global-header #loginout { display: none }
+
+    #shownav {
+        display: block;
+        float: right;
+        margin: 3px 10px 0 0;
+        height: 30px;
+        width: 30px;
+        background: transparent url(../images/static/arrow.png) no-repeat 0px 0px;
+    }
+
+  #shownav:hover { background: transparent url(../images/static/arrow.png) no-repeat 0px -31px;}
+
+
+/* Global Menu 
+   ================================================== */
+
+    #menu {
+        display: none;
+        background: #E7E7E7;
+        margin: 0px auto 13px;
+        width: auto;
+    }
+
+    #menu #loginout { display: block }
+
+    #menu li { display: block; border-bottom: 1px solid #d0d0d0 }
+
+    #menu li:hover { -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none }
+
+    #menu li:first-child { border-bottom: 1px solid #D0D0D0 }
+
+    #menu li a {
+        color: white;
+        font-weight: 400;
+        font-size: 20px;
+        text-shadow: 0 1px 3px #000;
+        text-transform: uppercase;
+        padding: 3px 20px;
+        display: block;
+    }
+
+/* Content 
+   ================================================== */
+
+    #wrapper { width: auto }
+
+    #pagemenu {  }
+
+    #pagemenu .rside { display: none }
+
+    #home #featured { width: auto }
+
+    #home #featured .iview-controlNav { display: none }
+
+    #home .homecontent { padding: 0; width: 100%;}
+
+    #home .homecontent section {
+        margin: 0;
+        padding: 10px 10px;
+        border: 0;
+        width: 100%;
+        border-top: 1px dotted #fff;
+    }
+/* Global Footer
+   ================================================== */
+
+#global-footer {  
 }
- 
-/* Portrait tablet to landscape and desktop */
-@media (min-width: 768px) and (max-width: 979px) {
+
+#global-footer .holder {
+    width: auto;
+}
+
+#global-footer .column {
+    width: auto;
+}
+
+#global-footer .column h3 {
+}
+
+footer .column p {
+}
 
 }
- 
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+    
+    #menu { display: block }
+
+    #menu #loginout { display: none }
+
+} 
 /* Large desktop */
 @media (min-width: 1200px) {
 
