@@ -75,6 +75,14 @@ class Admin_User_Controller extends Admin_Controller {
 
 	//Admin
 	public function get_admin($id) {
+		$user = User::find($id); // Don't need full ORM for this
+		if(!$user) {
+			Messages::add("error", "User not found");
+			return Redirect::to_action("Admin.User");
+		}
+		return View::make('admin.users.admin', array("title" => "Admin user {$user->username} | Users | Admin", "user" => $user));
+	}
+	public function post_admin($id) {
 		$user = User::find($id);
 		if(!$user) {
 			Messages::add("error", "User not found");
@@ -91,6 +99,14 @@ class Admin_User_Controller extends Admin_Controller {
 		}
 	}
 	public function get_unadmin($id) {
+		$user = User::find($id); // Don't need full ORM for this
+		if(!$user) {
+			Messages::add("error", "User not found");
+			return Redirect::to_action("Admin.User");
+		}
+		return View::make('admin.users.unadmin', array("title" => "UnAdmin user {$user->username} | Users | Admin", "user" => $user));
+	}
+	public function post_unadmin($id) {
 		$user = User::find($id);
 		if(!$user) {
 			Messages::add("error", "User not found");
