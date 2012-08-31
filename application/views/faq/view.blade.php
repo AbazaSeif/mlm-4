@@ -7,12 +7,12 @@
 </div>
 <a name="top"></a>
 @foreach($faqlist->results as $faq)
-	<li><h5><a href={{ "#".$faq->question }}>{{ $faq->question}}</a></h5></li>
+	<li><a href=\"{{ "#".$faq->question }}\">{{ $faq->question}}</a></li>
 @endforeach
 <hr>
 @foreach($faqlist->results as $faq)
 	<br>
-	<li><h5><a name={{ $faq->question}}>{{ $faq->question }}</a></h5></li>
+	<li><h5><a name=\"{{ $faq->question}}\">{{ $faq->question }}</a></h5></li>
 		{{ $faq->answer }}
 	<br>
 @endforeach
