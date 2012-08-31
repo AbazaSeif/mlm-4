@@ -52,19 +52,45 @@
 					<h1>MAJOR LEAGUE MINING</h1>
 				</a>
 			</div>
-			<div id="logs">
-			@if (Auth::user() && Auth::user()->admin)
-			{{ HTML::link_to_action('account@logout', "Logout") }} &bull; {{ HTML::link('admin', 'Admin panel'); }} &bull; <a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/18.png" alt="avatar" /></a> 
-			@elseif (Auth::check())
-			{{ HTML::link_to_action('account@logout', "Logout") }} &bull; {{ HTML::link('account', 'Edit Account'); }} &bull; <a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/18.png" alt="avatar" /></a>
-			@else
-			{{ HTML::link_to_action('account@login', "Login &bull; Create account") }}
-			@endif
+			<div id="loginout">
+				@if (Auth::user() && Auth::user()->admin)
+				{{ HTML::link_to_action('account@logout', "Logout") }} &bull; {{ HTML::link('admin', 'Admin panel'); }} &bull; <a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/18.png" alt="avatar" /></a>
+				@elseif (Auth::check())
+				{{ HTML::link_to_action('account@logout', "Logout") }} &bull; {{ HTML::link('account', 'Edit Account'); }} &bull; <a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/18.png" alt="avatar" /></a>
+				@else
+				{{ HTML::link_to_action('account@login', "Login &bull; Create account") }}
+				@endif
 			</div>
+			<a href="#" id="shownav"></a>
 		</div>
 	</div>	
 		<nav id="menu">
-			<ul>
+			<ul id="loginout">
+				@if (Auth::user() && Auth::user()->admin)
+			<li>
+				{{ HTML::link_to_action('account@logout', "Logout") }} 
+			</li>
+			<li> 
+				{{ HTML::link('admin', 'Admin panel'); }}
+			</li>
+			<li>
+				<a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/25.png" alt="avatar" /></a>
+			</li>
+				@elseif (Auth::check())
+			<li>
+				{{ HTML::link_to_action('account@logout', "Logout") }}
+			</li>
+				{{ HTML::link('account', 'Edit Account'); }}
+			<li>
+				<a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/25.png" alt="avatar" /></a>
+			</li>
+				@else
+			<li>
+				{{ HTML::link_to_action('account@login', "Login &bull; Create account") }}
+			</li>
+				@endif
+			</ul>
+			<ul id="mainmenu">
 				<li><a href="{{ URL::to("/") }}">Home</a></li> 
 				<li>{{ HTML::link('news', 'News'); }}</li> 
 				<li>{{ HTML::link('tournaments', 'Tournaments'); }}</li>
@@ -81,18 +107,18 @@
 	</div>	
 	<footer id="global-footer" class="clearfix">
 	<div class="holder">
-		<section class="column">
+		<div class="column">
 			<h3>Heading</h3>
 			<p>All sorts of awesome footer goodness</p>
-		</section>
-		<section class="column">
+		</div>
+		<div class="column">
 			<h3>Heading</h3>
 			<p>All sorts of awesome footer goodness</p>
-		</section>
-		<section class="column">
+		</div>
+		<div class="column">
 			<h3>Heading</h3>
 			<p>All sorts of awesome footer goodness</p>
-		</section>
+		</div>
 	</div>	
 	</footer>
 	@yield("postfooter")

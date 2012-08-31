@@ -6,8 +6,8 @@ class Maps_Controller extends Base_Controller {
 	public function __construct() {
 		parent::__construct();
 
-		$this->filter("before", "auth")->only(array("new", "edit", "rate", "edit_meta", "edit_link", "delete_link", "upload_image", "default_image", "delete_image"));
-		$this->filter("before", "csrf")->on("post")->only(array("new", "rate", "edit_meta", "edit_link", "delete_link", "upload_image", "default_image", "delete_image"));
+		$this->filter("before", "auth")->only(array("new", "edit", "rate", "edit_meta", "add_author", "author_invite", "edit_link", "delete_link", "upload_image", "default_image", "delete_image"));
+		$this->filter("before", "csrf")->on("post")->only(array("new", "rate", "edit_meta", "add_author", "author_invite", "edit_link", "delete_link", "upload_image", "default_image", "delete_image"));
 	}
 
 	public function get_index() {
@@ -205,8 +205,10 @@ class Maps_Controller extends Base_Controller {
 			return Response::error("404"); // Not owner
 		}
 		
+		$authors = $map->users()->with("confirmed")->get();
+
 		return View::make("maps.edit", array(
-			"title" => "Edit | ".e($map->title)." | Maps", "map" => $map
+			"title" => "Edit | ".e($map->title)." | Maps", "map" => $map, "authors" => $authors
 		));
 	}
 	/* Edit metadata */
@@ -246,6 +248,71 @@ class Maps_Controller extends Base_Controller {
 			return Redirect::to_action("maps@edit", array($map->id))->with_input()->with_errors($validation);
 		}		
 	}
+	/* Adding authors */
+	public function post_add_author($id) {
+		$map = Map::find($id);
+		if(!$map) {
+			return Response::error('404');
+		}
+		if(!$map->is_owner(Auth::user())) { // User is confirmed to be logged in
+			return Response::error("404");
+		}
+		// Custom validation, since gonna need the user object anyway
+		if(strlen(Input::get("username")) == 0) {
+			Messages::add("error", "Can't add user! Please enter an username");
+			return Redirect::to_action("maps@edit", array($map->id))->with_input();
+		}
+		// Find the user
+		$user = User::where_username(Input::get("username"))->first();
+		if(!$user) {
+			Messages::add("error", "Can't add user! User not found");
+			return Redirect::to_action("maps@edit", array($map->id))->with_input();
+		}
+		// Make sure user isn't already linked to the map (also filters out self)
+		if($map->is_owner($user) !== false) {
+			Messages::add("error", "Can't add user! User is already invited or an author");
+			return Redirect::to_action("maps@edit", array($map->id))->with_input();
+		}
+		// All good now, create the invite
+		$map->users()->attach($user->id, array("confirmed" => false));
+		$mapurl = URL::to_action("maps@view", array($map->id, $map->slug));
+		$currentuser = Auth::user();
+		$message = <<<EOT
+You have been invited to be listed as an author of **{$map->title}** by {$currentuser->username}.
+
+You can accept or deny this invite from [the map page]({$mapurl}).
+EOT;
+		$user->send_message("You have been invited to be an author on map {$map->title}", $message);
+		Messages::add("success", "{$user->username} has been invited to be an author of this map. He/she must accept this invite to be listed as an author.");
+		return Redirect::to_action("maps@edit", array($map->id));
+	}
+	/* Accepting / denying author invite */
+	public function post_author_invite($id) {
+		$map = Map::find($id);
+		if(!$map) {
+			return Response::error('404');
+		}
+		if($map->is_owner(Auth::user()) !== 0) { // User is invited to be author
+			return Response::error("404");
+		}
+
+		if(Input::get("action") == "accept") {
+			DB::table("map_user")->where_map_id($map->id)->where_user_id(Auth::user()->id)->update(array("confirmed" => true));
+			// Remove this user's rating, since authors can't rate their own maps
+			$ratingObj = $map->ratings()->where_user_id(Auth::user()->id)->first();
+			if($ratingObj) {
+				$ratingObj->delete();
+				$map->update_avg_rating();
+			}
+
+			Messages::add("success", "You have accepted the invite");
+			return Redirect::to_action("maps@view", array($map->id, $map->slug));
+		} elseif(Input::get("action") == "deny") {
+			DB::table("map_user")->where_map_id($map->id)->where_user_id(Auth::user()->id)->delete();
+			Messages::add("success", "You have denied the invite");
+			return Redirect::to("maps");
+		}
+	}
 	/* Editing links */
 	public function get_edit_link($id, $linkid = null) {
 		$map = Map::find($id);
@@ -253,7 +320,7 @@ class Maps_Controller extends Base_Controller {
 			return Response::error('404');
 		}
 		if(!$map->is_owner(Auth::user())) { // User is confirmed to be logged in
-			return Response::error("404"); // Not yet published
+			return Response::error("404");
 		}
 
 		if($linkid) { // Editing link

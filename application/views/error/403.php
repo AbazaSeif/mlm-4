@@ -12,20 +12,16 @@
 	        <br>
 			<hr>
 			<br>
-			<h1>403: Bad Permissions</h1>
+			<h1>403: Access Forbidden</h1>
 			<br>
 			<hr>
 			<br>
 			<p>
-				Something got jinxed in our side.
-				<br> 
-				Try refreshing this page later.
+				If you think you do have access, please <?php echo HTML::link('/login', 'login'); ?> (you will be redirected here)
+				<br>
+				If you have no clue how you got here, go back to the <?php echo HTML::link('/', 'home page'); ?>
 			</p>
             <br>
-		<?php echo Form::open("search"); ?>
-		<?php echo Form::text("search_term", ""); ?>
-		<?php echo Form::submit("Search", array('class' => 'btn-primary')); ?>
-		<?php echo Form::close(); ?>
 	</div>
 </body>
 </html>

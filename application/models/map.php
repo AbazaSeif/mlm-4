@@ -26,7 +26,7 @@ class Map extends Eloquent {
 	 * Returns: false if isn't
 	 *          0 if invited
 	 *          1 if confirmed
-	 * (MAKE SURE TO USE ===)
+	 * (MAKE SURE TO USE === to get difference between invited and confirmed)
 	 */
 	public function is_owner($user) {
 		// Doing a fluent query as it's cheaper than eloquent relation

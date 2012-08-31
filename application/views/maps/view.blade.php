@@ -24,6 +24,21 @@
 <div class="titlebar clearfix">
 	<h1>Map Details for {{ e($map->title) }}</h1>
 </div>
+	@if($is_owner === 0)
+	<div class="alert">
+		You have been invited to be an author of this map.
+		{{ Form::open("maps/author_invite/".$map->id) }}
+			{{ Form::token() }}
+			{{ Form::hidden("action", "accept") }}
+			<button type="submit" class="btn btn-success btn-mini"><i class="icon-ok icon-white"></i> Accept</button>
+		{{ Form::close() }}
+		{{ Form::open("maps/author_invite/".$map->id) }}
+			{{ Form::token() }}
+			{{ Form::hidden("action", "deny") }}
+			<button type="submit" class="btn btn-danger btn-mini"><i class="icon-remove icon-white"></i> Deny</button>
+		{{ Form::close() }}
+	</div>
+	@endif
 	<h2>{{ e($map->title) }}</h2>
 	<p>{{ e($map->summary) }}</p>
 	{{ $map->description }}
