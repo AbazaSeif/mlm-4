@@ -6,6 +6,7 @@
 	<div class="titlebar clearfix">
 		<h2>FAQ</h2>
 	</div>
+	<a href="{{ URL::to_action("admin.faq@new") }}" class="btn" style="margin-bottom:15px"><i class="icon-plus"></i> New Question</a>
 	<table id="sortable" class="table table-condensed">
 		<thead>
 			<tr>

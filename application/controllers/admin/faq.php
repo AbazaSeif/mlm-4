@@ -12,6 +12,34 @@ class Admin_Faq_Controller extends Admin_Controller {
 		return View::make("admin.faq.list", array("faq" => $faq, "title" => "FAQ | Admin"));
 	}
 
+	//New
+	public function get_new() {
+		return View::make("admin.faq.new", array("title" => "New | FAQ | Admin"));
+	}
+	public function post_new() {
+		$validation_rules = array(
+			"question"       => "required|max:128",
+			"answer"     => "required",
+		);
+		$input = Input::all();
+		$validation = Validator::make($input, $validation_rules);
+		if($validation->passes()) {
+			$faq = new Faq();
+			$faq->question       = $input["question"];
+			$faq->answer     = $input["answer"];
+			if($faq->save()) {
+				Event::fire("admin", array("faq", "add", $faq->id));
+				Messages::add("success", "New FAQ question created!");
+				return Redirect::to_action("admin.faq");
+			} else {
+				Messages::add("error", "Failed to save");
+				return Redirect::to_action("admin.faq@new")->with_input()->with_errors($validation);
+			}
+		} else {
+			return Redirect::to_action("admin.faq@new", array($id))->with_input()->with_errors($validation);
+		}
+	}
+
 	// Edit
 	public function get_edit($id) {
 		$faq = Faq::find($id);
