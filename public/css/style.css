@@ -96,14 +96,12 @@ nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0
 }
 
 #global-header #bg {
-    background: transparent url(../images/static/branding.png) repeat-x center center;
+    margin-top: 50px;
+    height: 42px;  width: 100%;
+    background: #19295A url(../images/static/head-bar.png) repeat-x center center;
     -moz-box-shadow: 0 0 35px #000;
     -webkit-box-shadow: 0 0 35px #000;
-    box-shadow: 0 0 35px #000;
-    height: 42px;
-    margin-top: 50px;
-    width: 100%
-}
+    box-shadow: 0 0 35px #000;}
 
 #global-header .holder {
     height: 100%;
@@ -147,11 +145,10 @@ nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0
 }
 
 #global-header #loginout a {
-    font-weight: 700;
+    font-size: 17px;
     text-decoration: none;
-    text-shadow: 0 1px 3px #000;
     color: #fff;
-    font-weight: 400;
+    text-shadow: 0px 1px 3px #000;
 }
 
 #global-header #loginout img {
@@ -159,21 +156,16 @@ nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0
     -moz-box-shadow: 0 1px 3px #000;
     -webkit-box-shadow: 0 1px 3px #000;
     box-shadow: 0 1px 3px #000;
-    vertical-align: bottom;
     margin-left: 3px
+;
+    vertical-align: -3px;
 }
 
 /* Global Menu 
    ================================================== */
 
 #menu {
-    background: #E7E7E7;
-    background: -moz-linear-gradient(top,    rgba(255,255,255,1) 0%, rgba(202,202,202,0.85) 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(202,202,202,0.85)));
-    background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(202,202,202,0.85) 100%);
-    background: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(202,202,202,0.85) 100%);
-    background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(202,202,202,0.85) 100%);
-    background: linear-gradient(top, rgba(255,255,255,1) 0%,rgba(202,202,202,0.85) 100%);
+    background: #E7E7E7 url(../images/static/menu.png) repeat-x center;
     box-shadow: 0 0 35px #000;
     margin: 35px auto 13px;
     width: 990px;
@@ -184,6 +176,8 @@ nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0
 }
 
 #menu li {
+    display: inline-block;
+    margin-left: -4px;
     border-left: 1px solid #D3D3D3;
     list-style: none;
     -moz-transition: box-shadow .3s ease-in-out;
@@ -191,7 +185,6 @@ nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0
     -o-transition: box-shadow .3s ease-in-out;
     -webkit-transition: box-shadow .3s ease-in-out;
     transition: box-shadow .3s ease-in-out;
-    display: inline-block;
 }
 
 #menu li:hover {
@@ -2133,21 +2126,6 @@ a.profile_link {
     styling.
    ================================================== */
 
-/* For image replacement */
-.ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; *line-height: 0; }
-.ir br { display: none; }
-
-/* Hide from both screenreaders and browsers: h5bp.com/u */
-.hidden { display: none !important; visibility: hidden; }
-
-/* Hide only visually, but have it available for screenreaders: h5bp.com/v */
-.visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
-
-/* Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: h5bp.com/p */
-.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
-
-/* Hide visually and from screenreaders, but maintain layout */
-.invisible { visibility: hidden; }
 
 /* Media Queries
    ================================================== */
@@ -2179,11 +2157,11 @@ a.profile_link {
 /* Global Header
    ================================================== */
 
-    #global-header { min-width: 0 }
+    #global-header { min-width: 0 ;}
 
     #global-header:after { display: table; content: ""; margin-bottom: 15px }
 
-    #global-header #bg { margin: 0 }
+    #global-header #bg { margin: 0 ; position: relative;}
 
     #global-header .holder {
         width: auto;
@@ -2198,8 +2176,8 @@ a.profile_link {
 
     #global-header #logo img {
         margin-bottom: -11px;
-        height: auto;
-        width: 80px;
+        height: auto !important;
+        width: 80px !important;
     }
 
     #global-header #logo h1 {
@@ -2228,20 +2206,33 @@ a.profile_link {
 /* Global Menu 
    ================================================== */
 
+    #menu #loginout { float: none; margin: 0 }
+
+    #menu #loginout li { display: inline-block ; border-bottom: 0; margin-left: -4px }
+
+    #menu #loginout li a { padding: 10px 20px; line-height: 2;}
+
+    #menu #loginout img {
+    vertical-align: -6px;
+ 
+    margin-left: 6px;
+}
+
     #menu {
         display: none;
-        background: #E7E7E7;
         margin: 0px auto 13px;
         width: auto;
-    }
+    
+        background: #E7E7E7;
+}
 
-    #menu #loginout { display: block }
+    #menu #loginout { display: block ; border-bottom: 3px solid #D0D0D0;}
 
     #menu li { display: block; border-bottom: 1px solid #d0d0d0 }
 
     #menu li:hover { -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none }
 
-    #menu li:first-child { border-bottom: 1px solid #D0D0D0 }
+    #menu #mainmenu li:first-child {border-bottom: 1px solid #D0D0D0; box-shadow: inset 0px 6px 6px -4px #000 }
 
     #menu li a {
         color: white;
@@ -2249,7 +2240,7 @@ a.profile_link {
         font-size: 20px;
         text-shadow: 0 1px 3px #000;
         text-transform: uppercase;
-        padding: 3px 20px;
+        padding: 5px 20px;
         display: block;
     }
 
@@ -2278,27 +2269,18 @@ a.profile_link {
 /* Global Footer
    ================================================== */
 
-#global-footer {  
-}
+    #global-footer .holder {
+        width: auto;
+    }
 
-#global-footer .holder {
-    width: auto;
-}
-
-#global-footer .column {
-    width: auto;
-}
-
-#global-footer .column h3 {
-}
-
-footer .column p {
-}
+    #global-footer .column {
+        width: auto;
+    }
 
 }
 
 /* Portrait tablet to landscape and desktop */
-@media (min-width: 768px) and (max-width: 979px) {
+@media (min-width: 768px) and (max-width: 1200px) {
     
     #menu { display: block }
 
@@ -2307,5 +2289,9 @@ footer .column p {
 } 
 /* Large desktop */
 @media (min-width: 1200px) {
+
+    #menu { display: block }
+
+    nav#menu #loginout { display: none }
 
 }

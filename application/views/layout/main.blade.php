@@ -65,8 +65,32 @@
 		</div>
 	</div>	
 		<nav id="menu">
-			<div id="loginout"></div>
-			<ul>
+			<ul id="loginout">
+				@if (Auth::user() && Auth::user()->admin)
+			<li>
+				{{ HTML::link_to_action('account@logout', "Logout") }} 
+			</li>
+			<li> 
+				{{ HTML::link('admin', 'Admin panel'); }}
+			</li>
+			<li>
+				<a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/25.png" alt="avatar" /></a>
+			</li>
+				@elseif (Auth::check())
+			<li>
+				{{ HTML::link_to_action('account@logout', "Logout") }}
+			</li>
+				{{ HTML::link('account', 'Edit Account'); }}
+			<li>
+				<a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/25.png" alt="avatar" /></a>
+			</li>
+				@else
+			<li>
+				{{ HTML::link_to_action('account@login', "Login &bull; Create account") }}
+			</li>
+				@endif
+			</ul>
+			<ul id="mainmenu">
 				<li><a href="{{ URL::to("/") }}">Home</a></li> 
 				<li>{{ HTML::link('news', 'News'); }}</li> 
 				<li>{{ HTML::link('tournaments', 'Tournaments'); }}</li>
