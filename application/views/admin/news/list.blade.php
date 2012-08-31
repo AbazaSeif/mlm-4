@@ -21,7 +21,7 @@
 			<tr>
 				<td>{{ $item->id }}</td>
 				<td>{{ HTML::link_to_action("news@view", $item->title, array($item->id, $item->slug), array("target" => "_blank")) }}</td>
-				<td>{{ date("F j, Y h:i e", strtotime($item->created_at)) }}</td>
+				<td>{{ date("F j, Y g:ia", strtotime($item->created_at)) }}</td>
 				<td>
 				<div class="btn-group">
 					<a class="btn btn-primary" href="#" data-toggle="dropdown" >

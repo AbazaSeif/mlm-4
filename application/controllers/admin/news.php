@@ -22,7 +22,7 @@ class Admin_News_Controller extends Admin_Controller {
 			$oldimage = null;
 		}
 
-		return View::make("admin.news.newform", array("title" => "New | News | Admin", "oldimage" => $oldimage));
+		return View::make("admin.news.new", array("title" => "New | News | Admin", "oldimage" => $oldimage));
 	}
 	public function post_new() {
 		$validation_rules = array(
