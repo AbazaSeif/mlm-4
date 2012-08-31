@@ -20,6 +20,29 @@
 		{{ Form::field("text", "teamsize", "Recomended team size", array(Input::old("teamsize", $map->teamsize)), array("error" => $errors->first("teamsize"))) }}
 		{{ Form::actions(array(Form::submit("Save", array("class" => "btn-primary")), " ", HTML::link_to_action("maps@view", "Back", array($map->id), array("class" => "btn")))) }}
 	{{ Form::close() }}
+	<div class="titlebar clearfix">
+		<h3>Authors</h3>
+	</div>
+	<ul>
+	@foreach($authors as $user)
+		<li>
+			<img src="http://minotar.net/helm/{{ $user->mc_username }}/18.png" alt="avatar" /> {{$user->username}}
+			@if(!$user->pivot->confirmed)
+				Hasn't yet accepted the invite
+			@endif
+			@if($user->id == Auth::user()->id)
+				<small>You cannot remove yourself</small>
+			@else
+			@endif
+		</li>
+	@endforeach
+	</ul>
+	Invite additional authors:
+	{{ Form::open("maps/add_author/".$map->id) }}
+		{{ Form::token() }}
+		{{ Form::field("text", "username", "Username", array(Input::old("username")), array("help" => "MLM username", "error" => $errors->first("username"))) }}
+		{{ Form::actions(array(Form::submit("Invite", array("class" => "btn-primary"))))}}
+	{{ Form::close() }}
 <div class="titlebar clearfix">
 	<h3>Download Links</h3>
 </div>
