@@ -151,6 +151,7 @@ nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0
 
 #global-header #loginout img {
     margin-left: 3px;
+    width: 20px;
     border: 2px #fff solid;
     -moz-box-shadow: 0 1px 3px #000;
     -webkit-box-shadow: 0 1px 3px #000;
@@ -2103,6 +2104,7 @@ a.profile_link {
     #menu #loginout li a { padding: 10px 20px; line-height: 2;}
 
     #menu #loginout img {
+    width: 25px;
     vertical-align: -6px;
     margin-left: 6px;
     }
