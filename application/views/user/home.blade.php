@@ -7,8 +7,8 @@
 @endif
 <div id="content" class="profile clearfix">
 	<div id="page">
-		<div id="vcard" class="clearfix">
-			<div class="pic">
+		<div id="vcard">
+			<div class="picture">
 				@if($ownpage)
 					<a href="http://minecraft.net/profile" target="_blank" title="Change your skin..."><img src="http://minotar.net/helm/{{$user->mc_username}}/150.png" alt="avatar" /></a>
 				@else
@@ -39,6 +39,11 @@
 						<li>Rank<strong>888</strong></li>
 					</ul>
 				</div>
+		</div>
+		<div id="feed">
+			<div class="titlebar clearfix">
+				<h2>Feed</h2>
+			</div>
 		</div>
 	</div>
 	<aside id="sidebar">

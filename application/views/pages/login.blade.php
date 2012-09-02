@@ -3,8 +3,8 @@
 @section('content')
 	<style>body{background-attachment:scroll;}header,footer{display:none}#content{background:none;box-shadow:none;}</style>
 	<div id="content" class="center">
-	<a href="/"><img src="{{ URL::to_asset("images/static/logo.png") }}" /></a>
 		<div id="login">
+			<a href="/"><img src="{{ URL::to_asset("images/static/logo.png") }}" /></a>
 			{{ Form::open("account/login" , 'POST', array('class' => 'openid-form')) }} 
 				<ul class="providers">
 					<li class="openid" style="padding:0;"></li>

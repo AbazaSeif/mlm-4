@@ -708,7 +708,7 @@ footer .column p {
 }
 
 #sidebar .widget .content {
-    padding: 15px 10px;
+    padding: 11px;
     background: #F9F9F9;
     -moz-box-shadow: 0 8px 6px -6px #000;
     -webkit-box-shadow: 0 8px 6px -6px #000;
@@ -907,17 +907,17 @@ clear: both;
    ================================================== */
 
 #login {
-    width: 540px;
-    height: 540px;
-    background: transparent url(../images/static/login.png) no-repeat center top;
-    margin: -15px auto 0;
-    text-align: center;
+    margin: 28px auto;
+    padding: 30px;
+    min-height: 350px;  max-width: 650px;
     font-family: "Oswald","Helvetica Neue Condensed Bold",Helvetica,Arial,sans-serif;
+    background: rgba(25, 41, 90, 0.5);
+    color: rgb(187, 187, 187);
+    -webkit-box-shadow: 0 0 35px #000;  
+    box-shadow: 0 0 35px #000;      text-align: center;  
 }
 
 #login form {
-    background: none;
-    padding: 202px 0 0;
 }
 
 /* OpenID providers */
@@ -925,17 +925,15 @@ clear: both;
 #login form ul {
     text-align: center;
     list-style-type: none;
-    display: inline;
     width: 340px;
     height: 25px;
-    display: block;
     margin: 0 auto;
     padding: 0;
 }
 
 #login form ul li {
-    float: left;
-    padding: 4px;
+    display: inline-table;
+    box-shadow: 0px 1px 2px #000;  border-radius: 10px;
 }
 
 #login form ul li span {
@@ -950,7 +948,6 @@ clear: both;
     font-size: 20px;
     margin-bottom: 20px;
     text-shadow: 0 1px 1px #000;
-    color: #000;
 }
 
 #login .openid-logo {
@@ -984,7 +981,7 @@ clear: both;
 #login .openid-form label.forget {
     font-size: 16px;
     display: inline-block;
-    color: black;
+    color: #bbb;
     margin: 0;
     padding: 0;
 }
@@ -994,7 +991,6 @@ clear: both;
 .WhyOpenID {
     font-size: 14px;
     padding: 10px;
-    margin-top: 180px;
     text-shadow: 0px 1px 3px #000;
 }
 
@@ -1137,20 +1133,21 @@ clear: both;
 
 .profile #vcard {
     display: block;
+    margin-bottom: 10px;
+    padding: 12px;
     background-color: #f9f9f9;
     border: 1px solid #ccc;
-    padding: 12px;
     -moz-box-shadow: 0 8px 6px -6px #000;
     -webkit-box-shadow: 0 8px 6px -6px #000;
     box-shadow: 0 8px 6px -6px #000
 }
 
-.profile #vcard .pic {
+.profile #vcard .picture {
     float: left;
     margin-right: 10px;
 }
 
-.profile #vcard .pic a img {
+.profile #vcard .picture a img {
     padding: 7px;
     background: #fff;
     border: 1px solid #ccc;
@@ -2185,7 +2182,7 @@ a.profile_link {
 /* Profile page 
    ================================================== */
 
-    .profile #vcard .pic {
+    .profile #vcard .picture {
     width: 20%;
     float: left;
     margin-right: 30px;

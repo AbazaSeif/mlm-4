@@ -646,7 +646,6 @@ table .span24 {
 }
 form {
   margin: 0 0 18px;
-  background: rgba(255, 255, 255, 0.36);
 padding: 20px 0 0 0;
 }
 fieldset {
@@ -3145,7 +3144,6 @@ a.thumbnail:hover {
 .dropdown-menu {
   position: absolute;
   top: 100%;
-  left: 0;
   z-index: 1000;
   display: none;
   float: left;
