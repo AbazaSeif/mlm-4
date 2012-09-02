@@ -1689,8 +1689,9 @@ input[type="submit"].btn.btn-mini {
   display: inline-block;
   width: 14px;
   height: 14px;
-  line-height: 14px;
   margin-top: 1px;
+  *margin-right: .3em;
+  line-height: 14px;
   vertical-align: text-top;
   background-image: url("../images/static/glyphicons-halflings.png");
   background-position: 14px 14px;

@@ -6,23 +6,16 @@
 	@include("user.menu")
 @endif
 <div id="content" class="profile clearfix">
-	<div id="left">
-			<div id="vcard" class="clearfix">
-				<div class="pic">
+	<div id="page">
+		<div id="vcard" class="clearfix">
+			<div class="pic">
 				@if($ownpage)
 					<a href="http://minecraft.net/profile" target="_blank" title="Change your skin..."><img src="http://minotar.net/helm/{{$user->mc_username}}/150.png" alt="avatar" /></a>
 				@else
 					<a href="#" style="cursor:default" title="{{$user->username}}'s Skin"><img src="http://minotar.net/helm/{{$user->mc_username}}/150.png" alt="avatar" /></a>
 				@endif
-				</div>
+			</div>
 				<div class="data">
-					<h1>{{$user->username}}</h1>
-					<h3><i class="flag flag-{{$user->profile->country}}"></i>{{$countries[$user->profile->country]}}</h3>
-					@if ($user->profile->webzone)
-					<h4>{{ HTML::link($user->profile->webzone, $user->profile->webzone, array("target" => "_blank","rel" => "nofollow")) }}</h4>
-					@else
-					<div class="clearfix" style="height:35px"></div>
-					@endif
 					{{-- User ranks --}}
 					@if ($user->rank == 4)
 					<div class="user-rank admin" title="MLM Admin"></div>
@@ -33,17 +26,41 @@
 					@elseif ($user->rank == 1)
 					<div class="user-rank mod" title="MLM Moderator"></div>
 					@endif
-
-					<ul class="numbers clearfix">
+					<h1>{{$user->username}}</h1>
+					<h2><i class="flag flag-{{$user->profile->country}}"></i>{{$countries[$user->profile->country]}}</h2>
+					@if ($user->profile->webzone)
+					<h3>{{ HTML::link($user->profile->webzone, $user->profile->webzone, array("target" => "_blank","rel" => "nofollow")) }}</h3>
+					@else
+					<div class="clearfix" style="height:35px"></div>
+					@endif
+					<ul class="numbers">
 						<li>Comments<strong>888</strong></li>
 						<li>Posts<strong>888</strong></li>
 						<li>Rank<strong>888</strong></li>
 					</ul>
 				</div>
-			</div>
-	<div class="info clearfix">
+		</div>
+	</div>
+	<aside id="sidebar">
+		<div class="widget teaminfo">
+			<header><h1>Team</h1></header>
+		<div class="content">
+			<a href="#"><img src="http://placehold.it/100x100" />
+				<div class="data">
+					<p>The Quick Brown Fox Jumps Over The Lazy Dog</p>
+					<ul class="numbers">
+						<li>Wins<strong>888</strong></li>
+						<li>Loses<strong>888</strong></li>
+					</ul>
+				</div>
+			</a>
+		</div>
+		</div>
+			<div class="widget">
+				<header><h1>{{$user->username}}'s Info</h1></header>
+			<div class="content">
+			<div class="info">
 		<ul>
-		<li class="sep"><h4>{{$user->username}}'s Info</h4></li>
 		@if ($user->profile->reddit)
 		<li>
 		<label>Reddit</label>
@@ -70,33 +87,9 @@
 		<label>Last updated</label>
 		<p>{{ date("F j, Y", strtotime($user->updated_at)) }}</p>
 		</li>
-		<?php /*
-		<li class="sep"><h4>Separator</h4></li>
-		<li>
-		<label>Name</label>
-		<p>Content</p>
-		</li>*/ ?>
 		</ul>
-	</div>
-</div>
-		<aside id="right">
-			<section class="team">
-				<header><h1>Team</h1></header>
-				<div class="widget">
-						<a href="#"><img src="http://placehold.it/100x100" />
-						<div class="teaminfo">
-						<p>The Quick Brown Fox Jumps Over The Lazy Dog</p>
-						<ul class="winlose clearfix">
-						<li>Wins<strong>888</strong></li>
-						<li>Loses<strong>888</strong></li>
-						</ul>
-						</div>
-						</a>
-				</div>
-			</section>
-			<section class="sidecontent">
-			<img src="http://placehold.it/336x280" alt="space">
-			</section>
-		</aside>
+			</div>
+			</div>
+	</aside>
 </div>
 @endsection

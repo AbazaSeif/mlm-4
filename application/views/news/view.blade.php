@@ -1,6 +1,7 @@
 @layout("layout.main")
 
 @section("content")
+@include("news.menu")
 @if(!$article->published)
 		<div class="alert">
 			<h4 class="alert-heading">Not yet published!</h4>
@@ -8,6 +9,7 @@
 		</div>
 @endif
 <div id="content" class="news clearfix">
+<div id="page">
 <div class="post single"> 
 		<section class="post-image"> 
 		{{ HTML::image($article->image->file_large, "Image") }}
@@ -61,6 +63,7 @@
 	You must be <a href="/login">logged in</a> to leave a comment.
 	@endif
 	</div>
+</div>
 </div>
 </div>
 @include("news.sidebar")	

@@ -3,15 +3,15 @@
 @section('content')
 @include("news.menu")
 <div id="content" class="news clearfix">
-<div class="articles clearfix">
+<div id="page">
 <div class="titlebar clearfix">
 	<h2>Latest News</h2>
 </div>
 	@foreach($newslist->results as $article)
 	<div class="post"> 
-		<section class="post-image"> 
+		<div class="post-image"> 
 		{{ HTML::image($article->image->file_large, "Image") }}
-		</section> 
+		</div> 
 	<div class="post-content">
 	<div class="post-info">
 		<span class="date"><p class="bold">{{ HTML::entities(date("M j", strtotime($article->created_at))) }}</p>{{ HTML::entities(date("Y", strtotime($article->created_at))) }}<br>{{ HTML::entities(date("g:ia T", strtotime($article->created_at))) }}</span>

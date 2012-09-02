@@ -39,8 +39,6 @@ a:hover { color: #06e; }
 
 a:focus { outline: thin dotted; }
 
-a:hover, a:active { outline: 0; }
-
 abbr[title] { border-bottom: 1px dotted; }
 
 b, strong { font-weight: bold; }
@@ -152,12 +150,11 @@ nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0
 }
 
 #global-header #loginout img {
+    margin-left: 3px;
     border: 2px #fff solid;
     -moz-box-shadow: 0 1px 3px #000;
     -webkit-box-shadow: 0 1px 3px #000;
     box-shadow: 0 1px 3px #000;
-    margin-left: 3px
-;
     vertical-align: -3px;
 }
 
@@ -221,11 +218,16 @@ nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0
     -moz-box-shadow: 0 0 35px #000;
     -webkit-box-shadow: 0 0 35px #000;
     box-shadow: 0 0 35px #000;
-    padding: 15px 25px;
+    padding: 20px 25px;
     font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif
 }
 
-/* Content headers*/
+#page {
+    float: left;
+    width: 590px;
+}
+
+/* Header Titles */
 
 .titlebar {
     margin-bottom:10px;
@@ -679,6 +681,80 @@ footer .column p {
     margin: 0;
 }
 
+/* Sidebar 
+   ================================================== */
+
+#sidebar {
+    float: right;
+    width: 330px;
+}
+
+#sidebar .widget {
+    margin-bottom: 20px;
+}
+
+#sidebar .widget header {
+    padding: 7px 0 7px 10px;
+    background: #E6E6E6;
+    border: 1px solid #D3D3D3;
+}
+
+#sidebar .widget header h1 {
+    color: #474747;
+    font-weight: bold;
+    font-size: 16px;
+    text-shadow: 0px 1px 1px #fff;
+    line-height: 2em;
+}
+
+#sidebar .widget .content {
+    padding: 15px 10px;
+    background: #F9F9F9;
+    -moz-box-shadow: 0 8px 6px -6px #000;
+    -webkit-box-shadow: 0 8px 6px -6px #000;
+    box-shadow: 0 8px 6px -6px #000;
+    border: 1px solid #CCC;
+    border-top: 0
+}
+
+#sidebar .widget p {
+    color: #474747;
+}
+
+#sidebar .widget ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.#sidebar .widget li {
+    margin: 0px 0px 20px 0px;
+    padding: 0;
+}
+
+ #sidebar .widget li ul {
+    margin: 0;
+    padding: 0;
+}
+
+#sidebar .widget li li {
+    border-bottom: 1px dotted #D8D8D8;
+    margin: 0px 0px;
+    padding: 5px 0px;
+    border-left: none;
+}
+
+.#sidebar .widget li li a {
+    color: #fff;
+}
+
+#sidebar .widget li li span {
+    display: block;
+    padding: 0;
+    font-size: 11px;
+    font-style: italic;
+}
+
 /* News page 
    ================================================== */
 
@@ -693,11 +769,6 @@ clear: both;
 
 /* News front page 
    ================================================== */
-
-.news .articles{
-    float:left;
-    width: 660px;
-}
 
 .post  {
     margin-bottom: 30px;
@@ -725,51 +796,48 @@ clear: both;
 }
 
 .post .date, .post .comments-nr  {
-    float: left;
-    width: 75px;
+    display: block;
+    margin-bottom: 10px;
+    padding: 10px 5px;
+    width: 75px;  
+    background: #E6E6E6;  border: 1px solid #D3D3D3;
     text-align: center;
     font-size: 14px;
-    color: #666;
-    padding: 10px 5px;
-    background: #E6E6E6;
-    border: 4px solid #f4f4f4;
-    margin-bottom: 10px;
- 
-    outline: 1px solid lightgrey;
+    color: #434343;
     -moz-box-shadow: 0 8px 6px -6px #000;  
-    -webkit-box-shadow: 0 8px 6px -6px   #000;  box-shadow: 0 8px 6px -6px   #000;
+    -webkit-box-shadow: 0 8px 6px -6px   #000;  box-shadow: 0 8px 6px -6px   #000;  
 }
 
 .post .date  {
  }
 
 .post .comments-nr a  {
-    color: #666;
+    color: #434343;
     display: block;
 }
 
 .post .date .bold, .post .comments-nr .bold  {
+    margin: 0;
     font-size: 25px;
     line-height: 40px;
-    margin-bottom: 0px;
     text-align: center;
-    display: block;
     color: #474747;
     transition:  color 0.1s linear;
     -moz-transition:  color 0.1s linear;
     -webkit-transition:  color 0.1s linear;
     -o-transition:  color 0.1s linear;
- }
+ 
+    text-shadow: 0px 1px 1px #fff;
+}
 
 .comments-nr a:hover, .comments-nr a:hover .bold  {
-    color: #d16f4e;
+    color: rgb(117, 117, 117);
  }
 
 
 .post-info  {
     float: left;
-    width: 94px;
-    margin-right: 15px;
+    margin: 0 15px 15px 0;
     font-size: 11px;
     font-family: "Oswald";
  
@@ -802,8 +870,6 @@ clear: both;
 }
  
 .post-entry  {
-    float: left;
-    width: 550px;
  }
  
 .post-entry p  {
@@ -825,92 +891,12 @@ clear: both;
  }
 
 .more-link  {
-    display: block;
     margin-top: 20px;
  }
  
 .post.single {
-width:660px;
 } 
  
-/* Sidebar 
-   ================================================== */
-
-.news #sidebar {
-    float: right;
-    width: 250px;
-    margin: 0px;
-}
-
-.news #sidebar .sbar{
-    width: 205px;
-}
-
-.news #sidebar ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.news #sidebar li {
-    margin: 0px 0px 20px 0px;
-    padding: 0;
-}
-
-.news #sidebar li ul {
-    margin: 0;
-    padding: 0;
-}
-
-.news #sidebar li li {
-    border-bottom: 1px dotted #D8D8D8;
-    margin: 0px 0px;
-    padding: 5px 0px;
-    border-left: none;
-}
-
-.news #sidebar li li a {
-    color: #fff;
-}
-
-.news #sidebar li li span {
-    display: block;
-    padding: 0;
-    font-size: 11px;
-    font-style: italic;
-}
-
-.news #sidebar header {
-    background: #E6E6E6;
-    border: 1px solid lightGrey;
-    padding-left: 8px;
-    margin-bottom: 10px;
-    outline: 4px solid #F4F4F4;
-}
-
-.news #sidebar header h1 {
-    color: #474747;
-    font-weight: bold;
-    
-    font-size: 1.5em;
-    text-shadow: 0px 1px 1px #fff;
-    margin: 0.5em 0;
-}
-
-.news #sidebar p {
-    margin: 0;
-    padding: 0;
-    text-align: justify;
-}
-
-.news #sidebar a {
-    border: none;
-}
-
-.news #sidebar a:hover {
-    text-decoration: underline;
-}
-
 /* Maps
    ================================================== */
 
@@ -1101,6 +1087,7 @@ width:660px;
 /* Profile page 
    ================================================== */
 
+/*
 .profile {
     font-size: 62.5%;
     line-height: 10%;
@@ -1117,22 +1104,14 @@ width:660px;
 }
 
 .profile p {
-    font-size: 1.2em;
-    line-height: 1.4em;
+    font-size: 14px;
+    line-height: 1;
     font-family: Arial, sans-serif;
     color: #fff;
     margin-bottom: 15px;
 }
 
-.profile h1 {
-    font-family: Helvetica, Arial, Verdana, sans-serif;
-    color: #fff;
-    font-weight: bold;
-    font-size: 1.7em;
-    line-height: 2.0em;
-}
-
-.profile h2 {
+.profile #vcard h2 {
     font-family: Georgia, Tahoma, sans-serif;
     font-style: italic;
     font-size: 1.4em;
@@ -1154,20 +1133,7 @@ width:660px;
     margin: 10px 0px;
 }
 
-.profile #left {
-    display: block;
-    float: left;
-    margin-right: 20px;
-    margin-top: 10px;
-}
-
-.profile #right {
-    display: block;
-    width: 327px;
-    float: right;
-    overflow: hidden;
-    margin-top: 10px;
-}
+*/
 
 .profile #vcard {
     display: block;
@@ -1181,7 +1147,6 @@ width:660px;
 
 .profile #vcard .pic {
     float: left;
-    display: block;
     margin-right: 10px;
 }
 
@@ -1192,199 +1157,132 @@ width:660px;
 }
 
 .profile #vcard .data {
-    float: right;
-    display: block;
     position: relative;
-    width: 388px;
-    height: 166px;
-    padding: 4px;
-    padding-left: 15px;
+    margin: 0;
+    padding: 4px 0 0 15px;
     background: #e6e6e6;
+    font-family: Helvetica Neue, Helvetica, Arial;
+    color: #474747;
     overflow: hidden;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box
 }
 
 .profile #vcard .data h1 {
-    color: #474747;
-    line-height: 1.6em;
-    text-shadow: 0px 1px 1px #fff;
     margin: 0;
     padding: 0;
-    font-size: 28px;
-    font-family: "HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 35px;  
+    font-weight: bolder;
+    text-shadow: 0px 1px 1px #fff;
+    line-height: 1.3;
+}
+
+.profile #vcard .data h2 {
+    font-size: 17px;
+    line-height: 1;
 }
 
 .profile #vcard .data h3 {
-    color: #666;
-    line-height: 0.9em;
-    padding: 0;
+    font-size: 15px;
+    line-height: 2;
+}
+
+.profile ul.numbers {
+    padding: 5px 0;
     margin: 0;
-}
-
-.profile #vcard .data h4 {
-    font-size: 1.2em;
-    line-height: 1.3em;
-}
-
-.profile #vcard .data ul.numbers {
     list-style: none;
-    width: 358px;
-    padding-top: 11px;
-    margin-top: 0;
-    border-top: 1px solid #BBB;
+    border-top: 1px dotted #bbb;
     color: #676767;
 }
 
-.profile #vcard .data ul.numbers li {
-    width: 95px;
-    float: left;
-    display: block;
-    padding-left: 8px;
-    height: 50px;
+.profile ul.numbers li {
+    display: inline-block;
+    padding: 0 16px;
     border-right: 1px dotted #bbb;
+    font-size: 12px;
     text-transform: uppercase;
 }
 
-.profile #vcard .data ul.numbers li:last-child {
+.profile ul.numbers li:last-child {
     border: none
 }
 
-.profile #vcard .data ul.numbers li strong {
+.profile ul.numbers li strong {
     color: #434343;
     display: block;
-    font-size: 3.4em;
-    line-height: 1.1em;
+    font-size: 36px;
     font-weight: bold;
 }
 
+.profile .teaminfo .content{
+    padding: 10px;
+}
+
+.profile .teaminfo a {
+    display: block;
+}
+
+.profile .teaminfo .data{
+    float: right;
+    width: 180px;
+}
+
+.profile .teaminfo li {
+    margin-top:10px;
+}
+
+.profile .teaminfo img {
+    border: 8px #fff solid;
+    outline: 1px solid #ccc;
+}
+
+.profile .teaminfo p {
+    margin: 0 0 8px 0;
+    font: 15px "Oswald";
+    text-transform: uppercase;
+    word-wrap: break-word;
+}
+
+/* More user info */
+
+
 .profile div.info {
-margin: 20px 0px;
+    margin:0;
 }
 
 .profile .info li {
     padding: 10px;
     border-bottom: 1px dotted #CCC;
-    font-size: 12px;
+    font-size: 15px;
     list-style: none;
 }
 
-.profile .info li h4 {
-    margin: 0px;
-    color: #474747;
-    line-height: 1.6em;
-    text-shadow: 0px 1px 1px #fff;
-}
-
-.profile .info li.sep {
-    background: #F7F7F7
+.profile .info li:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
 }
 
 .profile .info li label {
-    margin-bottom: 0;
     display: inline-block;
-    width: 170px;
-    color: #fff;
-    font-family: "Oswald","HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 18px;
-    text-shadow: 0 1px 3px #000
-}
+    width: 100px;
+    color: #474747;
+    font: 18px "Oswald";}
 
 .profile .info p {
-display: inline-block;
-margin: 0;
+    float: right;
+    display: inline-block;
+    margin: 0;
+    line-height: 2.2;
 }
 
 .profile .info a {
-display: inline-block;
-width: 399px;
-vertical-align: middle;
-color: #fff;
+color: #434343;
 }
 
 .profile .info a:hover {
 text-decoration: underline;
 }
 
-.profile .team {
-    display: block;
-    margin-bottom: 20px;
-}
 
-.profile .team header {
-    background: #E6E6E6;
-    border: 1px solid #D3D3D3;
-    padding-left: 8px;
-}
 
-.profile .team header h1 {
-    color: #666666;
-    font-weight: bold;
-    font-size: 1.4em;
-    text-shadow: 0px 1px 1px #fff;
-    margin: 0.5em 0;
-}
-
-.profile .team .widget {
-    padding: 15px 10px;
-    background: #F9F9F9;
-    -moz-box-shadow: 0 8px 6px -6px #000;
-    -webkit-box-shadow: 0 8px 6px -6px #000;
-    box-shadow: 0 8px 6px -6px #000;
-    min-height: 117px;
-    border: 1px solid #CCC;
-    border-top: 0
-}
-
-.profile .team img{
-    border: 8px #fff solid;
-    outline: 1px solid #ccc;
-    float: left;
-}
-
-.profile .team p{
-    margin: 0;
-    color: #000;
-    font: 15px "Oswald";
-    text-transform: uppercase;
-    word-wrap: break-word;
-}
-
-.profile .teaminfo{
-    float: right;
-    width: 175px;
-}
-
-.profile .teaminfo ul.winlose {
-    list-style: none;
-    width: 167px;
-    padding-top: 10px;
-    margin-top: 10px;
-    border-top: 1px solid #BBB;
-    color: #676767;
-}
-
-.profile ul.winlose li {
-    width: 70px;
-    float: left;
-    display: block;
-    padding-left: 8px;
-    height: 50px;
-    border-right: 1px dotted #bbb;
-    text-transform: uppercase;
-}
-
-.profile ul.winlose li:last-child {
-    border:none;
-}
-
-.profile ul.winlose li strong {
-    color: #434343;
-    display: block;
-    font-size: 3.4em;
-    line-height: 1.1em;
-    font-weight: bold;
-}
 
 /* Account settings page 
    ================================================== */
@@ -1423,12 +1321,12 @@ form.xpadding p {
     margin-bottom: 10px;
 }    
 
-/* Error stlyes 
+/* Error pages 
    ================================================== */
     
 #errorbox {
     min-height: 350px;
-    width: 650px;
+    max-width: 650px;
     margin: 28px auto;
     text-align: center;
     padding: 30px;
@@ -1496,7 +1394,7 @@ form.xpadding p {
     margin-bottom: 10px;
 }
 
-/* Article editor 
+/* WYSIWYG editor 
    ================================================== */
 
 .cleditorMain {
@@ -1619,7 +1517,7 @@ ol.commentlist li {
 .comment_text {
   padding: 0px 10px 10px;
   display: inline-block;
-  width: 575px;
+  width: 85%;
 }
 
 h3.comment_title {
@@ -1678,10 +1576,6 @@ h2.comment-form-header {
   -webkit-box-shadow: 0 1px 2px rgba(144, 144, 144, 0.1) inset;
   -moz-box-shadow: 0 1px 2px rgba(144, 144, 144, 0.1) inset;
   box-shadow: 0 1px 2px rgba(144, 144, 144, 0.1) inset;
-  -moz-border-radius: 3px 3px 0 0;
-  -webkit-border-radius: 3px 3px 0 0;
-  -khtml-border-radius: 3px 3px 0 0;
-  border-radius: 3px 3px 0 0;
 }
 
 #commentform textarea: focus {
@@ -1849,10 +1743,10 @@ a.profile_link {
     position: absolute;
     right: 8px;
     top: 8px;
-    box-shadow: 0px 1px 1px #fff;
-    width: 16px;
     height: 16px;
+    width: 16px;
     background: url(../images/static/urank.png) no-repeat;
+    box-shadow: 0px 1px 1px #fff;
 }
 .user-rank.admin {background-position: 0px 0px;}
 .user-rank.dev {background-position: 0px -16px;}
@@ -1863,11 +1757,10 @@ a.profile_link {
    ================================================== */
 
 .flag {
-    width: 16px;
-    height: 11px;
     display: inline-block;
-    vertical-align: -1px;
-    margin-right:3px;
+    margin-right: 3px;
+    height: 11px;
+    width: 16px;
     background:url(../images/static/flags.png) no-repeat
 }
 
@@ -2214,17 +2107,15 @@ a.profile_link {
 
     #menu #loginout img {
     vertical-align: -6px;
- 
     margin-left: 6px;
-}
+    }
 
     #menu {
         display: none;
         margin: 0px auto 13px;
         width: auto;
-    
         background: #E7E7E7;
-}
+    }
 
     #menu #loginout { display: block ; border-bottom: 3px solid #D0D0D0;}
 
@@ -2249,9 +2140,22 @@ a.profile_link {
 
     #wrapper { width: auto }
 
-    #pagemenu {  }
+    #pagemenu {}
 
     #pagemenu .rside { display: none }
+
+    #page {
+        float: left;
+        width: 100%;
+    }
+
+    #sidebar {
+        float: right;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    /* Home page */
 
     #home #featured { width: auto }
 
@@ -2266,6 +2170,7 @@ a.profile_link {
         width: 100%;
         border-top: 1px dotted #fff;
     }
+
 /* Global Footer
    ================================================== */
 
@@ -2275,6 +2180,55 @@ a.profile_link {
 
     #global-footer .column {
         width: auto;
+    }
+
+/* Profile page 
+   ================================================== */
+
+    .profile #vcard .pic {
+    width: 20%;
+    float: left;
+    margin-right: 30px;
+    }
+
+    .profile #vcard .data h1 {
+    font-size: 25px;  
+    }
+
+    .profile #vcard .data h2 {
+    font-size: 14px;
+    }
+
+    .profile #vcard .data h3 {
+    font-size: 14px;
+    }
+
+    /* Team Info */
+
+   .profile .teaminfo a {
+    display: inline-block;
+    }
+
+    .profile .teaminfo .data{
+    display: inline-table;
+    width: 70%;
+    }
+
+    .profile .teaminfo li {
+    margin-top:10px;
+    }
+
+    .profile .teaminfo img {
+    width: 20%;
+    border: 8px #fff solid;
+    outline: 1px solid #ccc;
+    }
+
+    .profile .teaminfo p {
+    margin: 0 0 8px 0;
+    font: 15px "Oswald";
+    text-transform: uppercase;
+    word-wrap: break-word;
     }
 
 }
