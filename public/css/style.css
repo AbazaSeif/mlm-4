@@ -2235,7 +2235,7 @@ a.profile_link {
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 1200px) {
     
-    #menu { display: block }
+    #menu { display: block !important; }
 
     #menu #loginout { display: none }
 
@@ -2243,7 +2243,7 @@ a.profile_link {
 /* Large desktop */
 @media (min-width: 1200px) {
 
-    #menu { display: block }
+    #menu { display: block !important; }
 
     nav#menu #loginout { display: none }
 
