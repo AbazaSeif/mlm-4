@@ -79,6 +79,10 @@ class Form extends \Laravel\Form {
 		{
 			$out .= '<p class="help-block">'. $opts['help'] .'</p>';
 		}
+		if ( ! empty($opts['help-inline']))
+		{
+			$out .= '<p class="help-inline">'. $opts['help-inline'] .'</p>';
+		}
 		$out .= '</div>'; // div.controls
 		$out .= '</div>'.PHP_EOL;
 
@@ -117,6 +121,10 @@ class Form extends \Laravel\Form {
 		if ( ! empty($opts['help']))
 		{
 			$out .= '<p class="help-block">'. $opts['help'] .'</p>';
+		}
+		if ( ! empty($opts['help-inline']))
+		{
+			$out .= '<p class="help-inline">'. $opts['help-inline'] .'</p>';
 		}
 		$out .= '</div></div>'; // div.control-list div.controls
 		$out .= '</fieldset>';
