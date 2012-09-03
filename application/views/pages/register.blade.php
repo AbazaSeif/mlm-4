@@ -16,8 +16,8 @@
 <div class="titlebar clearfix">
 	<h2>Usernames<small> (required)</small></h2>
 </div>
-		{{ Form::field("text", "username", "MLM Username", array(Input::old("username"), array('class' => 'input-large', 'autocomplete' => 'off')),array('help' => 'You wont be able to change this later, choose wisely')) }}
-		{{ Form::field("text", "mc_username", "Minecraft Username", array(Input::old("mc_username"), array('class' => 'input-large', 'autocomplete' => 'off')), array('help' => 'CaSe SeNsItIvE','error' => $errors->first('mc_username'))) }}
+		{{ Form::field("text", "username", "MLM Username", array(Input::old("username"), array('class' => 'input-large', 'autocomplete' => 'off')),array("help-inline" => 'You wont be able to change this later, choose wisely')) }}
+		{{ Form::field("text", "mc_username", "Minecraft Username", array(Input::old("mc_username"), array('class' => 'input-large', 'autocomplete' => 'off')), array("help-inline" => 'CaSe SeNsItIvE','error' => $errors->first('mc_username'))) }}
 <div class="titlebar clearfix">
 	<h2>Profile <small>(All fields below are optional)</small></h2>
 </div>
@@ -25,7 +25,7 @@
 		{{ Form::field("text", "reddit", "Reddit Username", array(Input::old("reddit"), array('class' => 'input-large')), array('error' => $errors->first('reddit'))) }}
 		{{ Form::field("text", "twitter", "Twitter Username", array(Input::old("twitter"), array('class' => 'input-large')), array('error' => $errors->first('twitter'))) }}
 		{{ Form::field("text", "youtube", "YouTube Username", array(Input::old("youtube"), array('class' => 'input-large')), array('error' => $errors->first('youtube'))) }}
-		{{ Form::field("text", "webzone", "Homepage", array(Input::old("webzone"), array('class' => 'input-large')), array('help' => 'Please include http://', 'error' => $errors->first('webzone'))) }}
+		{{ Form::field("text", "webzone", "Homepage", array(Input::old("webzone"), array('class' => 'input-large')), array("help-inline" => 'Please include http://', 'error' => $errors->first('webzone'))) }}
 		<div class="form-actions">
 		<button class="btn btn-primary btn-large" type="submit">Create account!</button>
 		<p class="disclaimer">By creating an account in Major League Mining, you agree to the <a href="/tos" target="_blank">Terms of Service</a></p>

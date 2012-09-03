@@ -910,12 +910,16 @@ clear: both;
 #login {
     margin: 28px auto;
     padding: 30px;
-    min-height: 350px;  max-width: 650px;
+    min-height: 350px;
+    min-width: 330px;  
+    max-width: 650px;
     font-family: "Oswald","Helvetica Neue Condensed Bold",Helvetica,Arial,sans-serif;
     background: rgba(25, 41, 90, 0.5);
     color: rgb(187, 187, 187);
+    -moz-box-shadow: 0 0 35px #000; 
     -webkit-box-shadow: 0 0 35px #000;  
-    box-shadow: 0 0 35px #000;      text-align: center;  
+    box-shadow: 0 0 35px #000;
+    text-align: center;
 }
 
 #login form {
@@ -1287,25 +1291,6 @@ text-decoration: underline;
     padding: 10px;
 }
 
-/* Misc styles
-   ================================================== */
-
- /* Fixes
-   ================================================== */   
-       
-form.xpadding { 
-    padding:10px;
-    background: rgba(255, 255, 255, 0.2);
-}
-
-form.xpadding input { margin: 0 }
-
-form.xpadding p { margin-bottom: 10px }
-
-.help-block, .help-inline { color: #BBB }
-
-.btn { vertical-align: 0; }
-
 /* Error pages 
    ================================================== */
     
@@ -1325,14 +1310,6 @@ form.xpadding p { margin-bottom: 10px }
     font-weight: 400;
     font-size: 2em;
     text-shadow: 0px 1px 3px #000;
-}
-
-#errorbox a {
-    color: #fff;
-}
-
-#errorbox form {
-    background: none
 }
 
 #errorbox input {
@@ -1725,6 +1702,23 @@ a.profile_link {
 
 #multiview .list .mv-meta {}
 
+/* Fixes
+   ================================================== */   
+       
+form.xpadding { padding:10px; background: rgba(255, 255, 255, 0.2); }
+
+form.xpadding input { margin: 0 }
+
+form.xpadding p { margin-bottom: 10px }
+
+.help-block, .help-inline { color: #fff }
+
+.btn { vertical-align: 0; margin-top: 0; }
+
+.alert { margin-bottom: 15px; }
+
+.alert .close { top: -10px; right: -28px; }
+
 /* Sprite galore! 
    ================================================== */
 
@@ -2035,6 +2029,12 @@ a.profile_link {
  
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
+
+/* Fixes (responsive fixes ONLY)
+   ================================================== */
+
+   .alert { -webkit-border-radius: 0; -moz-border-radius: 0; border-radius: 0; }
+
 
 /* Global Header
    ================================================== */

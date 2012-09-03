@@ -12,7 +12,7 @@
 	{{ Form::open("maps/edit_meta/".$map->id, "POST", array("class" => "form-horizontal nobg")) }}
 		{{ Form::token() }}
 		{{ Form::field("text", "title", "Title", array(Input::old("title", $map->title), array('class' => 'input-large')), array('error' => $errors->first('title'))) }}
-		{{ Form::field("textarea", "summary", "Summary", array(Input::old("summary", $map->summary), array('class' => 'input-xxlarge')), array("help" => "Short description about your map. (255 characters max)", 'error' => $errors->first('summary'))) }}
+		{{ Form::field("textarea", "summary", "Summary", array(Input::old("summary", $map->summary), array('class' => 'input-xxlarge')), array("help-inline" => "Short description about your map. (255 characters max)", 'error' => $errors->first('summary'))) }}
 		{{ Form::field("wysiwyg", "description", "Long Description", array(Input::old("description", $map->description), array('class' => 'input-xxlarge')), array('error' => $errors->first('description'))) }}
 		{{ Form::field("select", "maptype", "Type", array(Config::get("maps.types"), Input::old("maptype", $map->maptype), array('class' => 'input')), array('error' => $errors->first('maptype'))) }}
 		{{ Form::field("text", "version", "Version", array(Input::old("version", $map->version)), array("error" => $errors->first("error"))) }}
@@ -40,7 +40,7 @@
 	Invite additional authors:
 	{{ Form::open("maps/add_author/".$map->id) }}
 		{{ Form::token() }}
-		{{ Form::field("text", "username", "Username", array(Input::old("username")), array("help" => "MLM username", "error" => $errors->first("username"))) }}
+		{{ Form::field("text", "username", "Username", array(Input::old("username")), array("help-inline" => "MLM username", "error" => $errors->first("username"))) }}
 		{{ Form::actions(array(Form::submit("Invite", array("class" => "btn-primary"))))}}
 	{{ Form::close() }}
 <div class="titlebar clearfix">

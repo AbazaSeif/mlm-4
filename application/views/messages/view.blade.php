@@ -13,7 +13,7 @@
 	<h5>Add:</h5>
 	{{ Form::open("messages/add/{$thread->id}") }}
 		{{ Form::token() }}
-		{{ Form::field("text", "users", "Usernames", array(Input::old("users"), array('class' => 'input-large')), array('error' => $errors->first('users'), "help" => "Seperate multiple usernames with a comma")) }}
+		{{ Form::field("text", "users", "Usernames", array(Input::old("users"), array('class' => 'input-large')), array('error' => $errors->first('users'), "help-inline" => "Seperate multiple usernames with a comma")) }}
 		{{ Form::submit("Add people") }}
 	{{ Form::close() }}
 	@foreach($messages as $message)
@@ -31,7 +31,7 @@
 	<h4>Reply</h4>
 	{{ Form::open("messages/reply/{$thread->id}") }}
 		{{ Form::token() }}
-		{{ Form::field("textarea", "message", "Message", array(Input::old("message"), array('class' => 'input-xxlarge')), array('error' => $errors->first('message'), "help" => "Markdown supported")) }}
+		{{ Form::field("textarea", "message", "Message", array(Input::old("message"), array('class' => 'input-xxlarge')), array('error' => $errors->first('message'), "help-inline" => "Markdown supported")) }}
 		{{ Form::actions(Form::submit("Reply", array("class" => "btn-primary")))}}
 	{{ Form::close() }}
 	@endif
