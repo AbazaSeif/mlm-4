@@ -1018,63 +1018,94 @@ clear: both;
     position: relative;
 }
 
-#pagemenu ul {
-    padding:0;
+#pagemenu .nav {
+    margin: 0;
+    border:none;
 }
 
-#pagemenu ul li {
+#pagemenu .nav-tabs {
+    padding:0;
+    border-bottom: 0;
+}
+
+#pagemenu .nav-tabs > li {
     border-right: 1px solid #163858;
     margin: 0;
 }
 
-#pagemenu ul li a {
-    color: #fff
+#pagemenu .nav-tabs > li > a {
+    padding: 10px;
+    margin-right: 0;
+    min-width: 60px;
+    color: #fff;
+    text-shadow: 0 1px 3px black;
+    font-size: 16px;
+    text-transform: uppercase;
+    text-align: center;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+#pagemenu .nav-tabs > li > a:hover {
+    border-color: none;
 }
 
-#pagemenu .dropdown-menu a {
+#pagemenu .nav-tabs > .active > a,
+#pagemenu .nav-tabs > .active > a:hover {
+    color: #fff;
+    background-color: #E6E6E6;
+    border: 1px solid #d3d3d3;
+    border-bottom-color: transparent;
+    cursor: default;
+}
+
+#pagemenu .nav-tabs .dropdown-toggle .caret {
+  border-top-color: #fff;
+  border-bottom-color: #fff;
+}
+
+#pagemenu .nav-tabs .dropdown-toggle .caret:hover {
+  border-top-color: #bbb;
+  border-bottom-color: #bbb;
+}
+
+#pagemenu .dropdown-menu {
+    margin: 0;
+    left: auto;
+    border: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+.dropdown-menu.pull-right {
+    right: 0;
+    left: auto;
+}
+
+.dropdown-menu .divider {
+    *width: 100%;
+    height: 1px;
+    margin: 8px 1px;
+    *margin: -5px 0 5px;
+    overflow: hidden;
+    background-color: #e5e5e5;
+    border-bottom: 1px solid #ffffff;
+}
+
+.dropdown-menu a {
     color: #000;
     padding: 7px 15px;
     text-shadow: none;
     border-top: 1px solid #F4F4F4;
 }
 
-#pagemenu .nav {
-    margin: 0;
-    border:none;
-}
-
-/* Substyles */
-
-#pagemenu .nav-tabs a {
-    text-shadow: 0 1px 3px black;
-    font-size: 16px;
-    text-transform: uppercase;
-    padding: 10px;
-    margin-right: 0;
-    min-width: 60px;
-    text-align: center;
-}
-
-#pagemenu .nav-tabs li a:hover, #pagemenu .active {
-    background-color:#E6E6E6;
-}
-
-#pagemenu li.activated a {
-    color: #5a5a78;
-}
-
-#pagemenu li.activated a:hover, .active {
-    background-color: #102A67;
-    border-color: #102A67;
-}
-
-#pagemenu li.drop-activated a {
-    color: #5a5a5a;
-}
-
-#pagemenu li.drop-activated a:hover, .active {
-    background-color: transparent;
-    border-color: #E6E6E6;
+.dropdown-menu li > a:hover,
+.dropdown-menu .active > a,
+.dropdown-menu .active > a:hover {
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #0088cc;
 }
 
 #pagemenu li.rside{
@@ -1084,53 +1115,7 @@ clear: both;
 /* Profile page 
    ================================================== */
 
-/*
-.profile {
-    font-size: 62.5%;
-    line-height: 10%;
-}
-
-.profile img {
-    border: 0
-}
-
-.profile ul {
-    line-height: 120%;
-    margin: 0;
-    padding: 0;
-}
-
-.profile p {
-    font-size: 14px;
-    line-height: 1;
-    font-family: Arial, sans-serif;
-    color: #fff;
-    margin-bottom: 15px;
-}
-
-.profile #vcard h2 {
-    font-family: Georgia, Tahoma, sans-serif;
-    font-style: italic;
-    font-size: 1.4em;
-    letter-spacing: -0.04em;
-    line-height: 1.8em;
-}
-
-.profile h3 {
-    font-weight: normal;
-    font-size: 1.3em;
-    line-height: 1.6em;
-}
-
-.profile h4 {
-    color: #232323;
-    font-family: Arial, Tahoma, sans-serif;
-    font-size: 1.1em;
-    line-height: 1.3em;
-    margin: 10px 0px;
-}
-
-*/
+.profile {}
 
 .profile #vcard {
     display: block;
@@ -1279,9 +1264,6 @@ color: #434343;
 text-decoration: underline;
 }
 
-
-
-
 /* Account settings page 
    ================================================== */
 
@@ -1292,6 +1274,12 @@ text-decoration: underline;
     margin: 0;
     padding: 0;
     list-style:none;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.account-settings img {
+    width: 25px;
+    vertical-align: -7px;
 }
 
 .account-settings .openids form {
@@ -1301,23 +1289,21 @@ text-decoration: underline;
 /* Misc styles
    ================================================== */
 
- /* Form beautifiers/Fixes
+ /* Fixes
    ================================================== */   
-   
-/* Used in Admin user edit */
-form.nobg{ 
-    background: none;
-    padding-top: 0;
-}
-   
-/* Used globally */  
+       
 form.xpadding { 
-    padding:10px
+    padding:10px;
+    background: rgba(255, 255, 255, 0.2);
 }
 
-form.xpadding p {
-    margin-bottom: 10px;
-}    
+form.xpadding input { margin: 0 }
+
+form.xpadding p { margin-bottom: 10px }
+
+.help-block, .help-inline { color: #BBB }
+
+.btn { vertical-align: 0; }
 
 /* Error pages 
    ================================================== */
@@ -1338,6 +1324,10 @@ form.xpadding p {
     font-weight: 400;
     font-size: 2em;
     text-shadow: 0px 1px 3px #000;
+}
+
+#errorbox a {
+    color: #fff;
 }
 
 #errorbox form {

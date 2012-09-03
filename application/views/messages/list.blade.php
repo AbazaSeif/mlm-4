@@ -2,7 +2,11 @@
 
 @section("content")
 @include("user.menu")
-<div id="content">
+<div id="content" class="clearfix">
+<div id="page">
+<div class="titlebar">
+	<h2>Messages</h2>
+</div>
 	{{ HTML::link_to_action("messages@new", "Send message") }}
 	<ul>
 	@forelse($threads as $thread)
@@ -23,5 +27,8 @@
 	@empty
 		<li>No messages found</li>
 	@endforelse
+</div>
+</div>
+<div id="sidebar">
 </div>
 @endsection

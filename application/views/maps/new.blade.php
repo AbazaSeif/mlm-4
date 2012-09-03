@@ -14,7 +14,7 @@
 		{{ Form::field("text", "teamsize", "Recomended team size", array(Input::old("teamsize")), array("error" => $errors->first("teamsize"))) }}
 		<div class="control-group">
 			<div class="controls">
-				<p class="help-block">After adding the map you can add download links and images by editing the map.</p>
+				<p class="help-inline">After adding the map you can add download links and images by editing the map.</p>
 			</div>
 		</div>
 		{{ Form::actions(Form::submit("Submit", array("class" => "btn-primary"))) }}
