@@ -101,6 +101,9 @@ class Admin_News_Controller extends Admin_Controller {
 			$newsitem->content = IoC::resolve('HTMLPurifier')->purify($input["news_content"]);
 			$newsitem->published = $input["published"];
 			$changed = array_keys($newsitem->get_dirty());
+			if(in_array("published", $changed) && $newsitem->published) { // unpublished -> published
+				$newsitem->created_at = new DateTime;
+			}
 			if($newsitem->save()) {
 				Event::fire("admin", array("news", "edit", $newsitem->id, $changed));
 				Messages::add("success", "News item updated!");
