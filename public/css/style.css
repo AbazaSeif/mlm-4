@@ -1006,7 +1006,6 @@ clear: both;
     color: #414141;
     font-size: 13px;
     margin-left: 10px;
-    vertical-align: middle;
 }
 
 /* General styles for pages 
@@ -1073,6 +1072,8 @@ clear: both;
   border-bottom-color: #bbb;
 }
 
+#pagemenu .dropdown-toggle { cursor: pointer !important }
+
 #pagemenu .dropdown-menu {
     margin: 0;
     left: auto;
@@ -1082,25 +1083,13 @@ clear: both;
     border-radius: 0;
 }
 
-.dropdown-menu.pull-right {
+#pagemenu .dropdown-menu.pull-right {
     right: 0;
     left: auto;
 }
 
-.dropdown-menu .divider {
-    *width: 100%;
-    height: 1px;
-    margin: 8px 1px;
-    *margin: -5px 0 5px;
-    overflow: hidden;
-    background-color: #e5e5e5;
-    border-bottom: 1px solid #ffffff;
-}
-
-.dropdown-menu a {
-    color: #000;
+#pagemenu .dropdown-menu a {
     padding: 7px 15px;
-    text-shadow: none;
     border-top: 1px solid #F4F4F4;
 }
 
