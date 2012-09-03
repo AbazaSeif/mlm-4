@@ -1134,6 +1134,7 @@ clear: both;
 }
 
 .profile #vcard .picture a img {
+    max-width: 100%;
     padding: 7px;
     background: #fff;
     border: 1px solid #ccc;
