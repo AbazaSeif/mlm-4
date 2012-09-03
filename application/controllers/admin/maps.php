@@ -4,7 +4,7 @@ class Admin_Maps_Controller extends Admin_Controller {
 	
 	public function __construct() {
 		parent::__construct();
-		$this->filter("before", "csrf")->on("post")->only(array("edit", "delete"));
+		$this->filter("before", "csrf")->on("post")->only(array("edit", "publish", "feature", "official", "delete"));
 	}
 	// List maps
 	public function get_index() {
