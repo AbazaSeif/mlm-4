@@ -5,6 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>Major League Mining</title>
 <link rel="stylesheet" type="text/css" href="<?php echo URL::to_asset("css/style.css"); ?>" />
+<link rel="shortcut icon" href="{{ URL::to_asset("images/static/favicon.ico") }}" />
 </head>
 <body>
 	<div id="errorbox">
@@ -12,7 +13,7 @@
 	        <br>
 			<hr>
 			<br>
-			<?php $messages = array('Stronghold not found', 'There is no wool here', 'An Enderman stole this page', 'Chunk not found', 'Page blew up', "PC CHUNK LETTER"); ?>
+			<?php $messages = array('Stronghold not found', 'There is no wool here', 'Wool not found', 'An Enderman stole this page', 'Chunk not found', 'Page blew up', "PC CHUNK LETTER"); ?>
 			<h1>404: <?php echo array_rand(array_flip($messages)); ?></h1>
 			<br>
 			<hr>

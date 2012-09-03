@@ -5,6 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>Major League Mining</title>
 <link rel="stylesheet" type="text/css" href="<?php echo URL::to_asset("css/style.css"); ?>" />
+<link rel="shortcut icon" href="{{ URL::to_asset("images/static/favicon.ico") }}" />
 </head>
 <body>
 	<div id="errorbox">
