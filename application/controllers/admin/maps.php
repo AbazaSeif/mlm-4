@@ -77,7 +77,7 @@ class Admin_Maps_Controller extends Admin_Controller {
 		$map->published = true;
 		if($map->save()) {
 			Event::fire("admin", array("maps", "edit", $map->id, "published"));
-			Messages::add("success", "Map publish!");
+			Messages::add("success", "Map published!");
 			return Redirect::to_action("admin.maps");
 		} else {
 			Messages::add("error", "Failed to save");
