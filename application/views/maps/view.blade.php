@@ -9,20 +9,25 @@
 @endif
 @include("maps.menu")
 
-@if(Auth::check() && Auth::user()->admin & $map->featured == 0 or $map->official == 0)
+<ul class="nav nav-pills">
+@if(Auth::check() && Auth::user()->admin)
+<li>
 {{ HTML::link_to_action("maps@edit", "Edit", array($map->id)) }}
+</li>
+<li>
 {{ $map->featured ? HTML::link_to_action("admin@maps", "UnFeature Map", array("unfeature", $map->id)) : HTML::link_to_action("admin@maps", "Feature Map", array("feature", $map->id)) }}
+</li>
+<li>
 {{ $map->official ? HTML::link_to_action("admin@maps", "Make Un-Official", array("unofficial", $map->id)) : HTML::link_to_action("admin@maps", "Make Official", array("official", $map->id))}}
-
-@elseif(Auth::check() && Auth::user()->admin & $map->featured == 1 or $map->official == 1)
+</li>
+@elseif($is_owner)
+<li>
 {{ HTML::link_to_action("maps@edit", "Edit", array($map->id)) }}
+</li>
+@else
 
-{{ $map->featured ? HTML::link_to_action("admin@maps", "UnFeature Map", array("unfeature", $map->id)) : HTML::link_to_action("admin@maps", "Feature Map", array("feature", $map->id)) }}
-{{ $map->official ? HTML::link_to_action("admin@maps", "Make Un-Official", array("unofficial", $map->id)) : HTML::link_to_action("admin@maps", "Make Official", array("official", $map->id))}}
-
-@else($is_owner)
-{{ HTML::link_to_action("maps@edit", "Edit", array($map->id)) }}
 @endif
+</ul>
 
 <div id="content" class="maps">
 <div class="titlebar clearfix">

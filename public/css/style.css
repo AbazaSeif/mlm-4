@@ -7,12 +7,12 @@
 @import url(bootstrap.css);
 
 body {
-    background: #000 url(../images/static/bg.jpg) repeat top;
-    color: #FFF;
-    font-family: "Oswald","HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight: 400;
     margin: 0;
     padding: 0;
+    background: #000 url(../images/static/bg.jpg) repeat top;
+    font-family: "Oswald","Helvetica Neue", Helvetica, Arial, sans-serif;;
+    font-weight: normal;
+    color: #FFF;
 }
 
 ::selection {
@@ -31,13 +31,14 @@ body {
 .right {float: right}
 .center {text-align: center;}
 
-a { text-decoration: none; color: #0082B4; }
+a {
+  color: #0088cc;
+  text-decoration: none;
+}
 
-a:visited { }
-
-a:hover { color: #06e; }
-
-a:focus { outline: thin dotted; }
+a:hover {
+  color: #005580;
+}
 
 abbr[title] { border-bottom: 1px dotted; }
 
@@ -197,13 +198,13 @@ nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0
 }
 
 #menu li a {
+    display: block;
+    padding: 3px 20px;
     color: white;
     font-weight: 400;
     font-size: 20px;
     text-shadow: 0 1px 3px #000;
     text-transform: uppercase;
-    padding: 3px 20px;
-    display: block;
 }
 
 /* Global content and wrapping 
@@ -1352,107 +1353,24 @@ text-decoration: underline;
 /* WYSIWYG editor 
    ================================================== */
 
-.cleditorMain {
-    border: 1px solid #999;
-    padding: 0 1px 1px;
-    background-color: #fff;
-}
-
-.cleditorMain iframe {
-    border: none;
-    margin: 0;
-    padding: 0;
-}
-
-.cleditorMain textarea {
-    border: none;
-    no#fffspace: afterproperty;
-    margin: 0;
-    padding: 0;
-    overflow-y: scroll;
-    font: 10pt Arial;
-    resize: none;
-    outline: none /* webkit grip focus */;
-}
-
-.cleditorToolbar {
-    background: url('../images/admin/editor/toolbar.gif') repeat
-}
-
-.cleditorGroup {
-    float: left;
-    height: 26px;
-}
-
-.cleditorButton {
-    float: left;
-    width: 24px;
-    height: 24px;
-    margin: 1px 0 1px 0;
-    background: url('../images/admin/editor/buttons.gif');
-}
-
-.cleditorDisabled {
-    opacity: 0.3;
-    filter: alpha(opacity=30);
-}
-
-.cleditorDivider {
-    float: left;
-    width: 1px;
-    height: 23px;
-    margin: 1px 0 1px 0;
-    background: #CCC;
-}
-
-.cleditorPopup {
-    border: solid 1px #999;
-    background-color: #fff;
-    position: absolute;
-    font: 10pt Arial;
-    cursor: default;
-    z-index: 10000;
-}
-
-.cleditorList div {
-    padding: 2px 4px 2px 4px
-}
-
-.cleditorList p, .cleditorList h1, .cleditorList h2, .cleditorList h3, .cleditorList h4, .cleditorList h5, .cleditorList h6, .cleditorList font {
-    padding: 0;
-    margin: 0;
-    background-color: Transparent;
-   color:#000;
-}
-
-.cleditorColor {
-    width: 150px;
-    padding: 1px 0 0 1px;
-}
-
-.cleditorColor div {
-    float: left;
-    width: 14px;
-    height: 14px;
-    margin: 0 1px 1px 0;
-}
-
-.cleditorPrompt {
-    background-color: #F6F7F9;
-    padding: 4px;
-    font-size: 8.5pt;
-}
-
-.cleditorPrompt input, .cleditorPrompt textarea {
-    font: 8.5pt Arial
-}
-
-.cleditorMsg {
-    background-color: #FDFCEE;
-    width: 150px;
-    padding: 4px;
-    font-size: 8.5pt;
-}
+#wysiwyg-admin, #wysiwyg-user {border:none; margin:0; padding:0;}
+.tinyeditor {width:100%!important;border:1px solid #bbb; padding:0 1px 1px; font:12px Verdana,Arial}
+.tinyeditor select {margin: 0 0 0 5px;padding: 0;height: auto;width: auto;}
+.tinyeditor iframe {background:#fff;width:100%;border:none; overflow:hidden}
+.tinyeditor textarea {margin-bottom:0;width: 98%!important}
+.tinyeditor-header {height:31px; border-bottom:1px solid #bbb; background:url(../images/static/wysiwyg/header-bg.gif) repeat-x; padding-top:1px}
+.tinyeditor-header select {float:left; margin-top:5px}
+.tinyeditor-font {margin-left:12px}
+.tinyeditor-size {margin:0 3px}
+.tinyeditor-style {margin-right:12px !important}
+.tinyeditor-divider {float:left; width:1px; height:30px; background:#ccc}
+.tinyeditor-control {float:left; width:34px; height:30px; cursor:pointer; background-image:url(../images/static/wysiwyg/icons.png)}
+.tinyeditor-control:hover {background-color:#fff; background-position:30px 0}
+.tinyeditor-footer {height:32px; border-top:1px solid #bbb; background:#f5f5f5}
+.toggle {float:left; background:url(../images/static/wysiwyg/icons.png) -34px 2px no-repeat; padding:9px 13px 0 31px; height:23px; border-right:1px solid #ccc; cursor:pointer; color:#666}
+.toggle:hover {background-color:#fff}
+.resize {float:right; height:32px; width:32px; background:url(../images/static/wysiwyg/resize.gif) 15px 15px no-repeat; cursor:s-resize}
+#editor {cursor:text; margin:10px}
 
 /* Global comment style
    ================================================== */
@@ -1704,10 +1622,10 @@ form.xpadding p { margin-bottom: 10px }
 
 .btn { vertical-align: 0; margin-top: 0; }
 
-.alert { margin-bottom: 15px; }
+.alert { margin-bottom: 15px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;}
 
-.alert .close { top: -10px; right: -28px; }
-
+.alert p {margin:auto;font-family: "Oswald";font-weight: 400;}
+    
 /* Sprite galore! 
    ================================================== */
 
