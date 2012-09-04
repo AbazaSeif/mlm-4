@@ -14,94 +14,84 @@ class Maps_Controller extends Base_Controller {
 		$maps = Map::order_by("created_at", "desc")->paginate(10);
 		return View::make("maps.home", array("title" => "Maps", "javascript" => array("maps", "list"), "maps" => $maps));
 	}
-    public function get_filter() {
-            //retrieve GET info
-            $order_column = strtolower(Input::get('order'));
-            $category = strtolower(Input::get('category'));
-            $featured = strtolower(Input::get('featured'));
-            $official = strtolower(Input::get('official'));
-            $own = strtolower(Input::get('ownmaps'));
-            $limit = strtolower(Input::get('limit', 0));
+	public function get_filter() {
+		//retrieve GET info
+		$order_column = strtolower(Input::get('order'));
+		$category = strtolower(Input::get('category'));
+		$featured = strtolower(Input::get('featured'));
+		$official = strtolower(Input::get('official'));
+		$own = strtolower(Input::get('ownmaps'));
+		$limit = intval(Input::get('limit', null)) ?: 10;
 
-            //start to make $query
-            $query = DB::table('maps');
-            $query->left_join('map_user', 'maps.id', '=', 'map_user.map_id');
-            
-            //orderby
-            switch ($order_column)
-            {
-                case "newest":
-                    $query->order_by("maps.created_at", "desc");
-                    break;
-                
-                case "oldest":
-                    $query->order_by("maps.created_at", "asc");
-                    break;
-                
-                case "best":
-                    $query->order_by("maps.avg_rating", "desc");
-                    break;
-                
-                case "worst":
-                    $query->order_by("maps.avg_rating", "asc");
-                    break;
-                
-                default:
-                    $query->order_by("maps.created_at", "desc");
-                    break;
-            }
-            
-            //categories
-            switch ($category)
-            {
-                case "rtw":
-                case "ctq":
-                case "dtc":
-                case "att":
-                case "bed":
-                case "oth":
-                    $query->where("maps.maptype", '=', $category);
-                    break;
-                
-                case "all":
-                default:
-                    $category = "all";
-                    break;
-            }
-            
-            //$featured
-            if ($featured == "true")
-            {
-                $query->where("maps.featured", '=', 1);
-            }
-            
-            //$official
-            if ($official == "true")
-            {
-                $query->where("maps.official", '=', 1);
-            }
-            
-            //$own
-            if ($own == "true")
-            {
-                if (Auth::check())
-                {
-                    $query->where('map_user.user_id', '=', Auth::$user()->id);
-                    $query->where('map_user.confirmed', '=', '1');
-                }
-            }
-            
-            //$limit
-            if ($limit != 0)
-            {
-                $limit = strval($limit);
-                $query->take(10);
-            }
-            
-            //run $query
-            $maps = $query->paginate(10);
-	return View::make("maps.home", array("title" => "Filtered Maps", "javascript" => array("maps", "list"), "maps" => $maps));
-    }
+		//start to make $query
+		$query = Map::with("users");
+
+		// own maps
+		if($own && Auth::user()) {
+			$query = Auth::user()->maps()->where("confirmed", "=", 1)->with("confirmed");
+		} else {
+			// Only allow seeing published maps
+			$query = $query->where_published(1);
+		}
+		
+		//orderby
+		switch ($order_column)
+		{
+			case "newest":
+				$query = $query->order_by("maps.created_at", "desc");
+				break;
+			
+			case "oldest":
+				$query = $query->order_by("maps.created_at", "asc");
+				break;
+			
+			case "best":
+				$query = $query->order_by("maps.avg_rating", "desc");
+				break;
+			
+			case "worst":
+				$query = $query->order_by("maps.avg_rating", "asc");
+				break;
+			
+			default:
+				$query = $query->order_by("maps.created_at", "desc");
+				break;
+		}
+		
+		//categories
+		switch ($category)
+		{
+			case "rtw":
+			case "ctq":
+			case "dtc":
+			case "att":
+			case "bed":
+			case "oth":
+				$query = $query->where("maps.maptype", '=', $category);
+				break;
+			
+			case "all":
+			default:
+				$category = "all";
+				break;
+		}
+		
+		//$featured
+		if ($featured == "true")
+		{
+			$query = $query->where("maps.featured", '=', 1);
+		}
+		
+		//$official
+		if ($official == "true")
+		{
+			$query = $query->where("maps.official", '=', 1);
+		}
+		
+		//run $query
+		$maps = $query->paginate($limit);
+		return View::make("maps.home", array("title" => "Filtered Maps", "javascript" => array("maps", "list"), "maps" => $maps));
+	}
 	public function get_new() {
 		return View::make("maps.new", array("javascript" => array("maps", "edit")));
 	}
