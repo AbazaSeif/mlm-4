@@ -144,7 +144,7 @@ class Maps_Controller extends Base_Controller {
 			}
 		}
 		if(!$map->published && (Auth::guest() || $is_owner === false && !Auth::user()->admin)) {
-			return Response::error("404"); // Not yet published
+			return Response::error("403"); // Not yet published
 		}
 		$authors = $map->users()->where("confirmed", "=", 1)->with("confirmed")->get();
 		return View::make("maps.view", array(
@@ -332,7 +332,7 @@ EOT;
 			return Response::error('404');
 		}
 		if(!$map->is_owner(Auth::user())) { // User is confirmed to be logged in
-			return Response::error("404"); // Not yet published
+			return Response::error("403"); // Not yet published
 		}
 		if($linkid) { // Editing link
 			$link = $map->links()->where_id($linkid)->first();
@@ -376,7 +376,7 @@ EOT;
 			return Response::error('404');
 		}
 		if(!$map->is_owner(Auth::user())) { // User is confirmed to be logged in
-			return Response::error("404"); // Not yet published
+			return Response::error("403"); // Not yet published
 		}
 		$link = $map->links()->where_id($linkid)->first();
 		if(!$link) {
@@ -391,7 +391,7 @@ EOT;
 			return Response::error('404');
 		}
 		if(!$map->is_owner(Auth::user())) { // User is confirmed to be logged in
-			return Response::error("404"); // Not yet published
+			return Response::error("403"); // Not yet published
 		}
 		$link = $map->links()->where_id($linkid)->first();
 		if(!$link) {
@@ -412,7 +412,7 @@ EOT;
 			return Response::error('404');
 		}
 		if(!$map->is_owner(Auth::user())) { // User is confirmed to be logged in
-			return Response::error("404"); // Not yet published
+			return Response::error("403"); // Not yet published
 		}
 		
 		$input = Input::all();
@@ -441,7 +441,7 @@ EOT;
 			return Response::error('404');
 		}
 		if(!$map->is_owner(Auth::user())) { // User is confirmed to be logged in
-			return Response::error("404"); // Not yet published
+			return Response::error("403"); // Not yet published
 		}
 		$image = $map->images()->where_image_id($imageid)->first();
 		if(!$image) {
@@ -461,7 +461,7 @@ EOT;
 			return Response::error('404');
 		}
 		if(!$map->is_owner(Auth::user())) { // User is confirmed to be logged in
-			return Response::error("404"); // Not yet published
+			return Response::error("403"); // Not yet published
 		}
 		$image = $map->images()->where_image_id($imageid)->first();
 		if(!$image) {
@@ -476,7 +476,7 @@ EOT;
 			return Response::error('404');
 		}
 		if(!$map->is_owner(Auth::user())) { // User is confirmed to be logged in
-			return Response::error("404"); // Not yet published
+			return Response::error("403"); // Not yet published
 		}
 		$image = $map->images()->where_image_id($imageid)->first();
 		if(!$image) {

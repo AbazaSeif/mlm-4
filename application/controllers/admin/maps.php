@@ -66,7 +66,7 @@ class Admin_Maps_Controller extends Admin_Controller {
 			Messages::add("error", "Map not found");
 			return Redirect::to_action("admin.maps");
 		}
-		return View::make("admin.maps.publish", array("title" => "Publish ".e($map->title)." | Maps | Admin", "map" => $map));
+		return View::make("admin.maps.publish", array("title" => "Approve ".e($map->title)." | Maps | Admin", "map" => $map));
 	}
 	public function post_publish($id) {
 		$map = Map::find($id);
@@ -76,8 +76,8 @@ class Admin_Maps_Controller extends Admin_Controller {
 		}
 		$map->published = true;
 		if($map->save()) {
-			Event::fire("admin", array("maps", "edit", $map->id, "published"));
-			Messages::add("success", "Map published!");
+			Event::fire("admin", array("maps", "edit", $map->id, "Approved"));
+			Messages::add("success", "Map Approved!");
 			return Redirect::to_action("admin.maps");
 		} else {
 			Messages::add("error", "Failed to save");
@@ -100,8 +100,8 @@ class Admin_Maps_Controller extends Admin_Controller {
 		}
 		$map->published = false;
 		if($map->save()) {
-			Event::fire("admin", array("maps", "edit", $map->id, "unpublished"));
-			Messages::add("success", "Map unpublished!");
+			Event::fire("admin", array("maps", "edit", $map->id, "Approval pending"));
+			Messages::add("success", "Map revoked!");
 			return Redirect::to_action("admin.maps");
 		} else {
 			Messages::add("error", "Failed to save");
