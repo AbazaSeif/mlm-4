@@ -10,13 +10,9 @@
 <body>
 	<div id="errorbox">
 	<a href="/"><img src="<?php echo URL::to_asset("images/static/logo.png") ?>" /></a>
-	        <br>
 			<hr>
-			<br>
 			<h1>500: Internal Server Error</h1>
-			<br>
 			<hr>
-			<br>
 			<p>
 				Something got jinxed in our side.
 				<br> 
