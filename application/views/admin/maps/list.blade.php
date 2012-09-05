@@ -6,7 +6,7 @@
 	<div class="titlebar clearfix">
 		<h2>Maps</h2>
 	</div>
-	<table id="sortable" class="table table-condensed">
+	<table id="sortable" class="table table-bordered table-hover">
 		<thead>
 			<tr>
 				<th>ID</th>
@@ -24,9 +24,9 @@
 				<td>{{ date("F j, Y h:i e", strtotime($item->created_at)) }}</td>
 				<td>
 					@if($item->published)
-						<i class="icon-eye-open icon-white" title="Published"></i>
+						<i class="icon-eye-open" title="Published"></i>
 					@else
-						<i class="icon-eye-close icon-white" title="Not Published"></i>
+						<i class="icon-eye-close" title="Not Published"></i>
 					@endif
 				</td>
 				<td>

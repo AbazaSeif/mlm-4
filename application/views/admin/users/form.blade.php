@@ -7,7 +7,7 @@
 <div class="titlebar clearfix">
 	<h2>Editing user <b>{{ Auth::user()->username }}</b></h2>
 </div>
-{{ Form::open(null , 'POST', array('class' => 'form-horizontal nobg')) }} 
+{{ Form::open(null , 'POST', array('class' => 'form-horizontal ')) }} 
 	<fieldset>
 		{{ Form::token() }}
 <div class="titlebar clearfix">
