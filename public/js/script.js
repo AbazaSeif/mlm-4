@@ -1,26 +1,27 @@
 MLM = {
 	common: {
 		init: function () {
-			// On all pages
 			$("#shownav").click(function () {
-			$("#menu").slideToggle("slow").show();
-			});
+			$("#menu").slideToggle("slow").show(); });
 			$("#sortable").tablesorter();
-		var editor = new TINY.editor.edit('editor', {
-			id: 'wysiwyg',
-			cssclass: 'tinyeditor',
-			controlclass: 'tinyeditor-control',
-			rowclass: 'tinyeditor-header',
-			dividerclass: 'tinyeditor-divider',
-			controls: ['bold', 'italic', 'underline', 'strikethrough', '|', 'subscript', 'superscript', '|', 'orderedlist', 'unorderedlist', '|', 'outdent', 'indent', '|', 'leftalign', 'centeralign', 'rightalign', 'blockjustify', '|', 'unformat', '|', 'undo', 'redo', 'n', 'font', 'size', 'style', '|', 'image', 'hr', 'link', 'unlink'],
-			footer: true,
-			fonts: ['Verdana','Arial','Georgia','Trebuchet MS'],
-			xhtml: true,
-			bodyid: 'wysiwyg-editor',
-			footerclass: 'tinyeditor-footer',
-			toggle: {text: 'source', activetext: 'output', cssclass: 'toggle'},
-			resize: {cssclass: 'resize'}
-		});
+			$('.dropdown-toggle').dropdown();
+			
+new TINY.editor.edit('editor', {
+	id: 'wysiwyg',
+	cssclass: 'tinyeditor',
+	controlclass: 'tinyeditor-control',
+	rowclass: 'tinyeditor-header',
+	dividerclass: 'tinyeditor-divider',
+	controls: ['bold', 'italic', 'underline', 'strikethrough', '|', 'subscript', 'superscript', '|', 'orderedlist', 'unorderedlist', '|', 'outdent', 'indent', '|', 'leftalign', 'centeralign', 'rightalign', 'blockjustify', '|', 'unformat', '|', 'undo', 'redo', 'n', 'font', 'size', 'style', '|', 'image', 'hr', 'link', 'unlink'],
+	footer: true,
+	fonts: ['Verdana','Arial','Georgia','Trebuchet MS'],
+	xhtml: true,
+	bodyid: 'wysiwyg-editor',
+	footerclass: 'tinyeditor-footer',
+	toggle: {text: 'source', activetext: 'output', cssclass: 'toggle'},
+	resize: {cssclass: 'resize'}
+});
+
 		}
 	},
 	home: {
