@@ -3,7 +3,7 @@
 @section("content")
 @include("maps.menu")
 <div id="content">
-	{{ Form::open("maps/new", "POST", array("class" => "form-horizontal nobg")) }}
+	{{ Form::open("maps/new", "POST", array("class" => "form-horizontal ")) }}
 		{{ Form::token() }}
 		{{ Form::field("text", "title", "Title", array(Input::old("title"), array('class' => 'input-large')), array('error' => $errors->first('title'))) }}
 		{{ Form::field("textarea", "summary", "Summary", array(Input::old("summary"), array("rows" => "15", 'id' => 'wysiwyg')), array("help-inline" => "Short description about your map. (255 characters max)", 'error' => $errors->first('summary'))) }}

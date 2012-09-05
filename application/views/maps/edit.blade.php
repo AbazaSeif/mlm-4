@@ -9,10 +9,10 @@
 <div class="titlebar clearfix">
 	<h3>Map meta</h3>
 </div>
-	{{ Form::open("maps/edit_meta/".$map->id, "POST", array("class" => "form-horizontal nobg")) }}
+	{{ Form::open("maps/edit_meta/".$map->id, "POST", array("class" => "form-horizontal ")) }}
 		{{ Form::token() }}
 		{{ Form::field("text", "title", "Title", array(Input::old("title", $map->title), array('class' => 'input-large')), array('error' => $errors->first('title'))) }}
-		{{ Form::field("textarea", "summary", "Summary", array(Input::old("summary", $map->summary), array("rows" => "15", 'id' => 'wysiwyg')), array("help-inline" => "Short description about your map. (255 characters max)", 'error' => $errors->first('summary'))) }}
+		{{ Form::field("textarea", "summary", "Summary", array(Input::old("summary", $map->summary), array("rows" => "15", 'class' => 'xlarge')), array("help-inline" => "Short description about your map. (255 characters max)", 'error' => $errors->first('summary'))) }}
 		{{ Form::field("wysiwyg", "description", "Long Description", array(Input::old("description", $map->description), array("rows" => "15", 'id' => 'wysiwyg')), array('error' => $errors->first('description'))) }}
 		{{ Form::field("select", "maptype", "Type", array(Config::get("maps.types"), Input::old("maptype", $map->maptype), array('class' => 'input')), array('error' => $errors->first('maptype'))) }}
 		{{ Form::field("text", "version", "Version", array(Input::old("version", $map->version)), array("error" => $errors->first("error"))) }}

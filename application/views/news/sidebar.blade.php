@@ -1,6 +1,6 @@
 <aside id="sidebar">
 	<div id="search">
-		<form method="get" action="#" class="nobg">
+		<form method="get" action="#" class="">
 				<div class="input-append">
                 <input class="sbar" size="16" type="text"><button class="btn btn-primary" type="button"><i class="icon-search icon-white"></i></button>
               </div>

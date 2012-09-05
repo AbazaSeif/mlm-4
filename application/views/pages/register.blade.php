@@ -7,7 +7,7 @@
 	<h1>Welcome To Major League Minining!</h1>
 	<h3>Please take a few seconds to setup your profile</h3>
 </div>
-		{{ Form::open("account/register", "POST", array('class' => 'form-horizontal nobg')) }}
+		{{ Form::open("account/register", "POST", array('class' => 'form-horizontal ')) }}
 		@if (isset($errors))
 			@foreach ($errors->all('<p>:message</p>') as $error)
 				{{ $error }}
