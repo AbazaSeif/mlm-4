@@ -11,16 +11,12 @@
 
 <ul class="nav nav-pills">
 @if(Auth::check() && Auth::user()->admin)
-<li>
 <li class="disabled"><a href="#">Actions:</a></li>
-</li>
-<li>
 <li>
 {{ HTML::link_to_action("maps@edit", "Edit Map", array($map->id)) }}
 </li>
 <li>
 {{ $map->featured ? HTML::link_to_action("admin@maps", "Revoke Map", array("unpublish", $map->id)) : HTML::link_to_action("admin@maps", "Approve Map", array("publish", $map->id)) }}
-</li>
 </li>
 <li>
 {{ $map->featured ? HTML::link_to_action("admin@maps", "Unfeature Map", array("unfeature", $map->id)) : HTML::link_to_action("admin@maps", "Feature Map", array("feature", $map->id)) }}
@@ -29,9 +25,7 @@
 {{ $map->official ? HTML::link_to_action("admin@maps", "Make Map Unofficial", array("unofficial", $map->id)) : HTML::link_to_action("admin@maps", "Make Map Official", array("official", $map->id))}}
 </li>
 @elseif($is_owner)
-<li>
 <li class="disabled"><a href="#">Actions:</a></li>
-</li>
 <li>
 {{ HTML::link_to_action("maps@edit", "Edit Map", array($map->id)) }}
 </li>

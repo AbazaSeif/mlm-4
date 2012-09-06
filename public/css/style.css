@@ -1472,11 +1472,6 @@ a.profile_link {
 /* Multiviwer 3000 (Patent pending...not)
    ================================================== */
 
-#multiview {
-    padding: 0;
-    margin: 0;
-}
-
 #multiview-controler {
 
 }
@@ -1486,11 +1481,17 @@ a.profile_link {
     list-style: none;
 }
 
+#multiview {
+    padding: 0;
+    margin: 0;
+}
+
 #multiview ul {
     padding: 0;
     margin: 0;
     list-style: none;
 }
+
 
 #multiview ul li {
     display: inline-block;
@@ -1505,7 +1506,11 @@ a.profile_link {
     box-shadow: 0 8px 6px 0px #000;
 }
 
-#multiview p {word-wrap: break-word;}
+#multiview a {
+    color: #474747;
+}
+
+#multiview p {color: #474747;word-wrap: break-word;}
 
 #multiview img {width: 100%}
 
@@ -1537,9 +1542,9 @@ a.profile_link {
 
 /* List view */
 
-#multiview ul.list li {
-    width: auto;
-}
+#multiview ul.list li { display: block; margin: 0 0 20px 0;width: auto }
+
+#multiview .list li:first-child { margin-top: 0 }
 
 #multiview .list .mv-image {
     float: left;
@@ -1559,8 +1564,7 @@ a.profile_link {
 }
 
 #multiview .list .mv-details h4{
-    line-height: 1;
-    margin-bottom: 10px;
+    margin: 0 0 10px 0;
     color: #474747;
     font-size: 17px;
     text-shadow: 0px 1px 1px white;
@@ -1570,7 +1574,9 @@ a.profile_link {
 
 /* Big View */
 
+#multiview .big li { display: block; margin: 25px auto; }
 
+#multiview .big li:first-child { margin-top: 0 }
 
 /* Fixes (Bootstrap overwrites and other stuff)
    ================================================== */  

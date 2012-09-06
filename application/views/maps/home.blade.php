@@ -15,7 +15,7 @@
 @foreach ($maps->results as $map)
 	<li>
 		<div class="mv-image">
-			<img src="http://placehold.it/284x160&text=Map+image" alt="map image"/>
+			<img src="http://placekitten.com/704/480" alt="map image"/>
 		</div>
 		<div class="mv-details">
 			<h4>{{ HTML::link_to_action("maps@view", $map->title, array($map->id, $map->slug)) }}</h4>

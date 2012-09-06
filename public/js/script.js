@@ -5,7 +5,7 @@ MLM = {
 			$("#menu").slideToggle("slow").show(); });
 			$("#sortable").tablesorter();
 			$('.dropdown-toggle').dropdown();
-			
+		/*	
 new TINY.editor.edit('editor', {
 	id: 'wysiwyg',
 	cssclass: 'tinyeditor',
@@ -21,7 +21,7 @@ new TINY.editor.edit('editor', {
 	toggle: {text: 'source', activetext: 'output', cssclass: 'toggle'},
 	resize: {cssclass: 'resize'}
 });
-
+*/
 		}
 	},
 	home: {
@@ -162,7 +162,7 @@ new TINY.editor.edit('editor', {
 				if($("#multiview>ul").hasClass(newView)) {
 					return true;
 				}
-				$("#multiview>ul").removeClass().addClass(newView)
+				$("#multiview>ul").hide().removeClass().fadeIn(300).addClass(newView)
 				$.cookie("multiview", newView, {expires: 365})
 			});
 		}
