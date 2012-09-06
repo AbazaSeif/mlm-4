@@ -6,6 +6,7 @@
 	<div class="titlebar clearfix">
 		<h2>Maps</h2>
 	</div>
+	<a href="{{ URL::to_action("maps@new") }}" class="btn" style="margin-bottom:15px"><i class="icon-plus"></i> New Map</a>
 	<table id="sortable" class="table table-bordered table-hover">
 		<thead>
 			<tr>
