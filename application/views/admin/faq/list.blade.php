@@ -7,7 +7,7 @@
 		<h2>FAQ</h2>
 	</div>
 	<a href="{{ URL::to_action("admin.faq@new") }}" class="btn" style="margin-bottom:15px"><i class="icon-plus"></i> New Question</a>
-	<table id="sortable" class="table table-condensed">
+	<table id="sortable" class="table table-bordered table-hover">
 		<thead>
 			<tr>
 				<th>ID</th>
@@ -16,8 +16,8 @@
 				<th>&nbsp;</th>
 			</tr>
 		</thead>
-		@foreach ($faq as $item)
 		<tbody>
+			@foreach ($faq as $item)
 			<tr>
 				<td>{{ $item->id }}</td>
 				<td><A HREF={{ "faq#".$item->question}}>{{ $item->question }}</A></td>
@@ -32,8 +32,8 @@
 						</ul>
 				</div>
 				</td>
+			@endforeach
 			</tr>
-		@endforeach
 		</tbody>
 	</table>
 </div>

@@ -3,24 +3,24 @@
 @section('content')
 	<style>body{background-attachment:scroll;}header,footer{display:none}#content{background:none;box-shadow:none;}</style>
 	<div id="content" class="center">
-	<a href="/"><img src="{{ URL::to_asset("images/static/logo.png") }}" /></a>
 		<div id="login">
+			<a href="/"><img src="{{ URL::to_asset("images/static/logo.png") }}" /></a>
 			{{ Form::open("account/login" , 'POST', array('class' => 'openid-form')) }} 
 				<ul class="providers">
 					<li class="openid" style="padding:0;"></li>
-					<li class="direct" title="Login with Google"><img src="{{ URL::to_asset("images/login/google.png") }}" alt="icon" />
+					<li class="direct" title="Login with Google Account"><img src="{{ URL::to_asset("images/login/google.png") }}" alt="icon" />
 						<span>https://www.google.com/accounts/o8/id</span>
 					</li>
-					<li class="direct" title="Login with your Steam ID"><img src="{{ URL::to_asset("images/login/steam.png") }}" alt="icon" />
+					<li class="direct" title="Login with Steam ID"><img src="{{ URL::to_asset("images/login/steam.png") }}" alt="icon" />
 						<span>http://steamcommunity.com/openid</span>
 					</li>
-					<li class="direct" title="Login with Wordpress&#13;Note: You must be logged in to Wordpress.com before using this method"><img src="{{ URL::to_asset("images/login/wordpress.png") }}" alt="icon" />
+					<li class="direct" title="Login with Wordpress.com&#13;Note: You must be logged in to Wordpress.com in order to use this method"><img src="{{ URL::to_asset("images/login/wordpress.png") }}" alt="icon" />
 						<span><strong>http://wordpress.com</strong></span>
 					</li> 
 					<li class="direct" title="Login with Yahoo"><img src="{{ URL::to_asset("images/login/yahoo.png") }}" alt="icon" />
 							<span>http://yahoo.com/</span>
 					</li>
-					<li class="direct" title="Login with your AOL screen name"><img src="{{ URL::to_asset("images/login/aol.png") }}" alt="icon" />
+					<li class="direct" title="Login with AOL"><img src="{{ URL::to_asset("images/login/aol.png") }}" alt="icon" />
 						<span>http://openid.aol.com/</span>
 					</li>
 				</ul>

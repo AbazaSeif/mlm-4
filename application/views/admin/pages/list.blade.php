@@ -7,7 +7,7 @@
 		<h2>Pages</h2>
 	</div>
 	<a href="{{ URL::to_action("admin.pages@new") }}" class="btn" style="margin-bottom:15px"><i class="icon-plus"></i> New Page</a>
-	<table id="sortable" class="table table-condensed">
+	<table id="sortable" class="table table-bordered table-hover">
 		<thead>
 			<tr>
 				<th>ID</th>

@@ -1,20 +1,20 @@
 <aside id="sidebar">
-<ul>
-<li>
-	<div id="search" >
-		<form method="get" action="#" class="nobg">
+	<div id="search">
+		<form method="get" action="#" class="">
 				<div class="input-append">
                 <input class="sbar" size="16" type="text"><button class="btn btn-primary" type="button"><i class="icon-search icon-white"></i></button>
               </div>
 		</form>
 	</div>
-</li>
-<li>
+<div class="widget">
 	<header><h1>Sidebar Header</h1></header>
+	<div class="content">
 	<p>Mauris vitae nisl nec metus placerat perdiet est. Phasellus dapibus semper consectetuer hendrerit.</p>
-</li>
-<li>
+	</div>
+	</div>
+<div class="widget">
 	<header><h1>Categories</h1></header>
+	<div class="content">
 	<ul>
 		<li><a href="#">Aliquam libero</a></li>
 		<li><a href="#">Consectetuer adipiscing elit</a></li>
@@ -23,9 +23,11 @@
 		<li><a href="#">Urnanet non molestie semper</a></li>
 		<li><a href="#">Proin gravida orci porttitor</a></li>
 	</ul>
-</li>
-<li>
+	</div>
+	</div>
+<div class="widget">
 	<header><h1>Archives</h1></header>
+	<div class="content">
 	<ul>
 		<li><a href="#">Aliquam libero</a></li>
 		<li><a href="#">Consectetuer adipiscing elit</a></li>
@@ -34,9 +36,11 @@
 		<li><a href="#">Urnanet non molestie semper</a></li>
 		<li><a href="#">Proin gravida orci porttitor</a></li>
 	</ul>
-</li>
-<li>
+	</div>
+	</div>
+<div class="widget">
 	<header><h1>Archives</h1></header>
+	<div class="content">
 	<ul>
 		<li><a href="#">Aliquam libero</a></li>
 		<li><a href="#">Consectetuer adipiscing elit</a></li>
@@ -45,6 +49,7 @@
 		<li><a href="#">Urnanet non molestie semper</a></li>
 		<li><a href="#">Proin gravida orci porttitor</a></li>
 	</ul>
-</li>
+	</div>
+	</div>
 </ul>
 </aside>

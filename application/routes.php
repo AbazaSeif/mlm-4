@@ -70,7 +70,8 @@ Route::get("user/(:any?)", function($username = null) {
 
 // Admin home
 Route::get("admin", array('before' => 'admin', function() {
-	return View::make("admin.home", array("title" => "Admin"));
+	$log = Adminlog::with("user")->order_by("created_at", "desc")->paginate(30);
+	return View::make("admin.home", array("title" => "Admin", "log" => $log));
 }));
 
 // Admin - Migrating from the website

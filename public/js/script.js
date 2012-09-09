@@ -1,12 +1,27 @@
 MLM = {
 	common: {
 		init: function () {
-			// On all pages
 			$("#shownav").click(function () {
-			$("#menu").slideToggle("slow").show();
-			});
-			$("textarea[data-wysiwyg]").cleditor();
+			$("#menu").slideToggle("slow").show(); });
 			$("#sortable").tablesorter();
+			$('.dropdown-toggle').dropdown();
+		/*	
+new TINY.editor.edit('editor', {
+	id: 'wysiwyg',
+	cssclass: 'tinyeditor',
+	controlclass: 'tinyeditor-control',
+	rowclass: 'tinyeditor-header',
+	dividerclass: 'tinyeditor-divider',
+	controls: ['bold', 'italic', 'underline', 'strikethrough', '|', 'subscript', 'superscript', '|', 'orderedlist', 'unorderedlist', '|', 'outdent', 'indent', '|', 'leftalign', 'centeralign', 'rightalign', 'blockjustify', '|', 'unformat', '|', 'undo', 'redo', 'n', 'font', 'size', 'style', '|', 'image', 'hr', 'link', 'unlink'],
+	footer: true,
+	fonts: ['Verdana','Arial','Georgia','Trebuchet MS'],
+	xhtml: true,
+	bodyid: 'wysiwyg-editor',
+	footerclass: 'tinyeditor-footer',
+	toggle: {text: 'source', activetext: 'output', cssclass: 'toggle'},
+	resize: {cssclass: 'resize'}
+});
+*/
 		}
 	},
 	home: {
@@ -147,7 +162,7 @@ MLM = {
 				if($("#multiview>ul").hasClass(newView)) {
 					return true;
 				}
-				$("#multiview>ul").removeClass().addClass(newView)
+				$("#multiview>ul").hide().removeClass().fadeIn(300).addClass(newView)
 				$.cookie("multiview", newView, {expires: 365})
 			});
 		}
@@ -176,4 +191,3 @@ UTIL = {
 };
 
 $(document).ready(UTIL.init);
-

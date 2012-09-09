@@ -8,21 +8,34 @@
 	</div>
 @endif
 @include("maps.menu")
-@if($is_owner)
-{{ HTML::link_to_action("maps@edit", "Edit", array($map->id)) }}
-&nbsp&nbsp
-@endif
+
+<ul class="nav nav-pills">
 @if(Auth::check() && Auth::user()->admin)
-{{ $map->featured ? HTML::link_to_action("admin@maps", "UnFeature Map", array("unfeature", $map->id)) : HTML::link_to_action("admin@maps", "Feature Map", array("feature", $map->id)) }}
-&nbsp&nbsp
+<li class="disabled"><a href="#">Actions:</a></li>
+<li>
+{{ HTML::link_to_action("maps@edit", "Edit Map", array($map->id)) }}
+</li>
+<li>
+{{ $map->featured ? HTML::link_to_action("admin@maps", "Revoke Map", array("unpublish", $map->id)) : HTML::link_to_action("admin@maps", "Approve Map", array("publish", $map->id)) }}
+</li>
+<li>
+{{ $map->featured ? HTML::link_to_action("admin@maps", "Unfeature Map", array("unfeature", $map->id)) : HTML::link_to_action("admin@maps", "Feature Map", array("feature", $map->id)) }}
+</li>
+<li>
+{{ $map->official ? HTML::link_to_action("admin@maps", "Make Map Unofficial", array("unofficial", $map->id)) : HTML::link_to_action("admin@maps", "Make Map Official", array("official", $map->id))}}
+</li>
+@elseif($is_owner)
+<li class="disabled"><a href="#">Actions:</a></li>
+<li>
+{{ HTML::link_to_action("maps@edit", "Edit Map", array($map->id)) }}
+</li>
+@else
 @endif
-@if(Auth::check() && Auth::user()->admin)
-{{ $map->official ? HTML::link_to_action("admin@maps", "Make Un-Official", array("unofficial", $map->id)) : HTML::link_to_action("admin@maps", "Make Official", array("official", $map->id))}}
-&nbsp&nbsp
-@endif
+</ul>
+
 <div id="content" class="maps">
 <div class="titlebar clearfix">
-	<h1>Map Details for {{ e($map->title) }}</h1>
+	<h1>{{ e($map->title) }} {{ e($map->version) }}</h1>
 </div>
 	@if($is_owner === 0)
 	<div class="alert">

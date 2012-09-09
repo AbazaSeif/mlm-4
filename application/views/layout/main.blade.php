@@ -54,9 +54,9 @@
 			</div>
 			<div id="loginout">
 				@if (Auth::user() && Auth::user()->admin)
-				{{ HTML::link_to_action('account@logout', "Logout") }} &bull; {{ HTML::link('admin', 'Admin panel'); }} &bull; <a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/18.png" alt="avatar" /></a>
+				{{ HTML::link_to_action('account@logout', "Logout") }} &bull; {{ HTML::link('admin', 'Admin panel'); }} &bull; <a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/150.png" alt="avatar" /></a>
 				@elseif (Auth::check())
-				{{ HTML::link_to_action('account@logout', "Logout") }} &bull; {{ HTML::link('account', 'Edit Account'); }} &bull; <a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/18.png" alt="avatar" /></a>
+				{{ HTML::link_to_action('account@logout', "Logout") }} &bull; {{ HTML::link('account', 'Edit Account'); }} &bull; <a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/150.png" alt="avatar" /></a>
 				@else
 				{{ HTML::link_to_action('account@login', "Login &bull; Create account") }}
 				@endif
@@ -74,7 +74,7 @@
 				{{ HTML::link('admin', 'Admin panel'); }}
 			</li>
 			<li>
-				<a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/25.png" alt="avatar" /></a>
+				<a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/150.png" alt="avatar" /></a>
 			</li>
 				@elseif (Auth::check())
 			<li>
@@ -82,7 +82,7 @@
 			</li>
 				{{ HTML::link('account', 'Edit Account'); }}
 			<li>
-				<a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/25.png" alt="avatar" /></a>
+				<a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/150.png" alt="avatar" /></a>
 			</li>
 				@else
 			<li>
@@ -104,8 +104,8 @@
 	<div id="wrapper">
 		{{ Messages::get_html() }}	
 		@yield('content')
-	</div>	
-	<footer id="global-footer" class="clearfix">
+		
+<footer id="global-footer" class="clearfix">
 	<div class="holder">
 		<div class="column">
 			<h3>Heading</h3>
@@ -120,15 +120,17 @@
 			<p>All sorts of awesome footer goodness</p>
 		</div>
 	</div>	
-	</footer>
+</footer>
 	@yield("postfooter")
+	</div>	
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="{{ URL::to_asset("js/libs/jquery-1.8.0.min.js") }}"><\/script>')</script>
 	<script src="{{ URL::to_asset("js/libs/raphael-min.js") }}"></script>
 	<script src="{{ URL::to_asset("js/plugins.js") }}"></script>
 	<script src="{{ URL::to_asset("js/script.js") }}"></script>
 	<script>
-		var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+		// Tracking code for Voidlane (FOR TESTING PORPUSES ONLY) 
+		var _gaq=[['_setAccount','UA-9118967-2'],['_trackPageview']];
 		(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
 		g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
 		s.parentNode.insertBefore(g,s)}(document,'script'));

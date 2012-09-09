@@ -4,11 +4,11 @@ class Admin_Maps_Controller extends Admin_Controller {
 	
 	public function __construct() {
 		parent::__construct();
-		$this->filter("before", "csrf")->on("post")->only(array("edit", "delete"));
+		$this->filter("before", "csrf")->on("post")->only(array("edit", "publish", "feature", "official", "delete"));
 	}
 	// List maps
 	public function get_index() {
-		$maps = DB::table("maps")->order_by("id", "desc")->get(array("id", "title", "slug", "created_at", "featured", "official"));
+		$maps = DB::table("maps")->order_by("id", "desc")->get(array("id", "title", "slug", "created_at", "published", "featured", "official"));
 		return View::make("admin.maps.list", array("maps" => $maps, "title" => "Maps | Admin"));
 	}
 	// Edit
@@ -57,6 +57,55 @@ class Admin_Maps_Controller extends Admin_Controller {
 			}
 		} else {
 			return Redirect::to_action("admin.maps@edit", array($id))->with_input()->with_errors($validation);
+		}
+	}
+	// Publish
+	public function get_publish($id) {
+		$map = Map::find($id);
+		if(!$map) {
+			Messages::add("error", "Map not found");
+			return Redirect::to_action("admin.maps");
+		}
+		return View::make("admin.maps.publish", array("title" => "Approve ".e($map->title)." | Maps | Admin", "map" => $map));
+	}
+	public function post_publish($id) {
+		$map = Map::find($id);
+		if(!$map) {
+			Messages::add("error", "Map not found");
+			return Redirect::to_action("admin.maps");
+		}
+		$map->published = true;
+		if($map->save()) {
+			Event::fire("admin", array("maps", "edit", $map->id, "Approved"));
+			Messages::add("success", "Map Approved!");
+			return Redirect::to_action("admin.maps");
+		} else {
+			Messages::add("error", "Failed to save");
+			return Redirect::to_action("admin.maps");
+		}
+	}
+	public function get_unpublish($id) {
+		$map = Map::find($id);
+		if(!$map) {
+			Messages::add("error", "Map not found");
+			return Redirect::to_action("admin.maps");
+		}
+		return View::make("admin.maps.unpublish", array("title" => "UnFeature ".e($map->title)." | Maps | Admin", "map" => $map));
+	}
+	public function post_unpublish($id) {
+		$map = Map::find($id);
+		if(!$map) {
+			Messages::add("error", "Map not found");
+			return Redirect::to_action("admin.maps");
+		}
+		$map->published = false;
+		if($map->save()) {
+			Event::fire("admin", array("maps", "edit", $map->id, "Approval pending"));
+			Messages::add("success", "Map revoked!");
+			return Redirect::to_action("admin.maps");
+		} else {
+			Messages::add("error", "Failed to save");
+			return Redirect::to_action("admin.maps");
 		}
 	}
 	// Feature
