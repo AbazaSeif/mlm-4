@@ -10,7 +10,7 @@ body {
     margin: 0;
     padding: 0;
     background: #000 url(../images/static/bg.jpg) repeat top;
-    font-family: "Oswald","Helvetica Neue", Helvetica, Arial, sans-serif;;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
     font-weight: normal;
     color: #FFF;
 }
@@ -40,16 +40,22 @@ a:hover {
   color: #005580;
 }
 
+#sortable th { background: url(../images/static/bg.gif) no-repeat center right }
+
+#sortable th.headerSortUp { background: url(../images/static/asc.gif) no-repeat center right }
+
+#sortable th.headerSortDown { background: url(../images/static/desc.gif) no-repeat center right } 
+
 /* Global Header
    ================================================== */
 
 #global-header {
+    padding-top: 50px;
     width: 100%;
     min-width: 990px;
 }
 
 #global-header #bg {
-    margin-top: 50px;
     height: 42px;  width: 100%;
     background: #19295A url(../images/static/head-bar.png) repeat-x center center;
     -moz-box-shadow: 0 0 35px #000;
@@ -78,22 +84,23 @@ a:hover {
 
 #global-header #logo h1 {
     display: inline;
-    font: 26px/1 "Oswald", Helvetica Neue, Arial;
+    font: 26px/1 "Oswald";
     font-weight: 700;
 }
 
 #global-header #logo a {
+    display: block;
     font-weight: 700;
     text-decoration: none;
     text-shadow: 0 3px 1px black;
     color: #fff;
-    display: block;
 }
 
 #global-header #loginout {
     float: right;
     margin: 7px 0 0;
     padding: 0;
+    font-family: "Oswald";
 }
 
 #global-header #loginout a {
@@ -110,7 +117,7 @@ a:hover {
     -moz-box-shadow: 0 1px 3px #000;
     -webkit-box-shadow: 0 1px 3px #000;
     box-shadow: 0 1px 3px #000;
-    vertical-align: -3px;
+    vertical-align: -4px;
 }
 
 /* Global Menu 
@@ -119,11 +126,12 @@ a:hover {
 #menu {
     background: #E7E7E7 url(../images/static/menu.png) repeat-x center;
     box-shadow: 0 0 35px #000;
-    margin: 35px auto 13px;
+    margin: 30px auto 13px;
     width: 990px;
 }
 
 #menu ul {
+    margin: 0;
     text-align: center;
 }
 
@@ -152,10 +160,9 @@ a:hover {
 
 #menu li a {
     display: block;
-    padding: 8px 20px;
+    padding: 10px 20px;
     color: white;
-    font-weight: 400;
-    font-size: 20px;
+    font: 20px/1 "Oswald" bold;
     text-shadow: 0 1px 3px #000;
     text-transform: uppercase;
 }
@@ -174,9 +181,7 @@ a:hover {
     -moz-box-shadow: 0 0 35px #000;
     -webkit-box-shadow: 0 0 35px #000;
     box-shadow: 0 0 35px #000;
-    padding: 20px 25px;
-    font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif
-}
+    padding: 20px 25px;}
 
 #page {
     float: left;
@@ -631,7 +636,7 @@ a:hover {
 
 #global-footer .column h3 {
     margin: 0;
-    font-size: 15px;
+    font: 15px "Oswald";
     font-weight: 700;
 }
 
@@ -660,8 +665,8 @@ footer .column p {
 
 #sidebar .widget header h1 {
     color: #474747;
-    font-weight: bold;
     font-size: 16px;
+    font-weight: bold;
     text-shadow: 0px 1px 1px #fff;
     line-height: 1;
 }
@@ -719,7 +724,6 @@ footer .column p {
 
 .news {
 color:#fff;
-background: #000;
 }
 
 .news .pagination {
@@ -824,7 +828,7 @@ clear: both;
     margin: 0px 0px 15px;
     border: none;
     color: #fff;
-    font: 36px/1 "Oswald",Helvetica, Arial, sans-serif;
+    font: 36px/1 "Oswald";
     text-shadow: 0px 1px 1px #000;
 }
  
@@ -970,13 +974,13 @@ clear: both;
    ================================================== */
 
 #pagemenu {
+    position: relative;
+    margin: 0 0 13px;
     background: #19295A;
     -moz-box-shadow: 0 0 35px #000;
     -webkit-box-shadow: 0 0 35px #000;
     box-shadow: 0 0 35px black;
-    margin: 0 0 15px;
-    font-size: 15px;
-    position: relative;
+    font: 15px "Oswald";
 }
 
 #pagemenu .nav {
@@ -1253,11 +1257,12 @@ text-decoration: underline;
     -moz-box-shadow: 0 0 35px #000;
     -webkit-box-shadow: 0 0 35px #000;
     box-shadow: 0 0 35px #000
+;
+    font-family: "Oswald";
 }
 
 #errorbox h1 {
     font-weight: 400;
-    font-size: 2em;
     text-shadow: 0px 1px 3px #000;
 }
 
@@ -1473,7 +1478,9 @@ a.profile_link {
    ================================================== */
 
 #multiview-controler {
+    margin: 10px 0;
 
+    font-family: "Oswald";
 }
 
 #multiview-controler li {
@@ -1905,6 +1912,8 @@ form.xpadding p { margin-bottom: 10px }
 /* Landscape phones and down */
 @media (max-width: 480px) {
 
+    #global-header #logo h1 {display: none!important}
+
 }
  
 /* Landscape phone to portrait tablet */
@@ -1919,7 +1928,7 @@ form.xpadding p { margin-bottom: 10px }
 /* Global Header
    ================================================== */
 
-    #global-header { min-width: 0 ;}
+    #global-header { padding-top: 0; min-width: 0 ;}
 
     #global-header:after { display: table; content: ""; margin-bottom: 15px }
 
@@ -1937,13 +1946,13 @@ form.xpadding p { margin-bottom: 10px }
     }
 
     #global-header #logo img {
+        margin-top: -2px;
         margin-bottom: -11px;
         height: auto !important;
         width: 80px !important;
     }
 
     #global-header #logo h1 {
-        display: inline;
         font-size: 18px;
     }
 
@@ -1994,13 +2003,13 @@ form.xpadding p { margin-bottom: 10px }
     #menu #mainmenu li:first-child {border-bottom: 1px solid #D0D0D0; box-shadow: inset 0px 6px 6px -4px #000 }
 
     #menu li a {
+        display: block;
+        padding: 12px 20px;
         color: white;
         font-weight: 400;
         font-size: 20px;
         text-shadow: 0 1px 3px #000;
         text-transform: uppercase;
-        padding: 5px 20px;
-        display: block;
     }
 
 /* Content 

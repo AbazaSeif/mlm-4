@@ -17,8 +17,8 @@
 				<th>&nbsp;</th>
 			</tr>
 		</thead>
-		@foreach ($maps as $item)
 		<tbody>
+		@foreach ($maps as $item)
 			<tr>
 				<td>{{ $item->id }}</td>
 				<td>{{ HTML::link_to_action("maps@view", $item->title, array($item->id, $item->slug), array("target" => "_blank")) }}</td>
@@ -57,8 +57,8 @@
 					</ul>
 				</div>
 				</td>
-			</tr>
 		@endforeach
+			</tr>
 		</tbody>
 	</table>
 </div>

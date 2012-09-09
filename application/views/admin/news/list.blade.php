@@ -17,8 +17,8 @@
 				<th>&nbsp;</th>
 			</tr>
 		</thead>
-		@foreach ($news as $item)
 		<tbody>
+		@foreach ($news as $item)
 			<tr>
 				<td>{{ $item->id }}</td>
 				<td>{{ HTML::link_to_action("news@view", $item->title, array($item->id, $item->slug), array("target" => "_blank")) }}</td>

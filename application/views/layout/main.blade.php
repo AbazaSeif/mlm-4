@@ -104,8 +104,8 @@
 	<div id="wrapper">
 		{{ Messages::get_html() }}	
 		@yield('content')
-	</div>	
-	<footer id="global-footer" class="clearfix">
+		
+<footer id="global-footer" class="clearfix">
 	<div class="holder">
 		<div class="column">
 			<h3>Heading</h3>
@@ -120,8 +120,9 @@
 			<p>All sorts of awesome footer goodness</p>
 		</div>
 	</div>	
-	</footer>
+</footer>
 	@yield("postfooter")
+	</div>	
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="{{ URL::to_asset("js/libs/jquery-1.8.0.min.js") }}"><\/script>')</script>
 	<script src="{{ URL::to_asset("js/libs/raphael-min.js") }}"></script>

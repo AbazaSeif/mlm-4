@@ -16,8 +16,8 @@
 				<th>&nbsp;</th>
 			</tr>
 		</thead>
-		@foreach ($faq as $item)
 		<tbody>
+			@foreach ($faq as $item)
 			<tr>
 				<td>{{ $item->id }}</td>
 				<td><A HREF={{ "faq#".$item->question}}>{{ $item->question }}</A></td>
@@ -32,8 +32,8 @@
 						</ul>
 				</div>
 				</td>
+			@endforeach
 			</tr>
-		@endforeach
 		</tbody>
 	</table>
 </div>
