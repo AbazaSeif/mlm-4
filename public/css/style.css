@@ -40,12 +40,6 @@ a:hover {
   color: #005580;
 }
 
-#sortable th { background: url(../images/static/bg.gif) no-repeat center right }
-
-#sortable th.headerSortUp { background: url(../images/static/asc.gif) no-repeat center right }
-
-#sortable th.headerSortDown { background: url(../images/static/desc.gif) no-repeat center right } 
-
 /* Global Header
    ================================================== */
 
@@ -1474,12 +1468,11 @@ a.profile_link {
   font-size: 10px;
 }
 
-/* Multiviwer 3000 (Patent pending...not)
+/* Multiviwer 3000 (Patent pending)
    ================================================== */
 
 #multiview-controler {
     margin: 10px 0;
-
     font-family: "Oswald";
 }
 
@@ -1498,7 +1491,6 @@ a.profile_link {
     margin: 0;
     list-style: none;
 }
-
 
 #multiview ul li {
     display: inline-block;
@@ -1584,6 +1576,15 @@ a.profile_link {
 #multiview .big li { display: block; margin: 25px auto; }
 
 #multiview .big li:first-child { margin-top: 0 }
+
+/* Table Sorter Styles
+   ================================================== */  
+
+#sortable th { background: url(../images/static/bg.gif) no-repeat center right; cursor: pointer }
+
+#sortable th.headerSortUp { background: url(../images/static/asc.gif) no-repeat center right }
+
+#sortable th.headerSortDown { background: url(../images/static/desc.gif) no-repeat center right } 
 
 /* Fixes (Bootstrap overwrites and other stuff)
    ================================================== */  
