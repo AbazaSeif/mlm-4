@@ -6,18 +6,13 @@
     <li {{ (Input::get('official') == 'true') ? 'class="active"' : ''}}>{{ HTML::link("maps/filter?official=true", "Official Maps") }}</li>
 		<li {{ (Input::get('featured') == 'true') ? 'class="active"' : ''}}>{{ HTML::link('maps/filter?featured=true', 'Featured Maps'); }}</li>
 		<li class="dropdown">
-    		<a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories
-        	<b class="caret"></b>
-      		</a>
-    		<ul class="dropdown-menu">
-    		<li {{ (Input::get('type') == 'rtw') ? 'class="active"' : ''}}>{{ HTML::link("maps/filter/?type=rtw", "Race For Wool") }} </li>
-      		<li {{ (Input::get('type') == 'ctq') ? 'class="active"' : ''}}>{{ HTML::link("maps/filter/?type=ctq", "Capture the Wool") }}</li>
-      		<li {{ (Input::get('type') == 'dtc') ? 'class="active"' : ''}}>{{ HTML::link("maps/filter/?type=dtc", "Destroy the Core") }}</li>
-      		<li {{ (Input::get('type') == 'att') ? 'class="active"' : ''}}>{{ HTML::link("maps/filter/?type=att", "Attack/Defence") }}</li>
-      		<li {{ (Input::get('type') == 'bed') ? 'class="active"' : ''}}>{{ HTML::link("maps/filter/?type=bed", "Bed Wars") }}</li>
-      		<li {{ (Input::get('type') == 'oth') ? 'class="active"' : ''}}>{{ HTML::link("maps/filter/?type=oth", "Other") }}</li>
-    		</ul>
-  		</li>
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories <b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					@foreach(Config::get("maps.types") as $cat_short => $category)
+						<li {{ (Input::get('type') == $cat_short) ? 'class="active"' : ''}}>{{ HTML::link("maps/filter/?type={$cat_short}", $category) }} </li>
+					@endforeach
+				</ul>
+			</li>
 		@if (Auth::check())
 		<li {{ URI::is('maps/new') ? 'class="rside active"' : 'class="rside"' }}>{{ HTML::link("maps/new", "New Map") }}</li>
 		<li {{ Input::get("ownmaps") == true ? 'class="rside active"' : 'class="rside"' }}><a href="{{ URL::to("maps/filter/?ownmaps=1") }}">Your Maps</a></li>
