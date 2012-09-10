@@ -3,7 +3,7 @@
              Credits on /humans.txt
 -------------------------------------------------*/
 
-@import url(http://fonts.googleapis.com/css?family=Oswald:400,700,300);
+@import url(http://fonts.googleapis.com/css?family=Oswald:400,700);
 @import url(bootstrap.css);
 
 body {
@@ -132,7 +132,7 @@ a:hover {
 #menu li {
     display: inline-block;
     margin-left: -4px;
-    border-left: 1px solid #D3D3D3;
+    border-left: 1px solid rgb(173, 173, 173);
     list-style: none;
     -moz-transition: box-shadow .3s ease-in-out;
     -ms-transition: box-shadow .3s ease-in-out;
@@ -157,7 +157,7 @@ a:hover {
     padding: 8px 20px;
     color: white;
     font:20px/1 "Oswald";
-    text-shadow: 0 1px 3px #000;
+    text-shadow: 0 1px 2px #000;
     text-transform: uppercase;
 }
 
@@ -864,11 +864,9 @@ clear: both;
 
 #login {
     margin: 28px auto;
-    padding: 30px;
-    min-height: 350px;
-    min-width: 330px;  
+    padding: 30px;  
     max-width: 650px;
-    font-family: "Oswald","Helvetica Neue Condensed Bold",Helvetica,Arial,sans-serif;
+    font-family: "Oswald";
     background: rgba(25, 41, 90, 0.5);
     color: rgb(187, 187, 187);
     -moz-box-shadow: 0 0 35px #000; 
@@ -883,12 +881,11 @@ clear: both;
 /* OpenID providers */
 
 #login form ul {
-    text-align: center;
-    list-style-type: none;
-    width: 340px;
-    height: 25px;
-    margin: 0 auto;
+    margin: 0 auto;  
     padding: 0;
+    text-align: center;
+    list-style: none;
+    height: 25px;
 }
 
 #login form ul li {
@@ -917,13 +914,10 @@ clear: both;
 }
 
 #login .openid-form fieldset.info {
-    clear: both;
     padding: 16px 0 0;
 }
 
-#login .openid-form input.id {
-    width: 240px
-}
+#login .openid-form input.id {}
 
 /* Keep me Logged in/Remember User */
 
@@ -949,8 +943,8 @@ clear: both;
 /* Why we use OpenID on Login page */
 
 .WhyOpenID {
-    font-size: 14px;
     padding: 10px;
+    font-size: 14px;
     text-shadow: 0px 1px 3px #000;
 }
 
@@ -2007,6 +2001,8 @@ form.xpadding p { margin-bottom: 10px }
 
    .alert { -webkit-border-radius: 0; -moz-border-radius: 0; border-radius: 0; }
 
+   #login { padding: 10px 0; }
+
 
 /* Global Header
    ================================================== */
@@ -2064,10 +2060,11 @@ form.xpadding p { margin-bottom: 10px }
         display: none;
         margin: 0px auto 13px;
         width: auto;
-        background: #E7E7E7;
-    }
+    
+        background: #CECECE;
+}
 
-    #menu #loginout { display: block ; border-bottom: 3px solid #D0D0D0;}
+    #menu #loginout { display: block ; border-bottom: 3px solid #7A7A7A;}
 
     #menu #loginout { float: none; margin: 0 }
 
@@ -2079,19 +2076,19 @@ form.xpadding p { margin-bottom: 10px }
 
     #menu ul {margin: 0;}
 
-    #menu li { display: block; border-bottom: 1px solid #d0d0d0;line-height: 2; }
+    #menu li { display: block; border-bottom: 1px solid #7A7A7A; line-height: 2; }
 
     #menu li:hover { -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none }
 
-    #menu #mainmenu li:first-child {border-bottom: 1px solid #D0D0D0; box-shadow: inset 0px 6px 6px -4px #000 }
+    #menu #mainmenu li:first-child {border-bottom: 1px solid #7A7A7A; box-shadow: inset 0px 6px 6px -4px #000 }
 
     #menu li a {
         display: block;
         padding: 12px 20px;
-        color: white;
+        color: #fff;
         font-weight: 400;
         font-size: 20px;
-        text-shadow: 0 1px 3px #000;
+        text-shadow: 0 1px 2px #000;
         text-transform: uppercase;
     }
 
@@ -2124,12 +2121,14 @@ form.xpadding p { margin-bottom: 10px }
     #home .homecontent { padding: 0; width: 100%;}
 
     #home .homecontent section {
+        display: block;
         margin: 0;
         padding: 10px 10px;
+        width: auto;
         border: 0;
-        width: 100%;
-        border-top: 1px dotted #fff;
-    }
+        border-bottom: 1px dotted #fff;
+    
+}
 
 /* Global Footer
    ================================================== */

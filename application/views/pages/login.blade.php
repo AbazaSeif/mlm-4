@@ -1,7 +1,7 @@
 @layout('layout.main')
 
 @section('content')
-	<style>body{background-attachment:scroll;}header,footer{display:none}#content{background:none;box-shadow:none;}</style>
+	<style>header,footer{display:none}#content{padding:0;background:none;box-shadow:none;}</style>
 	<div id="content" class="center">
 		<div id="login">
 			<a href="/"><img src="{{ URL::to_asset("images/static/logo.png") }}" /></a>
