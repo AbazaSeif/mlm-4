@@ -2097,7 +2097,7 @@ form.xpadding p { margin-bottom: 10px }
 
     #wrapper { width: auto }
 
-    #pagemenu {}
+    #pagemenu li { float: none }
 
     #pagemenu .rside { display: none }
 
