@@ -22,6 +22,7 @@
 	<link type="text/plain" rel="hackers" href="{{ URL::to_asset("hackers.txt") }}" />
 	
 	<link rel="shortcut icon" href="{{ URL::to_asset("images/static/favicon.ico") }}" />
+	<link rel="image_src" href="{{ URL::to_asset("images/static/fb.jpg") }}" />
 	<link rel="apple-touch-icon-precomposed" href="{{ URL::to_asset("images/static/apple-touch-icon-iphone.png") }}" /> 
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ URL::to_asset("images/static/apple-touch-icon-ipad.png") }}" /> 
 	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ URL::to_asset("images/static/apple-touch-icon-iphone4.png") }}" />
