@@ -51,7 +51,7 @@ a:hover {
 
 #global-header #bg {
     height: 42px;  width: 100%;
-    background: #19295A url(../images/static/head-bar.png) repeat-x center center;
+    background: #223A87 url(../images/static/head-bar.png) repeat-x center center;
     -moz-box-shadow: 0 0 35px #000;
     -webkit-box-shadow: 0 0 35px #000;
     box-shadow: 0 0 35px #000;}
@@ -118,7 +118,7 @@ a:hover {
    ================================================== */
 
 #menu {
-    background: #E7E7E7 url(../images/static/menu.png) repeat-x center;
+    background: #E7E7E7 url(../images/static/menu.jpg) repeat-x center;
     box-shadow: 0 0 35px #000;
     margin: 30px auto 13px;
     width: 990px;
@@ -171,7 +171,7 @@ a:hover {
 }
 
 #content {
-    background: #19295A;
+    background: #223A87;
     -moz-box-shadow: 0 0 35px #000;
     -webkit-box-shadow: 0 0 35px #000;
     box-shadow: 0 0 35px #000;
@@ -423,6 +423,7 @@ a:hover {
 }
 
 /* The Preloader in the Slider */
+
 #iview-preloader {
     position: absolute;
     z-index: 1000;
@@ -605,7 +606,7 @@ a:hover {
    ================================================== */
 
 #global-footer {
-    background: #19295A;
+    background: #223A87;
     -moz-box-shadow: 0px 4px 10px #000;
     -webkit-box-shadow: 0px 4px 10px black;
     box-shadow: 0px 4px 10px black;
@@ -847,8 +848,11 @@ clear: both;
  }
 
 .more-link  {
+    display: block;
     margin-top: 20px;
- }
+ 
+    text-align: right;
+}
  
 .post.single {
 } 
@@ -963,7 +967,7 @@ clear: both;
 #pagemenu {
     position: relative;
     margin: 0 0 13px;
-    background: #19295A;
+    background: #223A87;
     -moz-box-shadow: 0 0 35px #000;
     -webkit-box-shadow: 0 0 35px #000;
     box-shadow: 0 0 35px black;
@@ -2050,7 +2054,7 @@ form.xpadding p { margin-bottom: 10px }
         background: transparent url(../images/static/arrow.png) no-repeat 0px 0px;
     }
 
-  #shownav:hover { background: transparent url(../images/static/arrow.png) no-repeat 0px -31px;}
+    #shownav:hover { background: transparent url(../images/static/arrow.png) no-repeat 0px -31px;}
 
 
 /* Global Menu 
@@ -2060,9 +2064,8 @@ form.xpadding p { margin-bottom: 10px }
         display: none;
         margin: 0px auto 13px;
         width: auto;
-    
         background: #CECECE;
-}
+    }
 
     #menu #loginout { display: block ; border-bottom: 3px solid #7A7A7A;}
 
@@ -2097,20 +2100,15 @@ form.xpadding p { margin-bottom: 10px }
 
     #wrapper { width: auto }
 
+    #pagemenu { display: none }
+
     #pagemenu li { float: none }
 
     #pagemenu .rside { display: none }
 
-    #page {
-        float: left;
-        width: 100%;
-    }
+    #page { float: left; width: 100% }
 
-    #sidebar {
-        float: right;
-        width: 100%;
-        margin-top: 20px;
-    }
+    #sidebar { float: right; width: 100%; margin-top: 20px }
 
     /* Home page */
 
@@ -2193,18 +2191,22 @@ form.xpadding p { margin-bottom: 10px }
 }
 
 /* Portrait tablet to landscape and desktop */
-@media (min-width: 768px) and (max-width: 1200px) {
+@media (min-width: 768px) and (max-width: 979px) {
     
     #menu { display: block !important; }
 
     #menu #loginout { display: none }
 
+    #page { float: left; width: 590px }
+
+    #sidebar { float: right; width: 330px }
+
 } 
 /* Large desktop */
-@media (min-width: 1200px) {
+@media (min-width: 980px) {
 
     #menu { display: block !important; }
 
-    nav#menu #loginout { display: none }
+    #menu #loginout { display: none }
 
 }
