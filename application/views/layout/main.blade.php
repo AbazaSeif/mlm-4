@@ -128,8 +128,17 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="{{ URL::to_asset("js/libs/jquery-1.8.0.min.js") }}"><\/script>')</script>
 	<script src="{{ URL::to_asset("js/libs/raphael-min.js") }}"></script>
+	<script src="{{ URL::to_asset("js/libs/snuownd.js") }}"></script>
 	<script src="{{ URL::to_asset("js/plugins.js") }}"></script>
 	<script src="{{ URL::to_asset("js/script.js") }}"></script>
+
+	<script type="text/javascript">
+	var parser = SnuOwnd.getParser();
+			document.getElementById('mrk').addEventListener('input', function(e) {
+			document.getElementById('preview').innerHTML = parser.render(e.target.value);
+			});
+	</script>
+	
 	<script>
 		// Tracking code for Voidlane (FOR TESTING PORPUSES ONLY) 
 		var _gaq=[['_setAccount','UA-9118967-2'],['_trackPageview']];

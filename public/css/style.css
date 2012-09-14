@@ -729,9 +729,6 @@ clear: both;
    ================================================== */
 
 .post  {
-    margin-bottom: 30px;
-    border-bottom: 1px dotted #ddd;
-    padding-bottom: 29px;
     width: 100%;
  
     float: left;
@@ -1423,11 +1420,10 @@ ol.commentlist {
 }
 
 .commentlist li {
-    padding: 0 0 10px 0;
     margin-bottom: 10px;  background: #F9F9F9;  border: 1px solid #CCC;
 }
 
-.commentlist .vcard {
+#comments .vcard {
     padding: 5px;
     margin-bottom: 10px;
     background: #E6E6E6;
@@ -1436,12 +1432,12 @@ ol.commentlist {
     font-style: italic;
 }
 
-.commentlist .vcard a {
+#comments .vcard a {
     font-style: normal;
     font-size: 17px;
 }
 
-.commentlist .avatar {
+#comments .avatar {
     padding: 2px;
     width: 35px;
     vertical-align: -15px;
@@ -1449,37 +1445,40 @@ ol.commentlist {
     border: 1px solid #D3D3D3;
 } 
 
-.commentlist .body {
+#comments .body {
     padding: 5px 10px;
     color: #474747;
+    word-wrap: break-word;
 }
 
-.commentlist .body li { border: 0 }
+#comments .body li { border: 0 }
 
-.commentlist .meta {
-    padding: 0px 10px;
+#comments .meta {
+    padding: 0 10px 10px;
     font-size: 14px;
     line-height: 2;
 }
 
-.commentlist .meta .time {
+#comments .meta .time {
     display: inline;
 }
 
-.commentlist .meta .actions {
+#comments .meta .actions {
     display: inline;
     float: right;
 }
 
-.commentlist .meta .actions ul {
+#comments .meta .actions ul {
     display: inline-block;
     margin: 0;
     list-style: none;
 }
 
-.commentlist .meta span:last-child {
+#comments .meta span:last-child {
     color: #474747;
 }
+
+/* New comment, reply */
 
 #respond {
     padding: 5px 20px;
@@ -1489,6 +1488,25 @@ ol.commentlist {
 
 #respond h3,#respond h4 {
     color: #474747;
+}
+
+#respond textarea { margin:0; height:50px; }
+
+#respond textarea:focus { height:auto; }
+
+#respond .help-block {
+    margin-bottom: 15px;
+    color: #474747;
+}
+
+#respond #comment {
+    display: none;
+    margin-bottom: 10px;
+    border: 1px solid #CCC;
+}
+
+#respond #preview {
+    margin-bottom: 30px;
 }
 
 /* Multiviwer 3000 (Patent pending)
@@ -1942,12 +1960,14 @@ form.xpadding p { margin-bottom: 10px }
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
 
-/* Fixes (responsive fixes ONLY)
+/* Fixes That don't require a lot of change (responsive fixes ONLY) 
    ================================================== */
 
    .alert { -webkit-border-radius: 0; -moz-border-radius: 0; border-radius: 0; }
 
    #login { padding: 10px 0; }
+
+   .commentlist .meta .actions { display: table; float: none; }
 
 
 /* Global Header
@@ -1959,9 +1979,7 @@ form.xpadding p { margin-bottom: 10px }
 
     #global-header #bg { margin: 0 ; position: relative;}
 
-    #global-header .holder {
-        width: auto;
-    }
+    #global-header .holder { width: auto }
 
 /* Logo 
    ================================================== */
@@ -2133,7 +2151,7 @@ form.xpadding p { margin-bottom: 10px }
 }
 
 /* Portrait tablet to landscape and desktop */
-@media (min-width: 768px) and (max-width: 979px) {
+@media (min-width: 768px) and (max-width: 989px) {
     
     #menu { display: block !important; }
 
@@ -2145,10 +2163,10 @@ form.xpadding p { margin-bottom: 10px }
 
 } 
 /* Large desktop */
-@media (min-width: 980px) {
-
-    #menu { display: block !important; }
+@media (min-width: 990px) {
 
     #menu #loginout { display: none }
+
+    .commentlist .meta .actions { display: inline; }
 
 }

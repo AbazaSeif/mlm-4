@@ -65,12 +65,21 @@
 
 	<div id="respond">
 	@if(Auth::check())
-		<h3>Leave a comment</h3>
+		<h3>Leave a new comment</h3>
+		<div id="comment">
+			<div class="vcard"> 
+			<img class="avatar" src="http://minotar.net/helm/{{$comment->user->mc_username}}/150.png" alt="{{ $comment->user->username }}'s skin" title="{{ $comment->user->username }}'s skin">
+			<a class="username" href="/user/{{ $comment->user->username }}" title="{{$comment->user->username}}'s Profile">{{ $comment->user->username }}</a> Says:
+			</div>
+		<div class="body">
+			<div id="preview"></div>
+		</div>
+		</div>
 		{{ Form::open("news/comment/".$article->id) }}
 		{{ Form::token() }}
-		{{ Form::field("textarea", "comment", "", array(Input::old("comment"), array("class" => "input-xxlarge")), array('error' => $errors->first('comment'))) }}
-		{{ Form::submit("Comment", array("class" => "btn-primary")) }}
-		{{ HTML::link('#', 'Preview', array("class" => "btn", "onclick" => "alert('Hello World!'); return false")); }}
+		{{ Form::field("textarea", "comment", "", array(Input::old("comment"), array("id" => "mrk", "class" => "input-xxlarge")), array('error' => $errors->first('comment'), "help" => "Markdown supported")) }}
+		{{ Form::submit("Post", array("class" => "btn-primary")) }}
+		{{ HTML::link('#', 'Preview', array("class" => "btn", "id" => "prevb")); }}
 		{{ Form::close() }}
 	@else
 	<h4>You must be <a href="/login">logged in</a> to leave a comment.</h4>

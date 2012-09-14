@@ -7,6 +7,10 @@ MLM = {
 			$("textarea[data-wysiwyg]").cleditor();
 			$("#sortable").tablesorter();
 			$('.dropdown-toggle').dropdown();
+			$("#prevb").click(function () {
+				$("#comment").fadeToggle().show();
+				return false;
+			});
 		}
 	},
 	home: {
@@ -176,4 +180,3 @@ UTIL = {
 };
 
 $(document).ready(UTIL.init);
-
