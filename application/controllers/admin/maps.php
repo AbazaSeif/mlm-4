@@ -49,6 +49,13 @@ class Admin_Maps_Controller extends Admin_Controller {
 			$changed = array_keys($map->get_dirty());
 			if($map->save()) {
 				Event::fire("admin", array("maps", "edit", $map->id, $changed));
+				//Check if on modqueue list
+				$modqueue = Modqueue::where('itemtype', '=', 'map')->where('itemid', '=', $id)->first();
+				if ($modqueue)
+				{
+					Messages::add("important", "Found item on modqueue");
+					return Redirect::to_action("admin.modqueue@view", array('id' => $modqueue->id));
+				}
 				Messages::add("success", "Map updated!");
 				return Redirect::to_action("admin.maps");
 			} else {
@@ -77,7 +84,14 @@ class Admin_Maps_Controller extends Admin_Controller {
 		$map->published = true;
 		if($map->save()) {
 			Event::fire("admin", array("maps", "edit", $map->id, "Approved"));
-			Messages::add("success", "Map Approved!");
+			//Check if on modqueue list
+			$modqueue = Modqueue::where('itemtype', '=', 'map')->where('itemid', '=', $id)->first();
+			if ($modqueue)
+			{
+				Messages::add("important", "Found item on modqueue");
+				return Redirect::to_action("admin.modqueue@view", array('id' => $modqueue->id));
+			}
+			Messages::add("success", "Map approved!");
 			return Redirect::to_action("admin.maps");
 		} else {
 			Messages::add("error", "Failed to save");
@@ -101,6 +115,13 @@ class Admin_Maps_Controller extends Admin_Controller {
 		$map->published = false;
 		if($map->save()) {
 			Event::fire("admin", array("maps", "edit", $map->id, "Approval pending"));
+			//Check if on modqueue list
+			$modqueue = Modqueue::where('itemtype', '=', 'map')->where('itemid', '=', $id)->first();
+			if ($modqueue)
+			{
+				Messages::add("important", "Found item on modqueue");
+				return Redirect::to_action("admin.modqueue@view", array('id' => $modqueue->id));
+			}
 			Messages::add("success", "Map revoked!");
 			return Redirect::to_action("admin.maps");
 		} else {
@@ -224,6 +245,13 @@ class Admin_Maps_Controller extends Admin_Controller {
 		}
 		$map->delete();
 		Event::fire("admin", array("map", "delete", $map->id));
+		//Check if on modqueue list
+		$modqueue = Modqueue::where('itemtype', '=', 'map')->where('itemid', '=', $id)->first();
+		if ($modqueue)
+		{
+			Messages::add("important", "Found item on modqueue");
+			return Redirect::to_action("admin.modqueue@view", array('id' => $modqueue->id));
+		}
 		Messages::add("success", "Map deleted!");
 		return Redirect::to_action("admin.maps");
 	}
