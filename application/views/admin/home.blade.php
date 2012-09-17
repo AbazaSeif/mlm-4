@@ -2,11 +2,12 @@
 
 @section('content')
 @parent
-<div id="content" class="clearfix">
-	<div id="page">
+<div id="content" class="admin clearfix">
+	<div id="page" class="bigger">
 		<div class="titlebar clearfix">
 			<h2>Moderation queue</h2>
 		</div>
+		<div class="fixedheight">
 		<table id="sortable" class="table table-bordered table-hover">
 		<thead>
 			<tr>
@@ -15,7 +16,7 @@
 				<th>Item type</th>
 				<th>Item creator</id>
 				<th>Date created</th>
-				<th>View</th>
+				<th class="disabled">&nbsp;</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -32,10 +33,12 @@
 		</tbody>
 	</table>
 	</div>
-	<div id="sidebar">
+	</div>
+	<div id="sidebar" class="smaller">
 		<div class="titlebar clearfix">
 			<h2>Admin log</h2>
 		</div>
+		<div class="fixedheight">
 		<ol>
 			@foreach($log->results as $logitem)
 				<li>
@@ -47,6 +50,7 @@
 			@endforeach
 		</ol>
 		{{ $log->links() }}
+		</div>
 	</div>
 </div>
 @endsection

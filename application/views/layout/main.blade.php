@@ -10,10 +10,44 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	@if (isset($title)) 
-	<title>{{$title}} &raquo; MLM</title>
+	<title>{{$title}} | MLM</title>
 	@else 
 	<title>Major League Mining</title>
 	@endif
+
+<!--
+	888b     d888       d8888888888 .d88888b. 8888888b.  
+	8888b   d8888      d88888  "88bd88P" "Y88b888   Y88b 
+	88888b.d88888     d88P888   888888     888888    888 
+	888Y88888P888    d88P 888   888888     888888   d88P 
+	888 Y888P 888   d88P  888   888888     8888888888P"  
+	888  Y8P  888  d88P   888   888888     888888 T88b   
+	888   "   888 d8888888888   88PY88b. .d88P888  T88b  
+	888       888d88P     888   888 "Y88888P" 888   T88b 
+	                          .d88P                      
+	                        .d88P"                       
+	                       888P"                         
+	888     8888888888       d8888 .d8888b. 888     8888888888888 
+	888     888             d88888d88P  Y88b888     888888        
+	888     888            d88P888888    888888     888888        
+	888     8888888       d88P 888888       888     8888888888    
+	888     888          d88P  888888  88888888     888888        
+	888     888         d88P   888888    888888     888888        
+	888     888        d8888888888Y88b  d88PY88b. .d88P888        
+	888888888888888888d88P     888 "Y8888P88 "Y88888P" 8888888888 
+	                                                              
+	                                                              
+	                                                              
+	888b     d8888888888888b    8888888888888b    888 .d8888b.  
+	8888b   d8888  888  8888b   888  888  8888b   888d88P  Y88b 
+	88888b.d88888  888  88888b  888  888  88888b  888888    888 
+	888Y88888P888  888  888Y88b 888  888  888Y88b 888888        
+	888 Y888P 888  888  888 Y88b888  888  888 Y88b888888  88888 
+	888  Y8P  888  888  888  Y88888  888  888  Y88888888    888 
+	888   "   888  888  888   Y8888  888  888   Y8888Y88b  d88P 
+	888       8888888888888    Y8888888888888    Y888 "Y8888P88
+-->
+
 	<meta name="robots" content="all">
 	<meta name="description" content="Competitive Minecraft | Major League Mining">
 	<meta name="keywords" content="minecraft, race for wool, wool, competitive minecraft, tournaments, official site, rmct, reddit">
@@ -27,13 +61,19 @@
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ URL::to_asset("images/static/apple-touch-icon-ipad.png") }}" /> 
 	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ URL::to_asset("images/static/apple-touch-icon-iphone4.png") }}" />
 	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ URL::to_asset("images/static/apple-touch-icon-ipad3.png") }}" />
+	
 	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/style.css") }}" />
+	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/nivo/light/light.css") }}" />
+	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/nivo/dark/dark.css") }}" />
+	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/nivo/bar/bar.css") }}" />
+	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/nivo/nivo-slider.css") }}" />
 
 	<script src="{{ URL::to_asset("js/libs/modernizr-2.5.3-respond-1.1.0.min.js") }}"></script>
 	<script type="text/javascript">
 		var BASE_URL = "{{ URL::to() }}";
 		var ASSET_URL = "{{ URL::to_asset(null) }}";
 	</script>
+
 </head>
 @if(isset($javascript))
 @if(count($javascript) > 1)
@@ -127,7 +167,6 @@
 	</div>	
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="{{ URL::to_asset("js/libs/jquery-1.8.0.min.js") }}"><\/script>')</script>
-	<script src="{{ URL::to_asset("js/libs/raphael-min.js") }}"></script>
 	<script src="{{ URL::to_asset("js/libs/snuownd.js") }}"></script>
 	<script src="{{ URL::to_asset("js/plugins.js") }}"></script>
 	<script src="{{ URL::to_asset("js/script.js") }}"></script>

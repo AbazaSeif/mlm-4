@@ -9,7 +9,7 @@
 @endif
 @include("maps.menu")
 
-<ul class="nav nav-pills">
+<ul class="submenu nav nav-pills">
 @if(Auth::check() && Auth::user()->admin)
 <li class="disabled"><a href="#">Actions:</a></li>
 <li>
@@ -33,7 +33,7 @@
 @endif
 </ul>
 
-<div id="content" class="maps">
+<div id="content" class="maps clearfix">
 <div class="titlebar clearfix">
 	<h1>{{ e($map->title) }} {{ e($map->version) }}</h1>
 </div>
@@ -52,6 +52,18 @@
 		{{ Form::close() }}
 	</div>
 	@endif
+<div id="page">
+
+<div class="slider-wrapper theme-dark">
+	<div id="gslider" class="nivoSlider">
+		@forelse($map->images as $image)
+		<img src="{{ e($image->file_original) }}" data-thumb="{{ e($image->file_small) }}" alt="" />
+		@empty
+		@endforelse
+</div>
+</div>
+</div>
+<div id="sidebar">
 	<h2>{{ e($map->title) }}</h2>
 	<p>{{ e($map->summary) }}</p>
 	{{ $map->description }}
@@ -80,18 +92,6 @@
 		<li>{{ HTML::image($link->favicon, "favicon")." ".HTML::link($link->url, $link->url) }}</li>
 	@endforeach
 	</ul>
-	<h2>Images</h2>
-	<ul class="thumbnails">
-		@forelse($map->images as $image)
-			<li class="span2">
-				<a href="{{ e($image->file_original) }}" class="thumbnail">{{ HTML::image($image->file_small) }}</a>
-			</li>
-		@empty
-			<li>
-				No images found!
-			</li>
-		@endforelse
-	</ul>
 	Rating: {{ $map->avg_rating }}/5
 	@if(Auth::check() && !$is_owner)
 	{{ Form::open("maps/rate/".$map->id) }}
@@ -104,5 +104,6 @@
 		{{ Form::token() }}
 	{{ Form::close() }}
 	@endunless
+</div>
 </div>
 @endsection
