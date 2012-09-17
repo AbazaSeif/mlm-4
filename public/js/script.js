@@ -8,23 +8,44 @@ MLM = {
 			$("#sortable").tablesorter();
 			$('.dropdown-toggle').dropdown();
 			$("#prevb").click(function () {
-				$("#comment").fadeToggle().show();
+				$("#comment").fadeToggle(300);
 				return false;
+			});
+			$('#gslider').nivoSlider({
+        effect: 'fade',
+        animSpeed: 500,
+        pauseTime: 3000,
+        startSlide: 0,
+        directionNav: true,
+        controlNav: true,
+        controlNavThumbs: false,
+        pauseOnHover: true,
+        manualAdvance: false,
+        prevText: 'Prev',
+        nextText: 'Next',
+        randomStart: false
 			});
 		}
 	},
 	home: {
 		init: function () {
-		$('#featured').iView({
-				fx: 'block-drop-random',
-				blockCols: 6,
-				blockRows: 3,
-				timer: '360bar',
-				pauseTime: 7000,
-				directionNav: false,
-				controlNav: true,
-				tooltipY: -15,
-				});
+		$('#slider').nivoSlider({
+        effect: 'slide',
+        slices: 10,
+        boxCols: 8,
+        boxRows: 4,
+        animSpeed: 500,
+        pauseTime: 3000,
+        startSlide: 0,
+        directionNav: true,
+        controlNav: true,
+        controlNavThumbs: false,
+        pauseOnHover: true,
+        manualAdvance: false,
+        prevText: 'Prev',
+        nextText: 'Next',
+        randomStart: false
+    });
 		}
 	},
 	maps: {
