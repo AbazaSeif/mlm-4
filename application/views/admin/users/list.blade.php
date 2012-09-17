@@ -14,7 +14,7 @@
 				<th>Minecraft username</th>
 				<th>Member since</th>
 				<th>Rank</th>
-				<th>&nbsp;</th>
+				<th class="disabled">&nbsp;</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -33,6 +33,8 @@
 					Editor
 					@elseif ($user->rank == 1)
 					Mod
+					@else
+					User
 					@endif
 				</td>
 				<td>

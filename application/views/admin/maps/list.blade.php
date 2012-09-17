@@ -14,7 +14,7 @@
 				<th>Map name</th>
 				<th>Date created</th>
 				<th><abbr title="Published">P</abbr></th>
-				<th>&nbsp;</th>
+				<th class="disabled">&nbsp;</th>
 			</tr>
 		</thead>
 		<tbody>

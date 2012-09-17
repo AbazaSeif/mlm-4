@@ -13,7 +13,7 @@
 				<th>ID</th>
 				<th>Question</th>
 				<th>Date created</th>
-				<th>&nbsp;</th>
+				<th class="disabled">&nbsp;</th>
 			</tr>
 		</thead>
 		<tbody>

@@ -14,7 +14,7 @@
 				<th>Title</th>
 				<th>URL Slug</th>
 				<th>Link</th>
-				<th>&nbsp;</th>
+				<th class="disabled">&nbsp;</th>
 			</tr>
 		</thead>
 		<tbody>
