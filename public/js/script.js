@@ -1,3 +1,8 @@
+/* ----------------------------------------------
+            MAJOR LEAGUE MINING 2012
+             Credits on /humans.txt
+-------------------------------------------------*/
+
 MLM = {
 	common: {
 		init: function () {
@@ -12,40 +17,60 @@ MLM = {
 				return false;
 			});
 			$('#gslider').nivoSlider({
-        effect: 'fade',
-        animSpeed: 500,
-        pauseTime: 3000,
-        startSlide: 0,
-        directionNav: true,
-        controlNav: true,
-        controlNavThumbs: false,
-        pauseOnHover: true,
-        manualAdvance: false,
-        prevText: 'Prev',
-        nextText: 'Next',
-        randomStart: false
+				effect: 'fade',
+				animSpeed: 700,
+				pauseTime: 3000,
+				startSlide: 0,
+				directionNav: true,
+				controlNav: true,
+				controlNavThumbs: false,
+				pauseOnHover: true,
+				manualAdvance: false,
+				prevText: 'Prev',
+				nextText: 'Next',
+				randomStart: false
 			});
+
+			// Setup the Live Preview
+        $('#mrk').wysiwym(Wysiwym.Markdown, {});
+        var showdown = new Showdown.converter();
+        var previousValue = null;
+        var previewTextarea = $('#mrk');
+        var previewOutput = $('#preview');
+        var updateLivePreview = function() {
+            var newValue = previewTextarea.val();
+            if (newValue != previousValue) {
+                previousValue = newValue;
+                var newHtml = $("<div>"+ showdown.makeHtml(newValue) +"</div>");
+                newHtml.find('pre,p code').addClass('prettyprint');
+                newHtml.find('pre code').each(function() {
+                    $(this).html(prettyPrintOne($(this).html()));
+                });
+                previewOutput.html(newHtml);
+            }
+        }
+        setInterval(updateLivePreview, 100);
 		}
 	},
 	home: {
 		init: function () {
-		$('#slider').nivoSlider({
-        effect: 'slide',
-        slices: 10,
-        boxCols: 8,
-        boxRows: 4,
-        animSpeed: 500,
-        pauseTime: 3000,
-        startSlide: 0,
-        directionNav: true,
-        controlNav: true,
-        controlNavThumbs: false,
-        pauseOnHover: true,
-        manualAdvance: false,
-        prevText: 'Prev',
-        nextText: 'Next',
-        randomStart: false
-    });
+			$('#slider').nivoSlider({
+				effect: 'slideInRight',
+				slices: 10,
+				boxCols: 8,
+				boxRows: 4,
+				animSpeed: 500,
+				pauseTime: 3000,
+				startSlide: 0,
+				directionNav: true,
+				controlNav: true,
+				controlNavThumbs: false,
+				pauseOnHover: true,
+				manualAdvance: false,
+				prevText: 'Prev',
+				nextText: 'Next',
+				randomStart: false
+			});
 		}
 	},
 	maps: {

@@ -37,3 +37,735 @@ $.fn.openid=function(){var a=$(this);var b=a.find("input[name=openid_username]")
 // CLEditor WYSIWYG HTML Editor v1.3.0
 // http://premiumsoftware.net/cleditor
 (function(a){function b(b){var c=this,d=b.target,e=a.data(d,A),f=T[e],g=f.popupName,h=R[g];if(!(c.disabled||a(d).attr(E)==E)){var k={editor:c,button:d,buttonName:e,popup:h,popupName:g,command:f.command,useCSS:c.options.useCSS};if(f.buttonClick&&f.buttonClick(b,k)===false)return false;if(e=="source"){if(v(c)){delete c.range;c.$area.hide();c.$frame.show();d.title=f.title}else{c.$frame.hide();c.$area.show();d.title="Show Rich Text"}setTimeout(function(){q(c)},100)}else if(!v(c))if(g){var l=a(h);if(g=="url"){if(e=="link"&&s(c)===""){t(c,"A selection is required when inserting a link.",d);return false}l.children(":button").unbind(D).bind(D,function(){var b=l.find(":text"),d=a.trim(b.val());d!==""&&i(c,k.command,d,null,k.button);b.val("http://");n();j(c)})}else g=="pastetext"&&l.children(":button").unbind(D).bind(D,function(){var a=l.find("textarea"),b=a.val().replace(/\n/g,"<br />");b!==""&&i(c,k.command,b,null,k.button);a.val("");n();j(c)});if(d!==a.data(h,z)){u(c,h,d);return false}return}else if(e=="print")c.$frame[0].contentWindow.print();else if(!i(c,k.command,k.value,k.useCSS,d))return false;j(c)}}function c(b){b=a(b.target).closest("div");b.css(y,b.data(A)?"#FFF":"#FFC")}function d(b){a(b.target).closest("div").css(y,"transparent")}function e(b){var c=b.data.popup,d=b.target;if(!(c===R.msg||a(c).hasClass(M))){var e=a.data(c,z),f=a.data(e,A),g=T[f],h=g.command,k,l=this.options.useCSS;if(f=="font")k=d.style.fontFamily.replace(/"/g,"");else if(f=="size"){if(d.tagName=="DIV")d=d.children[0];k=d.innerHTML}else if(f=="style")k="<"+d.tagName+">";else if(f=="color")k=m(d.style.backgroundColor);else if(f=="highlight"){k=m(d.style.backgroundColor);if(O)h="backcolor";else l=true}c={editor:this,button:e,buttonName:f,popup:c,popupName:g.popupName,command:h,value:k,useCSS:l};if(!(g.popupClick&&g.popupClick(b,c)===false)){if(c.command&&!i(this,c.command,c.value,c.useCSS,e))return false;n();j(this)}}}function f(a){for(var b=1,c=0,d=0;d<a.length;++d){b=(b+a.charCodeAt(d))%65521;c=(c+b)%65521}return c<<16|b}function g(b,e,f,g,h){if(R[b])return R[b];var i=a(F).hide().addClass(J).appendTo("body");if(g)i.html(g);else if(b=="color"){e=e.colors.split(" ");e.length<10&&i.width("auto");a.each(e,function(b,c){a(F).appendTo(i).css(y,"#"+c)});f=L}else if(b=="font")a.each(e.fonts.split(","),function(b,c){a(F).appendTo(i).css("fontFamily",c).html(c)});else if(b=="size")a.each(e.sizes.split(","),function(b,c){a(F).appendTo(i).html("<font size="+c+">"+c+"</font>")});else if(b=="style")a.each(e.styles,function(b,c){a(F).appendTo(i).html(c[1]+c[0]+c[1].replace("<","</"))});else if(b=="url"){i.html('Enter URL:<br><input type=text value="http://" size=35><br><input type=button value="Submit">');f=M}else if(b=="pastetext"){i.html("Paste your content here and click submit.<br /><textarea cols=40 rows=3></textarea><br /><input type=button value=Submit>");f=M}if(!f&&!g)f=K;i.addClass(f);O&&i.attr(G,"on").find("div,font,p,h1,h2,h3,h4,h5,h6").attr(G,"on");if(i.hasClass(K)||h===true)i.children().hover(c,d);R[b]=i[0];return i[0]}function h(a,b){if(b){a.$area.attr(E,E);a.disabled=true}else{a.$area.removeAttr(E);delete a.disabled}try{if(O)a.doc.body.contentEditable=!b;else a.doc.designMode=!b?"on":"off"}catch(c){}q(a)}function i(a,b,c,d,e){r(a);if(!O){if(d===undefined||d===null)d=a.options.useCSS;a.doc.execCommand("styleWithCSS",0,d.toString())}d=true;var f;if(O&&b.toLowerCase()=="inserthtml")k(a).pasteHTML(c);else{try{d=a.doc.execCommand(b,0,c||null)}catch(g){f=g.description;d=false}d||("cutcopypaste".indexOf(b)>-1?t(a,"For security reasons, your browser does not support the "+b+" command. Try using the keyboard shortcut or context menu instead.",e):t(a,f?f:"Error executing the "+b+" command.",e))}q(a);return d}function j(a){setTimeout(function(){v(a)?a.$area.focus():a.$frame[0].contentWindow.focus();q(a)},0)}function k(a){if(O)return l(a).createRange();return l(a).getRangeAt(0)}function l(a){if(O)return a.doc.selection;return a.$frame[0].contentWindow.getSelection()}function m(a){var b=/rgba?\((\d+), (\d+), (\d+)/.exec(a),c=a.split("");if(b)for(a=(b[1]<<16|b[2]<<8|b[3]).toString(16);a.length<6;)a="0"+a;return"#"+(a.length==6?a:c[1]+c[1]+c[2]+c[2]+c[3]+c[3])}function n(){a.each(R,function(b,c){a(c).hide().unbind(D).removeData(z)})}function o(){var b=a("link[href$='jquery.cleditor.css']").attr("href");return b.substr(0,b.length-19)+"images/"}function p(b){var c=b.$main,d=b.options;b.$frame&&b.$frame.remove();var e=b.$frame=a('<iframe frameborder="0" src="javascript:true;">').hide().appendTo(c),f=e[0].contentWindow,g=b.doc=f.document,i=a(g);g.open();g.write(d.docType+"<html>"+(d.docCSSFile===""?"":'<head><link rel="stylesheet" type="text/css" href="'+d.docCSSFile+'" /></head>')+'<body style="'+d.bodyStyle+'"></body></html>');g.close();O&&i.click(function(){j(b)});w(b);if(O){i.bind("beforedeactivate beforeactivate selectionchange keypress",function(a){if(a.type=="beforedeactivate")b.inactive=true;else if(a.type=="beforeactivate"){!b.inactive&&b.range&&b.range.length>1&&b.range.shift();delete b.inactive}else if(!b.inactive){if(!b.range)b.range=[];for(b.range.unshift(k(b));b.range.length>2;)b.range.pop()}});e.focus(function(){r(b)})}(a.browser.mozilla?i:a(f)).blur(function(){x(b,true)});i.click(n).bind("keyup mouseup",function(){q(b)});Q?b.$area.show():e.show();a(function(){var a=b.$toolbar,f=a.children("div:last"),g=c.width();f=f.offset().top+f.outerHeight()-a.offset().top+1;a.height(f);f=(/%/.test(""+d.height)?c.height():parseInt(d.height))-f;e.width(g).height(f);b.$area.width(g).height(P?f-2:f);h(b,b.disabled);q(b)})}function q(b){if(!Q&&a.browser.webkit&&!b.focused){b.$frame[0].contentWindow.focus();window.focus();b.focused=true}var c=b.doc;if(O)c=k(b);var d=v(b);a.each(b.$toolbar.find("."+H),function(e,f){var g=a(f),h=a.cleditor.buttons[a.data(f,A)],i=h.command,j=true;if(b.disabled)j=false;else if(h.getEnabled){j=h.getEnabled({editor:b,button:f,buttonName:h.name,popup:R[h.popupName],popupName:h.popupName,command:h.command,useCSS:b.options.useCSS});if(j===undefined)j=true}else if((d||Q)&&h.name!="source"||O&&(i=="undo"||i=="redo"))j=false;else if(i&&i!="print"){if(O&&i=="hilitecolor")i="backcolor";if(!O||i!="inserthtml")try{j=c.queryCommandEnabled(i)}catch(k){j=false}}if(j){g.removeClass(I);g.removeAttr(E)}else{g.addClass(I);g.attr(E,E)}})}function r(a){O&&a.range&&a.range[0].select()}function s(a){r(a);if(O)return k(a).text;return l(a).toString()}function t(a,b,c){var d=g("msg",a.options,N);d.innerHTML=b;u(a,d,c)}function u(b,c,d){var f,g,h=a(c);if(d){var i=a(d);f=i.offset();g=--f.left;f=f.top+i.height()}else{i=b.$toolbar;f=i.offset();g=Math.floor((i.width()-h.width())/2)+f.left;f=f.top+i.height()-2}n();h.css({left:g,top:f}).show();if(d){a.data(c,z,d);h.bind(D,{popup:c},a.proxy(e,b))}setTimeout(function(){h.find(":text,textarea").eq(0).focus().select()},100)}function v(a){return a.$area.is(":visible")}function w(b,c){var d=b.$area.val(),e=b.options,g=e.updateFrame,h=a(b.doc.body);if(g){var i=f(d);if(c&&b.areaChecksum==i)return;b.areaChecksum=i}d=g?g(d):d;d=d.replace(/<(?=\/?script)/ig,"<");if(e.updateTextArea)b.frameChecksum=f(d);if(d!=h.html()){h.html(d);a(b).triggerHandler(B)}}function x(b,c){var d=a(b.doc.body).html(),e=b.options,g=e.updateTextArea,h=b.$area;if(g){var i=f(d);if(c&&b.frameChecksum==i)return;b.frameChecksum=i}d=g?g(d):d;if(e.updateFrame)b.areaChecksum=f(d);if(d!=h.val()){h.val(d);a(b).triggerHandler(B)}}a.cleditor={defaultOptions:{width:540,height:300,controls:"bold italic underline strikethrough subscript superscript | font size style | color highlight removeformat | bullets numbering | outdent indent | alignleft center alignright justify | undo redo | rule image link unlink | cut copy paste pastetext | print source",colors:"FFF FCC FC9 FF9 FFC 9F9 9FF CFF CCF FCF CCC F66 F96 FF6 FF3 6F9 3FF 6FF 99F F9F BBB F00 F90 FC6 FF0 3F3 6CC 3CF 66C C6C 999 C00 F60 FC3 FC0 3C0 0CC 36F 63F C3C 666 900 C60 C93 990 090 399 33F 60C 939 333 600 930 963 660 060 366 009 339 636 000 300 630 633 330 030 033 006 309 303",fonts:"Arial,Arial Black,Comic Sans MS,Courier New,Narrow,Garamond,Georgia,Impact,Sans Serif,Serif,Tahoma,Trebuchet MS,Verdana",sizes:"1,2,3,4,5,6,7",styles:[["Paragraph","<p>"],["Header 1","<h1>"],["Header 2","<h2>"],["Header 3","<h3>"],["Header 4","<h4>"],["Header 5","<h5>"],["Header 6","<h6>"]],useCSS:false,docType:'<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">',docCSSFile:"",bodyStyle:"margin:4px; font:10pt Arial,Verdana; cursor:text"},buttons:{init:"bold,,|italic,,|underline,,|strikethrough,,|subscript,,|superscript,,|font,,fontname,|size,Font Size,fontsize,|style,,formatblock,|color,Font Color,forecolor,|highlight,Text Highlight Color,hilitecolor,color|removeformat,Remove Formatting,|bullets,,insertunorderedlist|numbering,,insertorderedlist|outdent,,|indent,,|alignleft,Align Text Left,justifyleft|center,,justifycenter|alignright,Align Text Right,justifyright|justify,,justifyfull|undo,,|redo,,|rule,Insert Horizontal Rule,inserthorizontalrule|image,Insert Image,insertimage,url|link,Insert Hyperlink,createlink,url|unlink,Remove Hyperlink,|cut,,|copy,,|paste,,|pastetext,Paste as Text,inserthtml,|print,,|source,Show Source"},imagesPath:function(){return o()}};a.fn.cleditor=function(b){var c=a([]);this.each(function(d,e){if(e.tagName=="TEXTAREA"){var f=a.data(e,C);f||(f=new cleditor(e,b));c=c.add(f)}});return c};var y="backgroundColor",z="button",A="buttonName",B="change",C="cleditor",D="click",E="disabled",F="<div>",G="unselectable",H="cleditorButton",I="cleditorDisabled",J="cleditorPopup",K="cleditorList",L="cleditorColor",M="cleditorPrompt",N="cleditorMsg",O=a.browser.msie,P=/msie\s6/i.test(navigator.userAgent),Q=/iphone|ipad|ipod/i.test(navigator.userAgent),R={},S,T=a.cleditor.buttons;a.each(T.init.split("|"),function(a,b){var c=b.split(","),d=c[0];T[d]={stripIndex:a,name:d,title:c[1]===""?d.charAt(0).toUpperCase()+d.substr(1):c[1],command:c[2]===""?d:c[2],popupName:c[3]===""?d:c[3]}});delete T.init;cleditor=function(e,f){var h=this;h.options=f=a.extend({},a.cleditor.defaultOptions,f);var i=h.$area=a(e).hide().data(C,h).blur(function(){w(h,true)}),j=h.$main=a(F).addClass("cleditorMain").width(f.width).height(f.height),k=h.$toolbar=a(F).addClass("cleditorToolbar").appendTo(j),l=a(F).addClass("cleditorGroup").appendTo(k);a.each(f.controls.split(" "),function(e,i){if(i==="")return true;if(i=="|"){a(F).addClass("cleditorDivider").appendTo(l);l=a(F).addClass("cleditorGroup").appendTo(k)}else{var j=T[i],m=a(F).data(A,j.name).addClass(H).attr("title",j.title).bind(D,a.proxy(b,h)).appendTo(l).hover(c,d),n={};if(j.css)n=j.css;else if(j.image)n.backgroundImage="url("+o()+j.image+")";if(j.stripIndex)n.backgroundPosition=j.stripIndex*-24;m.css(n);O&&m.attr(G,"on");j.popupName&&g(j.popupName,f,j.popupClass,j.popupContent,j.popupHover)}});j.insertBefore(i).append(i);if(!S){a(document).click(function(b){b=a(b.target);b.add(b.parents()).is("."+M)||n()});S=true}/auto|%/.test(""+f.width+f.height)&&a(window).resize(function(){p(h)});p(h)};var U=cleditor.prototype;a.each([["clear",function(a){a.$area.val("");w(a)}],["disable",h],["execCommand",i],["focus",j],["hidePopups",n],["sourceMode",v,true],["refresh",p],["select",function(a){setTimeout(function(){v(a)?a.$area.select():i(a,"selectall")},0)}],["selectedHTML",function(b){r(b);b=k(b);if(O)return b.htmlText;var c=a("<layer>")[0];c.appendChild(b.cloneContents());return c.innerHTML},true],["selectedText",s,true],["showMessage",t],["updateFrame",w],["updateTextArea",x]],function(a,b){U[b[0]]=function(){for(var a=[this],c=0;c<arguments.length;c++)a.push(arguments[c]);a=b[1].apply(this,a);if(b[2])return a;return this}});U.change=function(b){var c=a(this);return b?c.bind(B,b):c.trigger(B)}})(jQuery);
+
+// Simple Wysimwym Editor (Markdown editor)
+
+BLANKLINE = '';
+Wysiwym = {};
+
+$.fn.wysiwym = function(markupSet, options) {
+    this.EDITORCLASS = 'wysiwym-editor';           // Class to use for the wysiwym editor
+    this.BUTTONCLASS = 'btn-toolbar';               // Class to use for the wysiwym buttons
+    this.HELPCLASS = 'wysiwym-help';               // Class to use for the wysiwym help
+    this.HELPTOGGLECLASS = 'wysiwym-help-toggle';  // Class to use for the wysiwym help
+    this.textelem = this;                          // Javascript textarea element
+    this.textarea = $(this);                       // jQuery textarea object
+    this.editor = undefined;                       // jQuery div wrapper around this editor
+    this.markup = new markupSet(this);             // Wysiwym Markup set to use
+    this.defaults = {                              // Default option values
+        containerButtons: undefined,               // jQuery elem to place buttons (makes one by default)
+        containerHelp: undefined,                  // jQuery elem to place help (makes one by default)
+        helpEnabled: true,                         // Set true to display the help dropdown
+        helpToggle: true,                          // Set true to use a toggle link for help
+        helpToggleElem: undefined,                 // jQuery elem to toggle help (makes <a> by default)
+        helpTextShow: 'Markup help',        // Toggle text to display when help is not visible
+        helpTextHide: 'hide Markup help'         // Toggle text to display when help is visible
+    };
+    this.options = $.extend(this.defaults, options ? options : {});
+
+    // Add the button container and all buttons
+    this.initializeButtons = function() {
+        var markup = this.markup;
+        if (this.options.containerButtons == undefined)
+            this.options.containerButtons = $("<div></div>").insertBefore(this.textarea);
+        this.options.containerButtons.addClass(this.BUTTONCLASS);
+
+        this.options.btngroup = $("<div class='btn-group'></div>").appendTo(this.options.containerButtons);
+
+        for (var i=0; i<markup.buttons.length; i++) {
+            // Create the button
+            var button = markup.buttons[i];
+
+            if (button==='|') {
+                this.options.btngroup = $("<div class='btn-group'></div>").appendTo(this.options.containerButtons);
+                continue;
+            }
+
+            var jqbutton = button.create();
+            var data = $.extend({markup:this.markup}, button.data);
+            jqbutton.bind('click', data, button.callback);
+            this.options.btngroup.append(jqbutton);
+        }
+    };
+
+    // Initialize the AutoIndent trigger
+    this.initializeAutoIndent = function() {
+        if (this.markup.autoindents) {
+            var data = {markup:this.markup};
+            this.textarea.bind('keydown', data, Wysiwym.autoIndent);
+        }
+    };
+
+    // Initialize the help syntax dropdown
+    this.initializeHelp = function() {
+        if (this.options.helpEnabled) {
+            if (this.options.containerHelp == undefined)
+                this.options.containerHelp = $("<div></div>").insertAfter(this.textarea);
+            this.options.containerHelp.addClass(this.HELPCLASS);
+            // Add the help table and items
+            var helpBody = $('<tbody></tbody>');
+            var helpTable = $('<table class="table"></table>').append(helpBody);
+            for (var i=0; i<this.markup.help.length; i++) {
+                var item = this.markup.help[i];
+                helpBody.append('<tr><th>'+ item.label +'</th><td>'+ item.syntax +'</td></tr>');
+            };
+            this.options.containerHelp.append(helpTable);
+        }
+    };
+
+    // Initialize the Help Toggle Button
+    this.initializeHelpToggle = function() {
+        if (this.options.helpToggle && this.options.helpEnabled) {
+            var self = this;  // Required for use inside click callback
+            if (this.options.helpToggleElem == undefined)
+                this.options.helpToggleElem = $("<a href='#'>"+ this.options.helpTextShow +"</a>");
+            this.options.helpToggleElem.addClass(this.HELPTOGGLECLASS);
+            this.options.helpToggleElem.bind('click', function() {
+                if (self.options.containerHelp.is(':visible')) {
+                    self.options.containerHelp.slideUp('fast');
+                    $(this).text(self.options.helpTextShow);
+                } else {
+                    self.options.containerHelp.slideDown('fast');
+                    $(this).text(self.options.helpTextHide);
+                }
+                return false;
+            });
+            this.options.containerHelp.before(this.options.helpToggleElem).hide();
+        }
+    };
+
+    // Initialize the Wysiwym Editor
+    this.editor = $('<div class="'+ this.EDITORCLASS +'"></div>');
+    this.textarea.wrap(this.editor);
+    this.initializeButtons();
+    this.initializeAutoIndent();
+    this.initializeHelp();
+    this.initializeHelpToggle();
+};
+
+
+/*----------------------------------------------------------------------------------------------
+ * Wysiwym Selection
+ * Manipulate the textarea selection
+ *--------------------------------------------------------------------------------------------- */
+Wysiwym.Selection = function(wysiwym) {
+    this.lines = wysiwym.lines;                 // Reference to wysiwym.lines
+    this.start = { line:0, position:0 },        // Current cursor start positon
+    this.end = { line:0, position:0 },          // Current cursor end position
+
+    // Return a string representation of this object.
+    this.toString = function() {
+        var str = 'SELECTION: '+ this.length() +' chars\n';
+        str += 'START LINE: '+ this.start.line +'; POSITION: '+ this.start.position +'\n';
+        str += 'END LINE: '+ this.end.line +'; POSITION: '+ this.end.position +'\n';
+        return str;
+    };
+
+    // Add a line prefix, reguardless if it's already set or not.
+    this.addLinePrefixes = function(prefix) {
+        for (var i=this.start.line; i <= this.end.line; i++) {
+            this.lines[i] = prefix + this.lines[i];
+        }
+        this.start.position += prefix.length;
+        this.end.position += prefix.length;
+    };
+
+    // Add the specified prefix to the selection
+    this.addPrefix = function(prefix) {
+        var numlines = this.lines.length;
+        var line = this.lines[this.start.line];
+        var newline = line.substring(0, this.start.position) +
+            prefix + line.substring(this.start.position, line.length);
+        this.lines[this.start.line] = newline;
+        this.start.position += prefix.length;
+        if (this.start.line == this.end.line)
+            this.end.position += prefix.length;
+        // Check we need to update the scroll height;  This is very slightly
+        // off because height != scrollHeight. A fix would be nice.
+        if (prefix.indexOf('\n') != -1) {
+            var scrollHeight = wysiwym.textelem.scrollHeight;
+            var lineheight = parseInt(scrollHeight / numlines);
+            wysiwym.scroll += lineheight;
+        }
+
+    };
+
+    // Add the specified suffix to the selection
+    this.addSuffix = function(suffix) {
+        var line = this.lines[this.end.line];
+        var newline = line.substring(0, this.end.position) +
+            suffix + line.substring(this.end.position, line.length);
+        this.lines[this.end.line] = newline;
+    };
+
+    // Append the specified text to the selection
+    this.append = function(text) {
+        var line = this.lines[this.end.line];
+        var newline = line.substring(0, this.end.position) +
+            text + line.substring(this.end.position, line.length);
+        this.lines[this.end.line] = newline;
+        this.end.position += text.length;
+    };
+
+    // Return an array of lines in the selection
+    this.getLines = function() {
+        var selectedlines = [];
+        for (var i=this.start.line; i <= this.end.line; i++)
+            selectedlines[selectedlines.length] = this.lines[i];
+        return selectedlines;
+    };
+
+    // Return true if selected text contains has the specified prefix
+    this.hasPrefix = function(prefix) {
+        var line = this.lines[this.start.line];
+        var start = this.start.position - prefix.length;
+        if ((start < 0) || (line.substring(start, this.start.position) != prefix))
+            return false;
+        return true;
+    };
+
+    // Return true if selected text contains has the specified suffix
+    this.hasSuffix = function(suffix) {
+        var line = this.lines[this.end.line];
+        var end = this.end.position + suffix.length;
+        if ((end > line.length) || (line.substring(this.end.position, end) != suffix))
+            return false;
+        return true;
+    };
+
+    // Insert the line before the selection to the specified text. If force is
+    // set to false and the line is already set, it will be left alone.
+    this.insertPreviousLine = function(newline, force) {
+        force = force !== undefined ? force : true;
+        var prevnum = this.start.line - 1;
+        if ((force) || ((prevnum >= 0) && (this.lines[prevnum] != newline))) {
+            this.lines.splice(this.start.line, 0, newline);
+            this.start.line += 1;
+            this.end.line += 1;
+        }
+    };
+
+    // Insert the line after the selection to the specified text. If force is
+    // set to false and the line is already set, it will be left alone.
+    this.insertNextLine = function(newline, force) {
+        force = force !== undefined ? force : true;
+        var nextnum = this.end.line + 1;
+        if ((force) || ((nextnum < this.lines.length) && (this.lines[nextnum] != newline)))
+            this.lines.splice(nextnum, 0, newline);
+    };
+
+    // Return true if selected text is wrapped with prefix & suffix
+    this.isWrapped = function(prefix, suffix) {
+        return ((this.hasPrefix(prefix)) && (this.hasSuffix(suffix)));
+    };
+
+    // Return the selection length
+    this.length = function() {
+        return this.val().length;
+    };
+
+    // Return true if all lines have the specified prefix. Optionally
+    // specify prefix as a regular expression.
+    this.linesHavePrefix = function(prefix) {
+        for (var i=this.start.line; i <= this.end.line; i++) {
+            var line = this.lines[i];
+            if ((typeof(prefix) == 'string') && (!line.startswith(prefix))) {
+                return false;
+            } else if ((typeof(prefix) != 'string') && (!line.match(prefix))) {
+                return false;
+            }
+        }
+        return true;
+    };
+
+    // Prepend the specified text to the selection
+    this.prepend = function(text) {
+        var line = this.lines[this.start.line];
+        var newline = line.substring(0, this.start.position) +
+            text + line.substring(this.start.position, line.length);
+        this.lines[this.start.line] = newline;
+        // Update Class Variables
+        if (this.start.line == this.end.line)
+            this.end.position += text.length;
+    };
+
+    // Remove the prefix from each line in the selection. If the line
+    // does not contain the specified prefix, it will be left alone.
+    // Optionally specify prefix as a regular expression.
+    this.removeLinePrefixes = function(prefix) {
+        for (var i=this.start.line; i <= this.end.line; i++) {
+            var line = this.lines[i];
+            var match = prefix;
+            // Check prefix is a regex
+            if (typeof(prefix) != 'string')
+                match = line.match(prefix)[0];
+            // Do the replace
+            if (line.startswith(match)) {
+                this.lines[i] = line.substring(match.length, line.length);
+                if (i == this.start.line)
+                    this.start.position -= match.length;
+                if (i == this.end.line)
+                    this.end.position -= match.length;
+            }
+
+        }
+    };
+
+    // Remove the previous line. If regex is specified, it will
+    // only be removed if there is a match.
+    this.removeNextLine = function(regex) {
+        var nextnum = this.end.line + 1;
+        var removeit = false;
+        if ((nextnum < this.lines.length) && (regex) && (this.lines[nextnum].match(regex)))
+            removeit = true;
+        if ((nextnum < this.lines.length) && (!regex))
+            removeit = true;
+        if (removeit)
+            this.lines.splice(nextnum, 1);
+    };
+
+    // Remove the specified prefix from the selection
+    this.removePrefix = function(prefix) {
+        if (this.hasPrefix(prefix)) {
+            var line = this.lines[this.start.line];
+            var start = this.start.position - prefix.length;
+            var newline = line.substring(0, start) +
+                line.substring(this.start.position, line.length);
+            this.lines[this.start.line] = newline;
+            this.start.position -= prefix.length;
+            if (this.start.line == this.end.line)
+                this.end.position -= prefix.length;
+        }
+    };
+
+    // Remove the previous line. If regex is specified, it will
+    // only be removed if there is a match.
+    this.removePreviousLine = function(regex) {
+        var prevnum = this.start.line - 1;
+        var removeit = false;
+        if ((prevnum >= 0) && (regex) && (this.lines[prevnum].match(regex)))
+            removeit = true;
+        if ((prevnum >= 0) && (!regex))
+            removeit = true;
+        if (removeit) {
+            this.lines.splice(prevnum, 1);
+            this.start.line -= 1;
+            this.end.line -= 1;
+        }
+    };
+
+    // Remove the specified suffix from the selection
+    this.removeSuffix = function(suffix) {
+        if (this.hasSuffix(suffix)) {
+            var line = this.lines[this.end.line];
+            var end = this.end.position + suffix.length;
+            var newline = line.substring(0, this.end.position) +
+                line.substring(end, line.length);
+            this.lines[this.end.line] = newline;
+        }
+    };
+
+    // Set the prefix of each selected line. If the prefix is already and
+    // set, the line willl be left alone.
+    this.setLinePrefixes = function(prefix, increment) {
+        increment = increment ? increment : false;
+        for (var i=this.start.line; i <= this.end.line; i++) {
+            if (!this.lines[i].startswith(prefix)) {
+                // Check if prefix is incrementing
+                if (increment) {
+                    var num = parseInt(prefix.match(/\d+/)[0]);
+                    prefix = prefix.replace(num, num+1);
+                }
+                // Add the prefix to the line
+                var numspaces = this.lines[i].match(/^\s*/)[0].length;
+                this.lines[i] = this.lines[i].lstrip();
+                this.lines[i] = prefix + this.lines[i];
+                if (i == this.start.line)
+                    this.start.position += prefix.length - numspaces;
+                if (i == this.end.line)
+                    this.end.position += prefix.length - numspaces;
+            }
+        }
+    };
+
+    // Unwrap the selection prefix & suffix
+    this.unwrap = function(prefix, suffix) {
+        this.removePrefix(prefix);
+        this.removeSuffix(suffix);
+    };
+
+    // Remove blank lines from before and after the selection.  If the
+    // previous or next line is not blank, it will be left alone.
+    this.unwrapBlankLines = function() {
+        wysiwym.selection.removePreviousLine(/^\s*$/);
+        wysiwym.selection.removeNextLine(/^\s*$/);
+    };
+
+    // Return the selection value
+    this.val = function() {
+        var value = '';
+        for (var i=0; i < this.lines.length; i++) {
+            var line = this.lines[i];
+            if ((i == this.start.line) && (i == this.end.line)) {
+                return line.substring(this.start.position, this.end.position);
+            } else if (i == this.start.line) {
+                value += line.substring(this.start.position, line.length) +'\n';
+            } else if ((i > this.start.line) && (i < this.end.line)) {
+                value += line +'\n';
+            } else if (i == this.end.line) {
+                value += line.substring(0, this.end.position)
+            }
+        }
+        return value;
+    };
+
+    // Wrap the selection with the specified prefix & suffix
+    this.wrap = function(prefix, suffix) {
+        this.addPrefix(prefix);
+        this.addSuffix(suffix);
+    };
+
+    // Wrap the selected lines with blank lines.  If there is already
+    // a blank line in place, another one will not be added.
+    this.wrapBlankLines = function() {
+        if (wysiwym.selection.start.line > 0)
+            wysiwym.selection.insertPreviousLine(BLANKLINE, false);
+        if (wysiwym.selection.end.line < wysiwym.lines.length - 1)
+            wysiwym.selection.insertNextLine(BLANKLINE, false);
+    };
+
+}
+
+
+/*----------------------------------------------------------------------------------------------
+ * Wysiwym Textarea
+ * This can used used for some or all of your textarea modifications. It will keep track of
+ * the the current text and selection positions. The general idea is to keep track of the
+ * textarea in terms of Line objects.  A line object contains a lineType and supporting text.
+ *--------------------------------------------------------------------------------------------- */
+Wysiwym.Textarea = function(textarea) {
+    this.textelem = textarea.get(0);                // Javascript textarea element
+    this.textarea = textarea;                       // jQuery textarea object
+    this.lines = [];                                // Current textarea lines
+    this.selection = new Wysiwym.Selection(this);   // Selection properties & manipulation
+    this.scroll = this.textelem.scrollTop;          // Current cursor scroll position
+
+    // Return a string representation of this object.
+    this.toString = function() {
+        var str = 'TEXTAREA: #'+ this.textarea.attr('id') +'\n';
+        str += this.selection.toString();
+        str += 'SCROLL: '+ this.scroll +'px\n';
+        str += '---\n';
+        for (var i=0; i<this.lines.length; i++)
+            str += 'LINE '+ i +': '+ this.lines[i] +'\n';
+        return str;
+    };
+
+    // Return the current text value of this textarea object
+    this.getProperties = function() {
+        var newtext = '';           // New textarea value
+        var selectionStart = 0;     // Absolute cursor start position
+        var selectionEnd = 0;       // Absolute cursor end position
+        for (var i=0; i < this.lines.length; i++) {
+            if (i == this.selection.start.line)
+                selectionStart = newtext.length + this.selection.start.position;
+            if (i == this.selection.end.line)
+                selectionEnd = newtext.length + this.selection.end.position;
+            newtext += this.lines[i];
+            if (i != this.lines.length - 1)
+                newtext += '\n';
+        }
+        return [newtext, selectionStart, selectionEnd];
+    };
+
+    // Return the absolute start and end selection postions
+    // StackOverflow #1: http://goo.gl/2vSnF
+    // StackOverflow #2: http://goo.gl/KHm0d
+    this.getSelectionStartEnd = function() {
+        if (typeof(this.textelem.selectionStart) == 'number') {
+            var startpos = this.textelem.selectionStart;
+            var endpos = this.textelem.selectionEnd;
+            if (this.textelem.value.indexOf('\r\n') !== -1) {
+              //this fixes Opera, it has \r\n's instead of \n's
+              startpos -= (this.textelem.value.substring(0, startpos).match(/\r\n/g)||[]).length;
+              endpos -= (this.textelem.value.substring(0, endpos).match(/\r\n/g)||[]).length;
+            }
+        } else {
+            this.textelem.focus();
+            var text = this.textelem.value.replace(/\r\n/g, '\n');
+            var textlen = text.length;
+            var range = document.selection.createRange();
+            var textrange = this.textelem.createTextRange();
+            textrange.moveToBookmark(range.getBookmark());
+            var endrange = this.textelem.createTextRange();
+            endrange.collapse(false);
+            if (textrange.compareEndPoints('StartToEnd', endrange) > -1) {
+                var startpos = textlen;
+                var endpos = textlen;
+            } else {
+                var startpos = -textrange.moveStart('character', -textlen);
+                //startpos += text.slice(0, startpos).split('\n').length - 1;
+                if (textrange.compareEndPoints('EndToEnd', endrange) > -1) {
+                    var endpos = textlen;
+                } else {
+                    var endpos = -textrange.moveEnd('character', -textlen);
+                    //endpos += text.slice(0, endpos).split('\n').length - 1;
+                }
+            }
+        }
+        return [startpos, endpos];
+    };
+
+    // Update the textarea with the current lines and cursor settings
+    this.update = function() {
+        var properties = this.getProperties();
+        var newtext = properties[0];
+        var selectionStart = properties[1];
+        var selectionEnd = properties[2];
+        this.textarea.val(newtext);
+        if (this.textelem.setSelectionRange) {
+            if (this.textelem.value.indexOf('\r\n') !== -1) {
+              //this fixes Opera, it has \r\n's instead of \n's
+              var virtual = newtext.replace(/\r\n/g,'\n');
+              var deltaStart = (virtual.substring(0, selectionStart).match(/\n/g)||[]).length;
+              var deltaEnd = (virtual.substring(0, selectionEnd).match(/\n/g)||[]).length;
+              this.textelem.setSelectionRange(selectionStart + deltaStart, selectionEnd + deltaEnd);
+            }else{
+              this.textelem.setSelectionRange(selectionStart, selectionEnd);
+            }
+        } else if (this.textelem.createTextRange) {
+            var range = this.textelem.createTextRange();
+            range.collapse(true);
+            range.moveStart('character', selectionStart);
+            range.moveEnd('character', selectionEnd - selectionStart);
+            range.select();
+        }
+        this.textelem.scrollTop = this.scroll;
+        this.textarea.focus();
+    };
+
+    // Initialize the Wysiwym.Textarea
+    this.init = function() {
+        var text = textarea.val().replace(/\r\n/g, '\n');
+        var selectionInfo = this.getSelectionStartEnd(this.textelem);
+        var selectionStart = selectionInfo[0];
+        var selectionEnd = selectionInfo[1];
+        var endline = 0;
+        while (endline >= 0) {
+            var endline = text.indexOf('\n');
+            var line = text.substring(0, endline >= 0 ? endline : text.length);
+            if ((selectionStart <= line.length) && (selectionEnd >= 0)) {
+                if (selectionStart >= 0) {
+                    this.selection.start.line = this.lines.length;
+                    this.selection.start.position = selectionStart;
+                }
+                if (selectionEnd <= line.length) {
+                    this.selection.end.line = this.lines.length;
+                    this.selection.end.position = selectionEnd;
+                }
+            }
+            this.lines[this.lines.length] = line;
+            text = endline >= 0 ? text.substring(endline + 1, text.length) : '';
+            selectionStart -= endline + 1;
+            selectionEnd -= endline + 1;
+        }
+        // Tweak the selection end position if its on the edge
+        if ((this.selection.end.position == 0) && (this.selection.end.line != this.selection.start.line)) {
+            this.selection.end.line -= 1;
+            this.selection.end.position = this.lines[this.selection.end.line].length;
+        }
+    };
+    this.init();
+};
+
+
+/*----------------------------------------------------------------------------------------------
+ * Wysiwym Button
+ * Represents a single button in the Wysiwym editor.
+ *--------------------------------------------------------------------------------------------- */
+Wysiwym.Button = function(name, callback, data, cssclass) {
+    this.name = name;                  // Button Name
+    this.callback = callback;          // Callback function for this button
+    this.data = data ? data : {};      // Callback arguments
+    this.cssclass = cssclass;          // CSS Class to apply to button
+
+    // Return the CSS Class for this button
+    this.getCssClass = function() {
+        if (!this.cssclass)
+            return "icon-" + this.name.toLowerCase().replace(' ', '');
+        return "icon-" + this.cssclass;
+    };
+
+    // Create and return a new Button jQuery element
+    this.create = function() {
+        var button = $("<div></div>").addClass('btn');
+        var icon = $('<i class=""></i>').addClass(this.getCssClass()).attr('title',this.name);
+        var text = $('<span class="text">'+ this.name +'</span>');
+        text.attr('unselectable', 'on');
+        icon.attr('unselectable', 'on');
+        button.append(icon).append(text);
+        return button;
+    };
+}
+
+
+/*----------------------------------------------------------------------------------------------
+ * Wysiwym Button Callbacks
+ * Useful functions to help easily create Wysiwym buttons
+ *--------------------------------------------------------------------------------------------- */
+// Wrap the selected text with a prefix and suffix string.
+Wysiwym.span = function(event) {
+    var markup = event.data.markup;    // (required) Markup Language
+    var prefix = event.data.prefix;    // (required) Text wrap prefix
+    var suffix = event.data.suffix;    // (required) Text wrap suffix
+    var text = event.data.text;        // (required) Default wrap text (if nothing selected)
+    var wysiwym = new Wysiwym.Textarea(markup.textarea);
+    if (wysiwym.selection.isWrapped(prefix, suffix)) {
+        wysiwym.selection.unwrap(prefix, suffix);
+    } else if (wysiwym.selection.length() == 0) {
+        wysiwym.selection.append(text);
+        wysiwym.selection.wrap(prefix, suffix);
+    } else {
+        wysiwym.selection.wrap(prefix, suffix);
+    }
+    wysiwym.update();
+};
+
+// Prefix each line in the selection with the specified text.
+Wysiwym.list = function(event) {
+    var markup = event.data.markup;    // (required) Markup Language
+    var prefix = event.data.prefix;    // (required) Line prefix text
+    var wrap = event.data.wrap;        // (optional) If true, wrap list with blank lines
+    var regex = event.data.regex;      // (optional) Set to regex matching prefix to increment num
+    var wysiwym = new Wysiwym.Textarea(markup.textarea);
+    if (wysiwym.selection.linesHavePrefix(regex?regex:prefix)) {
+        wysiwym.selection.removeLinePrefixes(regex?regex:prefix);
+        if (wrap) { wysiwym.selection.unwrapBlankLines(); }
+    } else {
+        wysiwym.selection.setLinePrefixes(prefix, regex);
+        if (wrap) { wysiwym.selection.wrapBlankLines(); }
+    }
+    wysiwym.update();
+};
+
+// Prefix each line in the selection according based off the first selected line.
+Wysiwym.block = function(event) {
+    var markup = event.data.markup;    // (required) Markup Language
+    var prefix = event.data.prefix;    // (required) Line prefix text
+    var wrap = event.data.wrap;        // (optional) If true, wrap list with blank lines
+    var wysiwym = new Wysiwym.Textarea(markup.textarea);
+    var firstline = wysiwym.selection.getLines()[0];
+    if (firstline.startswith(prefix)) {
+        wysiwym.selection.removeLinePrefixes(prefix);
+        if (wrap) { wysiwym.selection.unwrapBlankLines(); }
+    } else {
+        wysiwym.selection.addLinePrefixes(prefix);
+        if (wrap) { wysiwym.selection.wrapBlankLines(); }
+    }
+    wysiwym.update();
+};
+
+
+/*----------------------------------------------------------------------------------------------
+ * Wysiwym AutoIndent
+ * Handles auto-indentation when enter is pressed
+ *--------------------------------------------------------------------------------------------- */
+Wysiwym.autoIndent = function(event) {
+    // Only continue if keyCode == 13
+    if (event.keyCode != 13)
+        return true;
+    // ReturnKey pressed, lets indent!
+    var markup = event.data.markup;    // Markup Language
+    var wysiwym = new Wysiwym.Textarea(markup.textarea);
+    var linenum = wysiwym.selection.start.line;
+    var line = wysiwym.lines[linenum];
+    var postcursor = line.substring(wysiwym.selection.start.position, line.length);
+    // Make sure nothing is selected & there is no text after the cursor
+    if ((wysiwym.selection.length() != 0) || (postcursor))
+        return true;
+    // So far so good; check for a matching indent regex
+    for (var i=0; i < markup.autoindents.length; i++) {
+        var regex = markup.autoindents[i];
+        var matches = line.match(regex);
+        if (matches) {
+            var prefix = matches[0];
+            var suffix = line.substring(prefix.length, line.length);
+            // NOTE: If a selection is made in the regex, it's assumed that the
+            // matching text is a number should be auto-incremented (ie: #. lists).
+            if (matches.length == 2) {
+                var num = parseInt(matches[1]);
+                prefix = prefix.replace(matches[1], num+1);
+            }
+            if (suffix) {
+                // Regular auto-indent; Repeat the prefix
+                wysiwym.selection.addPrefix('\n'+ prefix);
+                wysiwym.update();
+                return false;
+            } else {
+                // Return on blank indented line (clear prefix)
+                wysiwym.lines[linenum] = BLANKLINE;
+                wysiwym.selection.start.position = 0;
+                wysiwym.selection.end.position = wysiwym.selection.start.position;
+                if (markup.exitindentblankline) {
+                    wysiwym.selection.addPrefix('\n');
+                }
+                wysiwym.update();
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+
+/* ---------------------------------------------------------------------------
+ * Wysiwym Markdown
+ * Markdown markup language for the Wysiwym editor
+ * Reference: http://daringfireball.net/projects/markdown/syntax
+ *---------------------------------------------------------------------------- */
+Wysiwym.Markdown = function(textarea) {
+    this.textarea = textarea;    // jQuery textarea object
+
+    // Initialize the Markdown Buttons
+    this.buttons = [
+        new Wysiwym.Button('<i class="icon-bold" title="Bold"></i>', Wysiwym.span,  {prefix:'**', suffix:'**', text:'bold text'}),
+        new Wysiwym.Button('<i class="icon-italic" title="Italic"></i>', Wysiwym.span,  {prefix:'_',  suffix:'_',  text:'italic text'}),
+        new Wysiwym.Button('<i class="icon-link" title="Link"></i>',   Wysiwym.span,  {prefix:'[',  suffix:'](http://example.com)', text:'link text'}),
+	'|',
+		new Wysiwym.Button('<i class="icon-comments-alt" title="Quote"></i>',  Wysiwym.list,  {prefix:'> ', wrap:true, text:'quote text'}),
+        new Wysiwym.Button('<i class="icon-list-ul" title="Bullet List"></i>', Wysiwym.list, {prefix:'* ', wrap:true}),
+        new Wysiwym.Button('<i class="icon-list-ol" title="Numered List"></i>', Wysiwym.list, {prefix:'0. ', wrap:true, regex:/^\s*\d+\.\s/}),
+    '|',
+    	new Wysiwym.Button('<i class="icon-picture" title="Image"></i>',   Wysiwym.span,  {prefix:'![Alt text](',  suffix:' "Optional title")', text:'image url'}),
+    ];
+
+    // Configure auto-indenting
+    this.exitindentblankline = true;    // True to insert blank line when exiting auto-indent ;)
+    this.autoindents = [                // Regex lookups for auto-indent
+        /^\s*\*\s/,                     // Bullet list
+        /^\s*(\d+)\.\s/,                // Number list (number selected for auto-increment)
+        /^\s*\>\s/,                     // Quote list
+        /^\s{4}\s*/                     // Code block
+    ];
+
+    // Syntax items to display in the help box
+    this.help = [
+        { label: 'Bold',   syntax: '**bold**' },
+        { label: 'Italic', syntax: '_italics_' },
+        { label: 'Link',   syntax: '[pk!](http://google.com)' },
+        { label: 'Blockquote', syntax: '&gt; quoted text' },
+        { label: 'Bullet List', syntax: '* list item' },
+        { label: 'Number List', syntax: '1. list item' },
+        { label: 'Image', syntax: '![Alt text](imageurl "Optional title")' },
+
+    ];
+};
+
+/*----------------------------------------------------------------------
+ * Additional Javascript Prototypes
+ *-------------------------------------------------------------------- */
+String.prototype.strip = function() { return this.replace(/^\s+|\s+$/g, ''); };
+String.prototype.lstrip = function() { return this.replace(/^\s+/, ''); };
+String.prototype.rstrip = function() { return this.replace(/\s+$/, ''); };
+String.prototype.startswith = function(str) { return this.substring(0, str.length) == str; };
+String.prototype.endswith = function(str) { return this.substring(str.length, this.length) == str; };

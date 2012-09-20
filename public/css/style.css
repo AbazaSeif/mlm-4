@@ -3,7 +3,7 @@
              Credits on /humans.txt
 -------------------------------------------------*/
 
-@import url(http://fonts.googleapis.com/css?family=Oswald:400,700);
+@import url(fonts.css);
 @import url(bootstrap.css);
 
 body {
@@ -36,9 +36,7 @@ a {
   text-decoration: none;
 }
 
-a:hover {
-  color: #005580;
-}
+a:hover { color: #005580 }
 
 /* Global Header
    ================================================== */
@@ -612,6 +610,10 @@ footer .column p {
 
 .maps {}
 
+.maps-single {}
+
+.maps-single #sidebar span { display: block; }
+
 /* Login & Registration
    ================================================== */
 
@@ -1089,7 +1091,6 @@ ol.commentlist {
 
 #comments .vcard {
     padding: 5px;
-    margin-bottom: 10px;
     background: #E6E6E6;
     color: #474747;
     font-size: 15px;
@@ -1110,17 +1111,20 @@ ol.commentlist {
 } 
 
 #comments .body {
-    padding: 5px 10px;
+    padding: 10px;
+    background: #F9F9F9; 
     color: #474747;
     word-wrap: break-word;
 }
 
 #comments .body li { border: 0 }
 
-#comments .body IMG { display: block ; max-width: 100%;}
+#comments .body img { display: block ; max-width: 100%;}
+
+#comments .body blockquote { margin: 0 0 10px }
 
 #comments .meta {
-    padding: 0 10px 10px;
+    padding: 0 10px 5px;
     font-size: 14px;
     line-height: 2;
 }
@@ -1152,28 +1156,27 @@ ol.commentlist {
     border: 1px solid #CCC;
 }
 
-#respond h3,#respond h4 {
-    color: #474747;
-}
+#respond h3,#respond h4 { color: #474747 }
 
 #respond textarea { margin:0;height:100px;width: 535px; -webkit-border-radius: 0;  -moz-border-radius: 0;  border-radius: 0;}
 
-#respond textarea:focus { height:auto; }
-
-#respond .help-block {
-    margin-bottom: 15px;
-    color: #474747;
-}
+#respond .help { color: #474747 }
 
 #respond #comment {
     display: none;
+    padding: 5px;
     margin-bottom: 10px;
+    background: rgb(185, 185, 185);
     border: 1px solid #CCC;
 }
 
-#respond #preview {
-    margin-bottom: 30px;
+#respond #preview { margin-bottom: 30px }
+
+#respond .wysiwym-help table {
+    background: none;
+    color: #474747;
 }
+
 
 /* Multiviwer 3000 (Patent pending)
    ================================================== 
@@ -1322,6 +1325,8 @@ form.xpadding p { margin-bottom: 10px }
 .alert p {margin:auto;font-family: "Oswald";font-weight: 400;}
 
 .nav-tabs {border-bottom: 1px dotted #fff}
+
+.btn-group > .btn + .btn { margin-left: -3px; }
     
 /* Sprite galore! 
    ================================================== */
@@ -1744,11 +1749,9 @@ form.xpadding p { margin-bottom: 10px }
 
     #pagemenu .rside { display: none }
 
-    #page { float: left; width: 100% }
+    #page { float: left; width: 100%!important }
 
-    #sidebar { float: right; width: 100%; margin-top: 20px }
-
-    .admin .bigger, .admin .smaller { width: 100%!important; }
+    #sidebar { float: right; width: 100%!important; margin-top: 20px }
 
     .admin .fixedheight { max-height: 100%!important }
 

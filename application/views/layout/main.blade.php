@@ -10,7 +10,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	@if (isset($title)) 
-	<title>{{$title}} | MLM</title>
+	<title>{{$title}} | Major League Mining</title>
 	@else 
 	<title>Major League Mining</title>
 	@endif
@@ -48,10 +48,11 @@
 	888       8888888888888    Y8888888888888    Y888 "Y8888P88
 -->
 
-	<meta name="robots" content="all">
-	<meta name="description" content="Competitive Minecraft | Major League Mining">
+	<meta name="robots" content="index,follow">
+	<meta name="googlebot" content="index,follow">
+	<meta name="description" content="Competitive Minecraft and the best from the Minecraft community">
 	<meta name="keywords" content="minecraft, race for wool, wool, competitive minecraft, tournaments, official site, rmct, reddit">
-	<meta name="copyright" content="Major League Mining 2012">
+	<meta name="copyright" content="Major League Mining">
 	<link type="text/plain" rel="author" href="{{ URL::to_asset("humans.txt") }}" />
 	<link type="text/plain" rel="hackers" href="{{ URL::to_asset("hackers.txt") }}" />
 	
@@ -63,8 +64,10 @@
 	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ URL::to_asset("images/static/apple-touch-icon-ipad3.png") }}" />
 	
 	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/style.css") }}" />
+	{{-- <link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/nivo/default/default.css") }}" />
 	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/nivo/light/light.css") }}" />
-	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/nivo/dark/dark.css") }}" />
+	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/nivo/dark/dark.css") }}" /> --}}
+	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/nivo/medium/medium.css") }}" />
 	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/nivo/bar/bar.css") }}" />
 	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/nivo/nivo-slider.css") }}" />
 
@@ -150,8 +153,9 @@
 <footer id="global-footer" class="clearfix">
 	<div class="holder">
 		<div class="column">
-			<h3>Heading</h3>
-			<p>All sorts of awesome footer goodness</p>
+			<h3>Copyright 2012</h3>
+			<p>Major League Mining</p>
+			<p>"Minecraft" is a registered trademark of Mojang AB</p>
 		</div>
 		<div class="column">
 			<h3>Heading</h3>
@@ -167,17 +171,10 @@
 	</div>	
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="{{ URL::to_asset("js/libs/jquery-1.8.0.min.js") }}"><\/script>')</script>
-	<script src="{{ URL::to_asset("js/libs/snuownd.js") }}"></script>
-	<script src="{{ URL::to_asset("js/plugins.js") }}"></script>
-	<script src="{{ URL::to_asset("js/script.js") }}"></script>
 
-	<script type="text/javascript">
-	var parser = SnuOwnd.getParser();
-			document.getElementById('mrk').addEventListener('input', function(e) {
-			document.getElementById('preview').innerHTML = parser.render(e.target.value);
-			});
-	</script>
-	
+	<script src="{{ URL::to_asset("js/libs/showdown.js") }}"></script>
+	<script src="{{ URL::to_asset("js/plugins.js") }}"></script>
+	<script src="{{ URL::to_asset("js/script.js") }}"></script>	
 	<script>
 		// Tracking code for Voidlane (FOR TESTING PORPUSES ONLY) 
 		var _gaq=[['_setAccount','UA-9118967-2'],['_trackPageview']];

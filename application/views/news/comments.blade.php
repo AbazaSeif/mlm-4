@@ -37,6 +37,7 @@
 	@if(Auth::check())
 		<h3>Post a new comment</h3>
 		<div id="comment">
+			<p class="help">Live preview</p>
 			<div class="vcard"> 
 			<img class="avatar" src="http://minotar.net/helm/{{Auth::user()->mc_username}}/150.png" alt="{{Auth::user()->username}}'s skin">
 			<a class="username" href="/user/{{Auth::user()->username}}" title="{{Auth::user()->username}}'s Profile">{{Auth::user()->username}}</a> Says:
@@ -47,7 +48,7 @@
 		</div>
 		{{ Form::open("news/comment/".$article->id) }}
 		{{ Form::token() }}
-		{{ Form::field("textarea", "comment", "", array(Input::old("comment"), array("id" => "mrk", "class" => "input-xxlarge")), array('error' => $errors->first('comment'), "help" => "Markdown supported")) }}
+		{{ Form::field("textarea", "comment", "", array(Input::old("comment"), array("id" => "mrk", "class" => "input-xxlarge")), array('error' => $errors->first('comment'))) }}
 		{{ Form::submit("Post", array("class" => "btn-primary")) }}
 		{{ HTML::link('#', 'Preview', array("class" => "btn", "id" => "prevb")); }}
 		{{ Form::close() }}
