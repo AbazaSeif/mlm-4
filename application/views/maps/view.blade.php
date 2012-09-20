@@ -33,9 +33,9 @@
 @endif
 </ul>
 
-<div id="content" class="maps clearfix">
+<div id="content" class="maps-single clearfix">
 <div class="titlebar clearfix">
-	<h1>{{ e($map->title) }} {{ e($map->version) }}</h1>
+	<h2>{{ e($map->title) }}</h2>
 </div>
 	@if($is_owner === 0)
 	<div class="alert">
@@ -53,32 +53,45 @@
 	</div>
 	@endif
 <div id="page">
-
-<div class="slider-wrapper theme-dark">
-	<div id="gslider" class="nivoSlider">
-		@forelse($map->images as $image)
-		<img src="{{ e($image->file_original) }}" data-thumb="{{ e($image->file_small) }}" alt="" />
-		@empty
-		@endforelse
-</div>
-</div>
+	<div class="slider-wrapper theme-medium">
+		<div id="gslider" class="nivoSlider">
+			@forelse($map->images as $image)
+			<img src="{{ e($image->file_original) }}" data-thumb="{{ e($image->file_small) }}" alt="" />
+			@empty
+			<img src="{{ URL::to_asset("images/slides/5.jpg") }}" data-thumb="{{ URL::to_asset("images/slides/5.jpg") }}" alt="" />
+			@endforelse
+		</div>
+	</div>
 </div>
 <div id="sidebar">
-	<h2>{{ e($map->title) }}</h2>
-	<p>{{ e($map->summary) }}</p>
-	{{ $map->description }}
+<div class="titlebar clearfix">
+	<h3>Map Details</h3>
+</div>
+	<div id="hidden">
+	<p>{{ $map->description }}</p>
+</div>
+
 	@if($map->version)
-	Version: {{ e($map->version) }}<br />
+	<span>
+		Version: {{ e($map->version) }}
+	</span>
 	@endif
 	@if($map->maptype)
-	Map type: {{ array_get($maptypes, $map->maptype) }}<br />
+	<span>
+		Map type: {{ array_get($maptypes, $map->maptype) }}
+	</span>
 	@endif
 	@if($map->teamcount)
-	Team count: {{ $map->teamcount }}<br />
+	<span>
+		Team count: {{ $map->teamcount }}
+	</span>
 	@endif
 	@if($map->teamsize)
-	Team size: {{ $map->teamsize }}<br />
+	<span>
+		Team size: {{ $map->teamsize }}
+	</span>
 	@endif
+
 	<h3>Authors</h3>
 	<ul>
 	@foreach($authors as $author)

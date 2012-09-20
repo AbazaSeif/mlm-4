@@ -20,18 +20,13 @@
 
 
 <div id="content" class="homecontent clearfix">
-	<section>
-	<h3>News</h3>
-	trololol
-	</section>
-	<section>
-	<h3>Maps</h3>
-	trololol
-	</section>
-	<section>
-	<h3>Tournaments</h3>
-	trololol
-	</section>
+	<div id="page" class="bigger">
+		<div id="feed-item">
+			<div class="item-image"></div>
+			<div class="item-content"></div>
+		</div>
+	</div>
+	<div id="sidebar" class="smaller"></div>
 </div>
 
 </div>
