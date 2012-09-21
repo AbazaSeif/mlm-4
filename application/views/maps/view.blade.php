@@ -13,17 +13,13 @@
 @if(Auth::check() && Auth::user()->admin)
 <li class="disabled"><a href="#">Actions:</a></li>
 <li>
+{{ HTML::link_to_action("admin@maps@view", "Moderate Map", array($map->id)) }}
+</li>
+@if($is_owner)
+<li>
 {{ HTML::link_to_action("maps@edit", "Edit Map", array($map->id)) }}
 </li>
-<li>
-{{ $map->featured ? HTML::link_to_action("admin@maps", "Revoke Map", array("unpublish", $map->id)) : HTML::link_to_action("admin@maps", "Approve Map", array("publish", $map->id)) }}
-</li>
-<li>
-{{ $map->featured ? HTML::link_to_action("admin@maps", "Unfeature Map", array("unfeature", $map->id)) : HTML::link_to_action("admin@maps", "Feature Map", array("feature", $map->id)) }}
-</li>
-<li>
-{{ $map->official ? HTML::link_to_action("admin@maps", "Make Map Unofficial", array("unofficial", $map->id)) : HTML::link_to_action("admin@maps", "Make Map Official", array("official", $map->id))}}
-</li>
+@endif
 @elseif($is_owner)
 <li class="disabled"><a href="#">Actions:</a></li>
 <li>
@@ -35,7 +31,7 @@
 
 <div id="content" class="maps-single clearfix">
 <div class="titlebar clearfix">
-	<h2>{{ e($map->title) }}</h2>
+	<h2>{{ e($map->title) }}</h2> 
 </div>
 	@if($is_owner === 0)
 	<div class="alert">

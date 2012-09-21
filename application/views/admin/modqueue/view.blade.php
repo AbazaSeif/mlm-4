@@ -15,11 +15,7 @@
 	<p>Additional Data: {{ $item->data }}</p>
 	{{ HTML::link_to_action("admin.modqueue.delete", "Remove Modqueue item", array($item->id), array("class" => "btn btn-danger")) }}
 	@if ($item->itemtype == "map")
-	{{ HTML::link_to_action("admin.maps.edit", "Edit Map", array($item->itemid), array("class" => "btn")) }}
-	{{ HTML::link_to_action("admin.maps.unpublish", "Unpublish Map", array($item->itemid), array("class" => "btn")) }}
-	{{ HTML::link_to_action("admin.maps.publish", "Publish Map", array($item->itemid), array("class" => "btn")) }}
-	{{ HTML::link_to_action("admin.maps.delete", "Delete Map", array($item->itemid), array("class" => "btn")) }}
-	{{ HTML::link_to_action("maps.view", "View Map", array($item->itemid), array("class" => "btn")) }}
+	{{ HTML::link_to_action("admin.maps.view", "Moderate Map", array($item->itemid), array("class" => "btn")) }}
 	@elseif ($item->itemtype == "comment")
 	@endif
 	{{ HTML::link_to_action("admin", "Cancel", array(), array("class" => "btn")) }}
