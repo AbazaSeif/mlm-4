@@ -2,36 +2,40 @@
 
 @section("content")
 @include("maps.menu")
-<div id="content">
-<div class="titlebar clearfix">
+<div id="content" class="edit clearfix">
+<div class="titlebar">
 	<h2>Editing map <b>{{ e($map->title) }}</b></h2>
 </div>
-<div class="titlebar clearfix">
-	<h3>Map meta</h3>
-</div>
-	{{ Form::open("maps/edit_meta/".$map->id, "POST", array("class" => "form-horizontal ")) }}
-		{{ Form::token() }}
-		{{ Form::field("text", "title", "Title", array(Input::old("title", $map->title), array('class' => 'input-large')), array('error' => $errors->first('title'))) }}
-		{{ Form::field("textarea", "summary", "Summary", array(Input::old("summary", $map->summary), array("rows" => "15", 'class' => 'xlarge')), array("help-inline" => "Short description about your map. (255 characters max)", 'error' => $errors->first('summary'))) }}
-		{{ Form::field("wysiwyg", "description", "Long Description", array(Input::old("description", $map->description), array('class' => 'input-xxlarge')), array('error' => $errors->first('description'))) }}
-		{{ Form::field("select", "maptype", "Type", array(array_merge(array("" => "--------------"), Config::get("maps.types")), Input::old("maptype", $map->maptype), array('class' => 'input')), array('error' => $errors->first('maptype'))) }}
-		{{ Form::field("text", "version", "Version", array(Input::old("version", $map->version)), array("error" => $errors->first("error"))) }}
-		{{ Form::field("text", "teamcount", "Team count", array(Input::old("teamcount", $map->teamcount)), array("error" => $errors->first("error"))) }}
-		{{ Form::field("text", "teamsize", "Recomended team size", array(Input::old("teamsize", $map->teamsize)), array("error" => $errors->first("teamsize"))) }}
-		{{ Form::actions(array(Form::submit("Save", array("class" => "btn-primary")), " ", HTML::link_to_action("maps@view", "Back", array($map->id), array("class" => "btn")))) }}
+<div id="page" class="bigger">
+	{{ Form::open("maps/edit_meta/".$map->id, "POST", array("class" => "form")) }}
+		{{ Form::token()}}
+		{{ Form::field("text", "title", "", array(Input::old("title", $map->title), array('class' => 'title', 'autocomplete' => 'off')), array('error' => $errors->first('title'))) }}
+		<div class="titlebar"><h4>Description</h4></div>
+		{{ Form::field("wysiwyg-user", "description", "", array(Input::old("description", $map->description), array('class' => 'input-xxlarge')), array('error' => $errors->first('description'))) }}
+		<div class="titlebar"><h4>Summary (Explain your map 140 characters. Use correct grammar. )</h4></div>
+		{{ Form::field("textarea", "summary", "", array(Input::old("summary", $map->summary), array("rows" => "15", 'class' => 'summary')), array('error' => $errors->first('summary'))) }}
+		<div class="titlebar"><h4>Map type</h4></div>
+		{{ Form::field("select", "maptype", "", array(array_merge(array("" => "--------------"), Config::get("maps.types")), Input::old("maptype", $map->maptype), array('class' => 'input')), array('error' => $errors->first('maptype'))) }}
+		<div class="titlebar"><h4>Map version (Remember to keep this up-to-date)</h4></div>
+		{{ Form::field("text", "version", "", array(Input::old("version", $map->version)), array("error" => $errors->first("error"))) }}
+		<div class="titlebar"><h4>Teams (How many teams can play the map at once)</h4></div>
+		{{ Form::field("text", "teamcount", "", array(Input::old("teamcount", $map->teamcount)), array("error" => $errors->first("error"))) }}
+		<div class="titlebar"><h4>Team Size (Players per team)</h4></div>
+		{{ Form::field("text", "teamsize", "", array(Input::old("teamsize", $map->teamsize)), array("error" => $errors->first("teamsize"))) }}
+		{{ Form::actions(array(Form::submit("Save", array("class" => "btn-primary")), " ", HTML::link_to_action("maps@view", "Cancel", array($map->id), array("class" => "btn")))) }}
 	{{ Form::close() }}
-	<div class="titlebar clearfix">
+	<div class="titlebar">
 		<h3>Authors</h3>
 	</div>
-	<ul>
+	<ul class="ulfix">
 	@foreach($authors as $user)
-		<li>
-			<img src="http://minotar.net/helm/{{ $user->mc_username }}/18.png" alt="avatar" /> {{$user->username}}
+		<li class="xpadding">
+			<img src="http://minotar.net/helm/{{ $user->mc_username }}/32.png" alt="avatar" /> {{$user->username}}
 			@if(!$user->pivot->confirmed)
 				Hasn't yet accepted the invite
 			@endif
 			@if($user->id == Auth::user()->id)
-				<small>You cannot remove yourself</small>
+				<small>(You cannot remove yourself)</small>
 			@else
 			@endif
 		</li>
@@ -43,7 +47,7 @@
 		{{ Form::field("text", "username", "Username", array(Input::old("username")), array("help-inline" => "MLM username", "error" => $errors->first("username"))) }}
 		{{ Form::actions(array(Form::submit("Invite", array("class" => "btn-primary"))))}}
 	{{ Form::close() }}
-<div class="titlebar clearfix">
+<div class="titlebar">
 	<h3>Download Links</h3>
 </div>
 	<table class="table">
@@ -70,30 +74,38 @@
 			@endforelse
 		</tbody>
 	</table>
-<div class="titlebar clearfix">
+<div class="titlebar">
 	<h3>Images</h3>
 </div>
 	<ul class="thumbnails">
 		@forelse($map->images as $image)
-			<li class="span2">
-				<a href="{{ e($image->file_original) }}" class="thumbnail">{{ HTML::image($image->file_small) }}</a>
-				{{ HTML::link_to_action("maps@delete_image", "Delete", array($map->id, $image->id)) }}
+			<li>
+				<div class="thumbnail">
+					{{ HTML::image($image->file_small) }}
+				<div class="caption">
+				<p> 
 				@if($map->image_id != $image->id)
-				{{ Form::open("maps/default_image/{$map->id}/{$image->id}") }}
-					{{ Form::token() }}
-					{{ Form::submit("Set Default", array("class" => "btn-success btn-mini")) }}
-				{{ Form::close() }}
+					{{ Form::open("maps/default_image/{$map->id}/{$image->id}") }}
+						{{ Form::token() }}
+						{{ Form::submit("Set Default", array("class" => "btn btn-small btn-success")) }}
+						{{ HTML::link_to_action("maps@delete_image", "Delete", array($map->id, $image->id),array("class" => "btn btn-small btn-danger")) }}
+					{{ Form::close() }}
 				@else
-				<span class="btn btn-success btn-mini disabled">Default image</span>
+					<span class="btn btn-small btn-success disabled">Default image</span>
+					<span class="btn btn-small btn-danger disabled" title="You can't delete the default image">Delete</span>
 				@endif
+				</p>
+				</div>
+				</div>
 			</li>
 		@empty
 			<li>
 				No images found!
 			</li>
 		@endforelse
+
 	</ul>
-<div class="titlebar clearfix">
+<div class="titlebar">
 	<h4>Upload new image</h4>
 </div>
 	{{ Form::open_for_files("maps/upload_image/".$map->id) }}
@@ -102,5 +114,6 @@
 		{{ Form::field("text", "name", "Name", array(Input::old("name"), array('class' => 'input-large')), array('error' => $errors->first('name'))) }}
 		{{ Form::submit("Upload", array("class" => "btn-primary")) }}
 	{{ Form::close() }}
+</div>
 </div>
 @endsection

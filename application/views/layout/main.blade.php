@@ -106,7 +106,7 @@
 				{{ HTML::link_to_action('account@login', "Login &bull; Create account") }}
 				@endif
 			</div>
-			<a href="#" id="shownav"></a>
+			<a href="#" id="shownav"><i class="icon-reorder"></i></a>
 		</div>
 	</div>	
 		<nav id="menu">

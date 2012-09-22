@@ -6,16 +6,24 @@
 MLM = {
 	common: {
 		init: function () {
+		// Responsive menu toggle
 			$("#shownav").click(function () {
 				$("#menu").slideToggle("slow").show();
 			});
-			$("textarea[data-wysiwyg]").cleditor();
-			$("#sortable").tablesorter();
-			$('.dropdown-toggle').dropdown();
-			$("#prevb").click(function () {
-				$("#comment").fadeToggle(300);
-				return false;
+		// Admin WYSIWYG Editor
+			$("textarea[data-wysiwyg]").cleditor({
+				docType: '<!DOCTYPE html>'
 			});
+		// User WYSIWYG Editor
+			$("textarea[data-wysiwyg-user]").cleditor({
+				controls: 'bold italic underline strikethrough',
+				docType: '<!DOCTYPE html>'
+			});
+		// Make tables sortable
+			$("#sortable").tablesorter();
+		// Activate Bootstrap Dropdowns
+			$('.dropdown-toggle').dropdown();
+		// Gloal Slideshow
 			$('#gslider').nivoSlider({
 				effect: 'fade',
 				animSpeed: 700,
@@ -30,27 +38,31 @@ MLM = {
 				nextText: 'Next',
 				randomStart: false
 			});
-
-			// Setup the Live Preview
-        $('#mrk').wysiwym(Wysiwym.Markdown, {});
-        var showdown = new Showdown.converter();
-        var previousValue = null;
-        var previewTextarea = $('#mrk');
-        var previewOutput = $('#preview');
-        var updateLivePreview = function() {
-            var newValue = previewTextarea.val();
-            if (newValue != previousValue) {
-                previousValue = newValue;
-                var newHtml = $("<div>"+ showdown.makeHtml(newValue) +"</div>");
-                newHtml.find('pre,p code').addClass('prettyprint');
-                newHtml.find('pre code').each(function() {
-                    $(this).html(prettyPrintOne($(this).html()));
-                });
-                previewOutput.html(newHtml);
-            }
-        }
-        setInterval(updateLivePreview, 100);
-		}
+		// Show/Hide Markdown Live Preview
+			$("#prevb").click(function () {
+				$("#comment").fadeToggle(300);
+				return false;
+			});
+		// Markdown Live Preview 
+			$('#mrk').wysiwym(Wysiwym.Markdown, {});
+				var showdown = new Showdown.converter();
+				var previousValue = null;
+				var previewTextarea = $('#mrk');
+				var previewOutput = $('#preview');
+				var updateLivePreview = function() {
+				var newValue = previewTextarea.val();
+					if (newValue != previousValue) {
+					previousValue = newValue;
+				var newHtml = $("<div>"+ showdown.makeHtml(newValue) +"</div>");
+					newHtml.find('pre,p code').addClass('prettyprint');
+					newHtml.find('pre code').each(function() {
+			$(this).html(prettyPrintOne($(this).html()));
+			});
+				previewOutput.html(newHtml);
+			}
+        	}
+        	setInterval(updateLivePreview, 100);
+			}
 	},
 	home: {
 		init: function () {
