@@ -16,7 +16,7 @@ MLM = {
 			});
 		// User WYSIWYG Editor
 			$("textarea[data-wysiwyg-user]").cleditor({
-				controls: 'bold italic underline strikethrough',
+				controls: 'bold italic strikethrough | bullets numbering | link unlink | removeformat',
 				docType: '<!DOCTYPE html>'
 			});
 		// Make tables sortable

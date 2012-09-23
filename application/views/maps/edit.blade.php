@@ -12,7 +12,7 @@
 		{{ Form::field("text", "title", "", array(Input::old("title", $map->title), array('class' => 'title', 'autocomplete' => 'off')), array('error' => $errors->first('title'))) }}
 		<div class="titlebar"><h4>Description</h4></div>
 		{{ Form::field("wysiwyg-user", "description", "", array(Input::old("description", $map->description), array('class' => 'input-xxlarge')), array('error' => $errors->first('description'))) }}
-		<div class="titlebar"><h4>Summary (Explain your map 140 characters. Use correct grammar. )</h4></div>
+		<div class="titlebar"><h4>Summary (Explain your map 140 characters. Use correct grammar)</h4></div>
 		{{ Form::field("textarea", "summary", "", array(Input::old("summary", $map->summary), array("rows" => "15", 'class' => 'summary')), array('error' => $errors->first('summary'))) }}
 		<div class="titlebar"><h4>Map type</h4></div>
 		{{ Form::field("select", "maptype", "", array(array_merge(array("" => "--------------"), Config::get("maps.types")), Input::old("maptype", $map->maptype), array('class' => 'input')), array('error' => $errors->first('maptype'))) }}
@@ -30,7 +30,7 @@
 	<ul class="ulfix">
 	@foreach($authors as $user)
 		<li class="xpadding">
-			<img src="http://minotar.net/helm/{{ $user->mc_username }}/32.png" alt="avatar" /> {{$user->username}}
+			<img src="http://minotar.net/helm/{{ $user->mc_username }}/30.png" alt="avatar" /> {{$user->username}}
 			@if(!$user->pivot->confirmed)
 				Hasn't yet accepted the invite
 			@endif
@@ -41,7 +41,7 @@
 		</li>
 	@endforeach
 	</ul>
-	Invite additional authors:
+	<div class="titlebar"><h4>Invite additional authors</h4></div>
 	{{ Form::open("maps/add_author/".$map->id) }}
 		{{ Form::token() }}
 		{{ Form::field("text", "username", "Username", array(Input::old("username")), array("help-inline" => "MLM username", "error" => $errors->first("username"))) }}
@@ -50,19 +50,20 @@
 <div class="titlebar">
 	<h3>Download Links</h3>
 </div>
+<a href="{{ URL::to_action("maps@edit_link",  array($map->id)) }}" class="btn btn-mini" style="margin-bottom:10px"><i class="icon-plus"></i> Add Link</a>
 	<table class="table">
 		<thead>
 			<tr>
 				<th>URL</th>
 				<th>Direct?</th>
 				<th>Actions</th>
-				<th>{{ HTML::link_to_action("maps@edit_link", "+ Add", array($map->id)) }}</th>
+				<th>&nbsp;</th>
 			</tr>
 		</thead>
 		<tbody>
 			@forelse($map->links as $link)
 				<tr>
-					<td>{{ HTML::image($link->favicon, "favicon")." ".HTML::link($link->url, $link->url) }} <small>{{$link->type}}</small></td>
+					<td>{{ HTML::image($link->favicon, "favicon")." ".HTML::link($link->url, $link->url) }}</td>
 					<td>{{ $link->direct ? "&#10004;" : "" }}</td>
 					<td>{{ HTML::link_to_action("maps@edit_link", "Edit", array($map->id, $link->id)) }}</td>
 					<td>{{ HTML::link_to_action("maps@delete_link", "Delete", array($map->id, $link->id)) }}</td>
@@ -83,7 +84,6 @@
 				<div class="thumbnail">
 					{{ HTML::image($image->file_small) }}
 				<div class="caption">
-				<p> 
 				@if($map->image_id != $image->id)
 					{{ Form::open("maps/default_image/{$map->id}/{$image->id}") }}
 						{{ Form::token() }}
@@ -94,7 +94,6 @@
 					<span class="btn btn-small btn-success disabled">Default image</span>
 					<span class="btn btn-small btn-danger disabled" title="You can't delete the default image">Delete</span>
 				@endif
-				</p>
 				</div>
 				</div>
 			</li>
@@ -115,5 +114,6 @@
 		{{ Form::submit("Upload", array("class" => "btn-primary")) }}
 	{{ Form::close() }}
 </div>
+@include("maps.sidebar")
 </div>
 @endsection

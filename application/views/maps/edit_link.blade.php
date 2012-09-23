@@ -2,8 +2,6 @@
 
 @section("content")
 @include("maps.menu")
-{{ HTML::link_to_action("maps@view", "View", array($map->id, $map->slug)) }} 
-{{ HTML::link_to_action("maps@edit", "Edit", array($map->id)) }}
 <div id="content">
 	@if($link->exists)
 		<h2>Edit link</h3>

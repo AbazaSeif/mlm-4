@@ -29,35 +29,24 @@
 	<li data-multiview="big"><a href="#">Big</a></li>
 </ul>
 
-@elseif (URI::is('maps/view/*') || URI::is('maps/edit/*'))
-
-<ul class="submenu nav nav-pills">
+@elseif (URI::is('maps/view/*') || URI::is('maps/edit/*') || URI::is('maps/edit_link/*') || URI::is('maps/delete_link/*') || URI::is('maps/delete_image/*') )
 @if(Auth::check() && Auth::user()->admin)
+<ul class="submenu nav nav-pills">
 <li class="disabled"><a href="#">Actions:</a></li>
-<li>
-{{ HTML::link_to_action("admin@maps@view", "Moderate Map", array($map->id)) }}
-</li>
-<li>
-{{ HTML::link_to_action("maps@edit", "Edit Map", array($map->id)) }}
-</li>
-<li>
-{{ $map->published ? HTML::link_to_action("admin@maps", "Revoke Map", array("unpublish", $map->id)) : HTML::link_to_action("admin@maps", "Approve Map", array("publish", $map->id)) }}
-</li>
-<li>
-{{ $map->featured ? HTML::link_to_action("admin@maps", "Unfeature Map", array("unfeature", $map->id)) : HTML::link_to_action("admin@maps", "Feature Map", array("feature", $map->id)) }}
-</li>
-<li>
-{{ $map->official ? HTML::link_to_action("admin@maps", "Make Map Unofficial", array("unofficial", $map->id)) : HTML::link_to_action("admin@maps", "Make Map Official", array("official", $map->id))}}
-</li>
-@elseif($is_owner)
-<li class="disabled"><a href="#">Actions:</a></li>
-<li>
-{{ HTML::link_to_action("maps@edit", "Edit Map", array($map->id)) }}
-</li>
+<li>{{ HTML::link_to_action("admin@maps@view", "Moderate Map", array($map->id)) }}</li>
+<li>{{ HTML::link_to_action("maps@edit", "Edit Map", array($map->id)) }}</li>
+@if (URI::is('maps') || URI::is('maps/view/*'))
 @else
+<li>{{ HTML::link_to_action("maps@view", "Back to Map", array($map->id, $map->slug)) }}</li>
 @endif
 </ul>
+	@elseif($is_owner)
+<ul class="submenu nav nav-pills">
+<li class="disabled"><a href="#">Actions:</a></li>
+<li>{{ HTML::link_to_action("maps@edit", "Edit Map", array($map->id)) }}</li>
+</ul>
+@else
+@endif
 
 @else
-Nothing
 @endif

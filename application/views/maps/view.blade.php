@@ -4,7 +4,7 @@
 @section("content")
 @if($map->published == 0)
 	<div class="alert">
-		<p>This map is awaiting moderation and is not yet viewable by everyone.</p>
+		This map is awaiting moderation and is not yet viewable by everyone.
 	</div>
 @endif
 @include("maps.menu")
@@ -20,18 +20,18 @@
 	</span>
 
 </div>
-	@if($is_owner == 0)
-	<div class="alert">
-		You have been invited to be an author of this map.
+	@if($is_owner === 0)
+	<div class="alert alert-info alert-block alertfix clearfix">
+		<p>You have been invited to be an author of this map.</p>
 		{{ Form::open("maps/author_invite/".$map->id) }}
 			{{ Form::token() }}
 			{{ Form::hidden("action", "accept") }}
-			<button type="submit" class="btn btn-success btn-mini"><i class="icon-ok icon-white"></i> Accept</button>
+			<button type="submit" class="btn btn-success"><i class="icon-ok icon-white"></i> Accept</button>
 		{{ Form::close() }}
 		{{ Form::open("maps/author_invite/".$map->id) }}
 			{{ Form::token() }}
 			{{ Form::hidden("action", "deny") }}
-			<button type="submit" class="btn btn-danger btn-mini"><i class="icon-remove icon-white"></i> Deny</button>
+			<button type="submit" class="btn btn-danger"><i class="icon-remove icon-white"></i> Deny</button>
 		{{ Form::close() }}
 	</div>
 	@endif

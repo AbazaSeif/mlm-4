@@ -622,6 +622,7 @@ footer .column p {
     unicode-bidi: bidi-override;
     direction: rtl;
     font-size: 30px;
+    line-height: 1;
 }
 .maps-single .rating span.star,
 #code .rating span.star {
@@ -924,16 +925,15 @@ text-decoration: underline;
    ================================================== */
     
 #errorbox {
-    min-height: 350px;
-    max-width: 650px;
     margin: 28px auto;
-    text-align: center;
     padding: 30px;
+    max-width: 650px;
     background: rgba(34, 58, 135, 0.60);
     -moz-box-shadow: 0 0 35px #000;
     -webkit-box-shadow: 0 0 35px #000;
     box-shadow: 0 0 35px #000
 ;
+    text-align: center;
     font-family: "Oswald";
 }
 
@@ -1025,6 +1025,7 @@ text-decoration: underline;
     border: 1px solid #999;
     padding: 0 1px 1px;
     background-color: #fff;
+    box-sizing: border-box;  -webkit-box-sizing: border-box;  -moz-box-sizing: border-box;
 }
 
 .cleditorMain iframe {
@@ -1110,6 +1111,7 @@ text-decoration: underline;
     background-color: #F6F7F9;
     padding: 4px;
     font-size: 8.5pt;
+    color: #474747;
 }
 
 .cleditorPrompt input, .cleditorPrompt textarea {
@@ -1364,8 +1366,6 @@ ol.commentlist {
 
 /* Fixes
    ================================================== */  
-
-ul.ulfix {margin: 0; list-style: none }
  
 form.xpadding,li.xpadding { margin-bottom:10px; padding:10px; background: rgba(255, 255, 255, 0.2); }
 
@@ -1374,6 +1374,14 @@ form.xpadding,li.xpadding { margin-bottom:10px; padding:10px; background: rgba(2
 .xpadding img { margin-right: 5px; width: 25px; vertical-align: -7px; }
 
 .xpadding p { margin-bottom: 10px }
+
+.alertfix p { display:inline; margin:auto; line-height: 2 }
+
+.alertfix form { display: inline; float:right; margin-bottom: 0 }
+
+ul.ulfix {margin: 0; list-style: none }
+
+img.imgfix { display: block; margin-top: 10px; width: 50% }
 
 /* Bootsrap overwrites */
 
@@ -1385,7 +1393,7 @@ table,.table {background-color: #fff;color: #000; -webkit-border-radius: 0px;-mo
 
 .alert { margin-bottom: 15px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;}
 
-.alert p {margin:auto;font-family: "Oswald";font-weight: 400;}
+.alert p { display:inline; margin:auto; font-family: "Oswald"; font-weight: 400;}
 
 .nav-tabs {border-bottom: 1px dotted #fff}
 
