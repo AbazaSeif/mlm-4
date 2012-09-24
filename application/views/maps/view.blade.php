@@ -4,7 +4,7 @@
 @section("content")
 @if($map->published == 0)
 	<div class="alert">
-		This map is awaiting moderation and is not yet viewable by everyone.
+		<p>This map is awaiting moderation and is not yet viewable by everyone.</p>
 	</div>
 @endif
 @include("maps.menu")
@@ -18,7 +18,6 @@
 		<span class="star"></span>
 		<span class="star"></span>
 	</span>
-
 </div>
 	@if($is_owner === 0)
 	<div class="alert alert-info alert-block alertfix clearfix">
@@ -84,9 +83,11 @@
 	@endif
 
 	<div class="titlebar margin"><h4>Downloads</h4></div>
+	<?php $i = 1; ?>
 	@foreach($map->links as $link)
-	<span>{{ HTML::link($link->url, $link->url, array("class" => "btn btn-large btn-success")) }}</span>
-	@endforeach
+ 	<span class="inline">{{ HTML::link($link->url, "Link ".$i, array("class" => "btn btn-success", "target" => "_blank")) }}</span>
+	<?php $i++; ?>
+ @endforeach
 <!-- {{--
 	Rating: {{ $map->avg_rating }}/5
 	@if(Auth::check())

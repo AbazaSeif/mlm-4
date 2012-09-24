@@ -30,6 +30,7 @@ body {
 .left {float: left}
 .right {float: right}
 .center {text-align: center;}
+.inline {display: inline!important}
 
 a {
   color: #0088cc;
@@ -391,6 +392,10 @@ footer .column p {
     font-family: "Oswald";
 }
 
+.submenu li.disabled a {
+    color: #fff;
+}
+
 /* Sidebar */
 
 #sidebar {
@@ -616,36 +621,30 @@ footer .column p {
 
 .maps-single #sidebar span { display: block; }
 
-.maps-single .rating,
-#code .rating {
+.maps-single .rating {
     float: right;
     unicode-bidi: bidi-override;
     direction: rtl;
     font-size: 30px;
     line-height: 1;
 }
-.maps-single .rating span.star,
-#code .rating span.star {
+.maps-single .rating span.star {
     font-family: FontAwesome;
     font-weight: normal;
     font-style: normal;
     display: inline-block!important;
 }
-.maps-single .rating span.star:hover,
-#code .rating span.star:hover {
+.maps-single .rating span.star:hover {
     cursor: pointer;
 }
-.maps-single .rating span.star:before,
-#code .rating span.star:before {
+.maps-single .rating span.star:before {
     content: "\f006";
     padding: 0;
     color: #999;
     text-shadow: 0px 1px 3px #000;
 }
 .maps-single .rating span.star:hover:before,
-#code .rating span.star:hover:before,
-.maps-single .rating span.star:hover ~ span.star:before,
-#code .rating span.star:hover ~ span.star:before {
+.maps-single .rating span.star:hover ~ span.star:before {
     content: "\f005";
     color: #bebebe;
 }
@@ -1367,7 +1366,7 @@ ol.commentlist {
 /* Fixes
    ================================================== */  
  
-form.xpadding,li.xpadding { margin-bottom:10px; padding:10px; background: rgba(255, 255, 255, 0.2); }
+form.xpadding,li.xpadding,input.xpadding { margin-bottom:10px; padding:10px; background: rgba(255, 255, 255, 0.2); }
 
 .xpadding input { margin: 0 }
 

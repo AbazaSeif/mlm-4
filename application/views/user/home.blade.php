@@ -50,7 +50,7 @@
 		<div class="widget teaminfo">
 			<header><h1>Team</h1></header>
 		<div class="content">
-			<a href="#"><img src="http://placehold.it/100x100" />
+			<a href="#"><img src="http://placekitten.com/100/100" />
 				<div class="data">
 					<p>The Quick Brown Fox Jumps Over The Lazy Dog</p>
 					<ul class="numbers">

@@ -41,12 +41,17 @@
 		</li>
 	@endforeach
 	</ul>
-	<div class="titlebar"><h4>Invite additional authors</h4></div>
-	{{ Form::open("maps/add_author/".$map->id) }}
-		{{ Form::token() }}
-		{{ Form::field("text", "username", "Username", array(Input::old("username")), array("help-inline" => "MLM username", "error" => $errors->first("username"))) }}
-		{{ Form::actions(array(Form::submit("Invite", array("class" => "btn-primary"))))}}
+	<div class="titlebar"><h4>Invite additional authors (Use MLM username)</h4></div>
+	{{ Form::open("maps/add_author/".$map->id, 'POST', array('class' => 'xpadding')) }} 	
+		<fieldset> 
+			<div>
+			{{ Form::token() }}
+			{{ Form::text("username") }} 
+			{{ Form::submit("Invite", array("class" => "btn btn-primary")) }}
+			</div>
+		</fieldset>
 	{{ Form::close() }}
+
 <div class="titlebar">
 	<h3>Download Links</h3>
 </div>
@@ -109,8 +114,8 @@
 </div>
 	{{ Form::open_for_files("maps/upload_image/".$map->id) }}
 		{{ Form::token() }}
-		{{ Form::field("file", "uploaded", "Image", array(array('class' => 'input-large')), array('error' => $errors->first('uploaded'))) }}
-		{{ Form::field("text", "name", "Name", array(Input::old("name"), array('class' => 'input-large')), array('error' => $errors->first('name'))) }}
+		{{ Form::field("file", "uploaded", "", array(array('class' => 'input-large')), array('error' => $errors->first('uploaded'))) }}
+		{{ Form::field("text", "name", "", array(Input::old("name"), array('class' => 'input-large')), array("help-inline" => "Image name", 'error' => $errors->first('name'))) }}
 		{{ Form::submit("Upload", array("class" => "btn-primary")) }}
 	{{ Form::close() }}
 </div>
