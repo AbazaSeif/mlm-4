@@ -7,7 +7,7 @@
 	<h4>In this thread:</h4>
 	<ul>
 		@foreach($thread->users as $user)
-			<li><a href="{{ URL::to("user/{$user->username}") }}"><img src="http://minotar.net/helm/{{ $user->mc_username }}/18.png" alt="avatar"> {{$user->username}}</a></li>
+			<li><a href="{{ URL::to("user/{$user->username}") }}"><img src="http://minotar.net/helm/{{ $user->mc_username }}/18" alt="avatar"> {{$user->username}}</a></li>
 		@endforeach
 	</ul>
 	<h5>Add:</h5>
@@ -19,7 +19,7 @@
 	@foreach($messages as $message)
 		<div class="message">
 			@if($message->user_id)
-			<small><a href="{{ URL::to("user/{$message->user->username}") }}"><img src="http://minotar.net/helm/{{ $message->user->mc_username }}/12.png" alt="avatar"> {{$message->user->username}}</a> @ {{ $message->created_at }}</small>
+			<small><a href="{{ URL::to("user/{$message->user->username}") }}"><img src="http://minotar.net/helm/{{ $message->user->mc_username }}/12" alt="avatar"> {{$message->user->username}}</a> @ {{ $message->created_at }}</small>
 			@else
 			<small>System @ {{ $message->created_at }}</small>
 			@endif

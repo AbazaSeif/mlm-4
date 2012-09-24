@@ -16,7 +16,7 @@ body {
 }
 
 ::selection {
-    color: #fff;
+    color: #FFF;
    background: #AA6814;
     text-shadow: 0 1px 0px #000;
 }
@@ -32,10 +32,7 @@ body {
 .center {text-align: center;}
 .inline {display: inline!important}
 
-a {
-  color: #0088cc;
-  text-decoration: none;
-}
+a { color: #0088cc; text-decoration: none }
 
 a:hover { color: #005580 }
 
@@ -392,6 +389,10 @@ footer .column p {
     font-family: "Oswald";
 }
 
+.submenu a { color: rgb(200, 200, 200);}
+
+.submenu a:hover { color: rgb(125, 125, 125); }
+
 .submenu li.disabled a {
     color: #fff;
 }
@@ -640,13 +641,13 @@ footer .column p {
 .maps-single .rating span.star:before {
     content: "\f006";
     padding: 0;
-    color: #999;
+    color: #FFF;
     text-shadow: 0px 1px 3px #000;
 }
 .maps-single .rating span.star:hover:before,
 .maps-single .rating span.star:hover ~ span.star:before {
     content: "\f005";
-    color: #bebebe;
+    color: #FFF;
 }
 
 /* Login & Registration
@@ -896,7 +897,7 @@ footer .column p {
 }
 
 .profile .info a {
-color: #434343;
+    color: #434343;
 }
 
 .profile .info a:hover {
@@ -1297,15 +1298,11 @@ ol.commentlist {
 
 #multiview .grid .mv-details {
     color:#000;
-    line-height: 1;
 }
 
-#multiview .grid .mv-details h4{
-    line-height: 1;
-    margin-bottom: 10px;
-    color: #474747;
-    font-size: 23px;
-    text-shadow: 0px 1px 1px white;
+#multiview .grid .mv-details h1{
+    margin: 0;
+    font-size: 20px;
 }
 
 #multiview .grid .mv-meta {}
