@@ -54,10 +54,6 @@ MLM = {
 					if (newValue != previousValue) {
 					previousValue = newValue;
 				var newHtml = $("<div>"+ showdown.makeHtml(newValue) +"</div>");
-					newHtml.find('pre,p code').addClass('prettyprint');
-					newHtml.find('pre code').each(function() {
-			$(this).html(prettyPrintOne($(this).html()));
-			});
 				previewOutput.html(newHtml);
 			}
         	}

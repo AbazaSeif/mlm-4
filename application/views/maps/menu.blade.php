@@ -22,7 +22,7 @@
 
 @if (URI::is('maps') || URI::is('maps/filter'))
 
-<ul id="multiview-controler" class="nav nav-pills">
+<ul id="multiview-controler" class="submenu nav nav-pills">
 	<li class="disabled"><a href="#">Views:</a></li>
 	<li data-multiview="grid"><a href="#">Grid</a></li>
 	<li data-multiview="list"><a href="#">List</a></li>

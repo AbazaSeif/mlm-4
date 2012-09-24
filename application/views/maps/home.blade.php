@@ -9,16 +9,16 @@
 @foreach ($maps->results as $map)
 	<li>
 		<div class="mv-image">
-			<img src="http://placekitten.com/704/480" alt="map image"/>
+			<img src="http://placekitten.com/700/480" alt="map image"/>
 		</div>
 		<div class="mv-details">
-			<h4>{{ HTML::link_to_action("maps@view", $map->title, array($map->id, $map->slug)) }}</h4>
+			<h1>{{ HTML::link_to_action("maps@view", $map->title, array($map->id, $map->slug)) }}</h1>
 			<p>{{ $map->summary }}</p>
 		</div>
 		<div class="mv-meta">
 				<span>By <a href="#">User #1</a></span>
-				<span>Posted on <b>12/21/12</b></span>
-				<span>Downloads: <b>9000</b></span>
+				<span>Version <b>1.1.2.3.4</b></span>
+				<span>Downloads <b>9000</b></span>
 		</div>
 	</li>
 @endforeach
