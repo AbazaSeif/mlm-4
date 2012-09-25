@@ -9,21 +9,17 @@
 @endif
 @include("maps.menu")
 
-<ul class="nav nav-pills">
+<ul class="submenu nav nav-pills">
 @if(Auth::check() && Auth::user()->admin)
 <li class="disabled"><a href="#">Actions:</a></li>
 <li>
+{{ HTML::link_to_action("admin@maps@view", "Moderate Map", array($map->id)) }}
+</li>
+@if($is_owner)
+<li>
 {{ HTML::link_to_action("maps@edit", "Edit Map", array($map->id)) }}
 </li>
-<li>
-{{ $map->featured ? HTML::link_to_action("admin@maps", "Revoke Map", array("unpublish", $map->id)) : HTML::link_to_action("admin@maps", "Approve Map", array("publish", $map->id)) }}
-</li>
-<li>
-{{ $map->featured ? HTML::link_to_action("admin@maps", "Unfeature Map", array("unfeature", $map->id)) : HTML::link_to_action("admin@maps", "Feature Map", array("feature", $map->id)) }}
-</li>
-<li>
-{{ $map->official ? HTML::link_to_action("admin@maps", "Make Map Unofficial", array("unofficial", $map->id)) : HTML::link_to_action("admin@maps", "Make Map Official", array("official", $map->id))}}
-</li>
+@endif
 @elseif($is_owner)
 <li class="disabled"><a href="#">Actions:</a></li>
 <li>
@@ -33,9 +29,9 @@
 @endif
 </ul>
 
-<div id="content" class="maps">
+<div id="content" class="maps-single clearfix">
 <div class="titlebar clearfix">
-	<h1>{{ e($map->title) }} {{ e($map->version) }}</h1>
+	<h2>{{ e($map->title) }}</h2> 
 </div>
 	@if($is_owner === 0)
 	<div class="alert">
@@ -52,21 +48,46 @@
 		{{ Form::close() }}
 	</div>
 	@endif
-	<h2>{{ e($map->title) }}</h2>
-	<p>{{ e($map->summary) }}</p>
-	{{ $map->description }}
+<div id="page">
+	<div class="slider-wrapper theme-medium">
+		<div id="gslider" class="nivoSlider">
+			@forelse($map->images as $image)
+			<img src="{{ e($image->file_original) }}" data-thumb="{{ e($image->file_small) }}" alt="" />
+			@empty
+			<img src="{{ URL::to_asset("images/slides/5.jpg") }}" data-thumb="{{ URL::to_asset("images/slides/5.jpg") }}" alt="" />
+			@endforelse
+		</div>
+	</div>
+</div>
+<div id="sidebar">
+<div class="titlebar clearfix">
+	<h3>Map Details</h3>
+</div>
+	<div id="hidden">
+	<p>{{ $map->description }}</p>
+</div>
+
 	@if($map->version)
-	Version: {{ e($map->version) }}<br />
+	<span>
+		Version: {{ e($map->version) }}
+	</span>
 	@endif
 	@if($map->maptype)
-	Map type: {{ array_get($maptypes, $map->maptype) }}<br />
+	<span>
+		Map type: {{ array_get($maptypes, $map->maptype) }}
+	</span>
 	@endif
 	@if($map->teamcount)
-	Team count: {{ $map->teamcount }}<br />
+	<span>
+		Team count: {{ $map->teamcount }}
+	</span>
 	@endif
 	@if($map->teamsize)
-	Team size: {{ $map->teamsize }}<br />
+	<span>
+		Team size: {{ $map->teamsize }}
+	</span>
 	@endif
+
 	<h3>Authors</h3>
 	<ul>
 	@foreach($authors as $author)
@@ -80,18 +101,6 @@
 		<li>{{ HTML::image($link->favicon, "favicon")." ".HTML::link($link->url, $link->url) }}</li>
 	@endforeach
 	</ul>
-	<h2>Images</h2>
-	<ul class="thumbnails">
-		@forelse($map->images as $image)
-			<li class="span2">
-				<a href="{{ e($image->file_original) }}" class="thumbnail">{{ HTML::image($image->file_small) }}</a>
-			</li>
-		@empty
-			<li>
-				No images found!
-			</li>
-		@endforelse
-	</ul>
 	Rating: {{ $map->avg_rating }}/5
 	@if(Auth::check() && !$is_owner)
 	{{ Form::open("maps/rate/".$map->id) }}
@@ -104,5 +113,6 @@
 		{{ Form::token() }}
 	{{ Form::close() }}
 	@endunless
+</div>
 </div>
 @endsection

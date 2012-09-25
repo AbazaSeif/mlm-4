@@ -59,23 +59,11 @@ class Maps_Controller extends Base_Controller {
 		}
 		
 		//categories
-		switch ($category)
-		{
-			case "rtw":
-			case "ctq":
-			case "dtc":
-			case "att":
-			case "bed":
-			case "oth":
-				$query = $query->where("maps.maptype", '=', $category);
-				break;
-			
-			case "all":
-			default:
-				$category = "all";
-				break;
+		$category_list = Config::get("maps.types");
+		if(isset($category_list[$category]) and $category != "") {
+			$query = $query->where("maps.maptype", '=', $category);
 		}
-		
+				
 		//$featured
 		if ($featured == "true")
 		{
@@ -122,6 +110,13 @@ class Maps_Controller extends Base_Controller {
 			// Attach user as creator
 			$user = Auth::user();
 			$map->users()->attach($user->id, array("confirmed" => true));
+			//Create new publish Modqueue item
+			$modqueue = new Modqueue();
+			$modqueue->user_id = $user->id;
+			$modqueue->type = "publish";
+			$modqueue->itemtype = "map";
+			$modqueue->itemid = $map->id;
+			$modqueue->save();
 			return Redirect::to_action("maps@view", array($map->id, $map->slug));
 		} else {
 			return Redirect::to_action("maps@new")->with_input()->with_errors($validation);

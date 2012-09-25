@@ -10,7 +10,6 @@ return array(
 	| 
 	*/
 	"types" => array(
-		"" => "--------------",
 		"rfw" => "Race for Wool",
 		"ctw" => "Capture the Wool",
 		"dtc" => "Destroy the Core",

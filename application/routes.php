@@ -36,7 +36,7 @@
 // Public routes
 Route::controller(array('account', "imgmgr", "maps", "messages", "news", "faq"));
 // Admin routes (no real need to seperate, just to keep nice)
-Route::controller(array('admin.user', 'admin.pages', 'admin.news', 'admin.maps', 'admin.faq'));
+Route::controller(array('admin.user', 'admin.pages', 'admin.news', 'admin.maps', 'admin.faq', 'admin.modqueue'));
 
 // Home
 Route::get('/', function() {
@@ -71,7 +71,8 @@ Route::get("user/(:any?)", function($username = null) {
 // Admin home
 Route::get("admin", array('before' => 'admin', function() {
 	$log = Adminlog::with("user")->order_by("created_at", "desc")->paginate(30);
-	return View::make("admin.home", array("title" => "Admin", "log" => $log));
+	$modqueue = Modqueue::with("user")->order_by("created_at", "asc")->paginate(30);
+	return View::make("admin.home", array("title" => "Admin", "log" => $log, "modqueue" => $modqueue));
 }));
 
 // Admin - Migrating from the website

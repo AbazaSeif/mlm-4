@@ -1,41 +1,88 @@
+/* ----------------------------------------------
+            MAJOR LEAGUE MINING 2012
+             Credits on /humans.txt
+-------------------------------------------------*/
+
 MLM = {
 	common: {
 		init: function () {
+		// Responsive menu toggle
 			$("#shownav").click(function () {
-			$("#menu").slideToggle("slow").show(); });
+				$("#menu").slideToggle("slow").show();
+			});
+		// Admin WYSIWYG Editor
+			$("textarea[data-wysiwyg]").cleditor({
+				docType: '<!DOCTYPE html>'
+			});
+		// User WYSIWYG Editor
+			$("textarea[data-wysiwyg-user]").cleditor({
+				controls: 'bold italic underline strikethrough',
+				docType: '<!DOCTYPE html>'
+			});
+		// Make tables sortable
 			$("#sortable").tablesorter();
+		// Activate Bootstrap Dropdowns
 			$('.dropdown-toggle').dropdown();
-		/*	
-new TINY.editor.edit('editor', {
-	id: 'wysiwyg',
-	cssclass: 'tinyeditor',
-	controlclass: 'tinyeditor-control',
-	rowclass: 'tinyeditor-header',
-	dividerclass: 'tinyeditor-divider',
-	controls: ['bold', 'italic', 'underline', 'strikethrough', '|', 'subscript', 'superscript', '|', 'orderedlist', 'unorderedlist', '|', 'outdent', 'indent', '|', 'leftalign', 'centeralign', 'rightalign', 'blockjustify', '|', 'unformat', '|', 'undo', 'redo', 'n', 'font', 'size', 'style', '|', 'image', 'hr', 'link', 'unlink'],
-	footer: true,
-	fonts: ['Verdana','Arial','Georgia','Trebuchet MS'],
-	xhtml: true,
-	bodyid: 'wysiwyg-editor',
-	footerclass: 'tinyeditor-footer',
-	toggle: {text: 'source', activetext: 'output', cssclass: 'toggle'},
-	resize: {cssclass: 'resize'}
-});
-*/
-		}
+		// Gloal Slideshow
+			$('#gslider').nivoSlider({
+				effect: 'fade',
+				animSpeed: 700,
+				pauseTime: 3000,
+				startSlide: 0,
+				directionNav: true,
+				controlNav: true,
+				controlNavThumbs: false,
+				pauseOnHover: true,
+				manualAdvance: false,
+				prevText: 'Prev',
+				nextText: 'Next',
+				randomStart: false
+			});
+		// Show/Hide Markdown Live Preview
+			$("#prevb").click(function () {
+				$("#comment").fadeToggle(300);
+				return false;
+			});
+		// Markdown Live Preview 
+			$('#mrk').wysiwym(Wysiwym.Markdown, {});
+				var showdown = new Showdown.converter();
+				var previousValue = null;
+				var previewTextarea = $('#mrk');
+				var previewOutput = $('#preview');
+				var updateLivePreview = function() {
+				var newValue = previewTextarea.val();
+					if (newValue != previousValue) {
+					previousValue = newValue;
+				var newHtml = $("<div>"+ showdown.makeHtml(newValue) +"</div>");
+					newHtml.find('pre,p code').addClass('prettyprint');
+					newHtml.find('pre code').each(function() {
+			$(this).html(prettyPrintOne($(this).html()));
+			});
+				previewOutput.html(newHtml);
+			}
+        	}
+        	setInterval(updateLivePreview, 100);
+			}
 	},
 	home: {
 		init: function () {
-		$('#featured').iView({
-				fx: 'block-drop-random',
-				blockCols: 6,
-				blockRows: 3,
-				timer: '360bar',
-				pauseTime: 7000,
-				directionNav: false,
+			$('#slider').nivoSlider({
+				effect: 'slideInRight',
+				slices: 10,
+				boxCols: 8,
+				boxRows: 4,
+				animSpeed: 500,
+				pauseTime: 3000,
+				startSlide: 0,
+				directionNav: true,
 				controlNav: true,
-				tooltipY: -15,
-				});
+				controlNavThumbs: false,
+				pauseOnHover: true,
+				manualAdvance: false,
+				prevText: 'Prev',
+				nextText: 'Next',
+				randomStart: false
+			});
 		}
 	},
 	maps: {
