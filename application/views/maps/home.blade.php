@@ -2,6 +2,12 @@
 
 @section("content")
 @include("maps.menu")
+<ul id="multiview-controler" class="nav nav-pills">
+	<li class="disabled"><a href="#">Views:</a></li>
+	<li data-multiview="grid"><a href="#">Grid</a></li>
+	<li data-multiview="list"><a href="#">List</a></li>
+	<li data-multiview="big"><a href="#">Big</a></li>
+</ul>
 <div id="content" class="maps clearfix">
 <div id="page" class="bigger">
 <div id="multiview">

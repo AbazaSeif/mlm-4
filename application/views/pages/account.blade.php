@@ -4,16 +4,16 @@
 @section('content')
 @include("user.menu")
 	<div id="content" class="account-settings">
-	<div class="titlebar">
+	<div class="titlebar clearfix">
 		<h2>Edit Account &amp; Profile</h2>
 	</div>
-	<div class="titlebar">
+	<div class="titlebar clearfix">
 		<h3>Linked OpenID Accounts</h3>
 	</div>
-		<ul>
+		<ul class="openids">
 			@if(count($openids) > 1)
 				@foreach($openids as $openid)
-					<li class="xpadding">
+					<li>
 						{{ Form::open("account/del_openid", "POST", array("class" => "form-inline")) }}
 						{{ Form::token() }}
 						{{ HTML::image($openid->favicon, "favicon") }} {{ e($openid->identity) }}
@@ -23,10 +23,10 @@
 					</li>
 				@endforeach
 			@else
-				<li class="xpadding">{{HTML::image($openids[0]->favicon, "favicon")}} {{ $openids[0]->identity }}</li>
+				<form>{{HTML::image($openids[0]->favicon, "favicon")}} {{ $openids[0]->identity }}</form>
 			@endif
 		</ul>
-		<div class="titlebar">
+		<div class="titlebar clearfix">
 		<h4>Link another OpenID to your account</h4>
 		</div>
 			{{ Form::open("account/login" , 'POST', array('class' => 'xpadding')) }} 	
@@ -36,7 +36,7 @@
 					</div>
 				</fieldset>
 			{{ Form::close() }}
-		<div class="titlebar">
+		<div class="titlebar clearfix">
 		<h3>Profile Information</h3>
 	</div>
 		{{ Form::open("account/profile", "POST", array('class' => 'form-horizontal')) }}

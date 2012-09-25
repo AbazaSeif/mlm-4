@@ -182,16 +182,14 @@ a:hover { color: #005580 }
     border-bottom: 1px dotted #fff;
 }
 
-.titlebar.margin { margin: 10px 0 5px; }
-
 .titlebar h1, .titlebar h2, .titlebar h3,.titlebar h4    {
-    display: inline;
+    line-height: 1;
     margin: 10px 0;
-    color: #fff;
     font-weight: normal;
-    font-family: "Oswald";
-    text-transform: uppercase;
     text-shadow: 0 1px 3px #000;
+    color: #fff;
+    text-transform: uppercase;
+    font-family: "Oswald","HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
 } 
 .titlebar h1 {font-size: 32px}
 .titlebar h2 {font-size: 24px}
@@ -616,39 +614,6 @@ footer .column p {
 
 .maps-single #sidebar span { display: block; }
 
-.maps-single .rating,
-#code .rating {
-    float: right;
-    unicode-bidi: bidi-override;
-    direction: rtl;
-    font-size: 30px;
-}
-.maps-single .rating span.star,
-#code .rating span.star {
-    font-family: FontAwesome;
-    font-weight: normal;
-    font-style: normal;
-    display: inline-block!important;
-}
-.maps-single .rating span.star:hover,
-#code .rating span.star:hover {
-    cursor: pointer;
-}
-.maps-single .rating span.star:before,
-#code .rating span.star:before {
-    content: "\f006";
-    padding: 0;
-    color: #999;
-    text-shadow: 0px 1px 3px #000;
-}
-.maps-single .rating span.star:hover:before,
-#code .rating span.star:hover:before,
-.maps-single .rating span.star:hover ~ span.star:before,
-#code .rating span.star:hover ~ span.star:before {
-    content: "\f005";
-    color: #bebebe;
-}
-
 /* Login & Registration
    ================================================== */
 
@@ -916,6 +881,12 @@ text-decoration: underline;
     background: rgba(255, 255, 255, 0.2);
 }
 
+.account-settings img {
+    margin-right: 5px;
+    width: 25px;
+    vertical-align: -7px;
+}
+
 .account-settings .openids form {
     padding: 10px;
 }
@@ -990,38 +961,10 @@ text-decoration: underline;
     margin-bottom: 10px;
 }
 
-/* New/Edit Articles, maps, pages, and anything else you 
-   can think of.
-   ================================================== */
-
-.edit {
-}
-
-.edit .title {
-    padding: 5px 8px;
-    font-size: 22px;
-    height: 38px;
-    width: 100%;
-    vertical-align: top;
-    box-sizing: border-box;       
-    -webkit-box-sizing:border-box;       
-    -moz-box-sizing: border-box;
-}
-
-.edit .summary {
-    margin-bottom: 0;
-    height: 60px;
-    width: 100%;
-    box-sizing: border-box;       
-    -webkit-box-sizing:border-box;       
-    -moz-box-sizing: border-box;
-}
-
 /* WYSIWYG editor 
    ================================================== */
 
 .cleditorMain {
-    width: 100%!important;
     border: 1px solid #999;
     padding: 0 1px 1px;
     background-color: #fff;
@@ -1362,22 +1305,16 @@ ol.commentlist {
 
 #sortable th.headerSortDown { background: url(../images/static/desc.gif) no-repeat center right } 
 
-/* Fixes
+/* Fixes (Bootstrap overwrites and other stuff)
    ================================================== */  
 
-ul.ulfix {margin: 0; list-style: none }
- 
-form.xpadding,li.xpadding { margin-bottom:10px; padding:10px; background: rgba(255, 255, 255, 0.2); }
-
-.xpadding input { margin: 0 }
-
-.xpadding img { margin-right: 5px; width: 25px; vertical-align: -7px; }
-
-.xpadding p { margin-bottom: 10px }
-
-/* Bootsrap overwrites */
-
 table,.table {background-color: #fff;color: #000; -webkit-border-radius: 0px;-moz-border-radius: 0px; border-radius: 0px}
+       
+form.xpadding { padding:10px; background: rgba(255, 255, 255, 0.2); }
+
+form.xpadding input { margin: 0 }
+
+form.xpadding p { margin-bottom: 10px }
 
 .help-block, .help-inline { color: #fff }
 
@@ -1390,8 +1327,6 @@ table,.table {background-color: #fff;color: #000; -webkit-border-radius: 0px;-mo
 .nav-tabs {border-bottom: 1px dotted #fff}
 
 .btn-group > .btn + .btn { margin-left: -3px; }
-
-.thumbnail { background-color: #fff;}
     
 /* Sprite galore! 
    ================================================== */
@@ -1756,16 +1691,13 @@ table,.table {background-color: #fff;color: #000; -webkit-border-radius: 0px;-mo
     #shownav {
         display: block;
         float: right;
-        margin: 0;
-        padding: 5px;
-        width: 35px;
-        color: #fff;
-        text-shadow:0 1px 3px #000;
-        font-size: 25px;
-        text-align: center;
-}
+        margin: 3px 10px 0 0;
+        height: 30px;
+        width: 30px;
+        background: transparent url(../images/static/arrow.png) no-repeat 0px 0px;
+    }
 
-    #shownav:hover { color: #CCC; }
+    #shownav:hover { background: transparent url(../images/static/arrow.png) no-repeat 0px -31px;}
 
 
 /* Global Menu 
@@ -1906,20 +1838,20 @@ table,.table {background-color: #fff;color: #000; -webkit-border-radius: 0px;-mo
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 989px) {
     
-    #menu { display: block!important; }
+    #menu { display: block !important; }
 
     #menu #loginout { display: none }
+/*
+    #page { float: left; width: 590px }
 
-    #shownav { display: none; }
+    #sidebar { float: right; width: 330px }
+*/
 } 
 /* Large desktop */
 @media (min-width: 990px) {
-
-    #menu { display: block!important; }
 
     #menu #loginout { display: none }
 
     .commentlist .meta .actions { display: inline; }
 
-    #shownav { display: none; }
 }
