@@ -103,9 +103,6 @@
 	@endif
 --}} -->
 </div>
-<<<<<<< HEAD
 @include("maps.comments")
-=======
->>>>>>> f1c3122bc4ac24ee4830a43292db890a8a27ae7e
 </div>
 @endsection
