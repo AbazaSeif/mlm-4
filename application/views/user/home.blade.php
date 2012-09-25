@@ -34,7 +34,7 @@
 					<div class="clearfix" style="height:35px"></div>
 					@endif
 					<ul class="numbers">
-						<li>Comments<strong>888</strong></li>
+						<li>Comments<strong>{{ $user->comment_count }}</strong></li>
 						<li>Posts<strong>888</strong></li>
 						<li>Rank<strong>888</strong></li>
 					</ul>

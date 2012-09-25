@@ -114,5 +114,6 @@
 	{{ Form::close() }}
 	@endunless
 </div>
+@include("maps.comments")
 </div>
 @endsection
