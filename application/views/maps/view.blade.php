@@ -103,5 +103,6 @@
 	@endif
 --}} -->
 </div>
+@include("maps.comments")
 </div>
 @endsection

@@ -1,13 +1,17 @@
 <?php
-class News_Comment extends Eloquent {
+class Comment extends Eloquent {
 	public static $timestamps = true;
+	public static $table = "comments";
 
-	/* Relations */
+	// Relations
 	public function user() {
 		return $this->belongs_to("User");
 	}
 	public function news() {
 		return $this->belongs_to("News");
+	}
+	public function map() {
+		return $this->belongs_to("Map");
 	}
 
 	/* Setting source will also generate html */
@@ -18,4 +22,5 @@ class News_Comment extends Eloquent {
 		$html = Sparkdown\Markdown($text); // Handle markdown
 		$this->set_attribute("html", IoC::resolve("HTMLPurifier")->purify($html));
 	}
+
 }
