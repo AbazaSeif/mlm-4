@@ -19,9 +19,6 @@ class Map extends Eloquent {
 	public function image() {
 		return $this->belongs_to("Image");
 	}
-	public function comments() {
-		return $this->has_many("Comment");
-	}
 
 	/*
 	 * Checks if a user is the owner of the map
@@ -48,20 +45,5 @@ class Map extends Eloquent {
 		self::$timestamps = false; // Don't update modified time;
 		$this->save();
 		self::$timestamps = false;
-	}
-
-	public function update_comment_count($deletion = false) {
-		if ($deletion == false) {
-			$this->set_attribute("comment_count", $this->comments()->count()+1);
-			self::$timestamps = false; // Don't update modified time;
-			$this->save();
-			self::$timestamps = false;
-		}
-		else {
-			$this->set_attribute("comment_count", $this->comments()->count()-1);
-			self::$timestamps = false; // Don't update modified time;
-			$this->save();
-			self::$timestamps = false;
-		}
 	}
 }

@@ -10,9 +10,9 @@
 		<div id="vcard">
 			<div class="picture">
 				@if($ownpage)
-					<a href="http://minecraft.net/profile" target="_blank" title="Change your skin..."><img src="http://minotar.net/helm/{{$user->mc_username}}/150.png" alt="avatar" /></a>
+					<a href="http://minecraft.net/profile" target="_blank" title="Change your skin..."><img src="http://minotar.net/helm/{{$user->mc_username}}/150" alt="avatar" /></a>
 				@else
-					<a href="#" style="cursor:default" title="{{$user->username}}'s Skin"><img src="http://minotar.net/helm/{{$user->mc_username}}/150.png" alt="avatar" /></a>
+					<a href="#" style="cursor:default" title="{{$user->username}}'s Skin"><img src="http://minotar.net/helm/{{$user->mc_username}}/150" alt="avatar" /></a>
 				@endif
 			</div>
 				<div class="data">
@@ -34,7 +34,7 @@
 					<div class="clearfix" style="height:35px"></div>
 					@endif
 					<ul class="numbers">
-						<li>Comments<strong>{{ $user->comment_count }}</strong></li>
+						<li>Comments<strong>888</strong></li>
 						<li>Posts<strong>888</strong></li>
 						<li>Rank<strong>888</strong></li>
 					</ul>
@@ -50,7 +50,7 @@
 		<div class="widget teaminfo">
 			<header><h1>Team</h1></header>
 		<div class="content">
-			<a href="#"><img src="http://placehold.it/100x100" />
+			<a href="#"><img src="http://placekitten.com/100/100" />
 				<div class="data">
 					<p>The Quick Brown Fox Jumps Over The Lazy Dog</p>
 					<ul class="numbers">

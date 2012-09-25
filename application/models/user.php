@@ -14,9 +14,6 @@ class User extends Eloquent {
 	public function messages() {
 		return $this->has_many_and_belongs_to("Message_Thread", "message_users");
 	}
-	public function comments() {
-		return $this->has_many("Comment");
-	}
 
 	// Send a *system message* to the user
 	public function send_message($title, $text) {
@@ -28,20 +25,5 @@ class User extends Eloquent {
 		$message = new Message_Message();
 		$message->message = $text;
 		$messageThread->messages()->insert($message);
-	}
-
-	public function update_comment_count($deletion = false) {
-		if ($deletion == false) {
-			$this->set_attribute("comment_count", $this->comments()->count()+1);
-			self::$timestamps = false; // Don't update modified time;
-			$this->save();
-			self::$timestamps = false;
-		}
-		else {
-			$this->set_attribute("comment_count", $this->comments()->count()-1);
-			self::$timestamps = false; // Don't update modified time;
-			$this->save();
-			self::$timestamps = false;
-		}
 	}
 }

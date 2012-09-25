@@ -42,15 +42,12 @@ class News_Controller extends Base_Controller {
 		$validation_rules = array("comment" => "required");
 		$validation = Validator::make(Input::all(), $validation_rules);
 		if($validation->passes()) {
-			$newcomment = new Comment();
+			$newcomment = new News_Comment();
 			$newcomment->source = Input::get("comment");
 			$newcomment->user_id = Auth::user()->id;
-			$newcomment->news_id = $id;
+			$newsitem->comments()->insert($newcomment);
 			$newsitem->update_comment_count();
-			Auth::user()->update_comment_count();
 
-			$newcomment->save();
-			$newsitem->save();
 			Messages::add("success", "Comment posted!");
 			return Redirect::to_action("news@view", array($id, $newsitem->slug));
 		} else {

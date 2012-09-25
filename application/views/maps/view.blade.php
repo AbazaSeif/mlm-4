@@ -8,43 +8,29 @@
 	</div>
 @endif
 @include("maps.menu")
-
-<ul class="submenu nav nav-pills">
-@if(Auth::check() && Auth::user()->admin)
-<li class="disabled"><a href="#">Actions:</a></li>
-<li>
-{{ HTML::link_to_action("admin@maps@view", "Moderate Map", array($map->id)) }}
-</li>
-@if($is_owner)
-<li>
-{{ HTML::link_to_action("maps@edit", "Edit Map", array($map->id)) }}
-</li>
-@endif
-@elseif($is_owner)
-<li class="disabled"><a href="#">Actions:</a></li>
-<li>
-{{ HTML::link_to_action("maps@edit", "Edit Map", array($map->id)) }}
-</li>
-@else
-@endif
-</ul>
-
 <div id="content" class="maps-single clearfix">
-<div class="titlebar clearfix">
-	<h2>{{ e($map->title) }}</h2> 
+<div class="titlebar">
+	<h2>{{ e($map->title) }}</h2>
+	<span class="rating">
+		<span class="star"></span>
+		<span class="star"></span>
+		<span class="star"></span>
+		<span class="star"></span>
+		<span class="star"></span>
+	</span>
 </div>
 	@if($is_owner === 0)
-	<div class="alert">
-		You have been invited to be an author of this map.
+	<div class="alert alert-info alert-block alertfix clearfix">
+		<p>You have been invited to be an author of this map.</p>
 		{{ Form::open("maps/author_invite/".$map->id) }}
 			{{ Form::token() }}
 			{{ Form::hidden("action", "accept") }}
-			<button type="submit" class="btn btn-success btn-mini"><i class="icon-ok icon-white"></i> Accept</button>
+			<button type="submit" class="btn btn-success"><i class="icon-ok icon-white"></i> Accept</button>
 		{{ Form::close() }}
 		{{ Form::open("maps/author_invite/".$map->id) }}
 			{{ Form::token() }}
 			{{ Form::hidden("action", "deny") }}
-			<button type="submit" class="btn btn-danger btn-mini"><i class="icon-remove icon-white"></i> Deny</button>
+			<button type="submit" class="btn btn-danger"><i class="icon-remove icon-white"></i> Deny</button>
 		{{ Form::close() }}
 	</div>
 	@endif
@@ -60,60 +46,62 @@
 	</div>
 </div>
 <div id="sidebar">
-<div class="titlebar clearfix">
-	<h3>Map Details</h3>
-</div>
-	<div id="hidden">
+	<div class="titlebar">
+		<h3>Map Details</h3>
+	</div>
+
 	<p>{{ $map->description }}</p>
-</div>
 
-	@if($map->version)
-	<span>
-		Version: {{ e($map->version) }}
-	</span>
-	@endif
-	@if($map->maptype)
-	<span>
-		Map type: {{ array_get($maptypes, $map->maptype) }}
-	</span>
-	@endif
-	@if($map->teamcount)
-	<span>
-		Team count: {{ $map->teamcount }}
-	</span>
-	@endif
-	@if($map->teamsize)
-	<span>
-		Team size: {{ $map->teamsize }}
-	</span>
-	@endif
+	<div class="titlebar margin"><h4>Author/s</h4></div>
 
-	<h3>Authors</h3>
-	<ul>
+	<ul class="ulfix">
 	@foreach($authors as $author)
 		{{-- These are all user objects, so feel free to do whatever --}}
-		<li>{{ HTML::link("user/{$author->username}", $author->username) }}</li>
+		<li class="xpadding"><img src="http://minotar.net/helm/{{ $author->mc_username }}/32" alt="avatar" /> {{ HTML::link("user/{$author->username}", $author->username) }}
+		</li>
 	@endforeach
 	</ul>
-	<h3>Downloads</h3>
-	<ul>
+
+	<div class="titlebar margin"><h4>Map type</h4></div>
+	@if($map->maptype)
+	<span>{{ array_get($maptypes, $map->maptype) }}</span>
+	@endif
+
+	<div class="titlebar margin"><h4>Version</h4></div>
+	@if($map->version)
+	<span>{{ e($map->version) }}</span>
+	@endif
+
+	<div class="titlebar margin"><h4>Teams</h4></div>
+	@if($map->teamcount)
+	<span>{{ $map->teamcount }}</span>
+	@endif
+
+	<div class="titlebar margin"><h4>Suggested team size</h4></div>
+	@if($map->teamsize)
+	<span>{{ $map->teamsize }}</span>
+	@endif
+
+	<div class="titlebar margin"><h4>Downloads</h4></div>
+	<?php $i = 1; ?>
 	@foreach($map->links as $link)
-		<li>{{ HTML::image($link->favicon, "favicon")." ".HTML::link($link->url, $link->url) }}</li>
-	@endforeach
-	</ul>
+ 	<span class="inline">{{ HTML::link($link->url, "Link ".$i, array("class" => "btn btn-success", "target" => "_blank")) }}</span>
+	<?php $i++; ?>
+ @endforeach
+<!-- {{--
 	Rating: {{ $map->avg_rating }}/5
-	@if(Auth::check() && !$is_owner)
-	{{ Form::open("maps/rate/".$map->id) }}
-		<label>{{ Form::radio("rating", 1, $rating == 1) }} 1</label>
-		<label>{{ Form::radio("rating", 2, $rating == 2) }} 2</label>
-		<label>{{ Form::radio("rating", 3, $rating == 3) }} 3</label>
-		<label>{{ Form::radio("rating", 4, $rating == 4) }} 4</label>
-		<label>{{ Form::radio("rating", 5, $rating == 5) }} 5</label>
+	@if(Auth::check())
+	{{ Form::open("maps/rate/".$map->id, 'POST', array('class' => 'rating')) }}
+		<label>{{ Form::radio("rating", 1, $rating == 1) }}</label>
+		<label>{{ Form::radio("rating", 2, $rating == 2) }}</label>
+		<label>{{ Form::radio("rating", 3, $rating == 3) }}</label>
+		<label>{{ Form::radio("rating", 4, $rating == 4) }}</label>
+		<label>{{ Form::radio("rating", 5, $rating == 5) }}</label>
 		{{ Form::submit("Rate") }}
 		{{ Form::token() }}
 	{{ Form::close() }}
-	@endunless
+	@endif
+--}} -->
 </div>
-@include("maps.comments")
 </div>
 @endsection

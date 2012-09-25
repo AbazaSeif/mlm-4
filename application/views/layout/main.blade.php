@@ -99,14 +99,14 @@
 			</div>
 			<div id="loginout">
 				@if (Auth::user() && Auth::user()->admin)
-				{{ HTML::link_to_action('account@logout', "Logout") }} &bull; {{ HTML::link('admin', 'Admin panel'); }} &bull; <a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/150.png" alt="avatar" /></a>
+				{{ HTML::link_to_action('account@logout', "Logout") }} &bull; {{ HTML::link('admin', 'Admin panel'); }} &bull; <a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/150" alt="avatar" /></a>
 				@elseif (Auth::check())
-				{{ HTML::link_to_action('account@logout', "Logout") }} &bull; {{ HTML::link('account', 'Edit Account'); }} &bull; <a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/150.png" alt="avatar" /></a>
+				{{ HTML::link_to_action('account@logout', "Logout") }} &bull; {{ HTML::link('account', 'Edit Account'); }} &bull; <a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/150" alt="avatar" /></a>
 				@else
 				{{ HTML::link_to_action('account@login', "Login &bull; Create account") }}
 				@endif
 			</div>
-			<a href="#" id="shownav"></a>
+			<a href="#" id="shownav"><i class="icon-reorder"></i></a>
 		</div>
 	</div>	
 		<nav id="menu">
@@ -119,7 +119,7 @@
 				{{ HTML::link('admin', 'Admin panel'); }}
 			</li>
 			<li>
-				<a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/150.png" alt="avatar" /></a>
+				<a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/150" alt="avatar" /></a>
 			</li>
 				@elseif (Auth::check())
 			<li>
@@ -127,7 +127,7 @@
 			</li>
 				{{ HTML::link('account', 'Edit Account'); }}
 			<li>
-				<a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/150.png" alt="avatar" /></a>
+				<a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/150" alt="avatar" /></a>
 			</li>
 				@else
 			<li>
@@ -142,14 +142,21 @@
 				<li>{{ HTML::link('matches', 'Matches'); }}</li>
 				<li>{{ HTML::link('teams', 'Teams'); }}</li> 
 				<li>{{ HTML::link('maps', 'Maps'); }}</li>
-				<li>{{ HTML::link('faq', 'FAQ'); }}</li> 
+				<li>{{ HTML::link('faq', 'FAQ'); }}</li>
+				<div id="search" class="right clearfix">
+					<form method="get" action="#" class="">
+						<div class="input-append">
+						<input class="sbar" size="16" type="text"><button class="btn" type="button"><i class="icon-search icon-white"></i></button>
+						</div>
+					</form>
+				</div>
 			</ul>
 		</nav>
 </header>
 	<div id="wrapper">
 		{{ Messages::get_html() }}	
 		@yield('content')
-		
+	</div>
 <footer id="global-footer" class="clearfix">
 	<div class="holder">
 		<div class="column">
@@ -168,7 +175,6 @@
 	</div>	
 </footer>
 	@yield("postfooter")
-	</div>	
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="{{ URL::to_asset("js/libs/jquery-1.8.0.min.js") }}"><\/script>')</script>
 

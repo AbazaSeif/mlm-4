@@ -6,8 +6,8 @@ class Maps_Controller extends Base_Controller {
 	public function __construct() {
 		parent::__construct();
 
-		$this->filter("before", "auth")->only(array("new", "edit", "rate", "comment", "edit_meta", "add_author", "author_invite", "edit_link", "delete_link", "upload_image", "default_image", "delete_image"));
-		$this->filter("before", "csrf")->on("post")->only(array("new", "rate", "comment", "edit_meta", "add_author", "author_invite", "edit_link", "delete_link", "upload_image", "default_image", "delete_image"));
+		$this->filter("before", "auth")->only(array("new", "edit", "rate", "edit_meta", "add_author", "author_invite", "edit_link", "delete_link", "upload_image", "default_image", "delete_image"));
+		$this->filter("before", "csrf")->on("post")->only(array("new", "rate", "edit_meta", "add_author", "author_invite", "edit_link", "delete_link", "upload_image", "default_image", "delete_image"));
 	}
 
 	public function get_index() {
@@ -123,7 +123,7 @@ class Maps_Controller extends Base_Controller {
 		}
 	}
 	public function get_view($id, $slug = null) {
-		$map = Map::with(array("comments", "comments.user"))->find($id); // Don't really have to care about the slug
+		$map = Map::find($id); // Don't really have to care about the slug
 		if(!$map) {
 			return Response::error('404');
 		}
@@ -176,36 +176,6 @@ class Maps_Controller extends Base_Controller {
 			$map->update_avg_rating();
 		}
 		return Redirect::to_action("maps@view", array($map->id, $map->slug));
-	}
-
-	// Commenting
-	public function post_comment($id) {
-		$mapitem = Map::find($id);
-		if(!$mapitem) {
-			return Response::error('404');
-		}
-		if(!$mapitem->published && (Auth::guest() || !Auth::user()->admin)) {
-			return Response::error("404"); // Not yet published
-		}
-
-		$validation_rules = array("comment" => "required");
-		$validation = Validator::make(Input::all(), $validation_rules);
-		if($validation->passes()) {
-			$newcomment = new Comment();
-			$newcomment->source = Input::get("comment");
-			$newcomment->user_id = Auth::user()->id;
-			$newcomment->map_id = $id;
-			$mapitem->update_comment_count();
-			Auth::user()->update_comment_count();
-
-			$newcomment->save();
-			$mapitem->save();
-			Messages::add("success", "Comment posted!");
-			return Redirect::to_action("maps@view", array($id, $mapitem->slug));
-		} else {
-			Messages::add("error", "Your comment has not been posted");
-			return Redirect::to_action("maps@view", array($id, $mapitem->slug))->with_errors($validation)->with_input();
-		}
 	}
 
 
