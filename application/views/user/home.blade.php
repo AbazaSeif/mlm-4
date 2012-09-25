@@ -34,7 +34,11 @@
 					<div class="clearfix" style="height:35px"></div>
 					@endif
 					<ul class="numbers">
+<<<<<<< HEAD
 						<li>Comments<strong>{{ $user->comment_count }}</strong></li>
+=======
+						<li>Comments<strong>888</strong></li>
+>>>>>>> f1c3122bc4ac24ee4830a43292db890a8a27ae7e
 						<li>Posts<strong>888</strong></li>
 						<li>Rank<strong>888</strong></li>
 					</ul>
