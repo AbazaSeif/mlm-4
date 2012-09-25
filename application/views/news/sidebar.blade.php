@@ -1,11 +1,4 @@
 <aside id="sidebar">
-	<div id="search">
-		<form method="get" action="#" class="">
-				<div class="input-append">
-                <input class="sbar" size="16" type="text"><button class="btn btn-primary" type="button"><i class="icon-search icon-white"></i></button>
-              </div>
-		</form>
-	</div>
 <div class="widget">
 	<header><h1>Sidebar Header</h1></header>
 	<div class="content">

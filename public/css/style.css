@@ -40,17 +40,17 @@ a:hover { color: #005580 }
    ================================================== */
 
 #global-header {
-    padding-top: 50px;
     width: 100%;
     min-width: 990px;
 }
 
 #global-header #bg {
-    height: 42px;  width: 100%;
-    background: #223A87 url(../images/static/head-bar.png) repeat-x center center;
-    -moz-box-shadow: 0 0 35px #000;
-    -webkit-box-shadow: 0 0 35px #000;
-    box-shadow: 0 0 35px #000;}
+    position: relative;
+    height: 50px;  
+    width: 100%;
+    background: #223A87 url(../images/static/head-bar.png) repeat-x center;
+    background-size: contain;
+}
 
 #global-header .holder {
     height: 100%;
@@ -66,16 +66,15 @@ a:hover { color: #005580 }
 }
 
 #global-header #logo img {
-    margin-top: -50px;
-    margin-bottom: -40px;
-    width: 236px;
-    height: 122px;
+    margin-top: -3px;
+    width: 100px;
 }
 
 #global-header #logo h1 {
     display: inline;
     font: 26px/1 "Oswald";
     font-weight: 700;
+    vertical-align: 14px;
 }
 
 #global-header #logo a {
@@ -84,17 +83,18 @@ a:hover { color: #005580 }
     text-decoration: none;
     text-shadow: 0 3px 1px black;
     color: #fff;
+    height: 50px;
 }
 
 #global-header #loginout {
     float: right;
-    margin: 7px 0 0;
+    margin: 9px 0 0;
     padding: 0;
     font-family: "Oswald";
 }
 
 #global-header #loginout a {
-    font-size: 17px;
+    font-size: 18px;
     text-decoration: none;
     color: #fff;
     text-shadow: 0px 1px 3px #000;
@@ -115,15 +115,32 @@ a:hover { color: #005580 }
 
 #menu {
     background: #E7E7E7 url(../images/static/menu.jpg) repeat-x center;
-    box-shadow: 0 0 35px #000;
-    margin: 30px auto 13px;
-    width: 990px;
+    box-shadow: 0 5px 33px #000;
+    margin: 0 auto 13px;
 }
 
 #menu ul {
-    margin: 0;
-    text-align: center;
+    margin: 0 auto;
+    width: 990px;
 }
+
+#mainmenu #search {
+    display: inline-block;
+    margin-top: 3px;
+}
+
+#mainmenu #search form, #mainmenu #search .input-append { margin: 0 }
+
+#mainmenu #search input { 
+    width: 90px;
+    -moz-transition: width .3s ease-in-out;
+    -ms-transition: width .3s ease-in-out;
+    -o-transition: width .3s ease-in-out;
+    -webkit-transition: width .3s ease-in-out;
+    transition: width .3s ease-in-out;
+}
+
+#mainmenu #search input:focus { width: 190px }
 
 #menu li {
     display: inline-block;
@@ -248,7 +265,6 @@ a:hover { color: #005580 }
     -webkit-box-shadow: 0px 4px 10px black;
     box-shadow: 0px 4px 10px black;
     margin: 15px auto 0;  
-    bottom: 0;
 }
 
 #global-footer .holder {
@@ -272,7 +288,7 @@ a:hover { color: #005580 }
     font-weight: 700;
 }
 
-footer .column p {
+#global-footer .column p {
     font-size: 14px;
     margin: 0;
 }
@@ -293,9 +309,9 @@ footer .column p {
     position: relative;
     margin: 0 0 13px;
     background: #223A87;
-    -moz-box-shadow: 0 0 35px #000;
-    -webkit-box-shadow: 0 0 35px #000;
-    box-shadow: 0 0 35px black;
+    -moz-box-shadow: 0 5px 33px #000;
+    -webkit-box-shadow: 0 5px 33px #000;
+    box-shadow: 0 5px 33px #000;
     font: 15px "Oswald";
 }
 
@@ -1727,9 +1743,9 @@ table,.table {background-color: #fff;color: #000; -webkit-border-radius: 0px;-mo
 
     #global-header { padding-top: 0; min-width: 0 ;}
 
-    #global-header:after { display: table; content: ""; margin-bottom: 15px }
+    #global-header:after { display: table; content: ""; margin-bottom: 10px }
 
-    #global-header #bg { margin: 0 ; position: relative;}
+    #global-header #bg { margin: 0 ; height: 42px;}
 
     #global-header .holder { width: auto }
 
@@ -1749,7 +1765,9 @@ table,.table {background-color: #fff;color: #000; -webkit-border-radius: 0px;-mo
 
     #global-header #logo h1 {
         font-size: 18px;
-    }
+    
+        vertical-align: 0;
+}
 
     #global-header #logo a {
         text-shadow: 0 2px 1px black;
@@ -1780,9 +1798,11 @@ table,.table {background-color: #fff;color: #000; -webkit-border-radius: 0px;-mo
         margin: 0px auto 13px;
         width: auto;
         background: #CECECE;
-    }
+    
+        text-align: center;
+}
 
-    #menu #loginout { display: block ; border-bottom: 3px solid #7A7A7A;}
+    #menu #loginout { display: block ; border-top: 2px solid #7A7A7A; border-bottom: 2px solid #7A7A7A;}
 
     #menu #loginout { float: none; margin: 0 }
 
@@ -1792,13 +1812,15 @@ table,.table {background-color: #fff;color: #000; -webkit-border-radius: 0px;-mo
 
     #menu #loginout img {width: 25px;vertical-align: -6px;margin-left: 6px;}
 
-    #menu ul {margin: 0;}
+    #menu ul { width: auto; margin: 0;}
 
     #menu li { display: block; border-bottom: 1px solid #7A7A7A; line-height: 2; }
 
     #menu li:hover { -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none }
 
     #menu #mainmenu li:first-child {border-bottom: 1px solid #7A7A7A; box-shadow: inset 0px 6px 6px -4px #000 }
+
+    #menu #search { display: none; }
 
     #menu li a {
         display: block;
@@ -1915,6 +1937,7 @@ table,.table {background-color: #fff;color: #000; -webkit-border-radius: 0px;-mo
     #menu #loginout { display: none }
 
     #shownav { display: none; }
+
 } 
 /* Large desktop */
 @media (min-width: 990px) {

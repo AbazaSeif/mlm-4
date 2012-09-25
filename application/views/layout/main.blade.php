@@ -142,14 +142,21 @@
 				<li>{{ HTML::link('matches', 'Matches'); }}</li>
 				<li>{{ HTML::link('teams', 'Teams'); }}</li> 
 				<li>{{ HTML::link('maps', 'Maps'); }}</li>
-				<li>{{ HTML::link('faq', 'FAQ'); }}</li> 
+				<li>{{ HTML::link('faq', 'FAQ'); }}</li>
+				<div id="search" class="right clearfix">
+					<form method="get" action="#" class="">
+						<div class="input-append">
+						<input class="sbar" size="16" type="text"><button class="btn" type="button"><i class="icon-search icon-white"></i></button>
+						</div>
+					</form>
+				</div>
 			</ul>
 		</nav>
 </header>
 	<div id="wrapper">
 		{{ Messages::get_html() }}	
 		@yield('content')
-		
+	</div>
 <footer id="global-footer" class="clearfix">
 	<div class="holder">
 		<div class="column">
@@ -168,7 +175,6 @@
 	</div>	
 </footer>
 	@yield("postfooter")
-	</div>	
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="{{ URL::to_asset("js/libs/jquery-1.8.0.min.js") }}"><\/script>')</script>
 
