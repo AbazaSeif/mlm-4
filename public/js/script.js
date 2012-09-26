@@ -10,6 +10,14 @@ MLM = {
 			$("#shownav").click(function () {
 				$("#menu").slideToggle("slow").show();
 			});
+		// Search bar
+			$("#main-search").val("Search...");
+			$("#main-search").focus(function(){
+				if($(this).val() == "Search...") { $(this).val(""); }
+			});
+			$("#main-search").blur(function(){
+				if($(this).val() == "") { $(this).val("Search...");	}
+			});
 		// Admin WYSIWYG Editor
 			$("textarea[data-wysiwyg]").cleditor({
 				docType: '<!DOCTYPE html>'
@@ -63,21 +71,21 @@ MLM = {
 	home: {
 		init: function () {
 			$('#slider').nivoSlider({
-				effect: 'slideInRight',
-				slices: 10,
-				boxCols: 8,
-				boxRows: 4,
-				animSpeed: 500,
-				pauseTime: 3000,
-				startSlide: 0,
-				directionNav: true,
-				controlNav: true,
-				controlNavThumbs: false,
-				pauseOnHover: true,
-				manualAdvance: false,
-				prevText: 'Prev',
-				nextText: 'Next',
-				randomStart: false
+        		effect: 'fade',
+        		slices: 15,
+        		boxCols: 8,
+        		boxRows: 4,
+        		animSpeed: 600,
+        		pauseTime: 6000,
+        		startSlide: 0,
+        		directionNav: true,
+        		controlNav: true,
+        		controlNavThumbs: false,
+        		pauseOnHover: true,
+        		manualAdvance: false,
+        		prevText: 'Prev',
+        		nextText: 'Next',
+        		randomStart: false,
 			});
 		}
 	},

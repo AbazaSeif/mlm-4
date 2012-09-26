@@ -40,7 +40,7 @@ Route::controller(array('admin.user', 'admin.pages', 'admin.news', 'admin.maps',
 
 // Home
 Route::get('/', function() {
-	return View::make('home.index', array("javascript" => array("home")));
+	return View::make('pages.home', array("javascript" => array("home")));
 });
 // Reroute /login to account/login
 Route::get("login", "account@login");
