@@ -1,8 +1,11 @@
 <div id="comments">
 	@if( $article->comment_count == 0)
-	<div class="titlebar clearfix"><h2>No Comments</h2></div>
+	<div class="titlebar"><h2>No Comments</h2></div>
+	@elseif ( $article->comment_count == 1)
+	<div class="titlebar"><h2><b>1</b> Comment</h2></div>
 	@else
-	<div class="titlebar clearfix"><h2><b>{{ $article->comment_count }}</b> Comments</h2></div>
+	@else
+	<div class="titlebar"><h2><b>{{ $article->comment_count }}</b> Comments</h2></div>
 	<div class="showcomments" style="display:none;"></div>
 	@endif
 

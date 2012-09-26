@@ -79,13 +79,13 @@ MLM = {
         		pauseTime: 6000,
         		startSlide: 0,
         		directionNav: true,
-        		controlNav: true,
+        		controlNav: false,
         		controlNavThumbs: false,
         		pauseOnHover: true,
         		manualAdvance: false,
         		prevText: 'Prev',
         		nextText: 'Next',
-        		randomStart: false,
+        		randomStart: false
 			});
 		}
 	},

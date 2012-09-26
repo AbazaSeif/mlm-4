@@ -792,12 +792,13 @@ a:hover { color: #005580 }
 }
 
 .profile #vcard .data {
+    float: right;
     position: relative;
     margin: 0;
     padding: 4px 0 0 15px;
+    width: 370px;
     background: #e6e6e6;
     color: #474747;
-    overflow: hidden;
 }
 
 .profile #vcard .data h1 {
@@ -1368,7 +1369,7 @@ ol.commentlist {
 /* Table Sorter Styles
    ================================================== */  
 
-#sortable th { background: url(../images/static/bg.gif) no-repeat center right; cursor: pointer }
+#sortable th { background: url(../images/static/bg.gif) no-repeat center right; cursor: pointer ; }
 
 #sortable th.disabled { background: none; cursor: default; }
 
@@ -1397,15 +1398,17 @@ img.imgfix { display: block; margin-top: 10px; width: 50% }
 
 /* Bootsrap overwrites */
 
-table,.table {background-color: #fff;color: #000; -webkit-border-radius: 0px;-moz-border-radius: 0px; border-radius: 0px}
+.alert { margin-bottom: 15px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-border-radius: 0; -moz-border-radius: 0; border-radius: 0; }
+
+.alert p { display:inline; margin:auto; font-family: "Oswald"; font-weight: 400 }
+
+table,.table {background-color: #fff;color: #000; -webkit-border-radius: 0px;-moz-border-radius: 0px; border-radius: 0px }
+
+.table th, .table tr, .table td { -webkit-border-radius: 0px!important;  border-radius: 0px!important;  -moz-border-radius: 0px!important; }
 
 .help-block, .help-inline { color: #fff }
 
 .btn { vertical-align: 0; margin-top: 0; }
-
-.alert { margin-bottom: 15px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;}
-
-.alert p { display:inline; margin:auto; font-family: "Oswald"; font-weight: 400;}
 
 .nav-tabs {border-bottom: 1px dotted #fff}
 
@@ -1729,8 +1732,6 @@ table,.table {background-color: #fff;color: #000; -webkit-border-radius: 0px;-mo
 /* Fixes That don't require a lot of change (responsive fixes ONLY) 
    ================================================== */
 
-   .alert { -webkit-border-radius: 0; -moz-border-radius: 0; border-radius: 0; }
-
    #login { padding: 10px 0; }
 
    #comments .meta .actions { display: table; float: none; }
@@ -1881,10 +1882,13 @@ table,.table {background-color: #fff;color: #000; -webkit-border-radius: 0px;-mo
 /* Profile page 
    ================================================== */
 
+   .profile #vcard .data {
+    width: 70%;
+}
+
     .profile #vcard .picture {
     width: 20%;
     float: left;
-    margin-right: 30px;
     }
 
     .profile #vcard .data h1 {

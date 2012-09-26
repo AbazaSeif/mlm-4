@@ -7,7 +7,7 @@
 @endif
 <div id="content" class="profile clearfix">
 	<div id="page">
-		<div id="vcard">
+		<div id="vcard" class="clearfix">
 			<div class="picture">
 				@if($ownpage)
 					<a href="http://minecraft.net/profile" target="_blank" title="Change your skin..."><img src="http://minotar.net/helm/{{$user->mc_username}}/150" alt="avatar" /></a>
