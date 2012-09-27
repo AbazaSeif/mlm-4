@@ -16,15 +16,15 @@ body {
 }
 
 ::selection {
-    color: #FFF;
-   background: #AA6814;
-    text-shadow: 0 1px 0px #000;
+    background: rgb(54, 167, 252);
+    color: white;
+    text-shadow: none;
 }
 
 ::-moz-selection {
-    color: #fff;
-    background: #AA6814;
-    text-shadow: 0 1px 0px #000;
+    background: rgb(54, 167, 252);
+    color: white;
+    text-shadow: none;
 }
 
 .left {float: left}
@@ -40,8 +40,10 @@ a:hover { color: #005580 }
    ================================================== */
 
 #global-header {
+    margin-bottom: 13px;
     width: 100%;
     min-width: 990px;
+    box-shadow: 0 4px 10px #000;
 }
 
 #global-header #bg {
@@ -115,8 +117,6 @@ a:hover { color: #005580 }
 
 #menu {
     background: #E7E7E7 url(../images/static/menu.jpg) repeat-x center;
-    box-shadow: 0 5px 33px #000;
-    margin: 0 auto 13px;
 }
 
 #menu ul {
@@ -185,9 +185,9 @@ a:hover { color: #005580 }
 
 #content {
     background: #223A87;
-    -moz-box-shadow: 0 0 35px #000;
-    -webkit-box-shadow: 0 0 35px #000;
-    box-shadow: 0 0 35px #000;
+    -moz-box-shadow: 0 0 10px #000;
+    -webkit-box-shadow: 0 0 10px #000;
+    box-shadow: 0 0 10px #000;
     padding: 20px 25px;}
 
 /* Header Titles */
@@ -237,8 +237,8 @@ a:hover { color: #005580 }
    ================================================== */
 
 #home .homecontent {
-    margin: 15px auto 0;
     display: inline-block;
+    margin: 0;
     width:940px;
 }
 
@@ -261,9 +261,9 @@ a:hover { color: #005580 }
 
 #global-footer {
     background: #223A87;
-    -moz-box-shadow: 0px 4px 10px #000;
-    -webkit-box-shadow: 0px 4px 10px black;
-    box-shadow: 0px 4px 10px black;
+    -moz-box-shadow: 0 0 10px #000;
+    -webkit-box-shadow: 0 0 10px #000;
+    box-shadow: 0 0 10px #000;
     margin: 15px auto 0;  
 }
 
@@ -309,9 +309,9 @@ a:hover { color: #005580 }
     position: relative;
     margin: 0 0 13px;
     background: #223A87;
-    -moz-box-shadow: 0 5px 33px #000;
-    -webkit-box-shadow: 0 5px 33px #000;
-    box-shadow: 0 5px 33px #000;
+    -moz-box-shadow: 0 0 10px #000;
+    -webkit-box-shadow: 0 0 10px #000;
+    box-shadow: 0 0 10px #000;
     font: 15px "Oswald";
 }
 
@@ -1742,7 +1742,7 @@ table,.table {background-color: #fff;color: #000; -webkit-border-radius: 0px;-mo
 /* Global Header
    ================================================== */
 
-    #global-header { padding-top: 0; min-width: 0 ;}
+    #global-header { box-shadow:none; padding-top: 0; min-width: 0; }
 
     #global-header:after { display: table; content: ""; margin-bottom: 10px }
 

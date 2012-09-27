@@ -64,6 +64,7 @@
 	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ URL::to_asset("images/static/apple-touch-icon-ipad3.png") }}" />
 	
 	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/style.css") }}" />
+	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/nivo/default/default.css") }}" />
 	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/nivo/medium/medium.css") }}" />
 	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/nivo/bar/bar.css") }}" />
 	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/nivo/nivo-slider.css") }}" />

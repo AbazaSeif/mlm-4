@@ -71,7 +71,7 @@ MLM = {
 	home: {
 		init: function () {
 			$('#slider').nivoSlider({
-        		effect: 'fade',
+        		effect: 'sliceDown',
         		slices: 15,
         		boxCols: 8,
         		boxRows: 4,

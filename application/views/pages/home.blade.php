@@ -2,7 +2,6 @@
 @section('content')
 
 <div id="home" class="clearfix">
-<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/nivo/main/main.css") }}" />
 <div class="slider-wrapper theme-default">
 	<div id="slider" class="nivoSlider">
 	<a href="#" title="some title">
