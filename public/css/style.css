@@ -46,7 +46,7 @@ a:hover { color: #005580 }
     box-shadow: 0 4px 10px #000;
 }
 
-#global-header #bg {
+#global-header #main {
     position: relative;
     height: 50px;  
     width: 100%;
@@ -76,39 +76,47 @@ a:hover { color: #005580 }
     display: inline;
     font: 26px/1 "Oswald";
     font-weight: 700;
-    vertical-align: 14px;
+    vertical-align: 13px;
 }
 
 #global-header #logo a {
     display: block;
     font-weight: 700;
     text-decoration: none;
-    text-shadow: 0 3px 1px black;
+    text-shadow: 0 2px 0px black;
     color: #fff;
     height: 50px;
 }
 
 #global-header #loginout {
     float: right;
-    margin: 9px 0 0;
+    margin: 10px 0 0;
     padding: 0;
     font-family: "Oswald";
 }
 
+#global-header #loginout a.nosep {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
 #global-header #loginout a {
+    padding: 0px 10px;
     font-size: 18px;
     text-decoration: none;
     color: #fff;
-    text-shadow: 0px 1px 3px #000;
+    text-shadow: 0 1px 1px #000;
+    border-right: 1px dotted #CCC;
 }
 
 #global-header #loginout img {
     margin-left: 3px;
     width: 20px;
     border: 2px #fff solid;
-    -moz-box-shadow: 0 1px 3px #000;
-    -webkit-box-shadow: 0 1px 3px #000;
-    box-shadow: 0 1px 3px #000;
+    -moz-box-shadow: 0 1px 1px #000;
+    -webkit-box-shadow: 0 1px 1px #000;
+    box-shadow: 0 1px 1px #000;
     vertical-align: -4px;
 }
 
@@ -131,16 +139,17 @@ a:hover { color: #005580 }
 
 #mainmenu #search form, #mainmenu #search .input-append { margin: 0 }
 
-#mainmenu #search input { 
+#mainmenu #search input {
+    background-color: #BEBEBE;
     width: 90px;
-    -moz-transition: width .3s ease-in-out;
-    -ms-transition: width .3s ease-in-out;
-    -o-transition: width .3s ease-in-out;
-    -webkit-transition: width .3s ease-in-out;
-    transition: width .3s ease-in-out;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
 }
 
-#mainmenu #search input:focus { width: 190px }
+#mainmenu #search input:focus { width: 190px; background-color:#fff;  color:#000; }
 
 #menu li {
     display: inline-block;
@@ -168,9 +177,9 @@ a:hover { color: #005580 }
 #menu li a {
     display: block;
     padding: 8px 20px;
-    color: white;
+    color: #fff;
     font:20px/1 "Oswald";
-    text-shadow: 0 1px 2px #000;
+    text-shadow: 0 1px 1px #000;
     text-transform: uppercase;
 }
 
@@ -260,37 +269,51 @@ a:hover { color: #005580 }
    ================================================== */
 
 #global-footer {
+    margin: 15px auto 0;
+    padding: 5px 0 0;
     background: #223A87;
     -moz-box-shadow: 0 0 10px #000;
     -webkit-box-shadow: 0 0 10px #000;
-    box-shadow: 0 0 10px #000;
-    margin: 15px auto 0;  
+    box-shadow: 0 0 10px #000;  
 }
 
 #global-footer .holder {
-    clear: both;
     display: block;
-    height: 100%;
+    position: relative;
     margin: 0 auto;
     width: 990px;
 }
 
-#global-footer .column {
-    float: left;
-    margin: 0 20px 0 0;
-    padding: 30px;
-    width: 250px;
+#global-footer p {
+    display: inline-block;
+    margin-bottom: 0;
+    font: 16px/2 "Oswald";
+    font-weight: 300;
 }
 
-#global-footer .column h3 {
-    margin: 0;
-    font: 15px "Oswald";
-    font-weight: 700;
+#global-footer .links a {
+    padding: 0 8px 4px;
+    color: #fff;
+    vertical-align: top;
+    border-right: 1px dotted #8B8B8B;
 }
 
-#global-footer .column p {
-    font-size: 14px;
-    margin: 0;
+#global-footer p span { text-shadow: 0 1px 0px black ; vertical-align: top;}
+
+#global-footer .social {
+    padding: 0 8px 4px;
+}
+
+#global-footer .social a {
+    display: inline-block;
+    margin-right: 3px;
+    font-size: 30px;
+    color: #fff;
+    line-height: 0.7;
+}
+
+#global-footer .social a:hover {
+    color: #f0f0f0;
 }
 
 /* General styles for pages
@@ -334,7 +357,7 @@ a:hover { color: #005580 }
     padding: 10px 15px;
     margin-right: 0;
     color: #fff;
-    text-shadow: 0 1px 3px black;
+    text-shadow: 0 1px 1px black;
     font-size: 16px;
     text-transform: uppercase;
     text-align: center;
@@ -1746,7 +1769,7 @@ table,.table {background-color: #fff;color: #000; -webkit-border-radius: 0px;-mo
 
     #global-header:after { display: table; content: ""; margin-bottom: 10px }
 
-    #global-header #bg { margin: 0 ; height: 42px;}
+    #global-header #main { margin: 0 ; height: 42px;}
 
     #global-header .holder { width: auto }
 
@@ -1871,13 +1894,7 @@ table,.table {background-color: #fff;color: #000; -webkit-border-radius: 0px;-mo
 /* Global Footer
    ================================================== */
 
-    #global-footer .holder {
-        width: auto;
-    }
-
-    #global-footer .column {
-        width: auto;
-    }
+   #global-footer .social { display: none }
 
 /* Profile page 
    ================================================== */

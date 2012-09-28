@@ -10,9 +10,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	@if (isset($title)) 
-	<title>{{$title}} | Major League Mining</title>
+	<title>{{$title}} | MAJOR LEAGUE MINING</title>
 	@else 
-	<title>Major League Mining</title>
+	<title>MAJOR LEAGUE MINING</title>
 	@endif
 
 <!--
@@ -40,7 +40,7 @@
 	                                                              
 	888b     d8888888888888b    8888888888888b    888 .d8888b.  
 	8888b   d8888  888  8888b   888  888  8888b   888d88P  Y88b 
-	88888b.d88888  888  88888b  888  888  88888b  888888    888 
+	88888b.d88L88  8E8  8O8N8b  8I8  8M8  88U88b  888Z88    888 
 	888Y88888P888  888  888Y88b 888  888  888Y88b 888888        
 	888 Y888P 888  888  888 Y88b888  888  888 Y88b888888  88888 
 	888  Y8P  888  888  888  Y88888  888  888  Y88888888    888 
@@ -87,8 +87,8 @@
 @endif
 	<!--[if lt IE 7]><p class="chromeframe">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/?locale=en">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 <header id="global-header">
-	<div id="bg">
-		<div class="holder">
+	<div id="main">
+		<div class="holder clearfix">
 			<div id="logo">
 				<a href="{{ URL::to("/") }}" title="Major League Mining">
 					<img src="{{ URL::to_asset("images/static/logo.png") }}" />
@@ -97,11 +97,11 @@
 			</div>
 			<div id="loginout">
 				@if (Auth::user() && Auth::user()->admin)
-				{{ HTML::link_to_action('account@logout', "Logout") }} &bull; {{ HTML::link('admin', 'Admin panel'); }} &bull; <a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/150" alt="avatar" /></a>
+				{{ HTML::link_to_action('account@logout', "Logout") }} {{ HTML::link('admin', 'Admin panel'); }} <a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/150" alt="avatar" /></a>
 				@elseif (Auth::check())
-				{{ HTML::link_to_action('account@logout', "Logout") }} &bull; {{ HTML::link('account', 'Edit Account'); }} &bull; <a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/150" alt="avatar" /></a>
+				{{ HTML::link_to_action('account@logout', "Logout") }} {{ HTML::link('account', 'Edit Account'); }} <a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/150" alt="avatar" /></a>
 				@else
-				{{ HTML::link_to_action('account@login', "Login &bull; Create account") }}
+				{{ HTML::link('login', "Login &bull; Create account", array("class" => "nosep")) }}
 				@endif
 			</div>
 			<a href="#" id="shownav"><i class="icon-reorder"></i></a>
@@ -110,27 +110,15 @@
 		<nav id="menu">
 			<ul id="loginout">
 				@if (Auth::user() && Auth::user()->admin)
-			<li>
-				{{ HTML::link_to_action('account@logout', "Logout") }} 
-			</li>
-			<li> 
-				{{ HTML::link('admin', 'Admin panel'); }}
-			</li>
-			<li>
-				<a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/150" alt="avatar" /></a>
-			</li>
+			<li>{{ HTML::link_to_action('account@logout', "Logout") }} </li>
+			<li>{{ HTML::link('admin', 'Admin panel'); }}</li>
+			<li><a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/150" alt="avatar" /></a></li>
 				@elseif (Auth::check())
-			<li>
-				{{ HTML::link_to_action('account@logout', "Logout") }}
-			</li>
-				{{ HTML::link('account', 'Edit Account'); }}
-			<li>
-				<a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/150" alt="avatar" /></a>
-			</li>
+			<li>{{ HTML::link_to_action('account@logout', "Logout") }}</li>
+			<li>{{ HTML::link('account', 'Edit Account'); }}</li>
+			<li><a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/150" alt="avatar" /></a></li>
 				@else
-			<li>
-				{{ HTML::link_to_action('account@login', "Login &bull; Create account") }}
-			</li>
+			<li>{{ HTML::link('login', "Login &bull; Create account", array("class" => "nosep")) }}</li>
 				@endif
 			</ul>
 			<ul id="mainmenu">
@@ -152,24 +140,26 @@
 		</nav>
 </header>
 	<div id="wrapper">
-		{{ Messages::get_html() }}	
+		{{ Messages::get_html() }}
 		@yield('content')
 	</div>
-<footer id="global-footer" class="clearfix">
-	<div class="holder">
-		<div class="column">
-			<h3>Copyright 2012</h3>
-			<p>Major League Mining</p>
-			<p>"Minecraft" is a registered trademark of Mojang AB</p>
-		</div>
-		<div class="column">
-			<h3>Heading</h3>
-			<p>All sorts of awesome footer goodness</p>
-		</div>
-		<div class="column">
-			<h3>Heading</h3>
-			<p>All sorts of awesome footer goodness</p>
-		</div>
+<footer id="global-footer">
+	<div class="holder clearfix">
+	<p class="left">
+		<img src="{{ URL::to_asset("images/static/logo.png") }}" width="70" />
+		<span>&copy;2012 MAJOR LEAGUE MINING</span>
+	</p>
+	<p class="right">
+		<span class="links">
+		<a href="/about">About</a>
+		<a href="/tos">Legal</a>
+		</span>
+		<span class="social">
+		<a href="http://facebook.com/mlm" title="Like us on Facebook"><i class="icon-facebook-sign"></i></a>
+		<a href="http://twitter.com/mlm" title="Follow us on Twitter"><i class="icon-twitter-sign"></i></a>
+		<a href="http://plus.google.com/+mlm" title="Follow us on Google Plus"><i class="icon-google-plus-sign"></i></a>
+		</span>
+	</p>
 	</div>	
 </footer>
 	@yield("postfooter")

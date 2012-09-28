@@ -1,9 +1,9 @@
-@layout("layout.admin")
+@layout("layout.main")
 
 @section("content")
-@parent
+@include("admin.menu")
 <div id="content">
-<div class="titlebar clearfix">
+<div class="titlebar">
 	<h2>Moderating: <strong>{{ e($map->title) }}</strong></h2>
 </div>
 	{{ Form::open(null, 'POST', array('class' => 'xpadding')) }}
@@ -29,7 +29,7 @@
 	{{ HTML::link_to_action("admin.maps", "Back", array(), array("class" => "btn")) }}
 	{{ Form::close() }}
 	@if($modqueue == true)
-	<div class="titlebar clearfix">
+	<div class="titlebar">
 	<h2>Modqueue Item <strong>{{ e($modqueue->id) }}</strong></h2>
 	</div>
 	{{ Form::open(null, 'POST', array('class' => 'xpadding')) }}

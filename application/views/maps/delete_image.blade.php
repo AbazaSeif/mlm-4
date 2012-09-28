@@ -3,7 +3,7 @@
 @section("content")
 @include("maps.menu")
 <div id="content">
-<div class="titlebar clearfix">
+<div class="titlebar">
 	<h3>Delete image</h3>
 </div>
 	{{ Form::open("maps/delete_image/".$map->id."/".$image->id, "POST", array('class' => 'xpadding')) }}

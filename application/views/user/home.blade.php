@@ -41,7 +41,7 @@
 				</div>
 		</div>
 		<div id="feed">
-			<div class="titlebar clearfix">
+			<div class="titlebar">
 				<h2>Feed</h2>
 			</div>
 		</div>

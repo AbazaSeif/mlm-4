@@ -1,9 +1,9 @@
-@layout("layout.admin")
+@layout("layout.main")
 
 @section("content")
-@parent
+@include("admin.menu")
 <div id="content">
-<div class="titlebar clearfix">
+<div class="titlebar">
 	<h2>Admin user: <strong>{{ e($user->username) }}</strong></h2>
 </div>
 	{{ Form::open(null, 'POST', array('class' => 'xpadding')) }}

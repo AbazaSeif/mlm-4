@@ -2,7 +2,7 @@
 
 @section('content')
 <div id="content">
-<div class="titlebar clearfix">
+<div class="titlebar">
 	<h2>FAQ</h2>
 </div>
 <a name="top"></a>

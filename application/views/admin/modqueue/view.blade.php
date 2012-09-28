@@ -1,9 +1,9 @@
-@layout("layout.admin")
+@layout("layout.main")
 
 @section("content")
-@parent
+@include("admin.menu")
 <div id="content">
-<div class="titlebar clearfix">
+<div class="titlebar">
 	<h2>Editing ModQueue Item <b>{{$item->id}}</b></h2>
 </div>
 	<p>ID: {{ $item->id }}</p>

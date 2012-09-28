@@ -1,10 +1,10 @@
-@layout('layout.admin')
+@layout("layout.main")
 
-@section('content')
-@parent
+@section("content")
+@include("admin.menu")
 <div id="content" class="admin clearfix">
 	<div id="page" class="bigger">
-		<div class="titlebar clearfix">
+		<div class="titlebar">
 			<h2>Moderation queue</h2>
 		</div>
 		<div class="fixedheight">
@@ -35,7 +35,7 @@
 	</div>
 	</div>
 	<div id="sidebar" class="smaller">
-		<div class="titlebar clearfix">
+		<div class="titlebar">
 			<h2>Admin log</h2>
 		</div>
 		<div class="fixedheight">

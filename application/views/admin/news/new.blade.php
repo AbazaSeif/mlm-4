@@ -1,9 +1,9 @@
-@layout('layout.admin')
+@layout("layout.main")
 
-@section('content')
-@parent
+@section("content")
+@include("admin.menu")
 <div id="content">
-<div class="titlebar clearfix">
+<div class="titlebar">
 	<h2>New article</h2>
 </div>
 {{ Form::open(null , 'POST', array('class' => 'form-horizontal')) }} 

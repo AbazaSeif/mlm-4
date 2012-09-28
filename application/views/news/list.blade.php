@@ -4,7 +4,7 @@
 @include("news.menu")
 <div id="content" class="news clearfix">
 <div id="page">
-<div class="titlebar clearfix">
+<div class="titlebar">
 	<h2>Latest News</h2>
 </div>
 	@foreach($newslist->results as $article)

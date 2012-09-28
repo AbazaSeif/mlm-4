@@ -1,9 +1,9 @@
-@layout('layout.admin')
+@layout("layout.main")
 
-@section('content')
-@parent
+@section("content")
+@include("admin.menu")
 <div id="content">
-	<div class="titlebar clearfix">
+	<div class="titlebar">
 		<h2>Pages</h2>
 	</div>
 	<a href="{{ URL::to_action("admin.pages@new") }}" class="btn" style="margin-bottom:15px"><i class="icon-plus"></i> New Page</a>
