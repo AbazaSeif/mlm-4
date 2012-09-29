@@ -34,7 +34,7 @@
 */
 
 // Public routes
-Route::controller(array('account', "imgmgr", "maps", "messages", "news", "faq"));
+Route::controller(array('account', "imgmgr", "maps", "messages", "news", "faq", "matches"));
 // Admin routes (no real need to seperate, just to keep nice)
 Route::controller(array('admin.user', 'admin.pages', 'admin.news', 'admin.maps', 'admin.faq', 'admin.modqueue', 'admin.comments'));
 
