@@ -50,9 +50,18 @@ class User extends Eloquent {
 
 	public function update_winlose_count() {
 		$this->set_attribute("win_count", $this->matches()->where('matches.winningteam', '=', 'match_user.teamnumber')->count()+1);
-		$this->set_attribute("win_count", $this->matches()->where('matches.winningteam', '!=', 'match_user.teamnumber')->count()+1);
+		$this->set_attribute("lose_count", $this->matches()->where('matches.winningteam', '!=', 'match_user.teamnumber')->count()+1);
 		self::$timestamps = false; // Don't update modified time;
 		$this->save();
 		self::$timestamps = false;
+	}
+
+	public function in_match($matchid) {
+		$in_match = DB::table("match_user")->where_match_id($matchid)->where_user_id($this->get_key())->first();
+		if($in_match) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }

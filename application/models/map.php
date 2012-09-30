@@ -22,6 +22,9 @@ class Map extends Eloquent {
 	public function comments() {
 		return $this->has_many("Comment");
 	}
+	public function matches() {
+		return $this->has_many("Match");
+	}
 
 	/*
 	 * Checks if a user is the owner of the map

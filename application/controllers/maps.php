@@ -289,7 +289,7 @@ class Maps_Controller extends Base_Controller {
 			return Redirect::to_action("maps@edit", array($map->id))->with_input();
 		}
 		// All good now, create the invite
-		$map->users()->attach($user->id, array("confirmed" => false));
+		$map->users()->attach($user->id, array("confirmed" => 0));
 		$mapurl = URL::to_action("maps@view", array($map->id, $map->slug));
 		$currentuser = Auth::user();
 		$message = <<<EOT
