@@ -17,6 +17,9 @@ class User extends Eloquent {
 	public function comments() {
 		return $this->has_many("Comment");
 	}
+	public function matches() {
+		return $this->has_many_and_belongs_to("Match")->with('teamnumber');
+	}
 
 	// Send a *system message* to the user
 	public function send_message($title, $text) {
@@ -43,5 +46,13 @@ class User extends Eloquent {
 			$this->save();
 			self::$timestamps = false;
 		}
+	}
+
+	public function update_winlose_count() {
+		$this->set_attribute("win_count", $this->matches()->where('matches.winningteam', '=', 'match_user.teamnumber')->count()+1);
+		$this->set_attribute("win_count", $this->matches()->where('matches.winningteam', '!=', 'match_user.teamnumber')->count()+1);
+		self::$timestamps = false; // Don't update modified time;
+		$this->save();
+		self::$timestamps = false;
 	}
 }
