@@ -8,7 +8,7 @@
 <link rel="shortcut icon" href="{{ URL::to_asset("images/static/favicon.ico") }}" />
 </head>
 <body>
-	<div id="errorbox">
+	<div id="actionbox">
 	<a href="/"><img src="<?php echo URL::to_asset("images/static/logo.png") ?>" /></a>
 			<hr>
 			<h1>500: Internal Server Error</h1>
@@ -18,11 +18,6 @@
 				<br> 
 				Try refreshing this page later.
 			</p>
-            <br>
-		<?php echo Form::open("search"); ?>
-		<?php echo Form::text("search_term", ""); ?>
-		<?php echo Form::submit("Search", array('class' => 'btn-primary')); ?>
-		<?php echo Form::close(); ?>
 	</div>
 </body>
 </html>

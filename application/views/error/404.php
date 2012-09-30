@@ -8,7 +8,7 @@
 <link rel="shortcut icon" href="{{ URL::to_asset("images/static/favicon.ico") }}" />
 </head>
 <body>
-	<div id="errorbox">
+	<div id="actionbox">
 	<a href="/" title="Major League Mining"><img src="<?php echo URL::to_asset("images/static/logo.png") ?>" /></a>
 			<hr>
 			<?php $messages = array('Stronghold not found', 'There is no wool here', 'Wool not found', 'An Enderman stole this page', 'Chunk not found', 'Page blew up', "PC CHUNK LETTER"); ?>
@@ -22,7 +22,7 @@
             <br>
 		<form method="get" action="#" class="">
 				<div class="input-append">
-                <input class="sbar" size="16" type="text"><button class="btn btn-primary" type="button"><i class="icon-search icon-white"></i></button>
+                <input class="sbar" size="16" type="text"><button class="btn" type="button"><i class="icon-search icon-white"></i></button>
               </div>
 		</form>
 	</div>

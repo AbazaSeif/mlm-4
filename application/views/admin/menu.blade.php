@@ -1,5 +1,6 @@
-<nav id="pagemenu">
-	<ul class="nav nav-tabs">
+<a href="#" id="show-adminmenu">Show Admin Menu</a>
+<div id="adminmenu">
+	<ul>
 		<li {{ URI::is('admin') ? 'class="active"' : '' }}>{{ HTML::link("admin", "Admin Home") }}</li>
 		<li {{ URI::is('admin/news') ? 'class="active"' : '' }}>{{ HTML::link("admin/news", "News") }}</li>
 		<li {{ URI::is('admin/tournaments') ? 'class="active"' : '' }}>{{ HTML::link("admin/tournaments", "Tournaments") }}</li>
@@ -12,4 +13,4 @@
 		<li><a onClick="MLM.images.open(); return false;" href="#" >Images</a></li>
 		<li {{ URI::is('admin/faq') ? 'class="active"' : '' }}>{{ HTML::link("admin/faq", "FAQ") }}</li>
 	</ul>
-</nav>
+</div>

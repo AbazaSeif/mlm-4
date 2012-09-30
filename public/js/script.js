@@ -6,6 +6,8 @@
 MLM = {
 	common: {
 		init: function () {
+		// Cool actionbox 
+			$('#actionbox').hide().fadeIn(1000).show();
 		// Responsive menu toggle
 			$("#shownav").click(function () {
 				$("#menu").slideToggle("slow").show();
@@ -51,6 +53,15 @@ MLM = {
 				$("#comment").fadeToggle(300);
 				return false;
 			});
+		// 
+			$("#show-adminmenu").click(function () {
+				$("#adminmenu").fadeToggle(300);
+				return false;
+			});
+			$("#adminmenu").mouseleave(function(){
+				$(this).fadeOut(300);
+				return false;
+			});
 		// Markdown Live Preview 
 			$('#mrk').wysiwym(Wysiwym.Markdown, {});
 				var showdown = new Showdown.converter();
@@ -64,13 +75,12 @@ MLM = {
 				var newHtml = $("<div>"+ showdown.makeHtml(newValue) +"</div>");
 				previewOutput.html(newHtml);
 			}
-        	}
+			}
         	setInterval(updateLivePreview, 100);
 			}
 	},
 	home: {
 		init: function () {
-			$('body').hide().fadeIn(1000).show();
 			$('#slider').nivoSlider({
         		effect: 'sliceDown',
         		slices: 15,
@@ -97,34 +107,7 @@ MLM = {
 	},
 	admin: {
 		init: function () {
-			// Create an instance of Meny
-			var meny = Meny.create({
-				// The element that will be animated in from off screen
-				menuElement: document.querySelector( '.meny' ),
-
-				// The contents that gets pushed aside while Meny is active
-				contentsElement: document.querySelector( '.contents' ),
-
-				// [optional] The alignment of the menu (top/right/bottom/left)
-				position: Meny.getQuery().p || 'left',
-
-				// [optional] The height of the menu (when using top/bottom position)
-				height: 200,
-
-				// [optional] The width of the menu (when using left/right position)
-				width: 260,
-
-				// [optional] Distance from mouse (in pixels) when menu should open
-				threshold: 40
-			});
-			
-
-			// Embed an iframe if a URL is passed in
-			if( Meny.getQuery().u && Meny.getQuery().u.match( /^http/gi ) ) {
-				var contents = document.querySelector( '.contents' );
-				contents.style.padding = '0px';
-				contents.innerHTML = '<div class="cover"></div><iframe src="'+ Meny.getQuery().u +'" style="width: 100%; height: 100%; border: 0; position: absolute;"></iframe>';
-			}
+			/* Admin pages */
 		},
 		edit: function() {
 			

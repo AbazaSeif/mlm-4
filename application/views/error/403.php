@@ -8,7 +8,7 @@
 <link rel="shortcut icon" href="{{ URL::to_asset("images/static/favicon.ico") }}" />
 </head>
 <body>
-	<div id="errorbox">
+	<div id="actionbox">
 	<a href="/"><img src="<?php echo URL::to_asset("images/static/logo.png") ?>" /></a>
 			<hr>
 			<h1>403: Access Forbidden</h1>

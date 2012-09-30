@@ -292,6 +292,7 @@ a:hover { color: #005580 }
 }
 
 #global-footer .links a {
+    margin-left: -4px;
     padding: 0 8px 4px;
     color: #fff;
     vertical-align: top;
@@ -314,6 +315,117 @@ a:hover { color: #005580 }
 
 #global-footer .social a:hover {
     color: #f0f0f0;
+}
+
+/* Action box (for all your 1 function pages) 
+   ================================================== */
+    
+#actionbox {
+    margin: 28px auto;
+    padding: 30px;
+    max-width: 650px;
+    background: rgba(34, 58, 135, 0.60);
+    -moz-box-shadow: 0 0 35px #000;
+    -webkit-box-shadow: 0 0 35px #000;
+    box-shadow: 0 0 35px #000;
+    text-align: center;
+    font-family: "Oswald";
+}
+
+#actionbox h1 {
+    font-weight: 400;
+    text-shadow: 0px 1px 3px #000;
+}
+
+#actionbox input {
+    margin-bottom: 0
+}
+
+/* Login & Registration
+   ================================================== */
+
+.login form {}
+
+/* OpenID providers */
+
+.login ul {
+    margin: 0 auto;  
+    padding: 0;
+    text-align: center;
+    list-style: none;
+}
+.login ul li {
+    display: inline-block;  
+    margin: 0 1px;
+    box-shadow: 0 1px 2px #000;
+}
+
+.login ul li:hover {
+    box-shadow: 0 0 3px #f0f0f0;
+}
+
+.login ul li img {
+    max-width: 115px;
+    
+}
+
+.login ul li span {
+    padding: 0 1em 0 3px;
+    color: #000;
+}
+
+/* OpenID input */
+
+.login label.openid {
+    display: inline-block;
+    margin: 5px 10px 15px;
+    font-size: 20px;
+    line-height: 1;
+    text-shadow: 0 1px 1px #000;
+}
+
+.login .openid-logo {
+    color: #F7931E;
+    padding: 0 0 0 28px;
+    background: url(../images/login/openidico.png) no-repeat left;
+}
+
+/* Keep me Logged in/Remember User */
+
+.login .openid-form fieldset.rememberme {
+    clear: both;
+    padding: 8px 0 0;
+    margin-left: -20px;
+    text-shadow: 0 1px 1px black;
+}
+
+.login #remember {
+    margin-top: 0px;
+}
+
+.login .openid-form label.forget {
+    font-size: 16px;
+    display: inline-block;
+    color: #bbb;
+    margin: 0;
+    padding: 0;
+}
+
+/* Why we use OpenID on Login page */
+
+.WhyOpenID {
+    padding: 10px;
+    font-size: 14px;
+    text-shadow: 0px 1px 3px #000;
+}
+
+/* Disclaimer on Registration page */
+
+.disclaimer { 
+    display: inline;
+    color: #414141;
+    font-size: 13px;
+    margin-left: 10px;
 }
 
 /* General styles for pages
@@ -366,15 +478,15 @@ a:hover { color: #005580 }
     border-radius: 0;
 }
 #pagemenu .nav-tabs > li > a:hover {
-    border-color: none;
+    border: 1px solid transparent;
+    background-color: #333;
 }
 
 #pagemenu .nav-tabs > .active > a,
 #pagemenu .nav-tabs > .active > a:hover {
     color: #fff;
-    background-color: #E6E6E6;
-    border: 1px solid #d3d3d3;
-    border-bottom-color: transparent;
+    background-color: #999;
+    border: 1px solid transparent;
     cursor: default;
 }
 
@@ -514,7 +626,41 @@ a:hover { color: #005580 }
 /* Admin pages 
    ================================================== */
 
-   .admin .fixedheight{ max-height: 500px; overflow-y:auto }
+.admin .fixedheight{ max-height: 500px; overflow-y:auto }
+
+#show-adminmenu {
+    padding: 5px;
+    background: #333;
+    color: #eee;
+}
+
+#adminmenu {
+    display: none;
+    padding: 20px;
+    overflow: hidden;
+    background: #333;
+    color: #eee;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+#adminmenu ul {
+    margin-top: 10px;
+}
+
+#adminmenu ul li {
+    display: inline-block;
+    width: 200px;
+    list-style: none;
+    font-size: 20px;
+    padding: 3px 10px;
+}
+#adminmenu ul li:before {
+    content: '-';
+    margin-right: 5px;
+    color: rgba( 255, 255, 255, 0.2 );
+}
 
 /* News page 
    ================================================== */
@@ -687,103 +833,6 @@ a:hover { color: #005580 }
 .maps-single .rating span.star:hover ~ span.star:before {
     content: "\f005";
     color: #FFF;
-}
-
-/* Login & Registration
-   ================================================== */
-
-#login {
-    margin: 28px auto;
-    padding: 30px;  
-    max-width: 650px;
-    font-family: "Oswald";
-    background: rgba(34, 58, 135, 0.5);
-    -moz-box-shadow: 0 0 35px #000; 
-    -webkit-box-shadow: 0 0 35px #000;  
-    box-shadow: 0 0 35px #000;
-    text-align: center;
-}
-
-#login form {}
-
-/* OpenID providers */
-
-#login form ul {
-    margin: 0 auto;  
-    padding: 0;
-    text-align: center;
-    list-style: none;
-    height: 25px;
-}
-
-#login form ul li {
-    display: inline-table;
-    box-shadow: 0px 1px 2px #000;  border-radius: 10px;
-}
-
-#login form ul li span {
-    padding: 0 1em 0 3px;
-    color: #000;
-}
-
-/* OpenID input */
-
-#login label.openid {
-    font-weight: 700;
-    font-size: 20px;
-    margin-bottom: 20px;
-    text-shadow: 0 1px 1px #000;
-}
-
-#login .openid-logo {
-    color: #F7931E;
-    padding: 0 0 0 28px;
-    background: url(../images/login/openidico.png) no-repeat left;
-}
-
-#login .openid-form fieldset.info {
-    padding: 16px 0 0;
-}
-
-#login .openid-form input.id {}
-
-/* Keep me Logged in/Remember User */
-
-#login .openid-form fieldset.rememberme {
-    clear: both;
-    padding: 8px 0 0;
-    margin-left: -20px;
-    text-shadow: 0 1px 1px black;
-}
-
-#login #remember {
-    margin-top: 0px;
-}
-
-#login .openid-form label.forget {
-    font-size: 16px;
-    display: inline-block;
-    color: #bbb;
-    margin: 0;
-    padding: 0;
-}
-
-/* Why we use OpenID on Login page */
-
-.WhyOpenID {
-    padding: 10px;
-    font-size: 14px;
-    text-shadow: 0px 1px 3px #000;
-}
-
-/* Disclaimer on Registration page */
-
-.disclaimer { 
-    display: inline;
-
-    color: #414141;
-    font-size: 13px;
-    margin-left: 10px;
 }
 
 /* Profile page 
@@ -959,31 +1008,6 @@ text-decoration: underline;
 
 .account-settings .openids form {
     padding: 10px;
-}
-
-/* Error pages 
-   ================================================== */
-    
-#errorbox {
-    margin: 28px auto;
-    padding: 30px;
-    max-width: 650px;
-    background: rgba(34, 58, 135, 0.60);
-    -moz-box-shadow: 0 0 35px #000;
-    -webkit-box-shadow: 0 0 35px #000;
-    box-shadow: 0 0 35px #000
-;
-    text-align: center;
-    font-family: "Oswald";
-}
-
-#errorbox h1 {
-    font-weight: 400;
-    text-shadow: 0px 1px 3px #000;
-}
-
-#errorbox input {
-    margin-bottom: 0
 }
 
 /* Old versions of IE
@@ -1755,7 +1779,9 @@ table,.table {background-color: #fff;color: #000; -webkit-border-radius: 0px;-mo
 /* Fixes That don't require a lot of change (responsive fixes ONLY) 
    ================================================== */
 
-   #login { padding: 10px 0; }
+   .login { padding: 10px 0; }
+
+   .login label.openid { display: block }
 
    #comments .meta .actions { display: table; float: none; }
 
