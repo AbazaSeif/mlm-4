@@ -48,4 +48,5 @@
 </div>
 </div>
 @include('maps.sidebar')
+</div>
 @endsection

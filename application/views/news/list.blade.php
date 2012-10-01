@@ -4,10 +4,21 @@
 @include("news.menu")
 <div id="content" class="news clearfix">
 <div id="page">
-<div class="titlebar">
-	<h2>Latest News</h2>
+
+@foreach($newslist->results as $article)
+<div class="post">
+	<h2 class="title">{{ HTML::link_to_action("news@view", $article->title, array($article->id, $article->slug)) }}</h2>
+		<p class="meta"><span class="date">Posted {{ HTML::entities(date("F j, Y g:ia T", strtotime($article->created_at))) }}</span><span class="posted">Posted by <a href="/user/{{ $article->user->username }}" title="{{ $article->user->username }}'s Profile" rel="author">{{ $article->user->username }}</a></span></p>
+	<div class="entry">
+		{{ HTML::image($article->image->file_large, "Image") }}
+		{{ nl2br(e($article->summary)) }}
+	<p class="links"><a href="{{ URL::to_action("news@view", array($article->id, $article->slug)) }}" class="more">Read More</a><a href="{{ URL::to_action("news@view", array($article->id, $article->slug)) }}#comments" title="b0x" class="comments">{{ $article->comment_count }} {{ Str::plural('Comment', $article->comment_count) }}</a></p>
+	</div>
 </div>
-	@foreach($newslist->results as $article)
+@endforeach
+
+
+@foreach($newslist->results as $article)
 	<div class="post"> 
 		<div class="post-image"> 
 		{{ HTML::image($article->image->file_large, "Image") }}

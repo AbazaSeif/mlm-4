@@ -1,4 +1,4 @@
-/*  Oswald - http://www.google.com/webfonts/specimen/Oswald
+  /*  Oswald - http://www.google.com/webfonts/specimen/Oswald
     ------------------------------------------------------- */
 
 @font-face {
@@ -6,6 +6,12 @@
   font-style: normal;
   font-weight: 700;
   src: local('Oswald Bold'), local('Oswald-Bold'), url('../fonts/Oswald-Bold.woff') format('woff');
+}
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Oswald Light'), local('Oswald-Light'), url('../fonts/Oswald-Light.woff') format('woff');
 }
 @font-face {
   font-family: 'Oswald';

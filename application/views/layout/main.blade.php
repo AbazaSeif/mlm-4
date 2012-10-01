@@ -10,9 +10,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	@if (isset($title)) 
-	<title>{{$title}} | MAJOR LEAGUE MINING</title>
+	<title>{{$title}} | Major League Mining</title>
 	@else 
-	<title>MAJOR LEAGUE MINING</title>
+	<title>Major League Mining</title>
 	@endif
 
 <!--
@@ -86,6 +86,9 @@
 <body>
 @endif
 	<!--[if lt IE 7]><p class="chromeframe">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/?locale=en">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+	<noscript>
+		<div class="y-u-no-have-javascript-enabled">Major League Mining requires JavaScript to be enabled. Please turn on JavaScript or add us to your exceptions</div>
+	</noscript>
 <header id="global-header">
 	<div id="main">
 		<div class="holder clearfix">
@@ -143,32 +146,28 @@
 		{{ Messages::get_html() }}
 		@yield('content')
 	</div>
-<footer id="global-footer">
-	<div class="holder clearfix">
-	<p class="left">
+
+<footer id="global-footer" class="clearfix">
+	<div class="holder">
+	<div class="left">
 		<img src="{{ URL::to_asset("images/static/logo.png") }}" width="70" />
-		<span>&copy;2012 MAJOR LEAGUE MINING</span>
-	</p>
-	<p class="right">
-		<span class="links">
-		<a href="/about">About</a>
-		<a href="/tos">Legal</a>
-		</span>
-		<span class="social">
+		<p>&copy;2012 Major League Mining</p>
+	</div>
+	<div class="right">
 		<a href="http://facebook.com/mlm" title="Like us on Facebook"><i class="icon-facebook-sign"></i></a>
 		<a href="http://twitter.com/mlm" title="Follow us on Twitter"><i class="icon-twitter-sign"></i></a>
 		<a href="http://plus.google.com/+mlm" title="Follow us on Google Plus"><i class="icon-google-plus-sign"></i></a>
-		</span>
-	</p>
+	</div>
 	</div>	
 </footer>
+
 	@yield("postfooter")
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="{{ URL::to_asset("js/libs/jquery-1.8.0.min.js") }}"><\/script>')</script>
 
 	<script src="{{ URL::to_asset("js/libs/showdown.js") }}"></script>
 	<script src="{{ URL::to_asset("js/plugins.js") }}"></script>
-	<script src="{{ URL::to_asset("js/script.js") }}"></script>	
+	<script src="{{ URL::to_asset("js/script.js") }}"></script>
 	<script>
 		// Tracking code for Voidlane (FOR TESTING PORPUSES ONLY) 
 		var _gaq=[['_setAccount','UA-9118967-2'],['_trackPageview']];
