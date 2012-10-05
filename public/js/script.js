@@ -20,6 +20,10 @@ MLM = {
 			$("#main-search").blur(function(){
 				if($(this).val() == "") { $(this).val("Search...");	}
 			});
+		// Lazyload images
+			$("img#page").lazyload({
+				effect: "fadeIn"
+			});
 		// Admin WYSIWYG Editor
 			$("textarea[data-wysiwyg]").cleditor({
 				docType: '<!DOCTYPE html>'
@@ -53,7 +57,7 @@ MLM = {
 				$("#comment").fadeToggle(300);
 				return false;
 			});
-		// 
+		// Admin menu toggle
 			$("#show-adminmenu").click(function () {
 				$("#adminmenu").fadeToggle(300);
 				return false;

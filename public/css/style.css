@@ -226,6 +226,9 @@ a:hover { color: #005580 }
    ================================================== */
 
 #global-footer {
+    position: absolute;
+    left: 0;
+    right: 0;
     margin: 26px 0 0;
     padding: 0;
     height: 38px;
