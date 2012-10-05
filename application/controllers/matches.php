@@ -6,8 +6,8 @@ class Matches_Controller extends Base_Controller {
 	public function __construct() {
 		parent::__construct();
 
-		$this->filter("before", "auth")->only(array("new", "add_owner", "owner_invite"));
-		$this->filter("before", "csrf")->on("post")->only(array("new", "add_owner", "owner_invite"));
+		$this->filter("before", "auth")->only(array("new", "add_owner", "owner_invite", "edit_meta", "leave", "join"));
+		$this->filter("before", "csrf")->on("post")->only(array("new", "add_owner", "owner_invite", "edit_meta", "leave", "join"));
 	}
 
 	public function get_index() {
@@ -57,10 +57,7 @@ class Matches_Controller extends Base_Controller {
 			$match->save();
 			// Attach user
 			$user = Auth::user();
-			if ("adduser" == true)
-			{
-				$match->users()->attach($user->id, array("teamnumber" => '1'));
-			}
+			$match->users()->attach($user->id, array("teamnumber" => '1', "owner" => '1'));
 			Messages::add("success", "Created Match!");
 			return Redirect::to_action("matches@view", array($match->id));
 		} else {
@@ -88,6 +85,31 @@ class Matches_Controller extends Base_Controller {
 		return Redirect::to_action("matches.view", array($match->id));
 	}
 
+	public function get_leave($id) {
+		$match = Match::with(array("users"))->find($id);
+		if(!$match) {
+			return Response::error('404');
+		}
+		return View::make("matches.leave", array("title" => "Leave Match", "match" => $match));
+	}
+
+	public function post_leave($id) {
+		$teamnumber = Input::get('teamnumber');
+		$match = Match::with(array("users"))->find($id);
+		if(!$match) {
+			return Response::error('404');
+		}
+		if($match->is_owner(Auth::user()) && $match->users()->where_owner("1")->count() == 1) {
+			Messages::add("error", "Please assign a new match owner before leaving");
+		}
+		else
+		{
+			DB::table("match_user")->where_match_id($match->id)->where_user_id(Auth::user()->id)->delete();
+			Messages::add("success", "Left Match!");
+		}
+		return Redirect::to_action("matches.view", array($match->id));
+	}
+
 	/* Editing match */
 	public function get_edit($id) {
 		$match = Match::find($id);
@@ -100,9 +122,9 @@ class Matches_Controller extends Base_Controller {
 			return Response::error("404"); // Not owner
 		}
 		$owners = $match->users()->with("owner")->get();
-
+		$teamarray = range(1, $match->team_count);
 		return View::make("matches.edit", array(
-			"title" => "Edit | ".e($match->title)." | Match", "match" => $match, "owners" => $owners, "map" => $map)
+			"title" => "Edit | ".e($match->title)." | Match", "match" => $match, "owners" => $owners, "map" => $map, "teamarray" => $teamarray)
 		);
 	}
 	/* Edit metadata */
@@ -180,25 +202,30 @@ EOT;
 		return Redirect::to_action("matches@edit", array($match->id));
 	}
 
-	public function get_setwin($id) {
-		$match = Match::with(array("users"))->find($id);
-		if(!$match) {
-			return Response::error('404');
-		}
-		return View::make("matches.setwin", array("title" => "Set Winning Team", "match" => $match));
-	}
-
 	public function post_setwin($id) {
 		$winteam = Input::get('winteam');
 		$match = Match::with(array("users"))->find($id);
 		if(!$match) {
 			return Response::error('404');
 		}
-		if($winteam <= $match->team_count) {
-			$match->winningteam = $winteam;
+		if($winteam <= $match->team_count && $winteam != null) {
+			$match->winningteam = $winteam + 1;
 			if ($match->save())
 			{
-				Messages::add("success", "Set winning team to ".$winteam."!");
+				Messages::add("success", "Set winning team to ".($winteam + 1)."!");
+				return Redirect::to_action("matches.view", array($match->id));
+			}
+		 	else {
+				Messages::add("error", "Failed to save");
+				return Redirect::to_action("matches.view", array($match->id));
+			}
+		}
+		else if($winteam == null)
+		{
+			$match->winningteam = null;
+			if ($match->save())
+			{
+				Messages::add("success", "Removed winning team!");
 				return Redirect::to_action("matches.view", array($match->id));
 			}
 		 	else {

@@ -41,6 +41,8 @@
 	@endforeach
 	@if($match->winningteam == null && !Auth::user()->in_match($match->id))
 		<a href="{{ URL::to_action("matches@join", array($match->id)) }}" class="btn" style="margin-bottom:15px"><i class="icon-plus"></i> Join Match</a>
+	@elseif($match->winningteam == null && Auth::user()->in_match($match->id))
+		<a href="{{ URL::to_action("matches@leave", array($match->id)) }}" class="btn btn-danger" style="margin-bottom:15px"><i class="icon-minus"></i> Leave Match</a>
 	@elseif($match->winningteam != null)
 		Winners:
 		@foreach($match->users as $user)
