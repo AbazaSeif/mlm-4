@@ -6,6 +6,11 @@
 	Twitter: @t2t2
 	Location: Estonia
 
+	2nd Programmer:
+	Nickname: edh649
+	Email: edh649@gmail.com
+	Location: UK
+
 	Designer: Leon Taveras
 	Nickname: LeonimuZ
 	Site: http://about.me/lnz

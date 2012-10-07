@@ -12,8 +12,9 @@
 				<th>ID</th>
 				<th>Map Name</th>
 				<th>Game Type</th>
-				<th>Team Count</th>
 				<th>Number of Players</th>
+				<th>Team Count</th>
+				<th>Match Status</th>
 				<th>Date created</th>
 				<th class="disabled">&nbsp;</th>
 			</tr>
@@ -28,8 +29,9 @@
 				<td>{{ $item->mapname }}</td>
 				@endif
 				<td>{{ array_get(Config::get("maps.types"), $item->gametype) }}</td>
-				<td>{{ $item->team_count }}</td>
 				<td>{{ $item->users()->count() }}</td>
+				<td>{{ $item->team_count }}</td>
+				<td>{{ array_get(Config::get("matches.status"), $item->status) }}</td>
 				<td>{{ date("F j, Y h:i e", strtotime($item->created_at)) }}</td>
 				<td>
 				<div class="btn-group">

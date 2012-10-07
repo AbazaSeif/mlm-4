@@ -4,7 +4,7 @@
 @include("matches.menu")
 <div id="content">
 <div class="titlebar">
-	<h2>Joining Match <strong>{{ e($match->id) }}</strong></h2>
+	<h2>Changing Team for match <strong>{{ e($match->id) }}</strong></h2>
 </div>
 	{{ Form::open(null, 'POST', array('class' => 'xpadding')) }}
 	{{ Form::token() }}
@@ -21,9 +21,10 @@
 			{{ Form::submit("Join Team ".$i, array("class" => "btn btn-warning", "name" => "teamnumber", "value" => $i)) }}
 		</div>
 		@endfor
+		{{ Form::submit("Join Spectators/Referees/Broadcasters", array("class" => "btn btn-warning", "name" => "teamnumber", "value" => 0)) }}
 	</ul>
 	</div>
-	{{ HTML::link_to_action("match.view", "Back", array("id" => $match->id), array("class" => "btn")) }}
+	{{ HTML::link_to_action("matches.view", "Back", array("id" => $match->id), array("class" => "btn")) }}
 	{{ Form::close() }}
 </div>
 @endsection

@@ -20,7 +20,8 @@ class Admin_Matches_Controller extends Admin_Controller {
 			return Redirect::to_action("admin.matches");
 		}
 		$map = Map::find($match->map_id);
-		return View::make("admin.matches.edit", array("title" => "Edit ".e($match->id)." | Matches | Admin", "match" => $match, "map" => $map));
+		$teamarray = range(1, $match->team_count);
+		return View::make("admin.matches.edit", array("title" => "Edit ".e($match->id)." | Matches | Admin", "match" => $match, "map" => $map, "teamarray" => $teamarray));
 	}
 	public function post_edit($id) {
 		$match = Match::find($id);
@@ -32,6 +33,7 @@ class Admin_Matches_Controller extends Admin_Controller {
 			"mapname"       => "required|between:3,128",
 			"gametype" => 'in:'.implode(",", array_keys(Config::get("maps.types"))),
 			"team_count" => "integer",
+			"info"			=> "required"
 		);
 		$input = Input::all();
 		$validation = Validator::make($input, $validation_rules);
@@ -39,6 +41,10 @@ class Admin_Matches_Controller extends Admin_Controller {
 			$match->mapname       = Input::get("mapname");
 			$match->gametype     = Input::get("gametype");
 			$match->team_count   = Input::get("team_count");
+			$match->info        = Input::get("info");
+			$match->public      = Input::get("private") == 'on' ? 0 : 1;
+			$match->invite_only = Input::get("invite") == 'on' ? 1 : 0;
+			$match->winningteam = Input::get('winteam') == 0 ? null : Input::get('winteam') - 1;
 			
 			$changed = array_keys($match->get_dirty());
 			if($match->save()) {
