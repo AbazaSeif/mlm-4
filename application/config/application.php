@@ -96,6 +96,19 @@ return array(
 
 	/*
 	|--------------------------------------------------------------------------
+	| Supported Languages
+	|--------------------------------------------------------------------------
+	|
+	| These languages may also be supported by your application. If a request
+	| enters your application with a URI beginning with one of these values
+	| the default language will automatically be set to that language.
+	|
+	*/
+
+	'languages' => array(),
+	
+	/*
+	|--------------------------------------------------------------------------
 	| SSL Link Generation
 	|--------------------------------------------------------------------------
 	|
@@ -163,7 +176,7 @@ return array(
 		'Lang'       	=> 'Laravel\\Lang',
 		'Log'        	=> 'Laravel\\Log',
 		'Memcached'  	=> 'Laravel\\Memcached',
-//		'Paginator'     => 'Laravel\\Paginator', // uses libraries/paginator.php
+		'Paginator'     => 'Laravel\\Paginator',
 		'Profiler'  	=> 'Laravel\\Profiling\\Profiler',
 		'URL'        	=> 'Laravel\\URL',
 		'Redirect'   	=> 'Laravel\\Redirect',
