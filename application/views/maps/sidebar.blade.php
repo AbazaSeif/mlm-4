@@ -1,4 +1,4 @@
-@if (URI::is('maps/edit/*') || URI::is('maps/new/*'))
+@if ($sidebar == "edit")
 <div id="sidebar" class="smaller">
 	<div class="widget">
 	<header><h1>Maps guidelines</h1></header>
@@ -7,7 +7,7 @@
 	</div>
 	</div>
 </div>
-@elseif (URI::is('maps/view/*'))
+@elseif ($sidebar == "view")
 <div id="sidebar">
 	<div class="titlebar">
 		<h3>Map Details</h3>

@@ -33,17 +33,18 @@
 |
 */
 
-// Public routes
-Route::controller(array('account', "imgmgr", "maps", "messages", "news", "faq", "matches"));
-// Admin routes (no real need to seperate, just to keep nice)
-Route::controller(array('admin.user', 'admin.pages', 'admin.news', 'admin.maps', 'admin.faq', 'admin.modqueue', 'admin.comments', 'admin.matches'));
-
 // Home
 Route::get('/', function() {
 	return View::make('pages.home', array("javascript" => array("home")));
 });
-// Reroute /login to account/login
+
+// Awesome URL's - http://jasonlewis.me/blog/2012/09/laravel-routes-or-controllers
 Route::get("login", "account@login");
+Route::get("news/(:num)-(:any)", "news@view");
+Route::get("map/(:num)-(:any)", "maps@view");
+
+// Public routes
+Route::controller(array('account', "imgmgr", "maps", "messages", "news", "faq", "matches"));
 
 // User pages
 Route::get("user/(:any?)", function($username = null) {
@@ -82,6 +83,9 @@ Route::get("admin/database/migrate", array("before" => "admin", function() {
 	$migrator = new Laravel\CLI\Tasks\Migrate\Migrator($resolver, $database);
 	$migrator->run();
 }));
+
+// Admin routes (no real need to seperate, just to keep nice)
+Route::controller(array('admin.user', 'admin.pages', 'admin.news', 'admin.maps', 'admin.faq', 'admin.modqueue', 'admin.comments', 'admin.matches'));
 
 //Routes are checked in the order in which they are listed here
 //Since this one is a tad demanding, make sure it ALWAYS remains at the bottom

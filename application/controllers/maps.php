@@ -81,7 +81,7 @@ class Maps_Controller extends Base_Controller {
 		return View::make("maps.home", array("title" => "Filtered Maps", "javascript" => array("maps", "list"), "maps" => $maps));
 	}
 	public function get_new() {
-		return View::make("maps.new", array("javascript" => array("maps", "edit")));
+		return View::make("maps.new", array("javascript" => array("maps", "edit"), "sidebar" => "edit"));
 	}
 	public function post_new() {
 		$validation_rules = array(
@@ -143,7 +143,7 @@ class Maps_Controller extends Base_Controller {
 		}
 		$authors = $map->users()->where("confirmed", "=", 1)->with("confirmed")->get();
 		return View::make("maps.view", array(
-			"title" => e($map->title)." | Maps", "map" => $map, "authors" => $authors, "is_owner" => $is_owner, "rating" => $rating
+			"title" => e($map->title)." | Maps", "map" => $map, "authors" => $authors, "is_owner" => $is_owner, "rating" => $rating, "sidebar" => "view"
 		));
 	}
 	public function post_rate($id) {
@@ -223,7 +223,7 @@ class Maps_Controller extends Base_Controller {
 		$authors = $map->users()->with("confirmed")->get();
 
 		return View::make("maps.edit", array(
-			"title" => "Edit | ".e($map->title)." | Maps", "map" => $map, "authors" => $authors
+			"title" => "Edit | ".e($map->title)." | Maps", "map" => $map, "authors" => $authors, "sidebar" => "edit"
 		));
 	}
 	/* Edit metadata */
