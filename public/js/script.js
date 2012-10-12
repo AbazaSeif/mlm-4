@@ -6,6 +6,12 @@
 MLM = {
 	common: {
 		init: function () {
+		(function () {
+			var a = document.body,
+			e = document.documentElement;
+			$(window).unbind("scroll").scroll(function () {
+			a.style.backgroundPosition = "0px " + -(Math.max(e.scrollTop, a.scrollTop) / 10) + "px" })
+		})();
 		// Cool actionbox 
 			$('#actionbox').hide().fadeIn(1000).show();
 		// Responsive menu toggle
