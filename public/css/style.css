@@ -234,8 +234,8 @@ a:hover { color: #005580 }
     -moz-box-shadow: 0 -2px 5px -2px rgba(0, 0, 0, 0.76);  
     -webkit-box-shadow: 0 -2px 5px -2px rgba(0, 0, 0, 0.76);  
     box-shadow: 0 -2px 5px -2px rgba(0, 0, 0, 0.76);
-    font: 300 17px/1 "Oswald";
     color: #000;
+    line-height: 1;
 }
 
 #global-footer .holder {
@@ -244,35 +244,34 @@ a:hover { color: #005580 }
     width: 990px;
 }
 
+#global-footer .left img {
+    float: left;
+}
+
 #global-footer .left p {
     display: inline-block;
-    margin: 0;
-    vertical-align: 12px;
+    margin: 7px 0 0;
+    font:300 17px/1 "Oswald";
 }
 
 #global-footer .right {
-    margin: 4px 0;
-}
-
-#global-footer .right {
-    line-height: 0;
-
+    margin-top: 3px;
 }
 
 #global-footer .right a {
-    display: inline;
-    margin-right: 3px;
+    display: inline-block;
+    margin-right: -6px;
+    height: 30px;
+    width: 30px;
+    overflow: hidden;
     font-size: 30px;
-    color: #fff;
 }
 
 #global-footer a.fb { color: #3B5998 }
 #global-footer a.tw { color: #4099FF }
 #global-footer a.gp { color: #F90101 }
 
-#global-footer .social a:hover {
-    color: #000;
-}
+#global-footer .right a:hover {text-shadow:0px 0px 1px #333;}
 
 /* Action box (for all your 1 function pages needs) 
    ================================================== */
@@ -650,7 +649,7 @@ a:hover { color: #005580 }
     margin-bottom: 20px;
     padding-bottom: 20px;
     width: 100%;
-    border-bottom: 1px dotted #fff;
+    border-bottom: 1px dotted #333;
 }
 
 .post h2.title, .post .title a {
@@ -684,7 +683,7 @@ a:hover { color: #005580 }
 
 .post .meta  {
     display: block;
-    margin: 15px 0 0;
+    margin: 15px 0;
     padding: 10px 0;
     background: #D8D8D8;
     border: 1px solid #ADADAD;
@@ -805,7 +804,7 @@ a:hover { color: #005580 }
     margin-bottom: 10px;
     padding: 12px;
     background-color: #f9f9f9;
-    border: 1px solid #ccc;
+    border: 1px solid #ADADAD;
     -moz-box-shadow: 0 8px 6px -6px #000;
     -webkit-box-shadow: 0 8px 6px -6px #000;
     box-shadow: 0 8px 6px -6px #000
@@ -829,7 +828,7 @@ a:hover { color: #005580 }
     margin: 0;
     padding: 4px 0 0 15px;
     width: 370px;
-    background: #e6e6e6;
+    background: #D8D8D8;
 }
 
 .profile #vcard .data h1 {
@@ -934,7 +933,6 @@ a:hover { color: #005580 }
 .profile .info li label {
     display: inline-block;
     width: 100px;
-    color: #474747;
     font: 18px "Oswald";}
 
 .profile .info p {
@@ -944,9 +942,7 @@ a:hover { color: #005580 }
     line-height: 2.2;
 }
 
-.profile .info a {
-    color: #434343;
-}
+.profile .info a {}
 
 .profile .info a:hover {
 text-decoration: underline;
@@ -1776,12 +1772,7 @@ table,.table {background-color: #fff;color: #000; -webkit-border-radius: 0px;-mo
 
     #global-header #logo h1 {
         font-size: 18px;
-    
         vertical-align: 0;
-}
-
-    #global-header #logo a {
-        text-shadow: 0 2px 1px black;
     }
 
     #global-header #loginout { display: none }
@@ -1793,10 +1784,10 @@ table,.table {background-color: #fff;color: #000; -webkit-border-radius: 0px;-mo
         padding: 5px;
         width: 35px;
         color: #fff;
-        text-shadow:0 1px 3px #000;
+        text-shadow: 0px -1px 1px black;
         font-size: 25px;
         text-align: center;
-}
+    }
 
     #shownav:hover { color: #CCC; }
 
@@ -1809,9 +1800,8 @@ table,.table {background-color: #fff;color: #000; -webkit-border-radius: 0px;-mo
         margin: 0px auto 13px;
         width: auto;
         background: #CECECE;
-    
         text-align: center;
-}
+    }
 
     #menu #loginout { display: block ; border-top: 2px solid #7A7A7A; border-bottom: 2px solid #7A7A7A;}
 
@@ -1875,20 +1865,19 @@ table,.table {background-color: #fff;color: #000; -webkit-border-radius: 0px;-mo
         width: auto;
         border: 0;
         border-bottom: 1px dotted #fff;
-    
-}
+    }
 
 /* Global Footer
    ================================================== */
 
-   #global-footer .social { display: none }
+   #global-footer { display: none }
 
 /* Profile page 
    ================================================== */
 
    .profile #vcard .data {
     width: 70%;
-}
+    }
 
     .profile #vcard .picture {
     width: 20%;
@@ -1957,4 +1946,6 @@ table,.table {background-color: #fff;color: #000; -webkit-border-radius: 0px;-mo
     .commentlist .meta .actions { display: inline; }
 
     #shownav { display: none; }
+
+    #global-footer {display: block;}
 }

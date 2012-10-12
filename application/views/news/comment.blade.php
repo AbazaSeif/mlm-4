@@ -8,7 +8,7 @@
 		{{ $comment->html }}
 	</div>
 	<div class="meta">
-		<span class="time"><a href="{{ URL::to_action("news@view", array($article->id, $article->slug)) }}#comment{{$comment->id}}">{{ date("M j,Y g:ia", strtotime($comment->created_at)) }}</a></span>
+		<span class="time"><a href="{{ URL::to_action("news@view", array($article->id, $article->slug)) }}#comment{{$comment->id}}" title="Permalink to comment">{{ date("M j, Y g:ia", strtotime($comment->created_at)) }}</a></span>
 		<div class="actions">
 		<span><a href="#"><i class="icon-share-alt"></i> Reply</a></span> {{-- Supposed to bring the comment imput up and add comment under parent --}}
 		<span><a href="#"><i class="icon-arrow-up"></i> Upvote</a></span> {{-- Adds a star somewhere in the comment if it has more than 10 upvotes --}}

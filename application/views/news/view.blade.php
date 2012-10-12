@@ -12,10 +12,6 @@
 <div id="page">
 <div class="post single">
 	<h2 class="title">{{ e($article->title) }}</h2>
-	<div class="entry">
-		{{ HTML::image($article->image->file_large, "Image",array("class" => "post-image")) }}
-		{{ $article->content }}
-
 	<div class="meta clearfix">
 		<div class="left">
 		<a href="{{ URL::to_action("news@view", array($article->id, $article->slug)) }}" class="more">Permalink</a>
@@ -26,6 +22,9 @@
 		<span class="date"><a href="#"><i class="icon-calendar"></i> {{ HTML::entities(date("F j, Y g:ia", strtotime($article->created_at))) }}</a></span>
 		</div>
 	</div>
+	<div class="entry">
+		{{ HTML::image($article->image->file_large, "Image",array("class" => "post-image")) }}
+		{{ $article->content }}
 	</div>
 </div>
 @include("news.comments")
