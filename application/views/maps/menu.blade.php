@@ -29,7 +29,7 @@
 	<li data-multiview="big"><a href="#">Big</a></li>
 </ul>
 
-@elseif (URI::is('maps/view/*') || URI::is('maps/edit/*') || URI::is('maps/edit_link/*') || URI::is('maps/delete_link/*') || URI::is('maps/delete_image/*') )
+@elseif (URI::is('map/*') || URI::is('maps/edit/*') || URI::is('maps/edit_link/*') || URI::is('maps/delete_link/*') || URI::is('maps/delete_image/*') )
 @if(Auth::check() && Auth::user()->admin)
 <ul class="submenu nav nav-pills">
 	<li class="disabled"><a href="#">Actions:</a></li>

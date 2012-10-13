@@ -9,7 +9,7 @@
 body {
     margin: 0;
     padding: 0;
-    background: black url(../images/static/bright_squares.png) repeat fixed center;
+    background: black url(../images/static/white.png) repeat fixed center;
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif; 
     font-weight: normal;
     color: #333;
@@ -502,9 +502,10 @@ a:hover { color: #005580 }
 .dropdown-menu li > a:hover,
 .dropdown-menu .active > a,
 .dropdown-menu .active > a:hover {
-    color: #ffffff;
+    color: #333;
     text-decoration: none;
-    background-color: #0088cc;
+    background-color: #B9B9B9;
+    background-image: none; 
 }
 
 #pagemenu li.rside{
@@ -518,12 +519,23 @@ a:hover { color: #005580 }
     font-family: "Oswald";
 }
 
-.submenu a { color: #333;}
+.submenu li a { 
+    color: #333;
+    text-shadow: 0 1px 1px #fff;
+    border: 1px solid transparent;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+}
 
-.submenu a:hover { color: rgb(125, 125, 125); }
+.submenu li a:hover { 
+    background-color: #B9B9B9;
+    border: 1px solid #ADADAD; 
+}
 
 .submenu li.disabled a {
-    color: rgb(0, 0, 0);
+    color: #000;
+    border: 1px solid transparent;
 }
 
 /* Sidebar */

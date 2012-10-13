@@ -8,6 +8,16 @@
 		<h2>Edit Account &amp; Profile</h2>
 	</div>
 	<div class="titlebar">
+		<h3>Global Background</h3>
+	</div>
+	<div id="multibg">
+	<a href="#"><img src="{{ URL::to_asset("images/static/white.png") }}" width="100"></a>
+	<a href="#"><img src="{{ URL::to_asset("images/static/black.png") }}" width="100"></a>
+	<a href="#"><img src="{{ URL::to_asset("images/static/red.png") }}" width="100"></a>
+	<a href="#"><img src="{{ URL::to_asset("images/static/green.png") }}" width="100"></a>
+	<a href="#"><img src="{{ URL::to_asset("images/static/blue.png") }}" width="100"></a>
+	</div>
+	<div class="titlebar">
 		<h3>Linked OpenID Accounts</h3>
 	</div>
 		<ul>

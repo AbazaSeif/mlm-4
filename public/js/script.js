@@ -28,7 +28,7 @@ MLM = {
 			$('#actionbox').hide().fadeIn(1000).show();
 		// Responsive menu toggle
 			$("#shownav").click(function () {
-				$("#menu").slideToggle("slow").show();
+				$("#menu").slideToggle().show();
 			});
 		// Search bar
 			$("#main-search").val("Search...");
