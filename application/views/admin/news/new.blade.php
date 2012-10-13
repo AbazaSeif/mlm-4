@@ -2,22 +2,24 @@
 
 @section("content")
 @include("admin.menu")
-<div id="content">
+<div id="content" class="edit clearfix">
 <div class="titlebar">
 	<h2>New article</h2>
 </div>
-{{ Form::open(null , 'POST', array('class' => 'form-horizontal')) }} 
-	<fieldset>
-		{{ Form::token() }}
-
-		{{ Form::field("text", "title", "Title", array(Input::old("title"), array('class' => 'input-xxlarge','autocomplete' => 'off')), array('error' => $errors->first('title'))) }}
-		{{ Form::field("textarea", "summary", "Summary", array(Input::old("summary"), array("rows" => "4", 'class' => 'input-xxlarge')), array("error" => $errors->first("summary"))) }}
-		{{ Form::field("imageselect", "image", "Header Image", array(Input::old("image"), $oldimage), array("error" => $errors->first("image"))) }}
-		{{ Form::field("wysiwyg", "news_content", "Content", array(Input::old("news_content"), array("rows" => "15", 'class' => 'input-xxlarge')), array("error" => $errors->first("news_content"))) }}		
-		{{ Form::field("checkbox", "published", "Published", array(1, Input::old("published", true)), array("error" => $errors->first("published"))) }}
-
-		{{ Form::actions(array( Form::submit("Create", array("class" => "btn btn-primary")) )) }}
-	</fieldset>
-{{ Form::close() }}
+<div id="page" class="maxwidth">
+	{{ Form::open(null, 'POST', array('class' => 'form')) }}
+		{{ Form::token()}}
+		{{ Form::field("text", "title", "", array(Input::old("title"), array('class' => 'title', 'autocomplete' => 'off')), array('error' => $errors->first('title'))) }}
+		<div class="titlebar"><h4>Article main image (Use default if no image is found)</h4></div>
+		{{ Form::field("imageselect", "image", "", array(Input::old("image"), $oldimage), array("error" => $errors->first("image"))) }}
+		<div class="titlebar"><h4>Article content</h4></div>
+		{{ Form::field("wysiwyg", "news_content", "", array(Input::old("news_content"), array('class' => 'input-xxlarge')), array('error' => $errors->first('news_content'))) }}
+		<div class="titlebar"><h4>Summary of the Article (250 characters max)</h4></div>
+		{{ Form::field("textarea", "summary", "", array(Input::old("summary"), array("rows" => "15", 'class' => 'summary')), array('error' => $errors->first('summary'))) }}
+		<div class="titlebar"><h4>Would you like to publish this article right away?</h4></div>
+		{{ Form::field("checkbox", "published", "", array(1, Input::old("published")), array("error" => $errors->first("published"))) }}
+		{{ Form::actions(array(Form::submit("Save", array("class" => "btn-primary"))," ",HTML::link_to_action("admin@news", "Cancel",array(), array("class" => "btn") ))) }}
+	{{ Form::close() }}
+</div>
 </div>
 @endsection

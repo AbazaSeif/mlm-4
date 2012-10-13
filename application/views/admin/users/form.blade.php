@@ -1,6 +1,5 @@
-<?php $countries = require path("app")."countries.php" ?>
-
 @layout("layout.main")
+<?php $countries = require path("app")."countries.php" ?>
 
 @section("content")
 @include("admin.menu")

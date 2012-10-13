@@ -2,23 +2,28 @@
 
 @section("content")
 @include("admin.menu")
-<div id="content">
+<div id="content" class="edit clearfix">
 <div class="titlebar">
 	<h2>Editing map <b>{{$map->title}}</b></h2>
 </div>
-{{ Form::open(null, 'POST', array('class' => 'form-horizontal')) }}
-	{{ Form::token() }}
-	<formset>
-		{{ Form::field("text", "title", "Title", array(Input::old("title", $map->title), array('class' => 'input-large')), array('error' => $errors->first('title'))) }}
-		{{ Form::field("textarea", "summary", "Summary", array(Input::old("summary", $map->summary), array("rows" => "15")), array("help-inline" => "Short description about your map. (255 characters max)", 'error' => $errors->first('summary'))) }}
-		{{ Form::field("wysiwyg", "description", "Long Description", array(Input::old("description", $map->description), array('class' => 'input-xxlarge')), array('error' => $errors->first('description'))) }}
-		{{ Form::field("select", "maptype", "Type", array(Config::get("maps.types"), Input::old("maptype", $map->maptype), array('class' => 'input')), array('error' => $errors->first('maptype'))) }}
-		{{ Form::field("text", "version", "Version", array(Input::old("version", $map->version)), array("error" => $errors->first("error"))) }}
-		{{ Form::field("text", "teamcount", "Team count", array(Input::old("teamcount", $map->teamcount)), array("error" => $errors->first("error"))) }}
-		{{ Form::field("text", "teamsize", "Recomended team size", array(Input::old("teamsize", $map->teamsize)), array("error" => $errors->first("teamsize"))) }}
-		
-		{{ Form::actions(array( Form::submit("Save", array("class" => "btn btn-primary")) )) }}
-	</formset>
-{{ Form::close() }}
+<div id="page" class="maxwidth">
+{{ Form::open(null, 'POST', array('class' => 'form')) }}
+		{{ Form::token()}}
+		{{ Form::field("text", "title", "", array(Input::old("title", $map->title), array('class' => 'title', 'autocomplete' => 'off')), array('error' => $errors->first('title'))) }}
+		<div class="titlebar"><h4>Description</h4></div>
+		{{ Form::field("wysiwyg", "description", "", array(Input::old("description", $map->description), array('class' => 'input-xxlarge')), array('error' => $errors->first('description'))) }}
+		<div class="titlebar"><h4>Summary (Explain your map 140 characters. Use correct grammar)</h4></div>
+		{{ Form::field("textarea", "summary", "", array(Input::old("summary", $map->summary), array("rows" => "15", 'class' => 'summary')), array('error' => $errors->first('summary'))) }}
+		<div class="titlebar"><h4>Map type</h4></div>
+		{{ Form::field("select", "maptype", "", array(array_merge(array("" => "--------------"), Config::get("maps.types")), Input::old("maptype", $map->maptype), array('class' => 'input')), array('error' => $errors->first('maptype'))) }}
+		<div class="titlebar"><h4>Map version (Remember to keep this up-to-date)</h4></div>
+		{{ Form::field("text", "version", "", array(Input::old("version", $map->version)), array("error" => $errors->first("error"))) }}
+		<div class="titlebar"><h4>Teams (How many teams can play the map at once)</h4></div>
+		{{ Form::field("text", "teamcount", "", array(Input::old("teamcount", $map->teamcount)), array("error" => $errors->first("error"))) }}
+		<div class="titlebar"><h4>Team Size (Players per team)</h4></div>
+		{{ Form::field("text", "teamsize", "", array(Input::old("teamsize", $map->teamsize)), array("error" => $errors->first("teamsize"))) }}
+		{{ Form::actions(array(Form::submit("Save", array("class" => "btn-primary")), " ", HTML::link_to_action("admin@maps@view", "Cancel", array($map->id), array("class" => "btn")))) }}
+	{{ Form::close() }}
+</div>
 </div>
 @endsection

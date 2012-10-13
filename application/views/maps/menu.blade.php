@@ -35,7 +35,7 @@
 	<li class="disabled"><a href="#">Actions:</a></li>
 	<li>{{ HTML::link_to_action("admin@maps@view", "Moderate Map", array($map->id)) }}</li>
 	<li>{{ HTML::link_to_action("maps@edit", "Edit Map", array($map->id)) }}</li>
-@if (URI::is('maps') || URI::is('maps/view/*'))
+@if (URI::is('maps') || URI::is('map/*'))
 @else
 	<li>{{ HTML::link_to_action("maps@view", "Back to Map", array($map->id, $map->slug)) }}</li>
 @endif

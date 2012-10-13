@@ -410,10 +410,12 @@ a:hover { color: #005580 }
 
 #page {
     float: left;
-    width: 595px;
+    width: 605px;
 }
 
-#page.bigger { width: 640px;}
+#page.bigger { width: 645px;}
+
+#page.maxwidth { width: 100%;}
 
 /* Submenu */
 
@@ -545,7 +547,7 @@ a:hover { color: #005580 }
     width: 330px;
 }
 
-#sidebar.smaller { width: 290px;}
+#sidebar.smaller { width: 295px;}
 
 #sidebar .widget {
     margin-bottom: 20px;
@@ -765,6 +767,7 @@ a:hover { color: #005580 }
  
 .post.single {
     margin-bottom: 0;
+    padding-bottom: 0;
     border-bottom: none;
 } 
 

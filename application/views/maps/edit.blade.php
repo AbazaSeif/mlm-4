@@ -16,7 +16,7 @@
 		{{ Form::field("textarea", "summary", "", array(Input::old("summary", $map->summary), array("rows" => "15", 'class' => 'summary')), array('error' => $errors->first('summary'))) }}
 		<div class="titlebar"><h4>Map type</h4></div>
 		{{ Form::field("select", "maptype", "", array(array_merge(array("" => "--------------"), Config::get("maps.types")), Input::old("maptype", $map->maptype), array('class' => 'input')), array('error' => $errors->first('maptype'))) }}
-		<div class="titlebar"><h4>Map version (Remember to keep this up-to-date)</h4></div>
+		<div class="titlebar"><h4>Map version (Remember to keep this up-to-date!)</h4></div>
 		{{ Form::field("text", "version", "", array(Input::old("version", $map->version)), array("error" => $errors->first("error"))) }}
 		<div class="titlebar"><h4>Teams (How many teams can play the map at once)</h4></div>
 		{{ Form::field("text", "teamcount", "", array(Input::old("teamcount", $map->teamcount)), array("error" => $errors->first("error"))) }}
@@ -68,7 +68,7 @@
 		<tbody>
 			@forelse($map->links as $link)
 				<tr>
-					<td>{{ HTML::image($link->favicon, "favicon")." ".HTML::link($link->url, $link->url) }}</td>
+					<td>{{ HTML::image($link->favicon, "favicon", array("width" => "12"))." ".HTML::link($link->url, $link->url) }}</td>
 					<td>{{ $link->direct ? "&#10004;" : "" }}</td>
 					<td>{{ HTML::link_to_action("maps@edit_link", "Edit", array($map->id, $link->id)) }}</td>
 					<td>{{ HTML::link_to_action("maps@delete_link", "Delete", array($map->id, $link->id)) }}</td>
