@@ -9,16 +9,20 @@
 @foreach ($maps->results as $map)
 	<li>
 		<div class="mv-image">
-			<img src="http://placekitten.com/700/480" alt="map image"/>
+			@if($map->image)
+			{{ HTML::image($map->image->file_medium) }}
+			@else
+			<img src="{{ URL::to_asset("images/static/noimage.jpg") }}" alt="No Images found" />
+			@endif
 		</div>
 		<div class="mv-details">
-			<h1>{{ HTML::link_to_action("maps@view", $map->title, array($map->id, $map->slug)) }}</h1>
-			<p>{{ $map->summary }}</p>
-		</div>
+		<div class="mv-title"><h1>{{ HTML::link_to_action("maps@view", $map->title, array($map->id, $map->slug)) }}</h1></div>
+		<div class="mv-summary"><p>{{ $map->summary }}</p></div>
 		<div class="mv-meta">
-				<span>By <a href="#">User #1</a></span>
-				<span>Version <b>1.1.2.3.4</b></span>
-				<span>Downloads <b>9000</b></span>
+			<span>By <b>The Author</b></span>
+			<span>Version <b>1.0</b></span>
+			<span>Downloads <b>9000</b></span>
+		</div>
 		</div>
 	</li>
 @endforeach

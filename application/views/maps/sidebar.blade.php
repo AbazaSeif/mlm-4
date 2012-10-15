@@ -1,4 +1,4 @@
-@if ($sidebar == "edit")
+@if(in_array($sidebar, array("edit", "new")))
 <div id="sidebar" class="smaller">
 	<div class="widget">
 	<header><h1>Maps guidelines</h1></header>
@@ -50,7 +50,7 @@
 	@foreach($map->links as $link)
  	<span class="inline">{{ HTML::link($link->url, "Link ".$i, array("class" => "btn btn-success", "target" => "_blank")) }}</span>
 	<?php $i++; ?>
- @endforeach
+ 	@endforeach
 <!-- {{--
 	Rating: {{ $map->avg_rating }}/5
 	@if(Auth::check())

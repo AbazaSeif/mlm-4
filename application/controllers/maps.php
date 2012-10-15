@@ -86,7 +86,7 @@ class Maps_Controller extends Base_Controller {
 	public function post_new() {
 		$validation_rules = array(
 			"title"       => "required|between:3,128",
-			"summary"     => "required|max:255",
+			"summary"     => "required|max:140",
 			"description" => "required",
 
 			"maptype" => 'in:'.implode(",", array_keys(Config::get("maps.types"))),

@@ -38,9 +38,9 @@
 	<div class="slider-wrapper theme-medium">
 		<div id="gslider" class="nivoSlider">
 			@forelse($map->images as $image)
-			<img src="{{ e($image->file_original) }}" data-thumb="{{ e($image->file_small) }}" alt="" />
+			<img src="{{ e($image->file_medium) }}" data-thumb="{{ e($image->file_medium) }}" alt="" />
 			@empty
-			<img src="{{ URL::to_asset("images/slides/5.jpg") }}" data-thumb="{{ URL::to_asset("images/slides/5.jpg") }}" alt="" />
+			<img src="{{ URL::to_asset("images/static/noimage.jpg") }}" data-thumb="{{ URL::to_asset("images/static/noimage.jpg") }}" alt="No Images Found" />
 			@endforelse
 		</div>
 	</div>
