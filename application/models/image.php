@@ -28,26 +28,31 @@ class Image extends Eloquent {
 			
 			// Original
 			$handle->file_new_name_body = $localname;
+			$handle->image_max_height = 1080;
+			$handle->image_max_width = 1920;
+			$handle->image_min_width = 426;
+			$handle->image_min_height = 240;
+			$handle->file_max_size = '1536';
 			$handle->process(path("public")."/images/uploads/o/");
-			// Large (600x300, cropped)
+			// Large (1280x720, cropped)
 			$handle->file_new_name_body = $localname;
 			$handle->image_resize = true;
-			$handle->image_x = 600;
-			$handle->image_y = 300;
+			$handle->image_x = 1280;
+			$handle->image_y = 720;
 			$handle->image_ratio_crop = true;
 			$handle->process(path("public")."/images/uploads/l/");
-			// Medium (170x110, cropped)
+			// Medium (854x480, cropped)
 			$handle->file_new_name_body = $localname;
 			$handle->image_resize = true;
-			$handle->image_x = 170;
-			$handle->image_y = 110;
+			$handle->image_x = 854;
+			$handle->image_y = 480;
 			$handle->image_ratio_crop = true;
 			$handle->process(path("public")."/images/uploads/m/");
-			// Small (150x150, upto)
+			// Small (424x240, upto)
 			$handle->file_new_name_body = $localname;
 			$handle->image_resize = true;
-			$handle->image_x = 150;
-			$handle->image_y = 150;
+			$handle->image_x = 426;
+			$handle->image_y = 240;
 			$handle->image_ratio = true;
 			$handle->process(path("public")."/images/uploads/s/");
 			
