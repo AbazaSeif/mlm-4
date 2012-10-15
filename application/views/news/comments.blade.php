@@ -8,7 +8,7 @@
 	<div class="showcomments" style="display:none;"></div>
 	@endif
 
-<ol class="commentlist">
+<ol class="commentlist" id="discussion">
 	@foreach($article->comments as $comment)
 		@if($comment->reply_id == null)
 		@include("news.comment")
