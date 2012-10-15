@@ -1,4 +1,4 @@
-<a href="#" id="show-adminmenu">Show Admin Menu</a>
+<a href="#" id="show-adminmenu">Admin Menu</a>
 <div id="adminmenu">
 	<ul>
 		<li {{ URI::is('admin') ? 'class="active"' : '' }}><i class="icon-home"></i> {{ HTML::link("admin", "Admin Home") }}</li>

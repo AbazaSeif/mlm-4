@@ -43,7 +43,7 @@ a:hover { color: #005580 }
     margin-bottom: 13px;
     width: 100%;
     min-width: 990px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.76);
+    -moz-box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.76);  -webkit-box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.76);  box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.76);
 }
 
 #global-header #main {
@@ -107,7 +107,7 @@ a:hover { color: #005580 }
     text-decoration: none;
     color: #fff;
     text-shadow: 0 -1px 0px #000;
-    border-right: 1px dotted #CCC;
+    border-right: 1px dotted #ADADAD;
 }
 
 #global-header #loginout img {
@@ -550,7 +550,7 @@ a:hover { color: #005580 }
 #sidebar.smaller { width: 295px;}
 
 #sidebar .widget {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 #sidebar .widget header {
@@ -568,9 +568,9 @@ a:hover { color: #005580 }
 #sidebar .widget .content {
     padding: 11px;
     background: #F9F9F9;
-    -moz-box-shadow: 0 8px 6px -6px #000;
-    -webkit-box-shadow: 0 8px 6px -6px #000;
-    box-shadow: 0 8px 6px -6px #000;
+    -moz-box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.76);
+    -webkit-box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.76);
+    box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.76);
     border: 1px solid #ADADAD;
     border-top: 0
 }
@@ -631,6 +631,9 @@ a:hover { color: #005580 }
     background: #333;
     color: #eee;
     z-index: 1000;
+    -moz-box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.76);
+    -webkit-box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.76);
+    box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.76);
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -729,48 +732,20 @@ a:hover { color: #005580 }
     margin: 0;
 }
 
-.post .meta .comments {
-
+.post .meta .comment-nr:hover::after{
+    content: " Comments"
 }
 
 .post .meta .date a {
     border-right: none;
     border-left: 1px solid #ADADAD;
 }
-
-.post-entry  {
- }
- 
-.post-entry p  {
-    margin-bottom: 0px;
- }
-
-.post-meta  {
-    font-size: 12px;
-    line-height: 20px;
-    font-style: italic;
-    color: #b0b0b0;
-    display: block;
-    margin-bottom: 8px;
-    margin-top: -15px;
- }
-
-.post-meta a, .post-meta strong  {
-    color: #999;
- }
-
-.more-link  {
-    display: block;
-    margin-top: 20px;
-    text-align: right;
-}
  
 .post.single {
     margin-bottom: 0;
     padding-bottom: 0;
     border-bottom: none;
-} 
-
+}
 
 /* Maps
    ================================================== */
@@ -834,7 +809,7 @@ a:hover { color: #005580 }
     max-width: 100%;
     padding: 7px;
     background: #fff;
-    border: 1px solid #ccc;
+    border: 1px solid #adadad;
 }
 
 .profile #vcard .data {
@@ -842,7 +817,7 @@ a:hover { color: #005580 }
     position: relative;
     margin: 0;
     padding: 4px 0 0 15px;
-    width: 370px;
+    width: 385px;
     background: #D8D8D8;
 }
 
@@ -912,7 +887,7 @@ a:hover { color: #005580 }
 
 .profile .teaminfo img {
     border: 8px #fff solid;
-    outline: 1px solid #ccc;
+    outline: 1px solid #adadad;
 }
 
 .profile .teaminfo p {
@@ -935,7 +910,7 @@ a:hover { color: #005580 }
 
 .profile .info li {
     padding: 10px;
-    border-bottom: 1px dotted #CCC;
+    border-bottom: 1px dotted #ADADAD;
     font-size: 15px;
     list-style: none;
 }
@@ -1106,7 +1081,7 @@ text-decoration: underline;
     width: 1px;
     height: 23px;
     margin: 1px 0 1px 0;
-    background: #CCC;
+    background: #ADADAD;
 }
 
 .cleditorPopup {
@@ -1248,7 +1223,7 @@ ol.commentlist {
 #respond {
     padding: 5px 20px;
     background: #F9F9F9;
-    border: 1px solid #CCC;
+    border: 1px solid #ADADAD;
 }
 
 #respond h3,#respond h4 { color: #474747 }
@@ -1262,7 +1237,7 @@ ol.commentlist {
     padding: 5px;
     margin-bottom: 10px;
     background: rgb(185, 185, 185);
-    border: 1px solid #CCC;
+    border: 1px solid #ADADAD;
 }
 
 #respond #preview { margin-bottom: 30px }
@@ -1302,44 +1277,35 @@ ol.commentlist {
 #multiview ul li {
     display: inline-block;
     vertical-align: top;
-    padding: 10px;
     margin: 13px 6px;
-    background: #E6E6E6;
-    border: 1px solid #D3D3D3;
-    -moz-box-shadow: 0 8px 6px -4px #000;
-    -webkit-box-shadow: 0 8px 6px -4px #000;
-    box-shadow: 0 8px 6px -4px #000;
+    background: #D8D8D8;
+    border: 1px solid #ADADAD;
+    -moz-box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.76);
+    -webkit-box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.76);
+    box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.76);
 }
 
-#multiview a {
-    color: #474747;
-}
+#multiview a { color: #474747 }
 
-#multiview p {color: #474747;word-wrap: break-word;}
+#multiview img { width: 100% }
 
-#multiview img {width: 100%}
+#multiview h1{ margin: 0; font-size: 20px;}
+
+#multiview p { word-wrap: break-word; }
 
 /* Grid view */
 
 #multiview ul.grid { margin-top: -13px }
 
-#multiview ul.grid li {
-    min-height: 285px;
-    width: 170px;
-}
+#multiview ul.grid li { 
+    position:relative; 
+    margin: 6px;
+    min-height: 285px; 
+    width: 30% }
 
-#multiview .grid .mv-image img {
-    outline: 2px solid #F4F4F4;
-}
+#multiview .grid .mv-image img {}
 
-#multiview .grid .mv-details {
-    color:#000;
-}
-
-#multiview .grid .mv-details h1{
-    margin: 0;
-    font-size: 20px;
-}
+#multiview .grid .mv-summary { display: none; }
 
 #multiview .grid .mv-meta {}
 
@@ -1351,29 +1317,13 @@ ol.commentlist {
 
 #multiview .list li:first-child { margin-top: 0 }
 
-#multiview .list .mv-image {
-    float: left;
-    width: 90px;
-    margin: 0;
-    padding: 0;
-}
+#multiview .list .mv-image { float: left; width: 90px; margin: 0; padding: 0 }
 
-#multiview .list .mv-image img {
-    outline: 2px solid #F4F4F4;
-}
+#multiview .list .mv-image img { }
 
-#multiview .list .mv-details {
-    color:#000;
-    line-height: 1;
-    margin-left: 105px;
-}
+#multiview .list .mv-summary { color:#000; line-height: 1; margin-left: 105px; }
 
-#multiview .list .mv-details h4{
-    margin: 0 0 10px 0;
-    color: #474747;
-    font-size: 17px;
-    text-shadow: 0px 1px 1px white;
-}
+#multiview .list .mv-summary h1{ margin: 0 0 10px 0; color: #474747; font-size: 17px; text-shadow: 0px 1px 1px white; }
 
 #multiview .list .mv-meta {}
 
@@ -1804,7 +1754,7 @@ table,.table {background-color: #fff;color: #000; -webkit-border-radius: 0px;-mo
         text-align: center;
     }
 
-    #shownav:hover { color: #CCC; }
+    #shownav:hover { color: #ADADAD; }
 
 
 /* Global Menu 
@@ -1929,7 +1879,7 @@ table,.table {background-color: #fff;color: #000; -webkit-border-radius: 0px;-mo
     .profile .teaminfo img {
     width: 20%;
     border: 8px #fff solid;
-    outline: 1px solid #ccc;
+    outline: 1px solid #adadad;
     }
 
     .profile .teaminfo p {
