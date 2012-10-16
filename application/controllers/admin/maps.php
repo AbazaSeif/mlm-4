@@ -35,7 +35,7 @@ class Admin_Maps_Controller extends Admin_Controller {
 			$map->official = 1;
 			if($map->save()) {
 				Event::fire("admin", array("maps", "edit", $map->id, "official"));
-				Messages::add("success", "Map made official!");
+				Messages::add("success", "Map official!");
 				return Redirect::to_action("admin.maps");
 			} else {
 				Messages::add("error", "Failed to save");
@@ -92,7 +92,7 @@ class Admin_Maps_Controller extends Admin_Controller {
 			$map->published = 0;
 			if($map->save()) {
 				Event::fire("admin", array("maps", "edit", $map->id, "Approval pending"));
-				Messages::add("success", "Map revoked!");
+				Messages::add("success", "Map unapproved!");
 				return Redirect::to_action("admin.maps");
 			} else {
 				Messages::add("error", "Failed to save");
@@ -122,7 +122,7 @@ class Admin_Maps_Controller extends Admin_Controller {
 		}
 		$validation_rules = array(
 			"title"       => "required|between:3,128",
-			"summary"     => "required|max:255",
+			"summary"     => "required|max:140",
 			"description" => "required",
 
 			"maptype" => 'in:'.implode(",", array_keys(Config::get("maps.types"))),

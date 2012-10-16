@@ -8,22 +8,21 @@
 </div>
 	{{ Form::open(null, 'POST', array('class' => 'xpadding')) }}
 	{{ Form::token() }}
-	<p>You are now moderating: <strong>{{ e($map->title) }}</strong></p>
+	@if ($map->published == false)
+	{{ Form::submit("Approve Map", array("class" => "btn btn-success", "name" => "action", "value" => "publish")) }}
+	@elseif ($map->published == true)
+	{{ Form::submit("Unapprove Map", array("class" => "btn btn-success", "name" => "action", "value" => "unpublish")) }}
+	@endif
 	{{ HTML::link_to_action("admin.maps.delete", "Delete Map", array($map->id), array("class" => "btn btn-danger")) }}
 	@if ($map->official == false)
-	{{ Form::submit("Make Official", array("class" => "btn", "name" => "action", "value" => "official")) }}
+	{{ Form::submit("Make Official", array("class" => "btn btn-gold", "name" => "action", "value" => "official")) }}
 	@elseif ($map->official == true)
-	{{ Form::submit("Make UnOfficial", array("class" => "btn", "name" => "action", "value" => "unofficial")) }}
+	{{ Form::submit("Make Unofficial", array("class" => "btn btn-gold", "name" => "action", "value" => "unofficial")) }}
 	@endif
 	@if ($map->featured == false)
-	{{ Form::submit("Feature Map", array("class" => "btn", "name" => "action", "value" => "feature")) }}
+	{{ Form::submit("Feature Map", array("class" => "btn btn-info", "name" => "action", "value" => "feature")) }}
 	@elseif ($map->featured == true)
-	{{ Form::submit("UnFeature Map", array("class" => "btn", "name" => "action", "value" => "unfeature")) }}
-	@endif
-	@if ($map->published == false)
-	{{ Form::submit("Publish Map", array("class" => "btn", "name" => "action", "value" => "publish")) }}
-	@elseif ($map->published == true)
-	{{ Form::submit("UnPublish Map", array("class" => "btn", "name" => "action", "value" => "unpublish")) }}
+	{{ Form::submit("Unfeature Map", array("class" => "btn btn-info", "name" => "action", "value" => "unfeature")) }}
 	@endif
 	{{ HTML::link_to_action("admin.maps.edit", "Edit Map", array($map->id), array("class" => "btn")) }}
 	{{ HTML::link_to_action("admin.maps", "Back", array(), array("class" => "btn")) }}

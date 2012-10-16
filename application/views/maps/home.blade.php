@@ -5,18 +5,19 @@
 <div id="content" class="maps clearfix">
 <div id="page" class="bigger">
 <div id="multiview">
-<ul class="{{ Cookie::get('multiview', 'grid') }}">
+<ul class="<?php Cookie::get('multiview', 'grid'); ?>">
 @foreach ($maps->results as $map)
 	<li>
+		<a href="{{ URL::to_action("maps@view", array($map->id, $map->slug)) }}" title="">
 		<div class="mv-image">
-			@if($map->image)
-			{{ HTML::image($map->image->file_medium) }}
-			@else
-			<img src="{{ URL::to_asset("images/static/noimage.jpg") }}" alt="No Images found" />
-			@endif
+		@if($map->image)
+		{{ HTML::image($map->image->file_medium) }}
+		@else
+		<img src="{{ URL::to_asset("images/static/noimage.jpg") }}" alt="No Images found" />
+		@endif
 		</div>
 		<div class="mv-details">
-		<div class="mv-title"><h1>{{ HTML::link_to_action("maps@view", $map->title, array($map->id, $map->slug)) }}</h1></div>
+		<div class="mv-title"><h1>{{ e($map->title) }}</h1></div>
 		<div class="mv-summary"><p>{{ $map->summary }}</p></div>
 		<div class="mv-meta">
 			<span>By <b>The Author</b></span>
@@ -24,9 +25,11 @@
 			<span>Downloads <b>9000</b></span>
 		</div>
 		</div>
+		</a>
 	</li>
 @endforeach
 </ul>
+<div class="loadmore"><a href="#">LOAD MORE</a></div>
 </div>
 </div>
 

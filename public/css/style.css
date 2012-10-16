@@ -1100,8 +1100,8 @@ text-decoration: underline;
 .cleditorList p, .cleditorList h1, .cleditorList h2, .cleditorList h3, .cleditorList h4, .cleditorList h5, .cleditorList h6, .cleditorList font {
     padding: 0;
     margin: 0;
-    background-color: Transparent;
-   color:#000;
+    background-color: none;
+    color:#000;
 }
 
 .cleditorColor {
@@ -1253,12 +1253,12 @@ ol.commentlist {
    This can be used Anywhere on the site
 */
 
-#multiview-controler {
+#multiview-controller {
     margin: 10px 0;
     font-family: "Oswald";
 }
 
-#multiview-controler li {
+#multiview-controller li {
     display: inline-block;
     list-style: none;
 }
@@ -1276,56 +1276,59 @@ ol.commentlist {
 
 #multiview ul li {
     display: inline-block;
-    vertical-align: top;
+    position: relative;
     margin: 13px 6px;
     background: #D8D8D8;
     border: 1px solid #ADADAD;
     -moz-box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.76);
     -webkit-box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.76);
     box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.76);
+    word-wrap: break-word;
+    line-height: 1;
 }
 
-#multiview a { color: #474747 }
+/* Defaults */
 
-#multiview img { width: 100% }
+#multiview .mv-image img { display:block; width: 100% }
 
-#multiview h1{ margin: 0; font-size: 20px;}
+#multiview .mv-details {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(231, 231, 231, 0.75);
+    color: #fff;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
 
-#multiview p { word-wrap: break-word; }
+#multiview .mv-title h1 { 
+    margin: 0; 
+    font:400 22px/25px "Oswald";
+    letter-spacing: -1px;  
+    color:#333; 
+    text-shadow:rgb(226, 226, 226) 0px 1px 0px; 
+}
+
+#multiview .mv-summary {}
+
+#multiview .mv-meta {}
 
 /* Grid view */
 
-#multiview ul.grid { margin-top: -13px }
+#multiview ul.grid { }
 
 #multiview ul.grid li { 
-    position:relative; 
     margin: 6px;
-    min-height: 285px; 
-    width: 30% }
+    width: 31.50%
+}
 
-#multiview .grid .mv-image img {}
+#multiview .grid .mv-details { padding: 5px 0 5px 5px }
 
 #multiview .grid .mv-summary { display: none; }
 
-#multiview .grid .mv-meta {}
-
-/* List view */
-
-#multiview ul.list {}
-
-#multiview ul.list li { display: block; margin: 0 0 10px 0; min-height: 60px; width: auto }
-
-#multiview .list li:first-child { margin-top: 0 }
-
-#multiview .list .mv-image { float: left; width: 90px; margin: 0; padding: 0 }
-
-#multiview .list .mv-image img { }
-
-#multiview .list .mv-summary { color:#000; line-height: 1; margin-left: 105px; }
-
-#multiview .list .mv-summary h1{ margin: 0 0 10px 0; color: #474747; font-size: 17px; text-shadow: 0px 1px 1px white; }
-
-#multiview .list .mv-meta {}
+#multiview .grid .mv-meta { display: none; }
 
 /* Big View */
 
@@ -1334,6 +1337,30 @@ ol.commentlist {
 #multiview .big li { display: block; margin: 20px auto; }
 
 #multiview .big li:first-child { margin-top: 0 }
+
+#multiview .big .mv-details { padding: 10px 0 10px 10px; }
+
+/* List view */
+
+#multiview ul.list {}
+
+#multiview ul.list li { display: block; margin: 0 0 10px 0; height: auto; width: auto; }
+
+#multiview .list li:first-child { margin-top: 0 }
+
+#multiview .list .mv-details { position:static; padding: 10px; background: none; color: #333; }
+
+#multiview .list .mv-title h1 { margin-bottom: 5px; font-size: 20px;}
+
+#multiview .list .mv-image { display: none }
+
+/* Load more stuff */
+
+#multiview .loadmore { margin-top: 5px; padding: 0; border:1px solid #ADADAD; font:400 17px/2 "Oswald"; text-align: center }
+
+#multiview .loadmore a { display:block; padding:10px; background:#E7E7E7; color:#333;}
+
+#multiview .loadmore a:hover { background: #B9B9B9 }
 
 /* Table Sorter Styles
    ================================================== */  
@@ -1377,9 +1404,27 @@ table,.table {background-color: #fff;color: #000; -webkit-border-radius: 0px;-mo
 
 .table th, .table tr, .table td { -webkit-border-radius: 0px!important;  border-radius: 0px!important;  -moz-border-radius: 0px!important; }
 
-.btn { vertical-align: 0; margin-top: 0; }
+.btn { vertical-align: 0;margin-top: 0;border-radius: 0px; }
 
 .nav-tabs {border-bottom: 1px dotted #fff}
+
+.btn-gold { /* by t2t2 */
+text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+background-color: #F2E35C;
+*background-color: #F2E35C;
+background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#F4EDAD), to(#F2E35C));
+background-image: -webkit-linear-gradient(top, #F4EDAD, #F2E35C);
+background-image: -o-linear-gradient(top, #F4EDAD, #F2E35C);
+background-image: linear-gradient(to bottom, #F4EDAD, #F2E35C);
+background-image: -moz-linear-gradient(top, #F4EDAD, #F2E35C);
+background-repeat: repeat-x;
+border-color: #0044cc #0044cc #002a80;
+border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
+}
+
+.btn-gold:hover,.btn-gold:active,.btn-gold.active,.btn-gold.disabled,.btn-gold[disabled] {background-color: #F2E35C;*background-color: #F2E35C;}
+.btn-gold:active,.btn-gold.active {background-color: #003399 \9;}
 
 .btn-group > .btn + .btn { margin-left: -3px; }
 
@@ -1764,7 +1809,7 @@ table,.table {background-color: #fff;color: #000; -webkit-border-radius: 0px;-mo
         display: none;
         margin: 0px auto 13px;
         width: auto;
-        background: #CECECE;
+        background-image: none;
         text-align: center;
     }
 
@@ -1774,7 +1819,7 @@ table,.table {background-color: #fff;color: #000; -webkit-border-radius: 0px;-mo
 
     #menu #loginout li { display: inline-block ; border-bottom: 0; margin-left: -4px }
 
-    #menu #loginout li a { padding: 10px 20px; line-height: 2;}
+    #menu #loginout li a { padding: 10px 20px; border-right: none; color: #333; line-height: 2; text-shadow:0 1px 0 #fff;}
 
     #menu #loginout img {width: 25px;vertical-align: -6px;margin-left: 6px;}
 
@@ -1791,10 +1836,10 @@ table,.table {background-color: #fff;color: #000; -webkit-border-radius: 0px;-mo
     #menu li a {
         display: block;
         padding: 12px 20px;
-        color: #fff;
+        color: #333;
         font-weight: 400;
         font-size: 20px;
-        text-shadow: 0 1px 2px #000;
+        text-shadow: 0 1px 0 #fff;
         text-transform: uppercase;
     }
 

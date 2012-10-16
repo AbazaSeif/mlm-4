@@ -1,10 +1,10 @@
 <div id="comments">
 	@if( $map->comment_count == 0)
-	<div class="titlebar"><h2>No Comments</h2></div>
+	<div class="titlebar"><h2>No Comments/Feedback</h2></div>
 	@elseif ( $map->comment_count == 1)
-	<div class="titlebar"><h2><b>1</b> Comment</h2></div>
+	<div class="titlebar"><h2><b>1</b> Comment/Feedback</h2></div>
 	@else
-	<div class="titlebar"><h2><b>{{ $map->comment_count }}</b> Comments</h2></div>
+	<div class="titlebar"><h2><b>{{ $map->comment_count }}</b> Comments/Feedback</h2></div>
 	<div class="showcomments" style="display:none;"></div>
 	@endif
 
