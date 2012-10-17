@@ -13,17 +13,6 @@ MLM = {
 			$(window).unbind("scroll").scroll(function () {
 			a.style.backgroundPosition = "0px " + -(Math.max(e.scrollTop, a.scrollTop) / 10) + "px" })
 		})();
-		// Sticky footer
-		$(window).bind("load", function() {
-			var footer = $("#global-footer");
-			var pos = footer.position();
-			var height = $(window).height();
-			height = height - pos.top;
-			height = height - footer.height();
-			if (height > 0) {
-			footer.css({'margin-top' : height+'px'});
-		}
-		});
 		// Cool actionbox 
 			$('#actionbox').hide().fadeIn(1000).show();
 		// Responsive menu toggle
