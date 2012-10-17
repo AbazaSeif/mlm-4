@@ -26,8 +26,8 @@
 				<td><a href="{{ URL::to($page->url_slug) }}">View</a></td>
 				<td>
 				<div class="btn-group">
-					<a class="btn btn-primary" href="#" data-toggle="dropdown" >Actions</a>
-					<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+					<a class="btn btn-primary btn-small" href="#" data-toggle="dropdown" >Actions</a>
+					<a class="btn btn-primary btn-small dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
 						<ul class="dropdown-menu">
 						<li><a href="{{ URL::to_action("admin.pages@edit", array($page->id)) }}"><i class="icon-pencil"></i> Edit</a></li>
 						<li><a href="{{ URL::to_action("admin.pages@delete", array($page->id)) }}"><i class="icon-trash"></i> Delete</a></li>

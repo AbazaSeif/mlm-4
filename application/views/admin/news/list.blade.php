@@ -32,8 +32,8 @@
 				</td>
 				<td>
 				<div class="btn-group">
-					<a class="btn btn-primary" href="#" data-toggle="dropdown">Actions</a>
-					<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+					<a class="btn btn-primary btn-small" href="#" data-toggle="dropdown">Actions</a>
+					<a class="btn btn-primary dropdown-toggle btn-small" data-toggle="dropdown" href="#"><span class="caret"></span></a>
 						<ul class="dropdown-menu">
 						<li><a href="{{ URL::to_action("admin.news@edit", array($item->id)) }}"><i class="icon-pencil"></i> Edit</a></li>
 						@if($item->published)

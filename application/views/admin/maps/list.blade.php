@@ -13,8 +13,8 @@
 				<th>ID</th>
 				<th>Map name</th>
 				<th>Date created</th>
-				<th><abbr title="Published">P</abbr></th>
-				<th class="disabled">Moderation</th>
+				<th><abbr title="Status">S</abbr></th>
+				<th class="disabled">&nbsp;</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -25,13 +25,13 @@
 				<td>{{ date("F j, Y h:i e", strtotime($item->created_at)) }}</td>
 				<td>
 					@if($item->published)
-						<i class="icon-eye-open" title="Published"></i>
+						<i class="icon-eye-open" title="Approved"></i>
 					@else
-						<i class="icon-eye-close" title="Not Published"></i>
+						<i class="icon-eye-close" title="Not Approved"></i>
 					@endif
 				</td>
 				<td>
-				{{ HTML::link_to_action("admin@maps@view", "Moderate Map", array($item->id), array("class" => "btn btn-primary"))}}
+				{{ HTML::link_to_action("admin@maps@view", "Moderate Map", array($item->id), array("class" => "btn btn-primary btn-small"))}}
 				</td>
 		@endforeach
 			</tr>
