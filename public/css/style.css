@@ -6,6 +6,8 @@
 @import url(fonts.css);
 @import url(bootstrap.css);
 
+html, body {height: 100%;}
+
 body {
     margin: 0;
     padding: 0;
@@ -13,6 +15,15 @@ body {
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif; 
     font-weight: normal;
     color: #333;
+}
+
+/*Opera Fix*/
+body:before {/* thanks to Maleika (Kohoutec)*/
+content:"";
+height:100%;
+float:left;
+width:0;
+margin-top:-32767px;/* thank you Erik J - negate effect of float*/
 }
 
 ::selection {
@@ -35,6 +46,10 @@ body {
 a { color: #1e95cf; text-decoration: none }
 
 a:hover { color: #005580 }
+
+.global-wrapper {
+    min-height: 100%;
+}
 
 /* Global Header
    ================================================== */
@@ -190,6 +205,8 @@ a:hover { color: #005580 }
     position: relative;
     margin: 0 auto;
     width: 990px;
+    overflow:auto;
+    padding-bottom: 62px;
 }
 
 #content {
@@ -227,7 +244,7 @@ a:hover { color: #005580 }
 
 #global-footer {
     position: relative;
-    margin: 26px 0 0;
+    margin-top: -37px;
     padding: 0;
     width: 100%;
     background: #E7E7E7;  
@@ -236,6 +253,9 @@ a:hover { color: #005580 }
     box-shadow: 0 -2px 5px -2px rgba(0, 0, 0, 0.76);
     color: #000;
     line-height: 1;
+    height: 37px;
+    position: relative;
+    clear: both;
 }
 
 #global-footer .holder {
@@ -1853,7 +1873,9 @@ filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ff0088cc', en
 /* Content 
    ================================================== */
 
-    #wrapper { width: auto }
+    #wrapper {
+        width: auto; 
+    }
 
     #pagemenu { display: none }
 
