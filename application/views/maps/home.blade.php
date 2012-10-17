@@ -3,9 +3,9 @@
 @section("content")
 @include("maps.menu")
 <div id="content" class="maps clearfix">
-<div id="page" class="bigger">
+<div id="page" class="maxwidth">
 <div id="multiview">
-<ul class="<?php Cookie::get('multiview', 'grid'); ?>">
+<ul class="{{ Cookie::get('multiview', 'grid') }}">
 @foreach ($maps->results as $map)
 	<li>
 		<a href="{{ URL::to_action("maps@view", array($map->id, $map->slug)) }}" title="">
@@ -29,8 +29,8 @@
 	</li>
 @endforeach
 </ul>
-<div class="loadmore"><a href="#">LOAD MORE</a></div>
 </div>
+<div id="loadmore"><a href="#">LOAD MORE</a></div>
 </div>
 
 <div id="sidebar" class="smaller">

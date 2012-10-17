@@ -87,10 +87,10 @@
 		@forelse($map->images as $image)
 			<li>
 				<div class="thumbnail">
-					{{ HTML::image($image->file_small) }}
+					{{ HTML::image($image->file_small,"", array('width' => '160')) }}
 				<div class="caption">
 				@if($map->image_id != $image->id)
-					{{ Form::open("maps/default_image/{$map->id}/{$image->id}") }}
+					{{ Form::open("maps/default_image/{$map->id}/{$image->id}", "POST", array("style" => "margin:0")) }}
 						{{ Form::token() }}
 						{{ Form::submit("Set Default", array("class" => "btn btn-small btn-success")) }}
 						{{ HTML::link_to_action("maps@delete_image", "Delete", array($map->id, $image->id),array("class" => "btn btn-small btn-danger")) }}

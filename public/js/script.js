@@ -125,6 +125,26 @@ MLM = {
 	maps: {
 		list: function() {
 			UTIL.exec("multiview");
+
+			$(".maps").ready(function() {
+				$("#sidebar").hide();
+				$("#multiview>ul");
+			});
+
+			$("#multiview-controller [data-multiview=grid]").click(function() {
+				$("#sidebar").hide();
+				$("#page").removeClass().addClass("maxwidth");
+			});
+
+			$("#multiview-controller [data-multiview=big], #multiview-controller [data-multiview=list]")
+			.click(function() {
+				$("#sidebar").show();
+				$("#page").removeClass().addClass("bigger");
+			});
+
+			$("#loadmore a").click(function() {
+
+			});
 		}
 	},
 	admin: {
@@ -248,17 +268,6 @@ MLM = {
 				}
 				$("#multiview>ul").hide().removeClass().fadeIn(300).addClass(newView)
 				$.cookie("multiview", newView, {expires: 365})
-			});
-
-			$("#multiview-controller [data-multiview=grid]").click(function() {
-				$("#sidebar").hide();
-				$("#page").removeClass().addClass("maxwidth");
-			});
-
-			$("#multiview-controller [data-multiview=big], #multiview-controller [data-multiview=list]")
-			.click(function() {
-				$("#sidebar").show();
-				$("#page").removeClass().addClass("bigger");
 			});
 		}
 	}

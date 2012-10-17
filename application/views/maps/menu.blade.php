@@ -24,9 +24,9 @@
 
 <ul id="multiview-controller" class="submenu nav nav-pills">
 	<li class="disabled"><a href="#">Views:</a></li>
-	<li data-multiview="grid"><a href="#">Grid</a></li>
-	<li data-multiview="big"><a href="#">Big</a></li>
-	<li data-multiview="list"><a href="#">List</a></li>
+	<li data-multiview="grid"><a href="javascript:;" title="Map Image and title">Grid</a></li>
+	<li data-multiview="big"><a href="javascript:;" title="Map Image and all details">Big</a></li>
+	<li data-multiview="list"><a href="javascript:;" title="Only details">List</a></li>
 </ul>
 
 @elseif (URI::is('map/*') || URI::is('maps/edit/*') || URI::is('maps/edit_link/*') || URI::is('maps/delete_link/*') || URI::is('maps/delete_image/*') )
