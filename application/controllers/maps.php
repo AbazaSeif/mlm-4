@@ -17,7 +17,7 @@ class Maps_Controller extends Base_Controller {
 	public function get_filter() {
 		//retrieve GET info
 		$order_column = strtolower(Input::get('order'));
-		$category = strtolower(Input::get('category'));
+		$category = strtolower(Input::get('type'));
 		$featured = strtolower(Input::get('featured'));
 		$official = strtolower(Input::get('official'));
 		$own = strtolower(Input::get('ownmaps'));
@@ -63,7 +63,7 @@ class Maps_Controller extends Base_Controller {
 		if(isset($category_list[$category]) and $category != "") {
 			$query = $query->where("maps.maptype", '=', $category);
 		}
-				
+
 		//$featured
 		if ($featured == "true")
 		{
