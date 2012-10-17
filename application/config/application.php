@@ -161,7 +161,7 @@ return array(
 		'Cache'      	=> 'Laravel\\Cache',
 		'Config'     	=> 'Laravel\\Config',
 		'Controller' 	=> 'Laravel\\Routing\\Controller',
-		'Cookie'     	=> 'Laravel\\Cookie',
+//		'Cookie'     	=> 'Laravel\\Cookie',
 		'Crypter'    	=> 'Laravel\\Crypter',
 		'DB'         	=> 'Laravel\\Database',
 		'Eloquent'   	=> 'Laravel\\Database\\Eloquent\\Model',
