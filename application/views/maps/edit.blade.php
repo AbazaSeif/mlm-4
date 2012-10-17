@@ -12,15 +12,15 @@
 		{{ Form::field("text", "title", "", array(Input::old("title", $map->title), array('class' => 'title', 'autocomplete' => 'off')), array('error' => $errors->first('title'))) }}
 		<div class="titlebar"><h4>Description</h4></div>
 		{{ Form::field("wysiwyg-user", "description", "", array(Input::old("description", $map->description), array('class' => 'input-xxlarge')), array('error' => $errors->first('description'))) }}
-		<div class="titlebar"><h4>Summary (Explain your map 140 characters. Use correct grammar)</h4></div>
+		<div class="titlebar"><h4>Summary <small>(Explain your map 140 characters. Use correct grammar)</small></h4></div>
 		{{ Form::field("textarea", "summary", "", array(Input::old("summary", $map->summary), array("rows" => "15", 'class' => 'summary')), array('error' => $errors->first('summary'))) }}
 		<div class="titlebar"><h4>Map type</h4></div>
 		{{ Form::field("select", "maptype", "", array(array_merge(array("" => "--------------"), Config::get("maps.types")), Input::old("maptype", $map->maptype), array('class' => 'input')), array('error' => $errors->first('maptype'))) }}
-		<div class="titlebar"><h4>Map version (Remember to keep this up-to-date!)</h4></div>
+		<div class="titlebar"><h4>Map version <small>(Remember to keep this up-to-date!)</small></h4></div>
 		{{ Form::field("text", "version", "", array(Input::old("version", $map->version)), array("error" => $errors->first("error"))) }}
-		<div class="titlebar"><h4>Teams (How many teams can play the map at once)</h4></div>
+		<div class="titlebar"><h4>Teams <small>(How many teams can play the map at once)</small></h4></div>
 		{{ Form::field("text", "teamcount", "", array(Input::old("teamcount", $map->teamcount)), array("error" => $errors->first("error"))) }}
-		<div class="titlebar"><h4>Team Size (Players per team)</h4></div>
+		<div class="titlebar"><h4>Team Size <small>(Players per team)</small></h4></div>
 		{{ Form::field("text", "teamsize", "", array(Input::old("teamsize", $map->teamsize)), array("error" => $errors->first("teamsize"))) }}
 		{{ Form::actions(array(Form::submit("Save", array("class" => "btn-primary")), " ", HTML::link_to_action("maps@view", "Cancel", array($map->id), array("class" => "btn")))) }}
 	{{ Form::close() }}
@@ -41,7 +41,7 @@
 		</li>
 	@endforeach
 	</ul>
-	<div class="titlebar"><h4>Invite additional authors (Use MLM username)</h4></div>
+	<div class="titlebar"><h4>Invite additional authors <small>(Use MLM username)</small></h4></div>
 	{{ Form::open("maps/add_author/".$map->id, 'POST', array('class' => 'xpadding')) }} 	
 		<fieldset> 
 			<div>

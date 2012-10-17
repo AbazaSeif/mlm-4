@@ -16,11 +16,11 @@
 		{{ Form::field("textarea", "summary", "", array(Input::old("summary", $map->summary), array("rows" => "15", 'class' => 'summary')), array('error' => $errors->first('summary'))) }}
 		<div class="titlebar"><h4>Map type</h4></div>
 		{{ Form::field("select", "maptype", "", array(array_merge(array("" => "--------------"), Config::get("maps.types")), Input::old("maptype", $map->maptype), array('class' => 'input')), array('error' => $errors->first('maptype'))) }}
-		<div class="titlebar"><h4>Map version (Remember to keep this up-to-date)</h4></div>
+		<div class="titlebar"><h4>Map version</h4></div>
 		{{ Form::field("text", "version", "", array(Input::old("version", $map->version)), array("error" => $errors->first("error"))) }}
-		<div class="titlebar"><h4>Teams (How many teams can play the map at once)</h4></div>
+		<div class="titlebar"><h4>Teams</h4></div>
 		{{ Form::field("text", "teamcount", "", array(Input::old("teamcount", $map->teamcount)), array("error" => $errors->first("error"))) }}
-		<div class="titlebar"><h4>Team Size (Players per team)</h4></div>
+		<div class="titlebar"><h4>Team Size</h4></div>
 		{{ Form::field("text", "teamsize", "", array(Input::old("teamsize", $map->teamsize)), array("error" => $errors->first("teamsize"))) }}
 		{{ Form::actions(array(Form::submit("Save", array("class" => "btn-primary")), " ", HTML::link_to_action("admin@maps@view", "Cancel", array($map->id), array("class" => "btn")))) }}
 	{{ Form::close() }}

@@ -18,7 +18,7 @@
 						<span><strong>http://wordpress.com</strong></span>
 					</li> 
 					<li class="direct" title="Login with Yahoo"><img src="{{ URL::to_asset("images/login/yahoo.png") }}" alt="icon" />
-							<span>http://yahoo.com/</span>
+							<span>http://me.yahoo.com/</span>
 					</li>
 					<li class="direct" title="Login with AOL"><img src="{{ URL::to_asset("images/login/aol.png") }}" alt="icon" />
 						<span>http://openid.aol.com/</span>

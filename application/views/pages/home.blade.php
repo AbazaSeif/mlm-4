@@ -20,7 +20,6 @@
 
 </div>
 
-
 <div id="content" class="homecontent clearfix">
 	<div id="page" class="bigger">
 		<div id="feed-item">
