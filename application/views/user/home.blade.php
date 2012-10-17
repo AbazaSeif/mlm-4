@@ -35,36 +35,15 @@
 					@endif
 					<ul class="numbers">
 						<li>Comments<strong>{{ $user->comment_count }}</strong></li>
-						<li>Posts<strong>888</strong></li>
-						<li>Rank<strong>888</strong></li>
 					</ul>
 				</div>
-		</div>
-		<div id="feed">
-			<div class="titlebar">
-				<h2>Feed</h2>
-			</div>
 		</div>
 	</div>
 	<aside id="sidebar">
-		<div class="widget teaminfo">
-			<header><h1>Team</h1></header>
+		<div class="widget">
+			<header><h1>{{$user->username}}'s Info</h1></header>
 		<div class="content">
-			<a href="#"><img src="http://placekitten.com/100/100" />
-				<div class="data">
-					<p>The Quick Brown Fox Jumps Over The Lazy Dog</p>
-					<ul class="numbers">
-						<li>Wins<strong>888</strong></li>
-						<li>Loses<strong>888</strong></li>
-					</ul>
-				</div>
-			</a>
-		</div>
-		</div>
-			<div class="widget">
-				<header><h1>{{$user->username}}'s Info</h1></header>
-			<div class="content">
-			<div class="info">
+		<div class="info">
 		<ul>
 		@if ($user->profile->reddit)
 		<li>

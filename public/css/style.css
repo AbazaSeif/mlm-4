@@ -94,6 +94,14 @@ a:hover { color: #005580 }
     vertical-align: 13px;
 }
 
+#global-header #logo h1::after {
+    content: "Alpha";
+    margin-left: 2px;
+    font: 15px/1 Helvetica;
+    color: rgb(233, 233, 233);
+    vertical-align: 11px;
+}
+
 #global-header #logo a {
     display: block;
     font-weight: 700;
