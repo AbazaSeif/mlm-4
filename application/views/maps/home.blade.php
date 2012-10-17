@@ -26,6 +26,9 @@
 				@endforeach
 			</span>
 			<span>Version <b>{{$map->version}}</b></span>
+			@unless($map->published)
+			<p><strong>This map isn't yet published</strong></p>
+			@endunless
 		</div>
 		</div>
 		</a>
@@ -33,7 +36,7 @@
 @endforeach
 </ul>
 </div>
-<div id="loadmore"><a href="#">LOAD MORE</a></div>
+<div id="loadmore">{{ $maps->links() }}</div>
 </div>
 
 <div id="sidebar" class="smaller">
