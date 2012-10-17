@@ -41,7 +41,7 @@
 	<p>User: {{ $modqueue->user->username }}</p>
 	<p>Date Created: {{ date("F j, Y g:ia", strtotime($modqueue->created_at)) }}</p>
 	<p>Additional Data: {{ $modqueue->data }}</p>
-	{{ Form::submit("Delete from Modqueue", array("class" => "btn btn-danger", "name" => "action", "value" => "deletemodqueue")) }}
+	{{ HTML::link_to_action("admin.modqueue.delete", "Remove Modqueue item", array($modqueue->id), array("class" => "btn btn-danger")) }}
 	{{ Form::close() }}
 	@endif
 </div>

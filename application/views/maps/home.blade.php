@@ -20,9 +20,12 @@
 		<div class="mv-title"><h1>{{ e($map->title) }}</h1></div>
 		<div class="mv-summary"><p>{{ $map->summary }}</p></div>
 		<div class="mv-meta">
-			<span>By <b>The Author</b></span>
-			<span>Version <b>1.0</b></span>
-			<span>Downloads <b>9000</b></span>
+			<span>By 
+				@foreach($map->users as $author)
+				<b>{{ $author->username }}</b>,
+				@endforeach
+			</span>
+			<span>Version <b>{{$map->version}}</b></span>
 		</div>
 		</div>
 		</a>
