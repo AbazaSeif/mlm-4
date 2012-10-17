@@ -34,9 +34,7 @@
 */
 
 // Home
-Route::get('/', function() {
-	return View::make('pages.home', array("javascript" => array("home")));
-});
+Route::get('/', "maps@index");
 
 // Awesome URL's - http://jasonlewis.me/blog/2012/09/laravel-routes-or-controllers
 Route::get("login", "account@login");
