@@ -128,18 +128,8 @@
 					<ul id="mainmenu">
 						<li><a href="{{ URL::to("/") }}">Home</a></li> 
 						<li>{{ HTML::link('news', 'News'); }}</li> 
-						<li>{{ HTML::link('tournaments', 'Tournaments'); }}</li>
-						<li>{{ HTML::link('matches', 'Matches'); }}</li>
-						<li>{{ HTML::link('teams', 'Teams'); }}</li> 
 						<li>{{ HTML::link('maps', 'Maps'); }}</li>
 						<li>{{ HTML::link('faq', 'FAQ'); }}</li>
-						<div id="search" class="right clearfix">
-							<form method="get" action="#" class="">
-								<div class="input-append">
-								<input id="main-search" class="sbar" size="16" type="text"><button class="btn" type="button"><i class="icon-search icon-white"></i></button>
-								</div>
-							</form>
-						</div>
 					</ul>
 				</nav>
 		</header>
