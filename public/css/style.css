@@ -46,6 +46,8 @@ margin-top:-32767px;/* thank you Erik J - negate effect of float*/
     text-shadow: none;
 }
 
+/* helper classes */
+
 .left {float: left}
 .right {float: right}
 .center {text-align: center;}
