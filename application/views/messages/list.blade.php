@@ -2,33 +2,33 @@
 
 @section("content")
 @include("user.menu")
-<div id="content" class="clearfix">
-<div id="page">
-<div class="titlebar">
-	<h2>Messages</h2>
-</div>
-	{{ HTML::link_to_action("messages@new", "Send message") }}
-	<ul>
-	@forelse($threads as $thread)
-		@if($thread->pivot->unread)
-		<li class="unread">
-		@else
-		<li>
-		@endif
-			{{ HTML::link("messages/view/{$thread->id}", $thread->title) }}<br />
+<div id="content" class="messages clearfix">
+<div id="page" class="maxwidth">
+<div class="titlebar"><h2>Messages</h2><a href="{{ URL::to_action("messages@new") }}" class="btn right"><i class="icon-envelope"></i> New Message</a></div>
+<ol>
+@forelse($threads as $thread)
+	@if($thread->pivot->unread)
+	<li class="unread">
+	@else
+	<li>
+	@endif
+	<a href="{{ e("messages/view/{$thread->id}")}}" title="View message">
+		<div class="title">
+			{{ e($thread->title) }}
+		</div>
+		<div class="meta">
 			@if($thread->starter)
-				Thread started by {{$thread->starter->username}}
+				Thread started by <b>{{$thread->starter->username}}</b> | Last post <b>{{$thread->updated_at}}</b>
 			@else
-				Thread started by system
+				Thread started by <b>system</b>
 			@endif
-			<br />
-			Last post {{$thread->updated_at}}
-		</li>
+		</div>
+	</a>
+	</li>
 	@empty
-		<li>No messages found</li>
+	<li>No messages found</li>
 	@endforelse
+</ol>
 </div>
-</div>
-<div id="sidebar">
 </div>
 @endsection

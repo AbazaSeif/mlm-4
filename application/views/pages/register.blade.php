@@ -4,7 +4,7 @@
 @section('content')
 	<div id="content">
 <div class="titlebar center">
-	<h1>Welcome To Major League Minining!</h1>
+	<h1>Welcome To Major League Mining!</h1><br>
 	<h3>Please take a few seconds to setup your profile</h3>
 </div>
 		{{ Form::open("account/register", "POST", array('class' => 'form-horizontal ')) }}

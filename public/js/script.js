@@ -15,6 +15,12 @@ MLM = {
 		})();
 		// Cool actionbox 
 			$('#actionbox').hide().fadeIn(1000).show();
+		//Day and Night
+		$("#dayandnight").click(function() {
+			$(this).toggleClass('btn-inverse');
+    		$('body').toggleClass('bg-black');
+   			return false;
+		});
 		// Responsive menu toggle
 			$("#shownav").click(function () {
 				$("#menu").slideToggle().show();
@@ -58,10 +64,10 @@ MLM = {
 				prevText: 'Prev',
 				nextText: 'Next',
 				randomStart: false
-			});
-		// Show/Hide Markdown Live Preview
-			$("#prevb").click(function () {
-				$("#comment").fadeToggle(300);
+			});javascript:$(this).click(function(){$("#messactions").fadeToggle()});
+		// Show/Hide Markdown Live Preview & Message actions
+			$("#prevb,#mess-ac-open").click(function () {
+				$("#comment,#mess-actions").fadeToggle(300);
 				return false;
 			});
 		// Admin menu toggle
@@ -132,7 +138,7 @@ MLM = {
 			});
 
 			$("#loadmore a").click(function() {
-
+				// Coming Soon!
 			});
 		}
 	},

@@ -2,38 +2,62 @@
 
 @section("content")
 @include("user.menu")
-<div id="content">
-	<h3>{{ e($thread->title) }}</h3>
-	<h4>In this thread:</h4>
-	<ul>
+<div id="content" class="messages view">
+<div class="titlebar"><h2>Viewing: {{ e($thread->title) }}</h2>
+<a href="#reply" class="btn right"><i class="icon-share-alt"></i> Reply</a>
+<a href="#" id="mess-ac-open" class="btn right"><i class="icon-plus"></i> Details</a>
+</div>
+<div id="mess-actions" class="clearfix" style="display:none">
+<div class="left halfwidth">
+<div class="titlebar"><h3>In this thread</h3></div>
+	<ul class="itt">
 		@foreach($thread->users as $user)
 			<li><a href="{{ URL::to("user/{$user->username}") }}"><img src="http://minotar.net/helm/{{ $user->mc_username }}/18" alt="avatar"> {{$user->username}}</a></li>
 		@endforeach
 	</ul>
-	<h5>Add:</h5>
-	{{ Form::open("messages/add/{$thread->id}") }}
+	</div>
+	<div class="right halfwidth">
+<div class="titlebar"><h3>Add people to this conversation</h3></div>
+	{{ Form::open("messages/add/{$thread->id}", "",array("class" => "xpadding")) }}
 		{{ Form::token() }}
-		{{ Form::field("text", "users", "Usernames", array(Input::old("users"), array('class' => 'input-large')), array('error' => $errors->first('users'), "help-inline" => "Seperate multiple usernames with a comma")) }}
+		{{ Form::field("text", "users", "", array(Input::old("users"), array('class' => 'input-large')), array('error' => $errors->first('users'), "help-inline" => "Seperate multiple usernames with a comma")) }}
 		{{ Form::submit("Add people") }}
 	{{ Form::close() }}
+	</div>
+</div>
+<div class="titlebar"><h3>Messages</h3></div>
+	<ul>
 	@foreach($messages as $message)
-		<div class="message">
+		<li class="message">
 			@if($message->user_id)
-			<small><a href="{{ URL::to("user/{$message->user->username}") }}"><img src="http://minotar.net/helm/{{ $message->user->mc_username }}/12" alt="avatar"> {{$message->user->username}}</a> @ {{ $message->created_at }}</small>
+			<div class="vcard">
+			<a href="{{ URL::to("user/{$message->user->username}") }}"><img src="http://minotar.net/helm/{{ $message->user->mc_username }}/15" alt="avatar"> {{$message->user->username}}</a> @ {{ $message->created_at }}
+			</div>
 			@else
 			<small>System @ {{ $message->created_at }}</small>
 			@endif
 			{{ $message->message }}
-		</div>
+		</li>
 	@endforeach
-	{{-- Only if the thread wasn't started by the system --}}
-	@if($thread->userid)
-	<h4>Reply</h4>
+	</ul>
+	<div id="reply" class="titlebar"><h3>Reply</h3></div>
+	<div class="clearfix">
+	<div class="left halfwidth">
 	{{ Form::open("messages/reply/{$thread->id}") }}
 		{{ Form::token() }}
-		{{ Form::field("textarea", "message", "Message", array(Input::old("message"), array('class' => 'input-xxlarge')), array('error' => $errors->first('message'), "help-inline" => "Markdown supported")) }}
+		{{ Form::field("textarea", "message", "", array(Input::old("message"), array("id" => "mrk", "style" => "width:445px")), array('error' => $errors->first('message'))) }}
 		{{ Form::actions(Form::submit("Reply", array("class" => "btn-primary")))}}
 	{{ Form::close() }}
-	@endif
+	</div>
+	<div class="right halfwidth">
+		<div class="titlebar"><h4>Preview</h4></div>
+		<li class="message">
+			<div class="vcard">
+			<a href="{{ URL::to("user/{$message->user->username}") }}"><img src="http://minotar.net/helm/{{ $message->user->mc_username }}/15" alt="avatar"> {{$message->user->username}}</a>
+			</div>
+			<div id="preview"></div>
+		</li>
+	</div>
+</dvi>
 </div>
 @endsection
