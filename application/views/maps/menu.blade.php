@@ -20,7 +20,7 @@
 	</ul>
 </nav>
 
-@if (URI::is('maps') || URI::is('maps/filter'))
+@if (URI::is('maps') || URI::is('maps/filter') || URI::is('/'))
 
 <ul id="multiview-controller" class="submenu nav nav-pills">
 	<li class="disabled"><a href="#">Views:</a></li>

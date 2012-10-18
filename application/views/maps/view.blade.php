@@ -11,13 +11,6 @@
 <div id="content" class="maps-single clearfix">
 <div class="titlebar">
 	<h2>{{ e($map->title) }}</h2>
-	<span class="rating">
-		<span class="star"></span>
-		<span class="star"></span>
-		<span class="star"></span>
-		<span class="star"></span>
-		<span class="star"></span>
-	</span>
 </div>
 	@if($is_owner === 0)
 	<div class="alert alert-info alert-block alertfix clearfix">

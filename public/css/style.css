@@ -42,6 +42,8 @@ margin-top:-32767px;/* thank you Erik J - negate effect of float*/
 .right {float: right}
 .center {text-align: center;}
 .inline {display: inline!important}
+.maxwidth { width: 100% }
+.halfwidth { width: 50% }
 
 a { color: #1e95cf; text-decoration: none }
 
@@ -213,7 +215,6 @@ a:hover { color: #005580 }
     position: relative;
     margin: 0 auto;
     width: 990px;
-    overflow:auto;
     padding-bottom: 62px;
 }
 
@@ -983,6 +984,103 @@ text-decoration: underline;
     padding: 10px;
 }
 
+/* Messages
+   ================================================== */
+
+.messages {
+  margin: 0;
+  padding: 0;
+}
+
+.messages ol,ul {
+    margin: 0;
+}
+
+.messages li {
+    margin-bottom: 5px;
+    list-style: none;
+    background-color: rgb(216, 216, 216);
+    border: 1px solid rgb(173, 173, 173);
+}
+
+.messages li:hover {
+    background-color:#B9B9B9;
+}
+
+.messages li .title::before{
+    content: "Ł";
+    font-family: FontAwesome;
+}
+
+.messages li.unread .title::before{
+    content: "";
+    font-family: FontAwesome;
+}
+
+.messages li > a {
+    display: block;
+    padding: 10px;
+    color: #333;
+}
+
+.messages .title {
+  float: left;
+  margin: 0 12px 0 0;
+  line-height: 1;
+}
+
+.messages .title a {
+  font-size: 17px;
+}
+
+.messages .meta {
+  font-size: 13px;
+  text-align: right;
+}
+
+.messages.view .itt li {
+    display: inline-block;
+    margin: 5px 5px 5px 0;
+    width: 40%;
+}
+.messages.view .itt li img {
+    vertical-align: top;
+    border: 1px solid #ADADAD;
+}
+
+.messages .message {
+    margin-bottom: 5px;
+    padding: 10px;
+    list-style: none;
+    background-color: rgb(216, 216, 216);
+    border: 1px solid rgb(173, 173, 173);
+}
+
+.messages .message:hover {
+    background-color: rgb(216, 216, 216);
+}
+
+.messages .message .vcard {
+    margin-bottom: 3px;
+    padding: 6px;
+    background: #BEBEBE;
+    font-size: 15px;
+    font-style: italic;
+}
+
+.messages .message .vcard img{
+    display: inline;
+    padding: 2px;
+    background: #BEBEBE;
+    border:1px solid #ADADAD;
+    vertical-align: middle;
+}
+
+.messages .message img {
+    display: block;
+    max-width: 100%;
+}
+
 /* Old versions of IE / Javascript disabled
    ================================================== */
 
@@ -1413,7 +1511,7 @@ form.xpadding,li.xpadding,input.xpadding { margin-bottom:10px; padding:10px; bac
 
 .xpadding img { margin-right: 5px; width: 25px; vertical-align: -7px; }
 
-.xpadding p { margin-bottom: 10px }
+.xpadding p { margin-bottom: 4px }
 
 .alertfix p { display:inline; margin:auto; line-height: 2 }
 
