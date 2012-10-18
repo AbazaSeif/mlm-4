@@ -25,10 +25,11 @@
 				<b>{{ $author->username }}</b>,
 				@endforeach
 			</span>
-			<span>Version <b>{{$map->version}}</b></span>
+			<span>Version <b>{{$map->version}}</b>,</span>
 			@unless($map->published)
 			<p><strong>This map isn't yet published</strong></p>
 			@endunless
+			<span>Type: <b>{{ array_get(Config::get("maps.types"), $map->maptype) }}</b></span>
 		</div>
 		</div>
 		</a>

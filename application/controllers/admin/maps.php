@@ -127,6 +127,7 @@ class Admin_Maps_Controller extends Admin_Controller {
 
 			"maptype" => 'in:'.implode(",", array_keys(Config::get("maps.types"))),
 			"version" => "max:64",
+			"mcversion" => "max:64",
 			"teamcount" => "integer",
 			"teamsize" => "integer"
 		);
@@ -138,6 +139,7 @@ class Admin_Maps_Controller extends Admin_Controller {
 			$map->description = IoC::resolve('HTMLPurifier')->purify($input["description"]);
 			$map->maptype     = $input["maptype"];
 			$map->version     = $input["version"];
+			$map->mcversion   = $input["mcversion"];
 			$map->teamcount   = $input["teamcount"];
 			$map->teamsize    = $input["teamsize"];
 			$changed = array_keys($map->get_dirty());

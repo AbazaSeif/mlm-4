@@ -46,6 +46,11 @@
 	<span>{{ e($map->version) }}</span>
 	@endif
 
+	<div class="titlebar margin"><h4>Minecraft Version</h4></div>
+	@if($map->mcversion)
+	<span>{{ e($map->mcversion) }}</span>
+	@endif
+
 	<div class="titlebar margin"><h4>Teams</h4></div>
 	@if($map->teamcount)
 	<span>{{ $map->teamcount }}</span>
