@@ -11,7 +11,7 @@ html, body {height: 100%;}
 body {
     margin: 0;
     padding: 0;
-    background: #B9B9B9 url(../images/static/white.png) repeat fixed center;
+    background: #B9B9B9 url(../images/static/bg/white.png) repeat fixed center;
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif; 
     font-weight: normal;
     color: #333;
@@ -19,11 +19,14 @@ body {
 
 /* Backgrounds */
 
-.bg-white { background-image: url(../images/static/white.png) }
-.bg-black { background-image: url(../images/static/black.png) }
-.bg-red { background-image: url(../images/static/red.png) }
-.bg-green { background-image: url(../images/static/green.png) }
-.bg-blue { background-image: url(../images/static/blue.png) }
+.bg-white { background-image: url(../images/static/bg/white.png) }
+.bg-black { background-image: url(../images/static/bg/black.png) }
+.bg-red { background-image: url(../images/static/bg/red.png) }
+.bg-green { background-image: url(../images/static/bg/green.png) }
+.bg-blue { background-image: url(../images/static/bg/blue.png) }
+.bg-cyan { background-image: url(../images/static/bg/cyan.png) }
+.bg-yellow { background-image: url(../images/static/bg/yellow.png) }
+.bg-magenta { background-image: url(../images/static/bg/magenta.png) }
 
 /* Opera Fix */
 body:before {/* thanks to Maleika (Kohoutec)*/
@@ -979,6 +982,17 @@ text-decoration: underline;
    ================================================== */
 
 .account-settings {
+}
+
+.account-settings #multibg img {
+    padding: 2px;
+    background-color: #BEBEBE;
+    border: 1px solid #ADADAD;
+    width: 109px;
+}
+
+.account-settings #multibg img:hover {
+    border: 1px solid #333;
 }
 
 .account-settings ul {

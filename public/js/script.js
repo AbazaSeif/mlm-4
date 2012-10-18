@@ -13,14 +13,17 @@ MLM = {
 			$(window).unbind("scroll").scroll(function () {
 			a.style.backgroundPosition = "0px " + -(Math.max(e.scrollTop, a.scrollTop) / 10) + "px" })
 		})();
+		// MultiBG
+			$("#multibg [data-mbg]").click(function() {
+				var newBg = $(this).data("mbg")
+				if($("body").hasClass(newBg)) {
+					return true;
+				}
+				$("body").removeClass().addClass(newBg);
+				$.cookie("multibg", newBg, {expires: 365})
+			});		
 		// Cool actionbox 
 			$('#actionbox').hide().fadeIn(1000).show();
-		//Day and Night
-		$("#dayandnight").click(function() {
-			$(this).toggleClass('btn-inverse');
-    		$('body').toggleClass('bg-black');
-   			return false;
-		});
 		// Responsive menu toggle
 			$("#shownav").click(function () {
 				$("#menu").slideToggle().show();
