@@ -50,6 +50,7 @@
 	{{ Form::close() }}
 	</div>
 	<div class="right halfwidth">
+		<div class="titlebar"><h4>Preview</h4></div>
 		<li class="message">
 			<div class="vcard">
 			<a href="{{ URL::to("user/{$message->user->username}") }}"><img src="http://minotar.net/helm/{{ $message->user->mc_username }}/15" alt="avatar"> {{$message->user->username}}</a>
