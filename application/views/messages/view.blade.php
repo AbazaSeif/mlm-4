@@ -41,7 +41,7 @@
 	@endforeach
 	</ul>
 	<div id="reply" class="titlebar"><h3>Reply</h3></div>
-	<div class="clearfix">
+<div class="clearfix">
 	<div class="left halfwidth">
 	{{ Form::open("messages/reply/{$thread->id}") }}
 		{{ Form::token() }}
@@ -53,11 +53,11 @@
 		<div class="titlebar"><h4>Preview</h4></div>
 		<li class="message">
 			<div class="vcard">
-			<a href="{{ URL::to("user/{$message->user->username}") }}"><img src="http://minotar.net/helm/{{ $message->user->mc_username }}/15" alt="avatar"> {{$message->user->username}}</a>
+			<a href="{{ URL::to("user/{ Auth::user()->username }") }}"><img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/15" alt="avatar">{{ Auth::user()->username }}</a>
 			</div>
 			<div id="preview"></div>
 		</li>
 	</div>
-</dvi>
+</div>
 </div>
 @endsection

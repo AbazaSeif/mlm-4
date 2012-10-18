@@ -33,5 +33,6 @@
 		{{ Form::actions(array(Form::submit("Save", array("class" => "btn-primary")), " ", HTML::link_to_action("maps@view", "Cancel", array(), array("class" => "btn")))) }}
 	{{ Form::close() }}
 	</div>
+@include("maps.sidebar")
 </div>
 @endsection
