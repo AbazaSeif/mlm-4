@@ -18,6 +18,8 @@
 		{{ Form::field("select", "maptype", "", array(array_merge(array("" => "--------------"), Config::get("maps.types")), Input::old("maptype", $map->maptype), array('class' => 'input')), array('error' => $errors->first('maptype'))) }}
 		<div class="titlebar"><h4>Map version <small>(Remember to keep this up-to-date!)</small></h4></div>
 		{{ Form::field("text", "version", "", array(Input::old("version", $map->version)), array("error" => $errors->first("error"))) }}
+		<div class="titlebar"><h4>Minecraft version <small>(This is the latest version of Minecraft that the map is known to work with!)</small></h4></div>
+		{{ Form::field("text", "mcversion", "", array(Input::old("mcversion", $map->mcversion)), array("error" => $errors->first("error"))) }}
 		<div class="titlebar"><h4>Teams <small>(How many teams can play the map at once)</small></h4></div>
 		{{ Form::field("text", "teamcount", "", array(Input::old("teamcount", $map->teamcount)), array("error" => $errors->first("error"))) }}
 		<div class="titlebar"><h4>Team Size <small>(Players per team)</small></h4></div>
