@@ -1,9 +1,13 @@
-@if(in_array($sidebar, array("edit", "new")))
+@if (URI::is('maps/new*') || URI::is('maps/edit*')) 
 <div id="sidebar" class="smaller">
 	<div class="widget">
 	<header><h1>Maps guidelines</h1></header>
 	<div class="content">
-	<p>Mauris vitae nisl nec metus placerat perdiet est. Phasellus dapibus semper consectetuer hendrerit.</p>
+	<ol>
+		<li>Be clear in the title and description of your map</li>
+		<li>Map version is the version of the map, not the version of the game</li>
+		<li></li>
+	</ol>
 	</div>
 	</div>
 </div>
