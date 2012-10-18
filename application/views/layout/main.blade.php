@@ -111,9 +111,11 @@
 			<p>&copy;2012 Major League Mining</p>
 		</div>
 		<div class="right">
+			<?php /*
 			<a href="http://facebook.com/mlm" title="Like us on Facebook" class="fb"><i class="icon-facebook-sign"></i></a>
 			<a href="http://twitter.com/mlm" title="Follow us on Twitter" class="tw"><i class="icon-twitter-sign"></i></a>
 			<a href="http://plus.google.com/+mlm" title="Circle us on Google+" class="gp"><i class="icon-google-plus-sign"></i></a>
+			*/ ?>
 		</div>
 		</div>	
 	</footer>
