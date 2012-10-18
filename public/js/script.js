@@ -126,17 +126,6 @@ MLM = {
 				$("#multiview>ul");
 			});
 
-			$("#multiview-controller [data-multiview=grid]").click(function() {
-				$("#sidebar").hide();
-				$("#page").removeClass().addClass("maxwidth");
-			});
-
-			$("#multiview-controller [data-multiview=big], #multiview-controller [data-multiview=list]")
-			.click(function() {
-				$("#sidebar").show();
-				$("#page").removeClass().addClass("bigger");
-			});
-
 			$("#loadmore a").click(function() {
 				// Coming Soon!
 			});
