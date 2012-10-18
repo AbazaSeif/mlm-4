@@ -1501,6 +1501,8 @@ ol.commentlist {
 
 #loadmore a:hover { background: #B9B9B9 }
 
+#loadmore .pagination { margin: 5px 0 0; height: auto; }
+
 /* Table Sorter Styles
    ================================================== */  
 
