@@ -58,10 +58,10 @@ MLM = {
 				prevText: 'Prev',
 				nextText: 'Next',
 				randomStart: false
-			});
-		// Show/Hide Markdown Live Preview
-			$("#prevb").click(function () {
-				$("#comment").fadeToggle(300);
+			});javascript:$(this).click(function(){$("#messactions").fadeToggle()});
+		// Show/Hide Markdown Live Preview & Message actions
+			$("#prevb,#mess-ac-open").click(function () {
+				$("#comment,#mess-actions").fadeToggle(300);
 				return false;
 			});
 		// Admin menu toggle

@@ -13,6 +13,7 @@
 				<th>ID</th>
 				<th>News article</th>
 				<th>Date created</th>
+				<th>Posted by</th>
 				<th><abbr title="Published">P</abbr></th>
 				<th class="disabled">&nbsp;</th>
 			</tr>
@@ -23,6 +24,7 @@
 				<td>{{ $item->id }}</td>
 				<td>{{ HTML::link_to_action("news@view", $item->title, array($item->id, $item->slug), array("target" => "_blank")) }}</td>
 				<td>{{ date("F j, Y g:ia", strtotime($item->created_at)) }}</td>
+				<td>USERNAME</td>
 				<td>
 					@if($item->published)
 						<i class="icon-eye-open" title="Published"></i>
