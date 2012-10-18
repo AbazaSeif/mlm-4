@@ -91,6 +91,7 @@ class Maps_Controller extends Base_Controller {
 
 			"maptype" => 'in:'.implode(",", array_keys(Config::get("maps.types"))),
 			"version" => "max:64",
+			"mcversion" => "max:64",
 			"teamcount" => "integer",
 			"teamsize" => "integer"
 		);
@@ -103,6 +104,7 @@ class Maps_Controller extends Base_Controller {
 			$map->description = IoC::resolve('HTMLPurifier')->purify(Input::get("description"));
 			$map->maptype     = Input::get("maptype");
 			$map->version     = Input::get("version");
+			$map->mcversion   = Input::get("mcversion");
 			$map->teamcount   = Input::get("teamcount");
 			$map->teamsize    = Input::get("teamsize");
 			$map->avg_rating  = 0;
@@ -243,6 +245,7 @@ class Maps_Controller extends Base_Controller {
 
 			"maptype" => 'in:'.implode(",", array_keys(Config::get("maps.types"))),
 			"version" => "max:64",
+			"mcversion" => "max:64",
 			"teamcount" => "integer",
 			"teamsize" => "integer"
 		);
@@ -253,6 +256,7 @@ class Maps_Controller extends Base_Controller {
 			$map->description = IoC::resolve('HTMLPurifier')->purify(Input::get("description"));
 			$map->maptype     = Input::get("maptype");
 			$map->version     = Input::get("version");
+			$map->mcversion   = Input::get("mcversion");
 			$map->teamcount   = Input::get("teamcount");
 			$map->teamsize    = Input::get("teamsize");
 			$map->save();
