@@ -15,6 +15,12 @@ MLM = {
 		})();
 		// Cool actionbox 
 			$('#actionbox').hide().fadeIn(1000).show();
+		//Day and Night
+		$("#dayandnight").click(function() {
+			$(this).toggleClass('btn-inverse');
+    		$('body').toggleClass('bg-black');
+   			return false;
+		});
 		// Responsive menu toggle
 			$("#shownav").click(function () {
 				$("#menu").slideToggle().show();
@@ -132,7 +138,7 @@ MLM = {
 			});
 
 			$("#loadmore a").click(function() {
-
+				// Coming Soon!
 			});
 		}
 	},

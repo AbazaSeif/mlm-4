@@ -11,13 +11,21 @@ html, body {height: 100%;}
 body {
     margin: 0;
     padding: 0;
-    background: black url(../images/static/white.png) repeat fixed center;
+    background: #B9B9B9 url(../images/static/white.png) repeat fixed center;
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif; 
     font-weight: normal;
     color: #333;
 }
 
-/*Opera Fix*/
+/* Backgrounds */
+
+.bg-white { background-image: url(../images/static/white.png) }
+.bg-black { background-image: url(../images/static/black.png) }
+.bg-red { background-image: url(../images/static/red.png) }
+.bg-green { background-image: url(../images/static/green.png) }
+.bg-blue { background-image: url(../images/static/blue.png) }
+
+/* Opera Fix */
 body:before {/* thanks to Maleika (Kohoutec)*/
 content:"";
 height:100%;
@@ -1529,17 +1537,11 @@ hr { border-top: 1px solid rgb(172, 172, 172);  border-bottom: 1px solid #ffffff
 
 .alert p { display:inline; margin:auto; font-family: "Oswald"; font-weight: 400 }
 
-table,.table {background-color: #fff;color: #000; -webkit-border-radius: 0px;-moz-border-radius: 0px; border-radius: 0px }
-
-.table th, .table tr, .table td { -webkit-border-radius: 0px!important;  border-radius: 0px!important;  -moz-border-radius: 0px!important; }
-
 .btn { vertical-align: 0;margin-top: 0;border-radius: 0px; }
 
 a[data-toggle=dropdown] {
     border-radius: 0px!important;
 }
-
-.nav-tabs {border-bottom: 1px dotted #fff}
 
 .btn-gold { /* by t2t2 */
 text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
@@ -1560,6 +1562,14 @@ filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ff0088cc', en
 .btn-gold:active,.btn-gold.active {background-color: #003399 \9;}
 
 .btn-group > .btn + .btn { margin-left: -3px; }
+
+.nav-tabs {border-bottom: 1px dotted #fff}
+
+h1 small,h2 small,h3 small,h4 small,h5 small,h6 small { color: #666 }
+
+table,.table {background-color: #fff;color: #000; -webkit-border-radius: 0px;-moz-border-radius: 0px; border-radius: 0px }
+
+.table th, .table tr, .table td { -webkit-border-radius: 0px!important;  border-radius: 0px!important;  -moz-border-radius: 0px!important; }
 
 .thumbnail { background-color: #fff;}
     
