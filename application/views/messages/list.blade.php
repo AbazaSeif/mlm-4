@@ -2,7 +2,7 @@
 
 @section("content")
 @include("user.menu")
-<div id="content" class="messages clearfix">
+<div id="content" class="messages index clearfix">
 <div id="page" class="maxwidth">
 <div class="titlebar"><h2>Messages</h2><a href="{{ URL::to_action("messages@new") }}" class="btn right"><i class="icon-envelope"></i> New Message</a></div>
 <ol>

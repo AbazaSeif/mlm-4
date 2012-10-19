@@ -161,7 +161,7 @@ class Messages_Controller extends Base_Controller {
 			$newusertxt = "Added people to this thread:\n\n";
 			foreach($userobjs as $userobj) {
 				$thread->users()->attach($userobj->id, array("unread" => 1));
-				$newusertxt .= "* [![Avatar](http://minotar.net/helm/{$userobj->mc_username}/18.png) {$userobj->username}](http://mlm.dev/user/{$userobj->username})\n";
+				$newusertxt .= "* [![Pavatar](http://minotar.net/helm/{$userobj->mc_username}/15.png) {$userobj->username}](http://mlm.dev/user/{$userobj->username})\n";
 			}
 			/* Attach message */
 
