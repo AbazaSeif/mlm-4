@@ -44,12 +44,12 @@
 </head>
 @if(isset($javascript))
 @if(count($javascript) > 1)
-<body data-controller="{{ $javascript[0] }}" data-action="{{ $javascript[1] }}">
+<body data-controller="{{ $javascript[0] }}" data-action="{{ $javascript[1] }}" class="{{ Cookie::get_raw("multibg", 'bg-white') }}">
 @else
-<body data-controller="{{ $javascript[0] }}">
+<body data-controller="{{ $javascript[0] }}" class="{{ Cookie::get_raw("multibg", 'bg-white') }}">
 @endif
 @else
-<body>
+<body class="{{ Cookie::get_raw("multibg", 'bg-white') }}">
 @endif
 	<!--[if lt IE 7]><p class="chromeframe">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/?locale=en">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 	<noscript>
@@ -67,7 +67,7 @@
 					</div>
 					<div id="loginout">
 						@if (Auth::user() && Auth::user()->admin)
-						{{ HTML::link_to_action('account@logout', "Logout") }} {{ HTML::link('admin', 'Admin panel'); }} <a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/150" alt="avatar" /></a>
+						{{ HTML::link_to_action('account@logout', "Logout") }} {{ HTML::link('admin', 'Admin panel'); }} {{ HTML::link('account', 'Edit Account'); }} <a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/150" alt="avatar" /></a>
 						@elseif (Auth::check())
 						{{ HTML::link_to_action('account@logout', "Logout") }} {{ HTML::link('account', 'Edit Account'); }} <a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/150" alt="avatar" /></a>
 						@else

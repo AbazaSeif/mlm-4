@@ -4,8 +4,17 @@
 @section('content')
 @include("user.menu")
 	<div id="content" class="account-settings">
-	<div class="titlebar">
-		<h2>Edit Account &amp; Profile</h2>
+	<div class="titlebar"><h2>Edit Account &amp; Profile</h2></div>
+	<div class="titlebar"><h3>Switch background color</h3></div>
+	<div id="multibg">
+	<a href="#" data-mbg="bg-white"><img src="{{ URL::to_asset("images/static/bg/white.png") }}"></a>
+	<a href="#" data-mbg="bg-black"><img src="{{ URL::to_asset("images/static/bg/black.png") }}"></a>
+	<a href="#" data-mbg="bg-red"><img src="{{ URL::to_asset("images/static/bg/red.png") }}"></a>
+	<a href="#" data-mbg="bg-green"><img src="{{ URL::to_asset("images/static/bg/green.png") }}"></a>
+	<a href="#" data-mbg="bg-blue"><img src="{{ URL::to_asset("images/static/bg/blue.png") }}"></a>
+	<a href="#" data-mbg="bg-cyan"><img src="{{ URL::to_asset("images/static/bg/cyan.png") }}"></a>
+	<a href="#" data-mbg="bg-yellow"><img src="{{ URL::to_asset("images/static/bg/yellow.png") }}"></a>
+	<a href="#" data-mbg="bg-magenta"><img src="{{ URL::to_asset("images/static/bg/magenta.png") }}"></a>
 	</div>
 	<div class="titlebar"><h3>Linked OpenID Accounts</h3></div>
 		<ul>
