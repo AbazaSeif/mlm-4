@@ -63,9 +63,9 @@ Route::get("user/(:any?)", function($username = null) {
 	}
 
 	if(Auth::check() && Auth::user()->id == $userobj->id) {
-		return View::make("user.home", array("ownpage" => true, "user" => $userobj));
+		return View::make("user.home", array("title" => "Your Profile & Activity", "ownpage" => true, "user" => $userobj));
 	} else {
-		return View::make("user.home", array("ownpage" => false, "user" => $userobj));
+		return View::make("user.home", array("title" => $userobj->username." Profile & Activity", "ownpage" => false, "user" => $userobj));
 	}
 });
 
