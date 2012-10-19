@@ -11,7 +11,7 @@
 	<div class="left halfwidth">
 	{{ Form::open("messages/new", 'POST', array('class' => 'form')) }}
 	{{ Form::token() }}
-	<div class="titlebar"><h3>Title</h3></div>
+	<div class="titlebar"><h3>Subject</h3></div>
 	{{ Form::field("text", "title", "", array(Input::old("title"), array('class' => 'title')), array('error' => $errors->first('title'))) }}
 	<div class="titlebar"><h3>Send to <small>(Separete multiple users with a comma)</small></h3></div>
 		{{ Form::field("text", "users", "", array(Input::old("users"), array('class' => 'title')), array('error' => $errors->first('users'))) }}

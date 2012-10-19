@@ -111,6 +111,7 @@
 			<p>&copy;2012 Major League Mining</p>
 		</div>
 		<div class="right">
+			<a href="/humans.txt" title="Powered by Magic and Miracles" target="_blank" style="color:#333"><i class="icon-magic"></i></a>
 			<?php /*
 			<a href="http://facebook.com/mlm" title="Like us on Facebook" class="fb"><i class="icon-facebook-sign"></i></a>
 			<a href="http://twitter.com/mlm" title="Follow us on Twitter" class="tw"><i class="icon-twitter-sign"></i></a>

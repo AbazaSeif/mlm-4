@@ -21,6 +21,8 @@ body {
 
 .bg-white { background-image: url(../images/static/bg/white.png) }
 .bg-black { background-image: url(../images/static/bg/black.png) }
+    .bg-black .submenu li.disabled a { color: #f0f0f0 }
+    .bg-black .submenu li a { color: #fff; text-shadow:0px 1px 1px #000;}
 .bg-red { background-image: url(../images/static/bg/red.png) }
 .bg-green { background-image: url(../images/static/bg/green.png) }
 .bg-blue { background-image: url(../images/static/bg/blue.png) }
@@ -1017,48 +1019,48 @@ text-decoration: underline;
   padding: 0;
 }
 
-.messages ol,ul {
+.messages.index ol, .messages.view ul.itt, .messages.view > ol, .messages.view > ul {
     margin: 0;
 }
 
-.messages li {
+.messages.index li {
     margin-bottom: 5px;
     list-style: none;
     background-color: rgb(216, 216, 216);
     border: 1px solid rgb(173, 173, 173);
 }
 
-.messages li:hover {
+.messages.index li:hover {
     background-color:#B9B9B9;
 }
 
-.messages li .title::before{
+.messages.index li .title::before{
     content: "Ł";
     font-family: FontAwesome;
 }
 
-.messages li.unread .title::before{
+.messages.index li.unread .title::before{
     content: "";
     font-family: FontAwesome;
 }
 
-.messages li > a {
+.messages.index li > a {
     display: block;
     padding: 10px;
     color: #333;
 }
 
-.messages .title {
+.messages.index .title {
   float: left;
   margin: 0 12px 0 0;
   line-height: 1;
 }
 
-.messages .title a {
+.messages.index .title a {
   font-size: 17px;
 }
 
-.messages .meta {
+.messages.index .meta {
   font-size: 13px;
   text-align: right;
 }
@@ -1066,16 +1068,30 @@ text-decoration: underline;
 .messages.view .itt li {
     display: inline-block;
     margin: 3px 3px 3px 0;
+    background-color: rgb(216, 216, 216);
+    border: 1px solid rgb(173, 173, 173);
     width: 31.7%;
 }
+
+.messages.view .itt li:hover {
+    background-color:#B9B9B9;
+}
+
+.messages.view .itt li a {
+    display: block;
+    padding: 5px;
+    color: #333;
+}
+
 .messages.view .itt li img {
+    display: inline;
     vertical-align: top;
     border: 1px solid #ADADAD;
 }
 
 .messages .message {
     margin-bottom: 5px;
-    padding: 10px;
+    padding: 0;
     list-style: none;
     background-color: rgb(216, 216, 216);
     border: 1px solid rgb(173, 173, 173);
@@ -1090,15 +1106,22 @@ text-decoration: underline;
     padding: 6px;
     background: #BEBEBE;
     font-size: 15px;
-    font-style: italic;
 }
 
-.messages .message .vcard img{
+.messages .message .vcard img, .messages .message img[alt=Pavatar]{
     display: inline;
     padding: 2px;
     background: #BEBEBE;
     border:1px solid #ADADAD;
-    vertical-align: middle;
+    vertical-align: -5px;
+}
+
+.messages .message .body ol, .messages .message .body ul {
+    margin: 0 0 10px 25px;
+}
+
+.messages .message p {
+    padding: 0 6px;
 }
 
 .messages .message img {
