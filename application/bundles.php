@@ -35,7 +35,7 @@
 
 return array(
 
-	'docs' => array('handles' => 'docs'),
+//	'docs' => array('handles' => 'docs'),
 	'basset' => array(
 		'handles' => 'assets',
 		'auto' => true
