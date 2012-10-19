@@ -15,7 +15,7 @@ class Account_Controller extends Base_Controller {
 	/* Account management */
 	public function get_index() {
 		$openids = Auth::user()->openid;
-		return View::make("pages.account", array("title" => "Account", "openids" => $openids));
+		return View::make("pages.account", array("title" => "Edit Account & Profile", "openids" => $openids));
 	}
 	/* Public methods -- Login */
 	public function get_login() {

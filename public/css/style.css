@@ -28,13 +28,14 @@ body {
 .bg-yellow { background-image: url(../images/static/bg/yellow.png) }
 .bg-magenta { background-image: url(../images/static/bg/magenta.png) }
 
-/* Opera Fix */
-body:before {/* thanks to Maleika (Kohoutec)*/
-content:"";
-height:100%;
-float:left;
-width:0;
-margin-top:-32767px;/* thank you Erik J - negate effect of float*/
+/* Opera Fix for sticky footer */
+
+body::before {/* thanks to Maleika (Kohoutec) */
+    content:"";
+    height:100%;
+    float:left;
+    width:0;
+    margin-top:-32767px;/* thank you Erik J - negate effect of float */
 }
 
 ::selection {
@@ -56,7 +57,7 @@ margin-top:-32767px;/* thank you Erik J - negate effect of float*/
 .center {text-align: center;}
 .inline {display: inline!important}
 .maxwidth { width: 100% }
-.halfwidth { width: 50% }
+.halfwidth { width: 49.5% }
 
 a { color: #1e95cf; text-decoration: none }
 
@@ -1064,8 +1065,8 @@ text-decoration: underline;
 
 .messages.view .itt li {
     display: inline-block;
-    margin: 5px 5px 5px 0;
-    width: 40%;
+    margin: 3px 3px 3px 0;
+    width: 31.7%;
 }
 .messages.view .itt li img {
     vertical-align: top;
