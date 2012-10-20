@@ -59,7 +59,9 @@
 			<div class="vcard">
 			<a href="{{ URL::to("user/{ Auth::user()->username }") }}"><img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/15" alt="avatar"> {{ Auth::user()->username }}</a>
 			</div>
+			<div class="body">
 			<div id="preview"></div>
+			</div>
 		</li>
 	</div>
 </div>
