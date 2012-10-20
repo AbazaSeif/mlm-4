@@ -11,9 +11,9 @@
 		<a href="{{ URL::to_action("maps@view", array($map->id, $map->slug)) }}" title="">
 		<div class="mv-image">
 		@if($map->image)
-		{{ HTML::image($map->image->file_medium) }}
+		<img src="{{ e($map->image->file_medium) }}" data-original="{{ e($map->image->file_medium) }}" alt="Map cover" />
 		@else
-		<img src="{{ URL::to_asset("images/static/noimage.jpg") }}" alt="No Images found" />
+		<img src="{{ URL::to_asset("images/static/noimage.jpg") }}" data-original="{{ URL::to_asset("images/static/noimage.jpg") }}" alt="No Images found" />
 		@endif
 		</div>
 		<div class="mv-details">
