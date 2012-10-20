@@ -37,8 +37,8 @@ MLM = {
 				if($(this).val() == "") { $(this).val("Search...");	}
 			});
 		// Lazyload images
-			$("img#page").lazyload({
-				effect: "fadeIn"
+			$(".post img, #multiview img").lazyload({
+     			effect:"fadeIn"
 			});
 		// Admin WYSIWYG Editor
 			$("textarea[data-wysiwyg]").cleditor({

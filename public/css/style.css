@@ -1116,12 +1116,12 @@ text-decoration: underline;
     vertical-align: -5px;
 }
 
-.messages .message .body ol, .messages .message .body ul {
-    margin: 0 0 10px 25px;
+.messages .message .body {
+    padding: 0 6px;
 }
 
-.messages .message p {
-    padding: 0 6px;
+.messages .message .body ol, .messages .message .body ul {
+    margin: 0 0 10px 25px;
 }
 
 .messages .message img {

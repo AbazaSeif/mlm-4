@@ -21,7 +21,7 @@ class Maps_Controller extends Base_Controller {
 		$featured = strtolower(Input::get('featured'));
 		$official = strtolower(Input::get('official'));
 		$own = strtolower(Input::get('ownmaps'));
-		$limit = intval(Input::get('limit', null)) ?: 10;
+		$limit = intval(Input::get('limit', null)) ?: 12;
 
 		//start to make $query
 		$query = Map::with("users");
@@ -225,7 +225,7 @@ class Maps_Controller extends Base_Controller {
 		$authors = $map->users()->with("confirmed")->get();
 
 		return View::make("maps.edit", array(
-			"title" => "Edit | ".e($map->title)." | Maps", "map" => $map, "authors" => $authors, "sidebar" => "edit"
+			"title" => "Editing: ".e($map->title)." | Maps", "map" => $map, "authors" => $authors, "sidebar" => "edit"
 		));
 	}
 	/* Edit metadata */

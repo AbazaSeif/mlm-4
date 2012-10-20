@@ -73,7 +73,7 @@ class Admin_News_Controller extends Admin_Controller {
 		} else {
 			$previewimage = URL::to_asset($newsitem->image->file_small);
 		}
-		return View::make("admin.news.form", array("title" => "Edit ".e($newsitem->title)." | News | Admin", "newsitem" => $newsitem, "previewimage" => $previewimage));
+		return View::make("admin.news.form", array("title" => "Editing: ".e($newsitem->title)." | News | Admin", "newsitem" => $newsitem, "previewimage" => $previewimage));
 	}
 	// Saving edits
 	public function post_edit($id) {
