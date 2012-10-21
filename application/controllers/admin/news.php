@@ -8,7 +8,7 @@ class Admin_News_Controller extends Admin_Controller {
 	}
 	// Listing news
 	public function get_index() {
-		$news = DB::table("news")->order_by("id", "desc")->get(array("id", "title", "slug", "created_at", "published"));
+		$news = DB::table("news")->order_by("id", "desc")->get(array("id", "title", "slug","user_id", "created_at", "published"));
 		return View::make("admin.news.list", array("news" => $news, "title" => "News | Admin"));
 	}
 	// New form
@@ -22,7 +22,7 @@ class Admin_News_Controller extends Admin_Controller {
 			$oldimage = null;
 		}
 
-		return View::make("admin.news.new", array("title" => "New | News | Admin", "oldimage" => $oldimage));
+		return View::make("admin.news.new", array("title" => "New Article | News | Admin", "oldimage" => $oldimage));
 	}
 	public function post_new() {
 		$validation_rules = array(
@@ -73,7 +73,7 @@ class Admin_News_Controller extends Admin_Controller {
 		} else {
 			$previewimage = URL::to_asset($newsitem->image->file_small);
 		}
-		return View::make("admin.news.form", array("title" => "Edit ".e($newsitem->title)." | News | Admin", "newsitem" => $newsitem, "previewimage" => $previewimage));
+		return View::make("admin.news.form", array("title" => "Editing: ".e($newsitem->title)." | News | Admin", "newsitem" => $newsitem, "previewimage" => $previewimage));
 	}
 	// Saving edits
 	public function post_edit($id) {

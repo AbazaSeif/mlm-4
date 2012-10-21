@@ -10,7 +10,7 @@
 	<h2 class="title">{{ HTML::link_to_action("news@view", $article->title, array($article->id, $article->slug)) }}</h2>
 	<div class="entry">
 		<a href="{{ URL::to_action("news@view", array($article->id, $article->slug)) }}">
-		{{ HTML::image($article->image->file_medium, "Image",array("class" => "post-image")) }}
+		<img src="{{ e($article->image->file_medium) }}" data-original="{{ e($article->image->file_medium) }}" alt="{{ e($article->title) }}" class="image" />
 		</a>
 		{{ nl2br(e($article->summary)) }}
 

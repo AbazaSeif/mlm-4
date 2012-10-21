@@ -34,9 +34,13 @@
 			<a href="{{ URL::to("user/{$message->user->username}") }}"><img src="http://minotar.net/helm/{{ $message->user->mc_username }}/15" alt="avatar"> {{$message->user->username}}</a> @ {{ $message->created_at }}
 			</div>
 			@else
-			<small>System @ {{ $message->created_at }}</small>
+			<div class="vcard">
+			<a href="#"><img src="{{ URL::to_asset("images/static/system.png") }}" width="15"> System</a> @ {{ $message->created_at }}
+			</div>
 			@endif
+			<div class="body">
 			{{ $message->message }}
+			</div>
 		</li>
 	@endforeach
 	</ul>
@@ -53,9 +57,11 @@
 		<div class="titlebar"><h4>Preview</h4></div>
 		<li class="message">
 			<div class="vcard">
-			<a href="{{ URL::to("user/{ Auth::user()->username }") }}"><img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/15" alt="avatar">{{ Auth::user()->username }}</a>
+			<a href="{{ URL::to("user/{ Auth::user()->username }") }}"><img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/15" alt="avatar"> {{ Auth::user()->username }}</a>
 			</div>
+			<div class="body">
 			<div id="preview"></div>
+			</div>
 		</li>
 	</div>
 </div>
