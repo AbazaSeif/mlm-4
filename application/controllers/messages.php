@@ -91,7 +91,7 @@ class Messages_Controller extends Base_Controller {
 	/* Replying to thread */
 	public function post_reply($threadid) {
 		$thread = Auth::user()->messages()->where_message_thread_id($threadid)->first(); // Makes sure it's readable by the user
-		if(!$thread) {
+		if(!$thread || !$thread->user_id) {
 			return Response::error('404');
 		}
 		$validation_rules = array(
@@ -114,10 +114,7 @@ class Messages_Controller extends Base_Controller {
 	/* Adding more people to thread */
 	public function post_add($threadid) {
 		$thread = Auth::user()->messages()->where_message_thread_id($threadid)->first(); // Makes sure it's readable by the user
-		if(!$thread) {
-			return Response::error('404');
-		}
-		if(!$thread->user_id) { // If thread was started by the system
+		if(!$thread || !$thread->user_id) { // If thread was started by the system
 			return Response::error('404');
 		}
 		$validation_rules = array(
