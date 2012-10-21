@@ -23,13 +23,13 @@
 		</div>
 	</div>
 	<div class="entry">
-		{{ HTML::image($article->image->file_medium, "Image",array("class" => "post-image")) }}
+		{{ HTML::image($article->image->file_medium, "Image",array("class" => "image")) }}
 		{{ $article->content }}
 	</div>
 </div>
 @include("news.comments")
 </div>
 </div>
-@include("news.sidebar")	
+@include("news.sidebar")
 </div>
 @endsection
