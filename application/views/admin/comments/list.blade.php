@@ -19,7 +19,7 @@
 		</thead>
 		<tbody>
 			@foreach ($comments as $item)
-			<tr>
+			<tr id="comment{{ $item->id }}">
 				<td>{{ $item->id }}</td>
 				<td>{{ HTML::link_to_action("user", $item->user->username, array($item->user->username)) }}</A></td>
 				@if($item->news_id != null)
