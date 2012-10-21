@@ -44,6 +44,7 @@
 <ul class="submenu nav nav-pills">
 	<li class="disabled"><a href="#">Actions:</a></li>
 	<li>{{ HTML::link_to_action("maps@edit", "Edit Map", array($map->id)) }}</li>
+	<li>{{ HTML::link_to_action("maps@view", "Back to Map", array($map->id, $map->slug)) }}</li>
 </ul>
 @else
 @endif
