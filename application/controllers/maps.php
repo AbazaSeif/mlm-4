@@ -225,7 +225,7 @@ class Maps_Controller extends Base_Controller {
 		$authors = $map->users()->with("confirmed")->get();
 
 		return View::make("maps.edit", array(
-			"title" => "Edit | ".e($map->title)." | Maps", "map" => $map, "authors" => $authors, "sidebar" => "edit"
+			"title" => "Edit | ".e($map->title)." | Maps", "map" => $map, "is_owner" => $is_owner, "authors" => $authors, "sidebar" => "edit"
 		));
 	}
 	/* Edit metadata */
@@ -352,7 +352,7 @@ EOT;
 		}
 
 		return View::make("maps.edit_link", array(
-			"title" => "Add link | ".e($map->title)." | Maps", "map" => $map, "link" => $link
+			"title" => "Add link | ".e($map->title)." | Maps", "map" => $map, "is_owner" => $is_owner, "link" => $link
 		));
 	}
 	public function post_edit_link($id, $linkid = null) {
@@ -412,7 +412,7 @@ EOT;
 			return Response::error("404"); // Not map's link
 		}
 
-		return View::make("maps.delete_link", array("title" => "Delete link | ".e($map->title)." | Maps", "map" => $map, "link" => $link));
+		return View::make("maps.delete_link", array("title" => "Delete link | ".e($map->title)." | Maps", "map" => $map,  "is_owner" => $is_owner, "link" => $link));
 	}
 	public function post_delete_link($id, $linkid) {
 		$map = Map::find($id);
@@ -497,7 +497,7 @@ EOT;
 			return Response::error("404"); // Not map's image
 		}
 
-		return View::make("maps.delete_image", array("title" => "Delete image | ".e($map->title)." | Maps", "map" => $map, "image" => $image));
+		return View::make("maps.delete_image", array("title" => "Delete image | ".e($map->title)." | Maps", "map" => $map,  "is_owner" => $is_owner, "image" => $image));
 	}
 	public function post_delete_image($id, $imageid) {
 		$map = Map::find($id);
