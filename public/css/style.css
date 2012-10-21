@@ -730,17 +730,17 @@ a:hover { color: #005580 }
     padding: 0;
 }
 
-.post-image  {
-    display: block;
-    margin-bottom: 15px;
-    width: 100%;
-    -moz-box-shadow: 0 8px 6px -6px #000;  
-    -webkit-box-shadow: 0 8px 6px -6px black;  
-    box-shadow: 0 8px 6px -6px black;
-    border: 4px solid #ADADAD;
-    box-sizing: border-box;       
+.post .image  {
+    display: block;       
     -webkit-box-sizing:border-box;       
     -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    width: 100%;
+    border: 4px solid #ADADAD;  
+    -webkit-box-shadow: 0 8px 6px -6px black;
+    -moz-box-shadow: 0 8px 6px -6px #000;  
+    box-shadow: 0 8px 6px -6px black;
 }
 
 .post .meta  {
@@ -1613,7 +1613,7 @@ table,.table {background-color: #fff;color: #000; -webkit-border-radius: 0px;-mo
 
 .table th, .table tr, .table td { -webkit-border-radius: 0px!important;  border-radius: 0px!important;  -moz-border-radius: 0px!important; }
 
-.thumbnail { background-color: #fff;}
+.thumbnail { background-color: #fff; }
     
 /* Sprite galore! 
    ================================================== */
