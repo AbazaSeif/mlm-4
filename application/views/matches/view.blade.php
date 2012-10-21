@@ -69,21 +69,23 @@
 			@endif
 		@endif
 	@endforeach
-	@if($match->winningteam == null && !Auth::user()->in_match($match->id) && $match->invite_only == false)
-		{{ Form::open("matches/join/".$match->id) }}
-			{{ Form::token() }}
-			{{ Form::hidden("action", "deny") }}
-			<button type="submit" class="btn"><i class="icon-plus"></i> Join Match</button>
-		{{ Form::close() }}
-	@elseif($match->winningteam == null && Auth::user()->in_match($match->id) && $is_invited)
-		<a href="{{ URL::to_action("matches@leave", array($match->id)) }}" class="btn btn-danger" style="margin-bottom:15px"><i class="icon-minus"></i> Leave Match</a>
-	@elseif($match->winningteam != null)
-		Winners:
-		@foreach($match->users as $user)
-			@if($user->pivot->teamnumber == $match->winningteam)
-				<li>{{ $user->username }} - Team {{ $user->pivot->teamnumber }}</li>
-			@endif
-		@endforeach
+	@if(Auth::user() != null)
+		@if($match->winningteam == null && !Auth::user()->in_match($match->id) && $match->invite_only == false)
+			{{ Form::open("matches/join/".$match->id) }}
+				{{ Form::token() }}
+				{{ Form::hidden("action", "deny") }}
+				<button type="submit" class="btn"><i class="icon-plus"></i> Join Match</button>
+			{{ Form::close() }}
+		@elseif($match->winningteam == null && Auth::user()->in_match($match->id) && $is_invited)
+			<a href="{{ URL::to_action("matches@leave", array($match->id)) }}" class="btn btn-danger" style="margin-bottom:15px"><i class="icon-minus"></i> Leave Match</a>
+		@elseif($match->winningteam != null)
+			Winners:
+			@foreach($match->users as $user)
+				@if($user->pivot->teamnumber == $match->winningteam)
+					<li>{{ $user->username }} - Team {{ $user->pivot->teamnumber }}</li>
+				@endif
+			@endforeach
+		@endif
 	@endif
 </div>
 @endsection

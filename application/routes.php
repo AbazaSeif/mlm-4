@@ -44,7 +44,7 @@ Route::get("news/(:num)-(:any)", "news@view");
 Route::get("map/(:num)-(:any)", "maps@view");
 
 // Public routes
-Route::controller(array("account", "imgmgr", "maps", "messages", "news", "faq", "matches"));
+Route::controller(array("account", "imgmgr", "maps", "messages", "news", "faq", "matches", "search"));
 
 // User pages
 Route::get("user/(:any?)", function($username = null) {
@@ -62,10 +62,14 @@ Route::get("user/(:any?)", function($username = null) {
 		return Response::error("404");
 	}
 
+	//Generate moduleURL (as this doesn't go through the base controller, it isn't generated there)
+	$url = explode('/', URL::current());
+	$moduleurl = $url[4];
+
 	if(Auth::check() && Auth::user()->id == $userobj->id) {
-		return View::make("user.home", array("title" => "Your Profile & Activity", "ownpage" => true, "user" => $userobj));
+		return View::make("user.home", array("title" => "Your Profile & Activity", "ownpage" => true, "user" => $userobj, "moduleURL" => $moduleurl));
 	} else {
-		return View::make("user.home", array("title" => $userobj->username." Profile & Activity", "ownpage" => false, "user" => $userobj));
+		return View::make("user.home", array("title" => $userobj->username." Profile & Activity", "ownpage" => false, "user" => $userobj, "moduleURL" => $moduleurl));
 	}
 });
 
@@ -73,7 +77,9 @@ Route::get("user/(:any?)", function($username = null) {
 Route::get("admin", array('before' => 'admin', function() {
 	$log = Adminlog::with("user")->order_by("created_at", "desc")->paginate(30);
 	$modqueue = Modqueue::with("user")->order_by("created_at", "asc")->paginate(30);
-	return View::make("admin.home", array("title" => "Admin", "log" => $log, "modqueue" => $modqueue));
+	$url = explode('/', URL::current());
+	$moduleurl = $url[4];
+	return View::make("admin.home", array("title" => "Admin", "log" => $log, "modqueue" => $modqueue, "moduleURL" => $moduleurl));
 }));
 
 // Admin - Migrating from the website

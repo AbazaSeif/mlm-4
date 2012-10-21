@@ -29,9 +29,11 @@ class Matches_Controller extends Base_Controller {
 		if(Auth::check() == false && $match->public == false) {
 			return Response::error('404');
 		}
+		$is_owner = false;
 		if(Auth::check()) {
 			$is_owner = $match->is_owner(Auth::user());
 		}
+		$is_invited = false;
 		if(Auth::check()) {
 			$is_invited = $match->is_invited(Auth::user());
 		}

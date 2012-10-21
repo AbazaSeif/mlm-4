@@ -100,9 +100,12 @@
 						<li>{{ HTML::link('maps', 'Maps'); }}</li>
 						<li>{{ HTML::link('faq', 'FAQ'); }}</li>
 						<div id="search" class="right clearfix">
-							<form method="get" action="#" class="">
+							<form method="get" action="/index.php/search" class="">
 								<div class="input-append">
-								<input id="main-search" class="sbar" size="16" type="text"><button class="btn" type="button"><i class="icon-search icon-white"></i></button>
+								@if (isset($moduleURL))
+								<input id="type" name="type" type="hidden" value={{ $moduleURL }}>
+								@endif
+								<input id="main-search" name="query" class="sbar" size="16" type="text"><button class="btn" type="button"><i class="icon-search icon-white"></i></button>
 								</div>
 							</form>
 						</div>
