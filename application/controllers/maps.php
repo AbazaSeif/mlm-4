@@ -338,7 +338,8 @@ EOT;
 		if(!$map) {
 			return Response::error('404');
 		}
-		if(!$map->is_owner(Auth::user())) { // User is confirmed to be logged in
+		$is_owner = $map->is_owner(Auth::user());
+		if(!$is_owner) { // User is confirmed to be logged in
 			return Response::error("404");
 		}
 
@@ -404,7 +405,8 @@ EOT;
 		if(!$map) {
 			return Response::error('404');
 		}
-		if(!$map->is_owner(Auth::user())) { // User is confirmed to be logged in
+		$is_owner = $map->is_owner(Auth::user());
+		if(!$is_owner) { // User is confirmed to be logged in
 			return Response::error("403"); // Not yet published
 		}
 		$link = $map->links()->where_id($linkid)->first();
@@ -489,7 +491,8 @@ EOT;
 		if(!$map) {
 			return Response::error('404');
 		}
-		if(!$map->is_owner(Auth::user())) { // User is confirmed to be logged in
+		$is_owner = $map->is_owner(Auth::user());
+		if(!$is_owner) { // User is confirmed to be logged in
 			return Response::error("403"); // Not yet published
 		}
 		$image = $map->images()->where_image_id($imageid)->first();
