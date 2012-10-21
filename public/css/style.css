@@ -134,6 +134,7 @@ a:hover { color: #005580 }
     margin: 10px 0 0;
     padding: 0;
     font-family: "Oswald";
+    text-align: right;
 }
 
 #global-header #loginout a.nosep {
@@ -147,12 +148,14 @@ a:hover { color: #005580 }
     font-size: 18px;
     text-decoration: none;
     color: #fff;
+    text-transform: uppercase;
+    letter-spacing: -1px;
     text-shadow: 0 -1px 0px #000;
     border-right: 1px dotted #ADADAD;
 }
 
 #global-header #loginout img {
-    margin-left: 3px;
+    margin-left: 6px;
     width: 20px;
     border: 2px #fff solid;
     -moz-box-shadow: 0 1px 1px #000;

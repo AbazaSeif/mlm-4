@@ -26,7 +26,7 @@
 	</a>
 	</li>
 	@empty
-	<li>No messages found</li>
+	<li style="padding:10px;">No messages found :(</li>
 	@endforelse
 </ol>
 </div>
