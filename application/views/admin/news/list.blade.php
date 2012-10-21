@@ -24,7 +24,7 @@
 				<td>{{ $item->id }}</td>
 				<td>{{ HTML::link_to_action("news@view", $item->title, array($item->id, $item->slug), array("target" => "_blank")) }}</td>
 				<td>{{ date("F j, Y g:ia", strtotime($item->created_at)) }}</td>
-				<td>USERNAME</td>
+				<td>{{ $item->user_id }}</td>
 				<td>
 					@if($item->published)
 						<i class="icon-eye-open" title="Published"></i>

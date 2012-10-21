@@ -10,7 +10,7 @@ class Admin_Pages_Controller extends Admin_Controller {
 
 	// Create
 	public function get_new() {
-		return View::make("admin.pages.new", array("title" => "New | Page | Admin"));
+		return View::make("admin.pages.new", array("title" => "New Page | Pages | Admin"));
 	}
 	public function post_new() {
 		$validation_rules = array(
@@ -45,7 +45,7 @@ class Admin_Pages_Controller extends Admin_Controller {
 			Messages::add("error", "Page not found");
 			return Redirect::to_action("admin.pages");
 		}
-		return View::make("admin.pages.edit", array("title" => "Edit ".e($page->title)." | Page | Admin", "page" => $page));
+		return View::make("admin.pages.edit", array("title" => "Edit ".e($page->title)." | Pages | Admin", "page" => $page));
 	}
 	public function post_edit($id) {
 		$page = Page::find($id);
@@ -86,7 +86,7 @@ class Admin_Pages_Controller extends Admin_Controller {
 			Messages::add("error", "Page not found");
 			return Redirect::to_action("admin.pages");
 		}
-		return View::make("admin.pages.delete", array("title" => "Delete ".e($page->title)." | Page | Admin", "page" => $page));
+		return View::make("admin.pages.delete", array("title" => "Delete ".e($page->title)." | Pages | Admin", "page" => $page));
 	}
 	// Deletion
 	public function post_delete($id) {
