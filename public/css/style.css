@@ -1582,11 +1582,7 @@ hr { border-top: 1px solid rgb(172, 172, 172);  border-bottom: 1px solid #ffffff
 
 .alert p { display:inline; margin:auto; font-family: "Oswald"; font-weight: 400 }
 
-.btn { vertical-align: 0;margin-top: 0;border-radius: 0px; }
-
-a[data-toggle=dropdown] {
-    border-radius: 0px!important;
-}
+.btn { vertical-align: 0; margin-top: 0; -webkit-border-radius: 0px!important;-moz-border-radius: 0px!important; border-radius: 0px!important }
 
 .btn-gold { /* by t2t2 */
 text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
@@ -1606,7 +1602,7 @@ filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ff0088cc', en
 .btn-gold:hover,.btn-gold:active,.btn-gold.active,.btn-gold.disabled,.btn-gold[disabled] {background-color: #F2E35C;*background-color: #F2E35C;}
 .btn-gold:active,.btn-gold.active {background-color: #003399 \9;}
 
-.btn-group > .btn + .btn { margin-left: -3px; }
+.btn-group > .btn + .btn, { margin-left: -3px; }
 
 .nav-tabs {border-bottom: 1px dotted #fff}
 
