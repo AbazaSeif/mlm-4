@@ -13,7 +13,7 @@ class Base_Controller extends Controller {
 	{
 		return Response::error('404');
 	}
-
+/*
 	public function __construct()
     {
     	// Generate a 'moduleURL' variable so we can access which module we are currently i
@@ -22,5 +22,5 @@ class Base_Controller extends Controller {
     	$moduleurl = $url[4];
     	View::share('moduleURL', $moduleurl);
     }
-
+*/
 }
