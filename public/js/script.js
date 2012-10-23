@@ -21,13 +21,15 @@ MLM = {
 				}
 				$("body").removeClass().addClass(newBg);
 				$.cookie("multibg", newBg, {expires: 365})
-			});		
-		// Cool actionbox 
-			$('#actionbox').hide().fadeIn(1000).show();
+			});
 		// Responsive menu toggle
 			$("#shownav").click(function () {
 				$("#menu").slideToggle().show();
-			});
+			});	
+		// Cool actionbox 
+			$('#actionbox').hide().fadeIn(1000).show();
+		// Activate Bootstrap Dropdowns
+			$('.dropdown-toggle').dropdown();
 		// Search bar
 			$("#main-search").val("Search...");
 			$("#main-search").focus(function(){
@@ -37,49 +39,17 @@ MLM = {
 				if($(this).val() == "") { $(this).val("Search...");	}
 			});
 		// Lazyload images
-			$(".post img, #multiview img").lazyload({
+			$(".post img").lazyload({
      			effect:"fadeIn"
-			});
-		// Admin WYSIWYG Editor
-			$("textarea[data-wysiwyg]").cleditor({
-				docType: '<!DOCTYPE html>'
 			});
 		// User WYSIWYG Editor
 			$("textarea[data-wysiwyg-user]").cleditor({
 				controls: 'bold italic strikethrough | bullets numbering | link unlink | removeformat',
 				docType: '<!DOCTYPE html>'
 			});
-		// Make tables sortable
-			$("#sortable").tablesorter();
-		// Activate Bootstrap Dropdowns
-			$('.dropdown-toggle').dropdown();
-		// Gloal Slideshow
-			$('#gslider').nivoSlider({
-				effect: 'fade',
-				animSpeed: 700,
-				pauseTime: 3000,
-				startSlide: 0,
-				directionNav: true,
-				controlNav: true,
-				controlNavThumbs: false,
-				pauseOnHover: true,
-				manualAdvance: false,
-				prevText: 'Prev',
-				nextText: 'Next',
-				randomStart: false
-			});javascript:$(this).click(function(){$("#messactions").fadeToggle()});
-		// Show/Hide Markdown Live Preview & Message actions
-			$("#prevb,#mess-ac-open").click(function () {
-				$("#comment,#mess-actions").fadeToggle(300);
-				return false;
-			});
-		// Admin menu toggle
-			$("#show-adminmenu").click(function () {
-				$("#adminmenu").fadeToggle(300);
-				return false;
-			});
-			$("#adminmenu").mouseleave(function(){
-				$(this).fadeOut(300);
+		// Show/Hide Markdown Live Preview
+			$("#prevb").click(function () {
+				$("#comment").fadeToggle(300);
 				return false;
 			});
 		// Markdown Live Preview 
@@ -124,30 +94,54 @@ MLM = {
 		list: function() {
 			UTIL.exec("multiview");
 
-			$(".maps").ready(function() {
-				$("#sidebar").hide();
-				$("#multiview>ul");
-			});
-
-			$("#multiview-controller [data-multiview=grid]").click(function() {
-				$("#sidebar").hide();
-				$("#page").removeClass().addClass("maxwidth");
-			});
-
-			$("#multiview-controller [data-multiview=big], #multiview-controller [data-multiview=list]")
-			.click(function() {
-				$("#sidebar").show();
-				$("#page").removeClass().addClass("bigger");
-			});
-
 			$("#loadmore a").click(function() {
 				// Coming Soon!
+			});
+		},
+	view: function () {
+		// Maps slideshow
+			$("#maps-slider").nivoSlider({
+				effect: 'fade',
+				animSpeed: 800,
+				pauseTime: 5000,
+				startSlide: 0,
+				directionNav: true,
+				controlNav: true,
+				controlNavThumbs: false,
+				pauseOnHover: true,
+				manualAdvance: false,
+				prevText: 'Prev',
+				nextText: 'Next',
+				randomStart: false
+			});
+		}
+	},
+	messages: {
+		init: function () {
+			// Show/Hide Message actions
+			$("#mess-ac-open").click(function () {
+				$("#mess-actions").fadeToggle(300);
+				return false;
 			});
 		}
 	},
 	admin: {
 		init: function () {
-			/* Admin pages */
+			// Admin menu toggle
+			$("#show-adminmenu").click(function () {
+				$("#adminmenu").fadeToggle(300);
+				return false;
+			});
+			$("#adminmenu").mouseleave(function(){
+				$(this).fadeOut(300);
+				return false;
+			});
+			// Make tables sortable
+			$("#sortable").tablesorter();
+			// Admin WYSIWYG Editor
+			$("textarea[data-wysiwyg]").cleditor({
+				docType: '<!DOCTYPE html>'
+			});
 		},
 		edit: function() {
 			
@@ -266,6 +260,10 @@ MLM = {
 				}
 				$("#multiview>ul").hide().removeClass().fadeIn(300).addClass(newView)
 				$.cookie("multiview", newView, {expires: 365})
+			});
+			// Lazyload images
+			$("#multiview img").lazyload({
+     			effect:"fadeIn"
 			});
 		}
 	}
