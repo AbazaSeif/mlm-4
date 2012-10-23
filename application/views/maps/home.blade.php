@@ -39,21 +39,5 @@
 </div>
 <div id="loadmore"><a href="#">LOAD MORE</a></div>
 </div>
-
-<div id="sidebar" class="smaller">
-<div class="widget">
-	<header><h1>Sidebar Header</h1></header>
-	<div class="content">
-	<p>Mauris vitae nisl nec metus placerat perdiet est. Phasellus dapibus semper consectetuer hendrerit.</p>
-	</div>
-</div>
-<div class="widget">
-	<header><h1>Sidebar Header</h1></header>
-	<div class="content">
-	<p>Mauris vitae nisl nec metus placerat perdiet est. Phasellus dapibus semper consectetuer hendrerit.</p>
-	</div>
-</div>
-
-</div>
 </div>
 @endsection
