@@ -64,7 +64,7 @@ Route::get("user/(:any?)", function($username = null) {
 
 	//Generate moduleURL (as this doesn't go through the base controller, it isn't generated there)
 	$url = explode('/', URL::current());
-	$moduleurl = $url[4];
+	$moduleurl = $url[3];
 
 	if(Auth::check() && Auth::user()->id == $userobj->id) {
 		return View::make("user.home", array("title" => "Your Profile & Activity", "ownpage" => true, "user" => $userobj, "moduleURL" => $moduleurl));
@@ -78,7 +78,7 @@ Route::get("admin", array('before' => 'admin', function() {
 	$log = Adminlog::with("user")->order_by("created_at", "desc")->paginate(30);
 	$modqueue = Modqueue::with("user")->order_by("created_at", "asc")->paginate(30);
 	$url = explode('/', URL::current());
-	$moduleurl = $url[4];
+	$moduleurl = $url[3];
 	return View::make("admin.home", array("title" => "Admin", "log" => $log, "modqueue" => $modqueue, "moduleURL" => $moduleurl));
 }));
 
