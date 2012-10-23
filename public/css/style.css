@@ -2125,7 +2125,10 @@ table,.table {background-color: #fff;color: #000; -webkit-border-radius: 0px;-mo
 /* Multivew
    ================================================== */
 
-   #multiview ul.grid li { margin:0 0 10px 0; width: 100%;  }
+    #multiview-controller li[data-multiview=big] { display: none; }
+
+    #multiview ul.grid li { margin:0 0 10px 0; width: 100%; }
+
 
 /* News
    ================================================== */
