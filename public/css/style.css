@@ -1922,6 +1922,10 @@ table,.table {background-color: #fff;color: #000; -webkit-border-radius: 0px;-mo
 
     #global-header #logo h1 {display: none!important}
 
+    #menu #loginout li a {padding: 5px 10px!important}
+
+    #menu #loginout li a img {display: none}
+
 }
  
 /* Landscape phone to portrait tablet */
