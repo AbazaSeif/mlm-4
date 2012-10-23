@@ -93,10 +93,6 @@ MLM = {
 	maps: {
 		list: function() {
 			UTIL.exec("multiview");
-
-			$("#loadmore a").click(function() {
-				// Coming Soon!
-			});
 		},
 	view: function () {
 		// Maps slideshow
