@@ -100,7 +100,7 @@
 						<li>{{ HTML::link('maps', 'Maps'); }}</li>
 						<li>{{ HTML::link('faq', 'FAQ'); }}</li>
 						<div id="search" class="right clearfix">
-							<form method="get" action="/index.php/search" class="">
+							<form method="get" action="/search" class="">
 								<div class="input-append">
 								@if (isset($moduleURL))
 								<input id="type" name="type" type="hidden" value={{ $moduleURL }}>
