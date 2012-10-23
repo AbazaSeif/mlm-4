@@ -1922,6 +1922,10 @@ table,.table {background-color: #fff;color: #000; -webkit-border-radius: 0px;-mo
 
     #global-header #logo h1 {display: none!important}
 
+    #menu #loginout li a {padding: 5px 10px!important}
+
+    #menu #loginout li a img {display: none}
+
 }
  
 /* Landscape phone to portrait tablet */
@@ -1942,9 +1946,7 @@ table,.table {background-color: #fff;color: #000; -webkit-border-radius: 0px;-mo
 /* Global Header
    ================================================== */
 
-    #global-header { box-shadow:none; padding-top: 0; min-width: 0; }
-
-    #global-header:after { display: table; content: ""; margin-bottom: 10px }
+    #global-header { margin-bottom: 10px; padding-top: 0; min-width: 0; box-shadow:0px;}
 
     #global-header #main { margin: 0 ; height: 42px;}
 
@@ -1992,12 +1994,12 @@ table,.table {background-color: #fff;color: #000; -webkit-border-radius: 0px;-mo
     #menu {
         display: none;
         margin: 0px auto 13px;
-        width: auto;
+        width: 100%;
         background-image: none;
         text-align: center;
     }
 
-    #menu #loginout { display: block ; border-top: 2px solid #7A7A7A; border-bottom: 2px solid #7A7A7A;}
+    #menu #loginout { display: block ; border-top: 2px solid #7A7A7A; border-bottom: 2px solid #7A7A7A; text-align: center;}
 
     #menu #loginout { float: none; margin: 0 }
 
@@ -2119,6 +2121,24 @@ table,.table {background-color: #fff;color: #000; -webkit-border-radius: 0px;-mo
     text-transform: uppercase;
     word-wrap: break-word;
     }
+
+/* Multivew
+   ================================================== */
+
+   #multiview ul.grid li { margin:0 0 10px 0; width: 100%;  }
+
+/* News
+   ================================================== */
+
+   .post h2.title, .post .title a { font-size: 24px; }
+
+   .post .entry { font-size: 14px; }
+
+   .post .meta .right { display:none; }
+
+   .post.single .left { display:none; }
+
+   .post.single .right { display:inline; }
 
 }
 
