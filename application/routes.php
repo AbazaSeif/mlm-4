@@ -193,7 +193,9 @@ Event::listen("eloquent.created: Message_Message", function($model) {
 
 Route::filter('before', function()
 {
-	// Do stuff before every request to your application...
+	if(Request::foundation()->getRootUrl() == "http://majorleaguemining.com") {
+		return Redirect::to(str_replace("majorleaguemining.com", "majorleaguemining.net", URI::full()));
+	}
 });
 
 Route::filter('after', function($response)

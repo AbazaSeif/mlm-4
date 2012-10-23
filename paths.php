@@ -25,7 +25,7 @@ $environments = array(
 
 	'local' => array('http://localhost*', '*.dev'),
 	"dev" => array("*.greywool.com"),
-	"live" => array("majorleaguemining.net"),
+	"live" => array("majorleaguemining.net", "majorleaguemining.com"),
 );
 
 // --------------------------------------------------------------
