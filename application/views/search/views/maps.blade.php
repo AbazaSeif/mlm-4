@@ -22,7 +22,7 @@
 			@endunless
 			<span>Type: <b>{{ array_get(Config::get("maps.types"), $item->maptype) }}</b></span>
 			<span>Search Hits: <b>{{ $item->searchhitcount }}</b></span>
-			<span>Item Type: <b>{{ ucfirst(Str::singular($item->searchresulttype)) }}</b></span>
+			<span>Item Type: <b>{{ ucfirst(Str::singular(get_class($item))) }}</b></span>
 		</div>
 		</div>
 </a>

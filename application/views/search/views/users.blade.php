@@ -5,7 +5,7 @@
 		<div class="mv-meta">
 			<span>Member Since: <b>{{ date("F j, Y", strtotime($item->created_at)) }}</b></span>
 			<span>Search Hits: <b>{{ $item->searchhitcount }}</b></span>
-			<span>Item Type: <b>{{ ucfirst(Str::singular($item->searchresulttype)) }}</b></span>
+			<span>Item Type: <b>{{ ucfirst(Str::singular(get_class($item))) }}</b></span>
 		</div>
 		</div>
 </a>

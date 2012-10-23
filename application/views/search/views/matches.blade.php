@@ -8,7 +8,7 @@
 			<span>Team Count: <b>{{ $item->team_count }}</b></span>
 			<span>Status: <b>{{ $item->status }}</b>,</span>
 			<span>Search Hits: <b>{{ $item->searchhitcount }}</b></span>
-			<span>Item Type: <b>{{ ucfirst(Str::singular($item->searchresulttype)) }}</b></span>
+			<span>Item Type: <b>{{ ucfirst(Str::singular(get_class($item))) }}</b></span>
 		</div>
 		</div>
 </a>

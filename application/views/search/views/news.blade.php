@@ -7,7 +7,7 @@
 			<span>By: <b>{{ $item->user->username}}</b></span>
 			<span>Posted: <b>{{ HTML::entities(date("F j, Y g:ia", strtotime($item->created_at))) }}</b></span>
 			<span>Search Hits: <b>{{ $item->searchhitcount }}</b></span>
-			<span>Item Type: <b>{{ ucfirst(Str::singular($item->searchresulttype)) }}</b></span>
+			<span>Item Type: <b>{{ ucfirst(Str::singular(get_class($item))) }}</b></span>
 		</div>
 		</div>
 </a>

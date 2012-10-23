@@ -9,7 +9,7 @@
 		<div class="mv-summary">{{ $item->html }}</div>
 		<div class="mv-meta">
 			<span>Search Hits: <b>{{ $item->searchhitcount }}</b></span>
-			<span>Item Type: <b>{{ ucfirst(Str::singular($item->searchresulttype)) }}</b></span>
+			<span>Item Type: <b>{{ ucfirst(Str::singular(get_class($item))) }}</b></span>
 		</div>
 		</div>
 </a>

@@ -14,15 +14,15 @@
 <div id="multiview">
 <ul class ="list">
 @foreach($results->results as $item)
-	@if($item->searchresulttype == "users")
+	@if(get_class($item) == "User")
 		@include("search.views.users")
-	@elseif($item->searchresulttype == "maps")
+	@elseif(get_class($item) == "Map")
 		@include("search.views.maps")
-	@elseif($item->searchresulttype == "news")
+	@elseif(get_class($item) == "News")
 		@include("search.views.news")
-	@elseif($item->searchresulttype == "matches")
+	@elseif(get_class($item) == "Match")
 		@include("search.views.matches")
-	@elseif($item->searchresulttype == "comments")
+	@elseif(get_class($item) == "Comment")
 		@include("search.views.comments")
 	@else
 		<li>
@@ -31,7 +31,7 @@
 			<div class="mv-summary"><p></p></div>
 			<div class="mv-meta">
 				<span>Search Hits: <b>{{ $item->searchhitcount }}</b></span>
-				<span>Item Type: <b>{{ Str::singular($item->searchresulttype) }}</b></span>
+				<span>Item Type: <b>{{ Str::singular(get_class($item)) }}</b></span>
 			</div>
 			</div>
 		</li>

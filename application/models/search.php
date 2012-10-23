@@ -51,7 +51,6 @@ class Search {
 				break;
 		}
 		$output->searchhitcount = $item->searchhitcount;
-		$output->searchresulttype = $item->searchresulttype;
 		return $output;
 	}
 
