@@ -30,7 +30,7 @@
 				<p class="help-inline">After submitting the map you will be able to add download links and images by clicking on "Edit map" in the Actions bar above your map's page.</p>
 			</div>
 		</div>
-		{{ Form::actions(array(Form::submit("Save", array("class" => "btn-primary")), " ", HTML::link_to_action("maps@list", "Cancel", array(), array("class" => "btn")))) }}
+		{{ Form::actions(array(Form::submit("Save", array("class" => "btn-primary")), " ", HTML::link_to_action("maps@index", "Cancel", array(), array("class" => "btn")))) }}
 	{{ Form::close() }}
 	</div>
 @include("maps.sidebar")
