@@ -111,6 +111,7 @@
 			<p>&copy;2012 Major League Mining</p>
 		</div>
 		<div class="right">
+			<a class="sponsor" href="http://kerpluncgaming.com/" target="_blank" title="They're awesome and you should check them out!">Hosted by {{ HTML::image("images/static/kerplunc.png") }}</a>
 			<a href="/humans.txt" title="Powered by Magic and Miracles" target="_blank" style="color:#333"><i class="icon-magic"></i></a>
 			<?php /*
 			<a href="http://facebook.com/mlm" title="Like us on Facebook" class="fb"><i class="icon-facebook-sign"></i></a>
