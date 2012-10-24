@@ -6,7 +6,7 @@
 	<div class="alert">
 		<p>This map is awaiting moderation and is not yet viewable by everyone.</p>
 		@if(Auth::check() && Auth::user()->admin)
-			<p>{{ HTML::link_to_action("admin.maps.view", "Moderate", array($map->id), array("class" => "btn")) }}</p>
+			<p>{{ HTML::link_to_action("admin.maps@view", "Moderate", array($map->id), array("class" => "btn")) }}</p>
 		@endif
 	</div>
 @endif
