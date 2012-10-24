@@ -3,9 +3,6 @@
              Credits on /humans.txt
 -------------------------------------------------*/
 
-@import url(fonts.css);
-@import url(bootstrap.css);
-
 html, body {height: 100%;}
 
 body {
@@ -1585,46 +1582,6 @@ form.xpadding,li.xpadding,input.xpadding { margin-bottom:10px; padding:10px; bac
 ul.ulfix {margin: 0; list-style: none }
 
 img.imgfix { display: block; margin-top: 10px; width: 50% }
-
-/* Bootsrap overwrites */
-
-hr { border-top: 1px solid rgb(172, 172, 172);  border-bottom: 1px solid #ffffff; }
-
-.alert { margin-bottom: 15px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-border-radius: 0; -moz-border-radius: 0; border-radius: 0; }
-
-.alert p { display:inline; margin:auto; font-family: "Oswald"; font-weight: 400 }
-
-.btn { vertical-align: 0; margin-top: 0; -webkit-border-radius: 0px!important;-moz-border-radius: 0px!important; border-radius: 0px!important }
-
-.btn-gold { /* by t2t2 */
-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-background-color: #F2E35C;
-*background-color: #F2E35C;
-background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#F4EDAD), to(#F2E35C));
-background-image: -webkit-linear-gradient(top, #F4EDAD, #F2E35C);
-background-image: -o-linear-gradient(top, #F4EDAD, #F2E35C);
-background-image: linear-gradient(to bottom, #F4EDAD, #F2E35C);
-background-image: -moz-linear-gradient(top, #F4EDAD, #F2E35C);
-background-repeat: repeat-x;
-border-color: #0044cc #0044cc #002a80;
-border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
-}
-
-.btn-gold:hover,.btn-gold:active,.btn-gold.active,.btn-gold.disabled,.btn-gold[disabled] {background-color: #F2E35C;*background-color: #F2E35C;}
-.btn-gold:active,.btn-gold.active {background-color: #003399 \9;}
-
-.btn-group > .btn + .btn, { margin-left: -3px; }
-
-.nav-tabs {border-bottom: 1px dotted #fff}
-
-h1 small,h2 small,h3 small,h4 small,h5 small,h6 small { color: #666 }
-
-table,.table {background-color: #fff;color: #000; -webkit-border-radius: 0px;-moz-border-radius: 0px; border-radius: 0px }
-
-.table th, .table tr, .table td { -webkit-border-radius: 0px!important;  border-radius: 0px!important;  -moz-border-radius: 0px!important; }
-
-.thumbnail { background-color: #fff; }
     
 /* Sprite galore! 
    ================================================== */
