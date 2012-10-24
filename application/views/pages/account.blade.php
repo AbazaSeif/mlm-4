@@ -7,14 +7,17 @@
 	<div class="titlebar"><h2>Edit Account &amp; Profile</h2></div>
 	<div class="titlebar"><h3>Switch background color</h3></div>
 	<div id="multibg">
-	<a href="javascript:;" data-mbg="bg-white"><img src="{{ URL::to_asset("images/static/bg/white.png") }}"></a>
-	<a href="javascript:;" data-mbg="bg-black"><img src="{{ URL::to_asset("images/static/bg/black.png") }}"></a>
-	<a href="javascript:;" data-mbg="bg-red"><img src="{{ URL::to_asset("images/static/bg/red.png") }}"></a>
-	<a href="javascript:;" data-mbg="bg-green"><img src="{{ URL::to_asset("images/static/bg/green.png") }}"></a>
-	<a href="javascript:;" data-mbg="bg-blue"><img src="{{ URL::to_asset("images/static/bg/blue.png") }}"></a>
-	<a href="javascript:;" data-mbg="bg-cyan"><img src="{{ URL::to_asset("images/static/bg/cyan.png") }}"></a>
-	<a href="javascript:;" data-mbg="bg-yellow"><img src="{{ URL::to_asset("images/static/bg/yellow.png") }}"></a>
-	<a href="javascript:;" data-mbg="bg-magenta"><img src="{{ URL::to_asset("images/static/bg/magenta.png") }}"></a>
+	<a href="javascript:;" data-mbg="bg-white" title="Default background"><img src="{{ URL::to_asset("images/static/bg/white.png") }}"><span>Light</span></a>
+	<a href="javascript:;" data-mbg="bg-black"><img src="{{ URL::to_asset("images/static/bg/black.png") }}"><span>Dark</span></a>
+	<a href="javascript:;" data-mbg="bg-red"><img src="{{ URL::to_asset("images/static/bg/red.png") }}"><span>Red</span></a>
+	<a href="javascript:;" data-mbg="bg-green"><img src="{{ URL::to_asset("images/static/bg/green.png") }}"><span>Green</span></a>
+	<a href="javascript:;" data-mbg="bg-blue"><img src="{{ URL::to_asset("images/static/bg/blue.png") }}"><span>Blue</span></a>
+	<a href="javascript:;" data-mbg="bg-cyan"><img src="{{ URL::to_asset("images/static/bg/cyan.png") }}"><span>Cyan</span></a>
+	<a href="javascript:;" data-mbg="bg-yellow"><img src="{{ URL::to_asset("images/static/bg/yellow.png") }}"><span>Yellow</span></a>
+	<a href="javascript:;" data-mbg="bg-magenta"><img src="{{ URL::to_asset("images/static/bg/magenta.png") }}"><span>Magenta</span></a>
+	<a href="javascript:;" data-mbg="bg-devblue" title="Background used during initial development!"><img src="{{ URL::to_asset("images/static/bg/devblue.jpg") }}" height="115"><span>Dev-Blue</span></a>
+	<a href="javascript:;" data-mbg="bg-creeper" title="That'sssss a very nice website you've got there... It'd be a (ssss)shame if anything were to happen to it..."><img src="{{ URL::to_asset("images/static/bg/creeper.png") }}" height="115"><span>Creeper</span></a>
+
 	</div>
 	<div class="titlebar"><h3>Linked OpenID Accounts</h3></div>
 		<ul>

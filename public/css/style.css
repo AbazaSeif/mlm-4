@@ -26,6 +26,8 @@ body {
 .bg-cyan { background-image: url(../images/static/bg/cyan.png) }
 .bg-yellow { background-image: url(../images/static/bg/yellow.png) }
 .bg-magenta { background-image: url(../images/static/bg/magenta.png) }
+.bg-devblue { background-image: url(../images/static/bg/devblue.jpg) }
+.bg-creeper { background-image: url(../images/static/bg/creeper.png) }
 
 /* Opera Fix for sticky footer */
 
@@ -1002,15 +1004,36 @@ text-decoration: underline;
 .account-settings {
 }
 
-.account-settings #multibg img {
+.account-settings #multibg a {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    margin-bottom: 4px;
     padding: 2px;
+    width: 109px;
+    color: #333;
     background-color: #BEBEBE;
     border: 1px solid #ADADAD;
-    width: 109px;
 }
 
-.account-settings #multibg img:hover {
+.account-settings #multibg a:hover {
     border: 1px solid #333;
+}
+
+.account-settings #multibg span {
+    position: absolute;
+    bottom:0;
+    left: 0;
+    padding: 3px 0px;
+    width: 100%;
+    background: #adadad;
+    text-align: center;
+    text-shadow: 0px 1px 1px #fff;
+    box-shadow: 0px -1px 8px #000;
+}
+
+.account-settings #multibg img {
+    width: 109px;
 }
 
 .account-settings ul {
