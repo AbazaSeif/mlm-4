@@ -10,7 +10,7 @@ class Admin_User_Controller extends Admin_Controller {
 	// Listing users
 	public function get_index() {
 		$users = DB::table("users")->get(array("id", "username", "mc_username", "created_at", "admin","rank"));
-		return View::make('admin.users.list', array("users" => $users, "title" => "Users | Admin"));
+		return View::make('admin.users.list', array("users" => $users, "title" => "Users | Admin", "javascript" => array("admin")));
 	}
 
 	// Edit form
@@ -20,7 +20,7 @@ class Admin_User_Controller extends Admin_Controller {
 			Messages::add("error", "User not found");
 			return Redirect::to_action("Admin.User");
 		}
-		return View::make('admin.users.form', array("userdata" => $user, "title" => "Edit user {$user->username} | Users | Admin"));
+		return View::make('admin.users.form', array("userdata" => $user, "title" => "Edit user {$user->username} | Users | Admin", "javascript" => array("admin")));
 	}
 
 	// Editing
@@ -80,7 +80,7 @@ class Admin_User_Controller extends Admin_Controller {
 			Messages::add("error", "User not found");
 			return Redirect::to_action("Admin.User");
 		}
-		return View::make('admin.users.admin', array("title" => "Admin user {$user->username} | Users | Admin", "user" => $user));
+		return View::make('admin.users.admin', array("title" => "Admin user {$user->username} | Users | Admin", "javascript" => array("admin"), "user" => $user));
 	}
 	public function post_admin($id) {
 		$user = User::find($id);
@@ -104,7 +104,7 @@ class Admin_User_Controller extends Admin_Controller {
 			Messages::add("error", "User not found");
 			return Redirect::to_action("Admin.User");
 		}
-		return View::make('admin.users.unadmin', array("title" => "UnAdmin user {$user->username} | Users | Admin", "user" => $user));
+		return View::make('admin.users.unadmin', array("title" => "UnAdmin user {$user->username} | Users | Admin", "javascript" => array("admin"), "user" => $user));
 	}
 	public function post_unadmin($id) {
 		$user = User::find($id);

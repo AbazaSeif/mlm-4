@@ -5,12 +5,12 @@ class Admin_Pages_Controller extends Admin_Controller {
 	
 	public function get_index() {
 		$pages = DB::table("pages")->get(array("id", "title", "url_slug"));
-		return View::make('admin.pages.list', array("pages" => $pages));
+		return View::make('admin.pages.list', array("pages" => $pages, "javascript" => array("admin")));
 	}
 
 	// Create
 	public function get_new() {
-		return View::make("admin.pages.new", array("title" => "New Page | Pages | Admin"));
+		return View::make("admin.pages.new", array("title" => "New Page | Pages | Admin", "javascript" => array("admin")));
 	}
 	public function post_new() {
 		$validation_rules = array(
@@ -45,7 +45,7 @@ class Admin_Pages_Controller extends Admin_Controller {
 			Messages::add("error", "Page not found");
 			return Redirect::to_action("admin.pages");
 		}
-		return View::make("admin.pages.edit", array("title" => "Edit ".e($page->title)." | Pages | Admin", "page" => $page));
+		return View::make("admin.pages.edit", array("title" => "Edit ".e($page->title)." | Pages | Admin", "javascript" => array("admin"), "page" => $page));
 	}
 	public function post_edit($id) {
 		$page = Page::find($id);
@@ -86,7 +86,7 @@ class Admin_Pages_Controller extends Admin_Controller {
 			Messages::add("error", "Page not found");
 			return Redirect::to_action("admin.pages");
 		}
-		return View::make("admin.pages.delete", array("title" => "Delete ".e($page->title)." | Pages | Admin", "page" => $page));
+		return View::make("admin.pages.delete", array("title" => "Delete ".e($page->title)." | Pages | Admin", "javascript" => array("admin"), "page" => $page));
 	}
 	// Deletion
 	public function post_delete($id) {

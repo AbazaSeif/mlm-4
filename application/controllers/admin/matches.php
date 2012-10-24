@@ -9,7 +9,7 @@ class Admin_Matches_Controller extends Admin_Controller {
 
 	public function get_index() {
 		$matches = Match::get();
-		return View::make("admin.matches.list", array("matches" => $matches, "title" => "Matches | Admin"));
+		return View::make("admin.matches.list", array("matches" => $matches, "title" => "Matches | Admin", "javascript" => array("admin"), ));
 	}
 
 	// Edit
@@ -21,7 +21,7 @@ class Admin_Matches_Controller extends Admin_Controller {
 		}
 		$map = Map::find($match->map_id);
 		$teamarray = range(1, $match->team_count);
-		return View::make("admin.matches.edit", array("title" => "Edit ".e($match->id)." | Matches | Admin", "match" => $match, "map" => $map, "teamarray" => $teamarray));
+		return View::make("admin.matches.edit", array("title" => "Edit ".e($match->id)." | Matches | Admin", "javascript" => array("admin"), "match" => $match, "map" => $map, "teamarray" => $teamarray));
 	}
 	public function post_edit($id) {
 		$match = Match::find($id);
@@ -67,7 +67,7 @@ class Admin_Matches_Controller extends Admin_Controller {
 			Messages::add("error", "Match not found");
 			return Redirect::to_action("admin.matches");
 		}
-		return View::make("admin.matches.delete", array("title" => "Delete ".e($match->id)." | Matches | Admin", "match" => $match));
+		return View::make("admin.matches.delete", array("title" => "Delete ".e($match->id)." | Matches | Admin", "javascript" => array("admin"), "match" => $match));
 	}
 	// Deletion
 	public function post_delete($id) {

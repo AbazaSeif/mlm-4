@@ -9,12 +9,12 @@ class Admin_Faq_Controller extends Admin_Controller {
 
 	public function get_index() {
 		$faq = DB::table("faq")->order_by("id", "desc")->get(array("id", "question", "answer", "created_at"));
-		return View::make("admin.faq.list", array("faq" => $faq, "title" => "FAQ | Admin"));
+		return View::make("admin.faq.list", array("faq" => $faq, "title" => "FAQ | Admin", "javascript" => array("admin")));
 	}
 
 	//New
 	public function get_new() {
-		return View::make("admin.faq.new", array("title" => "New | FAQ | Admin"));
+		return View::make("admin.faq.new", array("title" => "New | FAQ | Admin", "javascript" => array("admin")));
 	}
 	public function post_new() {
 		$validation_rules = array(
@@ -47,7 +47,7 @@ class Admin_Faq_Controller extends Admin_Controller {
 			Messages::add("error", "Question not found");
 			return Redirect::to_action("admin.faq");
 		}
-		return View::make("admin.faq.form", array("title" => "Edit ".e($faq->title)." | FAQ | Admin", "faq" => $faq));
+		return View::make("admin.faq.form", array("title" => "Edit ".e($faq->title)." | FAQ | Admin", "javascript" => array("admin"), "faq" => $faq));
 	}
 	public function post_edit($id) {
 		$faq = Faq::find($id);
@@ -85,7 +85,7 @@ class Admin_Faq_Controller extends Admin_Controller {
 			Messages::add("error", "Question not found");
 			return Redirect::to_action("admin.faq");
 		}
-		return View::make("admin.faq.delete", array("title" => "Delete ".e($faq->title)." | FAQ | Admin", "faq" => $faq));
+		return View::make("admin.faq.delete", array("title" => "Delete ".e($faq->title)." | FAQ | Admin", "javascript" => array("admin"), "faq" => $faq));
 	}
 	// Deletion
 	public function post_delete($id) {

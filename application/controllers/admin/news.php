@@ -9,7 +9,7 @@ class Admin_News_Controller extends Admin_Controller {
 	// Listing news
 	public function get_index() {
 		$news = DB::table("news")->order_by("id", "desc")->get(array("id", "title", "slug","user_id", "created_at", "published"));
-		return View::make("admin.news.list", array("news" => $news, "title" => "News | Admin"));
+		return View::make("admin.news.list", array("news" => $news, "title" => "News | Admin", "javascript" => array("admin")));
 	}
 	// New form
 	public function get_new() {
@@ -22,7 +22,7 @@ class Admin_News_Controller extends Admin_Controller {
 			$oldimage = null;
 		}
 
-		return View::make("admin.news.new", array("title" => "New Article | News | Admin", "oldimage" => $oldimage));
+		return View::make("admin.news.new", array("title" => "New Article | News | Admin", "javascript" => array("admin"), "oldimage" => $oldimage));
 	}
 	public function post_new() {
 		$validation_rules = array(
@@ -73,7 +73,7 @@ class Admin_News_Controller extends Admin_Controller {
 		} else {
 			$previewimage = URL::to_asset($newsitem->image->file_small);
 		}
-		return View::make("admin.news.form", array("title" => "Editing: ".e($newsitem->title)." | News | Admin", "newsitem" => $newsitem, "previewimage" => $previewimage));
+		return View::make("admin.news.form", array("title" => "Editing: ".e($newsitem->title)." | News | Admin", "javascript" => array("admin"), "newsitem" => $newsitem, "previewimage" => $previewimage));
 	}
 	// Saving edits
 	public function post_edit($id) {
@@ -123,7 +123,7 @@ class Admin_News_Controller extends Admin_Controller {
 			Messages::add("error", "News item not found");
 			return Redirect::to_action("admin.news");
 		}
-		return View::make("admin.news.delete", array("title" => "Delete ".e($newsitem->title)." | News | Admin", "newsitem" => $newsitem));
+		return View::make("admin.news.delete", array("title" => "Delete ".e($newsitem->title)." | News | Admin", "javascript" => array("admin"), "newsitem" => $newsitem));
 	}
 	// Deletion
 	public function post_delete($id) {

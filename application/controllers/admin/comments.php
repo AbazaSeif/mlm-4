@@ -9,7 +9,7 @@ class Admin_Comments_Controller extends Admin_Controller {
 
 	public function get_index() {
 		$comments = Comment::all();
-		return View::make("admin.comments.list", array("comments" => $comments, "title" => "Comments | Admin"));
+		return View::make("admin.comments.list", array("javascript" => array("admin"), "comments" => $comments, "title" => "Comments | Admin"));
 	}
 
 	// Edit
@@ -19,7 +19,7 @@ class Admin_Comments_Controller extends Admin_Controller {
 			Messages::add("error", "Comment not found");
 			return Redirect::to_action("admin.comments");
 		}
-		return View::make("admin.comments.form", array("title" => "Edit ".e($comment->id)." | Comments | Admin", "comment" => $comment));
+		return View::make("admin.comments.form", array("title" => "Edit ".e($comment->id)." | Comments | Admin", "javascript" => array("admin"), "comment" => $comment));
 	}
 	public function post_edit($id) {
 		$comment = Comment::find($id);
@@ -56,7 +56,7 @@ class Admin_Comments_Controller extends Admin_Controller {
 			Messages::add("error", "Comment not found");
 			return Redirect::to_action("admin.comments");
 		}
-		return View::make("admin.comments.delete", array("title" => "Delete ".e($comment->id)." | Comments | Admin", "comment" => $comment));
+		return View::make("admin.comments.delete", array("title" => "Delete ".e($comment->id)." | Comments | Admin", "javascript" => array("admin"), "comment" => $comment));
 	}
 	// Deletion
 	public function post_delete($id) {
