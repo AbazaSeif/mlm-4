@@ -149,7 +149,7 @@ class Maps_Controller extends Base_Controller {
 		}
 		$authors = $map->users()->where("confirmed", "=", 1)->with("confirmed")->get();
 		return View::make("maps.view", array(
-			"title" => e($map->title)." | Maps", "map" => $map, "authors" => $authors, "is_owner" => $is_owner, "rating" => $rating, "modqueue" => $modqueue, "javascript" => array("maps", "view")
+			"title" => e($map->title)." | Maps", "map" => $map, "authors" => $authors, "is_owner" => $is_owner, "rating" => $rating, "modqueue" => $modqueue, "javascript" => array("maps", "view"), "sidebar" => "view"
 		));
 	}
 	public function post_rate($id) {
