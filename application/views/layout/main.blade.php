@@ -32,7 +32,6 @@
 	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/style.css") }}" />
 	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/nivo/default/default.css") }}" />
 	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/nivo/medium/medium.css") }}" />
-	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/nivo/bar/bar.css") }}" />
 	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/nivo/nivo-slider.css") }}" />
 
 	<script src="{{ URL::to_asset("js/libs/modernizr-2.5.3-respond-1.1.0.min.js") }}"></script>
@@ -67,7 +66,7 @@
 					</div>
 					<div id="loginout">
 						@if (Auth::user() && Auth::user()->admin)
-						{{ HTML::link_to_action('account@logout', "Logout") }} {{ HTML::link('admin', 'Admin panel'); }} {{ HTML::link('account', 'Edit Account'); }} <a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/150" alt="avatar" /></a>
+						{{ HTML::link_to_action('account@logout', "Logout") }} {{ HTML::link('admin', 'Admin panel'); }} {{ HTML::link('account', 'Edit Account'); }} <a href="{{ URL::to("user/".Auth::user()->username) }}"><span title="{{ e(Auth::user()->messages()->where_unread(1)->count()) }} new messages" style="margin-right: 3px;">[{{ e(Auth::user()->messages()->where_unread(1)->count()) }}]</span> Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/150" alt="avatar" /></a>
 						@elseif (Auth::check())
 						{{ HTML::link_to_action('account@logout', "Logout") }} {{ HTML::link('account', 'Edit Account'); }} <a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/150" alt="avatar" /></a>
 						@else

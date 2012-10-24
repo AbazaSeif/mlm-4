@@ -29,7 +29,7 @@
 	@endif
 <div id="page">
 	<div class="slider-wrapper theme-medium">
-		<div id="gslider" class="nivoSlider">
+		<div id="maps-slider" class="nivoSlider">
 			@forelse($map->images as $image)
 			<img src="{{ e($image->file_medium) }}" data-thumb="{{ e($image->file_medium) }}" alt="" />
 			@empty

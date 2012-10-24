@@ -78,7 +78,7 @@ class Maps_Controller extends Base_Controller {
 		
 		//run $query
 		$maps = $query->paginate($limit);
-		return View::make("maps.home", array("title" => "Filtered Maps", "javascript" => array("maps", "list"), "maps" => $maps));
+		return View::make("maps.home", array("title" => "Filtered Maps", "javascript" => array("maps", "list"), "maps" => $maps, "javascript" => array("maps" , "list")));
 	}
 	public function get_new() {
 		return View::make("maps.new", array("javascript" => array("maps", "edit"), "sidebar" => "edit"));
@@ -145,7 +145,7 @@ class Maps_Controller extends Base_Controller {
 		}
 		$authors = $map->users()->where("confirmed", "=", 1)->with("confirmed")->get();
 		return View::make("maps.view", array(
-			"title" => e($map->title)." | Maps", "map" => $map, "authors" => $authors, "is_owner" => $is_owner, "rating" => $rating, "sidebar" => "view"
+			"title" => e($map->title)." | Maps", "map" => $map, "authors" => $authors, "is_owner" => $is_owner, "rating" => $rating, "javascript" => array("maps", "view")
 		));
 	}
 	public function post_rate($id) {
