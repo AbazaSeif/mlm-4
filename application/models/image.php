@@ -32,7 +32,7 @@ class Image extends Eloquent {
 			$handle->image_max_width = 1920;
 			$handle->image_min_width = 426;
 			$handle->image_min_height = 240;
-			$handle->file_max_size = '1536';
+			$handle->file_max_size = 1572864; // IN BYTES, this is 1,5M
 			$handle->process(path("public")."/images/uploads/o/");
 			// Large (1280x720, cropped)
 			$handle->file_new_name_body = $localname;
