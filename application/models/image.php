@@ -20,7 +20,7 @@ class Image extends Eloquent {
 	public static function create($arguments) {
 		$handle = new upload($arguments["file"]);
 		if($handle->uploaded) {
-			$extension = $handle->image_src_type;
+			$extension = $handle->image_src_type ?: $handle->file_src_name_ext;
 			$newobj = parent::create(array("filename" => $arguments["filename"], "type" => $arguments["type"]));
 			$localname = md5($newobj->id);
 			$newobj->file = "{$localname}.{$extension}";
