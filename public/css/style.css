@@ -316,6 +316,19 @@ a:hover { color: #005580 }
 #global-footer a.tw { color: #4099FF }
 #global-footer a.gp { color: #F90101 }
 
+#global-footer .right a.sponsor {
+    width: auto;
+    padding-top: 5px;
+    margin-right: 20px;
+    font: 300 17px/1 "Oswald";
+    color: #000;
+    height: 20px;
+    vertical-align: 3px;
+}
+#global-footer .right a.sponsor img {
+    vertical-align: top;
+}
+
 #global-footer .right a:hover {text-shadow:0px 0px 1px #333;}
 
 /* Action box (for all your 1 function pages needs) 
