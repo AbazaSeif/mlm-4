@@ -43,11 +43,6 @@
 					<a class="btn btn-primary btn-small dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
 						<ul class="dropdown-menu">
 						<li><a href="{{ URL::to_action("admin.user@edit/".$user->id) }}"><i class="icon-pencil"></i> Edit</a></li>
-						@if($user->admin)
-						<li><a href="{{ URL::to_action("admin.user@admin/".$user->id) }}"><i class="icon-user"></i> Admin</a></li>
-						@else
-						<li><a href="{{ URL::to_action("admin.user@unadmin/".$user->id) }}"><i class="icon-remove"></i> UnAdmin</a></li>
-						@endif
 						<li><a href="{{ URL::to_action("admin.user@ban/".$user->id) }}"><i class="icon-exclamation-sign"></i> Ban</a></li>
 					</ul>
 				</div>
