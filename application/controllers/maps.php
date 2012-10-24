@@ -12,7 +12,7 @@ class Maps_Controller extends Base_Controller {
 
 	public function get_index() {
 		$maps = Map::order_by("created_at", "desc")->where_published(1)->paginate(12);
-		return View::make("maps.home", array("title" => "Maps", "javascript" => array("maps", "list"), "maps" => $maps));
+		return View::make("maps.home", array("title" => "Maps", "javascript" => array("maps", "list"), "maps" => $maps, "menu" => "multiview"));
 	}
 	public function get_filter() {
 		//retrieve GET info
@@ -78,10 +78,10 @@ class Maps_Controller extends Base_Controller {
 		
 		//run $query
 		$maps = $query->paginate($limit);
-		return View::make("maps.home", array("title" => "Filtered Maps", "javascript" => array("maps", "list"), "maps" => $maps, "javascript" => array("maps" , "list")));
+		return View::make("maps.home", array("title" => "Filtered Maps", "javascript" => array("maps", "list"), "maps" => $maps, "menu" => "multiview"));
 	}
 	public function get_new() {
-		return View::make("maps.new", array("javascript" => array("maps", "edit"), "sidebar" => "edit"));
+		return View::make("maps.new", array("javascript" => array("maps", "edit"), "menu" => "multiview", "sidebar" => "edit"));
 	}
 	public function post_new() {
 		$validation_rules = array(
@@ -149,7 +149,7 @@ class Maps_Controller extends Base_Controller {
 		}
 		$authors = $map->users()->where("confirmed", "=", 1)->with("confirmed")->get();
 		return View::make("maps.view", array(
-			"title" => e($map->title)." | Maps", "map" => $map, "authors" => $authors, "is_owner" => $is_owner, "rating" => $rating, "modqueue" => $modqueue, "javascript" => array("maps", "view"), "sidebar" => "view"
+			"title" => e($map->title)." | Maps", "map" => $map, "authors" => $authors, "is_owner" => $is_owner, "rating" => $rating, "modqueue" => $modqueue, "javascript" => array("maps", "view"), "sidebar" => "view", "menu" => "map"
 		));
 	}
 	public function post_rate($id) {
@@ -229,7 +229,7 @@ class Maps_Controller extends Base_Controller {
 		$authors = $map->users()->with("confirmed")->get();
 
 		return View::make("maps.edit", array(
-			"title" => "Editing: | ".e($map->title)." | Maps", "map" => $map, "is_owner" => $is_owner, "authors" => $authors, "sidebar" => "edit"
+			"title" => "Editing: | ".e($map->title)." | Maps", "map" => $map, "is_owner" => $is_owner, "authors" => $authors, "sidebar" => "edit", "menu" => "mapedit"
 		));
 	}
 	/* Edit metadata */
@@ -357,7 +357,7 @@ EOT;
 		}
 
 		return View::make("maps.edit_link", array(
-			"title" => "Add link | ".e($map->title)." | Maps", "map" => $map, "is_owner" => $is_owner, "link" => $link
+			"title" => "Add link | ".e($map->title)." | Maps", "map" => $map, "is_owner" => $is_owner, "link" => $link, "menu" => "mapedit"
 		));
 	}
 	public function post_edit_link($id, $linkid = null) {
@@ -418,7 +418,7 @@ EOT;
 			return Response::error("404"); // Not map's link
 		}
 
-		return View::make("maps.delete_link", array("title" => "Delete link | ".e($map->title)." | Maps", "map" => $map,  "is_owner" => $is_owner, "link" => $link));
+		return View::make("maps.delete_link", array("title" => "Delete link | ".e($map->title)." | Maps", "map" => $map,  "is_owner" => $is_owner, "link" => $link, "menu" => "mapedit"));
 	}
 	public function post_delete_link($id, $linkid) {
 		$map = Map::find($id);
@@ -504,7 +504,7 @@ EOT;
 			return Response::error("404"); // Not map's image
 		}
 
-		return View::make("maps.delete_image", array("title" => "Delete image | ".e($map->title)." | Maps", "map" => $map,  "is_owner" => $is_owner, "image" => $image));
+		return View::make("maps.delete_image", array("title" => "Delete image | ".e($map->title)." | Maps", "map" => $map,  "is_owner" => $is_owner, "image" => $image, "menu" => "mapedit"));
 	}
 	public function post_delete_image($id, $imageid) {
 		$map = Map::find($id);
