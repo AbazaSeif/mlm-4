@@ -71,7 +71,7 @@ Route::get("user/(:any?)", function($username = null) {
 Route::get("admin", array('before' => 'admin', function() {
 	$log = Adminlog::with("user")->order_by("created_at", "desc")->paginate(30);
 	$modqueue = Modqueue::with("user")->order_by("created_at", "asc")->paginate(30);
-	return View::make("admin.home", array("title" => "Admin", "log" => $log, "modqueue" => $modqueue));
+	return View::make("admin.home", array("title" => "Admin", "javascript" => array("admin"), "log" => $log, "modqueue" => $modqueue));
 }));
 
 // Admin - Migrating from the website

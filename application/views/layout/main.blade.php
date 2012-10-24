@@ -129,8 +129,7 @@
 	<script src="{{ URL::to_asset("js/plugins.js") }}"></script>
 	<script src="{{ URL::to_asset("js/script.js") }}"></script>
 	<script>
-		// Tracking code for Voidlane (FOR TESTING PORPUSES ONLY) 
-		var _gaq=[['_setAccount','UA-9118967-2'],['_trackPageview']];
+		var _gaq=[['_setAccount','UA-35833622-1'],['_trackPageview']];
 		(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
 		g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
 		s.parentNode.insertBefore(g,s)}(document,'script'));
