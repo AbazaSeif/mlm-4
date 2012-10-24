@@ -4,7 +4,7 @@
 @include("admin.menu")
 <div id="content">
 <div class="titlebar">
-	<h2>Moderating: <strong>{{ e($map->title) }}</strong></h2>
+	<h2>Moderating: <strong>{{ HTML::link_to_action("maps.view", $map->title, array($map->id, $map->slug)) }}</strong></h2>
 </div>
 	{{ Form::open(null, 'POST', array('class' => 'xpadding')) }}
 	{{ Form::token() }}

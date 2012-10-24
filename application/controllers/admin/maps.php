@@ -9,7 +9,7 @@ class Admin_Maps_Controller extends Admin_Controller {
 	// List maps
 	public function get_index() {
 		$maps = DB::table("maps")->order_by("id", "desc")->get(array("id", "title", "slug", "created_at", "published", "featured", "official"));
-		return View::make("admin.maps.list", array("maps" => $maps, "title" => "Maps | Admin"));
+		return View::make("admin.maps.list", array("maps" => $maps, "title" => "Maps | Admin", "javascript" => array("admin")));
 	}
 	// Mod view page (handles (un)publish, (un)official)
 	public function get_view($id) {
@@ -19,7 +19,7 @@ class Admin_Maps_Controller extends Admin_Controller {
 			return Redirect::to_action("admin.maps");
 		}
 		$modqueue = Modqueue::where('itemtype', '=', 'map')->where('itemid', '=', $map->id)->first();
-		return View::make("admin.maps.view", array("title" => "Moderate ".e($map->title)." | Maps | Admin", "map" => $map, "modqueue" => $modqueue));
+		return View::make("admin.maps.view", array("title" => "Moderate ".e($map->title)." | Maps | Admin", "javascript" => array("admin"), "map" => $map, "modqueue" => $modqueue));
 	}
 	public function post_view($id) {
 		$action = Input::get('action');
@@ -82,6 +82,10 @@ class Admin_Maps_Controller extends Admin_Controller {
 			if($map->save()) {
 				Event::fire("admin", array("maps", "edit", $map->id, "Approved"));
 				Messages::add("success", "Map approved!");
+				if($modqueue = Modqueue::where_itemtype('map')->where_itemid($map->id)->where_type("publish")->first()) {
+					$modqueue->delete();
+					Event::fire("admin", array("modqueue", "delete", $modqueue->id));
+				}
 				return Redirect::to_action("admin.maps");
 			} else {
 				Messages::add("error", "Failed to save");
@@ -112,7 +116,7 @@ class Admin_Maps_Controller extends Admin_Controller {
 			Messages::add("error", "Map not found");
 			return Redirect::to_action("admin.maps");
 		}
-		return View::make("admin.maps.form", array("title" => "Edit ".e($map->title)." | Maps | Admin", "map" => $map));
+		return View::make("admin.maps.form", array("title" => "Edit ".e($map->title)." | Maps | Admin", "javascript" => array("admin"), "map" => $map));
 	}
 	public function post_edit($id) {
 		$map = Map::find($id);
@@ -169,7 +173,7 @@ class Admin_Maps_Controller extends Admin_Controller {
 			Messages::add("error", "Map not found");
 			return Redirect::to_action("admin.maps");
 		}
-		return View::make("admin.maps.delete", array("title" => "Delete ".e($map->title)." | Maps | Admin", "map" => $map));
+		return View::make("admin.maps.delete", array("title" => "Delete ".e($map->title)." | Maps | Admin", "javascript" => array("admin"), "map" => $map));
 	}
 	// Deletion
 	public function post_delete($id) {

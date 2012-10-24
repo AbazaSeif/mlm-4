@@ -143,9 +143,13 @@ class Maps_Controller extends Base_Controller {
 		if(!$map->published && (Auth::guest() || $is_owner === false && !Auth::user()->admin)) {
 			return Response::error("403"); // Not yet published
 		}
+		$modqueue = null;
+		if(!$map->published && Auth::check() && Auth::user()->admin) {
+			$modqueue = Modqueue::where_itemtype('map')->where_itemid($map->id)->first();
+		}
 		$authors = $map->users()->where("confirmed", "=", 1)->with("confirmed")->get();
 		return View::make("maps.view", array(
-			"title" => e($map->title)." | Maps", "map" => $map, "authors" => $authors, "is_owner" => $is_owner, "rating" => $rating, "javascript" => array("maps", "view")
+			"title" => e($map->title)." | Maps", "map" => $map, "authors" => $authors, "is_owner" => $is_owner, "rating" => $rating, "modqueue" => $modqueue, "javascript" => array("maps", "view")
 		));
 	}
 	public function post_rate($id) {

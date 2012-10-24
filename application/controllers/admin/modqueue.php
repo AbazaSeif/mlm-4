@@ -13,7 +13,7 @@ class Admin_Modqueue_Controller extends Admin_Controller {
 
 	public function get_view($id) {
 		$modqueue = Modqueue::find($id);
-		return View::make("admin.modqueue.view", array("item" => $modqueue, "title" => "Modqueue | Admin"));
+		return View::make("admin.modqueue.view", array("item" => $modqueue, "title" => "Modqueue | Admin", "javascript" => array("admin")));
 	}
 
 	//delete
@@ -23,7 +23,7 @@ class Admin_Modqueue_Controller extends Admin_Controller {
 			Messages::add("error", "Modqueue item not found");
 			return Redirect::to_action("admin");
 		}
-		return View::make("admin.modqueue.delete", array("item" => $modqueue, "title" => "Delete | Modqueue | Admin"));
+		return View::make("admin.modqueue.delete", array("item" => $modqueue, "title" => "Delete | Modqueue | Admin", "javascript" => array("admin")));
 	}
 	public function post_delete($id) {
 		$modqueue = Modqueue::find($id);
