@@ -20,7 +20,7 @@
 	</ul>
 </nav>
 
-@if (URI::is('maps') || URI::is('maps/filter'))
+@if ($menu == "multiview")
 
 <ul id="multiview-controller" class="submenu nav nav-pills">
 	<li class="disabled"><a href="#">Views:</a></li>
@@ -29,25 +29,19 @@
 	<li data-multiview="list"><a href="javascript:;" title="Only details">List</a></li>
 </ul>
 
-@elseif (URI::is('map/*') || URI::is('maps/edit/*') || URI::is('maps/edit_link/*') || URI::is('maps/delete_link/*') || URI::is('maps/delete_image/*') )
-@if(Auth::check() && Auth::user()->admin)
-<ul class="submenu nav nav-pills">
-	<li class="disabled"><a href="#">Actions:</a></li>
-	<li>{{ HTML::link_to_action("admin@maps@view", "Moderate Map", array($map->id)) }}</li>
-	<li>{{ HTML::link_to_action("maps@edit", "Edit Map", array($map->id)) }}</li>
-@if (URI::is('maps') || URI::is('map/*'))
-@else
-	<li>{{ HTML::link_to_action("maps@view", "Back to Map", array($map->id, $map->slug)) }}</li>
-@endif
-</ul>
-	@elseif($is_owner)
-<ul class="submenu nav nav-pills">
-	<li class="disabled"><a href="#">Actions:</a></li>
-	<li>{{ HTML::link_to_action("maps@edit", "Edit Map", array($map->id)) }}</li>
-	<li>{{ HTML::link_to_action("maps@view", "Back to Map", array($map->id, $map->slug)) }}</li>
-</ul>
-@else
-@endif
-
-@else
+@elseif ($menu == "map" || $menu == "mapedit")
+	@if(Auth::check() && Auth::user()->admin || $is_owner)
+	<ul class="submenu nav nav-pills">
+		<li class="disabled"><a href="#">Actions:</a></li>
+		@if(Auth::check() && Auth::user()->admin)
+			<li>{{ HTML::link_to_action("admin@maps@view", "Moderate Map", array($map->id)) }}</li>
+		@endif
+		@if($is_owner)
+			<li>{{ HTML::link_to_action("maps@edit", "Edit Map", array($map->id)) }}</li>
+		@endif
+		@if ($menu == "mapedit")
+			<li>{{ HTML::link_to_action("maps@view", "Back to Map", array($map->id, $map->slug)) }}</li>
+		@endif
+	</ul>
+	@endif
 @endif
