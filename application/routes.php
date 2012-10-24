@@ -79,7 +79,8 @@ Route::get("admin", array('before' => 'admin', function() {
 	$modqueue = Modqueue::with("user")->order_by("created_at", "asc")->paginate(30);
 	$url = explode('/', URL::current());
 	$moduleurl = $url[3];
-	return View::make("admin.home", array("title" => "Admin", "log" => $log, "modqueue" => $modqueue, "moduleURL" => $moduleurl));
+	return View::make("admin.home", array("title" => "Admin", "javascript" => array("admin"), "log" => $log, "modqueue" => $modqueue));
+
 }));
 
 // Admin - Migrating from the website

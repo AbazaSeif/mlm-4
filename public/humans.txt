@@ -18,8 +18,12 @@
 	Location: New York
 	
 /* THANKS */
-	
-	
+	Honney & Robin for getting this project going
+	Kerplunc for hosting us
+	neonerZ (aka ne1) for managing the server
+	Admins and mods who keep site working
+
+	And YOU for reading this!
 	
 /* SITE */
 	
@@ -27,4 +31,4 @@
 	Language: English
 	Standards: HTML5, CSS3
 	Components: Jquery, Twitter Bootstrap, Modernizr
-	Software: XAMPP, Notepad++, Sublime Text 2, Komodo Edit 7, Photoshop, GitHub, GitExtensions
+	Software: XAMPP, Notepad++, Sublime Text 2, Photoshop, GitHub, GitExtensions
