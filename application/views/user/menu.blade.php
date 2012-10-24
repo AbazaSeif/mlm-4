@@ -2,7 +2,7 @@
 	<ul class="nav nav-tabs">
 		<li {{ URI::is('user*') ? 'class="active"' : '' }}>{{ HTML::link(("user/".Auth::user()->username), "Profile"); }}</li>
 		<li {{ URI::is('messages*') ? 'class="dropdown active"' : 'dropdown' }}>
-    		<a class="dropdown-toggle" data-toggle="dropdown" href="#"><span title="{{ e(Auth::user()->messages()->where_unread(1)->count()) }} new messages">[{{ e(Auth::user()->messages()->where_unread(1)->count()) }}]</span> Messages
+    		<a class="dropdown-toggle" data-toggle="dropdown" href="#"><span title="{{ e(Auth::user()->unread_messages) }} new messages">[{{ e(Auth::user()->unread_messages) }}]</span> Messages
         	<b class="caret"></b>
       		</a>
     		<ul class="dropdown-menu">

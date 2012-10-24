@@ -32,6 +32,10 @@ class User extends Eloquent {
 		$message->message = $text;
 		$messageThread->messages()->insert($message);
 	}
+	// Get unread messages count and store it in relations to abuse magical methods
+	public function get_unread_messages() {
+		return $this->relationships["unread_messages"] = $this->messages()->where_unread(1)->count();
+	}
 
 	public function update_comment_count($deletion = false) {
 		if ($deletion == false) {
