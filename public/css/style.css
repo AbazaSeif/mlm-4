@@ -27,6 +27,8 @@ body {
 .bg-yellow { background-image: url(../images/static/bg/yellow.png) }
 .bg-magenta { background-image: url(../images/static/bg/magenta.png) }
 .bg-devblue { background-image: url(../images/static/bg/devblue.jpg) }
+    .bg-devblue .submenu li.disabled a { color: #f0f0f0 }
+    .bg-devblue .submenu li a { color: #fff; text-shadow:0px 1px 1px #000;}
 .bg-creeper { background-image: url(../images/static/bg/creeper.png) }
 
 /* Opera Fix for sticky footer */
