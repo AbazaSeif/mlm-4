@@ -14,7 +14,7 @@ return array(
 		"ctw" => "Capture the Wool",
 		"dtc" => "Destroy the Core",
 		"attack" => "Attack/Defense",
-		"bed" => "Bed Wars",
+		"bed" => "Bed Breaker",
 		"other" => "Other"
 	)
 );
