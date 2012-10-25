@@ -27,7 +27,7 @@ MLM = {
 				$("#menu").slideToggle().show();
 			});	
 		// Cool actionbox 
-			$('#actionbox').hide().fadeIn(1000).show();
+			$('#actionbox').hide().fadeIn(1000);
 		// Activate Bootstrap Dropdowns
 			$('.dropdown-toggle').dropdown();
 		// Search bar
