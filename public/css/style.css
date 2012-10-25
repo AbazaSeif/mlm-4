@@ -338,6 +338,7 @@ a:hover { color: #005580 }
    ================================================== */
     
 #actionbox {
+    display: none;
     margin: 28px auto;
     padding: 30px;
     max-width: 650px;
@@ -1534,6 +1535,10 @@ ol.commentlist {
 #multiview ul.grid li { 
     margin: 6px;
     width: 31.50%
+}
+
+#multiview .grid .mv-image img {
+    min-height: 168px;
 }
 
 #multiview .grid .mv-details { padding: 5px 0 5px 5px }

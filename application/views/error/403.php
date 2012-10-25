@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div id="actionbox">
-	<a href="/"><img src="<?php echo URL::to_asset("images/static/logo.png") ?>" /></a>
+	<a href="/" title="Major League Mining"><img src="<?php echo URL::to_asset("images/static/logo.png") ?>" /></a>
 			<hr>
 			<h1>403: Access Forbidden</h1>
 			<hr>
@@ -22,5 +22,7 @@
 			</p>
             <br>
 	</div>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+	<script>$(document).ready(function() { $('#actionbox').fadeIn(500); });</script>
 </body>
 </html>

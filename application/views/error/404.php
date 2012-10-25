@@ -19,14 +19,10 @@
 			<p>
 				This page probably moved, has been dumped into The Void or has never existed.
 				<br> 
-				You can try a search below or go to back to our <?php echo HTML::link('/', 'home page'); ?>.
+				You may check your link for errors or go to back to our <?php echo HTML::link('/', 'home page'); ?>.
 			</p>
-            <br>
-		<form method="get" action="#" class="">
-				<div class="input-append">
-                <input class="sbar" size="16" type="text"><button class="btn" type="button"><i class="icon-search icon-white"></i></button>
-              </div>
-		</form>
 	</div>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+	<script>$(document).ready(function() { $('#actionbox').fadeIn(500); });</script>
 </body>
 </html>
