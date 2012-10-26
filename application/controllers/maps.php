@@ -451,7 +451,7 @@ EOT;
 		}
 		
 		$input = Input::all();
-		if(strlen($input["name"]) == 0) { // Just use the filename
+		if(!isset($input["name"]) || strlen($input["name"]) == 0) { // Just use the filename
 			$input["name"] = $input["uploaded"]["name"];
 		}
 		$validation_rules = array(
