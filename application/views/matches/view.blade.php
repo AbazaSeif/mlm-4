@@ -17,7 +17,7 @@
 <div id="content">
 	@if($is_owner === 0)
 	<div class="alert alert-info alert-block alertfix clearfix">
-		<p>You have been invited to be an owner of this match.</p>
+		<p>You have been invited to become an owner of this match.</p>
 		{{ Form::open("matches/owner_invite/".$match->id) }}
 			{{ Form::token() }}
 			{{ Form::hidden("action", "accept") }}

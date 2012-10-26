@@ -20,6 +20,9 @@ class User extends Eloquent {
 	public function matches() {
 		return $this->has_many_and_belongs_to("Match")->with('teamnumber', 'invited');
 	}
+	public function teams() {
+		return $this->has_many_and_belongs_to("Team")->with('owner');
+	}
 
 	// Send a *system message* to the user
 	public function send_message($title, $text) {
@@ -63,6 +66,15 @@ class User extends Eloquent {
 	public function in_match($matchid) {
 		$in_match = DB::table("match_user")->where_match_id($matchid)->where_user_id($this->get_key())->first();
 		if($in_match) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public function in_team($teamid) {
+		$in_team = DB::table("team_user")->where_team_id($teamid)->where_user_id($this->get_key())->first();
+		if($in_team) {
 			return true;
 		} else {
 			return false;

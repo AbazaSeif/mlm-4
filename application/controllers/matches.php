@@ -6,7 +6,7 @@ class Matches_Controller extends Base_Controller {
 	public function __construct() {
 		parent::__construct();
 
-		$this->filter("before", "auth")->only(array("new", "add_owner", "owner_invite", "edit_meta", "join", "leave", "teamchange", "invite_user", "set_win", "invite"));
+		$this->filter("before", "auth")->only(array("new", "add_owner", "owner_invite", "edit", "edit_meta", "join", "leave", "teamchange", "invite_user", "set_win", "invite"));
 		$this->filter("before", "csrf")->on("post")->only(array("new", "add_owner", "owner_invite", "edit_meta", "join", "leave", "teamchange", "invite_user", "set_win", "invite"));
 	}
 
