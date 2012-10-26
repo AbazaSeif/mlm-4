@@ -6,40 +6,42 @@
 	@include("user.menu")
 @endif
 <div id="content" class="profile clearfix">
+<header id="vcard" class="clearfix">
+	<div class="avatar">
+		@if($ownpage)
+			<a href="http://minecraft.net/profile" target="_blank" title="Change your skin..."><img src="http://minotar.net/helm/{{$user->mc_username}}/80" alt="avatar" /></a>
+		@else
+			<a href="#" style="cursor:default" title="{{$user->username}}'s Skin"><img src="http://minotar.net/helm/{{$user->mc_username}}/80" alt="avatar" /></a>
+		@endif
+	</div>
+	<div class="name">
+		<h1>{{$user->username}}</h1>
+		<h2><img src="{{ URL::to_asset("images/static/mc-icon.png") }}">{{$user->mc_username}}</h2>
+		<h3>Joined {{ date("F j, Y", strtotime($user->created_at)) }}</h3>
+	</div>
+	<div class="stats">
+		<ul>
+			<li><a href="#"><span>{{ $user->comment_count }}</span>Comments</a></li>
+			<li><a href="#"><span>456</span>Maps</a></li>
+			<li><a href="#"><span>789</span>Wins</a></li>
+			<li><a href="#"><span>012</span>Loses</a></li>
+			<li><a href="#"><span>345</span>Ranking</a></li>
+		</ul>
+	</div>
+	<div class="abotalit">
+		<ul>
+			<li style="padding-left:0;">
+			@if ($user->rank == 4)<div class="user-rank admin" title="MLM Admin"></div>
+			@elseif ($user->rank == 3)<div class="user-rank dev" title="MLM Developer"></div>
+			@elseif ($user->rank == 2)<div class="user-rank editor" title="MLM Editor"></div>
+			@elseif ($user->rank == 1)<div class="user-rank mod" title="MLM Moderator"></div>@endif
+			</li>
+			<li><a href="#" class="nm"><i class="icon-envelope-alt"></i></a></li>
+			<li></li>
+		</ul>
+	</div>
+</header>
 	<div id="page">
-		<div id="vcard" class="clearfix">
-			<div class="picture">
-				@if($ownpage)
-					<a href="http://minecraft.net/profile" target="_blank" title="Change your skin..."><img src="http://minotar.net/helm/{{$user->mc_username}}/150" alt="avatar" /></a>
-				@else
-					<a href="#" style="cursor:default" title="{{$user->username}}'s Skin"><img src="http://minotar.net/helm/{{$user->mc_username}}/150" alt="avatar" /></a>
-				@endif
-			</div>
-				<div class="data">
-					{{-- User ranks --}}
-					@if ($user->rank == 4)
-					<div class="user-rank admin" title="MLM Admin"></div>
-					@elseif ($user->rank == 3)
-					<div class="user-rank dev" title="MLM Developer"></div>
-					@elseif ($user->rank == 2)
-					<div class="user-rank editor" title="MLM Editor"></div>
-					@elseif ($user->rank == 1)
-					<div class="user-rank mod" title="MLM Moderator"></div>
-					@endif
-					<h1>{{$user->username}}</h1>
-					<h2><i class="flag flag-{{$user->profile->country}}"></i>{{$countries[$user->profile->country]}}</h2>
-					@if ($user->profile->webzone)
-					<h3>{{ HTML::link($user->profile->webzone, $user->profile->webzone, array("target" => "_blank","rel" => "nofollow")) }}</h3>
-					@else
-					<div class="clearfix" style="height:35px"></div>
-					@endif
-					<ul class="numbers">
-						<li>Comments<strong>{{ $user->comment_count }}</strong></li>
-						<li>Posts<strong>888</strong></li>
-						<li>Rank<strong>888</strong></li>
-					</ul>
-				</div>
-		</div>
 		<div id="feed">
 			<div class="titlebar">
 				<h2>Feed</h2>
