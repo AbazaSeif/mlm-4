@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo URL::to_asset("css/fonts.css"); ?>" />
 	<link rel="stylesheet" type="text/css" href="<?php echo URL::to_asset("css/bootstrap.css") ?>" />
 	<link rel="stylesheet" type="text/css" href="<?php echo URL::to_asset("css/style.css") ?>" />
-	<link rel="shortcut icon" href="{{ URL::to_asset("images/static/favicon.ico") }}" />
+	<link rel="shortcut icon" href="/images/static/favicon.ico" />
 </head>
 <body>
 	<div id="actionbox">
