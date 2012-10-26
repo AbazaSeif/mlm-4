@@ -1493,9 +1493,9 @@ ol.commentlist {
     width: 100%;
     background: #D8D8D8;
     border: 1px solid #ADADAD;
-    -moz-box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.76);
-    -webkit-box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.76);
-    box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.76);
+    -moz-box-shadow: rgba(0, 0, 0, 0.760784) 0px 8px 8px -6px;
+    -webkit-box-shadow:rgba(0, 0, 0, 0.760784) 0px 8px 8px -6px;
+    box-shadow: rgba(0, 0, 0, 0.760784) 0px 8px 8px -6px;
     word-wrap: break-word;
     line-height: 1;
 }
@@ -1514,6 +1514,16 @@ ol.commentlist {
     -moz-box-sizing: border-box;
     -ms-box-sizing: border-box;
     box-sizing: border-box;
+}
+
+#multiview .mv-icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 4px 0 0;
+    color: #333;
+    font-size: 30px;
+    text-shadow: 0px 1px 2px #fff;
 }
 
 #multiview .mv-title h1 { 
