@@ -255,7 +255,7 @@ MLM = {
 					return true;
 				}
 				$("#multiview>ul").hide().removeClass().fadeIn(300).addClass(newView)
-				$.cookie("multiview", newView, {expires: 365})
+				$.cookie("multiview", newView, {expires: 365, path: '/'})
 			});
 			// Lazyload images
 			$("#multiview img").lazyload({
