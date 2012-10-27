@@ -462,6 +462,10 @@ EOT;
 		if($validation->passes()) {
 			$image = Image::create(array("file" => $input["uploaded"], "filename" => $input["name"], "type" => "map"));
 			$map->images()->attach($image->id);
+			if(!$map->image_id) {
+				$map->image_id = $image->id;
+				$map->save();
+			}
 			Messages::add("success", "Image added!");
 			return Redirect::to_action("maps@edit", array($id));
 		} else {
