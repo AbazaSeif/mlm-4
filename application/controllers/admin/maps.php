@@ -80,6 +80,8 @@ class Admin_Maps_Controller extends Admin_Controller {
 
 			case 'publish':
 			$map->published = true;
+			$map->created_at = new DateTime(); // Reset time to make it the newest.
+
 			if($map->save()) {
 				Event::fire("admin", array("maps", "edit", $map->id, "Approved"));
 				Messages::add("success", "Map approved!");
