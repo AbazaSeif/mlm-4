@@ -36,7 +36,7 @@ class Admin_Faq_Controller extends Admin_Controller {
 				return Redirect::to_action("admin.faq@new")->with_input()->with_errors($validation);
 			}
 		} else {
-			return Redirect::to_action("admin.faq@new", array($id))->with_input()->with_errors($validation);
+			return Redirect::to_action("admin.faq@new")->with_input()->with_errors($validation);
 		}
 	}
 
