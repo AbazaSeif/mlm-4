@@ -8,5 +8,12 @@ class Modqueue extends Eloquent {
 	public function user() {
 		return $this->belongs_to("User");
 	}
+
+
+	public function mapexists($id) {
+		$map = Map::find($id);
+		if ($map == null) return false;
+		else return true;
+	}
 }
 ?>
