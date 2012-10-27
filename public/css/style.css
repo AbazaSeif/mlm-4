@@ -850,10 +850,11 @@ a:hover { color: #005580 }
 /* Profile page 
    ================================================== */
 
-.profile {}
+/* User info Virtual Card */
 
 .profile #vcard {
     position: relative;
+    margin-bottom: 10px;
     padding: 5px;
     width: auto;
     background: #D8D8D8;
@@ -901,7 +902,6 @@ a:hover { color: #005580 }
     font-size: 18px;
     line-height: 1;
 }
-
 
 .profile #vcard .stats {
     float: right;
@@ -967,16 +967,18 @@ a:hover { color: #005580 }
     vertical-align: top;
 }
 
-.profile #vcard a.nm {
+.profile #vcard .abotalit ul li a {
+    display: block;
     color: #333;
 }
 
-.profile #vcard .nm:hover::after {
-    content: "Message this user";
+.profile #vcard .abotalit a:hover::after {
+    content: attr(data-value)
 }
 
 .profile #vcard .user-rank {
     display: block;
+    margin-top: 1px;
     height: 16px;
     width: 16px;
     background: url(../images/static/urank.png) no-repeat;
@@ -987,41 +989,14 @@ a:hover { color: #005580 }
 .profile #vcard .user-rank.mod {background-position: 0px -32px;}
 .profile #vcard .user-rank.editor {background-position: 0px -48px;}
 
-/* More user info */
+/* -- -- */
 
-
-.profile div.info {
-    margin:0;
-}
-
-.profile .info li {
-    padding: 10px;
-    border-bottom: 1px dotted #ADADAD;
-    font-size: 15px;
-    list-style: none;
-}
-
-.profile .info li:last-child {
-    padding-bottom: 0;
-    border-bottom: 0;
-}
-
-.profile .info li label {
-    display: inline-block;
-    width: 100px;
-    font: 18px "Oswald";}
-
-.profile .info p {
-    float: right;
-    display: inline-block;
-    margin: 0;
-    line-height: 2.2;
-}
-
-.profile .info a {}
-
-.profile .info a:hover {
-text-decoration: underline;
+.profile #page {
+    position: relative;
+    padding: 5px;
+    width: auto;
+    background: #D8D8D8;
+    border: 1px solid #ADADAD;
 }
 
 /* Account settings page 
