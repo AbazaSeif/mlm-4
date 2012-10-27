@@ -33,6 +33,7 @@
 	</div>
 	{{ Form::open(null, 'POST', array('class' => 'xpadding')) }}
 	{{ Form::token() }}
+	{{ Form::field("hidden", "modqueueid", "", array($modqueue->id)) }}
 	<p>Modqueue item found for: <strong>{{ e($map->title) }}</strong></p>
 	<p>ID: {{ $modqueue->id }}</p>
 	<p>Type: {{ $modqueue->type }}</p>
@@ -41,7 +42,10 @@
 	<p>User: {{ $modqueue->user->username }}</p>
 	<p>Date Created: {{ date("F j, Y g:ia", strtotime($modqueue->created_at)) }}</p>
 	<p>Additional Data: {{ $modqueue->data }}</p>
+	<div class="titlebar"><h4>Admin Notes <small>(Notes about this item such as why not published (No image, incorrect grammer etc.))</small></h4></div>
+	{{ Form::field("textarea", "admin_notes", "", array(Input::old("admin_notes", $modqueue->admin_notes), array("rows" => "5", "class" => "maxwidth")), array('error' => $errors->first('admin_notes'))) }}
 	{{ HTML::link_to_action("admin.modqueue.delete", "Remove Modqueue item", array($modqueue->id), array("class" => "btn btn-danger")) }}
+	{{ Form::submit("Save Admin Notes", array("class" => "btn btn-warning", "name" => "action", "value" => "savemodqueuenotes")) }}
 	{{ Form::close() }}
 	@endif
 </div>

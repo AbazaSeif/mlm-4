@@ -24,6 +24,7 @@ class Admin_Maps_Controller extends Admin_Controller {
 	public function post_view($id) {
 		$action = Input::get('action');
 		$map = Map::find($id);
+		$modqueue = Modqueue::find(Input::get('modqueueid'));
 		if(!$map) {
 			Messages::add("error", "Map not found");
 			return Redirect::to_action("admin.maps");
@@ -97,6 +98,16 @@ class Admin_Maps_Controller extends Admin_Controller {
 			if($map->save()) {
 				Event::fire("admin", array("maps", "edit", $map->id, "Approval pending"));
 				Messages::add("success", "Map unapproved!");
+				return Redirect::to_action("admin.maps");
+			} else {
+				Messages::add("error", "Failed to save");
+				return Redirect::to_action("admin.maps");
+			}
+			break;
+			case 'savemodqueuenotes':
+			$modqueue->admin_notes = Input::get("admin_notes");
+			if($modqueue->save()) {
+				Messages::add("success", "Modqueue admin notes edited!");
 				return Redirect::to_action("admin.maps");
 			} else {
 				Messages::add("error", "Failed to save");

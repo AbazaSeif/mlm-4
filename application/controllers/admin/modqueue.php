@@ -4,7 +4,7 @@ class Admin_Modqueue_Controller extends Admin_Controller {
 	
 	public function __construct() {
 		parent::__construct();
-		$this->filter("before", "csrf")->on("post")->only(array("delete"));
+		$this->filter("before", "csrf")->on("post")->only(array("delete", "view"));
 	}
 
 	public function get_index() {
@@ -14,6 +14,15 @@ class Admin_Modqueue_Controller extends Admin_Controller {
 	public function get_view($id) {
 		$modqueue = Modqueue::find($id);
 		return View::make("admin.modqueue.view", array("item" => $modqueue, "title" => "Modqueue | Admin", "javascript" => array("admin")));
+	}
+
+	public function post_view($id) {
+		$modqueue = Modqueue::find($id);
+		if (Input::get("action") == "savemodqueuenotes") {
+			$modqueue->admin_notes = Input::get("admin_notes");
+			$modqueue->save();
+		}
+		return Redirect::to_action("admin");
 	}
 
 	//delete

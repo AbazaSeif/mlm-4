@@ -28,7 +28,7 @@
 				<td>{{ $item->user->username }}</td>
 				<td>{{ date("F j, Y g:ia", strtotime($item->created_at)) }}</td>
 				<td>
-					@if ($item->itemtype == "map")
+					@if ($item->itemtype == "map" && $item->mapexists($item->itemid))
 						{{ HTML::link_to_action("admin.maps.view", "View", array($item->itemid)) }}
 					@else
 						{{ HTML::link_to_action("admin.modqueue@view", "View", array($item->id)) }}
