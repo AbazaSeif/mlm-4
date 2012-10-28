@@ -22,6 +22,12 @@
 	<link type="text/plain" rel="author" href="{{ URL::to_asset("humans.txt") }}" />
 	<link type="text/plain" rel="hackers" href="{{ URL::to_asset("hackers.txt") }}" />
 	
+	@if(isset($social) && is_array($social))
+	@foreach($social as $skey => $scontent)
+	<meta property="og:{{$skey}}" content="{{ e($scontent) }}" />
+	@endforeach
+	@endif
+
 	<link rel="shortcut icon" href="{{ URL::to_asset("images/static/favicon.ico") }}" />
 	<link rel="image_src" href="{{ URL::to_asset("images/static/apple-touch-icon-114x114-precomposed.png") }}" />
 	<link rel="apple-touch-icon-precomposed" href="{{ URL::to_asset("images/static/apple-touch-icon.png") }}" /> 
