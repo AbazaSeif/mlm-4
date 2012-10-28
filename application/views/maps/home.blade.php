@@ -8,7 +8,7 @@
 <ul class="{{ Cookie::get_raw("multiview", 'grid') }}">
 @foreach ($maps->results as $map)
 	<li>
-		<a href="{{ URL::to_action("maps@view", array($map->id, $map->slug)) }}" title="">
+		<a href="{{ URL::to_action("maps@view", array($map->id, $map->slug)) }}" title="View map">
 		<div class="mv-image">
 		@if($map->image)
 		<img src="{{ e($map->image->file_medium) }}" data-original="{{ e($map->image->file_medium) }}" alt="Map cover" />
