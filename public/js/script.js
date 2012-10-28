@@ -94,7 +94,7 @@ MLM = {
 		list: function() {
 			UTIL.exec("multiview");
 		},
-	view: function () {
+		view: function () {
 		// Maps slideshow
 			$("#maps-slider").nivoSlider({
 				effect: 'fade',
@@ -110,10 +110,19 @@ MLM = {
 				nextText: 'Next',
 				randomStart: false
 			});
+		},
+		edit: function() {
+			$('#sidebar .widget').scrollToFixed({ marginTop: 5 });
 		}
 	},
-	messages: {
-		init: function () {
+	profile: {
+		home: function() {
+		$('#vcard .stats a').click(function (e) {
+  			e.preventDefault();
+  		$(this).tab('show');
+		});
+		},
+		messages: function() {
 			// Show/Hide Message actions
 			$("#mess-ac-open").click(function () {
 				$("#mess-actions").fadeToggle(300);

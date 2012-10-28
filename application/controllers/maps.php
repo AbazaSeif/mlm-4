@@ -243,7 +243,7 @@ class Maps_Controller extends Base_Controller {
 		$authors = $map->users()->with("confirmed")->get();
 
 		return View::make("maps.edit", array(
-			"title" => "Editing: | ".e($map->title)." | Maps", "map" => $map, "is_owner" => $is_owner, "authors" => $authors, "sidebar" => "edit", "menu" => "mapedit"
+			"title" => "Editing: ".e($map->title)." | Maps", "map" => $map, "is_owner" => $is_owner, "authors" => $authors, "sidebar" => "edit", "javascript" => array("maps","edit"), "menu" => "mapedit"
 		));
 	}
 	/* Edit metadata */

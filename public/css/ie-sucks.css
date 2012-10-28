@@ -1,0 +1,12 @@
+/* ----------------------------------------------
+            MAJOR LEAGUE MINING 2012
+              Seriously, IE Sucks
+             Credits on /humans.txt
+-------------------------------------------------*/
+
+
+/* This fixes image having borders */
+a img{border: none}
+
+/* Inline instead of Inline-block */
+.login .providers li {display: inline;margin: 0}

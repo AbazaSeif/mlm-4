@@ -29,14 +29,15 @@
 	@endif
 
 	<link rel="shortcut icon" href="{{ URL::to_asset("images/static/favicon.ico") }}" />
-	<link rel="image_src" href="{{ URL::to_asset("images/static/fb.jpg") }}" />
-	<link rel="apple-touch-icon-precomposed" href="{{ URL::to_asset("images/static/apple-touch-icon-iphone.png") }}" /> 
-	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ URL::to_asset("images/static/apple-touch-icon-ipad.png") }}" /> 
-	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ URL::to_asset("images/static/apple-touch-icon-iphone4.png") }}" />
-	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ URL::to_asset("images/static/apple-touch-icon-ipad3.png") }}" />
+	<link rel="image_src" href="{{ URL::to_asset("images/static/apple-touch-icon-114x114-precomposed.png") }}" />
+	<link rel="apple-touch-icon-precomposed" href="{{ URL::to_asset("images/static/apple-touch-icon.png") }}" /> 
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ URL::to_asset("images/static/apple-touch-icon-72x72-precomposed.png") }}" /> 
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ URL::to_asset("images/static/apple-touch-icon-114x114-precomposed.png") }}" />
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ URL::to_asset("images/static/apple-touch-icon-144x144-precomposed.png") }}" />
 	
 	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/fonts.css") }}" />
 	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/bootstrap.css") }}" />
+	<!--[if IE]><link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/ie-sucks.css") }}" /><![endif]-->
 	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/style.css") }}" />
 	
 	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/nivo/default/default.css") }}" />
