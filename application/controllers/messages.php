@@ -11,11 +11,11 @@ class Messages_Controller extends Base_Controller {
 
 	public function get_index() {
 		$threads = Auth::user()->messages()->with("unread")->get();
-		return View::make("messages.list", array("title" => "Messages", "threads" => $threads, "javascript" => array("messages")));
+		return View::make("messages.list", array("title" => "Messages", "threads" => $threads, "javascript" => array("profile", "messages")));
 	}
 	public function get_new() {
 
-		return View::make("messages.new", array("title" => "New Message", "javascript" => array("messages")));
+		return View::make("messages.new", array("title" => "New Message", "javascript" => array("profile", "messages")));
 	}
 	public function post_new() {
 		$validation_rules = array(
@@ -86,7 +86,7 @@ class Messages_Controller extends Base_Controller {
 			DB::table("message_users")->where_message_thread_id($thread->id)->where_user_id(Auth::user()->id)->update(array("unread" => 0));
 		}
 		$messages = Message_Message::with("user")->where_message_thread_id($thread->id)->get();
-		return View::make("messages.view", array("title" => e($thread->title)." | Messages", "thread" => $thread, "messages" => $messages, "javascript" => array("messages")));
+		return View::make("messages.view", array("title" => e($thread->title)." | Messages", "thread" => $thread, "messages" => $messages, "javascript" => array("profile", "messages")));
 	}
 	/* Replying to thread */
 	public function post_reply($threadid) {

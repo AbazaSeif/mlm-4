@@ -67,9 +67,9 @@ Route::get("user/(:any?)", function($username = null) {
 	$moduleurl = $url[3];
 
 	if(Auth::check() && Auth::user()->id == $userobj->id) {
-		return View::make("user.home", array("title" => "Your Profile & Activity", "ownpage" => true, "user" => $userobj, "moduleURL" => $moduleurl));
+		return View::make("user.home", array("title" => "Your Profile & Activity", "ownpage" => true, "user" => $userobj, "moduleURL" => $moduleurl, "javascript" => array("profile", "home")));
 	} else {
-		return View::make("user.home", array("title" => $userobj->username." Profile & Activity", "ownpage" => false, "user" => $userobj, "moduleURL" => $moduleurl));
+		return View::make("user.home", array("title" => $userobj->username." Profile & Activity", "ownpage" => false, "user" => $userobj, "moduleURL" => $moduleurl, "javascript" => array("profile", "home")));
 	}
 });
 
