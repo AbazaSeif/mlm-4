@@ -44,7 +44,7 @@ Route::get("news/(:num)-(:any)", "news@view");
 Route::get("map/(:num)-(:any)", "maps@view");
 
 // Public routes
-Route::controller(array("account", "imgmgr", "maps", "messages", "news", "faq", "matches", "search", "teams"));
+Route::controller(array("account", "imgmgr", "maps", "messages", "news", "faq", "matches", "search", "teams", "test"));
 
 // User pages
 Route::get("user/(:any?)", function($username = null) {
