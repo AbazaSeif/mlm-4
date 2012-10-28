@@ -125,7 +125,7 @@ class Maps_Controller extends Base_Controller {
 		}
 	}
 	public function get_view($id, $slug = null) {
-		$map = Map::with(array("comments", "comments.user"))->find($id); // Don't really have to care about the slug
+		$map = Map::with(array("comments", "comments.user", "images"))->find($id); // Don't really have to care about the slug
 		if(!$map) {
 			return Response::error('404');
 		}
@@ -148,8 +148,22 @@ class Maps_Controller extends Base_Controller {
 			$modqueue = Modqueue::where_itemtype('map')->where_itemid($map->id)->first();
 		}
 		$authors = $map->users()->where("confirmed", "=", 1)->with("confirmed")->get();
+		$social = array(
+			"title" => $map->title, "type" => "article", "url" => action("maps@view", array($map->id, $map->slug)), "description" => $map->summary
+		);
+		if($map->image_id) {
+			foreach ($map->images as $image) {
+				if($image->id == $map->image_id) {
+					$social["image"] = URL::to_asset($image->file_medium);
+					break;
+				}
+			}
+		}
+
 		return View::make("maps.view", array(
-			"title" => e($map->title)." | Maps", "map" => $map, "authors" => $authors, "is_owner" => $is_owner, "rating" => $rating, "modqueue" => $modqueue, "javascript" => array("maps", "view"), "sidebar" => "view", "menu" => "map"
+			"title" => e($map->title)." | Maps", "map" => $map, "authors" => $authors, "is_owner" => $is_owner, "rating" => $rating,
+			"modqueue" => $modqueue, "javascript" => array("maps", "view"), "sidebar" => "view", "menu" => "map",
+			"social" => $social
 		));
 	}
 	public function post_rate($id) {
