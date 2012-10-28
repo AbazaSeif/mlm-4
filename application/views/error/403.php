@@ -6,6 +6,7 @@
 	<title>403 - Major League Mining</title>
 	<link rel="stylesheet" type="text/css" href="<?php echo URL::to_asset("css/fonts.css"); ?>" />
 	<link rel="stylesheet" type="text/css" href="<?php echo URL::to_asset("css/bootstrap.css") ?>" />
+	<!--[if IE]><link rel="stylesheet" type="text/css" href="<?php echo URL::to_asset("css/ie-sucks.css") ?>" /><![endif]-->
 	<link rel="stylesheet" type="text/css" href="<?php echo URL::to_asset("css/style.css") ?>" />
 	<link rel="shortcut icon" href="/images/static/favicon.ico" />
 </head>
