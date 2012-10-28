@@ -8,7 +8,7 @@ html, body {height: 100%;}
 body {
     margin: 0;
     padding: 0;
-    background: #B9B9B9 url(../images/static/bg/white.png) repeat fixed center;
+    background: #f9f9f9 url(../images/static/bg/white.png) repeat fixed center;
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif; 
     font-weight: normal;
     color: #333;
@@ -55,12 +55,12 @@ body::before {/* thanks to Maleika (Kohoutec) */
 
 /* helper classes */
 
-.left {float: left}
-.right {float: right}
-.center {text-align: center;}
+.left {float: left!important}
+.right {float: right!important}
+.center {text-align: center!important}
 .inline {display: inline!important}
-.maxwidth { width: 100% }
-.halfwidth { width: 49.5% }
+.maxwidth { width: 100%!important}
+.halfwidth { width: 49.5% !important}
 
 a { color: #1e95cf; text-decoration: none }
 
@@ -258,7 +258,7 @@ a:hover { color: #005580 }
     display: inline;
     margin: 10px 0;
     color: #333;
-    text-shadow: 0px 1px 0px #fff;
+    text-shadow: 0px 1px 1px #fff;
     font-weight: normal;
     font-family: "Oswald";
     text-transform: uppercase;
@@ -510,7 +510,7 @@ a:hover { color: #005580 }
     padding: 10px 15px;
     margin-right: 0;
     color: #333;
-    text-shadow: 0px 1px 0px #fff;
+    text-shadow: 0px 1px 1px #fff;
     font-size: 16px;
     text-transform: uppercase;
     text-align: center;
@@ -995,10 +995,6 @@ a:hover { color: #005580 }
 }
 
 .profile .info a {}
-
-.profile .info a:hover {
-text-decoration: underline;
-}
 
 /* Account settings page 
    ================================================== */
@@ -1531,7 +1527,7 @@ ol.commentlist {
     font:400 22px/25px "Oswald";
     letter-spacing: -1px;  
     color:#333; 
-    text-shadow:rgb(226, 226, 226) 0px 1px 0px; 
+    text-shadow:rgb(226, 226, 226) 0px 1px 1px; 
 }
 
 #multiview .mv-summary {}
@@ -1571,9 +1567,9 @@ ol.commentlist {
 
 /* List view */
 
-#multiview ul.list {}
+#multiview ul.list { }
 
-#multiview ul.list li { display: block; margin: 0 0 10px 0; height: auto; width: auto; }
+#multiview ul.list li { display: block; margin: 0 0 10px 0; height: auto; width: auto; -moz-box-shadow:none; -webkit-box-shadow:none; box-shadow:none;}
 
 #multiview .list li:first-child { margin-top: 0 }
 
@@ -1942,6 +1938,8 @@ img.imgfix { display: block; margin-top: 10px; width: 50% }
 
 /* Fixes That don't require a lot of change (responsive fixes ONLY) 
    ================================================== */
+
+   body { background-image: none!important; }
 
    .login { padding: 10px 0; }
 
