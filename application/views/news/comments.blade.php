@@ -26,7 +26,7 @@
 		<div id="comment">
 			<p class="help">Live preview</p>
 			<div class="vcard"> 
-			<img class="avatar" src="http://minotar.net/helm/{{Auth::user()->mc_username}}/150.png" alt="{{Auth::user()->username}}'s skin">
+			<img class="avatar" src="{{Auth::user()->avatar_url}}" alt="{{Auth::user()->username}}'s skin">
 			<a class="username" href="/user/{{Auth::user()->username}}" title="{{Auth::user()->username}}'s Profile">{{Auth::user()->username}}</a> Says:
 		</div>
 		<div class="body">

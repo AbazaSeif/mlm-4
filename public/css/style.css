@@ -868,7 +868,7 @@ a:hover { color: #005580 }
 }
 
 .profile #vcard .picture a img {
-    max-width: 100%;
+    max-width: 150px;
     padding: 7px;
     background: #fff;
     border: 1px solid #adadad;

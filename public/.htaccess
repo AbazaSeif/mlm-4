@@ -179,6 +179,8 @@ AddCharset utf-8 .atom .css .js .json .rss .vtt .xml
 # "index.php" front controller, keeping the query string intact
 
 <IfModule mod_rewrite.c>
+	RewriteRule ^images/skin/(\w+)\.png$ skin.php?user=$1 [NC,L]
+	RewriteRule ^images/skin/face/(\w+)\.png$ skin_face.php?user=$1 [NC,L]
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-d
 	RewriteRule ^(.*)$ index.php/$1 [L]

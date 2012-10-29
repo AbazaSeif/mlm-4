@@ -10,9 +10,9 @@
 		<div id="vcard" class="clearfix">
 			<div class="picture">
 				@if($ownpage)
-					<a href="http://minecraft.net/profile" target="_blank" title="Change your skin..."><img src="http://minotar.net/helm/{{$user->mc_username}}/150" alt="avatar" /></a>
+					<a href="http://minecraft.net/profile" target="_blank" title="Change your skin..."><img src="{{$user->avatar_url}}" alt="avatar" /></a>
 				@else
-					<a href="#" style="cursor:default" title="{{$user->username}}'s Skin"><img src="http://minotar.net/helm/{{$user->mc_username}}/150" alt="avatar" /></a>
+					<a href="#" style="cursor:default" title="{{$user->username}}'s Skin"><img src="{{$user->avatar_url}}/150" alt="avatar" /></a>
 				@endif
 			</div>
 				<div class="data">

@@ -75,10 +75,13 @@
 						</a>
 					</div>
 					<div id="loginout">
-						@if (Auth::user() && Auth::user()->admin)
-						{{ HTML::link_to_action('account@logout', "Logout") }} {{ HTML::link('admin', 'Admin panel'); }} {{ HTML::link('account', 'Edit Account'); }} <a href="{{ URL::to("user/".Auth::user()->username) }}"><span title="{{ e(Auth::user()->unread_messages) }} new messages" style="margin-right: 3px;">[{{ e(Auth::user()->unread_messages) }}]</span> Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/150" alt="avatar" /></a>
-						@elseif (Auth::check())
-						{{ HTML::link_to_action('account@logout', "Logout") }} {{ HTML::link('account', 'Edit Account'); }} <a href="{{ URL::to("user/".Auth::user()->username) }}"><span title="{{ e(Auth::user()->unread_messages) }} new messages" style="margin-right: 3px;">[{{ e(Auth::user()->unread_messages) }}]</span> Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/150" alt="avatar" /></a>
+						@if (Auth::user())
+							{{ HTML::link_to_action('account@logout', "Logout") }}
+							@if(Auth::user()->admin)
+								{{ HTML::link('admin', 'Admin panel'); }}
+							@endif
+							{{ HTML::link('account', 'Edit Account'); }}
+							<a href="{{ URL::to("user/".Auth::user()->username) }}"><span title="{{ e(Auth::user()->unread_messages) }} new messages" style="margin-right: 3px;">[{{ e(Auth::user()->unread_messages) }}]</span> Profile <img src="{{ Auth::user()->avatar_url }}" alt="avatar" /></a>
 						@else
 						{{ HTML::link('login', "Login &bull; Create account", array("class" => "nosep")) }}
 						@endif
@@ -88,16 +91,15 @@
 			</div>	
 				<nav id="menu">
 					<ul id="loginout">
-						@if (Auth::user() && Auth::user()->admin)
-					<li>{{ HTML::link_to_action('account@logout', "Logout") }} </li>
-					<li>{{ HTML::link('admin', 'Admin panel'); }}</li>
-					<li><a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/150" alt="avatar" /></a></li>
-						@elseif (Auth::check())
-					<li>{{ HTML::link_to_action('account@logout', "Logout") }}</li>
-					<li>{{ HTML::link('account', 'Edit Account'); }}</li>
-					<li><a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/150" alt="avatar" /></a></li>
+						@if (Auth::check())
+						<li>{{ HTML::link_to_action('account@logout', "Logout") }} </li>
+						@if (Auth::user()->admin)
+							<li>{{ HTML::link('admin', 'Admin panel'); }}</li>
+						@endif
+						<li>{{ HTML::link('account', 'Edit Account'); }}</li>
+						<li><a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="{{ Auth::user()->avatar_url }}" alt="avatar" /></a></li>
 						@else
-					<li>{{ HTML::link('login', "Login &bull; Create account", array("class" => "nosep")) }}</li>
+						<li>{{ HTML::link('login', "Login &bull; Create account", array("class" => "nosep")) }}</li>
 						@endif
 					</ul>
 					<ul id="mainmenu">
