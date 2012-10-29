@@ -12,7 +12,7 @@
 		<div class="mv-title"><h1>{{ $team->name }}</div>
 		<div class="mv-summary"><p>{{ $team->summary }}</div>
 		<div class="mv-meta">
-			<span>Member Count: <b>{{ count($team->users) }}</span>
+			<span>Members: <b>{{ count($team->users) }}</span>
 		</div>
 		</div>
 	</a>

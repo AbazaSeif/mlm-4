@@ -50,7 +50,7 @@ class Teams_Controller extends Base_Controller {
 		);
 		$validation = Validator::make(Input::all(), $validation_rules);
 		if($validation->passes()) {
-			// New map
+			// New team
 			$team = new Team();
 			$team->name			= Input::get("name");
 			$team->summary 		= Input::get("summary");
@@ -159,7 +159,7 @@ class Teams_Controller extends Base_Controller {
 		}
 		$owners = $team->users()->where_not_null('owner')->get();
 		return View::make("teams.edit", array(
-			"title" => "Edit | ".e($team->name)." | Teams", "team" => $team, "owners" => $owners)
+			"title" => "Editing: ".e($team->name)." | Teams", "team" => $team, "owners" => $owners)
 		);
 	}
 	/* Edit metadata */

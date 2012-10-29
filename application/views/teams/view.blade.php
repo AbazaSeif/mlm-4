@@ -4,7 +4,7 @@
 @if($is_owner)
 <ul class="submenu nav nav-pills">
 	<li class="disabled"><a href="#">Actions:</a></li>
-	<li>{{ HTML::link_to_action("teams@edit", "Edit Match", array($team->id)) }}</li>
+	<li>{{ HTML::link_to_action("teams@edit", "Edit Team", array($team->id)) }}</li>
 </ul>
 @endif
 

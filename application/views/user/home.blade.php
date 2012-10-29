@@ -59,13 +59,13 @@
 		<div class="avatar"><img src="http://minotar.net/helm/{{$user->mc_username}}/60" alt="avatar" /></div>
 		<div class="name">
 			<a href="#">
-			<h1>The quick brown fox jumps over the lazy dog</h1>
+			<h1>The Quick Brown Fox</h1>
 			<h2>TQBFJOTLD</h2>
 			</a>
 		</div>
 		<div class="stats">
 		<ul>
-			<li><a href="#members"><span>###</span>Members</a></li>
+			<li><a href="#members"><span>123</span>Members</a></li>
 			<li><a href="#wins"><span>789</span>Wins</a></li>
 			<li><a href="#loses"><span>012</span>Loses</a></li>
 		</ul>
