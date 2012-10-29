@@ -61,9 +61,10 @@ class Form extends \Laravel\Form {
 
 		// Build the HTML
 		$out  = '<div class="'.$class.'">';
-		if ( ! empty($label))
-		{
-			$out .= Form::label($name, $label, array('class' => 'control-label'));
+		if ( ! empty($label)) {
+			static::$labels[] = $name;
+			$out .= '<label for="'.$name.'" class="control-label">'.HTML::entities($label) . 
+				    (isset($opts["alt"]) ? ' <small>'.HTML::entities($opts["alt"]).'</small>': '').'</label>';
 		}
 		$out .= '<div class="controls">'.PHP_EOL;
 		$out .= forward_static_call_array(array('Form', $type), $args);

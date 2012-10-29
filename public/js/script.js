@@ -67,7 +67,7 @@ MLM = {
 			}
 			}
         	setInterval(updateLivePreview, 100);
-			}
+		}
 	},
 	home: {
 		init: function () {
@@ -112,7 +112,7 @@ MLM = {
 			});
 		},
 		edit: function() {
-			$('#sidebar .widget').scrollToFixed({ marginTop: 5 });
+			// $('#sidebar .widget').scrollToFixed({ marginTop: 5 });
 		}
 	},
 	profile: {

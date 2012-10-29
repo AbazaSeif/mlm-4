@@ -268,6 +268,25 @@ a:hover { color: #005580 }
 .titlebar h3{font-size: 18px}
 .titlebar h4{font-size: 14px}
 
+/* Forms */
+.form .control-group .control-label {
+    display: inline;
+    color: #333;
+    text-shadow: 0px 1px 1px #fff;
+    font-weight: normal;
+    font-family: "Oswald";
+    text-transform: uppercase;
+    font-size: 14px;
+    border-bottom: 1px dotted #333333;
+    margin-bottom: 10px;
+    display: block;
+}
+.form .control-group .control-label small {
+    font-size: 14px;
+    color: #666666;
+}
+
+
 /* Global Footer
    ================================================== */
 
