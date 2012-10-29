@@ -21,7 +21,7 @@ class User extends Eloquent {
 		return $this->has_many_and_belongs_to("Match")->with('teamnumber', 'invited');
 	}
 	public function teams() {
-		return $this->has_many_and_belongs_to("Team")->with('owner');
+		return $this->has_many_and_belongs_to("Team")->with('owner', 'invited');
 	}
 
 	// Send a *system message* to the user
