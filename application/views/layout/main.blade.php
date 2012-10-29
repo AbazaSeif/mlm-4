@@ -22,12 +22,15 @@
 	<link type="text/plain" rel="author" href="{{ URL::to_asset("humans.txt") }}" />
 	<link type="text/plain" rel="hackers" href="{{ URL::to_asset("hackers.txt") }}" />
 	
+	@if(isset($social) && is_array($social))
+	@foreach($social as $skey => $scontent)
+	<meta property="og:{{$skey}}" content="{{ e($scontent) }}" />
+	@endforeach
+	@endif
+
 	<link rel="shortcut icon" href="{{ URL::to_asset("images/static/favicon.ico") }}" />
-	<link rel="image_src" href="{{ URL::to_asset("images/static/apple-touch-icon-114x114-precomposed.png") }}" />
-	<link rel="apple-touch-icon-precomposed" href="{{ URL::to_asset("images/static/apple-touch-icon.png") }}" /> 
-	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ URL::to_asset("images/static/apple-touch-icon-72x72-precomposed.png") }}" /> 
-	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ URL::to_asset("images/static/apple-touch-icon-114x114-precomposed.png") }}" />
-	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ URL::to_asset("images/static/apple-touch-icon-144x144-precomposed.png") }}" />
+	<link rel="image_src" href="{{ URL::to_asset("images/static/mlm.png") }}" />
+	<link rel="apple-touch-icon-precomposed" href="{{ URL::to_asset("images/static/apple-touch-icon.png") }}" />
 	
 	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/fonts.css") }}" />
 	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/bootstrap.css") }}" />

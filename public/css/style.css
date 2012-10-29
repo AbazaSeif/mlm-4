@@ -853,7 +853,6 @@ a:hover { color: #005580 }
 /* User info Virtual Card */
 
 .profile #vcard {
-    position: relative;
     margin-bottom: 10px;
     padding: 5px;
     width: auto;
@@ -864,7 +863,6 @@ a:hover { color: #005580 }
 
 .profile #vcard .avatar {
     display: block;
-    position: relative;
     float: left;
     margin-right: 5px;
     padding: 5px;
@@ -991,7 +989,7 @@ a:hover { color: #005580 }
 
 /* -- -- */
 
-.profile #page,.profile #sidebar {
+.profile #page,.profile #team {
     position: relative;
     padding: 5px;
     background: #D8D8D8;
@@ -1005,9 +1003,101 @@ a:hover { color: #005580 }
     float: right;
 }
 
-.profile #sidebar {
+.profile #team {
     float: left;
-    width: 330px;
+    width: 334px;
+    text-shadow:0px 1px 1px #fff;
+}
+
+.profile #team .avatar {
+    display: block;
+    float: left;
+    margin-right: 5px;
+    padding: 3px;
+    background: rgb(230, 230, 230);
+    border: 1px solid rgb(211, 211, 211);
+}
+
+.profile #team .avatar img {
+    display: block;
+    margin: 0;
+}
+
+.profile #team .name {
+    float: right;
+    width: 249px;
+}
+
+.profile #team .name a {
+    color: #333;
+}   
+
+.profile #team .name h1 {
+    margin: 0px 0px 12px;
+    font-family:"Oswald";
+    font-size: 27px;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: -2px;
+}
+
+.profile #team .name h2 {
+    margin: -5px 0 0;
+    font-size: 20px;
+    line-height: 1;
+}
+
+.profile #team .name h3 {
+    margin: 4px 0 0;
+    font-size: 18px;
+    line-height: 1;
+}
+
+.profile #team .stats {
+    float: right;
+    margin: 10px 0;
+    padding: 6px 0;
+    border-top: 1px dotted #adadad;
+    border-bottom: 1px dotted #adadad;
+}
+
+.profile #team .stats ul {
+    margin: 0;
+    width: 322px;
+    text-align: center;
+}
+
+.profile #team .stats ul li {
+    display: inline-block;
+    margin-left: -4px;
+    width: 100px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.profile #team .stats ul li a {
+    display: block;
+    padding: 26px 0px 18px;
+    border-left: 1px dotted rgb(173, 173, 173);
+    color: #333;
+}
+
+.profile #team .stats ul li:first-child > a{
+    border-left: none;
+}
+
+.profile #team .stats ul li a:hover {
+    background-color: #f9f9f9;
+}
+
+.profile #team .stats ul li span{
+    display: block;
+    margin-bottom: 10px;
+    font-family: "Oswald";
+    font-weight: 400;
+    font-size: 40px;
+    letter-spacing: -2px;
 }
 
 /* Account settings page 
@@ -1166,6 +1256,7 @@ a:hover { color: #005580 }
 
 .messages .message .body {
     padding: 0 6px;
+    overflow: hidden;
 }
 
 .messages .message .body ol, .messages .message .body ul {
@@ -1403,6 +1494,7 @@ ol.commentlist {
 } 
 
 #comments .body {
+    overflow: hidden;
     padding: 10px;
     background: #F9F9F9; 
     color: #474747;
@@ -1584,6 +1676,8 @@ ol.commentlist {
 #multiview ul.list { }
 
 #multiview ul.list li { display: block; margin: 0 0 10px 0; height: auto; width: auto; -moz-box-shadow:none; -webkit-box-shadow:none; box-shadow:none;}
+
+#multiview ul.list li:hover { background-color: #f9f9f9 }
 
 #multiview .list li:first-child { margin-top: 0 }
 

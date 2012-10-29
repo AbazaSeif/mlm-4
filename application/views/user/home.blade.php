@@ -31,12 +31,11 @@
 	</div>
 	<div class="abotalit">
 		<ul>
-			<li style="padding-left:0;">
-			@if ($user->rank == 4)<div class="user-rank admin" title="MLM Admin"></div>
-			@elseif ($user->rank == 3)<div class="user-rank dev" title="MLM Developer"></div>
-			@elseif ($user->rank == 2)<div class="user-rank editor" title="MLM Editor"></div>
-			@elseif ($user->rank == 1)<div class="user-rank mod" title="MLM Moderator"></div>@endif
-			</li>
+			@if ($user->rank == 4)<li style="padding-left:0;"><div class="user-rank admin" title="MLM Admin"></div></li>
+			@elseif ($user->rank == 3)<li style="padding-left:0;"><div class="user-rank dev" title="MLM Developer"></div></li>
+			@elseif ($user->rank == 2)<li style="padding-left:0;"><div class="user-rank editor" title="MLM Editor"></div></li>
+			@elseif ($user->rank == 1)<li style="padding-left:0;"><div class="user-rank mod" title="MLM Moderator"></div></li>
+			@endif
 			<li><a href="{{ URL::to("messages/new") }}" title="Messages" data-value="Message {{$user->username}}"><i class="icon-envelope-alt"></i></a></li>
 			@if ($user->profile->reddit)
 			<li><a href="http://reddit.com/user/{{$user->profile->reddit}}" target="_blank" rel="nofollow" title="reddit" data-value="{{$user->profile->reddit}}"><i class="icon-arrow-up"></i></a></li>
@@ -55,12 +54,52 @@
 <script type="text/javascript">
 </script>
 <div id="sidebar" class="left">
-	<div class="titlebar"><h2>Team</h2></div>
+	<div id="team">
+		<div class="titlebar"><h2>Member of team</h2></div>
+		<div class="avatar"><img src="http://minotar.net/helm/{{$user->mc_username}}/60" alt="avatar" /></div>
+		<div class="name">
+			<a href="#">
+			<h1>The quick brown fox jumps over the lazy dog</h1>
+			<h2>TQBFJOTLD</h2>
+			</a>
+		</div>
+		<div class="stats">
+		<ul>
+			<li><a href="#members"><span>###</span>Members</a></li>
+			<li><a href="#wins"><span>789</span>Wins</a></li>
+			<li><a href="#loses"><span>012</span>Loses</a></li>
+		</ul>
+	</div>
+	</div>
 </div>
 	<div id="page" class="right">
 		<div id="myTabContent" class="tab-content">
           <div class="tab-pane fade active in" id="user-comments">
             <div class="titlebar"><h2>Comments</h2></div>
+            <div id="multiview">
+            	<ul class="list">
+            		<li>
+            			<a href="#" title="View comment">
+            			<div class="mv-details">
+            				<div class="mv-summary"><p>Lorem ipsum dolor</p></div>
+            				<div class="mv-meta">
+            				<span><b>Item name</b></span>, on <span><b>10/10/10</b></span>
+            				</div>
+            			</div> 
+            			</a>
+            		</li>
+            		<li>
+            			<a href="#" title="View comment">
+            			<div class="mv-details">
+            				<div class="mv-summary"><p>Lorem ipsum dolor</p></div>
+            				<div class="mv-meta">
+            				<span><b>Item name</b></span>, on <span><b>10/10/10</b></span>
+            				</div>
+            			</div> 
+            			</a>
+            		</li>
+            	</ul>
+            </div>
           </div>
           <div class="tab-pane fade" id="user-maps">
             <div class="titlebar"><h2>Maps</h2></div>
