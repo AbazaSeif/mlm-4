@@ -12,7 +12,7 @@
 <div class="titlebar"><h3>In this thread</h3></div>
 	<ul class="itt">
 		@foreach($thread->users as $user)
-			<li><a href="{{ URL::to("user/{$user->username}") }}"><img src="http://minotar.net/helm/{{ $user->mc_username }}/18" alt="avatar"> {{$user->username}}</a></li>
+					<li><a href="{{ URL::to("user/{$user->username}") }}"><img src="{{ $user->avatar_url }}" alt="avatar"> {{$user->username}}</a></li>
 		@endforeach
 	</ul>
 	</div>
@@ -31,7 +31,7 @@
 		<li class="message">
 			@if($message->user_id)
 			<div class="vcard">
-			<a href="{{ URL::to("user/{$message->user->username}") }}"><img src="http://minotar.net/helm/{{ $message->user->mc_username }}/15" alt="avatar"> {{$message->user->username}}</a> @ {{ $message->created_at }}
+			<a href="{{ URL::to("user/{$message->user->username}") }}"><img src="{{ $message->user->avatar_url }}" alt="avatar"> {{$message->user->username}}</a> @ {{ $message->created_at }}
 			</div>
 			@else
 			<div class="vcard">
@@ -44,6 +44,7 @@
 		</li>
 	@endforeach
 	</ul>
+	@if($thread->user_id)
 	<div id="reply" class="titlebar"><h3>Reply</h3></div>
 <div class="clearfix">
 	<div class="left halfwidth">
@@ -57,7 +58,7 @@
 		<div class="titlebar"><h4>Preview</h4></div>
 		<li class="message">
 			<div class="vcard">
-			<a href="{{ URL::to("user/{ Auth::user()->username }") }}"><img src="http://minotar.net/helm/{{ Auth::user()->mc_username }}/15" alt="avatar"> {{ Auth::user()->username }}</a>
+					<a href="{{ URL::to("user/{ Auth::user()->username }") }}"><img src="{{ Auth::user()->avatar_url }}" alt="avatar"> {{ Auth::user()->username }}</a>
 			</div>
 			<div class="body">
 			<div id="preview"></div>
@@ -65,5 +66,6 @@
 		</li>
 	</div>
 </div>
+@endif
 </div>
 @endsection

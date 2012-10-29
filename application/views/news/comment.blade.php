@@ -1,7 +1,7 @@
 <li>
 	<div id="comment{{$comment->id}}">
 		<div class="vcard"> 
-		<img class="avatar" src="http://minotar.net/helm/{{$comment->user->mc_username}}/150.png" alt="{{ $comment->user->username }}'s skin" title="{{ $comment->user->username }}'s skin">
+		<img class="avatar" src="{{$comment->user->avatar_url}}" alt="{{ $comment->user->username }}'s skin" title="{{ $comment->user->username }}'s skin">
 		<a class="username" href="/user/{{ $comment->user->username }}" title="{{$comment->user->username}}'s Profile">{{ $comment->user->username }}</a> Says:
 		</div>
 	<div class="body">

@@ -890,7 +890,7 @@ a:hover { color: #005580 }
 }
 
 .profile #vcard .avatar img {
-    display: block;
+    max-width: 100%;
     margin: 0;
 }
 

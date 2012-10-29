@@ -31,7 +31,7 @@
 	<ul class="ulfix">
 	@foreach($authors as $author)
 		{{-- These are all user objects, so feel free to do whatever --}}
-		<li class="xpadding"><img src="http://minotar.net/helm/{{ $author->mc_username }}/32" alt="avatar" /> {{ HTML::link("user/{$author->username}", $author->username) }}
+		<li class="xpadding"><img src="{{ $author->avatar_url }}" alt="avatar" /> {{ HTML::link("user/{$author->username}", $author->username) }}
 		</li>
 	@endforeach
 	</ul>

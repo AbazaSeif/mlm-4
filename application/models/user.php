@@ -39,6 +39,9 @@ class User extends Eloquent {
 	public function get_unread_messages() {
 		return $this->relationships["unread_messages"] = $this->messages()->where_unread(1)->count();
 	}
+	public function get_avatar_url() {
+		return URL::to("images/skin/face/{$this->mc_username}.png");
+	}
 
 	public function update_comment_count($deletion = false) {
 		if ($deletion == false) {

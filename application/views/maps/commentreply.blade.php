@@ -1,7 +1,7 @@
 <li>
 	<div id="comment{{$replycomment->id}}">
 		<div class="vcard"> 
-		<img class="avatar" src="http://minotar.net/helm/{{$replycomment->user->mc_username}}/150.png" alt="{{ $replycomment->user->username }}'s skin" title="{{ $replycomment->user->username }}'s skin">
+		<img class="avatar" src="{{$replycomment->user->avatar_url}}" alt="{{ $replycomment->user->username }}'s skin" title="{{ $replycomment->user->username }}'s skin">
 		<a class="username" href="/user/{{ $replycomment->user->username }}" title="{{$replycomment->user->username}}'s Profile">{{ $replycomment->user->username }}</a> Says:
 		<br/>Reply to: <span class="time"><a href="{{ URL::to_action("maps@view", array($map->id, $map->slug)) }}#comment{{$comment->id}}">{{ date("M j,Y g:ia", strtotime($comment->created_at)) }}</a></span> by
 		<a class="username" href="/user/{{ $comment->user->username }}" title="{{$comment->user->username}}'s Profile">{{ $comment->user->username }}</a> 

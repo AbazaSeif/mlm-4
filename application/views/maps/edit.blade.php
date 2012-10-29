@@ -32,7 +32,7 @@
 	<ul class="ulfix">
 	@foreach($authors as $user)
 		<li class="xpadding">
-			<img src="http://minotar.net/helm/{{ $user->mc_username }}/30" alt="avatar" /> {{$user->username}}
+			<img src="{{ $user->avatar_url }}" alt="avatar" /> {{$user->username}}
 			@if(!$user->pivot->confirmed)
 				Hasn't yet accepted the invite
 			@endif
