@@ -23,7 +23,7 @@
 	<ul class="ulfix">
 	@foreach($owners as $user)
 		<li class="xpadding">
-			<img src="http://minotar.net/helm/{{ $user->mc_username }}/30" alt="avatar" /> {{$user->username}}
+			<img src="{{ $user->avatar_url }}" alt="avatar" width="30"/> {{$user->username}}
 			@if($user->pivot->owner === 0)
 				<small>(Hasn't yet accepted the invite)</small>
 			@endif
@@ -49,7 +49,7 @@
 	<ul class="ulfix">
 	@foreach($team->users as $user)
 		<li class="xpadding">
-			<img src="http://minotar.net/helm/{{ $user->mc_username }}/30" alt="avatar" /> {{$user->username}}
+			<img src="{{ $user->avatar_url }}" alt="avatar" width="30"/> {{$user->username}}
 			@if(!$user->pivot->invited)
 				<small>(Hasn't yet accepted the invite)</small>
 			@endif

@@ -56,7 +56,7 @@
 <div id="sidebar" class="left">
 	<div id="team">
 		<div class="titlebar"><h2>Member of team</h2></div>
-		<div class="avatar"><img src="http://minotar.net/helm/{{$user->mc_username}}/60" alt="avatar" /></div>
+		<div class="avatar"><img src="{{ $user->avatar_url }}" alt="avatar" width="60"/></div>
 		<div class="name">
 			<a href="#">
 			<h1>The Quick Brown Fox</h1>

@@ -12,7 +12,7 @@
 <div class="titlebar"><h3>In this thread</h3></div>
 	<ul class="itt">
 		@foreach($thread->users as $user)
-					<li><a href="{{ URL::to("user/{$user->username}") }}"><img src="{{ $user->avatar_url }}" alt="avatar"> {{$user->username}}</a></li>
+					<li><a href="{{ URL::to("user/{$user->username}") }}"><img src="{{ $user->avatar_url }}" alt="avatar" width="15"> {{$user->username}}</a></li>
 		@endforeach
 	</ul>
 	</div>
@@ -31,11 +31,11 @@
 		<li class="message">
 			@if($message->user_id)
 			<div class="vcard">
-			<a href="{{ URL::to("user/{$message->user->username}") }}"><img src="{{ $message->user->avatar_url }}" alt="avatar"> {{$message->user->username}}</a> @ {{ $message->created_at }}
+			<a href="{{ URL::to("user/{$message->user->username}") }}"><img src="{{ $message->user->avatar_url }}" alt="avatar" width="15"> {{$message->user->username}}</a> @ {{ $message->created_at }}
 			</div>
 			@else
 			<div class="vcard">
-			<a href="#"><img src="{{ URL::to_asset("images/static/system.png") }}" width="15"> System</a> @ {{ $message->created_at }}
+			<a href="#"><img src="{{ URL::to_asset("images/static/system.png") }}" alt="avatar" width="15"> System</a> @ {{ $message->created_at }}
 			</div>
 			@endif
 			<div class="body">
@@ -58,7 +58,7 @@
 		<div class="titlebar"><h4>Preview</h4></div>
 		<li class="message">
 			<div class="vcard">
-					<a href="{{ URL::to("user/{ Auth::user()->username }") }}"><img src="{{ Auth::user()->avatar_url }}" alt="avatar"> {{ Auth::user()->username }}</a>
+					<a href="{{ URL::to("user/{ Auth::user()->username }") }}"><img src="{{ Auth::user()->avatar_url }}" alt="avatar" width="15"> {{ Auth::user()->username }}</a>
 			</div>
 			<div class="body">
 			<div id="preview"></div>

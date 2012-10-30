@@ -87,14 +87,11 @@
 				</div>
 			</div>	
 				<nav id="menu">
-					<ul id="loginout">
+					<ul class="loginout">
 						@if (Auth::check())
 						<li>{{ HTML::link_to_action('account@logout', "Logout") }} </li>
-						@if (Auth::user()->admin)
-							<li>{{ HTML::link('admin', 'Admin panel'); }}</li>
-						@endif
 						<li>{{ HTML::link('account', 'Edit Account'); }}</li>
-						<li><a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="{{ Auth::user()->avatar_url }}" alt="avatar" /></a></li>
+						<li><a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="{{ Auth::user()->avatar_url }}" alt="avatar" width="30" /></a></li>
 						@else
 						<li>{{ HTML::link('login', "Login &bull; Create account", array("class" => "nosep")) }}</li>
 						@endif

@@ -18,7 +18,7 @@
 		<div class="titlebar"><h4>Team Count (How many teams are playing the match)</h4></div>
 		{{ Form::field("text", "team_count", "", array(Input::old("team_count", $match->team_count)), array("error" => $errors->first("team_count"))) }}
 		<div class="titlebar"><h4>Match Info</h4></div>
-		{{ Form::field("wysiwyg", "info", " ", array(Input::old("info", $match->info), array("rows" => "15", 'class' => 'input-xxlarge')), array("error" => $errors->first("info"))) }}		
+		{{ Form::field("wysiwyg", "info", "", array(Input::old("info", $match->info), array("rows" => "15", 'class' => 'input-xxlarge')), array("error" => $errors->first("info"))) }}		
 		<div class="titlebar"><h4>Private Match (Can people view this match)</h4></div>
 		{{ Form::field("checkbox", "private", "", array(Input::old("private", !($match->public))), array("error" => $errors->first("private"))) }}
 		<div class="titlebar"><h4>Invite Only (do people have to be invited to join the match)</h4></div>
@@ -38,7 +38,7 @@
 	<ul class="ulfix">
 	@foreach($owners as $user)
 		<li class="xpadding">
-			<img src="http://minotar.net/helm/{{ $user->mc_username }}/30" alt="avatar" /> {{$user->username}}
+			<img src="{{ $user->avatar_url }}" alt="avatar" width="30"/> {{$user->username}}
 			@if(!$user->pivot->owner)
 				<small>(Hasn't yet accepted the invite)</small>
 			@endif
@@ -65,7 +65,7 @@
 	<ul class="ulfix">
 	@foreach($match->users as $user)
 		<li class="xpadding">
-			<img src="http://minotar.net/helm/{{ $user->mc_username }}/30" alt="avatar" /> {{$user->username}}
+			<img src="{{ $user->avatar_url }}" alt="avatar" width="30"/> {{$user->username}}
 			@if(!$user->pivot->invited)
 				<small>(Hasn't yet accepted the invite)</small>
 			@endif

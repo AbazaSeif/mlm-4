@@ -166,7 +166,7 @@ class Matches_Controller extends Base_Controller {
 		}
 		$teamarray = range(1, $match->team_count);
 		return View::make("matches.edit", array(
-			"title" => "Edit | ".e($match->title)." | Match", "match" => $match, "owners" => $owners, "map" => $map, "teamarray" => $teamarray, "statusreason" => $statusreason)
+			"title" => "Editing match # ".e($match->id)." | Matches", "match" => $match, "owners" => $owners, "map" => $map, "teamarray" => $teamarray, "statusreason" => $statusreason)
 		);
 	}
 	/* Edit metadata */
