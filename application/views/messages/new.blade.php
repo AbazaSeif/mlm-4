@@ -24,7 +24,7 @@
 		<div class="titlebar"><h4>Preview</h4></div>
 		<li class="message">
 			<div class="vcard">
-				<a href="{{ URL::to("user/".Auth::user()->username) }}"><img src="{{ Auth::user()->avatar_url }}" alt="avatar">{{ Auth::user()->username }}</a>
+				<a href="{{ URL::to("user/".Auth::user()->username) }}"><img src="{{ Auth::user()->avatar_url }}" alt="avatar" width="15">{{ Auth::user()->username }}</a>
 			</div>
 			<div class="body">
 			<div id="preview"></div>
