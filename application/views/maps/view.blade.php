@@ -14,7 +14,7 @@
 <div id="content" class="maps-single clearfix">
 <div class="titlebar">
 	<h2>{{ e($map->title) }}</h2>
-	<div class="rating-avg" title="{{ $map->avg_rating }}/5"><i class="icon-star"></i><span class="number">{{ $map->avg_rating }}</span></div>
+	<div class="rating-avg" title="{{ round($map->avg_rating, 1) }}/5"><i class="icon-star"></i><span class="number">{{ round($map->avg_rating, 1) }}</span></div>
 </div>
 	@if($is_owner === 0)
 	<div class="alert alert-info alert-block alertfix clearfix">
