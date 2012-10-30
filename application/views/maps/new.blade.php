@@ -19,7 +19,7 @@
 				</ol>
 			</div>
 			{{ Form::token()}}
-			{{ Form::field("text", "title", "Map name", array( Input::old("title"), array('class' => 'title', 'autocomplete' => 'off') ),  array( 'error' => $errors->first('title'), "help" => "Title should only have the map's name") ) }}
+			{{ Form::field("text", "title", "Map name", array( Input::old("title"), array('class' => 'title', 'autocomplete' => 'off')),  array( 'error' => $errors->first('title'), "help" => "Title should only have the map's name")) }}
 			{{ Form::field("textarea", "summary", "Summary", array(Input::old("summary"), array("rows" => "15", 'class' => 'summary')), array('error' => $errors->first('summary'), "alt" => "(Explain your map 140 characters. Use correct grammar)")) }}
 			{{ Form::field("wysiwyg-user", "description", "Description", array(Input::old("description"), array('class' => 'input-xxlarge')), array('error' => $errors->first('description'), "alt" => "(Use correct grammar)")) }}
 			{{ Form::field("select", "maptype", "Map type", array(array_merge(array("" => "--------------"), Config::get("maps.types")), Input::old("maptype"), array('class' => 'input')), array('error' => $errors->first('maptype'))) }}

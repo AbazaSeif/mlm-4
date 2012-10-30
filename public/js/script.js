@@ -52,7 +52,7 @@ MLM = {
 				$("#comment").fadeToggle(300);
 				return false;
 			});
-		// Markdown Live Preview 
+		// Markdown Live Preview
 			$('#mrk').wysiwym(Wysiwym.Markdown, {});
 				var showdown = new Showdown.converter();
 				var previousValue = null;
