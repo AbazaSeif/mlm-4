@@ -185,13 +185,13 @@ class Maps_Controller extends Base_Controller {
 			if($ratingObj) { // Change vote
 				$ratingObj->rating = Input::get("rating");
 				$ratingObj->save();
-				Messages::add("success", "Your rating has been updated");
+				Messages::add("success", "Your rating has been updated!");
 			} else { // New vote
 				$ratingObj = new Map_Rating();
 				$ratingObj->user_id = Auth::user()->id;
 				$ratingObj->rating = Input::get("rating");
 				$map->ratings()->insert($ratingObj);
-				Messages::add("success", "Your rating has been added");
+				Messages::add("success", "Thanks for rating! Mind leaving a comment?");
 			}
 			$map->update_avg_rating();
 		}

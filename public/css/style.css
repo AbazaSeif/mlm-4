@@ -265,10 +265,11 @@ a:hover { color: #005580 }
 } 
 .titlebar h1 {font-size: 32px}
 .titlebar h2 {font-size: 24px}
-.titlebar h3{font-size: 18px}
-.titlebar h4{font-size: 14px}
+.titlebar h3 {font-size: 18px}
+.titlebar h4 {font-size: 14px}
 
 /* Forms */
+
 .form .control-group .control-label {
     display: inline;
     color: #333;
@@ -285,7 +286,6 @@ a:hover { color: #005580 }
     font-size: 14px;
     color: #666666;
 }
-
 
 /* Global Footer
    ================================================== */
@@ -1061,9 +1061,9 @@ a:hover { color: #005580 }
 .profile #vcard .user-rank.mod {background-position: 0px -32px;}
 .profile #vcard .user-rank.editor {background-position: 0px -48px;}
 
-/* -- -- */
+/* Sidebar */
 
-.profile #page,.profile #team {
+.profile #page,.profile #team,.profile #groups {
     position: relative;
     padding: 5px;
     background: #D8D8D8;

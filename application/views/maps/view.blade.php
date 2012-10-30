@@ -14,7 +14,7 @@
 <div id="content" class="maps-single clearfix">
 <div class="titlebar">
 	<h2>{{ e($map->title) }}</h2>
-	<div class="rating-avg" title="{{ round($map->avg_rating, 1) }}/5"><i class="icon-star"></i><span class="number">{{ round($map->avg_rating, 1) }}</span></div>
+	<div class="rating-avg"><a href="#rating" title="{{ round($map->avg_rating, 1) }}/5"><i class="icon-star"></i><span class="number">{{ round($map->avg_rating, 1) }}</span></a></div>
 </div>
 	@if($is_owner === 0)
 	<div class="alert alert-info alert-block alertfix clearfix">
@@ -42,7 +42,7 @@
 		</div>
 	</div>
 @unless(Auth::guest() or $is_owner)
-<div class="titlebar autosubmit" style="margin-top:10px;"><h3>Your rating</h3>
+<div class="titlebar autosubmit" id="rating" style="margin-top:10px;"><h3>Your rating</h3>
 	{{ Form::open("maps/rate/".$map->id, 'POST', array("style" => "display:inline;")) }}
 	<fieldset class="rating">
     	{{ Form::radio("rating", 5, $rating == 5, array("id" => "star5")) }}<label for="star5" title="Rocks!">5 stars</label>
