@@ -860,7 +860,7 @@ a:hover { color: #005580 }
     cursor:pointer;
     font-size:200%;
     line-height:1.2;
-    color:#ddd;
+    color:#ccc;
 }
 
 .rating:not(:checked) > label::before {
