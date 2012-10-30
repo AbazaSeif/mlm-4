@@ -180,9 +180,9 @@ class Teams_Controller extends Base_Controller {
 		$validation = Validator::make(Input::all(), $validation_rules);
 		if($validation->passes()) {
 			$team->name       	= Input::get("name");
-			$team->summary     = Input::get("summary");
-			$team->description = Input::get("description");
-			$team->public      = Input::get("private") == 'on' ? 0 : 1;
+			$team->summary     	= Input::get("summary");
+			$team->description 	= Input::get("description");
+			$team->public      	= Input::get("private") == 'on' ? 0 : 1;
 
 			$team->save();
 			Messages::add("success", "Team updated!");

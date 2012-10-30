@@ -92,7 +92,7 @@ Route::get("admin/database/migrate", array("before" => "admin", function() {
 }));
 
 // Admin routes (no real need to seperate, just to keep nice)
-Route::controller(array('admin.user', 'admin.pages', 'admin.news', 'admin.maps', 'admin.faq', 'admin.modqueue', 'admin.comments', 'admin.matches'));
+Route::controller(array('admin.user', 'admin.pages', 'admin.news', 'admin.maps', 'admin.faq', 'admin.modqueue', 'admin.comments', 'admin.matches', 'admin.teams'));
 
 //Routes are checked in the order in which they are listed here
 //Since this one is a tad demanding, make sure it ALWAYS remains at the bottom
