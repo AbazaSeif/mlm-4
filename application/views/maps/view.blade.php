@@ -14,13 +14,7 @@
 <div id="content" class="maps-single clearfix">
 <div class="titlebar">
 	<h2>{{ e($map->title) }}</h2>
-	<span class="rating">
-		<span class="star"></span>
-		<span class="star"></span>
-		<span class="star"></span>
-		<span class="star"></span>
-		<span class="star"></span>
-	</span>
+	<div class="rating-avg" title="{{ $map->avg_rating }}/5"><i class="icon-star"></i><span class="number">{{ $map->avg_rating }}</span></div>
 </div>
 	@if($is_owner === 0)
 	<div class="alert alert-info alert-block alertfix clearfix">
@@ -47,6 +41,20 @@
 			@endforelse
 		</div>
 	</div>
+@unless(Auth::guest() or $is_owner)
+<div class="titlebar autosubmit" style="margin-top:10px;"><h3>Your rating</h3>
+	{{ Form::open("maps/rate/".$map->id, 'POST', array("style" => "display:inline;")) }}
+	<fieldset class="rating">
+    	{{ Form::radio("rating", 5, $rating == 5, array("id" => "star5")) }}<label for="star5" title="Rocks!">5 stars</label>
+    	{{ Form::radio("rating", 4, $rating == 4, array("id" => "star4")) }}<label for="star4" title="Pretty good">4 stars</label>
+    	{{ Form::radio("rating", 3, $rating == 3, array("id" => "star3")) }}<label for="star3" title="Meh">3 stars</label>
+    	{{ Form::radio("rating", 2, $rating == 2, array("id" => "star2")) }}<label for="star2" title="Kinda bad">2 stars</label>
+    	{{ Form::radio("rating", 1, $rating == 1, array("id" => "star1")) }}<label for="star1" title="Sucks big time">1 star</label>
+    </fieldset>
+	{{ Form::token() }}
+	{{ Form::close() }}
+</div>
+@endif
 @include("maps.comments")
 </div>
 </div>

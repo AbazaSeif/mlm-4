@@ -838,32 +838,86 @@ a:hover { color: #005580 }
 
 .maps-single #sidebar span { display: block; }
 
-.maps-single .rating {
-    float: right;
-    unicode-bidi: bidi-override;
-    direction: rtl;
-    font-size: 30px;
-    line-height: 1;
+/* Map ratings */
+
+.rating {
+    float:right;
+    text-shadow:0px 1px 1px #fff;
 }
-.maps-single .rating span.star {
+
+.rating:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+    clip:rect(0,0,0,0);
+}
+
+.rating:not(:checked) > label {
+    float:right;
+    width:1em;
+    padding:0 .02em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:200%;
+    line-height:1.2;
+    color:#ddd;
+}
+
+.rating:not(:checked) > label::before {
+    content: ' ';
     font-family: FontAwesome;
-    font-weight: normal;
-    font-style: normal;
-    display: inline-block!important;
 }
-.maps-single .rating span.star:hover {
-    cursor: pointer;
+
+.rating > input:checked ~ label {
+    color: #f70;
 }
-.maps-single .rating span.star:before {
-    content: "\f006";
-    padding: 0;
-    color: #FFF;
-    text-shadow: 0px 1px 3px #000;
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+    color: #333;
 }
-.maps-single .rating span.star:hover:before,
-.maps-single .rating span.star:hover ~ span.star:before {
-    content: "\f005";
-    color: #FFF;
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+    color: #ea0;
+}
+
+.rating > label:active {
+    position:relative;
+    top:2px;
+    left:2px;
+}
+
+.rating-avg {
+    float: right;
+    position: relative;
+    display: block;
+    margin-top: -16px;
+    width: 42px;
+    height: 50px;
+    cursor: default;
+}
+
+.rating-avg .icon-star {
+    position: absolute;
+    right: 0;
+    color: #ADADAD;
+    font-size: 50px;
+    text-shadow: 0px 1px 1px #fff;
+}
+
+.rating-avg .number {
+    position: absolute;
+    top: 19px;
+    font-size: 18px;
+    font-weight: bold;
+    width: 42px;
+    height: 50px;
+    color: #333;
+    text-align: center;
 }
 
 /* Profile page 
@@ -892,6 +946,7 @@ a:hover { color: #005580 }
 .profile #vcard .avatar img {
     max-width: 80px;
     margin: 0;
+    vertical-align: top;
 }
 
 .profile #vcard .name {
@@ -2037,9 +2092,9 @@ img.imgfix { display: block; margin-top: 10px; width: 50% }
 
     #global-header #logo h1 {display: none!important}
 
-    #menu #loginout li a {padding: 5px 10px!important}
+    #menu .loginout li a {padding: 5px 10px!important}
 
-    #menu #loginout li a img {display: none}
+    #menu .loginout li a img {display: none}
 
 }
  
@@ -2116,15 +2171,15 @@ img.imgfix { display: block; margin-top: 10px; width: 50% }
         text-align: center;
     }
 
-    #menu #loginout { display: block ; border-top: 2px solid #7A7A7A; border-bottom: 2px solid #7A7A7A; text-align: center;}
+    #menu .loginout { display: block ; border-top: 2px solid #7A7A7A; border-bottom: 2px solid #7A7A7A; text-align: center;}
 
-    #menu #loginout { float: none; margin: 0 }
+    #menu .loginout { float: none; margin: 0 }
 
-    #menu #loginout li { display: inline-block ; border-bottom: 0; margin-left: -4px }
+    #menu .loginout li { display: inline-block ; border-bottom: 0; margin-left: -4px }
 
-    #menu #loginout li a { padding: 10px 20px; border-right: none; color: #333; line-height: 2; text-shadow:0 1px 0 #fff;}
+    #menu .loginout li a { padding: 10px 20px; border-right: none; color: #333; line-height: 2; text-shadow:0 1px 0 #fff;}
 
-    #menu #loginout img {width: 25px;vertical-align: -6px;margin-left: 6px;}
+    #menu .loginout img { width: 25px;vertical-align: -6px;margin-left: 6px;border: 2px #fff solid; -moz-box-shadow: 0 1px 1px #000; -webkit-box-shadow: 0 1px 1px #000; box-shadow: 0 1px 1px #000; }
 
     #menu ul { width: auto; margin: 0;}
 
@@ -2215,7 +2270,7 @@ img.imgfix { display: block; margin-top: 10px; width: 50% }
     
     #menu { display: block!important; }
 
-    #menu #loginout { display: none }
+    #menu .loginout { display: none }
 
     #shownav { display: none; }
 
@@ -2225,7 +2280,7 @@ img.imgfix { display: block; margin-top: 10px; width: 50% }
 
     #menu { display: block!important; }
 
-    #menu #loginout { display: none }
+    #menu .loginout { display: none }
 
     .commentlist .meta .actions { display: inline; }
 

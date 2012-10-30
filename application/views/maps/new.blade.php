@@ -8,7 +8,7 @@
 	</div>
 	<div id="page" class="maxwidth">
 		{{ Form::open("maps/new", "POST", array("class" => "form")) }}
-			<div class="alert">
+			<div class="alert alert-info">
 				<h2>Heads up!</h2>
 				<p>Here's some things to keep in mind while submitting a map:</p>
 				<ol>
@@ -23,16 +23,16 @@
 			{{ Form::field("textarea", "summary", "Summary", array(Input::old("summary"), array("rows" => "15", 'class' => 'summary')), array('error' => $errors->first('summary'), "alt" => "(Explain your map 140 characters. Use correct grammar)")) }}
 			{{ Form::field("wysiwyg-user", "description", "Description", array(Input::old("description"), array('class' => 'input-xxlarge')), array('error' => $errors->first('description'), "alt" => "(Use correct grammar)")) }}
 			{{ Form::field("select", "maptype", "Map type", array(array_merge(array("" => "--------------"), Config::get("maps.types")), Input::old("maptype"), array('class' => 'input')), array('error' => $errors->first('maptype'))) }}
-			{{ Form::field("text", "version", "Map version", array(Input::old("version")), array("error" => $errors->first("version"), "alt" => "(Remember to keep this up-to-date!)", "help" => "Map version is the version of the map, not the version of the game")) }}
-			{{ Form::field("text", "mcversion", "Minecraft version", array(Input::old("mcversion")), array("error" => $errors->first("mcversion"), "help" => "The Minecraft Version for the map should be the latest version of Minecraft that the map was tested on and fully worked.", "alt" => "(This is the latest version of Minecraft that the map is known to work with!)")) }}
-			{{ Form::field("text", "teamcount", "Teams", array(Input::old("teamcount")), array("error" => $errors->first("teamcount"), "alt" => "(How many teams can play the map at once)")) }}
+			{{ Form::field("text", "version", "Map version", array(Input::old("version")), array("error" => $errors->first("version"), "help" => "Map version is the version of the map, not the version of the game. Remember to keep this up-to-date!")) }}
+			{{ Form::field("text", "mcversion", "Minecraft version", array(Input::old("mcversion")), array("error" => $errors->first("mcversion"), "help" => "The Minecraft Version for the map should be the latest version of Minecraft that the map was tested on and fully worked.")) }}
+			{{ Form::field("text", "teamcount", "Teams", array(Input::old("teamcount")), array("error" => $errors->first("teamcount"), "help" => "How many teams can play the map at once")) }}
 			{{ Form::field("text", "teamsize", "Team Size", array(Input::old("teamsize")), array("error" => $errors->first("teamsize"), "alt" => "(Players per team)")) }}
 			<div class="control-group">
 				<div class="controls">
 					<p class="help-inline">After submitting the map you will be able to add download links and images by clicking on "Edit map" in the Actions bar above your map's page.</p>
 				</div>
 			</div>
-			{{ Form::actions(array(Form::submit("Save", array("class" => "btn-primary")), " ", HTML::link_to_action("maps@index", "Cancel", array(), array("class" => "btn")))) }}
+			{{ Form::actions(array(Form::submit("Submit", array("class" => "btn-primary")), " ", HTML::link_to_action("maps@index", "Cancel", array(), array("class" => "btn")))) }}
 		{{ Form::close() }}
 	</div>
 </div>
