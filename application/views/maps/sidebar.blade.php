@@ -67,20 +67,6 @@
  	<span class="inline">{{ HTML::link($link->url, "Link ".$i, array("class" => "btn btn-success", "target" => "_blank")) }}</span>
 	<?php $i++; ?>
  	@endforeach
-<!-- {{--
-	Rating: {{ $map->avg_rating }}/5
-	@if(Auth::check())
-	{{ Form::open("maps/rate/".$map->id, 'POST', array('class' => 'rating')) }}
-		<label>{{ Form::radio("rating", 1, $rating == 1) }}</label>
-		<label>{{ Form::radio("rating", 2, $rating == 2) }}</label>
-		<label>{{ Form::radio("rating", 3, $rating == 3) }}</label>
-		<label>{{ Form::radio("rating", 4, $rating == 4) }}</label>
-		<label>{{ Form::radio("rating", 5, $rating == 5) }}</label>
-		{{ Form::submit("Rate") }}
-		{{ Form::token() }}
-	{{ Form::close() }}
-	@endif
---}} -->
 </div>
 @else
 @endif

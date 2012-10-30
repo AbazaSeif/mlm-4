@@ -110,9 +110,11 @@ MLM = {
 				nextText: 'Next',
 				randomStart: false
 			});
+			$(".autosubmit > form").change(function() {
+     			$(this).submit();
+   			});
 		},
 		edit: function() {
-			$('#sidebar .widget').scrollToFixed({ marginTop: 5 });
 		}
 	},
 	profile: {

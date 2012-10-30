@@ -13,8 +13,8 @@
 					@endforeach
 				</ul>
 			</li>
+		<li {{ URI::is('maps/new') ? 'class="rside active"' : 'class="rside btn-info"' }}>{{ HTML::link("maps/new", "New Map") }}</li>
 		@if (Auth::check())
-		<li {{ URI::is('maps/new') ? 'class="rside active"' : 'class="rside"' }}>{{ HTML::link("maps/new", "New Map") }}</li>
 		<li {{ Input::get("ownmaps") == true ? 'class="rside active"' : 'class="rside"' }}><a href="{{ URL::to("maps/filter/?ownmaps=1") }}">Your Maps</a></li>
 		@endif
 	</ul>
@@ -44,4 +44,5 @@
 		@endif
 	</ul>
 	@endif
+@elseif ($menu == "new")
 @endif

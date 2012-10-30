@@ -2800,8 +2800,10 @@ a.thumbnail:hover {
   border-radius: 0px;
   color: #c09853;
 }
-.alert h4 {
+.alert h1,.alert h2,.alert h3,.alert h4,.alert h5,.alert h6 {
   margin: 0;
+  font-family: "Oswald";
+  font-weight: 400;
 }
 .alert p { 
   display:inline; 

@@ -8,24 +8,17 @@
 </div>
 <div id="page" class="bigger">
 	{{ Form::open("maps/edit_meta/".$map->id, "POST", array("class" => "form")) }}
-		{{ Form::token()}}
-		{{ Form::field("text", "title", "", array(Input::old("title", $map->title), array('class' => 'title', 'autocomplete' => 'off')), array('error' => $errors->first('title'))) }}
-		<div class="titlebar"><h4>Description</h4></div>
-		{{ Form::field("wysiwyg-user", "description", "", array(Input::old("description", $map->description), array('class' => 'input-xxlarge')), array('error' => $errors->first('description'))) }}
-		<div class="titlebar"><h4>Summary <small>(Explain your map 140 characters. Use correct grammar)</small></h4></div>
-		{{ Form::field("textarea", "summary", "", array(Input::old("summary", $map->summary), array("rows" => "15", 'class' => 'summary')), array('error' => $errors->first('summary'))) }}
-		<div class="titlebar"><h4>Map type</h4></div>
-		{{ Form::field("select", "maptype", "", array(array_merge(array("" => "--------------"), Config::get("maps.types")), Input::old("maptype", $map->maptype), array('class' => 'input')), array('error' => $errors->first('maptype'))) }}
-		<div class="titlebar"><h4>Map version <small>(Remember to keep this up-to-date!)</small></h4></div>
-		{{ Form::field("text", "version", "", array(Input::old("version", $map->version)), array("error" => $errors->first("error"))) }}
-		<div class="titlebar"><h4>Minecraft version <small>(This is the latest version of Minecraft that the map is known to work with!)</small></h4></div>
-		{{ Form::field("text", "mcversion", "", array(Input::old("mcversion", $map->mcversion)), array("error" => $errors->first("error"))) }}
-		<div class="titlebar"><h4>Teams <small>(How many teams can play the map at once)</small></h4></div>
-		{{ Form::field("text", "teamcount", "", array(Input::old("teamcount", $map->teamcount)), array("error" => $errors->first("error"))) }}
-		<div class="titlebar"><h4>Team Size <small>(Players per team)</small></h4></div>
-		{{ Form::field("text", "teamsize", "", array(Input::old("teamsize", $map->teamsize)), array("error" => $errors->first("teamsize"))) }}
-		{{ Form::actions(array(Form::submit("Save", array("class" => "btn-primary")), " ", HTML::link_to_action("maps@view", "Cancel", array($map->id), array("class" => "btn")))) }}
-	{{ Form::close() }}
+			{{ Form::token()}}
+			{{ Form::field("text", "title", "Map name", array( Input::old("title", $map->title), array('class' => 'title', 'autocomplete' => 'off') ),  array( 'error' => $errors->first('title'), "help" => "Title should only have the map's name") ) }}
+			{{ Form::field("textarea", "summary", "Summary", array(Input::old("summary",$map->summary), array("rows" => "15", 'class' => 'summary')), array('error' => $errors->first('summary'), "alt" => "(Explain your map 140 characters. Use correct grammar)")) }}
+			{{ Form::field("wysiwyg-user", "description", "Description", array(Input::old("description", $map->title), array('class' => 'input-xxlarge')), array('error' => $errors->first('description'), "alt" => "(Use correct grammar)")) }}
+			{{ Form::field("select", "maptype", "Map type", array(array_merge(array("" => "--------------"), Config::get("maps.types")), Input::old("maptype",$map->maptype), array('class' => 'input')), array('error' => $errors->first('maptype'))) }}
+			{{ Form::field("text", "version", "Map version", array(Input::old("version",$map->version)), array("error" => $errors->first("version"), "help" => "Map version is the version of the map, not the version of the game. Remember to keep this up-to-date!")) }}
+			{{ Form::field("text", "mcversion", "Minecraft version", array(Input::old("mcversion", $map->mcversion)), array("error" => $errors->first("mcversion"), "help" => "The Minecraft Version for the map should be the latest version of Minecraft that the map was tested on and fully worked.")) }}
+			{{ Form::field("text", "teamcount", "Teams", array(Input::old("teamcount", $map->teamcount)), array("error" => $errors->first("teamcount"), "help" => "How many teams can play the map at once")) }}
+			{{ Form::field("text", "teamsize", "Team Size", array(Input::old("teamsize",$map->teamsize)), array("error" => $errors->first("teamsize"), "help" => "Players per team")) }}
+			{{ Form::actions(array(Form::submit("Save", array("class" => "btn-primary")), " ", HTML::link_to_action("maps@index", "Cancel", array(), array("class" => "btn")))) }}
+		{{ Form::close() }}
 	<div class="titlebar">
 		<h3>Authors</h3>
 	</div>

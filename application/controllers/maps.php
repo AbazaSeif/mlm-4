@@ -81,7 +81,7 @@ class Maps_Controller extends Base_Controller {
 		return View::make("maps.home", array("title" => "Filtered Maps", "javascript" => array("maps", "list"), "maps" => $maps, "menu" => "multiview"));
 	}
 	public function get_new() {
-		return View::make("maps.new", array("javascript" => array("maps", "edit"), "menu" => "multiview", "sidebar" => "edit"));
+		return View::make("maps.new", array("title" => "New Map ", "javascript" => array("maps", "edit"), "menu" => "new", "sidebar" => "edit"));
 	}
 	public function post_new() {
 		$validation_rules = array(
