@@ -29,7 +29,7 @@
 				@else
 				<td><b>ERROR</b></td>
 				@endif
-				<td>{{ $item->html }}
+				<td>{{ Str::limit($item->source, 15) }}
 				<td>{{ date("F j, Y h:i e", strtotime($item->created_at)) }}</td>
 				<td>
 				<div class="btn-group">
