@@ -23,6 +23,9 @@ class User extends Eloquent {
 	public function teams() {
 		return $this->has_many_and_belongs_to("Team")->with('owner', 'invited');
 	}
+	public function applications() {
+		return $this->has_many('Application');
+	}
 
 	// Send a *system message* to the user
 	public function send_message($title, $text) {

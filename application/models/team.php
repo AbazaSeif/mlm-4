@@ -8,6 +8,10 @@ class Team extends Eloquent {
 		return $this->has_many_and_belongs_to("User")->with('owner', 'invited');
 	}
 
+	public function applications() {
+		return $this->has_many("Application");
+	}
+
 	/*
 	 * Checks if a user is the owner of the match
 	 * 

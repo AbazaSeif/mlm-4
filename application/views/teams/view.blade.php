@@ -5,6 +5,7 @@
 <ul class="submenu nav nav-pills">
 	<li class="disabled"><a href="#">Actions:</a></li>
 	<li>{{ HTML::link_to_action("teams@edit", "Edit Team", array($team->id)) }}</li>
+	<li>{{ HTML::link_to_action("teams@applications", "Team Applications", array($team->id)) }}</li>
 </ul>
 @endif
 

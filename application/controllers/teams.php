@@ -6,8 +6,8 @@ class Teams_Controller extends Base_Controller {
 	public function __construct() {
 		parent::__construct();
 
-		$this->filter("before", "auth")->only(array("new", "leave", "kick", "edit", "edit_meta", "add_owner", "owner_invite", "invite_user", "invite"));
-		$this->filter("before", "csrf")->on("post")->only(array("new", "leave", "kick", "edit_meta", "add_owner", "owner_invite", "invite_user", "invite"));
+		$this->filter("before", "auth")->only(array("new", "leave", "kick", "edit", "edit_meta", "add_owner", "owner_invite", "invite_user", "invite", "applications"));
+		$this->filter("before", "csrf")->on("post")->only(array("new", "leave", "kick", "edit_meta", "add_owner", "owner_invite", "invite_user", "invite", "applications", "apply"));
 	}
 
 	//view FAQ
@@ -314,5 +314,176 @@ EOT;
 		}
 	}
 
+	public function get_apply($id) {
+		$team = Team::with(array("users"))->find($id);
+		if(!$team) {
+			return Response::error('404');
+		}
+		if (!$team->applications_open) {
+			return Response::error('404');
+		}
+		return View::make("teams.apply", array("title" => "Leave Team", "team" => $team));
+	}
+
+	public function post_apply($id) {
+
+	}
+
+	public function get_applications($id) {
+		$team = Team::find($id);
+		if(!$team) {
+			return Response::error('404');
+		}
+		$applications = Application::with(array("user"))->where_team_id($team->id)->where_null('state')->get();
+		$doneapplications = Application::with(array("user"))->where_team_id($team->id)->where_not_null('state')->get();
+		return View::make("teams.applications", array("title" => "Team Applications", "team" => $team, "applications" => $applications, "doneapplications" => $doneapplications));
+	}
+
+	public function post_applications($id) {
+		$team = Team::find($id);
+		if(!$team) {
+			return Response::error('404');
+		}
+		if ($team->is_owner(Auth::user()) !== 1) { //make sure they are an owner of the team
+			return Response::error('403');
+		}
+		switch (Input::get("action")) {
+			case "save":
+			$team->applications_text = Input::get("text");
+			$team->save();
+			Messages::add("success", "Team application description saved!");
+			break;
+
+			case "application_submission":
+			if ($team->applications_open) {
+				$team->applications_open = "0";
+				Messages::add("success", "Team applications now closed!");
+			}
+			else {
+				$team->applications_open = "1";
+				Messages::add("success", "Team applications now open!");
+			}
+			$team->save();
+			break;
+		}
+		return Redirect::to_action("teams@applications", array($team->id));
+	}
+
+	public function post_save_application_notes($teamid, $itemid) {
+		$team = Team::find($teamid);
+		if(!$team) {
+			return Response::error('404');
+		}
+		if ($team->is_owner(Auth::user()) !== 1) { //make sure they are an owner of the team
+			return Response::error('403');
+		}
+		$application = Application::where_team_id($team->id)->where_id($itemid)->first(); //Make sure it's in the correct team so the user must be an owner of the team
+		if(!$application) {
+			return Response::error('404');
+		}
+		$application->notes = Input::get("notes");
+		$application->save();
+		Messages::add("succes", "Submission Notes Saved");
+		return Redirect::to_action("teams@applications", array($team->id));
+	}
+
+	public function get_accept_application($teamid, $itemid) {
+		$team = Team::find($teamid);
+		if(!$team) {
+			return Response::error('404');
+		}
+		if ($team->is_owner(Auth::user()) === null) { //make sure they are an owner of the team
+			return Response::error('403');
+		}
+		$application = Application::where_team_id($team->id)->where_id($itemid)->first(); //Make sure it's in the correct team so the user must be an owner of the team
+		if(!$application) {
+			return Response::error('404');
+		}
+		$user = $application->user;
+		return View::make("teams.accept_application", array("title" => "Accept Team Application", "team" => $team, "application" => $application, "user" => $user));
+	}
+
+	public function post_accept_application($teamid, $itemid) {
+		$team = Team::find($teamid);
+		if(!$team) {
+			return Response::error('404');
+		}
+		if ($team->is_owner(Auth::user()) === null) { //make sure they are an owner of the team
+			return Response::error('403');
+		}
+		$application = Application::where_team_id($team->id)->where_id($itemid)->first(); //Make sure it's in the correct team so the user must be an owner of the team
+		if(!$application) {
+			return Response::error('404');
+		}
+		$user = $application->user;
+		if($team->is_invited($user) !== false) {
+			Messages::add("error", "Can't add user! User is already invited or in team");
+			return Redirect::to_action("teams@applications", array($team->id))->with_input();
+		}
+		$team->users()->attach($user->id, array("invited" => 0));
+		$teamurl = URL::to_action("teams@view", array($team->id));
+		$currentuser = Auth::user();
+		$message = <<<EOT
+You have been invited to join the team <i>**{$team->name}**</i> by {$currentuser->username}.
+
+You can accept or deny this invite from [the team page]({$teamurl}).
+EOT;
+		$user->send_message("You have been invited to join the team <i>{$team->name}</i>", $message);
+		$application->state = 1;
+		$application->save();
+		Messages::add("success", "{$user->username} has been invited to join this team. He/she must accept this invite to join the team.");
+		return Redirect::to_action("teams@applications", array($team->id));
+	}
+
+	public function get_reject_application($teamid, $itemid) {
+		$team = Team::find($teamid);
+		if(!$team) {
+			return Response::error('404');
+		}
+		if ($team->is_owner(Auth::user()) === null) { //make sure they are an owner of the team
+			return Response::error('403');
+		}
+		$application = Application::where_team_id($team->id)->where_id($itemid)->first(); //Make sure it's in the correct team so the user must be an owner of the team
+		if(!$application) {
+			return Response::error('404');
+		}
+		$user = $application->user;
+		return View::make("teams.reject_application", array("title" => "Reject Team Application", "team" => $team, "application" => $application, "user" => $user));
+	}
+
+	public function post_reject_application($teamid, $itemid) {
+		$team = Team::find($teamid);
+		if(!$team) {
+			return Response::error('404');
+		}
+		if ($team->is_owner(Auth::user()) === null) { //make sure they are an owner of the team
+			return Response::error('403');
+		}
+		$application = Application::where_team_id($team->id)->where_id($itemid)->first(); //Make sure it's in the correct team so the user must be an owner of the team
+		if(!$application) {
+			return Response::error('404');
+		}
+		$user = $application->user;
+		if($team->is_invited($user) !== false) {
+			Messages::add("error", "Can't add user! User is already invited or in team");
+			return Redirect::to_action("teams@applications", array($team->id))->with_input();
+		}
+		$reason = Input::get("reason");
+		if (strlen($reason) == 0) {
+			$reason = "--NO REASON GIVEN--";
+		}
+		$message = <<<EOT
+We are sorry but your request to join the team <i>**{$team->name}**</i> has been rejected.
+
+The reason given was:
+
+{$reason}
+EOT;
+		$user->send_message("Your request to join the team <i>{$team->name}</i> has been rejected", $message);
+		$application->state = "0";
+		$application->save();
+		Messages::add("success", "{$user->username}'s application to join this team has been rejected.");
+		return Redirect::to_action("teams@applications", array($team->id));
+	}
 }
 ?>
