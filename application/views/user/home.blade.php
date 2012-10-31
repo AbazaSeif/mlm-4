@@ -51,46 +51,27 @@
 		</ul>
 	</div>
 </header>
-<script type="text/javascript">
-</script>
-<div id="sidebar" class="left">
-	@foreach ($user->teams as $team)
-	<div class="team">
-		<div class="titlebar"><h2>Member of team</h2></div>
-		<div class="avatar"><img src="{{ $user->avatar_url }}" alt="avatar" width="60"/></div>
-		<div class="name">
-			<a href="{{ URL::to_action("teams@view", array($team->id)) }}">
-			<h1>{{ $team->name }}</h1>
-			<h2>{{ $team->summary }}</h2>
-			</a>
-		</div>
-		<div class="stats">
-		<ul>
-			<li><a href="{{ URL::to_action("teams@view", array($team->id)) }}#members"><span>{{ count($team->users) }}</span>Members</a></li>
-			<li><a href="{{ URL::to_action("teams@view", array($team->id)) }}#wins"><span>789</span>Wins</a></li>
-			<li><a href="{{ URL::to_action("teams@view", array($team->id)) }}#loses"><span>012</span>Loses</a></li>
-		</ul>
-	</div>
-	</div>
-	@endforeach
-</div>
-	<div id="page" class="right">
-		<div id="myTabContent" class="tab-content">
-          <div class="tab-pane fade active in" id="user-comments">
-            <div class="titlebar"><h2>Comments</h2></div>
-            <div id="multiview">
+<div id="page" class="right">
+	<div id="myTabContent" class="tab-content">
+		<div class="tab-pane fade active in" id="user-comments">
+			<div class="titlebar"><h2>Comments</h2></div>
+				<div id="multiview">
             	<ul class="list">
-            	@foreach($user->comments as $comment)
+            	@foreach($user->comments as $item)
             		<li>
-            			<a href="/#comment{{ $comment->id }}" title="View comment">
+            			<a href="/#comment{{ $item->id }}" title="View comment">
             			<div class="mv-details">
-            				<div class="mv-summary">{{ $comment->html }}</div>
+            				<div class="mv-summary">{{ $item->html }}</div>
             				<div class="mv-meta">
             				<span>Posted on <b>
-            					@if($comment->map_id != NULL){{ $comment->map_id }} Map name
-            					@else{{ $comment->news_id }} News Name
-            					@endif
-            					</b></span> on <span><b>{{ date("M j,Y g:ia", strtotime($comment->created_at)) }}</b></span>
+            					@if($item->news_id != null)
+								{{ Str::limit($item->news->title, 30) }}
+								@elseif($item->map_id != null)
+								{{ Str::limit($item->map->title, 30) }}
+								@else
+								<b>[Deleted]</b>
+								@endif
+            					</b></span> on <span><b>{{ date("M j,Y g:ia", strtotime($item->created_at)) }}</b></span>
             				</div>
             			</div> 
             			</a>
@@ -133,18 +114,37 @@
 				@endforeach
             	</ul>
             </div>
-          </div><?php /*
-          <div class="tab-pane fade" id="user-wins">
-            <div class="titlebar"><h2>Wins</h2></div>
-          </div>
-          <div class="tab-pane fade" id="user-loses">
-            <div class="titlebar"><h2>Loses</h2></div>
-          </div>
-          <div class="tab-pane fade" id="user-ranking">
-            <div class="titlebar"><h2>Ranking</h2></div>
-          </div> */ ?>
-        </div>
+		</div>
+	</div>
+</div>
+<div id="sidebar" class="left">
+	@foreach ($user->teams as $team)
+	<div class="block">
+		<div class="titlebar"><h2>Member of team</h2></div>
+		<div class="avatar"><img src="{{ $user->avatar_url }}" alt="avatar" width="60"/></div>
+		<div class="name">
+			<a href="{{ URL::to_action("teams@view", array($team->id)) }}">
+			<h1>{{ $team->name }}</h1>
+			<h2>{{ $team->tagline }}</h2>
+			</a>
+		</div>
+		<div class="stats">
+		<ul>
+			<li><a href="{{ URL::to_action("teams@view", array($team->id)) }}#members"><span>{{ count($team->users) }}</span>Members</a></li>
+			<li><a href="{{ URL::to_action("teams@view", array($team->id)) }}#wins"><span>789</span>Wins</a></li>
+			<li><a href="{{ URL::to_action("teams@view", array($team->id)) }}#loses"><span>012</span>Loses</a></li>
+		</ul>
 	</div>
 	</div>
+	<div class="block">
+		<div class="titlebar"><h2>Groups</h2></div>
+		<ul class="ulfix">
+		<li class="xpadding"><img src="gpimage" alt="avatar" /> {{ HTML::link("group/groupname", "Group name") }}</li>
+	</ul>
+	</div>
+	</div>
+	@endforeach
+</div>
+</div>
 </div>
 @endsection

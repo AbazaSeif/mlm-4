@@ -1063,7 +1063,7 @@ a:hover { color: #005580 }
 
 /* Sidebar */
 
-.profile #page,.profile .team,.profile #groups {
+.profile #page,.profile .block {
     position: relative;
     padding: 5px;
     background: #D8D8D8;
@@ -1077,13 +1077,12 @@ a:hover { color: #005580 }
     float: right;
 }
 
-.profile .team {
+.profile .block {
     float: left;
-    width: 334px;
     text-shadow:0px 1px 1px #fff;
 }
 
-.profile .team .avatar {
+.profile .block .avatar {
     display: block;
     float: left;
     margin-right: 5px;
@@ -1092,21 +1091,21 @@ a:hover { color: #005580 }
     border: 1px solid rgb(211, 211, 211);
 }
 
-.profile .team .avatar img {
+.profile .block .avatar img {
     display: block;
     margin: 0;
 }
 
-.profile .team .name {
+.profile .block .name {
     float: right;
     width: 249px;
 }
 
-.profile .team .name a {
+.profile .block .name a {
     color: #333;
 }   
 
-.profile .team .name h1 {
+.profile .block .name h1 {
     margin: 0px 0px 12px;
     font-family:"Oswald";
     font-size: 27px;
@@ -1115,19 +1114,19 @@ a:hover { color: #005580 }
     letter-spacing: -2px;
 }
 
-.profile .team .name h2 {
+.profile .block .name h2 {
     margin: -5px 0 0;
     font-size: 20px;
     line-height: 1;
 }
 
-.profile .team .name h3 {
+.profile .block .name h3 {
     margin: 4px 0 0;
     font-size: 18px;
     line-height: 1;
 }
 
-.profile .team .stats {
+.profile .block .stats {
     float: right;
     margin: 10px 0;
     padding: 6px 0;
@@ -1135,13 +1134,12 @@ a:hover { color: #005580 }
     border-bottom: 1px dotted #adadad;
 }
 
-.profile .team .stats ul {
+.profile .block .stats ul {
     margin: 0;
-    width: 322px;
     text-align: center;
 }
 
-.profile .team .stats ul li {
+.profile .block .stats ul li {
     display: inline-block;
     margin-left: -4px;
     width: 100px;
@@ -1150,22 +1148,22 @@ a:hover { color: #005580 }
     font-weight: bold;
 }
 
-.profile .team .stats ul li a {
+.profile .block .stats ul li a {
     display: block;
     padding: 26px 0px 18px;
     border-left: 1px dotted rgb(173, 173, 173);
     color: #333;
 }
 
-.profile .team .stats ul li:first-child > a{
+.profile .block .stats ul li:first-child > a{
     border-left: none;
 }
 
-.profile .team .stats ul li a:hover {
+.profile .block .stats ul li a:hover {
     background-color: #f9f9f9;
 }
 
-.profile .team .stats ul li span{
+.profile .block .stats ul li span{
     display: block;
     margin-bottom: 10px;
     font-family: "Oswald";
@@ -1401,6 +1399,14 @@ a:hover { color: #005580 }
     height: 38px;
     width: 100%;
     vertical-align: top;
+    box-sizing: border-box;       
+    -webkit-box-sizing:border-box;       
+    -moz-box-sizing: border-box;
+}
+
+.edit .subtitle {
+    margin-bottom: 0;
+    width: 100%;
     box-sizing: border-box;       
     -webkit-box-sizing:border-box;       
     -moz-box-sizing: border-box;
