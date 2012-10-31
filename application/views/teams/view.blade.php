@@ -60,5 +60,8 @@
 	@if (Auth::check() && Auth::user()->in_team($team->id) && $is_invited === 1)
 	<a href="{{ URL::to_action("teams@leave", array($team->id)) }}" class="btn btn-danger" style="margin-bottom:15px"><i class="icon-minus"></i> Leave Team</a>
 	@endif
+	@if (Auth::check() && $has_applied == false && $is_invited === false)
+	<a href="{{ URL::to_action("teams@apply", array($team->id)) }}" class="btn btn-success" style="margin-bottom:15px"><i class="icon-minus"></i> Apply to join Team</a>
+	@endif
 </div>
 @endsection
