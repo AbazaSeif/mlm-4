@@ -54,23 +54,25 @@
 <script type="text/javascript">
 </script>
 <div id="sidebar" class="left">
-	<div id="team">
+	@foreach ($user->teams as $team)
+	<div class="team">
 		<div class="titlebar"><h2>Member of team</h2></div>
 		<div class="avatar"><img src="{{ $user->avatar_url }}" alt="avatar" width="60"/></div>
 		<div class="name">
-			<a href="#">
-			<h1>The Quick Brown Fox</h1>
-			<h2>TQBFJOTLD</h2>
+			<a href="{{ URL::to_action("teams@view", array($team->id)) }}">
+			<h1>{{ $team->name }}</h1>
+			<h2>{{ $team->summary }}</h2>
 			</a>
 		</div>
 		<div class="stats">
 		<ul>
-			<li><a href="#members"><span>123</span>Members</a></li>
-			<li><a href="#wins"><span>789</span>Wins</a></li>
-			<li><a href="#loses"><span>012</span>Loses</a></li>
+			<li><a href="{{ URL::to_action("teams@view", array($team->id)) }}#members"><span>{{ count($team->users) }}</span>Members</a></li>
+			<li><a href="{{ URL::to_action("teams@view", array($team->id)) }}#wins"><span>789</span>Wins</a></li>
+			<li><a href="{{ URL::to_action("teams@view", array($team->id)) }}#loses"><span>012</span>Loses</a></li>
 		</ul>
 	</div>
 	</div>
+	@endforeach
 </div>
 	<div id="page" class="right">
 		<div id="myTabContent" class="tab-content">
@@ -131,7 +133,7 @@
 				@endforeach
             	</ul>
             </div>
-          </div>
+          </div><?php /*
           <div class="tab-pane fade" id="user-wins">
             <div class="titlebar"><h2>Wins</h2></div>
           </div>
@@ -140,7 +142,7 @@
           </div>
           <div class="tab-pane fade" id="user-ranking">
             <div class="titlebar"><h2>Ranking</h2></div>
-          </div>
+          </div> */ ?>
         </div>
 	</div>
 	</div>
