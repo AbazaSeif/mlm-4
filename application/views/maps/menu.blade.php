@@ -24,9 +24,9 @@
 
 <ul id="multiview-controller" class="submenu nav nav-pills">
 	<li class="disabled"><a href="#">Views:</a></li>
-	<li data-multiview="grid"><a href="javascript:;" title="Map Image and title">Grid</a></li>
-	<li data-multiview="big"><a href="javascript:;" title="Map Image and all details">Big</a></li>
-	<li data-multiview="list"><a href="javascript:;" title="Only details">List</a></li>
+	<li data-multiview="grid"><a href="#" title="Map Image and title">Grid</a></li>
+	<li data-multiview="big"><a href="#" title="Map Image and all details">Big</a></li>
+	<li data-multiview="list"><a href="#" title="Only details">List</a></li>
 </ul>
 
 @elseif ($menu == "map" || $menu == "mapedit")

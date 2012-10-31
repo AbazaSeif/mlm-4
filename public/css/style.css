@@ -1205,7 +1205,9 @@ a:hover { color: #005580 }
     background: #adadad;
     text-align: center;
     text-shadow: 0px 1px 1px #fff;
-    box-shadow: 0px -1px 8px #000;
+    -moz-box-shadow: rgb(0, 0, 0) 0px -1px 8px;
+    -webkit-box-shadow: rgb(0, 0, 0) 0px -1px 8px;
+    box-shadow: rgb(0, 0, 0) 0px -1px 8px;
 }
 
 .account-settings #multibg img {
@@ -1665,6 +1667,7 @@ ol.commentlist {
 #multiview ul li {
     display: inline-block;
     position: relative;
+    overflow: hidden;
     margin: 13px 6px;
     width: 100%;
     background: #D8D8D8;
@@ -1686,6 +1689,8 @@ ol.commentlist {
     width: 100%;
     background: rgba(231, 231, 231, 0.75);
     color: #fff;
+    -webkit-box-shadow: rgb(0, 0, 0) 0px -1px 8px;
+    box-shadow: rgb(0, 0, 0) 0px -1px 8px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -1745,6 +1750,8 @@ ol.commentlist {
 
 #multiview .big .mv-title h1 { margin-bottom: 10px; font-size: 25px; }
 
+#multiview .mv-meta { padding-top: 0; border-top: none; }
+
 /* List view */
 
 #multiview ul.list { }
@@ -1755,11 +1762,13 @@ ol.commentlist {
 
 #multiview .list li:first-child { margin-top: 0 }
 
-#multiview .list .mv-details { position:static; padding: 10px; background: none; color: #333; }
+#multiview .list .mv-image { display: none }
+
+#multiview .list .mv-details { position:static; padding: 10px; background: none; color: #333; -moz-box-shadow:none; -webkit-box-shadow: none ;box-shadow: none;}
 
 #multiview .list .mv-title h1 { font-size: 20px;}
 
-#multiview .list .mv-image { display: none }
+#multiview .list .mv-meta { padding-top: 5px; border-top: 1px dotted rgb(173, 173, 173); }
 
 /* Load more stuff */
 
