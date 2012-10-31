@@ -43,7 +43,7 @@
 	<h4>Details</h4>
 	<hr>
 		<p>Name: {{ $team->name }}</p>
-		<p>Summary: {{ $team->summary }}</p>
+		<p>Tagline: {{ $team->tagline }}</p>
 		<p>Description: {{ $team->description }}</p>
 	<br/>
 	<h4>Players in Team</h4>
