@@ -11,7 +11,7 @@ class Maps_Controller extends Base_Controller {
 	}
 
 	public function get_index() {
-		$maps = Map::order_by("created_at", "desc")->where_published(1)->paginate(12);
+		$maps = Map::with(array("users", "image"))->order_by("created_at", "desc")->where_published(1)->paginate(12);
 		return View::make("maps.home", array("title" => "Maps", "javascript" => array("maps", "list"), "maps" => $maps, "menu" => "multiview"));
 	}
 	public function get_filter() {
@@ -24,11 +24,13 @@ class Maps_Controller extends Base_Controller {
 		$limit = intval(Input::get('limit', null)) ?: 12;
 
 		//start to make $query
-		$query = Map::with("users");
+		$query = Map::with(array("users", "image"));
 
 		// own maps
 		if($own && Auth::user()) {
 			$query = Auth::user()->maps()->where("confirmed", "=", 1)->with("confirmed");
+			// Prefetch for relational queries
+			$query->model->_with(array("users", "image"));
 		} else {
 			// Only allow seeing published maps
 			$query = $query->where_published(1);
@@ -78,6 +80,9 @@ class Maps_Controller extends Base_Controller {
 		
 		//run $query
 		$maps = $query->paginate($limit);
+		$appendage = Input::get();
+		unset($appendage["page"]);
+		$maps->appends($appendage);
 		return View::make("maps.home", array("title" => "Filtered Maps", "javascript" => array("maps", "list"), "maps" => $maps, "menu" => "multiview"));
 	}
 	public function get_new() {
