@@ -286,7 +286,7 @@ class Maps_Controller extends Base_Controller {
 			Messages::add("success", "Map updated!");
 			return Redirect::to_action("maps@edit", array($map->id));
 		} else {
-			Messages::add("error", "Hold on cowboy, something just ain't right!");
+			Messages::add("error", "Hold on! you forgot something!");
 			return Redirect::to_action("maps@edit", array($map->id))->with_input()->with_errors($validation);
 		}		
 	}

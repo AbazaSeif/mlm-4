@@ -199,7 +199,7 @@ Form::macro('imageselect', function($name, $value = null, $previewimage = null, 
 	return Form::hidden($name, $value, $attributes).'<img src="'.$previewimage.'" /> <a href="#" class="btn" onClick="MLM.images.open({mode: &quot;id&quot;, field: $(this).prevAll(&quot;input&quot;), preview: $(this).prevAll(&quot;img&quot;) }); return false;"><i class="icon-picture"></i> Select image</a>';
 });
 /*
- * WYSIWYG for Admins, uses same syntax as textarea
+ * WYSIWYG for Admins
  */
 Form::macro("wysiwyg", function($name, $value = null, $attributes = array()) {
 	$attributes["data-wysiwyg"] = "true";

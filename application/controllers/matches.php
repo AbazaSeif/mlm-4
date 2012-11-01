@@ -206,7 +206,7 @@ class Matches_Controller extends Base_Controller {
 			Messages::add("success", "Match updated!");
 			return Redirect::to_action("matches@edit", array($match->id));
 		} else {
-			Messages::add("error", "Hold on cowboy, something just ain't right!");
+			Messages::add("error", "Hold on! you forgot something!");
 			return Redirect::to_action("matches@edit", array($match->id))->with_input()->with_errors($validation);
 		}		
 	}

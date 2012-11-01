@@ -1,6 +1,4 @@
 @layout("layout.main")
-<?php $countries = require path("app")."countries.php"; ?>
-
 @section('content')
 @if($ownpage)
 	@include("user.menu")
@@ -118,9 +116,9 @@
 	</div>
 </div>
 <div id="sidebar" class="left">
-	@foreach ($user->teams as $team)
-	<div class="block">
+	<div class="block maxwidth">
 		<div class="titlebar"><h2>Member of team</h2></div>
+		@forelse ($user->teams as $team)
 		<div class="avatar"><img src="{{ $user->avatar_url }}" alt="avatar" width="60"/></div>
 		<div class="name">
 			<a href="{{ URL::to_action("teams@view", array($team->id)) }}">
@@ -128,22 +126,24 @@
 			<h2>{{ $team->tagline }}</h2>
 			</a>
 		</div>
-		<div class="stats">
+	<div class="stats">
 		<ul>
 			<li><a href="{{ URL::to_action("teams@view", array($team->id)) }}#members"><span>{{ count($team->users) }}</span>Members</a></li>
 			<li><a href="{{ URL::to_action("teams@view", array($team->id)) }}#wins"><span>789</span>Wins</a></li>
 			<li><a href="{{ URL::to_action("teams@view", array($team->id)) }}#loses"><span>012</span>Loses</a></li>
 		</ul>
 	</div>
+		@empty
+		nothing
+		@endforelse
 	</div>
-	<div class="block">
+	<div class="block maxwidth">
 		<div class="titlebar"><h2>Groups</h2></div>
 		<ul class="ulfix">
 		<li class="xpadding"><img src="gpimage" alt="avatar" /> {{ HTML::link("group/groupname", "Group name") }}</li>
 	</ul>
 	</div>
 	</div>
-	@endforeach
 </div>
 </div>
 </div>
