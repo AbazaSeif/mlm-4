@@ -1,6 +1,7 @@
 @layout("layout.main")
 
 @section("content")
+@include("teams.menu")
 <div id="content">
 <div id="titlebar"></div>
 <div id="multiview">

@@ -49,7 +49,7 @@ class Teams_Controller extends Base_Controller {
 	public function post_new() {
 		$validation_rules = array(
 			"name"       	=> "required|between:3,128",
-			"summary" 		=> "required|between:3,255",
+			"tagline" 		=> "required|between:3,56",
 			"description" 	=> "required",
 		);
 		$validation = Validator::make(Input::all(), $validation_rules);
@@ -57,7 +57,7 @@ class Teams_Controller extends Base_Controller {
 			// New team
 			$team = new Team();
 			$team->name			= Input::get("name");
-			$team->summary 		= Input::get("summary");
+			$team->tagline 		= Input::get("tagline");
 			$team->description	= Input::get("description");
 			$team->public      	= Input::get("private") == 'on' ? 0 : 1;
 			//See if we have a valid map
@@ -178,13 +178,13 @@ class Teams_Controller extends Base_Controller {
 
 		$validation_rules = array(
 			"name"       	=> "required|between:3,128",	
-			"summary"		=> "required|between:3,255",
+			"tagline"		=> "required|between:3,56",
 			"description" 	=> "required",
 		);
 		$validation = Validator::make(Input::all(), $validation_rules);
 		if($validation->passes()) {
 			$team->name       	= Input::get("name");
-			$team->summary     	= Input::get("summary");
+			$team->tagline     	= Input::get("tagline");
 			$team->description 	= Input::get("description");
 			$team->public      	= Input::get("private") == 'on' ? 0 : 1;
 
@@ -192,7 +192,7 @@ class Teams_Controller extends Base_Controller {
 			Messages::add("success", "Team updated!");
 			return Redirect::to_action("teams@edit", array($team->id));
 		} else {
-			Messages::add("error", "Hold on cowboy, something just ain't right!");
+			Messages::add("error", "Hold on! you forgot something!");
 			return Redirect::to_action("teams@edit", array($team->id))->with_input()->with_errors($validation);
 		}		
 	}
