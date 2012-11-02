@@ -22,9 +22,6 @@
 			<li><a href="#user-comments" data-toggle="tab"><span>{{ $user->comment_count }}</span>Comments</a></li>
 			<?php $uid = $user->id ?>
 			<li><a href="#user-maps" data-toggle="tab"><span>{{ DB::table("map_user")->where_user_id($uid)->count(); }}</span>Maps</a></li>
-<?php /*	<li><a href="#user-wins" data-toggle="tab"><span>789</span>Wins</a></li>
-			<li><a href="#user-loses" data-toggle="tab"><span>012</span>Loses</a></li>
-			<li><a href="#user-ranking" data-toggle="tab"><span>345</span>Ranking</a></li> */ ?>
 		</ul>
 	</div>
 	<div class="abotalit">
@@ -34,17 +31,17 @@
 			@elseif ($user->rank == 2)<li style="padding-left:0;"><div class="user-rank editor" title="MLM Editor"></div></li>
 			@elseif ($user->rank == 1)<li style="padding-left:0;"><div class="user-rank mod" title="MLM Moderator"></div></li>
 			@endif
-			<li><a href="{{ URL::to("messages/new") }}" title="Messages" data-value="Message {{$user->username}}"><i class="icon-envelope-alt"></i></a></li>
+			<li><a href="{{ URL::to("messages/new") }}" title="Message {{$user->username}}"><i class="icon-envelope-alt"></i></a></li>
 			@if ($user->profile->reddit)
-			<li><a href="http://reddit.com/user/{{$user->profile->reddit}}" target="_blank" rel="nofollow" title="reddit" data-value="{{$user->profile->reddit}}"><i class="icon-arrow-up"></i></a></li>
+			<li><a href="http://reddit.com/user/{{$user->profile->reddit}}" target="_blank" rel="nofollow" title="reddit"><i class="icon-arrow-up"></i></a></li>
 			@endif
-			@if ($user->profile->twitter)<li><a href="http://twitter.com/{{$user->profile->twitter}}" target="_blank" rel="nofollow" title="Twitter" data-value="{{$user->profile->twitter}}"><i class="icon-twitter"></i></a></li>
+			@if ($user->profile->twitter)<li><a href="http://twitter.com/{{$user->profile->twitter}}" target="_blank" rel="nofollow" title="Twitter"><i class="icon-twitter"></i></a></li>
 			@endif
 			@if ($user->profile->youtube)
-			<li><a href="http://youtube.com/user/{{$user->profile->youtube}}" target="_blank" rel="nofollow" title="YouTube" data-value="{{$user->profile->youtube}}"><i class="icon-play"></i></a></li>
+			<li><a href="http://youtube.com/user/{{$user->profile->youtube}}" target="_blank" rel="nofollow" title="YouTube"><i class="icon-play"></i></a></li>
 			@endif
 			@if ($user->profile->webzone)
-			<li><a href="{{$user->profile->webzone}}" target="_blank" rel="nofollow" title="Website" data-value="{{$user->profile->webzone}}"><i class="icon-globe"></i></a></li>
+			<li><a href="{{$user->profile->webzone}}" target="_blank" rel="nofollow" title="Website"><i class="icon-globe"></i></a></li>
 			@endif
 		</ul>
 	</div>
@@ -55,7 +52,7 @@
 			<div class="titlebar"><h2>Comments</h2></div>
 				<div id="multiview">
             	<ul class="list">
-            	@foreach($user->comments as $item)
+            	@forelse($user->comments as $item)
             		<li>
             			<a href="/#comment{{ $item->id }}" title="View comment">
             			<div class="mv-details">
@@ -74,7 +71,14 @@
             			</div> 
             			</a>
             		</li>
-				@endforeach
+            	@empty
+            	<div class="mv-details"><div class="mv-title">
+            	<h1 class="center">@if($ownpage)You haven't
+					@else{{ $user->username }} has not
+					@endif posted any comments :(
+				</h1>
+            	</div></div>
+				@endforelse
             	</ul>
             </div>
           </div>
@@ -82,7 +86,7 @@
             <div class="titlebar"><h2>Maps</h2></div>
             <div id="multiview">
             	<ul class="list">
-            	@foreach($user->maps as $map)
+            	@forelse($user->maps as $map)
             	@if($map->published)
             		<li>
             			<a href="{{ URL::to_action("maps@view", array($map->id, $map->slug)) }}" title="View map">
@@ -109,7 +113,16 @@
             			</a>
             		</li>
             	@endif
-				@endforeach
+            	@empty
+            	<div class="mv-details"><div class="mv-title">
+            	<h1 class="center">@if($ownpage)You haven't
+					@else{{ $user->username }} has not
+					@endif posted any maps :(
+					@if($ownpage)<br><a href="/maps">Post a new map!</a>
+					@endif
+				</h1>
+            	</div></div>
+				@endforelse
             	</ul>
             </div>
 		</div>
@@ -117,7 +130,7 @@
 </div>
 <div id="sidebar" class="left">
 	<div class="block maxwidth">
-		<div class="titlebar"><h2>Member of team</h2></div>
+		<div class="titlebar"><h2>Teams</h2></div>
 		@forelse ($user->teams as $team)
 		<div class="avatar"><img src="{{ $user->avatar_url }}" alt="avatar" width="60"/></div>
 		<div class="name">
@@ -129,18 +142,34 @@
 	<div class="stats">
 		<ul>
 			<li><a href="{{ URL::to_action("teams@view", array($team->id)) }}#members"><span>{{ count($team->users) }}</span>Members</a></li>
-			<li><a href="{{ URL::to_action("teams@view", array($team->id)) }}#wins"><span>789</span>Wins</a></li>
-			<li><a href="{{ URL::to_action("teams@view", array($team->id)) }}#loses"><span>012</span>Loses</a></li>
+			<li><a href="#" title="Coming Soon"><span>0</span>Wins</a></li>
+			<li><a href="#" title="Coming Soon"><span>0</span>Loses</a></li>
 		</ul>
 	</div>
 		@empty
-		nothing
+			<h4 class="center">@if($ownpage)You're
+				@else{{ $user->username }} is
+				@endif not a member of a team :( 
+				@if($ownpage)<br><a href="/teams">Join a team!</a>
+				@endif
+			</h4>
 		@endforelse
 	</div>
 	<div class="block maxwidth">
 		<div class="titlebar"><h2>Groups</h2></div>
-		<ul class="ulfix">
-		<li class="xpadding"><img src="gpimage" alt="avatar" /> {{ HTML::link("group/groupname", "Group name") }}</li>
+	<ul class="ulfix">
+		@forelse ($user->groups as $group)
+		<li class="xpadding"><img src="{{ $group->image }}" alt="avatar" /> {{ HTML::link("group/{$group->title}", $group->title) }}</li>
+		@empty
+		<li class="xpadding">
+		<h4 class="center">@if($ownpage)You're
+			@else{{ $user->username }} is
+			@endif not a member of any group :( 
+			@if($ownpage)<br><a href="/groups">Join a group!</a>
+			@endif
+		</h4>
+		</li>
+		@endforelse
 	</ul>
 	</div>
 	</div>

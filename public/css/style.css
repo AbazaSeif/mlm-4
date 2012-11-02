@@ -920,10 +920,10 @@ a:hover { color: #005580 }
     text-align: center;
 }
 
-/* Profile page 
+/* Profiles
    ================================================== */
 
-/* User info Virtual Card */
+/* Virtual Card */
 
 .profile #vcard {
     margin-bottom: 10px;
@@ -994,6 +994,10 @@ a:hover { color: #005580 }
     font-weight: bold;
 }
 
+.profile #vcard .stats ul li.active {
+    background-color: #ADADAD;
+}
+
 .profile #vcard .stats ul li a {
     display: block;
     padding: 26px 0px 18px;
@@ -1044,8 +1048,8 @@ a:hover { color: #005580 }
     color: #333;
 }
 
-.profile #vcard .abotalit a:hover::after {
-    content: attr(data-value)
+.profile #vcard .abotalit a:hover {
+    color: #666;
 }
 
 .profile #vcard .user-rank {
@@ -1075,6 +1079,7 @@ a:hover { color: #005580 }
 
 .profile #page {
     float: right;
+    width: 610px;
 }
 
 .profile .block {
@@ -1107,7 +1112,7 @@ a:hover { color: #005580 }
 }   
 
 .profile .block .name h1 {
-    margin: 0px 0px 12px;
+    margin: 0px 0px 8px;
     font-family:"Oswald";
     font-size: 27px;
     font-weight: 400;
@@ -1392,8 +1397,7 @@ a:hover { color: #005580 }
    can think of.
    ================================================== */
 
-.edit {
-}
+.edit {}
 
 .edit .title {
     padding: 5px 8px;
@@ -1443,7 +1447,7 @@ a:hover { color: #005580 }
 
 .cleditorMain textarea {
     border: none;
-    no#fffspace: afterproperty;
+    white-space: afterproperty;
     margin: 0;
     padding: 0;
     overflow-y: scroll;
@@ -2080,12 +2084,6 @@ img.imgfix { display: block; margin-top: 10px; width: 50% }
 .flag.flag-ZM {background-position: -128px -165px}
 .flag.flag-ZW {background-position: -144px -165px}
 
-/* ==================================================
-    Everything below this comment is for responsive
-    styling.
-   ================================================== */
-
-
 /* Media Queries
    ================================================== */
 
@@ -2132,7 +2130,6 @@ img.imgfix { display: block; margin-top: 10px; width: 50% }
 
    #respond textarea { width: 100% }
 
-
 /* Global Header
    ================================================== */
 
@@ -2176,7 +2173,6 @@ img.imgfix { display: block; margin-top: 10px; width: 50% }
     }
 
     #shownav:hover { color: #ADADAD; }
-
 
 /* Global Menu 
    ================================================== */
@@ -2267,7 +2263,6 @@ img.imgfix { display: block; margin-top: 10px; width: 50% }
 
     #multiview ul.grid li { margin:0 0 10px 0; width: 100%; }
 
-
 /* News
    ================================================== */
 
@@ -2280,7 +2275,6 @@ img.imgfix { display: block; margin-top: 10px; width: 50% }
    .post.single .left { display:none; }
 
    .post.single .right { display:inline; }
-
 }
 
 /* Portrait tablet to landscape and desktop */
