@@ -1,3 +1,4 @@
+@if($item->published)
 <li>
 <a href="{{ URL::to_action("maps@view", array($item->id, $item->slug)) }}" title="View map">
 		<div class="mv-image">
@@ -27,3 +28,4 @@
 		</div>
 </a>
 </li>
+@endif
