@@ -1,6 +1,7 @@
 @layout("layout.main")
 
 @section("content")
+@include("teams.menu")
 <div id="content" class="edit clearfix">
 	{{ Form::open("teams/new", "POST", array("class" => "form")) }}
 		{{ Form::token() }}

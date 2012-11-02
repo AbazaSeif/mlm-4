@@ -1,6 +1,7 @@
 @layout("layout.main")
 
 @section("content")
+@include("teams.menu")
 <div id="content">
 <div class="titlebar">
 	<h2>Deleting application by <strong>{{ e($user->username) }}</strong> for joining the team <strong>{{ e($team->name) }}</strong></h2>

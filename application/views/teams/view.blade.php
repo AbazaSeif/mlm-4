@@ -1,6 +1,7 @@
 @layout("layout.main")
 
 @section('content')
+@include("teams.menu")
 @if($is_owner)
 <ul class="submenu nav nav-pills">
 	<li class="disabled"><a href="#">Actions:</a></li>

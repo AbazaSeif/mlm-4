@@ -1,6 +1,7 @@
 @layout("layout.main")
 
 @section("content")
+@include("teams.menu")
 <div id="content" class="edit clearfix">
 <div class="titlebar">
 	<h2>Editing team <b>{{ e($team->name) }}</b></h2>

@@ -1,6 +1,7 @@
 @layout("layout.main")
 
 @section("content")
+@include("teams.menu")
 <div id="content">
 <div class="titlebar">
 	<h2>Accepting <strong>{{ e($user->username) }}</strong> into the team <strong>{{ e($team->name) }}</strong></h2>
