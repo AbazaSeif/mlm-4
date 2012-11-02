@@ -1,5 +1,5 @@
 <li>
-<a href="{{ URL::to_action("news@view", array($item->id, $item->slug)) }}" title="">
+<a href="{{ URL::to_action("news@view", array($item->id, $item->slug)) }}" title="View article">
 		<div class="mv-details">
 		<div class="mv-title"><h1>{{ $item->title }}</h1></div>
 		<div class="mv-summary"><p>{{ nl2br(e($item->summary)) }}</p></div>

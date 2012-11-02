@@ -1,6 +1,14 @@
 @layout("layout.main")
 
 @section('content')
+<ul class="submenu nav nav-pills">
+	<li class="disabled"><a href="#">Search:</a></li>
+	<li><a href="/search?type=search&query={{ $query }}" title="Search All">All</a></li>
+	<li><a href="/search?type=news&query={{ $query }}" title="Search News">News</a></li>
+	<li><a href="/search?type=maps&query={{ $query }}" title="Search Maps">Maps</a></li>
+	<li><a href="/search?type=comments&query={{ $query }}" title="Search Comments">Comments</a></li>
+	<li><a href="/search?type=users&query={{ $query }}" title="Search Users">Users</a></li>
+</ul>
 <div id="content">
 <div class="titlebar">
 	<h2>Search Results</h2></br>

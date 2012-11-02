@@ -1,5 +1,5 @@
 <li>
-<a href="{{ URL::to_action("maps@view", array($item->id, $item->slug)) }}" title="">
+<a href="{{ URL::to_action("maps@view", array($item->id, $item->slug)) }}" title="View map">
 		<div class="mv-image">
 		@if($item->image)
 		{{ HTML::image($item->image->file_medium) }}

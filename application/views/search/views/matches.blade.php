@@ -1,5 +1,5 @@
 <li>
-<a href="{{ URL::to_action("matches@view", array($item->id)) }}" title="">
+<a href="{{ URL::to_action("matches@view", array($item->id)) }}" title="View match">
 		<div class="mv-details">
 		<div class="mv-title"><h1>{{ e($item->mapname) }} &nbsp - &nbsp {{ array_get(Config::get("maps.types"), $item->gametype) }}</h1></div>
 		<div class="mv-summary"><p>{{ $item->info }}</p></div>

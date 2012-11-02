@@ -1,5 +1,5 @@
 <li>
-<a href="{{ URL::to_action("users@view", array($item->id)) }}" title="">
+<a href="{{ URL::to_action("users@view", array($item->id)) }}" title="View user profile">
 		<div class="mv-details">
 		<div class="mv-title"><h1>{{ e($item->username) }}</h1></div>
 		<div class="mv-meta">
