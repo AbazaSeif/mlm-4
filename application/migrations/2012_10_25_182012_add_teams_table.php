@@ -40,7 +40,7 @@ class Add_Teams_Table {
 	public function down()
 	{
 		Schema::drop("teams");
-		Schema::drop("teams_user");
+		Schema::drop("team_user");
 	}
 
 }
