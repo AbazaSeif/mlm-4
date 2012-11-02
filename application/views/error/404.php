@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo URL::to_asset("css/fonts.css"); ?>" />
 	<link rel="stylesheet" type="text/css" href="<?php echo URL::to_asset("css/bootstrap.css") ?>" />
 	<!--[if IE]><link rel="stylesheet" type="text/css" href="<?php echo URL::to_asset("css/ie-sucks.css") ?>" /><![endif]-->
-	<link rel="stylesheet" type="text/css" href="<?php echo URL::to_asset("css/style.css") ?>" />
+	<link rel="stylesheet" type="text/css" href="<?php echo URL::to_asset("css/main.css") ?>" />
 	<link rel="shortcut icon" href="/images/static/favicon.ico" />
 </head>
 <body>
@@ -19,7 +19,7 @@
 			<hr>
 			<p>
 				This page probably moved, has been dumped into The Void or has never existed.
-				<br> 
+				<br>
 				You may check your link for errors or go to back to our <?php echo HTML::link('/', 'home page'); ?>.
 			</p>
 	</div>

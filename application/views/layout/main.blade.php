@@ -9,9 +9,9 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	@if (isset($title)) 
+	@if (isset($title))
 	<title>{{$title}} | Major League Mining</title>
-	@else 
+	@else
 	<title>Major League Mining</title>
 	@endif
 	<meta name="robots" content="index,follow">
@@ -21,7 +21,7 @@
 	<meta name="copyright" content="Major League Mining">
 	<link type="text/plain" rel="author" href="{{ URL::to_asset("humans.txt") }}" />
 	<link type="text/plain" rel="hackers" href="{{ URL::to_asset("hackers.txt") }}" />
-	
+
 	@if(isset($social) && is_array($social))
 	@foreach($social as $skey => $scontent)
 	<meta property="og:{{$skey}}" content="{{ e($scontent) }}" />
@@ -31,11 +31,11 @@
 	<link rel="shortcut icon" href="{{ URL::to_asset("images/static/favicon.ico") }}" />
 	<link rel="image_src" href="{{ URL::to_asset("images/static/mlm.png") }}" />
 	<link rel="apple-touch-icon-precomposed" href="{{ URL::to_asset("images/static/apple-touch-icon.png") }}" />
-	
+
 	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/fonts.css") }}" />
 	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/bootstrap.css") }}" />
 	<!--[if IE]><link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/ie-sucks.css") }}" /><![endif]-->
-	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/style.css") }}" />
+	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/main.css") }}" />
 	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/nivo/nivo-slider.css") }}" />
 
 	<script src="{{ URL::to_asset("js/libs/modernizr-2.5.3-respond-1.1.0.min.js") }}"></script>
@@ -83,7 +83,7 @@
 					</div>
 					<a href="#" id="shownav"><i class="icon-reorder"></i></a>
 				</div>
-			</div>	
+			</div>
 				<nav id="menu">
 					<ul class="loginout">
 						@if (Auth::check())
@@ -95,10 +95,10 @@
 						@endif
 					</ul>
 					<ul id="mainmenu">
-						<li><a href="{{ URL::to("/") }}">Home</a></li> 
+						<li><a href="{{ URL::to("/") }}">Home</a></li>
 						<li>{{ HTML::link('news', 'News'); }}</li>
 						<li>{{ HTML::link('matches', 'Matches'); }}</li>
-						<li>{{ HTML::link('teams', 'Teams'); }}</li> 
+						<li>{{ HTML::link('teams', 'Teams'); }}</li>
 						<li>{{ HTML::link('maps', 'Maps'); }}</li>
 						<li>{{ HTML::link('faq', 'FAQ'); }}</li>
 						<div id="search" class="right clearfix">
@@ -130,7 +130,7 @@
 			<a href="http://twitter.com/mlm" title="Follow us on Twitter" class="tw"><i class="icon-twitter-sign"></i></a>
 			<a href="http://plus.google.com/+mlm" title="Circle us on Google+" class="gp"><i class="icon-google-plus-sign"></i></a>
 		</div>
-		</div>	
+		</div>
 	</footer>
 
 	@yield("postfooter")
