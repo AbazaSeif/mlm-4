@@ -3,7 +3,7 @@
 @section('content')
 @include("news.menu")
 <div id="content" class="news clearfix">
-<div id="page">
+<div id="page" class="maxwidth">
 
 @foreach($newslist->results as $article)
 <div class="post">
@@ -28,6 +28,5 @@
 @endforeach
 
 </div>
-@include("news.sidebar")
 </div>
 @endsection

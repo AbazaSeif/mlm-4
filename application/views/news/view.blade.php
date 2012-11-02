@@ -9,9 +9,13 @@
 		</div>
 @endif
 <div id="content" class="news clearfix">
-<div id="page">
+<div id="page" class="maxwidth">
 <div class="post single">
 	<h2 class="title">{{ e($article->title) }}</h2>
+	<div class="entry">
+		{{ HTML::image($article->image->file_medium, "Image",array("class" => "image")) }}
+		{{ $article->content }}
+	</div>
 	<div class="meta clearfix">
 		<div class="left">
 		<a href="{{ URL::to_action("news@view", array($article->id, $article->slug)) }}" class="more"><i class="icon-link"></i> Permalink</a>
@@ -22,14 +26,9 @@
 		<span class="date"><a href="#"><i class="icon-calendar"></i> {{ HTML::entities(date("F j, Y g:ia", strtotime($article->created_at))) }}</a></span>
 		</div>
 	</div>
-	<div class="entry">
-		{{ HTML::image($article->image->file_medium, "Image",array("class" => "image")) }}
-		{{ $article->content }}
-	</div>
 </div>
 @include("news.comments")
 </div>
 </div>
-@include("news.sidebar")
 </div>
 @endsection
