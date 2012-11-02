@@ -2026,3 +2026,9 @@ img.imgfix { display: block; margin-top: 10px; width: 50% }
     .commentlist .meta .actions { display: inline; }
 
 }
+
+.test-this-thing {
+    background-color: red;
+    color: blue;
+    font-size: 72px;
+}
