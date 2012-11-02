@@ -38,7 +38,8 @@
 			<p class="WhyOpenID">
 			Enter your OpenID to login or use one of the 1 click login options (also OpenID)<br>
 			We use openID for a safe, faster, and easier way to login/register.<br>
-			If you would like to create an OpenID account, please click <a href="http://openid.net/get-an-openid/" title="Will open in new tab" target="_blank" rel="nofollow">this link</a>.
+			If you would like to create an OpenID account, please click <a href="http://openid.net/get-an-openid/" title="Will open in new tab" target="_blank" rel="nofollow">this link</a>.<br>
+			We <b>do not</b> share/display any info from your OpenID provider with anyone. Only the info you have provided us on registration page. You can use any account with confidence.
 			</p>
 		</div>
 @endsection

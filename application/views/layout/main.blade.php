@@ -78,7 +78,8 @@
 								{{ HTML::link('admin', 'Admin panel'); }}
 							@endif
 							{{ HTML::link('account', 'Edit Account'); }}
-							<a href="{{ URL::to("user/".Auth::user()->username) }}"><span title="{{ e(Auth::user()->unread_messages) }} new messages" style="margin-right: 3px;">[{{ e(Auth::user()->unread_messages) }}]</span> Profile <img src="{{ Auth::user()->avatar_url }}" alt="avatar" /></a>
+							<a href="/messages" title="{{ e(Auth::user()->unread_messages) }} new messages" style="border-right: none;padding-right: 0;">[{{ e(Auth::user()->unread_messages) }}]</a>
+							<a href="{{ URL::to("user/".Auth::user()->username) }}" title="View your profile" style="padding-left: 0">Profile <img src="{{ Auth::user()->avatar_url }}" alt="avatar" /></a>
 						@else
 						{{ HTML::link('login', "Login &bull; Create account", array("class" => "nosep")) }}
 						@endif
@@ -91,7 +92,7 @@
 						@if (Auth::check())
 						<li>{{ HTML::link_to_action('account@logout', "Logout") }} </li>
 						<li>{{ HTML::link('account', 'Edit Account'); }}</li>
-						<li><a href="{{ URL::to("user/".Auth::user()->username) }}">Profile <img src="{{ Auth::user()->avatar_url }}" alt="avatar" width="30" /></a></li>
+						<li><a href="{{ URL::to("user/".Auth::user()->username) }}" title="View your profile">Profile <img src="{{ Auth::user()->avatar_url }}" alt="avatar" width="30" /></a></li>
 						@else
 						<li>{{ HTML::link('login', "Login &bull; Create account", array("class" => "nosep")) }}</li>
 						@endif
