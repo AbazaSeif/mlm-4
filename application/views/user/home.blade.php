@@ -54,11 +54,15 @@
             	<ul class="list">
             	@forelse($user->comments as $item)
             		<li>
-            			<a href="/#comment{{ $item->id }}" title="View comment">
+						@if($item->news_id != null)
+						<a href="{{ URL::to_action("news@view", array($item->news->id, $item->news->slug)) }}" title="View comment">
+						@else
+						<a href="{{ URL::to_action("maps@view", array($item->map->id, $item->map->slug)) }}" title="View comment">
+						@endif
             			<div class="mv-details">
-            				<div class="mv-summary">{{ $item->html }}</div>
-            				<div class="mv-meta">
-            				<span>Posted on <b>
+							<div class="mv-summary">{{ $item->html }}</div>
+							<div class="mv-meta">
+            				<span>commented on <b>
             					@if($item->news_id != null)
 								{{ Str::limit($item->news->title, 30) }}
 								@elseif($item->map_id != null)
