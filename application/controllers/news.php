@@ -27,7 +27,14 @@ class News_Controller extends Base_Controller {
 		if(!$newsitem->published && (Auth::guest() || !Auth::user()->admin)) {
 			return Response::error("404"); // Not yet published
 		}
-		return View::make("news.view", array("title" => e($newsitem->title)." | News", "article" => $newsitem));
+		$social = array(
+			"title" => $newsitem->title, "type" => "article", "url" => action("news@view", array($newsitem->id, $newsitem->slug)), "description" => $newsitem->summary
+		);
+		if($newsitem->image) {
+			$social["image"] = URL::to_asset($newsitem->image->file_medium);
+		}
+
+		return View::make("news.view", array("title" => e($newsitem->title)." | News", "article" => $newsitem, "social" => $social));
 	}
 	// Commenting
 	public function post_comment($id) {
