@@ -96,8 +96,7 @@
 					</ul>
 					<ul id="mainmenu">
 						<li><a href="{{ URL::to("/") }}">Home</a></li> 
-						<li>{{ HTML::link('news', 'News'); }}</li> 
-						<li>{{ HTML::link('tournaments', 'Tournaments'); }}</li>
+						<li>{{ HTML::link('news', 'News'); }}</li>
 						<li>{{ HTML::link('matches', 'Matches'); }}</li>
 						<li>{{ HTML::link('teams', 'Teams'); }}</li> 
 						<li>{{ HTML::link('maps', 'Maps'); }}</li>
