@@ -1,4 +1,4 @@
-﻿/* ----------------------------------------------
+/* ----------------------------------------------
             MAJOR LEAGUE MINING 2012
              Credits on /humans.txt
 -------------------------------------------------*/
@@ -2014,8 +2014,8 @@ img.imgfix { display: block; margin-top: 10px; width: 50% }
     #menu { display: block!important; }
 
     #menu .loginout, #shownav { display: none }
-
 }
+
 /* Large desktop */
 @media (min-width: 990px) {
 
@@ -2024,11 +2024,4 @@ img.imgfix { display: block; margin-top: 10px; width: 50% }
     #menu .loginout, #shownav, #global-footer { display: none }
 
     .commentlist .meta .actions { display: inline; }
-
-}
-
-.test-this-thing {
-    background-color: red;
-    color: blue;
-    font-size: 72px;
 }
