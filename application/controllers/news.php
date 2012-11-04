@@ -27,6 +27,19 @@ class News_Controller extends Base_Controller {
 		if(!$newsitem->published && (Auth::guest() || !Auth::user()->admin)) {
 			return Response::error("404"); // Not yet published
 		}
+
+		// Align everyone with
+		$comments = array(); // First level
+		$comment_lookup = array();
+		foreach ($newsitem->comments as $comment) {
+			if($comment->reply_id && isset($comment_lookup[$comment->reply_id])) {
+				$comment_lookup[$comment->reply_id]->children[] = $comment;
+			} else {
+				$comments[$comment->id] = $comment;
+			}
+			$comment_lookup[$comment->id] = $comment;
+		}
+
 		$social = array(
 			"title" => $newsitem->title, "type" => "article", "url" => action("news@view", array($newsitem->id, $newsitem->slug)), "description" => $newsitem->summary
 		);
@@ -34,7 +47,7 @@ class News_Controller extends Base_Controller {
 			$social["image"] = URL::to_asset($newsitem->image->file_medium);
 		}
 
-		return View::make("news.view", array("title" => e($newsitem->title)." | News", "article" => $newsitem, "social" => $social));
+		return View::make("news.view", array("title" => e($newsitem->title)." | News", "article" => $newsitem, "comments" => $comments, "social" => $social));
 	}
 	// Commenting
 	public function post_comment($id) {

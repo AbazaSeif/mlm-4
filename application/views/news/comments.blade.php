@@ -9,15 +9,8 @@
 	@endif
 
 <ol class="commentlist" id="discussion">
-	@foreach($article->comments as $comment)
-		@if($comment->reply_id == null)
-		@include("news.comment")
-		@foreach($article->comments as $replycomment)
-			@if($replycomment->reply_id == $comment->id)
-				@include("news.commentreply")
-			@endif
-		@endforeach
-		@endif
+	@foreach($comments as $comment)
+		{{ render("news.comment", array("comment" => $comment, "article" => $article)) }}
 	@endforeach
 </ol>
 <div id="respond">
@@ -25,7 +18,7 @@
 		<h3>Post a new comment</h3>
 		<div id="comment">
 			<p class="help">Live preview</p>
-			<div class="vcard"> 
+			<div class="vcard">
 			<img class="avatar" src="{{Auth::user()->avatar_url}}" alt="{{Auth::user()->username}}'s skin">
 			<a class="username" href="/user/{{Auth::user()->username}}" title="{{Auth::user()->username}}'s Profile">{{Auth::user()->username}}</a> Says:
 		</div>
