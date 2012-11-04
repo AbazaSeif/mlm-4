@@ -1552,14 +1552,17 @@ ol.commentlist {
     margin-bottom: 10px; background: #F9F9F9; border: 1px solid #ADADAD;
 }
 
-.depth-2,.depth-4,.depth-6,.depth-8 { background: #F8F8F8 }
-.commentlist .depth-2 {padding-left: 15px;}
-.commentlist .depth-3 {padding-left: 30px;}
-.commentlist .depth-4 {padding-left: 45px;}
-.commentlist .depth-5 {padding-left: 60px;}
-.commentlist .depth-6 {padding-left: 75px;}
-.commentlist .depth-7 {padding-left: 90px;}
-.commentlist .depth-8 {padding-left: 115px;}
+.depth-2,.depth-3,.depth-4,.depth-5,.depth-6,.depth-7,.depth-8 { margin-bottom: 7.5px; background: #F8F8F8; border-top: 1px solid #ADADAD; border-left: 1px solid #ADADAD; }
+.depth-2,.depth-4,.depth-6,.depth-8 { border-bottom: 1px solid #ADADAD; }
+.depth-3,.depth-5,.depth-7 { border-top: none; }
+
+.commentlist .depth-2 {margin-left: 15px;}
+.commentlist .depth-3 {margin-left: 30px;}
+.commentlist .depth-4 {margin-left: 45px;}
+.commentlist .depth-5 {margin-left: 60px;}
+.commentlist .depth-6 {margin-left: 75px;}
+.commentlist .depth-7 {margin-left: 90px;}
+.commentlist .depth-8 {margin-left: 115px;}
 
 #comments .vcard {
     padding: 5px;
