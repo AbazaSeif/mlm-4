@@ -60,7 +60,7 @@ class Teams_Controller extends Base_Controller {
 			$team->tagline 		= Input::get("tagline");
 			$team->description	= Input::get("description");
 			$team->public      	= Input::get("private") == 'on' ? 0 : 1;
-			//See if we have a valid map
+
 			$team->save();
 			// Attach user
 			$user = Auth::user();
@@ -131,13 +131,13 @@ class Teams_Controller extends Base_Controller {
 		}
 		// Custom validation, since gonna need the user object anyway
 		if(strlen($username) == 0) {
-			Messages::add("error", "Can't add user! Please enter an username");
+			Messages::add("error", "Can't kick user! Please enter an username");
 			return Redirect::to_action("teams@edit", array($team->id))->with_input();
 		}
 		// Find the user
 		$user = User::where_username($username)->first();
 		if(!$user) {
-			Messages::add("error", "Can't add user! User not found");
+			Messages::add("error", "Can't kick user! User not found");
 			return Redirect::to_action("teams@edit", array($team->id))->with_input();
 		}
 		if($team->is_owner($user)) { //Don't let owners kick other owners (They can speak to admins to get them removed if need be)
@@ -157,7 +157,7 @@ class Teams_Controller extends Base_Controller {
 		if(!$team) {
 			return Response::error('404');
 		}
-		$is_owner = $team->is_owner(Auth::user()); // User is confirmed to be logged in
+		$is_owner = $team->is_owner(Auth::user());
 		if(!$is_owner) {
 			return Response::error("404"); // Not owner
 		}
@@ -172,7 +172,7 @@ class Teams_Controller extends Base_Controller {
 		if(!$team) {
 			return Response::error('404');
 		}
-		if(!$team->is_owner(Auth::user())) { // User is confirmed to be logged in
+		if(!$team->is_owner(Auth::user())) {
 			return Response::error("404"); // Not owner
 		}
 
@@ -208,7 +208,7 @@ class Teams_Controller extends Base_Controller {
 		}
 		// Custom validation, since gonna need the user object anyway
 		if(strlen(Input::get("username")) == 0) {
-			Messages::add("error", "Can't add user! Please enter an username");
+			Messages::add("error", "Can't add user! Please enter a username");
 			return Redirect::to_action("teams@edit", array($team->id))->with_input();
 		}
 		// Find the user

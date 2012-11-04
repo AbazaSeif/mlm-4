@@ -26,6 +26,9 @@ class User extends Eloquent {
 	public function applications() {
 		return $this->has_many('Application');
 	}
+	public function groups() {
+		return $this->has_many_and_belongs_to("Group")->with('owner', 'invited');
+	}
 
 	// Send a *system message* to the user
 	public function send_message($title, $text) {
@@ -80,6 +83,15 @@ class User extends Eloquent {
 
 	public function in_team($teamid) {
 		$in_team = DB::table("team_user")->where_team_id($teamid)->where_user_id($this->get_key())->first();
+		if($in_team) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public function in_group($groupid) {
+		$in_team = DB::table("group_user")->where_group_id($groupid)->where_user_id($this->get_key())->first();
 		if($in_team) {
 			return true;
 		} else {

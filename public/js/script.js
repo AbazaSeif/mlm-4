@@ -119,10 +119,27 @@ MLM = {
 	},
 	profile: {
 		home: function() {
-		$('#vcard .stats a').click(function (e) {
-  			e.preventDefault();
-  		$(this).tab('show');
-		});
+			$('#vcard .stats a').click(function (e) {
+	  			e.preventDefault();
+	  			$(this).tab('show');
+			});
+	  		$("a[rel=popover]")
+            .popover({
+                offset: 10,
+                trigger: 'manual',
+                animate: false,
+                html: true,
+                placement: 'right',
+                template: '<div class="popover" onmouseover="clearTimeout(timeoutObj);$(this).mouseleave(function() {$(this).hide();});"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title"></h3><div class="popover-content"><p></p></div></div></div>'
+
+            }).mouseenter(function(e) {
+                $(this).popover('show');
+            }).mouseleave(function(e) {
+            	var ref = $(this);
+            	timeoutObj = setTimeout(function() {
+            		ref.popover('hide');
+            	}, 150);
+            });
 		},
 		messages: function() {
 			// Show/Hide Message actions

@@ -162,14 +162,81 @@
 	<div class="block maxwidth">
 		<div class="titlebar"><h2>Groups</h2></div>
 	<ul class="ulfix">
+		@if($ownpage)
+		<li class="xpadding">
+	    <div class="input-append">
+	    	{{ Form::open("user/group", "POST") }}
+    		{{ Form::token() }}
+			<input id="group" name="group" data-provide="typeahead" data-items="4" data-source="{{ e(json_encode($othergroups)) }}" type="text" autocomplete="off">
+			<button class="btn" name="action" value="join_textbox" type="submit">Add</button>
+			{{ Form::close() }}
+		</div>
+		</li>
+		@endif
 		@forelse ($user->groups as $group)
-		<li class="xpadding"><img src="{{ $group->image }}" alt="avatar" /> {{ HTML::link("group/{$group->title}", $group->title) }}</li>
+		<!--<li class="xpadding"><img src="{{ $group->image }}" alt="avatar" /> {{ HTML::link("groups/view/{$group->id}", $group->name) }}</li>-->
+		@if($group->is_invited($user) === 1 || $ownpage == true)
+		<li class="xpadding"><a href="#" 
+								rel="popover"
+        						data-html="true"
+            					data-content='{{ e($group->description )}} <hr>
+            								<button type="button" class="btn btn-link left-align" data-toggle="collapse" data-target="#members-{{$group->id}}">
+            									<b>Members: </b>{{ count($group->users) }}</b>
+            								</button>
+            								<div id="members-{{ $group->id }}" class="collapse out">
+	            								<ul class="thumbnails">
+	            									@foreach($group->users as $member)
+	            									<li class="span1">
+	            										<div class="thumbnail">
+	            											<img src={{ $member->avatar_url }} />
+	            										</div>
+	            									</li>
+	            									@endforeach
+	            								</ul>
+	            							</div>
+            								<hr>
+            								@if(Auth::check())
+	            								{{ Form::open("user/group", "POST") }}
+												{{ Form::token() }}
+												{{ Form::hidden("id", $group->id) }}
+	            								@if($group->is_invited(Auth::user()) === 1)
+		            								<button class="btn btn-danger btn-small" name="action" value="leave" type="submit">Leave Group</button>
+		            								@if($group->is_owner(Auth::user()) === 1)
+		            								<a href="/groups/edit/{{ $group->id }}" class="btn btn-warning btn-small">Edit Group</a>
+		            								@elseif($group->is_owner(Auth::user()) === 0)
+		            								<button class="btn btn-success btn-small" name="action" value="acceptowner" type="submit">Accept Owner Request</button>
+		            								@endif
+	            								@elseif ($group->is_invited(Auth::user()) === false && $group->open == true)
+	            								<button class="btn btn-success btn-small" name="action" value="join" type="submit">Join Group</button>
+	            								@elseif ($group->is_invited(Auth::user()) === 0)
+	            								<button class="btn btn-success btn-small" name="action" value="acceptjoin" type="submit">Accept Join Request</button>
+	            								@else
+	            								<b>Group not joinable</b>
+	            								@endif
+            									{{ Form::close() }}      
+            								@endif      							
+            								'
+            					data-original-title='<b>{{ $group->name }}</b>'>
+            					@if($ownpage)
+	    							@if($group->is_owner($user) === 0 || $group->is_owner($user) === 1)
+	            					<b>{{ $group->name }}</b>
+	            					@elseif ($group->is_invited($user) === 0)
+	            					<i>{{ $group->name }}</i>
+	            					@else
+	            					{{ $group->name }}
+	            					@endif
+            					@else
+            					{{ $group->name }}
+            					@endif
+            					</a></li>
+		@endif
 		@empty
 		<li class="xpadding">
-		<h4 class="center">@if($ownpage)You're
+		<h4 class="center">
+			@if($ownpage)You're
 			@else{{ $user->username }} is
-			@endif not a member of any group :( 
-			@if($ownpage)<br><a href="/groups">Join a group!</a>
+			@endif not a member of any group :(
+			@if($ownpage)<br><br><div class="alert alert-info">Join a group by typing a group name in the box above</div>
 			@endif
 		</h4>
 		</li>

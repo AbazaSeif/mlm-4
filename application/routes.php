@@ -44,7 +44,7 @@ Route::get("news/(:num)-(:any)", "news@view");
 Route::get("map/(:num)-(:any)", "maps@view");
 
 // Public routes
-Route::controller(array("account", "imgmgr", "maps", "messages", "news", "faq", "matches", "search", "teams", "test"));
+Route::controller(array("account", "imgmgr", "maps", "messages", "news", "faq", "matches", "search", "teams", "test", "groups"));
 
 // User pages
 Route::get("user/(:any?)", function($username = null) {
@@ -67,11 +67,79 @@ Route::get("user/(:any?)", function($username = null) {
 	$moduleurl = $url[3];
 
 	if(Auth::check() && Auth::user()->id == $userobj->id) {
-		return View::make("user.home", array("title" => "Your Profile & Activity", "ownpage" => true, "user" => $userobj, "moduleURL" => $moduleurl, "javascript" => array("profile", "home")));
+		$othergroupsraw = DB::table("groups")->where('groups.open', '=', '1')->get('groups.name');
+		$othergroups = array();
+		$i = 0;
+		foreach($othergroupsraw as $inner) {
+		    $othergroups[$i] = current($inner);  
+		    $i++;      
+		}
+
+		return View::make("user.home", array("title" => "Your Profile & Activity", "ownpage" => true, "user" => $userobj, "moduleURL" => $moduleurl, "othergroups" => $othergroups, "javascript" => array("profile", "home")));
 	} else {
 		return View::make("user.home", array("title" => $userobj->username." Profile & Activity", "ownpage" => false, "user" => $userobj, "moduleURL" => $moduleurl, "javascript" => array("profile", "home")));
 	}
 });
+
+Route::post("user/group", array('before' => 'csrf', function() {
+	if (!Auth::check()) {
+		return Response::error("500");
+	}
+	$input = Input::get("action");
+	$id = Input::get("id");
+	$group = null;
+
+	if ($input == "join_textbox") 
+		$group = Group::where_name(Input::get('group'))->first();
+	else if ($input == "join" || $input == "leave" || $input == "acceptjoin" || $input == "acceptowner")
+		$group = Group::find($id);
+	else {
+		Messages::add("error", "Something went wrong");
+		return Redirect::to("user/".Auth::user()->username);
+	}
+
+	if (!$group) {
+		if ($input == "join_textbox") {
+			Input::replace(array('name' => Input::get('group')));
+			return Redirect::to_action("groups.new")->with_input();
+		}
+		else
+			return Response::error("404");
+	}
+
+	if ($input == "join_textbox" || $input == "join" || $input == "acceptjoin") {
+		if ($group->open === 0)
+			Messages::add("error", "Group not public");
+		else if ($group->is_invited(Auth::user()) === 1)
+			Messages::add("error", "Already in Group");
+		else if ($group->is_invited(Auth::user()) === 0) {
+			DB::table('group_user')->where_group_id($group->id)->where_user_id(Auth::user()->id)->update(array('invited' => '1'));
+			Messages::add("success", "Joined Group");
+		}
+		else {
+			$group->users()->attach(Auth::user(), array("invited" => true));
+			Messages::add("success", "Joined Group");
+		}
+	}
+	else if ($input == "acceptowner") {
+		if ($group->is_owner(Auth::user()) === 1)
+			Messages::add("error", "Already owner of Group");
+		else {
+			DB::table('group_user')->where_group_id($group->id)->where_user_id(Auth::user()->id)->update(array('owner' => '1'));
+			Messages::add("success", "Joined Group");
+		}
+	}
+	else if ($input == "leave") {
+		if ($group->is_owner(Auth::user()) === 1 && DB::table('group_user')->where_group_id($group->id)->where_owner('1')->count() == 1)
+			Messages::add("error", "Please assign a new owner to the group before leaving");
+		else {
+			DB::table('group_user')->where_group_id($group->id)->where_user_id(Auth::user()->id)->delete();
+			Messages::add("success", "Left group");
+		}
+	}
+
+	return Redirect::to("user/".Auth::user()->username);
+}));
 
 // Admin home
 Route::get("admin", array('before' => 'admin', function() {
