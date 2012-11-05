@@ -10,7 +10,7 @@
 		{{ Form::token()}}
 		{{ Form::field("text", "name", "", array(Input::old("name", $group->name), array('class' => 'title', 'autocomplete' => 'off')), array('error' => $errors->first('name'))) }}
 		{{ Form::field("text", "description", "Group description", array(Input::old("description", $group->description), array('class' => 'subtitle')), array('error' => $errors->first('description'))) }}
-		{{ Form::field("checkbox", "private", "Private Team", array(Input::old("private", !($group->open))), array("error" => $errors->first("private"), "alt" => "(Only joinable through an invitation)")) }}
+		{{ Form::field("checkbox", "private", "Private Group", array(Input::old("private", !($group->open))), array("error" => $errors->first("private"), "alt" => "(Invitation only)")) }}
 		{{ Form::actions(array(Form::submit("Save", array("class" => "btn-primary")), " ", HTML::link_to_action("user", "Cancel", array(), array("class" => "btn")))) }}
 	{{ Form::close() }}
 	<div class="titlebar">
