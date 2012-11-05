@@ -11,7 +11,7 @@
 					<a href="{{ URL::to_action("maps@view", array($map->id, $map->slug)) }}" title="View map">
 						<div class="mv-image">
 							@if($map->image)
-							<img src="{{ URL::to_asset("images/static/blank.gif") }}" data-original="{{ e($map->image->file_medium) }}" alt="{{ e($article->title) }}" />
+							<img src="{{ URL::to_asset("images/static/blank.gif") }}" data-original="{{ e($map->image->file_medium) }}" alt="{{ e($map->title) }}" />
 							@else
 							<img src="{{ URL::to_asset("images/static/noimage.jpg") }}" data-original="{{ URL::to_asset("images/static/noimage.jpg") }}" alt="No Image" />
 							@endif
