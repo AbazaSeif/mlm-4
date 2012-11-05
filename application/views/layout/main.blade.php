@@ -107,7 +107,7 @@
 								@if (isset($moduleURL))
 								<input id="type" name="type" type="hidden" value={{ $moduleURL }}>
 								@endif
-								<input id="main-search" name="query" class="sbar" size="16" type="text"><button class="btn" type="button"><i class="icon-search icon-white"></i></button>
+								<input id="main-search" name="query" class="sbar" size="16" type="text" placeholder="Search..."><button class="btn" type="button"><i class="icon-search icon-white"></i></button>
 								</div>
 							</form>
 						</div>
