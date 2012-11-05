@@ -51,49 +51,49 @@
 		<div class="tab-pane fade active in" id="user-comments">
 			<div class="titlebar"><h2>Comments</h2></div>
 				<div id="multiview">
-            	<ul class="list">
-            	@forelse($user->comments as $item)
-            		<li>
+				<ul class="list">
+				@forelse($user->comments as $item)
+					<li>
 						@if($item->news_id != null)
 						<a href="{{ URL::to_action("news@view", array($item->news->id, $item->news->slug)) }}" title="View comment">
 						@else
 						<a href="{{ URL::to_action("maps@view", array($item->map->id, $item->map->slug)) }}" title="View comment">
 						@endif
-            			<div class="mv-details">
+						<div class="mv-details">
 							<div class="mv-summary">{{ $item->html }}</div>
 							<div class="mv-meta">
-            				<span>commented on <b>
-            					@if($item->news_id != null)
+							<span>commented on <b>
+								@if($item->news_id != null)
 								{{ Str::limit($item->news->title, 30) }}
 								@elseif($item->map_id != null)
 								{{ Str::limit($item->map->title, 30) }}
 								@else
 								<b>[Deleted]</b>
 								@endif
-            					</b></span> on <span><b>{{ date("M j,Y g:ia", strtotime($item->created_at)) }}</b></span>
-            				</div>
-            			</div> 
-            			</a>
-            		</li>
-            	@empty
-            	<div class="mv-details"><div class="mv-title">
-            	<h1 class="center">@if($ownpage)You haven't
+								</b></span> on <span><b>{{ date("M j,Y g:ia", strtotime($item->created_at)) }}</b></span>
+							</div>
+						</div>
+						</a>
+					</li>
+				@empty
+				<div class="mv-details"><div class="mv-title">
+				<h1 class="center">@if($ownpage)You haven't
 					@else{{ $user->username }} has not
 					@endif posted any comments :(
 				</h1>
-            	</div></div>
+				</div></div>
 				@endforelse
-            	</ul>
-            </div>
-          </div>
-          <div class="tab-pane fade" id="user-maps">
-            <div class="titlebar"><h2>Maps</h2></div>
-            <div id="multiview">
-            	<ul class="list">
-            	@forelse($user->maps as $map)
-            	@if($map->published)
-            		<li>
-            			<a href="{{ URL::to_action("maps@view", array($map->id, $map->slug)) }}" title="View map">
+				</ul>
+			</div>
+		  </div>
+		  <div class="tab-pane fade" id="user-maps">
+			<div class="titlebar"><h2>Maps</h2></div>
+			<div id="multiview">
+				<ul class="list">
+				@forelse($user->maps as $map)
+				@if($map->published)
+					<li>
+					<a href="{{ URL::to_action("maps@view", array($map->id, $map->slug)) }}" title="View map">
 						<div class="mv-details">
 							<div class="mv-icon">
 								@if($map->featured)
@@ -105,7 +105,7 @@
 							<div class="mv-title"><h1>{{ e($map->title) }}</h1></div>
 							<div class="mv-summary"><p>{{ e($map->summary) }}</p></div>
 							<div class="mv-meta">
-								<span>By 
+								<span>By
 									@foreach($map->users as $author)
 									<b>{{ $author->username }}</b>,
 									@endforeach
@@ -114,21 +114,21 @@
 								<span>Type: <b>{{ array_get(Config::get("maps.types"), $map->maptype) }}</b></span>
 							</div>
 						</div>
-            			</a>
-            		</li>
-            	@endif
-            	@empty
-            	<div class="mv-details"><div class="mv-title">
-            	<h1 class="center">@if($ownpage)You haven't
+						</a>
+					</li>
+				@endif
+				@empty
+				<div class="mv-details"><div class="mv-title">
+				<h1 class="center">@if($ownpage)You haven't
 					@else{{ $user->username }} has not
 					@endif posted any maps :(
 					@if($ownpage)<br><a href="/maps">Post a new map!</a>
 					@endif
 				</h1>
-            	</div></div>
+				</div></div>
 				@endforelse
-            	</ul>
-            </div>
+				</ul>
+			</div>
 		</div>
 	</div>
 </div>
@@ -153,7 +153,7 @@
 		@empty
 			<h4 class="center">@if($ownpage)You're
 				@else{{ $user->username }} is
-				@endif not a member of a team :( 
+				@endif not a member of a team :(
 				@if($ownpage)<br><a href="/teams">Join a team!</a>
 				@endif
 			</h4>
@@ -163,72 +163,64 @@
 		<div class="titlebar"><h2>Groups</h2></div>
 	<ul class="ulfix">
 		@if($ownpage)
-		<li class="xpadding">
-	    <div class="input-append">
-	    	{{ Form::open("user/group", "POST") }}
-    		{{ Form::token() }}
-			<input id="group" name="group" data-provide="typeahead" data-items="4" data-source="{{ e(json_encode($othergroups)) }}" type="text" autocomplete="off">
-			<button class="btn" name="action" value="join_textbox" type="submit">Add</button>
+		<li class="xpadding center" style="margin-bottom: 0;">
+		<div class="input-append">
+			{{ Form::open("user/group", "POST") }}
+			{{ Form::token() }}
+			<input id="group" name="group" data-provide="typeahead" data-items="4" data-source="{{ e(json_encode($othergroups)) }}" type="text" autocomplete="off" placeholder="What are you interested in?">
+			<button class="btn btn-inverse" name="action" value="join_textbox" type="submit">Join</button>
 			{{ Form::close() }}
 		</div>
 		</li>
 		@endif
 		@forelse ($user->groups as $group)
-		<!--<li class="xpadding"><img src="{{ $group->image }}" alt="avatar" /> {{ HTML::link("groups/view/{$group->id}", $group->name) }}</li>-->
 		@if($group->is_invited($user) === 1 || $ownpage == true)
-		<li class="xpadding"><a href="#" 
-								rel="popover"
-        						data-html="true"
-            					data-content='{{ e($group->description )}} <hr>
-            								<button type="button" class="btn btn-link left-align" data-toggle="collapse" data-target="#members-{{$group->id}}">
-            									<b>Members: </b>{{ count($group->users) }}</b>
-            								</button>
-            								<div id="members-{{ $group->id }}" class="collapse out">
-	            								<ul class="thumbnails">
-	            									@foreach($group->users as $member)
-	            									<li class="span1">
-	            										<div class="thumbnail">
-	            											<img src={{ $member->avatar_url }} />
-	            										</div>
-	            									</li>
-	            									@endforeach
-	            								</ul>
-	            							</div>
-            								<hr>
-            								@if(Auth::check())
-	            								{{ Form::open("user/group", "POST") }}
-												{{ Form::token() }}
-												{{ Form::hidden("id", $group->id) }}
-	            								@if($group->is_invited(Auth::user()) === 1)
-		            								<button class="btn btn-danger btn-small" name="action" value="leave" type="submit">Leave Group</button>
-		            								@if($group->is_owner(Auth::user()) === 1)
-		            								<a href="/groups/edit/{{ $group->id }}" class="btn btn-warning btn-small">Edit Group</a>
-		            								@elseif($group->is_owner(Auth::user()) === 0)
-		            								<button class="btn btn-success btn-small" name="action" value="acceptowner" type="submit">Accept Owner Request</button>
-		            								@endif
-	            								@elseif ($group->is_invited(Auth::user()) === false && $group->open == true)
-	            								<button class="btn btn-success btn-small" name="action" value="join" type="submit">Join Group</button>
-	            								@elseif ($group->is_invited(Auth::user()) === 0)
-	            								<button class="btn btn-success btn-small" name="action" value="acceptjoin" type="submit">Accept Join Request</button>
-	            								@else
-	            								<b>Group not joinable</b>
-	            								@endif
-            									{{ Form::close() }}      
-            								@endif      							
-            								'
-            					data-original-title='<b>{{ $group->name }}</b>'>
-            					@if($ownpage)
-	    							@if($group->is_owner($user) === 0 || $group->is_owner($user) === 1)
-	            					<b>{{ $group->name }}</b>
-	            					@elseif ($group->is_invited($user) === 0)
-	            					<i>{{ $group->name }}</i>
-	            					@else
-	            					{{ $group->name }}
-	            					@endif
-            					@else
-            					{{ $group->name }}
-            					@endif
-            					</a></li>
+		<li class="xpadding"><a href="#" rel="popover" data-html="true" 
+			data-content='
+			{{ e($group->description) }} <hr><button type="button" class="btn btn-link left-align" data-toggle="collapse" data-target="#members-{{$group->id}}">
+				<b>Members: </b>{{ count($group->users) }}</b>
+			</button>
+			<div id="members-{{ $group->id }}" class="collapse out">
+			<ul class="thumbnails">
+			@foreach($group->users as $member)
+				<li class="span1"><div class="thumbnail"><img src={{ $member->avatar_url }} /></div></li>
+			@endforeach
+			</ul>
+			</div>
+			<hr>
+			@if(Auth::check())
+			{{ Form::open("user/group", "POST") }}
+			{{ Form::token() }}
+			{{ Form::hidden("id", $group->id) }}
+			@if($group->is_invited(Auth::user()) === 1)
+				<button class="btn btn-danger btn-small" name="action" value="leave" type="submit">Leave Group</button>
+				@if($group->is_owner(Auth::user()) === 1)
+				<a href="/groups/edit/{{ $group->id }}" class="btn btn-warning btn-small">Edit Group</a>
+				@elseif($group->is_owner(Auth::user()) === 0)
+				<button class="btn btn-success btn-small" name="action" value="acceptowner" type="submit">Accept Owner Request</button>
+				@endif
+			@elseif ($group->is_invited(Auth::user()) === false && $group->open == true)
+				<button class="btn btn-success btn-small" name="action" value="join" type="submit">Join Group</button>
+			@elseif ($group->is_invited(Auth::user()) === 0)
+				<button class="btn btn-success btn-small" name="action" value="acceptjoin" type="submit">Accept Join Request</button>
+			@else
+				<b>Group not joinable</b>
+			@endif
+				{{ Form::close() }}
+			@endif
+			' data-original-title='<b>{{ $group->name }}</b>'>
+			@if($ownpage)
+			@if($group->is_owner($user) === 0 || $group->is_owner($user) === 1)
+				<b>{{ $group->name }}</b>
+			@elseif ($group->is_invited($user) === 0)
+				<i>{{ $group->name }}</i>
+			@else
+				{{ $group->name }}
+			@endif
+			@else
+				{{ $group->name }}
+			@endif
+		</a></li>
 		@endif
 		@empty
 		<li class="xpadding">
@@ -236,7 +228,7 @@
 			@if($ownpage)You're
 			@else{{ $user->username }} is
 			@endif not a member of any group :(
-			@if($ownpage)<br><br><div class="alert alert-info">Join a group by typing a group name in the box above</div>
+			@if($ownpage)<br>You can join or create a group by typing in the box above</div>
 			@endif
 		</h4>
 		</li>
