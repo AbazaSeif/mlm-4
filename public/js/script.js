@@ -30,17 +30,9 @@ MLM = {
 			$('#actionbox').hide().fadeIn(1000);
 		// Activate Bootstrap Dropdowns
 			$('.dropdown-toggle').dropdown();
-		// Search bar
-			$("#main-search").val("Search...");
-			$("#main-search").focus(function(){
-				if($(this).val() == "Search...") { $(this).val(""); }
-			});
-			$("#main-search").blur(function(){
-				if($(this).val() == "") { $(this).val("Search...");	}
-			});
 		// Lazyload images
 			$(".post img").lazyload({
-     			effect:"fadeIn"
+     				effect:"fadeIn"
 			});
 		// User WYSIWYG Editor
 			$("textarea[data-wysiwyg-user]").cleditor({
@@ -71,7 +63,7 @@ MLM = {
 	},
 	home: {
 		init: function () {
-			$('#slider').nivoSlider({
+		$('#slider').nivoSlider({
         		effect: 'sliceDown',
         		slices: 15,
         		boxCols: 8,
