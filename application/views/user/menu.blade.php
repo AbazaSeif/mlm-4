@@ -10,6 +10,6 @@
       		<li>{{ HTML::link("messages/new", "New") }}</li>
     		</ul>
   			</li>
-		<li {{ URI::is('account') ? 'class="rside active"' : 'class="rside"' }}>{{ HTML::link("account", "Edit Account") }}</li> 
+		<li {{ URI::is('account') ? 'class="rside active"' : 'class="rside btn-inverse borderless"' }}>{{ HTML::link("account", "Edit Account", array("class" => "white")) }}</li> 
 	</ul>
 </nav>
