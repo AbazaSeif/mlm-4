@@ -5,6 +5,12 @@ use Laravel\Database\Schema\Table;
 
 class SQLite extends Grammar {
 
+	public function foreign(Table $table, Fluent $command)
+	{
+		return;
+	}
+
+
 	/**
 	 * Generate the SQL statements for a table creation command.
 	 *
