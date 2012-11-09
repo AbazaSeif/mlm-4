@@ -3,7 +3,6 @@
 	<ul>
 		<li {{ URI::is('admin') ? 'class="active"' : '' }}><i class="icon-home"></i> {{ HTML::link("admin", "Admin Home") }}</li>
 		<li {{ URI::is('admin/news') ? 'class="active"' : '' }}><i class="icon-rss"></i> {{ HTML::link("admin/news", "News") }}</li>
-		<li {{ URI::is('admin/tournaments') ? 'class="active"' : '' }}><i class="icon-trophy"></i> {{ HTML::link("admin/tournaments", "Tournaments") }}</li>
 		<li {{ URI::is('admin/matches') ? 'class="active"' : '' }}><i class="icon-bullhorn"></i> {{ HTML::link("admin/matches", "Matches") }}</li>
 		<li {{ URI::is('admin/teams') ? 'class="active"' : '' }}><i class="icon-globe"></i> {{ HTML::link("admin/teams", "Teams") }}</li>
 		<li {{ URI::is('admin/maps') ? 'class="active"' : '' }}><i class="icon-map-marker"></i> {{ HTML::link("admin/maps", "Maps") }}</li>
