@@ -17,9 +17,10 @@
 		<b>[Deleted]</b>
 		@endif
 		</b></span> on <span><b>{{ date("M j,Y g:ia", strtotime($item->created_at)) }}</b></span>
-		<span>Search Hits: <b>{{ $item->searchhitcount }}</b></span>
-		<span>Item Type: <b>{{ ucfirst(Str::singular(get_class($item))) }}</b></span>
-
+		<div class="right">
+			<span>Search Hits: <b>{{ $item->searchhitcount }}</b></span>
+			<span>Item Type: <b>{{ ucfirst(Str::singular(get_class($item))) }}</b></span>
+		</div>
 </div>
 </div>
 </a>

@@ -13,9 +13,15 @@ class Messages_Controller extends Base_Controller {
 		$threads = Auth::user()->messages()->with("unread")->get();
 		return View::make("messages.list", array("title" => "Messages", "threads" => $threads, "javascript" => array("profile", "messages")));
 	}
-	public function get_new() {
+	public function get_new($username = "") {
+		$user = User::where_username($username)->first();
+		$name = "";
+		if (!$user && $username != "") //Check it's a real user
+			Messages::add("error", "Couldn't find user!");
+		else
+			$name = $user->username; //Have to do this so that the view stuff doesn't derp out
 
-		return View::make("messages.new", array("title" => "New Message", "javascript" => array("profile", "messages")));
+		return View::make("messages.new", array("title" => "New Message", "javascript" => array("profile", "messages"), "name" => $name));
 	}
 	public function post_new() {
 		$validation_rules = array(

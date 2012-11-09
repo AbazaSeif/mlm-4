@@ -46,6 +46,14 @@ class Search {
 				$output = Comment::find($item->id);
 				break;
 
+			case "teams":
+				$output = Team::find($item->id);
+				break;
+
+			case "groups":
+				$output = Group::find($item->id);
+				break;
+
 			default:
 				$output = $item;
 				break;
@@ -141,6 +149,23 @@ class Search {
 		return Search::SearchOneTable($query, "comments", $columns);
 	}
 
+	public static function SearchTeams($query) {
+		$columns = array(
+			"name",
+			"description",
+			"tagline"
+			);
+		return Search::SearchOneTable($query, "teams", $columns);
+	}
+
+	public static function SearchGroups($query) {
+		$columns = array(
+			"name",
+			"description",
+			);
+		return Search::SearchOneTable($query, "groups", $columns);
+	}
+
 	public static function SearchAll($query) {
 		$tables = array(
 			$users = array(
@@ -177,6 +202,21 @@ class Search {
 				"name" => "comments",
 				"columns" => array(
 					"source",
+					),
+				),
+			$teams = array(
+				"name" => "teams",
+				"columns" => array(
+					"name",
+					"description",
+					"tagline",
+					),
+				),
+			$groups = array(
+				"name" => "groups",
+				"columns" => array(
+					"name",
+					"description",
 					),
 				),
 			);
