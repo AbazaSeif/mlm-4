@@ -30,10 +30,8 @@ MLM = {
 			$('#actionbox').hide().fadeIn(1000);
 		// Activate Bootstrap Dropdowns
 			$('.dropdown-toggle').dropdown();
-		// Lazyload images
-			$(".post img").lazyload({
-     				effect:"fadeIn"
-			});
+		// Lazyload  News images
+			$(".post img").lazyload({ threshold : 125 });		
 		// User WYSIWYG Editor
 			$("textarea[data-wysiwyg-user]").cleditor({
 				controls: 'bold italic strikethrough | bullets numbering | link unlink | removeformat',
@@ -260,10 +258,8 @@ MLM = {
 				$("#multiview>ul").hide().removeClass().fadeIn(300).addClass(newView)
 				$.cookie("multiview", newView, {expires: 365, path: '/'})
 			});
-			// Lazyload images
-			$("#multiview img").lazyload({
-     			effect:"fadeIn"
-			});
+			$("#multiview .grid img").lazyload({ threshold : 100 });	
+			$("#multiview .big img").lazyload({ threshold : 60 });	
 		}
 	}
 }
