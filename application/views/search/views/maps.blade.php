@@ -22,8 +22,10 @@
 			<p><strong>This map isn't yet published</strong></p>
 			@endunless
 			<span>Type: <b>{{ array_get(Config::get("maps.types"), $item->maptype) }}</b></span>
-			<span>Search Hits: <b>{{ $item->searchhitcount }}</b></span>
-			<span>Item Type: <b>{{ ucfirst(Str::singular(get_class($item))) }}</b></span>
+			<div class="right">
+				<span>Search Hits: <b>{{ $item->searchhitcount }}</b></span>
+				<span>Item Type: <b>{{ ucfirst(Str::singular(get_class($item))) }}</b></span>
+			</div>
 		</div>
 		</div>
 </a>

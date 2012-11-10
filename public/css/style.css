@@ -920,7 +920,7 @@ a:hover { color: #005580 }
     text-align: center;
 }
 
-/* Profiles
+/* Profiles / Teams
    ================================================== */
 
 /* Virtual Card */
@@ -1043,14 +1043,8 @@ a:hover { color: #005580 }
     vertical-align: top;
 }
 
-.profile #vcard .abotalit ul li a {
-    display: block;
-    color: #333;
-}
-
-.profile #vcard .abotalit a:hover {
-    color: #666;
-}
+.profile #vcard .abotalit ul li a,.profile .block b { color: #333 }
+.profile #vcard .abotalit a:hover, .profile .block b:hover { color: #666 }
 
 .profile #vcard .user-rank {
     display: block;
@@ -1181,9 +1175,6 @@ a:hover { color: #005580 }
 
 /* Account settings page
    ================================================== */
-
-.account-settings {
-}
 
 .account-settings #multibg a {
     position: relative;
@@ -1592,9 +1583,10 @@ ol.commentlist {
 #comments .body blockquote { margin: 0 0 10px }
 
 #comments .meta {
-    padding: 0 10px 5px;
+    padding: 5px 10px;
     font-size: 14px;
     line-height: 2;
+    border-top: 1px dotted rgb(173, 173, 173);
 }
 
 #comments .meta .time {

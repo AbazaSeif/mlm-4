@@ -30,6 +30,12 @@ class Search_Controller extends Base_Controller {
 				case "comments":
 					$results = Search::SearchComments($query);
 					break;
+				case "teams":
+					$results = Search::SearchTeams($query);
+					break;
+				case "groups":
+					$results = Search::SearchGroups($query);
+					break;
 				default:
 					$results = Search::SearchAll($query);
 					$type = null;

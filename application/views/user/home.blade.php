@@ -167,7 +167,7 @@
 		<div class="input-append">
 			{{ Form::open("user/group", "POST") }}
 			{{ Form::token() }}
-			<input id="group" name="group" data-provide="typeahead" data-items="4" data-source="{{ e(json_encode($othergroups)) }}" type="text" autocomplete="off" placeholder="What are you interested in?">
+			<input id="group" name="group" data-provide="typeahead" data-items="4" data-source="{{ e(json_encode($othergroups)) }}" type="text" autocomplete="off" placeholder="Join/Create a group">
 			<button class="btn btn-inverse" name="action" value="join_textbox" type="submit">Join</button>
 			{{ Form::close() }}
 		</div>
@@ -175,21 +175,21 @@
 		@endif
 		@forelse ($user->groups as $group)
 		@if($group->is_invited($user) === 1 || $ownpage == true)
-		<li class="xpadding"><a href="#" rel="popover" data-html="true" 
+		<li class="xpadding" style="margin:0;padding-top:0;"><a href="#" rel="popover" data-html="true" 
 			data-content='
 			{{ e($group->description) }} <hr><button type="button" class="btn btn-link left-align" data-toggle="collapse" data-target="#members-{{$group->id}}">
 				<b>Members: </b>{{ count($group->users) }}</b>
 			</button>
 			<div id="members-{{ $group->id }}" class="collapse out">
-			<ul class="thumbnails">
+			<ul class="thumbnails" style="margin-left:0">
 			@foreach($group->users as $member)
-				<li class="span1"><div class="thumbnail"><img src={{ $member->avatar_url }} /></div></li>
+				<li style="margin:0 4px 4px;width:60px;"><a href="/users/{{ $member->username }}" title="{{ $member->username }}"><div class="thumbnail"><img src={{ $member->avatar_url }} /></div></a></li>
 			@endforeach
 			</ul>
 			</div>
-			<hr>
 			@if(Auth::check())
-			{{ Form::open("user/group", "POST") }}
+			<hr>
+			{{ Form::open("user/group", "POST", array("class" => "center")) }}
 			{{ Form::token() }}
 			{{ Form::hidden("id", $group->id) }}
 			@if($group->is_invited(Auth::user()) === 1)
@@ -197,7 +197,7 @@
 				@if($group->is_owner(Auth::user()) === 1)
 				<a href="/groups/edit/{{ $group->id }}" class="btn btn-warning btn-small">Edit Group</a>
 				@elseif($group->is_owner(Auth::user()) === 0)
-				<button class="btn btn-success btn-small" name="action" value="acceptowner" type="submit">Accept Owner Request</button>
+				<button class="btn btn-success btn-small" name="action" value="acceptowner" type="submit">Accept Ownership Request</button>
 				@endif
 			@elseif ($group->is_invited(Auth::user()) === false && $group->open == true)
 				<button class="btn btn-success btn-small" name="action" value="join" type="submit">Join Group</button>
@@ -208,20 +208,20 @@
 			@endif
 				{{ Form::close() }}
 			@endif
-			' data-original-title='<b>{{ $group->name }}</b>'>
+			' data-original-title='{{ $group->name }}'>
 			@if($ownpage)
 			@if($group->is_owner($user) === 0 || $group->is_owner($user) === 1)
-				<b>{{ $group->name }}</b>
+				<b><i class="icon-ok" title="You own this group"></i> {{ $group->name }}</b>
 			@elseif ($group->is_invited($user) === 0)
-				<i>{{ $group->name }}</i>
+				<b><i class="icon-exclamation-sign" title="You have been invited to this group"></i> {{ $group->name }}</b>
 			@else
-				{{ $group->name }}
+				<b><i class="icon-group" title="You're a member of this group"> {{ $group->name }}</b>
 			@endif
 			@else
-				{{ $group->name }}
+				<b><i class="icon-group"></i> {{ $group->name }}</b>
 			@endif
 		</a></li>
-		@endif
+			@endif
 		@empty
 		<li class="xpadding">
 		<h4 class="center">
