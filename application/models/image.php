@@ -2,7 +2,7 @@
 
 class Image extends Eloquent {
 	public static $timestamps = false;
-	
+
 	/* Relationships */
 	public function maps() {
 		$this->has_many_and_belongs_to("Map", "map_images");
@@ -25,29 +25,22 @@ class Image extends Eloquent {
 			$localname = md5($newobj->id);
 			$newobj->file = "{$localname}.{$extension}";
 			$newobj->save();
-			
+
 			// Original
 			$handle->file_new_name_body = $localname;
 			$handle->file_new_name_ext = $extension;
-			$handle->image_max_height = 1080;
-			$handle->image_max_width = 1920;
-			// Commented out since currently it just falls over and dies. (as in no image is made, the script still runs)
-			// IF you wish to get it back, make sure the source is compatible
-//			$handle->image_min_width = 426;
-//			$handle->image_min_height = 240;
 			$handle->file_max_size = 1572864; // IN BYTES, this is 1,5M
-			$handle->process(path("public")."/images/uploads/o/");
+			$handle->process(path("public")."images/uploads/o/");
 			if(!$handle->processed) {
 				Log::warn($handle->log);
 			}
-			// Large (1280x720, cropped)
+			// Large (1280x?, cropped)
 			$handle->file_new_name_body = $localname;
-			$handle->file_new_name_ext = $extension;
 			$handle->image_resize = true;
+			$handle->image_ratio_y = true;
 			$handle->image_x = 1280;
-			$handle->image_y = 720;
-			$handle->image_ratio_crop = true;
-			$handle->process(path("public")."/images/uploads/l/");
+			$handle->image_convert = 'jpg';
+			$handle->process(path("public")."images/uploads/l/");
 			if(!$handle->processed) {
 				Log::warn($handle->log);
 			}
@@ -55,10 +48,11 @@ class Image extends Eloquent {
 			$handle->file_new_name_body = $localname;
 			$handle->file_new_name_ext = $extension;
 			$handle->image_resize = true;
+			$handle->image_ratio_crop = true;
 			$handle->image_x = 854;
 			$handle->image_y = 480;
-			$handle->image_ratio_crop = true;
-			$handle->process(path("public")."/images/uploads/m/");
+			$handle->image_convert = 'jpg';
+			$handle->process(path("public")."images/uploads/m/");
 			if(!$handle->processed) {
 				Log::warn($handle->log);
 			}
@@ -66,14 +60,15 @@ class Image extends Eloquent {
 			$handle->file_new_name_body = $localname;
 			$handle->file_new_name_ext = $extension;
 			$handle->image_resize = true;
+			$handle->image_ratio = true;
 			$handle->image_x = 426;
 			$handle->image_y = 240;
-			$handle->image_ratio = true;
-			$handle->process(path("public")."/images/uploads/s/");
+			$handle->image_convert = 'jpg';
+			$handle->process(path("public")."images/uploads/s/");
 			if(!$handle->processed) {
 				Log::warn($handle->log);
 			}
-			
+
 			return $newobj;
 		} else {
 			return null;
@@ -94,7 +89,7 @@ class Image extends Eloquent {
 	public function get_file_small() {
 		return "/images/uploads/s/".$this->file;
 	}
-	
+
 	public function to_array() {
 		$array = parent::to_array();
 		$array["file_small"] = $this->file_small;
