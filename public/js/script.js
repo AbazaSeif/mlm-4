@@ -22,10 +22,6 @@ MLM = {
 				$("body").removeClass().addClass(newBg);
 				$.cookie("multibg", newBg, {expires: 365})
 			});
-		// Responsive menu toggle
-			$("#shownav").click(function () {
-				$("#menu").slideToggle().show();
-			});	
 		// Cool actionbox 
 			$('#actionbox').hide().fadeIn(1000);
 		// Activate Bootstrap Dropdowns
