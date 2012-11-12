@@ -58,6 +58,19 @@
 	<noscript>
 		<div class="y-u-no-have-javascript-enabled">Major League Mining requires JavaScript to be enabled. Please turn on JavaScript or add us to your exceptions</div>
 	</noscript>
+        <nav id="actions">
+            <ul>
+		<li><a href="{{ URL::to("news") }}" title="News"><i class="icon-rss"></i></a></li>
+		<li><a href="{{ URL::to("maps") }}" title="Maps"><i class=" icon-map-marker"></i></a></li>
+		@if (Auth::user())
+		<li><a href="{{ URL::to("messages") }}" title="Messages"><i class=" icon-envelope-alt"></i><span>{{ Auth::user()->unread_messages }}</span></a></li>
+		<li><a href="{{ URL::to("user/".Auth::user()->username) }}" title="Profile"><i class="icon-user"></i></a></li>
+		<li><a href="{{ URL::to_action("account@logout") }}" title="Logout"><i class="icon-off"></i></a></li>
+		@else
+		<li><a href="{{ URL::to("login") }}" title="Login"><i class="icon-user"></i></a></li>
+		@endif
+            </ul>
+        </nav>
 	<div class="global-wrapper">
 		<header id="global-header">
 			<div id="main">
@@ -81,19 +94,9 @@
 						{{ HTML::link('login', "Login &bull; Create account", array("class" => "nosep")) }}
 						@endif
 					</div>
-					<a href="#" id="shownav"><i class="icon-reorder"></i></a>
 				</div>
 			</div>	
 				<nav id="menu">
-					<ul class="loginout">
-						@if (Auth::check())
-						<li>{{ HTML::link_to_action('account@logout', "Logout") }} </li>
-						<li>{{ HTML::link('account', 'Edit Account'); }}</li>
-						<li><a href="{{ URL::to("user/".Auth::user()->username) }}" title="View your profile">Profile <img src="{{ Auth::user()->avatar_url }}" alt="avatar" width="30" /></a></li>
-						@else
-						<li>{{ HTML::link('login', "Login &bull; Create account", array("class" => "nosep")) }}</li>
-						@endif
-					</ul>
 					<ul id="mainmenu">
 						<li><a href="{{ URL::to("/") }}">Home</a></li> 
 						<li>{{ HTML::link('news', 'News'); }}</li>
