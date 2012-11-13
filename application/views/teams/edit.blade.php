@@ -6,15 +6,15 @@
 <div class="titlebar">
 	<h2>Editing team <b>{{ e($team->name) }}</b></h2>
 </div>
-<div id="page" class="bigger">
-	{{ Form::open("teams/edit_meta/".$team->id, "POST", array("class" => "form")) }}
-		{{ Form::token()}}
-		{{ Form::field("text", "name", "", array(Input::old("name", $team->name), array('class' => 'title', 'autocomplete' => 'off')), array('error' => $errors->first('name'))) }}
-		{{ Form::field("text", "tagline", "Team tagline", array(Input::old("tagline", $team->tagline), array('class' => 'subtitle')), array('error' => $errors->first('tagline'))) }}
-		{{ Form::field("wysiwyg-user", "description", "Team Bio", array(Input::old("description", $team->description), array("rows" => "15", 'class' => 'input-xxlarge')), array("error" => $errors->first("description"))) }}
-		{{ Form::field("checkbox", "private", "Private Team", array(Input::old("private", !($team->public))), array("error" => $errors->first("private"), "alt" => "(Viewable only by members)")) }}
-		{{ Form::actions(array(Form::submit("Save", array("class" => "btn-primary")), " ", HTML::link_to_action("teams@view", "Cancel", array($team->id), array("class" => "btn")))) }}
-	{{ Form::close() }}
+<div id="page" class="maxwidth">
+{{ Form::open("teams/edit_meta/".$team->id, "POST", array("class" => "form")) }}
+	{{ Form::token() }}
+	{{ Form::field("text", "name", "Team name", array(Input::old("name", $team->name), array('class' => 'title')), array("help" => "Your team's name should stand out and be as clever. Derrogatives, swear words, and other offensive words are forbidden.","error" => $errors->first("title"))) }}
+	{{ Form::field("text", "tagline", "Team tagline", array(Input::old("tagline", $team->tagline), array('class' => 'subtitle')), array("alt" => "(56 Characters)","help" => "Tagline/Slogan of your team. Derrogatives, swear words, and other offensive words are forbidden.", 'error' => $errors->first('tagline'))) }}
+	{{ Form::field("wysiwyg-user", "description", "Team bio", array(Input::old("description", $team->description), array("rows" => "15", 'class' => 'input-xxlarge')), array("help" => "Tell us about your team. What makes it great? What have you accomplished?", "error" => $errors->first("description"))) }}		
+	{{ Form::field("checkbox", "private", "Private Team", array(Input::old("private", !($team->public))), array("help" => "Makes team viewable by members only", "error" => $errors->first("private"))) }}
+	{{ Form::actions(Form::submit("Submit", array("class" => "btn-primary"))) }}
+{{ Form::close() }}
 	<div class="titlebar">
 		<h3>Owners</h3>
 	</div>
