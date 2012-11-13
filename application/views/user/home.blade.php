@@ -47,7 +47,7 @@
 	</div>
 </header>
 <div id="page" class="right">
-	<div id="myTabContent" class="tab-content">
+	<div id="UserTabs" class="tab-content">
 		<div class="tab-pane fade active in" id="user-comments">
 			<div class="titlebar"><h2>Comments</h2></div>
 				<div id="multiview">
@@ -85,7 +85,7 @@
 				@endforelse
 				</ul>
 			</div>
-		  </div>
+		</div>
 		  <div class="tab-pane fade" id="user-maps">
 			<div class="titlebar"><h2>Maps</h2></div>
 			<div id="multiview">

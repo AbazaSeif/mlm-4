@@ -1175,6 +1175,64 @@ a:hover { color: #005580 }
     letter-spacing: -2px;
 }
 
+/* Teams */
+
+.team ul.thumbnails .tile { width:100px; margin-left:23px }
+
+.team .case {
+    position: relative;
+    margin-bottom: 10px;
+    background: #E7E7E7;
+    overflow: hidden;
+    overflow-x: scroll;
+    -moz-box-shadow: inset 0 2px 6px -2px rgba(0, 0, 0, 0.76);
+    -webkit-box-shadow: inset 0 2px 6px -2px rgba(0, 0, 0, 0.76);
+    box-shadow: inset 0 2px 6px -2px rgba(0, 0, 0, 0.76);
+    border: 1px solid #ADADAD;
+}
+
+.team .case ul {
+    margin: 0;
+    padding: 0;  
+    width: 1500px;
+}
+
+.team .case ul li {
+    position: relative;
+    display: inline-block;
+    margin-left: -4px;
+    padding: 10px 34px;
+    list-style: none;
+    max-width: 100px;
+    border-right: 1px solid #adadad;
+}
+
+.team .case ul li:first-child::after {
+    content: "Latest";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 0px 10px;
+    width: 129px;
+    border: 1px solid #ADADAD;
+    background: #bebebe;
+    font-weight: bold;
+    text-align: center;
+}
+
+.team .case ul li i {
+    font-size: 100px;
+    width: auto;
+    line-height: 1;
+    text-shadow: 0px 1px 2px #fff;
+}
+
+.team .case ul li i.gold { color: gold }
+.team .case ul li i.silver { color: silver }
+.team .case ul li i.bronze { color: maroon }
+
+.team .case ul li a { }
+
 /* Account settings page
    ================================================== */
 
