@@ -1,7 +1,7 @@
 @layout('layout.main')
 
 @section('content')
-	<style>header,#global-footer{display:none}</style>
+	<style>#global-header,#global-footer{display:none!important}</style>
 		<div id="actionbox" class="login">
 			<a href="/"><img src="{{ URL::to_asset("images/static/logo.png") }}" /></a>
 			<hr>
