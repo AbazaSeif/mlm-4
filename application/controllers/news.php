@@ -65,4 +65,26 @@ class News_Controller extends Base_Controller {
 			return Redirect::to_action("news@view", array($id, $newsitem->slug))->with_errors($validation)->with_input();
 		}
 	}
+
+	// RSS Feed of awesome
+	public function get_feed($method = "atom") {
+		if(!in_array($method, array("atom", "rss"))) { // Only types supported
+			return Response::error('404');
+		}
+		$posts = News::with(array("image", "user"))->where_published(1)->order_by("created_at", "desc")->take(25)->get();
+
+		$feed = new Feed();
+
+		$feed->title = 'Major League Mining News Fuse';
+		$feed->description = 'The latest news articles as written by the team of Major League Mining.';
+		$feed->link = URL::to_action('news@feed', array($method));
+		$feed->pubdate = $posts[0]->created_at;
+		$feed->lang = 'en';
+
+		foreach ($posts as $post) {
+			$feed->add($post->title, $post->user->username, URL::to_action("news@view", array($post->id, $post->slug)), $post->created_at, $post->content);
+		}
+
+		return $feed->render($method);
+	}
 }
