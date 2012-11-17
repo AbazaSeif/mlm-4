@@ -21,9 +21,9 @@ class Image extends Eloquent {
 		$handle = new upload($arguments["file"]);
 		if($handle->uploaded) {
 			$extension = $handle->image_src_type ?: $handle->file_src_name_ext;
-			$newobj = parent::create(array("filename" => $arguments["filename"], "type" => $arguments["type"]));
+			$newobj = parent::create(array("filename" => $arguments["filename"], "type" => $arguments["type"], "ext" => $extension));
 			$localname = md5($newobj->id);
-			$newobj->file = "{$localname}.{$extension}";
+			$newobj->file = "{$localname}";
 			$newobj->save();
 
 			// Original
@@ -46,7 +46,6 @@ class Image extends Eloquent {
 			}
 			// Medium (854x480, cropped)
 			$handle->file_new_name_body = $localname;
-			$handle->file_new_name_ext = $extension;
 			$handle->image_resize = true;
 			$handle->image_ratio_crop = true;
 			$handle->image_x = 854;
@@ -58,7 +57,6 @@ class Image extends Eloquent {
 			}
 			// Small (424x240, upto)
 			$handle->file_new_name_body = $localname;
-			$handle->file_new_name_ext = $extension;
 			$handle->image_resize = true;
 			$handle->image_ratio = true;
 			$handle->image_x = 426;
@@ -78,16 +76,16 @@ class Image extends Eloquent {
 	 * Following are also accessible as $image->file_{size}, eg $image->file_original
 	 */
 	public function get_file_original() {
-		return "/images/uploads/o/".$this->file;
+		return "/images/uploads/o/{$this->file}.{$this->ext}";
 	}
 	public function get_file_large() {
-		return "/images/uploads/l/".$this->file;
+		return "/images/uploads/l/{$this->file}.jpg";
 	}
 	public function get_file_medium() {
-		return "/images/uploads/m/".$this->file;
+		return "/images/uploads/m/{$this->file}.jpg";
 	}
 	public function get_file_small() {
-		return "/images/uploads/s/".$this->file;
+		return "/images/uploads/s/{$this->file}.jpg";
 	}
 
 	public function to_array() {
