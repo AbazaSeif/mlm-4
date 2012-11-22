@@ -1,10 +1,10 @@
 <nav id="pagemenu" class="clearfix">
 	<ul class="nav nav-tabs">
 		<li>{{HTML::link("maps", "All") }}</li>
-		<li {{ (Input::get('order') == 'newest') ? 'class="active"' : ''}}>{{HTML::link("maps/filter?order=newest", "Newest") }}</li>
-		<li {{ (Input::get('order') == 'best') ? 'class="active"' : ''}}>{{ HTML::link("maps/filter?order=best", "Highest ranked") }}</li>
-		<li {{ (Input::get('official') == 'true') ? 'class="active"' : ''}}>{{ HTML::link("maps/filter?official=true", "Official Maps") }}</li>
-		<li {{ (Input::get('featured') == 'true') ? 'class="active"' : ''}}>{{ HTML::link('maps/filter?featured=true', 'Featured Maps'); }}</li>
+		<li {{ (Input::get('order') == 'newest' && !Input::get('search')) ? 'class="active"' : ''}}>{{HTML::link("maps/filter?order=newest", "Newest") }}</li>
+		<li {{ (Input::get('order') == 'best' && !Input::get('search')) ? 'class="active"' : ''}}>{{ HTML::link("maps/filter?order=best", "Highest ranked") }}</li>
+		<li {{ (Input::get('official') == 'true' && !Input::get('search')) ? 'class="active"' : ''}}>{{ HTML::link("maps/filter?official=true", "Official Maps") }}</li>
+		<li {{ (Input::get('featured') == 'true' && !Input::get('search')) ? 'class="active"' : ''}}>{{ HTML::link('maps/filter?featured=true', 'Featured Maps'); }}</li>
 		<li class="dropdown">
 				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories <b class="caret"></b></a>
 				<ul class="dropdown-menu">
@@ -13,11 +13,55 @@
 					@endforeach
 				</ul>
 			</li>
-		<li {{ URI::is('maps/new') ? 'class="rside active"' : 'class="rside btn-inverse borderless"' }}>{{ HTML::link("maps/new", "New Map", array("class" => "white")) }}</li>
+		<li {{ URI::is('maps/new') && !Input::get('search') ? 'class="rside active"' : 'class="rside btn-inverse borderless"' }}>{{ HTML::link("maps/new", "New Map", array("class" => "white")) }}</li>
 		@if (Auth::check())
-		<li {{ Input::get("ownmaps") == true ? 'class="rside active"' : 'class="rside"' }}><a href="{{ URL::to("maps/filter/?ownmaps=1") }}">Your Maps</a></li>
+		<li {{ Input::get("ownmaps") == true && !Input::get('search') ? 'class="rside active"' : 'class="rside"' }}><a href="{{ URL::to("maps/filter/?ownmaps=1") }}">Your Maps</a></li>
 		@endif
+		<li class="rside"><a href="{{ action("maps@filter") }}" data-toggle="collapse" data-target="#map-search" onClick="return false;"><i class="icon-search"></i></a></li>
 	</ul>
+	{{ Form::open("maps/filter", "GET", array("id"=> "map-search", "class" => "form clearfix menusearch collapse".(Input::get('search') ? ' in' : ''), "data-cleanup" => true)) }}
+		<hr class="spacer" />
+		<div class="row">
+			<div class="span8">
+				{{ Form::field("text", "title", "Title", array(Input::get("title"), array("class" => "span8"))) }}
+			</div>
+			<div class="span4">
+				{{ Form::field("select", "maptype", "Map type", array(array_merge(array("" => "--------------"), Config::get("maps.types")), Input::get("maptype"), array("class" => "span4"))) }}
+			</div>
+		</div>
+		<div class="row">
+			<div class="span3">
+				{{ Form::field("text", "teamcount", "Team count", array(Input::get("teamcount"), array("class" => "span3"))) }}
+			</div>
+			<div class="span3">
+				{{ Form::field("text", "teamsize", "Team size", array(Input::get("teamsize"), array("class" => "span3"))) }}
+			</div>
+			<div class="span3">
+				{{ Form::field("text", "mcversion", "Minecraft version", array(Input::get("mcversion"), array("class" => "span3", "title" => "Can be partial, eg 1.4"))) }}
+			</div>
+			<div class="span3">
+				{{ Form::field("select", "order", "Order by", array(array("newest" => "Newest", "oldest" => "Oldest", "best" => "Best", "worst" => "Worst"), Input::get("order", "newest"), array("class" => "span3"))) }}
+			</div>
+		</div>
+		<div class="row">
+			<div class="span8">
+				<?php
+					$fields = array(
+						Form::labelled_checkbox("official", "Official maps", true, Input::get("official")),
+						Form::labelled_checkbox("featured", "Featured maps", true, Input::get("featured"))
+					);
+					if(Auth::check()) {
+						$fields[] = Form::labelled_checkbox("ownmaps", "Your Maps", true, Input::get("ownmaps"));
+					}
+					echo Form::field_list(null, $fields);
+				?>
+			</div>
+			<div class="span4">
+				{{ Form::submit("Search", array("class" => "btn-primary pull-right", "name" => "search", "value" => true)) }}
+				{{ Form::reset("Reset", array("class" => "pull-right")) }}
+			</div>
+		</div>
+	{{ Form::close() }}
 </nav>
 
 @if ($menu == "multiview")

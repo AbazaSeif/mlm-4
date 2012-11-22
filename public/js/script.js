@@ -7,12 +7,12 @@ MLM = {
 	common: {
 		init: function () {
 		// Parallax body background
-		(function () {
-			var a = document.body,
-			e = document.documentElement;
-			$(window).unbind("scroll").scroll(function () {
-			a.style.backgroundPosition = "0px " + -(Math.max(e.scrollTop, a.scrollTop) / 10) + "px" })
-		})();
+			(function () {
+				var a = document.body,
+				e = document.documentElement;
+				$(window).unbind("scroll").scroll(function () {
+				a.style.backgroundPosition = "0px " + -(Math.max(e.scrollTop, a.scrollTop) / 10) + "px" })
+			})();
 		// MultiBG
 			$("#multibg [data-mbg]").click(function() {
 				var newBg = $(this).data("mbg")
@@ -22,12 +22,12 @@ MLM = {
 				$("body").removeClass().addClass(newBg);
 				$.cookie("multibg", newBg, {expires: 365})
 			});
-		// Cool actionbox 
+		// Cool actionbox
 			$('#actionbox').hide().fadeIn(1000);
 		// Activate Bootstrap Dropdowns
 			$('.dropdown-toggle').dropdown();
 		// Lazyload  News images
-			$(".post img").lazyload({ threshold : 125 });		
+			$(".post img").lazyload({ threshold : 125 });
 		// User WYSIWYG Editor
 			$("textarea[data-wysiwyg-user]").cleditor({
 				controls: 'bold italic strikethrough | bullets numbering | link unlink | removeformat source',
@@ -53,6 +53,10 @@ MLM = {
 			}
 			}
         	setInterval(updateLivePreview, 100);
+        	// Clean up get requests before submitting themˇ- http://stackoverflow.com/a/2418022/211088
+        	$("form[data-cleanup]").on("submit", function() {
+	        	$(':input[value=""]').attr('name', '');
+        	})
 		}
 	},
 	home: {
@@ -154,7 +158,7 @@ MLM = {
 			});
 		},
 		edit: function() {
-			
+
 		}
 	},
 	images: {
@@ -274,7 +278,7 @@ MLM = {
 			$("#multiview-controller [data-multiview=grid]").click(function() { $("#multiview .grid img").lazyload({ threshold : 100 }); });
 			$("#multiview-controller [data-multiview=big]").click(function() { $("#multiview .big img").lazyload({ threshold : 60 }); });
 			$("#multiview .grid img").lazyload({ threshold : 100 });
-			$("#multiview .big img").lazyload({ threshold : 60 });	
+			$("#multiview .big img").lazyload({ threshold : 60 });
 		}
 	}
 }
