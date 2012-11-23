@@ -67,12 +67,12 @@
 			<div class="titlebar center"><h2>Trophy Case</h2></div>
 			<div class="case">
 				<ul>
-					<li><i class="icon-trophy gold"></i></li>
-					<li><i class="icon-trophy silver"></i></li>
-					<li><i class="icon-trophy bronze"></i></li>
-					<li><i class="icon-trophy"></i></li>
-					<li><i class="icon-trophy"></i></li>
-					<li><i class="icon-trophy"></i></li>					
+					<li><a href="#"><i class="icon-trophy gold"></i></a></li>
+					<li><a href="#"><i class="icon-trophy silver"></i></a></li>
+					<li><a href="#"><i class="icon-trophy bronze"></i></a></li>
+					<li><a href="#"><i class="icon-trophy"></i></a></li>
+					<li><a href="#"><i class="icon-trophy"></i></a></li>
+					<li><a href="#"><i class="icon-trophy"></i></a></li>					
 				</ul>
 			</div>
 			<div class="titlebar center"><h3>Matches won</h3></div>
@@ -102,7 +102,7 @@
 </div>
 <div id="sidebar" class="left">
 	<div class="block maxwidth">
-		<div class="titlebar"><h2>BIO</h2></div>
+		<div class="titlebar"><h2>Team Bio</h2></div>
 	{{ $team->description }}
 	</div>
 </div>
