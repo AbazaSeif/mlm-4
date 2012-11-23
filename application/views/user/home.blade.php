@@ -31,7 +31,7 @@
 			@elseif ($user->rank == 2)<li style="padding-left:0;"><div class="user-rank editor" title="MLM Editor"></div></li>
 			@elseif ($user->rank == 1)<li style="padding-left:0;"><div class="user-rank mod" title="MLM Moderator"></div></li>
 			@endif
-			<li><a href="{{ URL::to("messages/new") }}" title="Message {{$user->username}}"><i class="icon-envelope-alt"></i></a></li>
+			<li><a href="{{ URL::to("messages/new/".$user->username) }}" title="Message {{$user->username}}"><i class="icon-envelope-alt"></i></a></li>
 			@if ($user->profile->reddit)
 			<li><a href="http://reddit.com/user/{{$user->profile->reddit}}" target="_blank" rel="nofollow" title="reddit"><i class="icon-arrow-up"></i></a></li>
 			@endif

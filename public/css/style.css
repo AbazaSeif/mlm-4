@@ -67,9 +67,9 @@ a { color: #1e95cf; text-decoration: none }
 
 a:hover { color: #005580 }
 
-.global-wrapper {
-    min-height: 100%;
-}
+img[src*="blank.gif"] { background: url(http://mlm.dev/images/static/ajax-loader.gif) no-repeat center; }
+
+.global-wrapper { min-height: 100%; }
 
 /* Global Header
    ================================================== */
@@ -1242,11 +1242,13 @@ a:hover { color: #005580 }
     text-shadow: 0px 1px 2px #fff;
 }
 
-.team .case ul li i.gold { color: gold }
-.team .case ul li i.silver { color: silver }
-.team .case ul li i.bronze { color: maroon }
+.team .case ul li i.gold { color: #FFD700 }
+.team .case ul li i.silver { color: #C0C0C0 }
+.team .case ul li i.bronze { color: #8C7853 }
 
-.team .case ul li a { }
+.team .case ul li a { display: block; }
+.team .case ul li a { color: #333; }
+.team .case ul li:hover { background-color: #bebebe; -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.76);  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.76);  box-shadow: 0 0 5px rgba(0, 0, 0, 0.76);}
 
 /* Account settings page
    ================================================== */
@@ -1756,7 +1758,7 @@ ol.commentlist {
 
 /* Defaults */
 
-#multiview .mv-image img { display:block; width: 100% }
+#multiview .mv-image img { display:block; width: 100%; }
 
 #multiview .mv-details {
     position: absolute;
@@ -1796,16 +1798,11 @@ ol.commentlist {
 
 /* Grid view */
 
-#multiview ul.grid { }
+#multiview .grid li { margin: 6px; height: 168px; width: 31.50% }
 
-#multiview ul.grid li {
-    margin: 6px;
-    width: 31.50%
-}
+#multiview .grid li:hover { box-shadow: 0px 8px 8px -6px #000; }
 
-#multiview .grid .mv-image img {
-    min-height: 168px;
-}
+#multiview .grid .mv-image img { max-height: 168px; }
 
 #multiview .grid .mv-details { padding: 5px 0 5px 5px }
 
@@ -1814,8 +1811,6 @@ ol.commentlist {
 #multiview .grid .mv-meta { display: none; }
 
 /* Big View */
-
-#multiview .big {}
 
 #multiview .big li { display: block; margin: 20px auto; }
 
@@ -1854,6 +1849,60 @@ ol.commentlist {
 #loadmore a:hover { background: #B9B9B9 }
 
 #loadmore .pagination { margin: 5px 0 0; height: auto; }
+
+/* Matches
+   ================================================== */
+
+#matches ol { margin: 0; }
+
+#matches ol li { margin-bottom: 5px; list-style: none; background: #D8D8D8; border: 1px solid #ADADAD; /* Safari/Chrome, other WebKit */      /* Firefox, other Gecko */ }
+
+#matches ol li:last-child { border-bottom: 1px solid #ADADAD; }
+
+#matches ol li a { display: block; color: #333; text-shadow: 0 1px 0px #fff;}
+
+#matches ol li a:hover { background-color: #f9f9f9; }
+
+#matches .match .info {  border-bottom: 1px dotted #ADADAD;  }
+
+#matches .match .wins { display: inline-block; background-color: #FFD700 ; height: 80px;  width: 40px;}
+
+#matches .match .loses { display: inline-block; background-color: red ; height: 80px; width: 40px;}
+
+#matches .match .team-a { float: left; text-align: left; }
+
+#matches .match .team-b { float: right; text-align: right;}
+
+#matches .match .teaminfo { display: inline-block; padding: 14px 10px 0;  width: 350px; box-sizing: border-box;  -moz-box-sizing: border-box;  -webkit-box-sizing: border-box;}
+
+#matches .match .teaminfo h1 { margin: 0; margin-bottom: 5px; font: 400 25px/1 "Oswald", sans-serif; }
+
+#matches .match .teaminfo p { margin-bottom: 0; font-size: 13px }
+
+#matches .match .data { margin: 0 auto; height: 80px; width: 240px; text-align: center;}
+
+#matches .match .data img { width: 80px }
+
+#matches .match .data .score{ display: inline-block; margin: 0 -4px; vertical-align: top; height: 80px; width: 80px ; font: 400 20px/80px "Oswald", sans-serif;}
+
+#matches .match .details {
+    padding: 2px;
+    font-size: 13px;
+}
+
+#matches .match .details span {
+    display: inline;
+    padding: 0 10px;
+    border-right: 1px dotted rgb(173, 173, 173);
+    line-height: 1;
+}
+
+#matches .match .details span:last-child { border: none }
+
+#matches .match .details span b.status { padding: 0 10px; border: 1px solid #fff; color: #fff; text-shadow: 0 1px 0 #000; text-transform: uppercase; }
+#matches .match .details span b.status.red {  background-color: #CA0A0A }
+#matches .match .details span b.status.yellow { background-color: #FBDB0C }
+#matches .match .details span b.status.green { background-color: #00AF33 }
 
 /* Table Sorter Styles
    ================================================== */
@@ -1921,6 +1970,7 @@ img.imgfix { display: block; margin-top: 10px; width: 50% }
    .login label.openid { display: block }
    #comments .meta .actions { display: table; float: none; }
    #respond textarea { width: 100% }
+   .profile #vcard .name { float: none }
 
 /* Global Header
    ================================================== */
