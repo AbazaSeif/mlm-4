@@ -61,23 +61,7 @@ MLM = {
 	},
 	home: {
 		init: function () {
-		$('#slider').nivoSlider({
-        		effect: 'sliceDown',
-        		slices: 15,
-        		boxCols: 8,
-        		boxRows: 4,
-        		animSpeed: 600,
-        		pauseTime: 6000,
-        		startSlide: 0,
-        		directionNav: true,
-        		controlNav: false,
-        		controlNavThumbs: false,
-        		pauseOnHover: true,
-        		manualAdvance: false,
-        		prevText: 'Prev',
-        		nextText: 'Next',
-        		randomStart: false
-			});
+		$('#slider').nivoSlider({ effect: 'sliceDown', slices: 15, boxCols: 8, boxRows: 4, animSpeed: 600, pauseTime: 6000, startSlide: 0, directionNav: true, controlNav: false, controlNavThumbs: false, pauseOnHover: true, manualAdvance: false, prevText: 'Prev', nextText: 'Next', randomStart: false });
 		}
 	},
 	maps: {
@@ -86,23 +70,10 @@ MLM = {
 		},
 		view: function () {
 		// Maps slideshow
-			$("#maps-slider").nivoSlider({
-				effect: 'fade',
-				animSpeed: 800,
-				pauseTime: 5000,
-				startSlide: 0,
-				directionNav: true,
-				controlNav: true,
-				controlNavThumbs: false,
-				pauseOnHover: true,
-				manualAdvance: false,
-				prevText: 'Prev',
-				nextText: 'Next',
-				randomStart: false
-			});
-			$(".autosubmit > form").change(function() {
-     			$(this).submit();
-   			});
+			$("#maps-slider").nivoSlider({ effect: 'fade', animSpeed: 300, pauseTime: 5000, startSlide: 0, directionNav: false, controlNav: true, controlNavThumbs: false, pauseOnHover: true, manualAdvance: false, prevText: '', nextText: '', randomStart: false });
+			$("#maps-slider a, .expandable").fancybox({ padding : 0 });
+		// Autosubmit rating
+			$(".autosubmit > form").change(function() { $(this).submit(); });
 		},
 		edit: function() {
 		}
