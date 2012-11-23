@@ -35,7 +35,7 @@
 	<div class="slider-wrapper theme-medium">
 		<div id="maps-slider" class="nivoSlider">
 			@forelse($map->images as $image)
-			<a href="{{ e($image->file_original) }}">
+			<a href="{{ e($image->file_original) }}" title="Click to enlarge">
 			<img src="{{ e($image->file_medium) }}" data-thumb="{{ e($image->file_medium) }}" alt="{{ e($map->title) }} image" />
 			</a>
 			@empty

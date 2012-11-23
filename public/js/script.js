@@ -67,7 +67,7 @@ MLM = {
 		view: function () {
 		// Maps slideshow
 			$("#maps-slider").nivoSlider({ effect: 'fade', animSpeed: 300, pauseTime: 5000, startSlide: 0, directionNav: false, controlNav: true, controlNavThumbs: false, pauseOnHover: true, manualAdvance: false, prevText: '', nextText: '', randomStart: false });
-			$("#maps-slider a, .expandable").fancybox({ padding : 0 });
+			$("#maps-slider a, .expandable").fancybox({ padding : 0, helpers : { title : null }});
 		// Autosubmit rating
 			$(".autosubmit > form").change(function() { $(this).submit(); });
 		},
