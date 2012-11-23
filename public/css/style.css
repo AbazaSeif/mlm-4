@@ -67,9 +67,9 @@ a { color: #1e95cf; text-decoration: none }
 
 a:hover { color: #005580 }
 
-.global-wrapper {
-    min-height: 100%;
-}
+img[src*="blank.gif"] { background: url(http://mlm.dev/images/static/ajax-loader.gif) no-repeat center; }
+
+.global-wrapper { min-height: 100%; }
 
 /* Global Header
    ================================================== */
@@ -1042,7 +1042,6 @@ a:hover { color: #005580 }
 
 /* More user info */
 
-
 .profile div.info {
     margin:0;
 }
@@ -1073,11 +1072,8 @@ a:hover { color: #005580 }
 
 .profile .info a {}
 
-/* Account settings page 
+/* Account settings page
    ================================================== */
-
-.account-settings {
-}
 
 .account-settings #multibg a {
     position: relative;
@@ -1577,7 +1573,7 @@ ol.commentlist {
 
 /* Defaults */
 
-#multiview .mv-image img { display:block; width: 100% }
+#multiview .mv-image img { display:block; width: 100%; }
 
 #multiview .mv-details {
     position: absolute;
@@ -1615,16 +1611,11 @@ ol.commentlist {
 
 /* Grid view */
 
-#multiview ul.grid { }
+#multiview .grid li { margin: 6px; height: 168px; width: 31.50% }
 
-#multiview ul.grid li { 
-    margin: 6px;
-    width: 31.50%
-}
+#multiview .grid li:hover { box-shadow: 0px 8px 8px -6px #000; }
 
-#multiview .grid .mv-image img {
-    min-height: 168px;
-}
+#multiview .grid .mv-image img { max-height: 168px; }
 
 #multiview .grid .mv-details { padding: 5px 0 5px 5px }
 
@@ -1633,8 +1624,6 @@ ol.commentlist {
 #multiview .grid .mv-meta { display: none; }
 
 /* Big View */
-
-#multiview .big {}
 
 #multiview .big li { display: block; margin: 20px auto; }
 
@@ -2008,6 +1997,7 @@ img.imgfix { display: block; margin-top: 10px; width: 50% }
    .login label.openid { display: block }
    #comments .meta .actions { display: table; float: none; }
    #respond textarea { width: 100% }
+   .profile #vcard .name { float: none }
 
 
 /* Global Header
