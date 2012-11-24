@@ -1,16 +1,8 @@
-<?php namespace Bootsparks;
-
-use \HTML;
-use \ReflectionClass;
+<?php
 
 /**
- * Form generation geared around Bootstrap (2.0-wip) from Twitter.
- *
- * @package     Bundles
- * @subpackage  Twitter
- * @author      Phill Sparks <me@phills.me.uk>
- *
- * @see http://twitter.github.com/bootstrap/
+ * Based on bootsparks bundle - http://bundles.laravel.com/bundle/bootsparks
+ * due to the amount of extra changes seperated from original bundle
  */
 class Form extends \Laravel\Form {
 
@@ -33,6 +25,19 @@ class Form extends \Laravel\Form {
 	 * Extra-rounded text input for a typical search aesthetic
 	 */
 	const TYPE_SEARCH     = 'form-search';
+
+	/*
+	 * String prepended to id's to avoid collisions
+	 */
+	public static $idpre = null;
+
+	/*
+	 * reset the id prepends
+	 */
+	public static function close() {
+		static::$idpre = null;
+		return parent::close();
+	}
 
 	/**
 	 * Create a HTML form field.
@@ -62,6 +67,9 @@ class Form extends \Laravel\Form {
 		// Build the HTML
 		$out  = '<div class="'.$class.'">';
 		if ( ! empty($label)) {
+			if(!is_null(static::$idpre)) {
+				$name = static::$idpre.$name;
+			}
 			static::$labels[] = $name;
 			$out .= '<label for="'.$name.'" class="control-label">'.HTML::entities($label) .
 				    (isset($opts["alt"]) ? ' <small>'.HTML::entities($opts["alt"]).'</small>': '').'</label>';
@@ -204,4 +212,11 @@ class Form extends \Laravel\Form {
 		return static::button($value, $attributes);
 	}
 
+	protected static function id($name, $attributes) {
+		/* Hijack the id if $idpre is set */
+		if(static::$idpre) {
+			$name = static::$idpre.$name;
+		}
+		return parent::id($name, $attributes);
+	}
 }

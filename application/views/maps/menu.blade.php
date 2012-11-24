@@ -19,6 +19,7 @@
 		@endif
 		<li class="rside"><a href="{{ action("maps@filter") }}" data-toggle="collapse" data-target="#map-search" onClick="return false;"><i class="icon-search"></i></a></li>
 	</ul>
+	<?php Form::$idpre = "map-search-"; ?>
 	{{ Form::open("maps/filter", "GET", array("id"=> "map-search", "class" => "form clearfix menusearch collapse".(Input::get('search') ? ' in' : ''), "data-cleanup" => true)) }}
 		<hr class="spacer" />
 		<div class="row">
