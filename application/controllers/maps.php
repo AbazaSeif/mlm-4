@@ -35,31 +35,52 @@ class Maps_Controller extends Base_Controller {
 			// Only allow seeing published maps
 			$query = $query->where_published(1);
 		}
-		
+		// title
+		if(Input::get("title")) {
+			$query = $query->where("title", "LIKE", Input::get("title").'%');
+		}
+		// Replace with fulltext search when future happen
+
+		// team count
+		if($teamcount = intval(Input::get("teamcount"))) {
+			$query = $query->where_teamcount($teamcount);
+		}
+
+		// team size
+		if($teamsize = intval(Input::get("teamsize"))) {
+			$query = $query->where_teamsize($teamsize);
+		}
+
+		// Minecraft version
+		if(Input::get("mcversion")) {
+			$query = $query->where("mcversion", "LIKE", Input::get("mcversion").'%');
+		}
+
+
 		//orderby
 		switch ($order_column)
 		{
 			case "newest":
 				$query = $query->order_by("maps.created_at", "desc");
 				break;
-			
+
 			case "oldest":
 				$query = $query->order_by("maps.created_at", "asc");
 				break;
-			
+
 			case "best":
 				$query = $query->order_by("maps.avg_rating", "desc");
 				break;
-			
+
 			case "worst":
 				$query = $query->order_by("maps.avg_rating", "asc");
 				break;
-			
+
 			default:
 				$query = $query->order_by("maps.created_at", "desc");
 				break;
 		}
-		
+
 		//categories
 		$category_list = Config::get("maps.types");
 		if(isset($category_list[$category]) and $category != "") {
@@ -71,19 +92,19 @@ class Maps_Controller extends Base_Controller {
 		{
 			$query = $query->where("maps.featured", '=', 1);
 		}
-		
+
 		//$official
 		if ($official == "true")
 		{
 			$query = $query->where("maps.official", '=', 1);
 		}
-		
+
 		//run $query
 		$maps = $query->paginate($limit);
 		$appendage = Input::get();
 		unset($appendage["page"]);
 		$maps->appends($appendage);
-		return View::make("maps.home", array("title" => "Filtered Maps", "javascript" => array("maps", "list"), "maps" => $maps, "menu" => "multiview"));
+		return View::make("maps.home", array("title" => "Search Maps", "javascript" => array("maps", "list"), "maps" => $maps, "menu" => "multiview"));
 	}
 	public function get_new() {
 		return View::make("maps.new", array("title" => "New Map ", "javascript" => array("maps", "edit"), "menu" => "new", "sidebar" => "edit"));
@@ -186,7 +207,7 @@ class Maps_Controller extends Base_Controller {
 		if($validation->passes()) { 	// Skip to redirection if doesn't pass
 
 			$ratingObj = $map->ratings()->where_user_id(Auth::user()->id)->first();
-		
+
 			if($ratingObj) { // Change vote
 				$ratingObj->rating = Input::get("rating");
 				$ratingObj->save();
@@ -244,7 +265,7 @@ class Maps_Controller extends Base_Controller {
 		if(!$is_owner) {
 			return Response::error("404"); // Not owner
 		}
-		
+
 		$authors = $map->users()->with("confirmed")->get();
 
 		return View::make("maps.edit", array(
@@ -288,7 +309,7 @@ class Maps_Controller extends Base_Controller {
 		} else {
 			Messages::add("error", "Hold on cowboy, something just ain't right!");
 			return Redirect::to_action("maps@edit", array($map->id))->with_input()->with_errors($validation);
-		}		
+		}
 	}
 	/* Adding authors */
 	public function post_add_author($id) {
@@ -468,7 +489,7 @@ EOT;
 		if(!$map->is_owner(Auth::user())) { // User is confirmed to be logged in
 			return Response::error("403"); // Not yet published
 		}
-		
+
 		$input = Input::all();
 		if(!isset($input["name"]) || strlen($input["name"]) == 0) { // Just use the filename
 			$input["name"] = $input["uploaded"]["name"];
@@ -508,7 +529,7 @@ EOT;
 
 		$map->image_id = $image->id;
 		$map->save();
-		
+
 		Messages::add("success", "Default image set");
 		return Redirect::to_action("maps@edit", array($id));
 	}

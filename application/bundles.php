@@ -40,13 +40,6 @@ return array(
 		'handles' => 'assets',
 		'auto' => true
 	), */
-	'bootsparks' => array(
-		'autoloads' => array(
-			'map' => array(
-				'Bootsparks\\Form' => '(:bundle)/form.php',
-			),
-		),
-	),
 	"sparkdown",
 	'feed' => array('auto' => true),
 );

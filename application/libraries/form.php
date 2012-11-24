@@ -1,16 +1,8 @@
-<?php namespace Bootsparks;
-
-use \HTML;
-use \ReflectionClass;
+<?php
 
 /**
- * Form generation geared around Bootstrap (2.0-wip) from Twitter.
- * 
- * @package     Bundles
- * @subpackage  Twitter
- * @author      Phill Sparks <me@phills.me.uk>
- *
- * @see http://twitter.github.com/bootstrap/
+ * Based on bootsparks bundle - http://bundles.laravel.com/bundle/bootsparks
+ * due to the amount of extra changes seperated from original bundle
  */
 class Form extends \Laravel\Form {
 
@@ -33,6 +25,19 @@ class Form extends \Laravel\Form {
 	 * Extra-rounded text input for a typical search aesthetic
 	 */
 	const TYPE_SEARCH     = 'form-search';
+
+	/*
+	 * String prepended to id's to avoid collisions
+	 */
+	public static $idpre = null;
+
+	/*
+	 * reset the id prepends
+	 */
+	public static function close() {
+		static::$idpre = null;
+		return parent::close();
+	}
 
 	/**
 	 * Create a HTML form field.
@@ -61,9 +66,13 @@ class Form extends \Laravel\Form {
 
 		// Build the HTML
 		$out  = '<div class="'.$class.'">';
-		if ( ! empty($label))
-		{
-			$out .= Form::label($name, $label, array('class' => 'control-label'));
+		if ( ! empty($label)) {
+			if(!is_null(static::$idpre)) {
+				$name = static::$idpre.$name;
+			}
+			static::$labels[] = $name;
+			$out .= '<label for="'.$name.'" class="control-label">'.HTML::entities($label) . 
+				    (isset($opts["alt"]) ? ' <small>'.HTML::entities($opts["alt"]).'</small>': '').'</label>';
 		}
 		$out .= '<div class="controls">'.PHP_EOL;
 		$out .= forward_static_call_array(array('Form', $type), $args);
@@ -98,11 +107,11 @@ class Form extends \Laravel\Form {
 	public static function field_list($label, array $fields = array(), array $opts = array())
 	{
 		$opts = array_filter($opts); // remove false, 0, '', null values
-		
+
 		// Add error classes to the fieldset if present in the opts
 		$class = array_intersect(array('error', 'warning', 'success'), array_keys($opts));
 		$class = trim('control-group '.implode(' ', $class));
-		
+
 		// Build the HTML
 		$out  = '<fieldset class="'.$class.'">';
 		if ( ! empty($label))
@@ -128,7 +137,7 @@ class Form extends \Laravel\Form {
 		}
 		$out .= '</div></div>'; // div.control-list div.controls
 		$out .= '</fieldset>';
-		
+
 		return $out;
 	}
 
@@ -198,8 +207,16 @@ class Form extends \Laravel\Form {
 	public static function reset($value = null, $attributes = array())
 	{
 		$attributes['type'] = 'reset';
-		$attributes['class'] .= ' btn';
+		$attributes['class'] = array_key_exists('class', $attributes) ? $attributes['class'] . ' btn' : 'btn';
+
 		return static::button($value, $attributes);
 	}
 
+	protected static function id($name, $attributes) {
+		/* Hijack the id if $idpre is set */
+		if(static::$idpre) {
+			$name = static::$idpre.$name;
+		}
+		return parent::id($name, $attributes);
+	}
 }

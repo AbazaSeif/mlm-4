@@ -106,7 +106,7 @@ return array(
 	*/
 
 	'languages' => array(),
-	
+
 	/*
 	|--------------------------------------------------------------------------
 	| SSL Link Generation
@@ -168,7 +168,7 @@ return array(
 		'Event'      	=> 'Laravel\\Event',
 		'File'       	=> 'Laravel\\File',
 		'Filter'     	=> 'Laravel\\Routing\\Filter',
-		'Form'          => 'Bootsparks\\Form',
+//		'Form'          => 'Laravel\\Form',
 		'Hash'       	=> 'Laravel\\Hash',
 		'HTML'       	=> 'Laravel\\HTML',
 		'Input'      	=> 'Laravel\\Input',
