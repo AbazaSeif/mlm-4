@@ -27,7 +27,7 @@
 				{{ Form::field("text", "title", "Title", array(Input::get("title"), array("class" => "span8"))) }}
 			</div>
 			<div class="span4">
-				{{ Form::field("select", "maptype", "Map type", array(array_merge(array("" => "--------------"), Config::get("maps.types")), Input::get("maptype"), array("class" => "span4"))) }}
+				{{ Form::field("select", "type", "Map type", array(array_merge(array("" => "--------------"), Config::get("maps.types")), Input::get("type"), array("class" => "span4"))) }}
 			</div>
 		</div>
 		<div class="row">
