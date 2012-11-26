@@ -9,9 +9,9 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	@if (isset($title)) 
+	@if (isset($title))
 	<title>{{$title}} | Major League Mining</title>
-	@else 
+	@else
 	<title>Major League Mining</title>
 	@endif
 	<meta name="robots" content="index,follow">
@@ -21,7 +21,7 @@
 	<meta name="copyright" content="Major League Mining">
 	<link type="text/plain" rel="author" href="{{ URL::to_asset("humans.txt") }}" />
 	<link type="text/plain" rel="hackers" href="{{ URL::to_asset("hackers.txt") }}" />
-	
+
 	@if(isset($social) && is_array($social))
 	@foreach($social as $skey => $scontent)
 	<meta property="og:{{$skey}}" content="{{ e($scontent) }}" />
@@ -31,12 +31,12 @@
 	<link rel="shortcut icon" href="{{ URL::to_asset("images/static/favicon.ico") }}" />
 	<link rel="image_src" href="{{ URL::to_asset("images/static/mlm.png") }}" />
 	<link rel="apple-touch-icon-precomposed" href="{{ URL::to_asset("images/static/apple-touch-icon.png") }}" />
-	
+
 	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/fonts.css") }}" />
 	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/bootstrap.css") }}" />
 	<!--[if IE]><link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/ie-sucks.css") }}" /><![endif]-->
 	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/style.css") }}" />
-	
+
 	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/nivo/default/default.css") }}" />
 	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/nivo/medium/medium.css") }}" />
 	<link rel="stylesheet" type="text/css" href="{{ URL::to_asset("css/nivo/nivo-slider.css") }}" />
@@ -98,11 +98,11 @@
 						@endif
 					</div>
 				</div>
-			</div>	
+			</div>
 				<nav id="menu">
 					<ul id="mainmenu">
-						<li><a href="{{ URL::to("/") }}">Home</a></li> 
-						<li>{{ HTML::link('news', 'News'); }}</li> 
+						<li><a href="{{ URL::to("/") }}">Home</a></li>
+						<li>{{ HTML::link('news', 'News'); }}</li>
 						<li>{{ HTML::link('maps', 'Maps'); }}</li>
 						<li>{{ HTML::link('faq', 'FAQ'); }}</li>
 					</ul>
@@ -121,14 +121,14 @@
 		</div>
 		<div class="right">
 			<a class="sponsor" href="http://kerpluncgaming.com/" target="_blank" title="They're awesome and you should check them out!">Hosted by {{ HTML::image("images/static/kerplunc.png") }}</a>
+			<a href="http://twitter.com/MLMining" title="Follow us on Twitter" class="tw"><i class="icon-twitter-sign"></i></a>
 			<a href="/humans.txt" title="Powered by Magic and Miracles" target="_blank" style="color:#333"><i class="icon-magic"></i></a>
 			<?php /*
 			<a href="http://facebook.com/mlm" title="Like us on Facebook" class="fb"><i class="icon-facebook-sign"></i></a>
-			<a href="http://twitter.com/mlm" title="Follow us on Twitter" class="tw"><i class="icon-twitter-sign"></i></a>
 			<a href="http://plus.google.com/+mlm" title="Circle us on Google+" class="gp"><i class="icon-google-plus-sign"></i></a>
 			*/ ?>
 		</div>
-		</div>	
+		</div>
 	</footer>
 
 	@yield("postfooter")

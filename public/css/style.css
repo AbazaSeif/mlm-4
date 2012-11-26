@@ -9,7 +9,7 @@ body {
     margin: 0;
     padding: 0;
     background: #f9f9f9 url(../images/static/bg/white.png) repeat fixed center;
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif; 
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
     font-weight: normal;
     color: #333;
 }
@@ -83,7 +83,7 @@ img[src*="blank.gif"] { background: url("../images/static/ajax-loader.gif") no-r
 
 #global-header #main {
     position: relative;
-    height: 50px;  
+    height: 50px;
     width: 100%;
     background: #223A87 url(../images/static/head-bar.png) repeat-x center;
     background-size: contain;
@@ -95,7 +95,7 @@ img[src*="blank.gif"] { background: url("../images/static/ajax-loader.gif") no-r
     width: 990px;
 }
 
-/* Logo 
+/* Logo
    ================================================== */
 
 #global-header #logo {
@@ -166,7 +166,7 @@ img[src*="blank.gif"] { background: url("../images/static/ajax-loader.gif") no-r
     vertical-align: -4px;
 }
 
-/* Global Menu 
+/* Global Menu
    ================================================== */
 
 #menu {
@@ -229,7 +229,7 @@ img[src*="blank.gif"] { background: url("../images/static/ajax-loader.gif") no-r
     text-transform: uppercase;
 }
 
-/* Global content and wrapping 
+/* Global content and wrapping
    ================================================== */
 
 #wrapper {
@@ -263,7 +263,7 @@ img[src*="blank.gif"] { background: url("../images/static/ajax-loader.gif") no-r
     font-weight: normal;
     font-family: "Oswald";
     text-transform: uppercase;
-} 
+}
 .titlebar h1 {font-size: 32px}
 .titlebar h2 {font-size: 24px}
 .titlebar h3{font-size: 18px}
@@ -295,9 +295,9 @@ img[src*="blank.gif"] { background: url("../images/static/ajax-loader.gif") no-r
     margin-top: -37px;
     padding: 0;
     width: 100%;
-    background: #E7E7E7;  
-    -moz-box-shadow: 0 -2px 5px -2px rgba(0, 0, 0, 0.76);  
-    -webkit-box-shadow: 0 -2px 5px -2px rgba(0, 0, 0, 0.76);  
+    background: #E7E7E7;
+    -moz-box-shadow: 0 -2px 5px -2px rgba(0, 0, 0, 0.76);
+    -webkit-box-shadow: 0 -2px 5px -2px rgba(0, 0, 0, 0.76);
     box-shadow: 0 -2px 5px -2px rgba(0, 0, 0, 0.76);
     color: #000;
     line-height: 1;
@@ -328,7 +328,7 @@ img[src*="blank.gif"] { background: url("../images/static/ajax-loader.gif") no-r
 
 #global-footer .right a {
     display: inline-block;
-    margin-right: -6px;
+    margin-right: 5px;
     height: 30px;
     width: 30px;
     overflow: hidden;
@@ -337,7 +337,7 @@ img[src*="blank.gif"] { background: url("../images/static/ajax-loader.gif") no-r
 #global-footer .right a.sponsor {
     width: auto;
     padding-top: 5px;
-    margin-right: 20px;
+    margin-right: 10px;
     font: 300 17px/1 "Oswald";
     color: #000;
     height: 20px;
@@ -353,17 +353,17 @@ img[src*="blank.gif"] { background: url("../images/static/ajax-loader.gif") no-r
 
 #global-footer .right a:hover {text-shadow:0px 0px 1px #333;}
 
-/* Action box (for all your 1 function pages needs) 
+/* Action box (for all your 1 function pages needs)
    ================================================== */
-    
+
 #actionbox {
     display: none;
     margin: 28px auto;
     padding: 30px;
     max-width: 650px;
-    background: #E7E7E7;  
-    -moz-box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.76);  
-    -webkit-box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.76);  
+    background: #E7E7E7;
+    -moz-box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.76);
+    -webkit-box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.76);
     box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.76);
     text-align: center;
     font-family: "Oswald";
@@ -379,7 +379,7 @@ img[src*="blank.gif"] { background: url("../images/static/ajax-loader.gif") no-r
     margin-bottom: 0
 }
 
-/* Home page 
+/* Home page
    ================================================== */
 
 #home { min-height: 300px; }
@@ -409,13 +409,13 @@ img[src*="blank.gif"] { background: url("../images/static/ajax-loader.gif") no-r
    ================================================== */
 
 .login ul {
-    margin: 0 auto;  
+    margin: 0 auto;
     padding: 0;
     text-align: center;
     list-style: none;
 }
 .login ul li {
-    display: inline-block;  
+    display: inline-block;
     margin: 0 1px;
     box-shadow: 0 2px 3px -1px #000;
 }
@@ -426,7 +426,7 @@ img[src*="blank.gif"] { background: url("../images/static/ajax-loader.gif") no-r
 
 .login ul li img {
     max-width: 115px;
-    
+
 }
 
 .login ul li span {
@@ -479,7 +479,7 @@ img[src*="blank.gif"] { background: url("../images/static/ajax-loader.gif") no-r
 
 /* Disclaimer on Registration page */
 
-.disclaimer { 
+.disclaimer {
     display: inline;
     color: #414141;
     font-size: 13px;
@@ -594,7 +594,7 @@ img[src*="blank.gif"] { background: url("../images/static/ajax-loader.gif") no-r
     color: #333;
     text-decoration: none;
     background-color: #B9B9B9;
-    background-image: none; 
+    background-image: none;
 }
 
 #pagemenu li.rside{ float: right }
@@ -618,7 +618,7 @@ img[src*="blank.gif"] { background: url("../images/static/ajax-loader.gif") no-r
     font-family: "Oswald";
 }
 
-.submenu li a { 
+.submenu li a {
     color: #333;
     text-shadow: 0 1px 1px #fff;
     border: 1px solid transparent;
@@ -627,9 +627,9 @@ img[src*="blank.gif"] { background: url("../images/static/ajax-loader.gif") no-r
     border-radius: 0px;
 }
 
-.submenu li a:hover { 
+.submenu li a:hover {
     background-color: #B9B9B9;
-    border: 1px solid #ADADAD; 
+    border: 1px solid #ADADAD;
 }
 
 .submenu li.disabled a {
@@ -709,7 +709,7 @@ img[src*="blank.gif"] { background: url("../images/static/ajax-loader.gif") no-r
     font-style: italic;
 }
 
-/* Admin pages 
+/* Admin pages
    ================================================== */
 
 .admin .fixedheight{ max-height: 500px; overflow-y:auto }
@@ -748,14 +748,14 @@ img[src*="blank.gif"] { background: url("../images/static/ajax-loader.gif") no-r
     padding: 3px 10px;
 }
 
-/* News page 
+/* News page
    ================================================== */
 
 .news {}
 
 .news .pagination { clear: both }
 
-/* News front page 
+/* News front page
    ================================================== */
 
 .post  {
@@ -783,15 +783,15 @@ img[src*="blank.gif"] { background: url("../images/static/ajax-loader.gif") no-r
 }
 
 .post .image  {
-    display: block;       
-    -webkit-box-sizing:border-box;       
+    display: block;
+    -webkit-box-sizing:border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     margin-bottom: 15px;
     width: 100%;
-    border: 4px solid #ADADAD;  
+    border: 4px solid #ADADAD;
     -webkit-box-shadow: 0 8px 6px -6px black;
-    -moz-box-shadow: 0 8px 6px -6px #000;  
+    -moz-box-shadow: 0 8px 6px -6px #000;
     box-shadow: 0 8px 6px -6px black;
 }
 
@@ -803,9 +803,9 @@ img[src*="blank.gif"] { background: url("../images/static/ajax-loader.gif") no-r
     border: 1px solid #ADADAD;
     font-size: 14px;
     color: #434343;
-    -moz-box-shadow: 0 8px 6px -6px #000;  
-    -webkit-box-shadow: 0 8px 6px -6px #000;  
-    box-shadow: 0 8px 6px -6px   #000;  
+    -moz-box-shadow: 0 8px 6px -6px #000;
+    -webkit-box-shadow: 0 8px 6px -6px #000;
+    box-shadow: 0 8px 6px -6px   #000;
 }
 
 .post .meta .date  {
@@ -837,7 +837,7 @@ img[src*="blank.gif"] { background: url("../images/static/ajax-loader.gif") no-r
     border-right: none;
     border-left: 1px solid #ADADAD;
 }
- 
+
 .post.single {
     margin-bottom: 0;
     padding-bottom: 0;
@@ -935,10 +935,10 @@ img[src*="blank.gif"] { background: url("../images/static/ajax-loader.gif") no-r
     text-align: center;
 }
 
-/* Profile page 
+/* Profile page
    ================================================== */
 
-/* Profile page 
+/* Profile page
    ================================================== */
 
 .profile {}
@@ -978,7 +978,7 @@ img[src*="blank.gif"] { background: url("../images/static/ajax-loader.gif") no-r
 .profile #vcard .data h1 {
     margin: 0;
     padding: 0;
-    font-size: 33px;  
+    font-size: 33px;
     font-weight: bolder;
     text-shadow: 0px 1px 1px #fff;
 }
@@ -1264,7 +1264,7 @@ img[src*="blank.gif"] { background: url("../images/static/ajax-loader.gif") no-r
     padding-top: 6px;
 }
 
-/* Image Manager 
+/* Image Manager
    ================================================== */
 
 .modal {
@@ -1295,7 +1295,7 @@ img[src*="blank.gif"] { background: url("../images/static/ajax-loader.gif") no-r
     margin-bottom: 10px;
 }
 
-/* New/Edit Articles, maps, pages, and anything else you 
+/* New/Edit Articles, maps, pages, and anything else you
    can think of.
    ================================================== */
 
@@ -1330,12 +1330,12 @@ img[src*="blank.gif"] { background: url("../images/static/ajax-loader.gif") no-r
     margin-bottom: 0;
     height: 60px;
     width: 100%;
-    box-sizing: border-box;       
-    -webkit-box-sizing:border-box;       
+    box-sizing: border-box;
+    -webkit-box-sizing:border-box;
     -moz-box-sizing: border-box;
 }
 
-/* WYSIWYG editor 
+/* WYSIWYG editor
    ================================================== */
 .cleditorMain{width:100%!important;border:1px solid #999;padding:0 1px 1px;background-color:#fff;box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box}.cleditorMain iframe{border:none;margin:0;padding:0}.cleditorMain textarea{border:none;white-space:afterproperty;margin:0;padding:0;overflow-y:scroll;font:10pt Arial;resize:none;outline:none }.cleditorToolbar{background:url('../images/admin/editor/toolbar.gif') repeat}.cleditorGroup{float:left;height:26px}.cleditorButton{float:left;width:24px;height:24px;margin:1px 0 1px 0;background:url('../images/admin/editor/buttons.gif')}.cleditorDisabled{opacity:0.3;filter:alpha(opacity=30)}.cleditorDivider{float:left;width:1px;height:23px;margin:1px 0 1px 0;background:#ADADAD}.cleditorPopup{border:solid 1px #999;background-color:#fff;position:absolute;font:10pt Arial;cursor:default;z-index:10000}.cleditorList div{padding:2px 4px 2px 4px}.cleditorList p,.cleditorList h1,.cleditorList h2,.cleditorList h3,.cleditorList h4,.cleditorList h5,.cleditorList h6,.cleditorList font{padding:0;margin:0;background-color:none;color:#000}.cleditorColor{width:150px;padding:1px 0 0 1px}.cleditorColor div{float:left;width:14px;height:14px;margin:0 1px 1px 0}.cleditorPrompt{background-color:#F6F7F9;padding:4px;font-size:8.5pt;color:#474747}.cleditorPrompt input,.cleditorPrompt textarea{font:8.5pt Arial}.cleditorMsg{background-color:#FDFCEE;width:150px;padding:4px;font-size:8.5pt}
 
@@ -1376,11 +1376,11 @@ ol.commentlist {
     vertical-align: -15px;
     background: #E6E6E6;
     border: 1px solid #D3D3D3;
-} 
+}
 
 #comments .body {
     padding: 10px;
-    background: #F9F9F9; 
+    background: #F9F9F9;
     color: #474747;
     word-wrap: break-word;
 }
@@ -1447,7 +1447,7 @@ ol.commentlist {
 
 
 /* Multiviwer 3000 (Patent pending)
-   ================================================== 
+   ==================================================
    This can be used Anywhere on the site
 */
 
@@ -1512,12 +1512,12 @@ ol.commentlist {
     text-shadow: 0px 1px 2px #fff;
 }
 
-#multiview .mv-title h1 { 
+#multiview .mv-title h1 {
     margin:0 0 5px 0;
     font:400 22px/25px "Oswald";
-    letter-spacing: -1px;  
-    color:#333; 
-    text-shadow:rgb(226, 226, 226) 0px 1px 1px; 
+    letter-spacing: -1px;
+    color:#333;
+    text-shadow:rgb(226, 226, 226) 0px 1px 1px;
 }
 
 #multiview .mv-summary {}
@@ -1573,7 +1573,7 @@ ol.commentlist {
 #loadmore .pagination { margin: 5px 0 0; height: auto; }
 
 /* Table Sorter Styles
-   ================================================== */  
+   ================================================== */
 
 #sortable th { background: url(../images/static/bg.gif) no-repeat center right; cursor: pointer ; }
 
@@ -1581,11 +1581,11 @@ ol.commentlist {
 
 #sortable th.headerSortUp { background: url(../images/static/asc.gif) no-repeat center right }
 
-#sortable th.headerSortDown { background: url(../images/static/desc.gif) no-repeat center right } 
+#sortable th.headerSortDown { background: url(../images/static/desc.gif) no-repeat center right }
 
 /* Fixes
-   ================================================== */  
- 
+   ================================================== */
+
 form.xpadding,li.xpadding,input.xpadding { margin-bottom:10px; padding:10px; background: #D8D8D8; }
 
 .xpadding input { margin: 0 }
@@ -1601,8 +1601,8 @@ form.xpadding,li.xpadding,input.xpadding { margin-bottom:10px; padding:10px; bac
 ul.ulfix {margin: 0; list-style: none }
 
 img.imgfix { display: block; margin-top: 10px; width: 50% }
-    
-/* Sprite galore! 
+
+/* Sprite galore!
    ================================================== */
 
 .user-rank {
@@ -1619,7 +1619,7 @@ img.imgfix { display: block; margin-top: 10px; width: 50% }
 .user-rank.mod {background-position: 0px -32px;}
 .user-rank.editor {background-position: 0px -48px;}
 
-/* World Flags 
+/* World Flags
    ================================================== */
 
 .flag {
@@ -1936,7 +1936,7 @@ img.imgfix { display: block; margin-top: 10px; width: 50% }
     #actions li a:active { background-color: #888 }
     #actions i[class^="icon-"]::before, #actions i[class*=" icon-"]::before { margin-top: 4px; font-size: 25px; text-shadow: 0px 1px 1px #fff; }
 
-/* Content 
+/* Content
    ================================================== */
     #wrapper { width: auto }
     #pagemenu, #pagemenu li, #pagemenu .rside { display: none }
@@ -1950,7 +1950,7 @@ img.imgfix { display: block; margin-top: 10px; width: 50% }
     #home .homecontent { padding: 0; width: 100%;}
     #home .homecontent section { display: block; margin: 0; padding: 10px 10px; width: auto; border: 0; border-bottom: 1px dotted #fff; }
 
-/* Profile page 
+/* Profile page
    ================================================== */
 
    .profile #vcard .data {
@@ -1963,7 +1963,7 @@ img.imgfix { display: block; margin-top: 10px; width: 50% }
     }
 
     .profile #vcard .data h1 {
-    font-size: 25px;  
+    font-size: 25px;
     }
 
     .profile #vcard .data h2 {
