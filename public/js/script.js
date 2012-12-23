@@ -10,8 +10,8 @@ MLM = {
 			(function () {
 				var a = document.body,
 				e = document.documentElement;
-				$(window).unbind("scroll").scroll(function () {
-				a.style.backgroundPosition = "0px " + -(Math.max(e.scrollTop, a.scrollTop) / 10) + "px" })
+				$(window).scroll(function () {
+				a.style.backgroundPosition = "0px " + -(Math.round(Math.max(e.scrollTop, a.scrollTop) / 10)) + "px" });
 			})();
 		// MultiBG
 			$("#multibg [data-mbg]").click(function() {
@@ -39,24 +39,22 @@ MLM = {
 				return false;
 			});
 		// Markdown Live Preview
-			$('#mrk').wysiwym(Wysiwym.Markdown, {});
+			var markdownTextarea = $("#mrk")
+			if(markdownTextarea.length > 0) {
+				$('#mrk').wysiwym(Wysiwym.Markdown, {});
 				var showdown = new Showdown.converter();
-				var previousValue = null;
-				var previewTextarea = $('#mrk');
 				var previewOutput = $('#preview');
+
 				var updateLivePreview = function() {
-				var newValue = previewTextarea.val();
-					if (newValue != previousValue) {
-					previousValue = newValue;
-				var newHtml = $("<div>"+ showdown.makeHtml(newValue) +"</div>");
-				previewOutput.html(newHtml);
+					previewOutput.html("<div>"+ showdown.makeHtml(markdownTextarea.val()) +"</div>");
+				}
+				markdownTextarea.bind('keyup change', updateLivePreview).siblings(".btn-toolbar").find(".btn").click(updateLivePreview)
+				$("#prevb").click(updateLivePreview);
 			}
-			}
-        	setInterval(updateLivePreview, 100);
-        	// Clean up get requests before submitting themˇ- http://stackoverflow.com/a/2418022/211088
-        	$("form[data-cleanup]").on("submit", function() {
-	        	$(':input[value=""]').attr('name', '');
-        	})
+			// Clean up get requests before submitting themˇ- http://stackoverflow.com/a/2418022/211088
+			$("form[data-cleanup]").on("submit", function() {
+				$(':input[value=""]').attr('name', '');
+			});
 		}
 	},
 	home: {
