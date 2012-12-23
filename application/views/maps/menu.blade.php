@@ -17,7 +17,7 @@
 		@if (Auth::check())
 		<li {{ Input::get("ownmaps") == true && !Input::get('search') ? 'class="rside active"' : 'class="rside"' }}><a href="{{ URL::to("maps/filter/?ownmaps=1") }}">Your Maps</a></li>
 		@endif
-		<li class="rside"><a href="{{ action("maps@filter") }}" data-toggle="collapse" data-target="#map-search" onClick="return false;"><i class="icon-search"></i></a></li>
+		<li class="rside"><a href="{{ action("maps@filter") }}?search=1" data-toggle="collapse" data-target="#map-search" onClick="return false;"><i class="icon-search"></i></a></li>
 	</ul>
 	<?php Form::$idpre = "map-search-"; ?>
 	{{ Form::open("maps/filter", "GET", array("id"=> "map-search", "class" => "form clearfix menusearch collapse".(Input::get('search') ? ' in' : ''), "data-cleanup" => true)) }}
