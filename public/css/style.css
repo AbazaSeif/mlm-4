@@ -67,8 +67,6 @@ a { color: #1e95cf; text-decoration: none }
 
 a:hover { color: #005580 }
 
-img[src*="blank.gif"] { background: url("../images/static/ajax-loader.gif") no-repeat center; }
-
 .global-wrapper { min-height: 100%; }
 
 /* Global Header
@@ -1660,6 +1658,8 @@ ol.commentlist {
 
 #multiview .mv-image img { display:block; width: 100%; }
 
+#multiview img[src*="blank.gif"] { height: 20%; background: url("../images/static/ajax-loader.gif") no-repeat center; }
+
 #multiview .mv-details {
     position: absolute;
     bottom: 0;
@@ -1698,11 +1698,11 @@ ol.commentlist {
 
 /* Grid view */
 
-#multiview .grid li { margin: 6px; height: 168px; width: 31.50% }
+#multiview .grid li { margin: 6px; min-height: 168px; width: 31.50% }
 
 #multiview .grid li:hover { box-shadow: 0px 8px 8px -6px #000; }
 
-#multiview .grid .mv-image img { max-height: 168px; }
+#multiview .grid .mv-image img { min-height: 168px; }
 
 #multiview .grid .mv-details { padding: 5px 0 5px 5px }
 
@@ -1724,11 +1724,11 @@ ol.commentlist {
 
 /* List view */
 
-#multiview ul.list { }
+#multiview .list { }
 
-#multiview ul.list li { display: block; margin: 0 0 10px 0; height: auto; width: auto; -moz-box-shadow:none; -webkit-box-shadow:none; box-shadow:none;}
+#multiview .list li { display: block; margin: 0 0 10px 0; height: auto; width: auto; -moz-box-shadow:none; -webkit-box-shadow:none; box-shadow:none;}
 
-#multiview ul.list li:hover { background-color: #f9f9f9 }
+#multiview .list li:hover { background-color: #f9f9f9 }
 
 #multiview .list li:first-child { margin-top: 0 }
 
@@ -1910,7 +1910,8 @@ img.imgfix { display: block; margin-top: 10px; width: 50% }
 /* Multivew
    ================================================== */
     #multiview-controller li[data-multiview=big] { display: none; }
-    #multiview ul.grid li { margin:0 0 10px 0; width: 100%; }
+    #multiview .grid li { margin:0 0 10px; width: 100%; }
+    #multiview .grid .mv-image img { }
 
 /* News
    ================================================== */
@@ -1918,6 +1919,11 @@ img.imgfix { display: block; margin-top: 10px; width: 50% }
    .post .entry { font-size: 14px; }
    .post .meta .right, .post.single .left { display:none; }
    .post.single .right { display:inline; }
+
+   /* Maps
+   ================================================== */
+
+   .maps-single #comments { display: none; }
 }
 
 /* Portrait tablet to landscape and desktop */
