@@ -433,7 +433,8 @@ EOT;
 		if($mapfile = Input::file("mapfile")) {
 			$zip_check = new ZipArchive();
 			// 1. Make sure it's a zip alright
-			if(($zip_err = $zip_check->open(Input::file("mapfile")["tmp_name"])) !== TRUE) {
+			$map_input = Input::file("mapfile");
+			if(($zip_err = $zip_check->open($map_input["tmp_name"])) !== TRUE) {
 				if($zip_err == ZIPARCHIVE::ER_NOZIP) {
 					$validation->errors->add("mapfile", "Uploaded file is not a zip");
 				} else {

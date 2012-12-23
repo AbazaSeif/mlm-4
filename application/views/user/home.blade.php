@@ -110,7 +110,7 @@
 									<b>{{ $author->username }}</b>,
 									@endforeach
 								</span>
-								<span>Version <b>{{e($map->version)}}</b>,</span>
+								<?php /* <span>Version <b>{{e($map->version)}}</b>,</span> */ ?>
 								<span>Type: <b>{{ array_get(Config::get("maps.types"), $map->maptype) }}</b></span>
 							</div>
 						</div>
@@ -175,7 +175,7 @@
 		@endif
 		@forelse ($user->groups as $group)
 		@if($group->is_invited($user) === 1 || $ownpage == true)
-		<li class="xpadding" style="margin:0;padding-top:0;"><a href="#" rel="popover" data-html="true" 
+		<li class="xpadding" style="margin:0;padding-top:0;"><a href="#" rel="popover" data-html="true"
 			data-content='
 			{{ e($group->description) }} <hr><button type="button" class="btn btn-link left-align" data-toggle="collapse" data-target="#members-{{$group->id}}">
 				<b>Members: </b>{{ count($group->users) }}</b>
