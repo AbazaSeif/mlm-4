@@ -36,7 +36,7 @@ class Teams_Controller extends Base_Controller {
 			return Response::error("403");
 		}
 		$has_applied = false;
-		if (Application::where_team_id($team->id)->where_user_id(Auth::user()->id)->first() != null) {
+		if (Auth::check() && Application::where_team_id($team->id)->where_user_id(Auth::user()->id)->first() != null) {
 			$has_applied = true;
 		}
 		return View::make("teams.view", array("title" => $team->name." | Teams", "team" => $team, "is_owner" => $is_owner, "is_invited" => $is_invited, "has_applied" => $has_applied));
