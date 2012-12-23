@@ -27,12 +27,12 @@
 							<div class="mv-title"><h1>{{ e($map->title) }}</h1></div>
 							<div class="mv-summary"><p>{{ e($map->summary) }}</p></div>
 							<div class="mv-meta">
-								<span>By 
+								<span>By
 									@foreach($map->users as $author)
 									<b>{{ $author->username }}</b>,
 									@endforeach
 								</span>
-								<span>Version <b>{{e($map->version)}}</b>,</span>
+								<?php /* <span>Version <b>{{e($map->version)}}</b>,</span> */ ?>
 								@unless($map->published)
 								<p><strong>This map isn't yet published</strong></p>
 								@endunless

@@ -21,9 +21,9 @@
 	@endif
 
 	<div class="titlebar margin"><h4>Version</h4></div>
-	@if($map->version)
+	<?php /* @if($map->version)
 	<span>{{ e($map->version) }}</span>
-	@endif
+	@endif */ ?>
 
 	<div class="titlebar margin"><h4>Minecraft Version</h4></div>
 	@if($map->mcversion)
