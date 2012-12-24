@@ -47,7 +47,7 @@ class News_Controller extends Base_Controller {
 			$social["image"] = URL::to_asset($newsitem->image->file_medium);
 		}
 
-		return View::make("news.view", array("title" => e($newsitem->title)." | News", "article" => $newsitem, "comments" => $comments, "social" => $social));
+		return View::make("news.view", array("title" => e($newsitem->title)." | News", "javascript" => array("news", "view"), "article" => $newsitem, "comments" => $comments, "social" => $social));
 	}
 	// Commenting
 	public function post_comment($id) {
@@ -76,6 +76,40 @@ class News_Controller extends Base_Controller {
 		} else {
 			Messages::add("error", "Your comment has not been posted");
 			return Redirect::to_action("news@view", array($id, $newsitem->slug))->with_errors($validation)->with_input();
+		}
+	}
+
+	public function post_reportcomment() {
+		$id = Input::get("id");
+		$type = Input::get("type");
+		$details = Input::get("details");
+
+		$comment = Comment::find($id);
+		if (!$comment) {
+			return Response::error('404');
+		}
+
+		$newsitem = News::find($comment->news_id);
+		if(!$newsitem) {
+			return Response::error('404');
+		}
+
+		if (Modqueue::where('itemtype', '=', 'Comment')->where('user_id', '=', Auth::user()->id)->where('itemid', '=', $id)->get() != null) {
+			Messages::add("error", "Comment already reported!");
+			return Redirect::to_action("news@view", array($newsitem->id, $newsitem->slug));
+		}
+
+		else {
+			$modqueue = new Modqueue();
+			$modqueue->user_id = Auth::user()->id;
+			$modqueue->type = "Report - ".$type;
+			$modqueue->itemtype = "Comment";
+			$modqueue->itemid = $id;
+			$modqueue->data = $details;
+
+			$modqueue->save();
+			Messages::add("success", "Comment reported!");
+			return Redirect::to_action("news@view", array($newsitem->id, $newsitem->slug));
 		}
 	}
 

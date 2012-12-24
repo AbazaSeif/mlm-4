@@ -249,6 +249,16 @@ MLM = {
 			$("#multiview .grid img").lazyload({ threshold : 100 });
 			$("#multiview .big img").lazyload({ threshold : 60 });
 		}
+	},
+	news: {
+		view: function() {
+			$("a[rel=popover]")
+            .popover({
+                trigger: 'click',
+                html: true,
+                placement: 'top',
+            });
+		}
 	}
 }
 
