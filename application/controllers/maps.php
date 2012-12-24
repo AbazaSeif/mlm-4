@@ -264,6 +264,69 @@ class Maps_Controller extends Base_Controller {
 		}
 	}
 
+	public function post_reportcomment() {
+		$id = Input::get("id");
+		$type = Input::get("type");
+		$details = Input::get("details");
+
+		$comment = Comment::find($id);
+		if (!$comment) {
+			return Response::error('404');
+		}
+
+		$map = Map::find($comment->map_id);
+		if(!$map) {
+			return Response::error('404');
+		}
+
+		if (Modqueue::where('itemtype', '=', 'Comment')->where('user_id', '=', Auth::user()->id)->where('itemid', '=', $id)->get() != null) {
+			Messages::add("error", "Comment already reported!");
+			return Redirect::to_action("maps@view", array($map->id, $map->slug));
+		}
+
+		else {
+			$modqueue = new Modqueue();
+			$modqueue->user_id = Auth::user()->id;
+			$modqueue->type = "Report - ".$type;
+			$modqueue->itemtype = "Comment";
+			$modqueue->itemid = $id;
+			$modqueue->data = $details;
+
+			$modqueue->save();
+			Messages::add("success", "Comment reported!");
+			return Redirect::to_action("maps@view", array($map->id, $map->slug));
+		}
+	}
+
+	public function post_reportmap() {
+		$id = Input::get("id");
+		$type = Input::get("type");
+		$details = Input::get("details");
+
+		$map = Map::find($id);
+		if (!$map) {
+			return Response::error('404');
+		}
+
+		if (Modqueue::where('itemtype', '=', 'Map')->where('user_id', '=', Auth::user()->id)->where('itemid', '=', $id)->get() != null) {
+			Messages::add("error", "Map already reported!");
+			return Redirect::to_action("maps@view", array($map->id, $map->slug));
+		}
+
+		else {
+			$modqueue = new Modqueue();
+			$modqueue->user_id = Auth::user()->id;
+			$modqueue->type = "Report - ".$type;
+			$modqueue->itemtype = "Map";
+			$modqueue->itemid = $id;
+			$modqueue->data = $details;
+
+			$modqueue->save();
+			Messages::add("success", "Map reported!");
+			return Redirect::to_action("maps@view", array($map->id, $map->slug));
+		}
+	}
+
 
 	/* Editing map */
 	public function get_edit($id) {

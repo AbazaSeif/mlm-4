@@ -72,6 +72,14 @@ MLM = {
 			$("#maps-slider a, .expandable").fancybox({ padding : 0, helpers : { title : null }});
 		// Autosubmit rating
 			$(".autosubmit > form").change(function() { $(this).submit(); });
+			$("a[rel=popover]")
+            .popover({
+                trigger: 'click',
+                html: true,
+                placement: 'top',
+            }).click(function () {
+            	return false;
+            });
 		},
 		edit: function() {
 		}

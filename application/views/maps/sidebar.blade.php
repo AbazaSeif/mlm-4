@@ -63,6 +63,17 @@
  	<span class="inline">{{ HTML::link($link->url, "Link ".$i, array("class" => "btn btn-success", "target" => "_blank")) }}</span>
 	<?php $i++; ?>
  	@endforeach
+ 	<br/>
+ 	<span><a href="#" rel="popover" data-html="true"
+			data-content='
+			{{ Form::open("maps/reportmap", "POST", array("class" => "center")) }}
+			{{ Form::token() }}
+			{{ Form::hidden("id", $map->id) }}
+			{{ Form::field("select", "type", "Reason for Reporting", array(Config::get("admin.report-types"))) }}
+			{{ Form::field("textarea", "details", "Additional Details", array(Input::old("summary"), array("rows" => "5"))) }}
+			{{ Form::submit("Submit Report", array("class" => "btn-danger")) }}
+			{{ Form::close() }}
+			' data-original-title='Report Map'><button class="btn btn-danger">Report Map</button></a></span>
 </div>
 @else
 @endif
