@@ -257,6 +257,8 @@ MLM = {
                 trigger: 'click',
                 html: true,
                 placement: 'top',
+            }).click(function () {
+            	return false;
             });
 		}
 	}
