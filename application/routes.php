@@ -42,6 +42,7 @@ Route::get('/', function() {
 Route::get("login", "account@login");
 Route::get("news/(:num)-(:any)", "news@view");
 Route::get("map/(:num)-(:any)", "maps@view");
+Route::get("map/(:num)-(:any)/(:any)", "maps@view"); // Map version
 
 // Public routes
 Route::controller(array("account", "imgmgr", "maps", "messages", "news", "faq", "matches", "search", "teams", "test", "groups"));
@@ -56,7 +57,7 @@ Route::get("user/(:any?)", function($username = null) {
 			return Response::error("404");
 		}
 	}
-	
+
 	$userobj = User::where_username($username)->first();
 	if(!$userobj) {
 		return Response::error("404");
@@ -71,8 +72,8 @@ Route::get("user/(:any?)", function($username = null) {
 		$othergroups = array();
 		$i = 0;
 		foreach($othergroupsraw as $inner) {
-		    $othergroups[$i] = current($inner);  
-		    $i++;      
+		    $othergroups[$i] = current($inner);
+		    $i++;
 		}
 
 		return View::make("user.home", array("title" => "Your Profile & Activity", "ownpage" => true, "user" => $userobj, "moduleURL" => $moduleurl, "othergroups" => $othergroups, "javascript" => array("profile", "home")));
@@ -89,7 +90,7 @@ Route::post("user/group", array('before' => 'csrf', function() {
 	$id = Input::get("id");
 	$group = null;
 
-	if ($input == "join_textbox") 
+	if ($input == "join_textbox")
 		$group = Group::where_name(Input::get('group'))->first();
 	else if ($input == "join" || $input == "leave" || $input == "acceptjoin" || $input == "acceptowner")
 		$group = Group::find($id);

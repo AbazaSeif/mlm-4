@@ -13,7 +13,7 @@ class Map_Version extends Eloquent {
 			$i = 0;
 			$slug;
 			while(true) {
-				$slug = Str::limit(Str::slug($this->version), 96-(strlen($i)+1), "");
+				$slug = Str::limit(Str::slug(str_replace(".", "-", $this->version)), 96-(strlen($i)+1), "");
 				if($i > 0) {
 					$slug .= "-".$i;
 				}

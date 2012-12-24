@@ -57,6 +57,13 @@
 	{{ Form::close() }}
 </div>
 @endif
+@if($version)
+<div class="titlebar">
+	<h3>Version {{e($version->version) }}</h3>
+</div>
+<h4>Changelog</h4>
+{{ nl2br(e($version->changelog)) }}
+@endif
 @include("maps.comments")
 </div>
 </div>

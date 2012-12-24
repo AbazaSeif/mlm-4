@@ -63,7 +63,7 @@
 			<td>{{$version->uploaded ? '<i class="icon-ok"></i>':''}}</td>
 			<td>{{$version->autoref ? '<i class="icon-ok"></i>':''}}</td>
 			<td>{{ HTML::link_to_action("maps@edit_version", "Edit", array($map->id, $version->id)) }}</td>
-			<td><a href="#delete">Delete</a></td>
+			<td>{{ HTML::link_to_action("maps@delete_version", "Delete", array($map->id, $version->id)) }}</td>
 		</tr>
 		@empty
 		<tr>

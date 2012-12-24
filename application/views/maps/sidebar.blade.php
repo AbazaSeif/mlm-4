@@ -20,11 +20,6 @@
 	<span>{{ array_get($maptypes, $map->maptype) }}</span>
 	@endif
 
-	<div class="titlebar margin"><h4>Version</h4></div>
-	<?php /* @if($map->version)
-	<span>{{ e($map->version) }}</span>
-	@endif */ ?>
-
 	<div class="titlebar margin"><h4>Minecraft Version</h4></div>
 	@if($map->mcversion)
 	<span>{{ e($map->mcversion) }}</span>
@@ -40,7 +35,29 @@
 	<span>{{ $map->teamsize }}</span>
 	@endif
 
-	<div class="titlebar margin"><h4>Downloads</h4></div>
+	@if($version && $version->uploaded)
+		<div class="big-green-download-box">
+			<a href="{{ "/maps/get/".$map->id."/".$version->id }}" class="download-capture clearfix">
+				<div class="clearfix">
+					<i class="icon-arrow-down arrow-pointing-down"></i>
+					<div class="big-downlaod-text">Download Now</div>
+					<div class="muted">.zip - wget friendly :)</div>
+				</div>
+				@if($version->autoref)
+				<span class="label label-success"><i class="icon-ok"></i> autoreferee.yml</span>
+				@endif
+			</a>
+			<?php /* In the future when this can be done
+			<div class="otherway">
+				Or load it on your autoreferee server:
+				<input type="text" value="{{ "/autoref load whatever-it-will-be-in-the-future" }}" class="transparent" />
+			</div>
+			*/ ?>
+		</div>
+	@endif
+
+
+	<div class="titlebar margin"><h4>Links</h4></div>
 	<?php $i = 1; ?>
 	@foreach($map->links as $link)
  	<span class="inline">{{ HTML::link($link->url, "Link ".$i, array("class" => "btn btn-success", "target" => "_blank")) }}</span>
