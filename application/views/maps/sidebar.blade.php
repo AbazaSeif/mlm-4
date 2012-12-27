@@ -58,10 +58,8 @@
 
 
 	<div class="titlebar margin"><h4>Links</h4></div>
-	<?php $i = 1; ?>
 	@foreach($map->links as $link)
- 	<span class="inline">{{ HTML::link($link->url, "Link ".$i, array("class" => "btn btn-success", "target" => "_blank")) }}</span>
-	<?php $i++; ?>
+ 		<span>{{ HTML::image($link->favicon, "favicon", array("width" => "12"))." ".HTML::link($link->url, $link->title, array("target" => "_blank")) }}</span>
  	@endforeach
  	<br/>
  	<span><a href="#" rel="popover" data-html="true"

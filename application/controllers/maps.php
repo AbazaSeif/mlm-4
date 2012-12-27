@@ -202,6 +202,27 @@ class Maps_Controller extends Base_Controller {
 			"social" => $social
 		));
 	}
+	/* Map downloading */
+	public function get_get($mapid, $versionid = null) {
+		$map = Map::find($mapid);
+		if(!$map) {
+			return Response::error('404');
+		}
+		// Don't bother checking for published
+		if($versionid) {
+			$version = $map->versions()->where_id($versionid)->first();
+			if(!$version) {
+				return Response::error("404");
+			}
+		} else {
+			$version = $map->version;
+		}
+
+		// MAYBE-TODO: Maybe stats of downloads?
+
+		return Response::download(path("storage")."maps/".$map->id."_".$version->id.".zip", $map->slug."-".$version->version_slug.".zip");
+	}
+
 	public function post_rate($id) {
 		$map = Map::find($id);
 		if(!$map) {
@@ -693,15 +714,13 @@ EOT;
 		}
 
 		$validation_rules = array(
-			"url" => "required|url",
-			"type" => "required|in:rar,zip,7z",
-			"direct" => "in:0,1"
+			"title" => "required|between:3,128",
+			"url" => "required|url"
 		);
 		$validation = Validator::make(Input::all(), $validation_rules);
 		if($validation->passes()) {
+			$link->title = Input::get("title");
 			$link->url = Input::get("url");
-			$link->type = Input::get("type");
-			$link->direct = Input::get("direct");
 			if(!$link->exists) {
 				$map->links()->insert($link);
 			} else {

@@ -32,7 +32,9 @@
 									<b>{{ $author->username }}</b>,
 									@endforeach
 								</span>
-								<?php /* <span>Version <b>{{e($map->version)}}</b>,</span> */ ?>
+								@if($map->version)
+									<span>Version <b>{{e($map->version->version)}}</b>,</span>
+								@endif
 								@unless($map->published)
 								<p><strong>This map isn't yet published</strong></p>
 								@endunless

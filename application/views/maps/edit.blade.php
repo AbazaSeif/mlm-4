@@ -83,14 +83,13 @@
 	{{ Form::actions(Form::submit("Add", array("class" => "btn-primary"))) }}
 {{ Form::close() }}
 <div class="titlebar">
-	<h3>Download Links</h3>
+	<h3>External Links</h3>
 </div>
 <a href="{{ URL::to_action("maps@edit_link",  array($map->id)) }}" class="btn btn-mini" style="margin-bottom:10px"><i class="icon-plus"></i> Add Link</a>
 	<table class="table">
 		<thead>
 			<tr>
 				<th>URL</th>
-				<th>Direct?</th>
 				<th>Actions</th>
 				<th>&nbsp;</th>
 			</tr>
@@ -98,14 +97,13 @@
 		<tbody>
 			@forelse($map->links as $link)
 				<tr>
-					<td>{{ HTML::image($link->favicon, "favicon", array("width" => "12"))." ".HTML::link($link->url, $link->url) }}</td>
-					<td>{{ $link->direct ? '<i class="icon-ok"></i>' : "" }}</td>
+					<td>{{ HTML::image($link->favicon, "favicon", array("width" => "12"))." ".HTML::link($link->url, $link->title) }}</td>
 					<td>{{ HTML::link_to_action("maps@edit_link", "Edit", array($map->id, $link->id)) }}</td>
 					<td>{{ HTML::link_to_action("maps@delete_link", "Delete", array($map->id, $link->id)) }}</td>
 				</tr>
 			@empty
 				<tr>
-					<td colspan="4">No links found!</td>
+					<td colspan="3">No links found!</td>
 				</tr>
 			@endforelse
 		</tbody>
