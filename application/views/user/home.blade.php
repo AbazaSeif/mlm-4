@@ -19,7 +19,7 @@
 	</div>
 	<div class="stats">
 		<ul>
-			<li><a href="#user-comments" data-toggle="tab"><span>{{ $user->comment_count }}</span>Comments</a></li>
+			<li class="active"><a href="#user-comments" data-toggle="tab"><span>{{ $user->comment_count }}</span>Comments</a></li>
 			<?php $uid = $user->id ?>
 			<li><a href="#user-maps" data-toggle="tab"><span>{{ DB::table("map_user")->where_user_id($uid)->count(); }}</span>Maps</a></li>
 		</ul>

@@ -54,7 +54,7 @@
 	</div>
 	<div class="stats">
 		<ul>
-			<li><a href="#team-wins" data-toggle="tab"><span>888</span>Wins</a></li>
+			<li class="active"><a href="#team-wins" data-toggle="tab"><span>888</span>Wins</a></li>
 			<li><a href="#team-loses" data-toggle="tab"><span>000</span>Loses</a></li>
 			<li><a href="#team-members" data-toggle="tab"><span>{{ count($team->users) }}</span>Members</a></li>
 		</ul>
