@@ -110,7 +110,9 @@
 									<b>{{ $author->username }}</b>,
 									@endforeach
 								</span>
-								<?php /* <span>Version <b>{{e($map->version)}}</b>,</span> */ ?>
+								@if($map->version)
+								<span>Version <b>{{e($map->version->version)}}</b>,</span>
+								@endif
 								<span>Type: <b>{{ array_get(Config::get("maps.types"), $map->maptype) }}</b></span>
 							</div>
 						</div>
