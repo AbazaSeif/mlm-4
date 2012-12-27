@@ -20,8 +20,7 @@
 	<div class="stats">
 		<ul>
 			<li class="active"><a href="#user-comments" data-toggle="tab"><span>{{ $user->comment_count }}</span>Comments</a></li>
-			<?php $uid = $user->id ?>
-			<li><a href="#user-maps" data-toggle="tab"><span>{{ DB::table("map_user")->where_user_id($uid)->count(); }}</span>Maps</a></li>
+			<li><a href="#user-maps" data-toggle="tab"><span>{{ count($user->maps) }}</span>Maps</a></li>
 		</ul>
 	</div>
 	<div class="abotalit">
@@ -147,7 +146,7 @@
 		</div>
 	<div class="stats">
 		<ul>
-			<li><a href="{{ URL::to_action("teams@view", array($team->id)) }}#members"><span>{{ count($team->users) }}</span>Members</a></li>
+			<li><a href="{{ URL::to_action("teams@view", array($team->id)) }}#members"><span>{{ $team->users()->count() }}</span>Members</a></li>
 			<li><a href="#" title="Coming Soon"><span>0</span>Wins</a></li>
 			<li><a href="#" title="Coming Soon"><span>0</span>Loses</a></li>
 		</ul>
@@ -176,7 +175,7 @@
 		</li>
 		@endif
 		@forelse ($user->groups as $group)
-		@if($group->is_invited($user) === 1 || $ownpage == true)
+		@if($group->pivot->invited == 1 || $ownpage == true)
 		<li class="xpadding" style="margin:0;padding-top:0;"><a href="#" rel="popover" data-html="true"
 			data-content='
 			{{ e($group->description) }} <hr><button type="button" class="btn btn-link left-align" data-toggle="collapse" data-target="#members-{{$group->id}}">
@@ -190,34 +189,37 @@
 			</ul>
 			</div>
 			@if(Auth::check())
-			<hr>
-			{{ Form::open("user/group", "POST", array("class" => "center")) }}
-			{{ Form::token() }}
-			{{ Form::hidden("id", $group->id) }}
-			@if($group->is_invited(Auth::user()) === 1)
-				<button class="btn btn-danger btn-small" name="action" value="leave" type="submit">Leave Group</button>
-				@if($group->is_owner(Auth::user()) === 1)
-				<a href="/groups/edit/{{ $group->id }}" class="btn btn-warning btn-small">Edit Group</a>
-				@elseif($group->is_owner(Auth::user()) === 0)
-				<button class="btn btn-success btn-small" name="action" value="acceptowner" type="submit">Accept Ownership Request</button>
+				<hr>
+				{{ Form::open("user/group", "POST", array("class" => "center")) }}
+				{{ Form::token() }}
+				{{ Form::hidden("id", $group->id) }}
+				<?php $auth_user_group = $group->users()->where_user_id(Auth::user()->id)->first(); ?>
+				@if($auth_user_group)
+					@if($auth_user_group->pivot->invited)
+						<button class="btn btn-danger btn-small" name="action" value="leave" type="submit">Leave Group</button>
+						@if($auth_user_group->pivot->owner == 1)
+						<a href="/groups/edit/{{ $group->id }}" class="btn btn-warning btn-small">Edit Group</a>
+						@elseif($auth_user_group->pivot->owner === 0)
+						<button class="btn btn-success btn-small" name="action" value="acceptowner" type="submit">Accept Ownership Request</button>
+						@endif
+					@else
+					<button class="btn btn-success btn-small" name="action" value="acceptjoin" type="submit">Accept Join Request</button>
+					@endif
+				@elseif ($group->open == true)
+					<button class="btn btn-success btn-small" name="action" value="join" type="submit">Join Group</button>
+				@else
+					<b>Group not joinable</b>
 				@endif
-			@elseif ($group->is_invited(Auth::user()) === false && $group->open == true)
-				<button class="btn btn-success btn-small" name="action" value="join" type="submit">Join Group</button>
-			@elseif ($group->is_invited(Auth::user()) === 0)
-				<button class="btn btn-success btn-small" name="action" value="acceptjoin" type="submit">Accept Join Request</button>
-			@else
-				<b>Group not joinable</b>
-			@endif
 				{{ Form::close() }}
 			@endif
 			' data-original-title='{{ $group->name }}'>
 			@if($ownpage)
-			@if($group->is_owner($user) === 0 || $group->is_owner($user) === 1)
+			@if($group->pivot->owner === 0 || $group->pivot->owner === 1)
 				<b><i class="icon-ok" title="You own this group"></i> {{ $group->name }}</b>
-			@elseif ($group->is_invited($user) === 0)
+			@elseif ($group->pivot->invited === 0)
 				<b><i class="icon-exclamation-sign" title="You have been invited to this group"></i> {{ $group->name }}</b>
 			@else
-				<b><i class="icon-group" title="You're a member of this group"> {{ $group->name }}</b>
+				<b><i class="icon-group" title="You're a member of this group"></i> {{ $group->name }}</b>
 			@endif
 			@else
 				<b><i class="icon-group"></i> {{ $group->name }}</b>

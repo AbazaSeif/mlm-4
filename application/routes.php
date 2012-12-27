@@ -58,7 +58,7 @@ Route::get("user/(:any?)", function($username = null) {
 		}
 	}
 
-	$userobj = User::where_username($username)->first();
+	$userobj = User::with(array("comments", "comments.news", "comments.map", "maps", "maps.users", "maps.version", "groups", "groups.users"))->where_username($username)->first();
 	if(!$userobj) {
 		return Response::error("404");
 	}
