@@ -72,7 +72,7 @@
 					<li><a href="#"><i class="icon-trophy bronze"></i></a></li>
 					<li><a href="#"><i class="icon-trophy"></i></a></li>
 					<li><a href="#"><i class="icon-trophy"></i></a></li>
-					<li><a href="#"><i class="icon-trophy"></i></a></li>					
+					<li><a href="#"><i class="icon-trophy"></i></a></li>
 				</ul>
 			</div>
 			<div class="titlebar center"><h3>Matches won</h3></div>
@@ -130,6 +130,6 @@
 	@if (Auth::check() && $has_applied == false && $is_invited === false)
 	<a href="{{ URL::to_action("teams@apply", array($team->id)) }}" class="btn btn-success" style="margin-bottom:15px"><i class="icon-minus"></i> Apply to join Team</a>
 	@endif
-</div>
 */ ?>
+</div>
 @endsection
