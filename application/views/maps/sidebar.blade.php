@@ -1,24 +1,4 @@
-@if ($sidebar == "edit") 
-<div id="sidebar" class="smaller">
-	<div class="widget">
-	<header><h1>Map Guidelines</h1></header>
-	<div class="content">
-	<ol>
-		<li>Everything has to be filled, only completed maps will be approved</li>
-		<li>If you did not make the map, do not submit it. Tell the map maker that you would like to see his/her map on the site.</li>
-		<li>Submitting a map more than once could get you banned.</li>
-		<li>Be clear in the title and description of your map.</li>
-		<li>Title should only have the map's name</li>
-		<li>Description should also explain features</li>
-		<li>Derrogatory terms and swear words are not allowed under any circumstance.</li>
-		<li>Map version is the version of the map, not the version of the game</li>
-		<li>Maximum image dimensions is 1920x1080px and maximum size is 1000k(1mb). Minimum upload dimension is 446x240px. Images are scaled down/up to 1280x720p, 704x480p and 446x240p. Ideal image dimention is any image in the 16:9 format.</li>
-		<li>The Minecraft Version for the map should be the latest version of Minecraft that the map was tested on and fully worked.</li>
-	</ol>
-	</div>
-	</div>
-</div>
-@elseif ($sidebar == "view")
+@if ($sidebar == "view")
 <div id="sidebar">
 	<div class="titlebar">
 		<h3>Map Details</h3>
@@ -40,11 +20,6 @@
 	<span>{{ array_get($maptypes, $map->maptype) }}</span>
 	@endif
 
-	<div class="titlebar margin"><h4>Version</h4></div>
-	@if($map->version)
-	<span>{{ e($map->version) }}</span>
-	@endif
-
 	<div class="titlebar margin"><h4>Minecraft Version</h4></div>
 	@if($map->mcversion)
 	<span>{{ e($map->mcversion) }}</span>
@@ -60,11 +35,31 @@
 	<span>{{ $map->teamsize }}</span>
 	@endif
 
-	<div class="titlebar margin"><h4>Downloads</h4></div>
-	<?php $i = 1; ?>
+	@if($version && $version->uploaded)
+		<div class="big-green-download-box">
+			<a href="{{ "/maps/get/".$map->id."/".$version->id }}" class="download-capture clearfix">
+				<div class="clearfix">
+					<i class="icon-arrow-down arrow-pointing-down"></i>
+					<div class="big-downlaod-text">Download Now</div>
+					<div class="muted">.zip - Direct Download</div>
+				</div>
+				@if($version->autoref)
+				<span class="label label-success"><i class="icon-ok"></i> autoreferee.yml</span>
+				@endif
+			</a>
+			<?php /* In the future when this can be done
+			<div class="otherway">
+				Or load it on your autoreferee server:
+				<input type="text" value="{{ "/autoref load whatever-it-will-be-in-the-future" }}" class="transparent" />
+			</div>
+			*/ ?>
+		</div>
+	@endif
+
+
+	<div class="titlebar margin"><h4>Links</h4></div>
 	@foreach($map->links as $link)
- 	<span class="inline">{{ HTML::link($link->url, "Link ".$i, array("class" => "btn btn-success", "target" => "_blank")) }}</span>
-	<?php $i++; ?>
+ 		<span>{{ HTML::image($link->favicon, "favicon", array("width" => "12"))." ".HTML::link($link->url, $link->title, array("target" => "_blank")) }}</span>
  	@endforeach
 </div>
 @else

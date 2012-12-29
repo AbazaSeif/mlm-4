@@ -6,12 +6,12 @@ class Maps_Controller extends Base_Controller {
 	public function __construct() {
 		parent::__construct();
 
-		$this->filter("before", "auth")->only(array("new", "edit", "rate", "comment", "edit_meta", "add_author", "author_invite", "edit_link", "delete_link", "upload_image", "default_image", "delete_image"));
-		$this->filter("before", "csrf")->on("post")->only(array("new", "rate", "comment", "edit_meta", "add_author", "author_invite", "edit_link", "delete_link", "upload_image", "default_image", "delete_image"));
+		$this->filter("before", "auth")->only(array("new", "edit", "rate", "comment", "edit_meta", "add_author", "author_invite", "edit_version", "edit_link", "delete_link", "upload_image", "default_image", "delete_image"));
+		$this->filter("before", "csrf")->on("post")->only(array("new", "rate", "comment", "edit_meta", "add_author", "author_invite", "edit_version", "edit_link", "delete_link", "upload_image", "default_image", "delete_image"));
 	}
 
 	public function get_index() {
-		$maps = Map::with(array("users", "image"))->order_by("created_at", "desc")->where_published(1)->paginate(12);
+		$maps = Map::with(array("users", "image", "version"))->order_by("created_at", "desc")->where_published(1)->paginate(12);
 		return View::make("maps.home", array("title" => "Maps", "javascript" => array("maps", "list"), "maps" => $maps, "menu" => "multiview"));
 	}
 	public function get_filter() {
@@ -24,13 +24,14 @@ class Maps_Controller extends Base_Controller {
 		$limit = intval(Input::get('limit', null)) ?: 12;
 
 		//start to make $query
-		$query = Map::with(array("users", "image"));
+		$eager_relations = array("users", "image", "version");
+		$query = Map::with($eager_relations);
 
 		// own maps
 		if($own && Auth::user()) {
 			$query = Auth::user()->maps()->where("confirmed", "=", 1)->with("confirmed");
 			// Prefetch for relational queries
-			$query->model->_with(array("users", "image"));
+			$query->model->_with($eager_relations);
 		} else {
 			// Only allow seeing published maps
 			$query = $query->where_published(1);
@@ -150,7 +151,7 @@ class Maps_Controller extends Base_Controller {
 			return Redirect::to_action("maps@new")->with_input()->with_errors($validation);
 		}
 	}
-	public function get_view($id, $slug = null) {
+	public function get_view($id, $slug = null, $versionslug = null) {
 		$map = Map::with(array("comments", "comments.user", "images"))->find($id); // Don't really have to care about the slug
 		if(!$map) {
 			return Response::error('404');
@@ -173,6 +174,16 @@ class Maps_Controller extends Base_Controller {
 		if(!$map->published && Auth::check() && Auth::user()->admin) {
 			$modqueue = Modqueue::where_itemtype('map')->where_itemid($map->id)->first();
 		}
+
+		if($versionslug) {
+			$version = $map->versions()->where_version_slug($versionslug)->first();
+			if(!$version) {
+				return Redirect::to_action("maps@view", array($id, $map->slug));
+			}
+		} else {
+			$version = $map->version;
+		}
+
 		$authors = $map->users()->where("confirmed", "=", 1)->with("confirmed")->get();
 		$social = array(
 			"title" => $map->title, "type" => "article", "url" => action("maps@view", array($map->id, $map->slug)), "description" => $map->summary
@@ -188,10 +199,31 @@ class Maps_Controller extends Base_Controller {
 
 		return View::make("maps.view", array(
 			"title" => e($map->title)." | Maps", "map" => $map, "authors" => $authors, "is_owner" => $is_owner, "rating" => $rating,
-			"modqueue" => $modqueue, "javascript" => array("maps", "view"), "sidebar" => "view", "menu" => "map",
+			"modqueue" => $modqueue, "javascript" => array("maps", "view"), "sidebar" => "view", "menu" => "map", "version" => $version,
 			"social" => $social
 		));
 	}
+	/* Map downloading */
+	public function get_get($mapid, $versionid = null) {
+		$map = Map::find($mapid);
+		if(!$map) {
+			return Response::error('404');
+		}
+		// Don't bother checking for published
+		if($versionid) {
+			$version = $map->versions()->where_id($versionid)->first();
+			if(!$version) {
+				return Response::error("404");
+			}
+		} else {
+			$version = $map->version;
+		}
+
+		// MAYBE-TODO: Maybe stats of downloads?
+
+		return Response::download(path("storage")."maps/".$map->id."_".$version->id.".zip", $map->slug."-".$version->version_slug.".zip");
+	}
+
 	public function post_rate($id) {
 		$map = Map::find($id);
 		if(!$map) {
@@ -376,6 +408,207 @@ EOT;
 			return Redirect::to("maps");
 		}
 	}
+	/* Editing versions */
+	public function get_edit_version($id, $versionid = null) {
+		$map = Map::find($id);
+		if(!$map) {
+			return Response::error("404");
+		}
+		$is_owner = $map->is_owner(Auth::user());
+		if(!$is_owner) { // User is confirmed to be logged in
+			return Response::error("404");
+		}
+
+		if($versionid) {
+			$version = $map->versions()->where_id($versionid)->first();
+			if(!$version) {
+				return Response::error("404");
+			}
+		} else {
+			$version = new Map_Version();
+		}
+
+		return View::make("maps.edit_version", array(
+			"title" => ($version->exists ? "Edit" : "New")." version | ". e($map->title)." | Maps", "map" => $map, "is_owner" => $is_owner,
+			"version" => $version, "menu" => "mapedit"
+		));
+	}
+	public function post_edit_version($id, $versionid = null) {
+		$map = Map::find($id);
+		if(!$map) {
+			return Response::error("404");
+		}
+		$is_owner = $map->is_owner(Auth::user());
+		if(!$is_owner) { // User is confirmed to be logged in
+			return Response::error("404");
+		}
+
+		if($versionid) {
+			$version = $map->versions()->where_id($versionid)->first();
+			if(!$version) {
+				return Response::error("404");
+			}
+		} else {
+			$version = new Map_Version();
+		}
+
+		$validation_rules = array(
+			"version" => "required|max:64",
+			"changelog" => "required",
+			"mapfile" => "mimes:zip|max:15360"
+		);
+		$validation = Validator::make(Input::all(), $validation_rules);
+		$validation->passes(); // Dump messages
+
+		// Checking the zip for proper map
+		$mapinfo = false;
+		$mapfile = Input::file("mapfile");
+		if($mapfile["tmp_name"]) {
+			$zip_check = new ZipArchive();
+			// 1. Make sure it's a zip alright
+			$map_input = Input::file("mapfile");
+			if(($zip_err = $zip_check->open($map_input["tmp_name"])) !== TRUE) {
+				if($zip_err == ZIPARCHIVE::ER_NOZIP) {
+					$validation->errors->add("mapfile", "Uploaded file is not a zip");
+				} else {
+					$validation->errors->add("mapfile", "System error when checking zip for errors");
+					Log::error("Error when parsing uploaded zip - Map id ".$map->id." - error code ".$zip_err);
+				}
+			} else {
+				$parse_messages = new Laravel\Messages(); // error for things that just can't deal with, info for stuff that would be nice to be fixed
+
+				$guessed_root = false;
+				$missing = array("region", "level.dat");
+				$autoref = false;
+				for ($i=0; $i < $zip_check->numFiles; $i++) {
+					$zipped_file = $zip_check->statIndex($i);
+					$filename_parts = explode("/", $zipped_file["name"]);
+
+					if($guessed_root == false) { // Ideally should be right from first entry
+						$guessed_root = $filename_parts[0];
+						if(strtolower($guessed_root) == "world") {
+							$parse_messages->add("info", "Map folder is called \"world\", you should give it a more aproptiate title");
+						}
+					} else {
+						if($filename_parts[0] != $guessed_root) {
+							$parse_messages->add("error", "Files found outside map folder!");
+						}
+					}
+
+					if(isset($filename_parts[1]) and $filename_parts[1] == "region") {
+						$missing = array_diff($missing, array("region"));
+					}
+					if(isset($filename_parts[1]) and $filename_parts[1] == "level.dat") {
+						$missing = array_diff($missing, array("level.dat"));
+					}
+					if(isset($filename_parts[1]) and $filename_parts[1] == "autoreferee.yml") {
+						$autoref = true;
+					}
+					if(isset($filename_parts[2]) and $filename_parts[1] == "players" and strlen($filename_parts[2])) {
+						$parse_messages->add("info", "Found non-empty players folder, you should either delete the folder or delete it's contents.");
+					}
+					if(isset($filename_parts[2]) and $filename_parts[1] == "region" and ends_with($filename_parts[2], ".mcr")) {
+						$parse_messages->add("info", "Found region files in old format (pre-anvil). If the map is targeted for Minecraft 1.2 and later, you should delete it.");
+					}
+				}
+				if(count($missing) > 0) {
+					$parse_messages->add("error", "Missing following files/folders: ".implode(", ", $missing));
+				}
+				if(!$autoref) {
+					$parse_messages->add("info", "No autoreferee configuration file detected. You should think about making one if it's possible.");
+				}
+				if($parse_messages->has("error")) {
+					$validation->errors->add("mapfile", "Broken map file uploaded: <ul>".implode($parse_messages->get("error", "<li>:message</li>"))."</ul>");
+					Messages::add("error", "While checking your map, the following errors occurred:<ul>".implode($parse_messages->get("error", "<li>:message</li>"))."</ul>");
+				}
+				if($parse_messages->has("info")) {
+					Messages::add("info", "While checking your map, we noticed:<ul>".implode($parse_messages->get("info", "<li>:message</li>"))."</ul>While these won't break your map, it would be awesome if you'd fix them. Check <a href=\"http://majorleaguemining.net/mapmakerchecklist\" target=\"_blank\">The Mapmaker's checklist</a> for more info.");
+				}
+				$mapinfo = array("uploaded" => true, "autoref" => $autoref);
+			}
+		}
+
+		if(count($validation->errors->messages) == 0) {
+			$version->version = Input::get("version");
+			$version->changelog = Input::get("changelog");
+			if(!$version->exists) {
+				$map->versions()->insert($version);
+				// Mark it as latest version by default
+				$map->version_id = $version->id;
+				$map->save();
+			} else {
+				$version->save();
+			}
+			// Upload?
+			if($mapinfo) {
+				Input::upload("mapfile", path("storage")."maps", $map->id."_".$version->id.".zip");
+				$version->uploaded = $mapinfo["uploaded"];
+				$version->autoref = $mapinfo["autoref"];
+				$version->save();
+			}
+			Messages::add("success", "Version saved!");
+			return Redirect::to_action("maps@edit", array($id));
+		} else {
+			if($versionid) {
+				$redirect = Redirect::to_action("maps@edit_version", array($id, $versionid));
+			} else {
+				$redirect = Redirect::to_action("maps@edit_version", array($id));
+			}
+			return $redirect->with_input()->with_errors($validation);
+		}
+	}
+
+	// Deleting versions
+	public function get_delete_version($id, $versionid) {
+		$map = Map::find($id);
+		if(!$map) {
+			return Response::error('404');
+		}
+		$is_owner = $map->is_owner(Auth::user());
+		if(!$is_owner) { // User is confirmed to be logged in
+			return Response::error("403"); // Not yet published
+		}
+		$version = $map->versions()->where_id($versionid)->first();
+		if(!$version) {
+			return Response::error("404");
+		}
+
+		return View::make("maps.delete_version", array("title" => "Delete version | ".e($map->title)." | Maps", "map" => $map,  "is_owner" => $is_owner, "version" => $version, "menu" => "mapedit"));
+	}
+	public function post_delete_version($id, $versionid) {
+		$map = Map::find($id);
+		if(!$map) {
+			return Response::error('404');
+		}
+		if(!$map->is_owner(Auth::user())) { // User is confirmed to be logged in
+			return Response::error("403"); // Not yet published
+		}
+		$version = $map->versions()->where_id($versionid)->first();
+		if(!$version) {
+			return Response::error("404");
+		}
+
+		if($version->delete()) {
+			$filepath = path("storage")."maps/".$map->id."_".$version->id.".zip";
+			if(File::exists($filepath)) {
+				File::delete($filepath);
+			}
+			if($map->version_id == $version->id) {
+				$freshest = $map->versions()->first();
+				if($freshest) {
+					$map->version_id = $freshest->id;
+				} else {
+					$map->version_id = null;
+				}
+				$map->save();
+			}
+			Messages::add("success", "Version deleted!");
+		} else {
+			Messages::add("error", "Failed to delete the version!");
+		}
+		return Redirect::to_action("maps@edit", array($id));
+	}
+
 	/* Editing links */
 	public function get_edit_link($id, $linkid = null) {
 		$map = Map::find($id);
@@ -397,7 +630,8 @@ EOT;
 		}
 
 		return View::make("maps.edit_link", array(
-			"title" => "Add link | ".e($map->title)." | Maps", "map" => $map, "is_owner" => $is_owner, "link" => $link, "menu" => "mapedit"
+			"title" => ($link->exists ? "Edit" : "Add")." link | ".e($map->title)." | Maps", "map" => $map, "is_owner" => $is_owner,
+			"link" => $link, "menu" => "mapedit"
 		));
 	}
 	public function post_edit_link($id, $linkid = null) {
@@ -418,15 +652,13 @@ EOT;
 		}
 
 		$validation_rules = array(
-			"url" => "required|url",
-			"type" => "required|in:rar,zip,7z",
-			"direct" => "in:0,1"
+			"title" => "required|between:3,128",
+			"url" => "required|url"
 		);
 		$validation = Validator::make(Input::all(), $validation_rules);
 		if($validation->passes()) {
+			$link->title = Input::get("title");
 			$link->url = Input::get("url");
-			$link->type = Input::get("type");
-			$link->direct = Input::get("direct");
 			if(!$link->exists) {
 				$map->links()->insert($link);
 			} else {

@@ -6,14 +6,12 @@
 <div class="titlebar">
 	<h2>Editing map <b>{{ e($map->title) }}</b></h2>
 </div>
-<div id="page" class="bigger">
 	{{ Form::open("maps/edit_meta/".$map->id, "POST", array("class" => "form")) }}
 			{{ Form::token()}}
 			{{ Form::field("text", "title", "Map name", array( Input::old("title", $map->title), array('class' => 'title', 'autocomplete' => 'off') ),  array( 'error' => $errors->first('title'), "help" => "Title should only have the map's name") ) }}
 			{{ Form::field("textarea", "summary", "Summary", array(Input::old("summary",$map->summary), array("rows" => "15", 'class' => 'summary')), array('error' => $errors->first('summary'), "alt" => "(Explain your map 140 characters. Use correct grammar)")) }}
 			{{ Form::field("wysiwyg-user", "description", "Description", array(Input::old("description", $map->description), array('class' => 'input-xxlarge')), array('error' => $errors->first('description'), "alt" => "(Use correct grammar)")) }}
 			{{ Form::field("select", "maptype", "Map type", array(array_merge(array("" => "--------------"), Config::get("maps.types")), Input::old("maptype",$map->maptype), array('class' => 'input')), array('error' => $errors->first('maptype'))) }}
-			{{ Form::field("text", "version", "Map version", array(Input::old("version",$map->version)), array("error" => $errors->first("version"), "help" => "Map version is the version of the map, not the version of the game. Remember to keep this up-to-date!")) }}
 			{{ Form::field("text", "mcversion", "Minecraft version", array(Input::old("mcversion", $map->mcversion)), array("error" => $errors->first("mcversion"), "help" => "The Minecraft Version for the map should be the latest version of Minecraft that the map was tested on and fully worked.")) }}
 			{{ Form::field("text", "teamcount", "Teams", array(Input::old("teamcount", $map->teamcount)), array("error" => $errors->first("teamcount"), "help" => "How many teams can play the map at once")) }}
 			{{ Form::field("text", "teamsize", "Team Size", array(Input::old("teamsize",$map->teamsize)), array("error" => $errors->first("teamsize"), "help" => "Players per team")) }}
@@ -37,25 +35,61 @@
 	@endforeach
 	</ul>
 	<div class="titlebar"><h4>Invite additional authors <small>(Use MLM username)</small></h4></div>
-	{{ Form::open("maps/add_author/".$map->id, 'POST', array('class' => 'xpadding')) }} 	
-		<fieldset> 
+	{{ Form::open("maps/add_author/".$map->id, 'POST', array('class' => 'xpadding')) }}
+		<fieldset>
 			<div>
 			{{ Form::token() }}
-			{{ Form::text("username") }} 
+			{{ Form::text("username") }}
 			{{ Form::submit("Invite", array("class" => "btn btn-primary")) }}
 			</div>
 		</fieldset>
 	{{ Form::close() }}
-
 <div class="titlebar">
-	<h3>Download Links</h3>
+	<h3>Versions &amp; Downloads</h3>
+</div>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Version</th>
+			<th>Download</th>
+			<th>autoreferee.yml</th>
+			<th colspan="2">Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		@forelse($map->versions as $version)
+		<tr>
+			<td>{{e($version->version)}}</td>
+			<td>{{$version->uploaded ? '<i class="icon-ok"></i>':''}}</td>
+			<td>{{$version->autoref ? '<i class="icon-ok"></i>':''}}</td>
+			<td>{{ HTML::link_to_action("maps@edit_version", "Edit", array($map->id, $version->id)) }}</td>
+			<td>{{ HTML::link_to_action("maps@delete_version", "Delete", array($map->id, $version->id)) }}</td>
+		</tr>
+		@empty
+		<tr>
+			<th colspan="5">
+				No versions found!
+			</th>
+		</tr>
+		@endforelse
+	</tbody>
+</table>
+<a href="{{ action("maps@edit_version", array($map->id)) }}" class="btn" data-toggle="collapse" data-target="#new-version-form" onClick="return false;"><i class="icon-plus"></i> Add</a>
+{{ Form::open_for_files("maps/edit_version/".$map->id, "post", array("class" => "form collapse", "id" => "new-version-form")) }}
+	{{ Form::token() }}
+	{{ Form::field("text", "version", "Version") }}
+	{{ Form::field("textarea", "changelog", "Changelog & release notes", array(null, array("class" => "input-xxlarge"))) }}
+	{{ Form::field("file", "mapfile", "Map file (zip)", array(), array("help" => 'Check out <a href="http://majorleaguemining.net/mapmakerchecklist" target="_blank">The Mapmakers Checklist</a> for info on how to properly package your map.<br />Max file size 15MB. If your file is larger, contact us!')) }}
+	{{ Form::actions(Form::submit("Add", array("class" => "btn-primary"))) }}
+{{ Form::close() }}
+<div class="titlebar">
+	<h3>External Links</h3>
 </div>
 <a href="{{ URL::to_action("maps@edit_link",  array($map->id)) }}" class="btn btn-mini" style="margin-bottom:10px"><i class="icon-plus"></i> Add Link</a>
 	<table class="table">
 		<thead>
 			<tr>
 				<th>URL</th>
-				<th>Direct?</th>
 				<th>Actions</th>
 				<th>&nbsp;</th>
 			</tr>
@@ -63,14 +97,13 @@
 		<tbody>
 			@forelse($map->links as $link)
 				<tr>
-					<td>{{ HTML::image($link->favicon, "favicon", array("width" => "12"))." ".HTML::link($link->url, $link->url) }}</td>
-					<td>{{ $link->direct ? "&#10004;" : "" }}</td>
+					<td>{{ HTML::image($link->favicon, "favicon", array("width" => "12"))." ".HTML::link($link->url, $link->title) }}</td>
 					<td>{{ HTML::link_to_action("maps@edit_link", "Edit", array($map->id, $link->id)) }}</td>
 					<td>{{ HTML::link_to_action("maps@delete_link", "Delete", array($map->id, $link->id)) }}</td>
 				</tr>
 			@empty
 				<tr>
-					<td colspan="4">No links found!</td>
+					<td colspan="3">No links found!</td>
 				</tr>
 			@endforelse
 		</tbody>
@@ -113,7 +146,5 @@
 		{{ Form::field("text", "name", "", array(Input::old("name"), array('class' => 'input-large')), array("help-inline" => "Image name", 'error' => $errors->first('name'))) }}
 		{{ Form::submit("Upload", array("class" => "btn-primary")) }}
 	{{ Form::close() }}
-</div>
-@include("maps.sidebar")
 </div>
 @endsection

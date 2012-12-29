@@ -22,13 +22,19 @@ class Map extends Eloquent {
 	public function comments() {
 		return $this->has_many("Comment");
 	}
+	public function versions() {
+		return $this->has_many("Map_Version")->order_by("id", "desc");
+	}
+	public function version() { // Latest version
+		return $this->belongs_to("Map_Version");
+	}
 	public function matches() {
 		return $this->has_many("Match");
 	}
 
 	/*
 	 * Checks if a user is the owner of the map
-	 * 
+	 *
 	 * Returns: false if isn't
 	 *          0 if invited
 	 *          1 if confirmed

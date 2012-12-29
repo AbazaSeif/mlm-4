@@ -40,6 +40,7 @@ Route::get('/', "maps@index");
 Route::get("login", "account@login");
 Route::get("news/(:num)-(:any)", "news@view");
 Route::get("map/(:num)-(:any)", "maps@view");
+Route::get("map/(:num)-(:any)/(:any)", "maps@view"); // Map version
 
 // Public routes
 Route::controller(array("account", "imgmgr", "maps", "messages", "news", "faq", "test"));
@@ -54,7 +55,7 @@ Route::get("user/(:any?)", function($username = null) {
 			return Response::error("404");
 		}
 	}
-	
+
 	$userobj = User::where_username($username)->first();
 	if(!$userobj) {
 		return Response::error("404");
