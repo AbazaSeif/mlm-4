@@ -16,8 +16,6 @@
 		{{ Form::field("textarea", "summary", "", array(Input::old("summary", $map->summary), array("rows" => "15", 'class' => 'summary')), array('error' => $errors->first('summary'))) }}
 		<div class="titlebar"><h4>Map type</h4></div>
 		{{ Form::field("select", "maptype", "", array(array_merge(array("" => "--------------"), Config::get("maps.types")), Input::old("maptype", $map->maptype), array('class' => 'input')), array('error' => $errors->first('maptype'))) }}
-		<div class="titlebar"><h4>Map version</h4></div>
-		{{ Form::field("text", "version", "", array(Input::old("version", $map->version)), array("error" => $errors->first("error"))) }}
 		<div class="titlebar"><h4>Minecraft version</h4></div>
 		{{ Form::field("text", "mcversion", "", array(Input::old("mcversion", $map->mcversion)), array("error" => $errors->first("error"))) }}
 		<div class="titlebar"><h4>Teams</h4></div>
