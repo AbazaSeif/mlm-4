@@ -272,6 +272,9 @@ Event::listen("eloquent.created: Message_Message", function($model) {
 Route::filter('before', function()
 {
 	// Do stuff before every request to your application...
+	if(File::exists(path("base")."lock") && !(URI::current() == "login" || URI::current() == "account/login" || URI::current() == "account/callback" || (Auth::check() && Auth::user()->admin))) {
+		return Response::error("503"); // under maintance
+	}
 });
 
 Route::filter('after', function($response)
