@@ -6,6 +6,12 @@
 <div class="titlebar">
 	<h2>Editing map <b>{{ e($map->title) }}</b></h2>
 </div>
+	@if(!$is_owner && Auth::user()->admin)
+		<div class="alert">
+			<h4>Not an owner</h4>
+			<p>Using admin permissions to edit the map</p>
+		</div>
+	@endif
 	{{ Form::open("maps/edit_meta/".$map->id, "POST", array("class" => "form")) }}
 			{{ Form::token()}}
 			{{ Form::field("text", "title", "Map name", array( Input::old("title", $map->title), array('class' => 'title', 'autocomplete' => 'off') ),  array( 'error' => $errors->first('title'), "help" => "Title should only have the map's name") ) }}
@@ -35,12 +41,16 @@
 	@endforeach
 	</ul>
 	<div class="titlebar"><h4>Invite additional authors <small>(Use MLM username)</small></h4></div>
-	{{ Form::open("maps/add_author/".$map->id, 'POST', array('class' => 'xpadding')) }}
+	{{ Form::open("maps/add_author/".$map->id, 'POST', array('class' => 'xpadding form-horizontal')) }}
 		<fieldset>
 			<div>
 			{{ Form::token() }}
-			{{ Form::text("username") }}
+			{{ Form::text("username", Input::old("username")) }}
 			{{ Form::submit("Invite", array("class" => "btn btn-primary")) }}
+			@if(!$is_owner && Auth::user()->admin)
+				<h5>Admin mode</h5>
+				Users invited by admin are automatically marked as accepted the invite.
+			@endif
 			</div>
 		</fieldset>
 	{{ Form::close() }}

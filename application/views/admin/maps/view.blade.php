@@ -24,7 +24,8 @@
 	@elseif ($map->featured == true)
 	{{ Form::submit("Unfeature Map", array("class" => "btn btn-info", "name" => "action", "value" => "unfeature")) }}
 	@endif
-	{{ HTML::link_to_action("admin.maps.edit", "Edit Map", array($map->id), array("class" => "btn")) }}
+	{{ HTML::link_to_action("maps.edit", "Edit Map", array($map->id), array("class" => "btn")) }}
+	{{ HTML::link_to_action("admin.maps.edit", "Edit Map (Old interface)", array($map->id), array("class" => "btn")) }}
 	{{ HTML::link_to_action("admin.maps", "Back", array(), array("class" => "btn")) }}
 	{{ Form::close() }}
 	@if($modqueue == true)

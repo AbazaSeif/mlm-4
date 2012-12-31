@@ -81,7 +81,7 @@
 		@if(Auth::check() && Auth::user()->admin)
 			<li>{{ HTML::link_to_action("admin@maps@view", "Moderate Map", array($map->id)) }}</li>
 		@endif
-		@if($is_owner)
+		@if($is_owner || (Auth::check() && Auth::user()->admin))
 			<li>{{ HTML::link_to_action("maps@edit", "Edit Map", array($map->id)) }}</li>
 		@endif
 		@if ($menu == "mapedit")

@@ -1,7 +1,7 @@
 <?php
 class Admin_Maps_Controller extends Admin_Controller {
 	public $restful = true;
-	
+
 	public function __construct() {
 		parent::__construct();
 		$this->filter("before", "csrf")->on("post")->only(array("edit", "view", "delete"));
@@ -143,7 +143,6 @@ class Admin_Maps_Controller extends Admin_Controller {
 			"description" => "required",
 
 			"maptype" => 'in:'.implode(",", array_keys(Config::get("maps.types"))),
-			"version" => "max:64",
 			"mcversion" => "max:64",
 			"teamcount" => "integer",
 			"teamsize" => "integer"
@@ -155,7 +154,6 @@ class Admin_Maps_Controller extends Admin_Controller {
 			$map->summary     = $input["summary"];
 			$map->description = IoC::resolve('HTMLPurifier')->purify($input["description"]);
 			$map->maptype     = $input["maptype"];
-			$map->version     = $input["version"];
 			$map->mcversion   = $input["mcversion"];
 			$map->teamcount   = $input["teamcount"];
 			$map->teamsize    = $input["teamsize"];

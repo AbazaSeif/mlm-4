@@ -263,7 +263,7 @@ class Maps_Controller extends Base_Controller {
 			return Response::error('404');
 		}
 		if(!$mapitem->published && (Auth::guest() || !Auth::user()->admin)) {
-			return Response::error("404"); // Not yet published
+			return Response::error("403"); // Not yet published
 		}
 
 		$validation_rules = array("comment" => "required");
@@ -357,8 +357,8 @@ class Maps_Controller extends Base_Controller {
 			return Response::error('404');
 		}
 		$is_owner = $map->is_owner(Auth::user()); // User is confirmed to be logged in
-		if(!$is_owner) {
-			return Response::error("404"); // Not owner
+		if(!$is_owner && !Auth::user()->admin) {
+			return Response::error("403"); // Not owner
 		}
 
 		$authors = $map->users()->with("confirmed")->get();
@@ -373,8 +373,8 @@ class Maps_Controller extends Base_Controller {
 		if(!$map) {
 			return Response::error('404');
 		}
-		if(!$map->is_owner(Auth::user())) { // User is confirmed to be logged in
-			return Response::error("404"); // Not owner
+		if(!($is_owner = $map->is_owner(Auth::user())) && !Auth::user()->admin) { // User is confirmed to be logged in
+			return Response::error("403"); // Not owner
 		}
 
 		$validation_rules = array(
@@ -383,7 +383,6 @@ class Maps_Controller extends Base_Controller {
 			"description" => "required",
 
 			"maptype" => 'in:'.implode(",", array_keys(Config::get("maps.types"))),
-			"version" => "max:64",
 			"mcversion" => "max:64",
 			"teamcount" => "integer",
 			"teamsize" => "integer"
@@ -394,13 +393,24 @@ class Maps_Controller extends Base_Controller {
 			$map->summary     = Input::get("summary");
 			$map->description = IoC::resolve('HTMLPurifier')->purify(Input::get("description"));
 			$map->maptype     = Input::get("maptype");
-			$map->version     = Input::get("version");
 			$map->mcversion   = Input::get("mcversion");
 			$map->teamcount   = Input::get("teamcount");
 			$map->teamsize    = Input::get("teamsize");
-			$map->save();
-			Messages::add("success", "Map updated!");
-			return Redirect::to_action("maps@edit", array($map->id));
+			if($is_owner) {
+				$saved = $map->save();
+			} else {
+				$changed = array_keys($map->get_dirty());
+				if($saved = $map->save()) {
+					Event::fire("admin", array("maps", "edit", $map->id, $changed));
+				}
+			}
+			if($saved) {
+				Messages::add("success", "Map updated!");
+				return Redirect::to_action("maps@edit", array($map->id));
+			} else {
+				Messages::added("error", "Error while saving, try again later?");
+				return Redirect::to_action("maps@edit", array($map->id));
+			}
 		} else {
 			Messages::add("error", "Hold on! you forgot something!");
 			return Redirect::to_action("maps@edit", array($map->id))->with_input()->with_errors($validation);
@@ -412,8 +422,8 @@ class Maps_Controller extends Base_Controller {
 		if(!$map) {
 			return Response::error('404');
 		}
-		if(!$map->is_owner(Auth::user())) { // User is confirmed to be logged in
-			return Response::error("404");
+		if(!($is_owner = $map->is_owner(Auth::user())) && !Auth::user()->admin) { // User is confirmed to be logged in
+			return Response::error("403");
 		}
 		// Custom validation, since gonna need the user object anyway
 		if(strlen(Input::get("username")) == 0) {
@@ -432,17 +442,30 @@ class Maps_Controller extends Base_Controller {
 			return Redirect::to_action("maps@edit", array($map->id))->with_input();
 		}
 		// All good now, create the invite
-		$map->users()->attach($user->id, array("confirmed" => 0));
-		$mapurl = URL::to_action("maps@view", array($map->id, $map->slug));
-		$currentuser = Auth::user();
-		$message = <<<EOT
+		if(!$is_owner) { // Admin mode - Autoaccept
+			$map->users()->attach($user->id, array("confirmed" => true));
+			// Remove this user's rating, since authors can't rate their own maps
+			$ratingObj = $map->ratings()->where_user_id(Auth::user()->id)->first();
+			if($ratingObj) {
+				$ratingObj->delete();
+				$map->update_avg_rating();
+			}
+			Event::fire("admin", array("map_users", "add", $map->id, $user->username));
+			Messages::add("success", "{$user->username} has been added as an author.");
+			return Redirect::to_action("maps@edit", array($map->id));
+		} else {
+			$map->users()->attach($user->id, array("confirmed" => false));
+			$mapurl = URL::to_action("maps@view", array($map->id, $map->slug));
+			$currentuser = Auth::user();
+			$message = <<<EOT
 You have been invited to be listed as an author of **{$map->title}** by {$currentuser->username}.
 
 You can accept or deny this invite from [the map page]({$mapurl}).
 EOT;
-		$user->send_message("You have been invited to be an author on map {$map->title}", $message);
-		Messages::add("success", "{$user->username} has been invited to be an author of this map. He/she must accept this invite to be listed as an author.");
-		return Redirect::to_action("maps@edit", array($map->id));
+			$user->send_message("You have been invited to be an author on map {$map->title}", $message);
+			Messages::add("success", "{$user->username} has been invited to be an author of this map. He/she must accept this invite to be listed as an author.");
+			return Redirect::to_action("maps@edit", array($map->id));
+		}
 	}
 	/* Accepting / denying author invite */
 	public function post_author_invite($id) {
@@ -451,7 +474,7 @@ EOT;
 			return Response::error('404');
 		}
 		if($map->is_owner(Auth::user()) !== 0) { // User is invited to be author
-			return Response::error("404");
+			return Response::error("403");
 		}
 
 		if(Input::get("action") == "accept") {
@@ -477,9 +500,9 @@ EOT;
 		if(!$map) {
 			return Response::error("404");
 		}
-		$is_owner = $map->is_owner(Auth::user());
-		if(!$is_owner) { // User is confirmed to be logged in
-			return Response::error("404");
+
+		if(!($is_owner = $map->is_owner(Auth::user())) && !Auth::user()->admin) { // User is confirmed to be logged in
+			return Response::error("403");
 		}
 
 		if($versionid) {
@@ -501,9 +524,9 @@ EOT;
 		if(!$map) {
 			return Response::error("404");
 		}
-		$is_owner = $map->is_owner(Auth::user());
-		if(!$is_owner) { // User is confirmed to be logged in
-			return Response::error("404");
+		;
+		if(!($is_owner = $map->is_owner(Auth::user())) && !Auth::user()->admin) { // User is confirmed to be logged in
+			return Response::error("403");
 		}
 
 		if($versionid) {
@@ -594,6 +617,9 @@ EOT;
 		if(count($validation->errors->messages) == 0) {
 			$version->version = Input::get("version");
 			$version->changelog = Input::get("changelog");
+			if(!$is_owner) {
+				$dirty = array_keys($version->get_dirty());
+			}
 			if(!$version->exists) {
 				$map->versions()->insert($version);
 				// Mark it as latest version by default
@@ -607,7 +633,13 @@ EOT;
 				Input::upload("mapfile", path("storage")."maps", $map->id."_".$version->id.".zip");
 				$version->uploaded = $mapinfo["uploaded"];
 				$version->autoref = $mapinfo["autoref"];
+				if(!$is_owner) {
+					$dirty = array_merge($dirty, array("mapfile"), array_keys($version->get_dirty()));
+				}
 				$version->save();
+			}
+			if(!$is_owner) {
+				Event::fire("admin", array("map_versions", "edit", $version->id, array("map_id" => $map->id, $dirty)));
 			}
 			Messages::add("success", "Version saved!");
 			return Redirect::to_action("maps@edit", array($id));
@@ -627,8 +659,7 @@ EOT;
 		if(!$map) {
 			return Response::error('404');
 		}
-		$is_owner = $map->is_owner(Auth::user());
-		if(!$is_owner) { // User is confirmed to be logged in
+		if(!($is_owner = $map->is_owner(Auth::user())) && !Auth::user()->admin) { // User is confirmed to be logged in
 			return Response::error("403"); // Not yet published
 		}
 		$version = $map->versions()->where_id($versionid)->first();
@@ -643,7 +674,7 @@ EOT;
 		if(!$map) {
 			return Response::error('404');
 		}
-		if(!$map->is_owner(Auth::user())) { // User is confirmed to be logged in
+		if(!($is_owner = $map->is_owner(Auth::user())) && !Auth::user()->admin) { // User is confirmed to be logged in
 			return Response::error("403"); // Not yet published
 		}
 		$version = $map->versions()->where_id($versionid)->first();
@@ -665,6 +696,9 @@ EOT;
 				}
 				$map->save();
 			}
+			if(!$is_owner) {
+				Event::fire("admin", array("map_versions", "delete", $version->id, array("map_id" => $map->id)));
+			}
 			Messages::add("success", "Version deleted!");
 		} else {
 			Messages::add("error", "Failed to delete the version!");
@@ -678,9 +712,8 @@ EOT;
 		if(!$map) {
 			return Response::error('404');
 		}
-		$is_owner = $map->is_owner(Auth::user());
-		if(!$is_owner) { // User is confirmed to be logged in
-			return Response::error("404");
+		if(!($is_owner = $map->is_owner(Auth::user())) && !Auth::user()->admin) { // User is confirmed to be logged in
+			return Response::error("403");
 		}
 
 		if($linkid) { // Editing link
@@ -702,8 +735,8 @@ EOT;
 		if(!$map) {
 			return Response::error('404');
 		}
-		if(!$map->is_owner(Auth::user())) { // User is confirmed to be logged in
-			return Response::error("403"); // Not yet published
+		if(!($is_owner = $map->is_owner(Auth::user())) && !Auth::user()->admin) { // User is confirmed to be logged in
+			return Response::error("403");
 		}
 		if($linkid) { // Editing link
 			$link = $map->links()->where_id($linkid)->first();
@@ -724,7 +757,13 @@ EOT;
 			$link->url = Input::get("url");
 			if(!$link->exists) {
 				$map->links()->insert($link);
+				if(!$is_owner) {
+					Event::fire("admin", array("map_links", "new", $link->id, array("map_id" => $map->id, $link->get_dirty())));
+				}
 			} else {
+				if(!$is_owner) {
+					Event::fire("admin", array("map_links", "edit", $link->id, array("map_id" => $map->id, $link->get_dirty())));
+				}
 				$link->save();
 			}
 			Messages::add("success", "Link added!");
@@ -744,9 +783,8 @@ EOT;
 		if(!$map) {
 			return Response::error('404');
 		}
-		$is_owner = $map->is_owner(Auth::user());
-		if(!$is_owner) { // User is confirmed to be logged in
-			return Response::error("403"); // Not yet published
+		if(!($is_owner = $map->is_owner(Auth::user())) && !Auth::user()->admin) { // User is confirmed to be logged in
+			return Response::error("403");
 		}
 		$link = $map->links()->where_id($linkid)->first();
 		if(!$link) {
@@ -760,8 +798,8 @@ EOT;
 		if(!$map) {
 			return Response::error('404');
 		}
-		if(!$map->is_owner(Auth::user())) { // User is confirmed to be logged in
-			return Response::error("403"); // Not yet published
+		if(!($is_owner = $map->is_owner(Auth::user())) && !Auth::user()->admin) { // User is confirmed to be logged in
+			return Response::error("403");
 		}
 		$link = $map->links()->where_id($linkid)->first();
 		if(!$link) {
@@ -769,6 +807,9 @@ EOT;
 		}
 
 		if($link->delete()) {
+			if(!$is_owner) {
+				Event::fire("admin", array("map_links", "delete", $link->id, array("map_id" => $map->id)));
+			}
 			Messages::add("success", "Link deleted!");
 		} else {
 			Messages::add("error", "Failed to delete link!");
@@ -781,8 +822,8 @@ EOT;
 		if(!$map) {
 			return Response::error('404');
 		}
-		if(!$map->is_owner(Auth::user())) { // User is confirmed to be logged in
-			return Response::error("403"); // Not yet published
+		if(!($is_owner = $map->is_owner(Auth::user())) && !Auth::user()->admin) { // User is confirmed to be logged in
+			return Response::error("403");
 		}
 
 		$input = Input::all();
@@ -801,6 +842,9 @@ EOT;
 				$map->image_id = $image->id;
 				$map->save();
 			}
+			if(!$is_owner) {
+				Event::fire("admin", array("map_images", "add", $image->id, array("map_id" => $map->id)));
+			}
 			Messages::add("success", "Image added!");
 			return Redirect::to_action("maps@edit", array($id));
 		} else {
@@ -814,8 +858,8 @@ EOT;
 		if(!$map) {
 			return Response::error('404');
 		}
-		if(!$map->is_owner(Auth::user())) { // User is confirmed to be logged in
-			return Response::error("403"); // Not yet published
+		if(!($is_owner = $map->is_owner(Auth::user())) && !Auth::user()->admin) { // User is confirmed to be logged in
+			return Response::error("403");
 		}
 		$image = $map->images()->where_image_id($imageid)->first();
 		if(!$image) {
@@ -824,6 +868,9 @@ EOT;
 
 		$map->image_id = $image->id;
 		$map->save();
+		if(!$is_owner) {
+			Event::fire("admin", array("maps", "default_image", $map->id, array("image_id" => $image->id)));
+		}
 
 		Messages::add("success", "Default image set");
 		return Redirect::to_action("maps@edit", array($id));
@@ -834,8 +881,7 @@ EOT;
 		if(!$map) {
 			return Response::error('404');
 		}
-		$is_owner = $map->is_owner(Auth::user());
-		if(!$is_owner) { // User is confirmed to be logged in
+		if(!($is_owner = $map->is_owner(Auth::user())) && !Auth::user()->admin) { // User is confirmed to be logged in
 			return Response::error("403"); // Not yet published
 		}
 		$image = $map->images()->where_image_id($imageid)->first();
@@ -850,8 +896,8 @@ EOT;
 		if(!$map) {
 			return Response::error('404');
 		}
-		if(!$map->is_owner(Auth::user())) { // User is confirmed to be logged in
-			return Response::error("403"); // Not yet published
+		if(!($is_owner = $map->is_owner(Auth::user())) && !Auth::user()->admin) { // User is confirmed to be logged in
+			return Response::error("403");
 		}
 		$image = $map->images()->where_image_id($imageid)->first();
 		if(!$image) {
@@ -859,6 +905,9 @@ EOT;
 		}
 
 		if($map->images()->detach($image->id)) {
+			if(!$is_owner) {
+				Event::fire("admin", array("map_links", "delete", $image->id, array("map_id" => $map->id)));
+			}
 			if($map->image_id == $image->id) {
 				$map->image_id = null;
 				$map->save();
