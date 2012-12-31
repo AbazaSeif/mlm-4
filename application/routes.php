@@ -197,6 +197,9 @@ Route::filter('before', function()
 	if(Request::foundation()->getRootUrl() == "http://majorleaguemining.com") {
 		return Redirect::to(str_replace("majorleaguemining.com", "majorleaguemining.net", URI::full()));
 	}
+	if(File::exists(path("base")."lock") && !(URI::current() == "login" || URI::current() == "account/login" || URI::current() == "account/callback" || (Auth::check() && Auth::user()->admin))) {
+		return Response::error("503"); // under maintance
+	}
 });
 
 Route::filter('after', function($response)
