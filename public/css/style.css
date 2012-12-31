@@ -748,6 +748,17 @@ img[src*="blank.gif"] { background: url("../images/static/ajax-loader.gif") no-r
     padding: 3px 10px;
 }
 
+#adminlog .logitem {
+    border-bottom: 1px solid #DDD;
+    padding-bottom: 2px;
+    margin-bottom: 2px;
+}
+#adminlog .muted {
+    display: block;
+    font-size: 11px;
+    text-align: right;
+}
+
 /* News page
    ================================================== */
 

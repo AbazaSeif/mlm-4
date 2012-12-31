@@ -10,6 +10,12 @@
 	<div class="titlebar"><h2>Add link</h2></div>
 		{{ Form::open("maps/edit_link/".$map->id, "POST", array("class" => "form-horizontal")) }}
 	@endif
+	@if(!$is_owner && Auth::user()->admin)
+		<div class="alert">
+			<h4>Not an owner</h4>
+			<p>Using admin permissions to edit the map</p>
+		</div>
+	@endif
 		{{ Form::token() }}
 		{{ Form::field("text", "title", "Title", array(Input::old("title", $link->title), array("class" => "input-large")), array("error" => $errors->first("title"))) }}
 		{{ Form::field("text", "url", "URL", array(Input::old("url", $link->url), array('class' => 'input-large')), array('error' => $errors->first('url'))) }}

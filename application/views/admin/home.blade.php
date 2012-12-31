@@ -45,13 +45,14 @@
 			<h2>Admin log</h2>
 		</div>
 		<div class="fixedheight">
-		<ol>
+		<ol id="adminlog">
 			@foreach($log->results as $logitem)
-				<li>
+				<li class="logitem">
 					{{$logitem->user->username}} {{$logitem->action}} {{$logitem->module}} item ID#{{$logitem->target}}
 					@if($logitem->text)
 					<br />{{$logitem->text}}
 					@endif
+					<date class="muted">{{ date("F j, Y g:ia", strtotime($logitem->created_at)) }}</date>
 				</li>
 			@endforeach
 		</ol>

@@ -10,6 +10,12 @@
 	<div class="titlebar"><h2>Add version</h2></div>
 		{{ Form::open_for_files("maps/edit_version/".$map->id, "POST", array("class" => "form-horizontal")) }}
 	@endif
+	@if(!$is_owner && Auth::user()->admin)
+		<div class="alert">
+			<h4>Not an owner</h4>
+			<p>Using admin permissions to edit the map</p>
+		</div>
+	@endif
 		{{ Form::token() }}
 		{{ Form::field("text", "version", "Version", array(Input::old("version", $version->version)), array('error' => $errors->first('version'))) }}
 		{{ Form::field("textarea", "changelog", "Changelog & release notes", array(Input::old("changelog", $version->changelog), array("class" => "input-xxlarge")), array('error' => $errors->first('version'))) }}
