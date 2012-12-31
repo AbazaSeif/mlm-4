@@ -9,9 +9,9 @@
 	{{ Form::open(null, 'POST', array('class' => 'xpadding')) }}
 	{{ Form::token() }}
 	@if ($map->published == false)
-	{{ Form::submit("Approve Map", array("class" => "btn btn-success", "name" => "action", "value" => "publish")) }}
+	{{ Form::submit("Publish Map", array("class" => "btn btn-success", "name" => "action", "value" => "publish")) }}
 	@elseif ($map->published == true)
-	{{ Form::submit("Unapprove Map", array("class" => "btn btn-success", "name" => "action", "value" => "unpublish")) }}
+	{{ Form::submit("UnPublish Map", array("class" => "btn btn-success", "name" => "action", "value" => "unpublish")) }}
 	@endif
 	{{ HTML::link_to_action("admin.maps.delete", "Delete Map", array($map->id), array("class" => "btn btn-danger")) }}
 	@if ($map->official == false)

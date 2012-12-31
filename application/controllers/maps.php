@@ -139,13 +139,6 @@ class Maps_Controller extends Base_Controller {
 			// Attach user as creator
 			$user = Auth::user();
 			$map->users()->attach($user->id, array("confirmed" => true));
-			//Create new publish Modqueue item
-			$modqueue = new Modqueue();
-			$modqueue->user_id = $user->id;
-			$modqueue->type = "publish";
-			$modqueue->itemtype = "map";
-			$modqueue->itemid = $map->id;
-			$modqueue->save();
 			return Redirect::to_action("maps@view", array($map->id, $map->slug));
 		} else {
 			return Redirect::to_action("maps@new")->with_input()->with_errors($validation);
@@ -301,7 +294,7 @@ class Maps_Controller extends Base_Controller {
 			return Response::error('404');
 		}
 
-		if (Modqueue::where('itemtype', '=', 'Comment')->where('user_id', '=', Auth::user()->id)->where('itemid', '=', $id)->get() != null) {
+		if (Modqueue::where('itemtype', '=', 'comment')->where('user_id', '=', Auth::user()->id)->where('itemid', '=', $id)->get() != null) {
 			Messages::add("error", "Comment already reported!");
 			return Redirect::to_action("maps@view", array($map->id, $map->slug));
 		}
@@ -309,8 +302,8 @@ class Maps_Controller extends Base_Controller {
 		else {
 			$modqueue = new Modqueue();
 			$modqueue->user_id = Auth::user()->id;
-			$modqueue->type = "Report - ".$type;
-			$modqueue->itemtype = "Comment";
+			$modqueue->type = $type;
+			$modqueue->itemtype = "comment";
 			$modqueue->itemid = $id;
 			$modqueue->data = $details;
 
@@ -330,7 +323,7 @@ class Maps_Controller extends Base_Controller {
 			return Response::error('404');
 		}
 
-		if (Modqueue::where('itemtype', '=', 'Map')->where('user_id', '=', Auth::user()->id)->where('itemid', '=', $id)->get() != null) {
+		if (Modqueue::where('itemtype', '=', 'map')->where('user_id', '=', Auth::user()->id)->where('itemid', '=', $id)->get() != null) {
 			Messages::add("error", "Map already reported!");
 			return Redirect::to_action("maps@view", array($map->id, $map->slug));
 		}
@@ -338,8 +331,8 @@ class Maps_Controller extends Base_Controller {
 		else {
 			$modqueue = new Modqueue();
 			$modqueue->user_id = Auth::user()->id;
-			$modqueue->type = "Report - ".$type;
-			$modqueue->itemtype = "Map";
+			$modqueue->type = $type;
+			$modqueue->itemtype = "map";
 			$modqueue->itemid = $id;
 			$modqueue->data = $details;
 
@@ -917,5 +910,41 @@ EOT;
 			Messages::add("error", "Failed to remove image!");
 		}
 		return Redirect::to_action("maps@edit", array($id));
+	}
+	public function post_publish($id) {
+		$map = Map::find($id);
+		if(!$map) {
+			return Response::error('404');
+		}
+		if(!($is_owner = $map->is_owner(Auth::user())) && !Auth::user()->admin) { // User is confirmed to be logged in
+			return Response::error("403");
+		}
+
+		//Publishing
+		if ($map->published == '0')
+		{
+			//Check downloads, images etc.
+			if (count($map->images) <= 0) {
+				Messages::add("error", "Couldn't publish map: No images attached to map!");
+				return Redirect::to_action("maps@edit", array($id));
+			}
+			else if (count($map->links) <= 0) {
+				Messages::add("error", "Couldn't publish map: No download links on map!");
+				return Redirect::to_action("maps@edit", array($id));
+			}
+			else {
+				$map->published = '1';
+				$map->save();
+				return Redirect::to_action("maps@view", array($id));
+			}
+		}
+
+		//UnPublishing
+		else if ($map->published == '1')
+		{
+			$map->published = '0';
+			$map->save();
+			return Redirect::to_action("maps@view", array($id));
+		}
 	}
 }

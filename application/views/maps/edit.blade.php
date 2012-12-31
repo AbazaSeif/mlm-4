@@ -156,5 +156,18 @@
 		{{ Form::field("text", "name", "", array(Input::old("name"), array('class' => 'input-large')), array("help-inline" => "Image name", 'error' => $errors->first('name'))) }}
 		{{ Form::submit("Upload", array("class" => "btn-primary")) }}
 	{{ Form::close() }}
+<div class="titlebar">
+	<h3>Publish Map</h3>
 </div>
+	{{ Form::open("maps/publish/".$map->id, 'POST') }}
+	{{ Form::token() }}
+	@if ($map->published)
+		<p>Map is currently: <b>Published</b></p>
+		{{ Form::submit("UnPublish Map", array("class" => "btn-danger")) }}
+	@else
+		<p>Map is currently: <b>UnPublished</b></p>
+		{{ Form::submit("Publish Map", array("class" => "btn-success")) }}
+	@endif
+	{{ Form::close() }}
 @endsection
+</div>

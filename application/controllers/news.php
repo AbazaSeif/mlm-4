@@ -94,7 +94,7 @@ class News_Controller extends Base_Controller {
 			return Response::error('404');
 		}
 
-		if (Modqueue::where('itemtype', '=', 'Comment')->where('user_id', '=', Auth::user()->id)->where('itemid', '=', $id)->get() != null) {
+		if (Modqueue::where('itemtype', '=', 'comment')->where('user_id', '=', Auth::user()->id)->where('itemid', '=', $id)->get() != null) {
 			Messages::add("error", "Comment already reported!");
 			return Redirect::to_action("news@view", array($newsitem->id, $newsitem->slug));
 		}
@@ -102,8 +102,8 @@ class News_Controller extends Base_Controller {
 		else {
 			$modqueue = new Modqueue();
 			$modqueue->user_id = Auth::user()->id;
-			$modqueue->type = "Report - ".$type;
-			$modqueue->itemtype = "Comment";
+			$modqueue->type = $type;
+			$modqueue->itemtype = "comment";
 			$modqueue->itemid = $id;
 			$modqueue->data = $details;
 

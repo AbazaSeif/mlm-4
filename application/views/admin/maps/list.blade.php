@@ -25,9 +25,9 @@
 				<td>{{ date("F j, Y h:i e", strtotime($item->created_at)) }}</td>
 				<td>
 					@if($item->published)
-						<i class="icon-eye-open" title="Approved"></i>
+						<i class="icon-eye-open" title="Published"></i>
 					@else
-						<i class="icon-eye-close" title="Not Approved"></i>
+						<i class="icon-eye-close" title="Not Published"></i>
 					@endif
 				</td>
 				<td>
