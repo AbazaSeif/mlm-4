@@ -22,7 +22,7 @@ class Admin_Maps_Controller extends Admin_Controller {
 		return View::make("admin.maps.view", array("title" => "Moderate ".e($map->title)." | Maps | Admin", "javascript" => array("admin"), "map" => $map, "modqueue" => $modqueue));
 	}
 	public function post_view($id) {
-		$action = Input::get('action');
+		$action = Input::get('action', 'default');
 		$map = Map::find($id);
 		$modqueue = Modqueue::find(Input::get('modqueueid'));
 		if(!$map) {
@@ -115,6 +115,15 @@ class Admin_Maps_Controller extends Admin_Controller {
 				Messages::add("error", "Failed to save");
 				return Redirect::to_action("admin.maps");
 			}
+			break;
+			case 'deletemodqueue':
+				if($modqueue->delete()) {
+					Messages::add("success", "Modqueue item deleted!");
+					return Redirect::to_action("admin.maps");
+				} else {
+					Messages::add("error", "Failed to delete");
+					return Redirect::to_action("admin.maps");
+				}
 			break;
 
 			case 'default':

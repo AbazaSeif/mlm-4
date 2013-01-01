@@ -28,8 +28,10 @@
 				<td>{{ $item->user->username }}</td>
 				<td>{{ date("F j, Y g:ia", strtotime($item->created_at)) }}</td>
 				<td>
-					@if ($item->itemtype == "map" && $item->mapexists($item->itemid))
+					@if ($item->itemtype == "map" && Map::find($item->itemid) != null)
 						{{ HTML::link_to_action("admin.maps.view", "View", array($item->itemid)) }}
+					@elseif ($item->itemtype == "comment" && Comment::find($item->itemid) != null)
+						{{ HTML::link_to_action("admin.comments.edit", "View", array($item->itemid)) }}
 					@else
 						{{ HTML::link_to_action("admin.modqueue@view", "View", array($item->id)) }}
 					@endif

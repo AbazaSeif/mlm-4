@@ -19,32 +19,60 @@ class Admin_Comments_Controller extends Admin_Controller {
 			Messages::add("error", "Comment not found");
 			return Redirect::to_action("admin.comments");
 		}
-		return View::make("admin.comments.form", array("title" => "Edit ".e($comment->id)." | Comments | Admin", "javascript" => array("admin"), "comment" => $comment));
+		$modqueue = Modqueue::where('itemtype', '=', 'comment')->where('itemid', '=', $comment->id)->first();
+		return View::make("admin.comments.form", array("title" => "Edit ".e($comment->id)." | Comments | Admin", "javascript" => array("admin"), "comment" => $comment, "modqueue" => $modqueue));
 	}
 	public function post_edit($id) {
 		$comment = Comment::find($id);
+		$action = Input::get('action', 'default');
+		$modqueue = Modqueue::find(Input::get('modqueueid'));
 		if(!$comment) {
 			Messages::add("error", "Comment not found");
 			return Redirect::to_action("admin.comments");
 		}
-		$validation_rules = array(
-			"source"     => "required",
-		);
-		$input = Input::all();
-		$validation = Validator::make($input, $validation_rules);
-		if($validation->passes()) {
-			$comment->source       = $input["source"];
-			$changed = array_keys($comment->get_dirty());
-			if($comment->save()) {
-				Event::fire("admin", array("comment", "edit", $comment->id, $changed));
-				Messages::add("success", "Comment updated!");
-				return Redirect::to_action("admin.comments");
-			} else {
-				Messages::add("error", "Failed to save");
-				return Redirect::to_action("admin.comments@edit")->with_input()->with_errors($validation);
-			}
-		} else {
-			return Redirect::to_action("admin.comments@edit", array($id))->with_input()->with_errors($validation);
+
+		switch ($action)
+		{
+			case 'savemodqueuenotes':
+				$modqueue->admin_notes = Input::get("admin_notes");
+				if($modqueue->save()) {
+					Messages::add("success", "Modqueue admin notes edited!");
+					return Redirect::to_action("admin.comments");
+				} else {
+					Messages::add("error", "Failed to save");
+					return Redirect::to_action("admin.comments");
+				}
+			break;
+			case 'deletemodqueue':
+				if($modqueue->delete()) {
+					Messages::add("success", "Modqueue item deleted!");
+					return Redirect::to_action("admin.comments");
+				} else {
+					Messages::add("error", "Failed to delete");
+					return Redirect::to_action("admin.comments");
+				}
+			break;
+			case 'default':
+				$validation_rules = array(
+					"source"     => "required",
+				);
+				$input = Input::all();
+				$validation = Validator::make($input, $validation_rules);
+				if($validation->passes()) {
+					$comment->source       = $input["source"];
+					$changed = array_keys($comment->get_dirty());
+					if($comment->save()) {
+						Event::fire("admin", array("comment", "edit", $comment->id, $changed));
+						Messages::add("success", "Comment updated!");
+						return Redirect::to_action("admin.comments");
+					} else {
+						Messages::add("error", "Failed to save");
+						return Redirect::to_action("admin.comments@edit")->with_input()->with_errors($validation);
+					}
+				} else {
+					return Redirect::to_action("admin.comments@edit", array($id))->with_input()->with_errors($validation);
+				}
+			break;
 		}
 
 	}
