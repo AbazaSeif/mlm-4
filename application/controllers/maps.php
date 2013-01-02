@@ -117,7 +117,6 @@ class Maps_Controller extends Base_Controller {
 			"description" => "required",
 
 			"maptype" => 'in:'.implode(",", array_keys(Config::get("maps.types"))),
-			"version" => "max:64",
 			"mcversion" => "max:64",
 			"teamcount" => "integer",
 			"teamsize" => "integer"
