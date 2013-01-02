@@ -129,7 +129,6 @@ class Maps_Controller extends Base_Controller {
 			$map->summary = Input::get("summary");
 			$map->description = IoC::resolve('HTMLPurifier')->purify(Input::get("description"));
 			$map->maptype     = Input::get("maptype");
-			$map->version     = Input::get("version");
 			$map->mcversion   = Input::get("mcversion");
 			$map->teamcount   = Input::get("teamcount");
 			$map->teamsize    = Input::get("teamsize");
