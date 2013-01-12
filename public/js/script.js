@@ -90,6 +90,7 @@ MLM = {
 	  			e.preventDefault();
 	  			$(this).tab('show');
 			});
+			UTIL.exec("multiview");
 	  		$("a[rel=popover]")
             .popover({
                 offset: 10,
@@ -252,10 +253,7 @@ MLM = {
 				$("#multiview>ul").hide().removeClass().fadeIn(300).addClass(newView)
 				$.cookie("multiview", newView, {expires: 365, path: '/'})
 			});
-			$("#multiview-controller [data-multiview=grid]").click(function() { $("#multiview .grid img").lazyload({ threshold : 100 }); });
-			$("#multiview-controller [data-multiview=big]").click(function() { $("#multiview .big img").lazyload({ threshold : 60 }); });
-			$("#multiview .grid img").lazyload({ threshold : 100 });
-			$("#multiview .big img").lazyload({ threshold : 60 });
+			$("#multiview img").lazyload({ threshold : 100 });
 		}
 	},
 	news: {

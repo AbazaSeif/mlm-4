@@ -1169,6 +1169,7 @@ a:hover { color: #005580 }
     float: right;
     width: 610px;
 }
+.profile #page #multiview .list .mv-image { max-width: 100px; }
 
 .profile .block {
     float: left;
@@ -1811,13 +1812,15 @@ ol.commentlist {
 
 #multiview .list li:first-child { margin-top: 0 }
 
-#multiview .list .mv-image { display: none }
+#multiview .list .mv-image { float: left; margin: 5px 10px 5px 5px; max-width: 160px; }
 
 #multiview .list .mv-details { position:static; padding: 10px; background: none; color: #333; -moz-box-shadow:none; -webkit-box-shadow: none ;box-shadow: none;}
 
+/* #multiview .list .mv-image + .mv-details { margin-left: 160px; } */
+
 #multiview .list .mv-title h1 { font-size: 20px;}
 
-#multiview .list .mv-meta { padding-top: 5px; border-top: 1px dotted rgb(173, 173, 173); }
+#multiview .list .mv-meta { padding-top: 5px; border-top: 1px dotted rgb(173, 173, 173); clear: both; }
 
 /* Load more stuff */
 
@@ -1990,7 +1993,8 @@ img.imgfix { display: block; margin-top: 10px; width: 50% }
    ================================================== */
     #multiview-controller li[data-multiview=big] { display: none; }
     #multiview .grid li { margin:0 0 10px; width: 100%; }
-    #multiview .grid .mv-image img { }
+    #multiview .list .mv-image { display: none; }
+    #multiview .list .mv-image + .mv-details { margin-left: 0; }
 
 /* News
    ================================================== */

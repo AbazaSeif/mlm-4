@@ -19,8 +19,8 @@
 	</div>
 	<div class="stats">
 		<ul>
-			<li class="active"><a href="#user-comments" data-toggle="tab"><span>{{ $user->comment_count }}</span>Comments</a></li>
-			<li><a href="#user-maps" data-toggle="tab"><span>{{ count($user->maps) }}</span>Maps</a></li>
+			<li class="active"><a href="#user-maps" data-toggle="tab"><span>{{ count($user->maps) }}</span>Maps</a></li>
+			<li><a href="#user-comments" data-toggle="tab"><span>{{ $user->comment_count }}</span>Comments</a></li>
 		</ul>
 	</div>
 	<div class="abotalit">
@@ -47,45 +47,7 @@
 </header>
 <div id="page" class="right">
 	<div id="UserTabs" class="tab-content">
-		<div class="tab-pane fade active in" id="user-comments">
-			<div class="titlebar"><h2>Comments</h2></div>
-				<div id="multiview">
-				<ul class="list">
-				@forelse($user->comments as $item)
-					<li>
-						@if($item->news_id != null)
-						<a href="{{ URL::to_action("news@view", array($item->news->id, $item->news->slug)) }}" title="View comment">
-						@else
-						<a href="{{ URL::to_action("maps@view", array($item->map->id, $item->map->slug)) }}" title="View comment">
-						@endif
-						<div class="mv-details">
-							<div class="mv-summary">{{ $item->html }}</div>
-							<div class="mv-meta">
-							<span>commented on <b>
-								@if($item->news_id != null)
-								{{ Str::limit($item->news->title, 30) }}
-								@elseif($item->map_id != null)
-								{{ Str::limit($item->map->title, 30) }}
-								@else
-								<b>[Deleted]</b>
-								@endif
-								</b></span> on <span><b>{{ date("M j,Y g:ia", strtotime($item->created_at)) }}</b></span>
-							</div>
-						</div>
-						</a>
-					</li>
-				@empty
-				<div class="mv-details"><div class="mv-title">
-				<h1 class="center">@if($ownpage)You haven't
-					@else{{ $user->username }} has not
-					@endif posted any comments :(
-				</h1>
-				</div></div>
-				@endforelse
-				</ul>
-			</div>
-		</div>
-		  <div class="tab-pane fade" id="user-maps">
+		<div class="tab-pane fade active in" id="user-maps">
 			<div class="titlebar"><h2>Maps</h2></div>
 			<div id="multiview">
 				<ul class="list">
@@ -93,6 +55,13 @@
 				@if($map->published)
 					<li>
 					<a href="{{ URL::to_action("maps@view", array($map->id, $map->slug)) }}" title="View map">
+						<div class="mv-image">
+							@if($map->image)
+							<img src="{{ URL::to_asset("images/static/blank.gif") }}" data-original="{{ e($map->image->file_medium) }}" alt="{{ e($map->title) }}" />
+							@else
+							<img src="{{ URL::to_asset("images/static/noimage.jpg") }}" data-original="{{ URL::to_asset("images/static/noimage.jpg") }}" alt="No Image" />
+							@endif
+						</div>
 						<div class="mv-details">
 							<div class="mv-icon">
 								@if($map->featured)
@@ -131,6 +100,45 @@
 				</ul>
 			</div>
 		</div>
+		<div class="tab-pane fade" id="user-comments">
+			<div class="titlebar"><h2>Comments</h2></div>
+				<div id="multiview">
+				<ul class="list">
+				@forelse($user->comments as $item)
+					<li>
+						@if($item->news_id != null)
+						<a href="{{ URL::to_action("news@view", array($item->news->id, $item->news->slug)) }}" title="View comment">
+						@else
+						<a href="{{ URL::to_action("maps@view", array($item->map->id, $item->map->slug)) }}" title="View comment">
+						@endif
+						<div class="mv-details">
+							<div class="mv-summary">{{ $item->html }}</div>
+							<div class="mv-meta">
+							<span>commented on <b>
+								@if($item->news_id != null)
+								{{ Str::limit($item->news->title, 30) }}
+								@elseif($item->map_id != null)
+								{{ Str::limit($item->map->title, 30) }}
+								@else
+								<b>[Deleted]</b>
+								@endif
+								</b></span> on <span><b>{{ date("M j,Y g:ia", strtotime($item->created_at)) }}</b></span>
+							</div>
+						</div>
+						</a>
+					</li>
+				@empty
+				<div class="mv-details"><div class="mv-title">
+				<h1 class="center">@if($ownpage)You haven't
+					@else{{ $user->username }} has not
+					@endif posted any comments :(
+				</h1>
+				</div></div>
+				@endforelse
+				</ul>
+			</div>
+		</div>
+
 	</div>
 </div>
 <div id="sidebar" class="left">

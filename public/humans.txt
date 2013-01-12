@@ -11,12 +11,14 @@
 	Email: edh649@gmail.com
 	Location: UK
 
+/* EXTEAM */
+
 	Designer:
 	Nickname: LeonimuZ
 	Site: http://about.me/lnz
 	Twitter: @LeonimuZ
 	Location: New York
-	
+
 /* THANKS */
 	Honney & Robin for getting this project going
 	Kerplunc for hosting us
@@ -24,9 +26,9 @@
 	Admins and mods who keep site working
 
 	And YOU for reading this!
-	
+
 /* SITE */
-	
+
 	Framework: Laravel
 	Language: English
 	Standards: HTML5, CSS3
