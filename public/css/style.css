@@ -1760,7 +1760,7 @@ ol.commentlist {
 
 /* Grid view */
 
-#multiview .grid li { margin: 6px; min-height: 168px; width: 31.79% }
+#multiview .grid li { margin: 6px; min-height: 168px; width: 31.75% }
 #multiview .grid li:hover { box-shadow: 0px 8px 8px -6px #000; }
 #multiview .grid .mv-image img { min-height: 168px; }
 #multiview .grid .mv-details { padding: 5px 0 5px 5px }
