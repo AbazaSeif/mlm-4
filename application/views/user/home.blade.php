@@ -6,74 +6,141 @@
 	@include("user.menu")
 @endif
 <div id="content" class="profile clearfix">
-	<div id="page">
-		<div id="vcard" class="clearfix">
-			<div class="picture">
-				@if($ownpage)
-					<a href="http://minecraft.net/profile" target="_blank" title="Change your skin..."><img src="{{$user->avatar_url}}" alt="avatar" /></a>
-				@else
-					<a href="#" style="cursor:default" title="{{$user->username}}'s Skin"><img src="{{$user->avatar_url}}" alt="avatar" /></a>
+<header id="vcard" class="clearfix">
+	<div class="avatar">
+		@if($ownpage)
+			<a href="http://minecraft.net/profile" target="_blank" title="Change your skin..."><img src="{{$user->avatar_url}}" alt="avatar" /></a>
+		@else
+			<a href="#" style="cursor:default" title="{{$user->username}}'s Skin"><img src="{{$user->avatar_url}}" alt="avatar" /></a>
+		@endif
+	</div>
+	<div class="name">
+		<h1>{{$user->username}}</h1>
+		<h2><img src="{{ URL::to_asset("images/static/mc-icon.png") }}" title="Minecraft Username">{{$user->mc_username}}</h2>
+		<h3>Joined {{ date("F j, Y", strtotime($user->created_at)) }}</h3>
+	</div>
+	<div class="stats">
+		<ul>
+			<li class="active"><a href="#user-maps" data-toggle="tab"><span>{{ count($user->maps) }}</span>Maps</a></li>
+			<li><a href="#user-comments" data-toggle="tab"><span>{{ $user->comment_count }}</span>Comments</a></li>
+		</ul>
+	</div>
+	<div class="abotalit">
+		<ul>
+			@if ($user->rank == 4)<li style="padding-left:0;"><div class="user-rank admin" title="MLM Admin"></div></li>
+			@elseif ($user->rank == 3)<li style="padding-left:0;"><div class="user-rank dev" title="MLM Developer"></div></li>
+			@elseif ($user->rank == 2)<li style="padding-left:0;"><div class="user-rank editor" title="MLM Editor"></div></li>
+			@elseif ($user->rank == 1)<li style="padding-left:0;"><div class="user-rank mod" title="MLM Moderator"></div></li>
+			@endif
+			<li><a href="{{ URL::to("messages/new/".$user->username) }}" title="Message {{$user->username}}"><i class="icon-envelope-alt"></i></a></li>
+			@if ($user->profile->reddit)
+			<li><a href="http://reddit.com/user/{{$user->profile->reddit}}" target="_blank" rel="nofollow" title="reddit"><i class="icon-arrow-up"></i></a></li>
+			@endif
+			@if ($user->profile->twitter)<li><a href="http://twitter.com/{{$user->profile->twitter}}" target="_blank" rel="nofollow" title="Twitter"><i class="icon-twitter"></i></a></li>
+			@endif
+			@if ($user->profile->youtube)
+			<li><a href="http://youtube.com/user/{{$user->profile->youtube}}" target="_blank" rel="nofollow" title="YouTube"><i class="icon-play"></i></a></li>
+			@endif
+			@if ($user->profile->webzone)
+			<li><a href="{{$user->profile->webzone}}" target="_blank" rel="nofollow" title="Website"><i class="icon-globe"></i></a></li>
+			@endif
+		</ul>
+	</div>
+</header>
+<div>
+	<div id="UserTabs" class="tab-content">
+		<div class="tab-pane fade active in" id="user-maps">
+			<div class="titlebar"><h2>Maps</h2></div>
+			<div id="multiview">
+				<ul class="list">
+				@forelse($user->maps as $map)
+				@if($map->published)
+					<li>
+					<a href="{{ URL::to_action("maps@view", array($map->id, $map->slug)) }}" title="View map">
+						<div class="mv-image">
+							@if($map->image)
+							<img src="{{ URL::to_asset("images/static/blank.gif") }}" data-original="{{ e($map->image->file_medium) }}" alt="{{ e($map->title) }}" />
+							@else
+							<img src="{{ URL::to_asset("images/static/noimage.jpg") }}" data-original="{{ URL::to_asset("images/static/noimage.jpg") }}" alt="No Image" />
+							@endif
+						</div>
+						<div class="mv-details">
+							<div class="mv-icon">
+								@if($map->featured)
+								<span title="Featured Map"><i class="icon-star"></i></span>
+								@elseif($map->official)
+								<span title="Official Map"><i class="icon-trophy"></i></span>
+								@endif
+							</div>
+							<div class="mv-title"><h1>{{ e($map->title) }}</h1></div>
+							<div class="mv-summary"><p>{{ e($map->summary) }}</p></div>
+							<div class="mv-meta">
+								<span>By
+									@foreach($map->users as $author)
+									<b>{{ $author->username }}</b>,
+									@endforeach
+								</span>
+								@if($map->version)
+								<span>Version <b>{{e($map->version->version)}}</b>,</span>
+								@endif
+								<span>Type: <b>{{ array_get(Config::get("maps.types"), $map->maptype) }}</b></span>
+							</div>
+						</div>
+						</a>
+					</li>
 				@endif
+				@empty
+				<div class="mv-details"><div class="mv-title">
+				<h1 class="center">@if($ownpage)You haven't
+					@else{{ $user->username }} has not
+					@endif posted any maps :(
+					@if($ownpage)<br><a href="/maps">Post a new map!</a>
+					@endif
+				</h1>
+				</div></div>
+				@endforelse
+				</ul>
 			</div>
-				<div class="data">
-					{{-- User ranks --}}
-					@if ($user->rank == 4)
-					<div class="user-rank admin" title="MLM Admin"></div>
-					@elseif ($user->rank == 3)
-					<div class="user-rank dev" title="MLM Developer"></div>
-					@elseif ($user->rank == 2)
-					<div class="user-rank editor" title="MLM Editor"></div>
-					@elseif ($user->rank == 1)
-					<div class="user-rank mod" title="MLM Moderator"></div>
-					@endif
-					<h1>{{$user->username}}</h1>
-					<h2><i class="flag flag-{{$user->profile->country}}"></i>{{$countries[$user->profile->country]}}</h2>
-					@if ($user->profile->webzone)
-					<h3>{{ HTML::link($user->profile->webzone, $user->profile->webzone, array("target" => "_blank","rel" => "nofollow")) }}</h3>
-					@else
-					<div class="clearfix" style="height:35px"></div>
-					@endif
-					<ul class="numbers">
-						<li>Comments<strong>{{ $user->comment_count }}</strong></li>
-					</ul>
-				</div>
+		</div>
+		<div class="tab-pane fade" id="user-comments">
+			<div class="titlebar"><h2>Comments</h2></div>
+				<div id="multiview">
+				<ul class="list">
+				@forelse($user->comments as $item)
+					<li>
+						@if($item->news_id != null)
+						<a href="{{ URL::to_action("news@view", array($item->news->id, $item->news->slug)) }}" title="View comment">
+						@else
+						<a href="{{ URL::to_action("maps@view", array($item->map->id, $item->map->slug)) }}" title="View comment">
+						@endif
+						<div class="mv-details">
+							<div class="mv-summary">{{ $item->html }}</div>
+							<div class="mv-meta">
+							<span>commented on <b>
+								@if($item->news_id != null)
+								{{ Str::limit($item->news->title, 30) }}
+								@elseif($item->map_id != null)
+								{{ Str::limit($item->map->title, 30) }}
+								@else
+								<b>[Deleted]</b>
+								@endif
+								</b></span> on <span><b>{{ date("M j,Y g:ia", strtotime($item->created_at)) }}</b></span>
+							</div>
+						</div>
+						</a>
+					</li>
+				@empty
+				<div class="mv-details"><div class="mv-title">
+				<h1 class="center">@if($ownpage)You haven't
+					@else{{ $user->username }} has not
+					@endif posted any comments :(
+				</h1>
+				</div></div>
+				@endforelse
+				</ul>
+			</div>
 		</div>
 	</div>
-	<aside id="sidebar">
-		<div class="widget">
-			<header><h1>{{$user->username}}'s Info</h1></header>
-		<div class="content">
-		<div class="info">
-		<ul>
-		@if ($user->profile->reddit)
-		<li>
-		<label>Reddit</label>
-		<p><a href="http://reddit.com/user/{{$user->profile->reddit}}" target="_blank" rel="nofollow">{{$user->profile->reddit}}</a></p>
-		</li>
-		@endif
-		@if ($user->profile->twitter)
-		<li>
-		<label>Twitter</label>
-		<p><a href="http://twitter.com/{{$user->profile->twitter}}" target="_blank" rel="nofollow">{{$user->profile->twitter}}</a></p>
-		</li>
-		@endif
-		@if ($user->profile->youtube)
-		<li>
-		<label>YouTube</label>
-		<p><a href="http://youtube.com/user/{{$user->profile->youtube}}" target="_blank" rel="nofollow">{{$user->profile->youtube}}</a></p>
-		</li>
-		@endif
-		<li>
-		<label>Member since</label>
-		<p>{{ date("F j, Y", strtotime($user->created_at)) }}</p>
-		</li>
-		<li>
-		<label>Last updated</label>
-		<p>{{ date("F j, Y", strtotime($user->updated_at)) }}</p>
-		</li>
-		</ul>
-			</div>
-			</div>
-	</aside>
+</div>
 </div>
 @endsection

@@ -1014,156 +1014,260 @@ img[src*="blank.gif"] { background: url("../images/static/ajax-loader.gif") no-r
     display: inline !important;
 }
 
+/* Profiles / Teams
    ================================================== */
 
-/* Profile page
-   ================================================== */
-
-.profile {}
+/* Virtual Card */
 
 .profile #vcard {
-    display: block;
     margin-bottom: 10px;
-    padding: 12px;
-    background-color: #f9f9f9;
-    border: 1px solid #ADADAD;
-    -moz-box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.76);
-    -webkit-box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.76);
-    box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.76);
-}
-
-.profile #vcard .picture {
-    float: left;
-    margin-right: 10px;
-}
-
-.profile #vcard .picture a img {
-    max-width: 150px;
-    padding: 7px;
-    background: #fff;
-    border: 1px solid #adadad;
-}
-
-.profile #vcard .data {
-    float: right;
-    position: relative;
-    margin: 0;
-    padding: 4px 0 0 15px;
-    width: 385px;
+    padding: 5px;
+    width: auto;
     background: #D8D8D8;
-}
-
-.profile #vcard .data h1 {
-    margin: 0;
-    padding: 0;
-    font-size: 33px;
-    font-weight: bolder;
+    border: 1px solid #ADADAD;
     text-shadow: 0px 1px 1px #fff;
 }
 
-.profile #vcard .data h2 {
+.profile #vcard .avatar {
+    display: block;
+    float: left;
+    margin-right: 5px;
+    padding: 5px;
+    background: rgb(230, 230, 230);
+    border: 1px solid rgb(211, 211, 211);
+}
+
+.profile #vcard .avatar img {
+    max-width: 80px;
     margin: 0;
-    font-size: 17px;
+    vertical-align: top;
+}
+
+.profile #vcard .name {
+    float: left;
+    padding: 3px 0px;
+}
+
+.profile #vcard .name h1 {
+    margin-top: 0;
+    font-family:"Oswald";
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 37px;
+    letter-spacing: -2px;
+}
+
+.profile #vcard .name h2 {
+    margin: -5px 0 0;
+    font-size: 23px;
+    line-height: 1;
+}
+.profile #vcard .name h2 img {
+    margin-right: 4px;
+}
+.profile #vcard .name h3 {
+    margin: 4px 0 0;
+    font-size: 18px;
     line-height: 1;
 }
 
-.profile #vcard .data h3 {
-    margin: 0;
-    font-size: 15px;
-    line-height: 2;
+.profile #vcard .stats {
+    float: right;
+    margin-bottom: 4px;
 }
 
-.profile ul.numbers {
-    padding: 13px 0;
-    margin: 0;
-    list-style: none;
-    border-top: 1px dotted #bbb;
-}
-
-.profile ul.numbers li {
+.profile #vcard .stats ul {
     display: inline-block;
-    padding: 0 16px;
-    border-right: 1px dotted #bbb;
-    font-size: 12px;
+    margin: 0;
+}
+
+.profile #vcard .stats ul li {
+    display: inline-block;
+    margin-left: -4px;
+    width: 100px;
+    text-align: center;
     text-transform: uppercase;
-    line-height: 1;
+    font-weight: bold;
 }
 
-.profile ul.numbers li:last-child {
-    border: none
+.profile #vcard .stats ul li.active {
+    background-color: #ADADAD;
 }
 
-.profile ul.numbers li strong {
+.profile #vcard .stats ul li a {
     display: block;
-    font-size: 36px;
-    text-shadow:0 1px 1px #fff;
-}
-
-.profile .teaminfo .content{
-    padding: 10px;
-}
-
-.profile .teaminfo a {
-    display: block;
+    padding: 26px 0px 18px;
+    border-left: 1px dotted rgb(173, 173, 173);
     color: #333;
 }
 
-.profile .teaminfo .data{
-    float: right;
-    width: 180px;
+.profile #vcard .stats ul li:first-child > a{
+    border-left: none;
 }
 
-.profile .teaminfo li {
-    margin: 10px 0px;
+.profile #vcard .stats ul li a:hover {
+    background-color: #f9f9f9;
 }
 
-.profile .teaminfo img {
-    border: 8px #fff solid;
-    outline: 1px solid #adadad;
+.profile #vcard .stats ul li span{
+    display: block;
+    margin-bottom: 10px;
+    font-family: "Oswald";
+    font-weight: 400;
+    font-size: 40px;
+    letter-spacing: -2px;
 }
 
-.profile .teaminfo p {
-    margin: 0 0 8px 0;
-    font: 15px "Oswald";
-    text-transform: uppercase;
-    word-wrap: break-word;
+.profile #vcard .abotalit {
+    display: block;
+    float: left;
+    width: 100%;
+    border-top: 1px dotted rgb(173, 173, 173);
 }
 
-.profile .teaminfo strong {
-    font-size: 30px !important;
+.profile #vcard .abotalit ul {
+    margin: 5px 0px 0px;
 }
 
-/* More user info */
-
-.profile div.info {
-    margin:0;
-}
-
-.profile .info li {
-    padding: 10px;
-    border-bottom: 1px dotted #ADADAD;
-    font-size: 15px;
+.profile #vcard .abotalit ul li {
+    display: inline-block;
+    margin-right: -4px;
+    padding:0 4px;
+    border-right: 1px dotted rgb(173, 173, 173);
     list-style: none;
+    line-height: 1;
+    vertical-align: top;
 }
 
-.profile .info li:last-child {
-    padding-bottom: 0;
-    border-bottom: 0;
+.profile #vcard .abotalit ul li a,.profile .block b { color: #333 }
+.profile #vcard .abotalit a:hover, .profile .block b:hover { color: #666 }
+
+.profile #vcard .user-rank {
+    display: block;
+    margin-top: 1px;
+    height: 16px;
+    width: 16px;
+    background: url(../images/static/urank.png) no-repeat;
+    box-shadow: 0px 1px 1px #fff;
+}
+.profile #vcard .user-rank.admin {background-position: 0px 0px;}
+.profile #vcard .user-rank.dev {background-position: 0px -16px;}
+.profile #vcard .user-rank.mod {background-position: 0px -32px;}
+.profile #vcard .user-rank.editor {background-position: 0px -48px;}
+
+/* Sidebar */
+
+.profile #page,.profile .block {
+    position: relative;
+    padding: 5px;
+    background: #D8D8D8;
+    border: 1px solid #ADADAD;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
-.profile .info li label {
-    display: inline-block;
-    width: 100px;
-    font: 18px "Oswald";}
-
-.profile .info p {
+.profile #page {
     float: right;
-    display: inline-block;
-    margin: 0;
-    line-height: 2.2;
+    width: 610px;
 }
 
-.profile .info a {}
+.profile .block {
+    float: left;
+    margin-bottom: 10px;
+    text-shadow:0px 1px 1px #fff;
+}
+
+.profile .block .avatar {
+    display: block;
+    float: left;
+    margin-right: 5px;
+    padding: 3px;
+    background: rgb(230, 230, 230);
+    border: 1px solid rgb(211, 211, 211);
+}
+
+.profile .block .avatar img {
+    display: block;
+    margin: 0;
+}
+
+.profile .block .name {
+    float: right;
+    width: 76.5%;
+}
+
+.profile .block .name a {
+    color: #333;
+}
+
+.profile .block .name h1 {
+    margin: 0px 0px 8px;
+    font-family:"Oswald";
+    font-size: 27px;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: -2px;
+}
+
+.profile .block .name h2 {
+    margin: -5px 0 0;
+    font-size: 20px;
+    line-height: 1;
+}
+
+.profile .block .name h3 {
+    margin: 4px 0 0;
+    font-size: 18px;
+    line-height: 1;
+}
+
+.profile .block .stats {
+    float: right;
+    margin: 10px 0;
+    padding: 6px 0;
+    width: 100%;
+    border-top: 1px dotted #adadad;
+    border-bottom: 1px dotted #adadad;
+}
+
+.profile .block .stats ul {
+    margin: 0;
+    text-align: center;
+}
+
+.profile .block .stats ul li {
+    display: inline-block;
+    margin-left: -4px;
+    width: 100px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.profile .block .stats ul li a {
+    display: block;
+    padding: 26px 0px 18px;
+    border-left: 1px dotted rgb(173, 173, 173);
+    color: #333;
+}
+
+.profile .block .stats ul li:first-child > a{
+    border-left: none;
+}
+
+.profile .block .stats ul li a:hover {
+    background-color: #f9f9f9;
+}
+
+.profile .block .stats ul li span{
+    display: block;
+    margin-bottom: 10px;
+    font-family: "Oswald";
+    font-weight: 400;
+    font-size: 40px;
+    letter-spacing: -2px;
+}
 
 /* Account settings page
    ================================================== */
@@ -1553,6 +1657,7 @@ ol.commentlist {
 #multiview ul li {
     display: inline-block;
     position: relative;
+    overflow: hidden;
     margin: 13px 6px;
     width: 100%;
     background: #D8D8D8;
@@ -1568,12 +1673,16 @@ ol.commentlist {
 
 #multiview .mv-image img { display:block; width: 100%; }
 
+#multiview img[src*="blank.gif"] { height: 20%; background: url("../images/static/ajax-loader.gif") no-repeat center; }
+
 #multiview .mv-details {
     position: absolute;
     bottom: 0;
     width: 100%;
     background: rgba(231, 231, 231, 0.75);
     color: #fff;
+    -webkit-box-shadow: rgb(0, 0, 0) 0px -1px 8px;
+    box-shadow: rgb(0, 0, 0) 0px -1px 8px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -1604,11 +1713,11 @@ ol.commentlist {
 
 /* Grid view */
 
-#multiview .grid li { margin: 6px; height: 168px; width: 31.50% }
+#multiview .grid li { margin: 6px; min-height: 168px; width: 31.50% }
 
 #multiview .grid li:hover { box-shadow: 0px 8px 8px -6px #000; }
 
-#multiview .grid .mv-image img { max-height: 168px; }
+#multiview .grid .mv-image img { min-height: 168px; }
 
 #multiview .grid .mv-details { padding: 5px 0 5px 5px }
 
@@ -1626,19 +1735,27 @@ ol.commentlist {
 
 #multiview .big .mv-title h1 { margin-bottom: 10px; font-size: 25px; }
 
+#multiview .mv-meta { padding-top: 0; border-top: none; }
+
 /* List view */
 
-#multiview ul.list { }
+#multiview .list { }
 
-#multiview ul.list li { display: block; margin: 0 0 10px 0; height: auto; width: auto; -moz-box-shadow:none; -webkit-box-shadow:none; box-shadow:none;}
+#multiview .list li { display: block; margin: 0 0 10px 0; height: auto; width: auto; -moz-box-shadow:none; -webkit-box-shadow:none; box-shadow:none;}
+
+#multiview .list li:hover { background-color: #f9f9f9 }
 
 #multiview .list li:first-child { margin-top: 0 }
 
-#multiview .list .mv-details { position:static; padding: 10px; background: none; color: #333; }
+#multiview .list .mv-image { float: left; margin: 5px 10px 5px 5px; max-width: 160px; }
+
+#multiview .list .mv-details { position:static; padding: 10px; background: none; color: #333; -moz-box-shadow:none; -webkit-box-shadow: none ;box-shadow: none; }
+
+/* #multiview .list .mv-image + .mv-details { margin-left: 160px; } */
 
 #multiview .list .mv-title h1 { font-size: 20px;}
 
-#multiview .list .mv-image { display: none }
+#multiview .list .mv-meta { padding-top: 5px; border-top: 1px dotted rgb(173, 173, 173); clear: both; }
 
 /* Load more stuff */
 
@@ -2014,6 +2131,10 @@ img.imgfix { display: block; margin-top: 10px; width: 50% }
     #actions li a:active { background-color: #888 }
     #actions i[class^="icon-"]::before, #actions i[class*=" icon-"]::before { margin-top: 4px; font-size: 25px; text-shadow: 0px 1px 1px #fff; }
 
+/* Profile
+   ================================================== */
+   .profile #vcard .stats { float: left; }
+
 /* Content
    ================================================== */
     #wrapper { width: auto }
@@ -2028,62 +2149,12 @@ img.imgfix { display: block; margin-top: 10px; width: 50% }
     #home .homecontent { padding: 0; width: 100%;}
     #home .homecontent section { display: block; margin: 0; padding: 10px 10px; width: auto; border: 0; border-bottom: 1px dotted #fff; }
 
-/* Profile page
-   ================================================== */
-
-   .profile #vcard .data {
-    width: 70%;
-    }
-
-    .profile #vcard .picture {
-    width: 20%;
-    float: left;
-    }
-
-    .profile #vcard .data h1 {
-    font-size: 25px;
-    }
-
-    .profile #vcard .data h2 {
-    font-size: 14px;
-    }
-
-    .profile #vcard .data h3 {
-    font-size: 14px;
-    }
-
-    /* Team Info */
-
-   .profile .teaminfo a {
-    display: inline-block;
-    }
-
-    .profile .teaminfo .data{
-    display: inline-table;
-    width: 70%;
-    }
-
-    .profile .teaminfo li {
-    margin-top:10px;
-    }
-
-    .profile .teaminfo img {
-    width: 20%;
-    border: 8px #fff solid;
-    outline: 1px solid #adadad;
-    }
-
-    .profile .teaminfo p {
-    margin: 0 0 8px 0;
-    font: 15px "Oswald";
-    text-transform: uppercase;
-    word-wrap: break-word;
-    }
-
 /* Multivew
    ================================================== */
     #multiview-controller li[data-multiview=big] { display: none; }
-    #multiview ul.grid li { margin:0 0 10px 0; width: 100%; }
+    #multiview .grid li { margin:0 0 10px; width: 100%; }
+    #multiview .list .mv-image { display: none; }
+    #multiview .list .mv-image + .mv-details { margin-left: 0; }
 
 /* News
    ================================================== */
