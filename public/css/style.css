@@ -1801,9 +1801,8 @@ img.imgfix { display: block; margin-top: 10px; width: 50% }
    ================================================== */
 
 .user-rank {
-    position: absolute;
-    right: 8px;
-    top: 8px;
+    display: block;
+    margin-top: 1px;
     height: 16px;
     width: 16px;
     background: url(../images/static/urank.png) no-repeat;
