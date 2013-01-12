@@ -45,7 +45,7 @@
 
 <header id="vcard" class="clearfix">
 	<div class="avatar">
-		<a href="#" style="cursor:default"><img src="http://placekitten.com/80/80" alt="avatar" /></a>
+		<a href="#" style="cursor:default"><img src="http://placekitten.com/80/80" alt="{{ $team->name }}" /></a>
 	</div>
 	<div class="name">
 		<h1>{{ $team->name }}</h1>
