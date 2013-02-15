@@ -158,9 +158,9 @@ class Maps_Controller extends Base_Controller {
 				$rating = $ratingObj->rating;
 			}
 		}
-		if(!$map->published && (Auth::guest() || $is_owner === false && !Auth::user()->admin)) {
+		/* if(!$map->published && (Auth::guest() || $is_owner === false && !Auth::user()->admin)) {
 			return Response::error("403"); // Not yet published
-		}
+		} */
 		$modqueue = null;
 		if(!$map->published && Auth::check() && Auth::user()->admin) {
 			$modqueue = Modqueue::where_itemtype('map')->where_itemid($map->id)->first();
@@ -253,9 +253,9 @@ class Maps_Controller extends Base_Controller {
 		if(!$mapitem) {
 			return Response::error('404');
 		}
-		if(!$mapitem->published && (Auth::guest() || !Auth::user()->admin)) {
+		/* if(!$mapitem->published && (Auth::guest() || !Auth::user()->admin)) {
 			return Response::error("403"); // Not yet published
-		}
+		} */
 
 		$validation_rules = array("comment" => "required");
 		$validation = Validator::make(Input::all(), $validation_rules);
@@ -651,7 +651,7 @@ EOT;
 			return Response::error('404');
 		}
 		if(!($is_owner = $map->is_owner(Auth::user())) && !Auth::user()->admin) { // User is confirmed to be logged in
-			return Response::error("403"); // Not yet published
+			return Response::error("403");
 		}
 		$version = $map->versions()->where_id($versionid)->first();
 		if(!$version) {
@@ -666,7 +666,7 @@ EOT;
 			return Response::error('404');
 		}
 		if(!($is_owner = $map->is_owner(Auth::user())) && !Auth::user()->admin) { // User is confirmed to be logged in
-			return Response::error("403"); // Not yet published
+			return Response::error("403");
 		}
 		$version = $map->versions()->where_id($versionid)->first();
 		if(!$version) {
@@ -873,7 +873,7 @@ EOT;
 			return Response::error('404');
 		}
 		if(!($is_owner = $map->is_owner(Auth::user())) && !Auth::user()->admin) { // User is confirmed to be logged in
-			return Response::error("403"); // Not yet published
+			return Response::error("403");
 		}
 		$image = $map->images()->where_image_id($imageid)->first();
 		if(!$image) {
