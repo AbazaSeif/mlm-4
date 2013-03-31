@@ -522,7 +522,7 @@ EOT;
 					if(isset($filename_parts[1]) and $filename_parts[1] == "level.dat") {
 						$missing = array_diff($missing, array("level.dat"));
 					}
-					if(isset($filename_parts[1]) and $filename_parts[1] == "autoreferee.yml") {
+					if(isset($filename_parts[1]) and $filename_parts[1] == "autoreferee.xml") {
 						$autoref = true;
 					}
 					if(isset($filename_parts[2]) and $filename_parts[1] == "players" and strlen($filename_parts[2])) {
