@@ -24,14 +24,8 @@ class Search_Controller extends Base_Controller {
 				case "news":
 					$results = Search::SearchNews($query);
 					break;
-				case "matches":
-					$results = Search::SearchMatches($query);
-					break;
 				case "comments":
 					$results = Search::SearchComments($query);
-					break;
-				case "teams":
-					$results = Search::SearchTeams($query);
 					break;
 				case "groups":
 					$results = Search::SearchGroups($query);

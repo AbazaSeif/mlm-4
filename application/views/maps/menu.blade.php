@@ -3,7 +3,6 @@
 		<li>{{HTML::link("maps", "All") }}</li>
 		<li {{ (Input::get('order') == 'newest' && !Input::get('search')) ? 'class="active"' : ''}}>{{HTML::link("maps/filter?order=newest", "Newest") }}</li>
 		<li {{ (Input::get('order') == 'best' && !Input::get('search')) ? 'class="active"' : ''}}>{{ HTML::link("maps/filter?order=best", "Highest ranked") }}</li>
-		<li {{ (Input::get('official') == 'true' && !Input::get('search')) ? 'class="active"' : ''}}>{{ HTML::link("maps/filter?official=true", "Official Maps") }}</li>
 		<li {{ (Input::get('featured') == 'true' && !Input::get('search')) ? 'class="active"' : ''}}>{{ HTML::link('maps/filter?featured=true', 'Featured Maps'); }}</li>
 		<li class="dropdown">
 				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories <b class="caret"></b></a>
@@ -48,7 +47,6 @@
 			<div class="span8">
 				<?php
 					$fields = array(
-						Form::labelled_checkbox("official", "Official maps", true, Input::get("official")),
 						Form::labelled_checkbox("featured", "Featured maps", true, Input::get("featured"))
 					);
 					if(Auth::check()) {

@@ -25,15 +25,22 @@
 	<span>{{ e($map->mcversion) }}</span>
 	@endif
 
-	<div class="titlebar margin"><h4>Teams</h4></div>
-	@if($map->teamcount)
-	<span>{{ $map->teamcount }}</span>
+	<div class="titlebar margin"><h4>Single/Multi-player</h4></div>
+	@if($map->teamcount != 1 && $map->teamsize !=1)
+		<span>Multiplayer</span>
+		<div class="titlebar margin"><h4>Teams</h4></div>
+		@if($map->teamcount)
+		<span>{{ $map->teamcount }}</span>
+		@endif
+
+		<div class="titlebar margin"><h4>Suggested team size</h4></div>
+		@if($map->teamsize)
+		<span>{{ $map->teamsize }}</span>
+		@endif
+	@else
+		<span>Singleplayer</span>
 	@endif
 
-	<div class="titlebar margin"><h4>Suggested team size</h4></div>
-	@if($map->teamsize)
-	<span>{{ $map->teamsize }}</span>
-	@endif
 
 	@if($version && $version->uploaded)
 		<div class="big-green-download-box">

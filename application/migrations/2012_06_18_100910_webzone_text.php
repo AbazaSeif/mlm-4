@@ -9,7 +9,8 @@ class Webzone_Text {
 	 */
 	public function up()
 	{
-		DB::query("ALTER TABLE `profiles` CHANGE `webzone` `webzone` text COLLATE 'utf8_general_ci' NOT NULL AFTER `youtube`, COMMENT='' REMOVE PARTITIONING;");
+		//DB::query("ALTER TABLE `profiles` CHANGE `webzone` `webzone` text COLLATE 'utf8_general_ci' NOT NULL AFTER `youtube`, COMMENT='' REMOVE PARTITIONING;");
+		DB::query("ALTER TABLE `profiles` CHANGE `webzone` `webzone` text COLLATE 'utf8_general_ci' NOT NULL AFTER `youtube`, COMMENT='';");
 	}
 
 	/**
@@ -19,7 +20,8 @@ class Webzone_Text {
 	 */
 	public function down()
 	{
-		DB::query("ALTER TABLE `profiles` CHANGE `webzone` `webzone` varchar(200) COLLATE 'utf8_general_ci' NOT NULL AFTER `youtube`, COMMENT='' REMOVE PARTITIONING;");
+		//DB::query("ALTER TABLE `profiles` CHANGE `webzone` `webzone` varchar(200) COLLATE 'utf8_general_ci' NOT NULL AFTER `youtube`, COMMENT='' REMOVE PARTITIONING;");
+		DB::query("ALTER TABLE `profiles` CHANGE `webzone` `webzone` varchar(200) COLLATE 'utf8_general_ci' NOT NULL AFTER `youtube`, COMMENT='';");
 	}
 
 }

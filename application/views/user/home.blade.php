@@ -75,7 +75,7 @@
 							<div class="mv-meta">
 								<span>By
 									@foreach($map->users as $author)
-									<b>{{ $author->username }}</b>,
+									<b>{{ $author->username }}</b>
 									@endforeach
 								</span>
 								@if($map->version)
@@ -142,32 +142,6 @@
 	</div>
 </div>
 <div id="sidebar" class="left">
-	<div class="block maxwidth">
-		<div class="titlebar"><h2>Teams</h2></div>
-		@forelse ($user->teams as $team)
-		<div class="avatar"><img src="{{ $user->avatar_url }}" alt="avatar" width="60"/></div>
-		<div class="name">
-			<a href="{{ URL::to_action("teams@view", array($team->id)) }}">
-			<h1>{{ $team->name }}</h1>
-			<h2>{{ $team->tagline }}</h2>
-			</a>
-		</div>
-	<div class="stats">
-		<ul>
-			<li><a href="{{ URL::to_action("teams@view", array($team->id)) }}#members"><span>{{ $team->users()->count() }}</span>Members</a></li>
-			<li><a href="#" title="Coming Soon"><span>0</span>Wins</a></li>
-			<li><a href="#" title="Coming Soon"><span>0</span>Loses</a></li>
-		</ul>
-	</div>
-		@empty
-			<h4 class="center">@if($ownpage)You're
-				@else{{ $user->username }} is
-				@endif not a member of a team :(
-				@if($ownpage)<br><a href="/teams">Join a team!</a>
-				@endif
-			</h4>
-		@endforelse
-	</div>
 	<div class="block maxwidth">
 		<div class="titlebar"><h2>Groups</h2></div>
 	<ul class="ulfix">

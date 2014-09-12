@@ -14,11 +14,6 @@
 	{{ Form::submit("UnPublish Map", array("class" => "btn btn-success", "name" => "action", "value" => "unpublish")) }}
 	@endif
 	{{ HTML::link_to_action("admin.maps.delete", "Delete Map", array($map->id), array("class" => "btn btn-danger")) }}
-	@if ($map->official == false)
-	{{ Form::submit("Make Official", array("class" => "btn btn-gold", "name" => "action", "value" => "official")) }}
-	@elseif ($map->official == true)
-	{{ Form::submit("Make Unofficial", array("class" => "btn btn-gold", "name" => "action", "value" => "unofficial")) }}
-	@endif
 	@if ($map->featured == false)
 	{{ Form::submit("Feature Map", array("class" => "btn btn-info", "name" => "action", "value" => "feature")) }}
 	@elseif ($map->featured == true)

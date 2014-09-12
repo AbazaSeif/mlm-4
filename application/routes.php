@@ -45,7 +45,7 @@ Route::get("map/(:num)-(:any)", "maps@view");
 Route::get("map/(:num)-(:any)/(:any)", "maps@view"); // Map version
 
 // Public routes
-Route::controller(array("account", "imgmgr", "maps", "messages", "news", "faq", "matches", "search", "teams", "test", "groups"));
+Route::controller(array("account", "imgmgr", "maps", "messages", "news", "faq", "matches", "search", "test", "groups"));
 
 // User pages
 Route::get("user/(:any?)", function($username = null) {

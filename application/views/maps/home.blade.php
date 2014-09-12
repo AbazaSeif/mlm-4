@@ -20,8 +20,6 @@
 							<div class="mv-icon">
 								@if($map->featured)
 								<span title="Featured Map"><i class="icon-star"></i></span>
-								@elseif($map->official)
-								<span title="Official Map"><i class="icon-trophy"></i></span>
 								@endif
 							</div>
 							<div class="mv-title"><h1>{{ e($map->title) }}</h1></div>

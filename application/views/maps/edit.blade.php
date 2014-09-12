@@ -19,8 +19,8 @@
 			{{ Form::field("wysiwyg-user", "description", "Description", array(Input::old("description", $map->description), array('class' => 'input-xxlarge')), array('error' => $errors->first('description'), "alt" => "(Use correct grammar)")) }}
 			{{ Form::field("select", "maptype", "Map type", array(array_merge(array("" => "--------------"), Config::get("maps.types")), Input::old("maptype",$map->maptype), array('class' => 'input')), array('error' => $errors->first('maptype'))) }}
 			{{ Form::field("text", "mcversion", "Minecraft version", array(Input::old("mcversion", $map->mcversion)), array("error" => $errors->first("mcversion"), "help" => "The Minecraft Version for the map should be the latest version of Minecraft that the map was tested on and fully worked.")) }}
-			{{ Form::field("text", "teamcount", "Teams", array(Input::old("teamcount", $map->teamcount)), array("error" => $errors->first("teamcount"), "help" => "How many teams can play the map at once")) }}
-			{{ Form::field("text", "teamsize", "Team Size", array(Input::old("teamsize",$map->teamsize)), array("error" => $errors->first("teamsize"), "help" => "Players per team")) }}
+			{{ Form::field("text", "teamcount", "Teams", array(Input::old("teamcount", $map->teamcount)), array("error" => $errors->first("teamcount"), "help" => "How many teams can play the map at once (For a Single-player map this should be 1)")) }}
+			{{ Form::field("text", "teamsize", "Team Size", array(Input::old("teamsize",$map->teamsize)), array("error" => $errors->first("teamsize"), "help" => "Players per team (For a Single-player map this should be 1)")) }}
 			{{ Form::actions(array(Form::submit("Save", array("class" => "btn-primary")), " ", HTML::link_to_action("maps@index", "Cancel", array(), array("class" => "btn")))) }}
 		{{ Form::close() }}
 	<div class="titlebar">

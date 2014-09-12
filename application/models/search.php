@@ -38,16 +38,8 @@ class Search {
 				$output = News::find($item->id);
 				break;
 
-			case "matches":
-				$output = Match::find($item->id);
-				break;
-
 			case "comments":
 				$output = Comment::find($item->id);
-				break;
-
-			case "teams":
-				$output = Team::find($item->id);
 				break;
 
 			case "groups":
@@ -134,28 +126,11 @@ class Search {
 		return Search::SearchOneTable($query, "news", $columns);
 	}
 
-	public static function SearchMatches($query) {
-		$columns = array(
-			"mapname",
-			"info",
-			);
-		return Search::SearchOneTable($query, "matches", $columns);
-	}
-
 	public static function SearchComments($query) {
 		$columns = array(
 			"source",
 			);
 		return Search::SearchOneTable($query, "comments", $columns);
-	}
-
-	public static function SearchTeams($query) {
-		$columns = array(
-			"name",
-			"description",
-			"tagline"
-			);
-		return Search::SearchOneTable($query, "teams", $columns);
 	}
 
 	public static function SearchGroups($query) {
@@ -191,25 +166,10 @@ class Search {
 					"content",
 					),
 				),
-			$matches = array(
-				"name" => "matches",
-				"columns" => array(
-					"mapname",
-					"info",
-					),
-				),
 			$comments = array(
 				"name" => "comments",
 				"columns" => array(
 					"source",
-					),
-				),
-			$teams = array(
-				"name" => "teams",
-				"columns" => array(
-					"name",
-					"description",
-					"tagline",
 					),
 				),
 			$groups = array(

@@ -100,8 +100,6 @@
 					<ul id="mainmenu">
 						<li><a href="{{ URL::to("/") }}">Home</a></li>
 						<li>{{ HTML::link('news', 'News'); }}</li>
-						<li>{{ HTML::link('matches', 'Matches'); }}</li>
-						<li>{{ HTML::link('teams', 'Teams'); }}</li> 
 						<li>{{ HTML::link('maps', 'Maps'); }}</li>
 						<li>{{ HTML::link('faq', 'FAQ'); }}</li>
 						<div id="search" class="right clearfix">

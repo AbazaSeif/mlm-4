@@ -7,9 +7,5 @@ class Application extends Eloquent {
 	public function user() {
 		return $this->belongs_to("User");
 	}
-
-	public function team() {
-		return $this->belongs_to("Team");
-	}
 }
 ?>
