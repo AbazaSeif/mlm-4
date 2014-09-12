@@ -23,7 +23,7 @@
 				{{ $sidebar }}
 			</aside>
 			<div class="content">
-				@yield('content')
+				@yield_content('content')
 			</div>
 		</div>
 	</div>

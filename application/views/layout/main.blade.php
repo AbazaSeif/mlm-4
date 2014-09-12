@@ -119,7 +119,7 @@
 		</header>
 		<div id="wrapper">
 			{{ Messages::get_html() }}
-			@yield('content')
+			@yield_content('content')
 		</div>
 	</div>
 	<footer id="global-footer" class="clearfix">
@@ -136,7 +136,7 @@
 		</div>
 	</footer>
 
-	@yield("postfooter")
+	@yield_content("postfooter")
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="{{ URL::to_asset("js/libs/jquery-1.8.0.min.js") }}"><\/script>')</script>
 
