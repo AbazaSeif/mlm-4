@@ -8,7 +8,7 @@ class Admin_Maps_Controller extends Admin_Controller {
 	}
 	// List maps
 	public function get_index() {
-		$maps = DB::table("maps")->order_by("id", "desc")->get(array("id", "title", "slug", "created_at", "published", "featured", "official"));
+		$maps = DB::table("maps")->order_by("id", "desc")->get(array("id", "title", "slug", "created_at", "published", "featured", "admin_checked"));
 		return View::make("admin.maps.list", array("maps" => $maps, "title" => "Maps | Admin", "javascript" => array("admin")));
 	}
 	// Mod view page (handles (un)publish, (un)official)
@@ -32,29 +32,6 @@ class Admin_Maps_Controller extends Admin_Controller {
 
 		switch ($action)
 		{
-			case 'official':
-			$map->official = 1;
-			if($map->save()) {
-				Event::fire("admin", array("maps", "edit", $map->id, "official"));
-				Messages::add("success", "Map official!");
-				return Redirect::to_action("admin.maps");
-			} else {
-				Messages::add("error", "Failed to save");
-				return Redirect::to_action("admin.maps");
-			}
-			break;
-			case 'unofficial':
-			$map->official = 0;
-			if($map->save()) {
-				Event::fire("admin", array("maps", "edit", $map->id, "unofficial"));
-				Messages::add("success", "Map made unofficial!");
-				return Redirect::to_action("admin.maps");
-			} else {
-				Messages::add("error", "Failed to save");
-				return Redirect::to_action("admin.maps");
-			}
-			break;
-
 			case 'feature':
 			$map->featured = 1;
 			if($map->save()) {
@@ -83,7 +60,7 @@ class Admin_Maps_Controller extends Admin_Controller {
 			$map->created_at = new DateTime(); // Reset time to make it the newest.
 
 			if($map->save()) {
-				Event::fire("admin", array("maps", "edit", $map->id, "Approved"));
+				Event::fire("admin", array("maps", "edit", $map->id, "Published"));
 				Messages::add("success", "Map approved!");
 				if($modqueue = Modqueue::where_itemtype('map')->where_itemid($map->id)->where_type("publish")->first()) {
 					$modqueue->delete();
@@ -98,7 +75,7 @@ class Admin_Maps_Controller extends Admin_Controller {
 			case 'unpublish':
 			$map->published = 0;
 			if($map->save()) {
-				Event::fire("admin", array("maps", "edit", $map->id, "Approval pending"));
+				Event::fire("admin", array("maps", "edit", $map->id, "Unpublished"));
 				Messages::add("success", "Map unapproved!");
 				return Redirect::to_action("admin.maps");
 			} else {
@@ -106,6 +83,36 @@ class Admin_Maps_Controller extends Admin_Controller {
 				return Redirect::to_action("admin.maps");
 			}
 			break;
+
+			case 'admin_check':
+			$map->admin_checked = true;
+
+			if($map->save()) {
+				Event::fire("admin", array("maps", "edit", $map->id, "Admin Checked"));
+				Messages::add("success", "Map marked as checked by admin!");
+				if($modqueue = Modqueue::where_itemtype('map')->where_itemid($map->id)->where_type("admin_check")->first()) {
+					$modqueue->delete();
+					Event::fire("admin", array("modqueue", "delete", $modqueue->id));
+				}
+				return Redirect::to_action("admin.maps");
+			} else {
+				Messages::add("error", "Failed to save");
+				return Redirect::to_action("admin.maps");
+			}
+			break;
+			case 'admin_uncheck':
+			$map->admin_checked = 0;
+
+			if($map->save()) {
+				Event::fire("admin", array("maps", "edit", $map->id, "Admin unchecked"));
+				Messages::add("success", "Map marked as not checked by admin!");
+				return Redirect::to_action("admin.maps");
+			} else {
+				Messages::add("error", "Failed to save");
+				return Redirect::to_action("admin.maps");
+			}
+			break;
+
 			case 'savemodqueuenotes':
 			$modqueue->admin_notes = Input::get("admin_notes");
 			if($modqueue->save()) {

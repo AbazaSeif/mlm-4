@@ -43,6 +43,8 @@ Route::get("login", "account@login");
 Route::get("news/(:num)-(:any)", "news@view");
 Route::get("map/(:num)-(:any)", "maps@view");
 Route::get("map/(:num)-(:any)/(:any)", "maps@view"); // Map version
+Route::get("map/(:num)-", "maps@view");
+Route::get("map/(:num)", "maps@view");
 
 // Public routes
 Route::controller(array("account", "imgmgr", "maps", "messages", "news", "faq", "matches", "search", "test", "groups"));

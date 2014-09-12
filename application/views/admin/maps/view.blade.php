@@ -19,6 +19,11 @@
 	@elseif ($map->featured == true)
 	{{ Form::submit("Unfeature Map", array("class" => "btn btn-info", "name" => "action", "value" => "unfeature")) }}
 	@endif
+	@if ($map->admin_checked == false)
+	{{ Form::submit("Mark as checked", array("class" => "btn btn-warning", "name" => "action", "value" => "admin_check")) }}
+	@elseif ($map->admin_checked == true)
+	{{ Form::submit("Unmark as checked", array("class" => "btn btn-warning", "name" => "action", "value" => "admin_uncheck")) }}
+	@endif
 	{{ HTML::link_to_action("maps.edit", "Edit Map", array($map->id), array("class" => "btn")) }}
 	{{ HTML::link_to_action("admin.maps.edit", "Edit Map (Old interface)", array($map->id), array("class" => "btn")) }}
 	{{ HTML::link_to_action("admin.maps", "Back", array(), array("class" => "btn")) }}

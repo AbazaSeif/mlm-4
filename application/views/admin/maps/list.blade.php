@@ -13,7 +13,8 @@
 				<th>ID</th>
 				<th>Map name</th>
 				<th>Date created</th>
-				<th><abbr title="Status">S</abbr></th>
+				<th>Status</th>
+				<th>Checked</th>
 				<th class="disabled">&nbsp;</th>
 			</tr>
 		</thead>
@@ -30,6 +31,12 @@
 						<i class="icon-eye-close" title="Not Published"></i>
 					@endif
 				</td>
+				<td>
+					@if($item->admin_checked)
+						<i class="icon-ok" title="Checked"></i>
+					@else
+						<i class="icon-exclamation-sign" title="Not Checked"></i>
+					@endif
 				<td>
 				{{ HTML::link_to_action("admin@maps@view", "Moderate Map", array($item->id), array("class" => "btn btn-primary btn-small"))}}
 				</td>

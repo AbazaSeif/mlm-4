@@ -19,7 +19,6 @@ class Maps_Controller extends Base_Controller {
 		$order_column = strtolower(Input::get('order'));
 		$category = strtolower(Input::get('type'));
 		$featured = strtolower(Input::get('featured'));
-		$official = strtolower(Input::get('official'));
 		$own = strtolower(Input::get('ownmaps'));
 		$limit = intval(Input::get('limit', null)) ?: 12;
 
@@ -92,12 +91,6 @@ class Maps_Controller extends Base_Controller {
 		if ($featured == "true")
 		{
 			$query = $query->where("maps.featured", '=', 1);
-		}
-
-		//$official
-		if ($official == "true")
-		{
-			$query = $query->where("maps.official", '=', 1);
 		}
 
 		//run $query
@@ -919,10 +912,11 @@ EOT;
 		}
 
 		//Publishing
-		if ($map->published == '0')
+		if ($map->published == '0' || $map->published == null)
 		{
+			/*
 			//Check downloads, images etc.
-			if (count($map->images) <= 0) {
+			if ()count($map->images) <= 0) {
 				Messages::add("error", "Couldn't publish map: No images attached to map!");
 				return Redirect::to_action("maps@edit", array($id));
 			}
@@ -931,8 +925,20 @@ EOT;
 				return Redirect::to_action("maps@edit", array($id));
 			}
 			else {
+				*/{
 				$map->published = '1';
 				$map->save();
+
+				if($map->admin_checked == '0' && (Modqueue::where_itemtype('map')->where_itemid($map->id)->where_type("admin_check")->first()) == null) {
+					$modqueue = new Modqueue();
+					$modqueue->user_id = Auth::user()->id;
+					$modqueue->type = 'admin_check';
+					$modqueue->itemtype = "map";
+					$modqueue->itemid = $id;
+					$modqueue->data = "Auto generated report for new maps. Please ensure the map is up to standard. Map Description:".$map->description." ";
+
+					$modqueue->save();
+				}
 				return Redirect::to_action("maps@view", array($id));
 			}
 		}
