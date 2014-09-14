@@ -11,11 +11,12 @@ return array(
 	*/
 	"types" => array(
 		"rfw"		=> "Race for Wool",
-		"ctw"		=> "Capture the Wool",
+		"adv"		=> "Adventure",
+		"puzzle"	=> "Puzzle",
+		"pvp"		=> "PVP Arena"
 		"attack"	=> "Attack/Defense",
-		"dtc"		=> "Destroy the Core",
-		"survival"	=> "Survival Games",
-		"bed"		=> "Bed Breaker",
+		"monument"	=> "Compete the Monument",
+		"survival"	=> "Survival",
 		"other"		=> "Other"
 	)
 );
