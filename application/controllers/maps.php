@@ -101,9 +101,25 @@ class Maps_Controller extends Base_Controller {
 		return View::make("maps.home", array("title" => "Search Maps", "javascript" => array("maps", "list"), "maps" => $maps, "menu" => "multiview"));
 	}
 	public function get_new() {
-		return View::make("maps.new", array("title" => "New Map ", "javascript" => array("maps", "edit"), "menu" => "new", "sidebar" => "edit"));
+		$version_json = json_decode(file_get_contents("https://s3.amazonaws.com/Minecraft.Download/versions/versions.json"));
+
+		$versions = array();
+		foreach ($version_json->versions as $json_version) {
+			if ($json_version->type == "release") {
+				$versions[] = $json_version->id;
+			}
+		}
+
+		return View::make("maps.new", array("title" => "New Map ", "javascript" => array("maps", "edit"), "menu" => "new", "sidebar" => "edit", "versions" => $versions));
 	}
 	public function post_new() {
+		$version_json = json_decode(file_get_contents("https://s3.amazonaws.com/Minecraft.Download/versions/versions.json"));
+		$versions = array();
+		foreach ($version_json->versions as $json_version) {
+			if ($json_version->type == "release") {
+				$versions[] = $json_version->id;
+			}
+		}
 		$validation_rules = array(
 			"title"       => "required|between:3,128",
 			"summary"     => "required|max:140",
@@ -122,7 +138,7 @@ class Maps_Controller extends Base_Controller {
 			$map->summary = Input::get("summary");
 			$map->description = IoC::resolve('HTMLPurifier')->purify(Input::get("description"));
 			$map->maptype     = Input::get("maptype");
-			$map->mcversion   = Input::get("mcversion");
+			$map->mcversion   = $versions[Input::get("mcversion")];
 			$map->teamcount   = Input::get("teamcount");
 			$map->teamsize    = Input::get("teamsize");
 			$map->avg_rating  = 0;
@@ -344,11 +360,20 @@ class Maps_Controller extends Base_Controller {
 		if(!$is_owner && !Auth::user()->admin) {
 			return Response::error("403"); // Not owner
 		}
+		$version_json = json_decode(file_get_contents("https://s3.amazonaws.com/Minecraft.Download/versions/versions.json"));
+		$versions = array();
+		foreach ($version_json->versions as $json_version) {
+			if ($json_version->type == "release") {
+				$versions[] = $json_version->id;
+			}
+		}
+
+		$versionarrayid = intval(array_search($map->mcversion, $versions));
 
 		$authors = $map->users()->with("confirmed")->get();
 
 		return View::make("maps.edit", array(
-			"title" => "Editing: ".e($map->title)." | Maps", "map" => $map, "is_owner" => $is_owner, "authors" => $authors, "sidebar" => "edit", "javascript" => array("maps","edit"), "menu" => "mapedit"
+			"title" => "Editing: ".e($map->title)." | Maps", "map" => $map, "is_owner" => $is_owner, "authors" => $authors, "sidebar" => "edit", "javascript" => array("maps","edit"), "menu" => "mapedit", "versions" => $versions, "versionarrayid" => $versionarrayid
 		));
 	}
 	/* Edit metadata */
@@ -361,6 +386,13 @@ class Maps_Controller extends Base_Controller {
 			return Response::error("403"); // Not owner
 		}
 
+		$version_json = json_decode(file_get_contents("https://s3.amazonaws.com/Minecraft.Download/versions/versions.json"));
+		$versions = array();
+		foreach ($version_json->versions as $json_version) {
+			if ($json_version->type == "release") {
+				$versions[] = $json_version->id;
+			}
+		}
 		$validation_rules = array(
 			"title"       => "required|between:3,128",
 			"summary"     => "required|max:255",
@@ -377,7 +409,7 @@ class Maps_Controller extends Base_Controller {
 			$map->summary     = Input::get("summary");
 			$map->description = IoC::resolve('HTMLPurifier')->purify(Input::get("description"));
 			$map->maptype     = Input::get("maptype");
-			$map->mcversion   = Input::get("mcversion");
+			$map->mcversion   = $versions[Input::get("mcversion")];
 			$map->teamcount   = Input::get("teamcount");
 			$map->teamsize    = Input::get("teamsize");
 			if($is_owner) {

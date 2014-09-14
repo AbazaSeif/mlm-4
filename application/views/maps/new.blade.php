@@ -23,7 +23,7 @@
 			{{ Form::field("textarea", "summary", "Summary", array(Input::old("summary"), array("rows" => "15", 'class' => 'summary')), array('error' => $errors->first('summary'), "alt" => "(Explain your map 140 characters. Use correct grammar)")) }}
 			{{ Form::field("wysiwyg-user", "description", "Description", array(Input::old("description"), array('class' => 'input-xxlarge')), array('error' => $errors->first('description'), "alt" => "(Use correct grammar)")) }}
 			{{ Form::field("select", "maptype", "Map type", array(array_merge(array("" => "--------------"), Config::get("maps.types")), Input::old("maptype"), array('class' => 'input')), array('error' => $errors->first('maptype'))) }}
-			{{ Form::field("text", "mcversion", "Minecraft version", array(Input::old("mcversion")), array("error" => $errors->first("mcversion"), "help" => "The Minecraft Version for the map should be the latest version of Minecraft that the map was tested on and fully worked.")) }}
+			{{ Form::field("select", "mcversion", "Minecraft version", array(array_merge(array("" => "--------------"), $versions), Input::old("mcversion"), array('class' => 'input')), array('error' => $errors->first('mcversion'), "help" => "The Minecraft Version for the map should be the latest version of Minecraft that the map was tested on and fully worked.")) }}
 			{{ Form::field("text", "teamcount", "Teams", array(Input::old("teamcount")), array("error" => $errors->first("teamcount"), "help" => "How many teams can play the map at once")) }}
 			{{ Form::field("text", "teamsize", "Team Size", array(Input::old("teamsize")), array("error" => $errors->first("teamsize"), "alt" => "(Players per team)")) }}
 			<div class="control-group">
