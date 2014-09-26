@@ -13,7 +13,7 @@ return array(
 		"rfw"		=> "Race for Wool",
 		"adv"		=> "Adventure",
 		"puzzle"	=> "Puzzle",
-		"pvp"		=> "PVP Arena"
+		"pvp"		=> "PVP Arena",
 		"attack"	=> "Attack/Defense",
 		"monument"	=> "Compete the Monument",
 		"survival"	=> "Survival",
