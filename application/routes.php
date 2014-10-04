@@ -35,6 +35,7 @@
 
 // Home
 Route::get('/', function() {
+	return Redirect::to("news");
 	return View::make('pages.home', array("javascript" => array("home")));
 });
 

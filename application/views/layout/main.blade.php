@@ -87,6 +87,7 @@
 							@if(Auth::user()->admin)
 								{{ HTML::link('admin', 'Admin panel'); }}
 							@endif
+							{{ HTML::link('maps/new', 'Add Map'); }}
 							{{ HTML::link('account', 'Edit Account'); }}
 							<a href="/messages" title="{{ e(Auth::user()->unread_messages) }} new messages" style="border-right: none;padding-right: 0;">[{{ e(Auth::user()->unread_messages) }}]</a>
 							<a href="{{ URL::to("user/".Auth::user()->username) }}" title="View your profile" style="padding-left: 0">Profile <img src="{{ Auth::user()->avatar_url }}" alt="avatar" /></a>
@@ -99,7 +100,6 @@
 				<nav id="menu">
 					<ul id="mainmenu">
 						<li><a href="{{ URL::to("/") }}">Home</a></li>
-						<li>{{ HTML::link('news', 'News'); }}</li>
 						<li>{{ HTML::link('maps', 'Maps'); }}</li>
 						<li>{{ HTML::link('faq', 'FAQ'); }}</li>
 						<div id="search" class="right clearfix">

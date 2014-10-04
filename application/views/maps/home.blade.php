@@ -5,7 +5,7 @@
 <div id="content" class="maps clearfix">
 	<div id="page" class="maxwidth">
 		<div id="multiview">
-			<ul class="{{ Cookie::get_raw("multiview", 'grid') }}">
+			<ul class="{{ Cookie::get_raw("multiview", 'list') }}">
 			@foreach ($maps->results as $map)
 				<li>
 					<a href="{{ URL::to_action("maps@view", array($map->id, $map->slug)) }}" title="View map">

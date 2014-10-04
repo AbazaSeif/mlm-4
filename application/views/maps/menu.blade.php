@@ -1,9 +1,10 @@
 <nav id="pagemenu" class="clearfix">
 	<ul class="nav nav-tabs">
-		<li>{{HTML::link("maps", "All") }}</li>
-		<li {{ (Input::get('order') == 'newest' && !Input::get('search')) ? 'class="active"' : ''}}>{{HTML::link("maps/filter?order=newest", "Newest") }}</li>
+		<li {{ (Input::get('search')) ? 'class="active"' : ''}}><a href="{{ action("maps@filter") }}?search=1" data-toggle="collapse" data-target="#map-search" onClick="return false;"><i class="icon-filter"></i></a></li>
+		<li {{ (Input::get('featured') == 'true' && !Input::get('search')) ? 'class="active"' : ''}}>{{ HTML::link('maps/filter?featured=true', 'Featured Maps') }}</li>
 		<li {{ (Input::get('order') == 'best' && !Input::get('search')) ? 'class="active"' : ''}}>{{ HTML::link("maps/filter?order=best", "Highest ranked") }}</li>
-		<li {{ (Input::get('featured') == 'true' && !Input::get('search')) ? 'class="active"' : ''}}>{{ HTML::link('maps/filter?featured=true', 'Featured Maps'); }}</li>
+		<li {{ (Input::get('order') == 'newest' && !Input::get('search')) ? 'class="active"' : ''}}>{{HTML::link("maps/filter?order=newest", "Newest") }}</li>		
+		<li {{ (Input::get('all') == 1) ? 'class="active"' : ''}}>{{HTML::link("maps?all=1", "All") }}</li>		
 		<li class="dropdown">
 				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories <b class="caret"></b></a>
 				<ul class="dropdown-menu">
@@ -16,10 +17,9 @@
 		@if (Auth::check())
 		<li {{ Input::get("ownmaps") == true && !Input::get('search') ? 'class="rside active"' : 'class="rside"' }}><a href="{{ URL::to("maps/filter/?ownmaps=1") }}">Your Maps</a></li>
 		@endif
-		<li class="rside"><a href="{{ action("maps@filter") }}?search=1" data-toggle="collapse" data-target="#map-search" onClick="return false;"><i class="icon-search"></i></a></li>
 	</ul>
 	<?php Form::$idpre = "map-search-"; ?>
-	{{ Form::open("maps/filter", "GET", array("id"=> "map-search", "class" => "form clearfix menusearch collapse".(Input::get('search') ? ' in' : ''), "data-cleanup" => true)) }}
+	{{ Form::open("maps/filter", "GET", array("id"=> "map-search", "class" => "form clearfix menusearch collapse".(Input::get('search') || Input::get('all') == 1 ? ' in' : ''), "data-cleanup" => true)) }}
 		<hr class="spacer" />
 		<div class="row">
 			<div class="span8">

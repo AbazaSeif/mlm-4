@@ -1790,7 +1790,7 @@ ol.commentlist {
 #multiview .list li { display: block; margin: 0 0 10px 0; height: auto; width: auto; -moz-box-shadow:none; -webkit-box-shadow:none; box-shadow:none;}
 #multiview .list li:hover { background-color: #f9f9f9 }
 #multiview .list li:first-child { margin-top: 0 }
-#multiview .list .mv-image { float: left; margin: 5px 10px 5px 5px; max-width: 160px; }
+#multiview .list .mv-image { float: left; margin: 5px 10px 5px 5px; max-width: 220px; }
 #multiview .list .mv-details { position:static; padding: 10px; background: none; color: #333; -moz-box-shadow:none; -webkit-box-shadow: none ;box-shadow: none;}
 /* #multiview .list .mv-image + .mv-details { margin-left: 160px; } */
 
