@@ -36,7 +36,8 @@
 								@unless($map->published)
 								<p><strong>This map isn't yet published</strong></p>
 								@endunless
-								<span>Type: <b>{{ array_get(Config::get("maps.types"), $map->maptype) }}</b></span>
+								<span>Type: <b>{{ array_get(Config::get("maps.types"), $map->maptype) }}</b></span>,
+								<span>Downloads: <b>{{$map->hit_count}}</b></span>
 							</div>
 						</div>
 					</a>

@@ -219,6 +219,8 @@ class Maps_Controller extends Base_Controller {
 			$version = $map->version;
 		}
 
+		$map->hit_count++;
+		$map->save();
 		// MAYBE-TODO: Maybe stats of downloads?
 
 		return Response::download(path("storage")."maps/".$map->id."_".$version->id.".zip", $map->slug."-".$version->version_slug.".zip");
